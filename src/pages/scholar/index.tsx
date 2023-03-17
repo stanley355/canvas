@@ -20,7 +20,7 @@ const ScholarPage = (props: any) => {
 
   return (
     <ScholarPageLayout>
-      <ScholarResultSkeleton />
+      <ScholarResultSkeleton organicResults={serpResult.organic_results} />
     </ScholarPageLayout>
   );
 };
