@@ -2,7 +2,7 @@ import React from "react";
 import Router from "next/router";
 import { FaSearch } from "react-icons/fa";
 
-const ScholarSearchBox = () => {
+const ScholarSearchBox = ({query}:any) => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const searchValue = e.target.search.value;
@@ -19,6 +19,7 @@ const ScholarSearchBox = () => {
         type="text"
         name="search"
         id="search"
+        placeholder={query && query.q ? query.q : ""}
         className="w-full bg-black text-white border-white border pl-2 rounded-sm"
       />
       <button type="submit" className="w-auto p-2 bg-white rounded-sm">

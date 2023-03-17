@@ -25,7 +25,7 @@ const ScholarPageLayout = (props: IScholarPageLayout) => {
           <FaBuffer className="text-3xl" />
         </button>
         {query && query.q ? (
-          <ScholarSearchBox />
+          <ScholarSearchBox query={query} />
         ) : (
           <Link href="/login">
             <FaUserCircle className="text-3xl" />
