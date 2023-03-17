@@ -47,11 +47,12 @@ const ScholarResultHeaderFilter = ({ query }: any) => {
   };
 
   return (
-    <div>
+    <div className="absolute right-4 top-12 bg-white w-1/2 text-black flex flex-col rounded-sm">
       {FILTER_OPTIONS.map((option, index) => (
         <Link
           href={createFilterLink(option.query, String(option.value))}
           key={index}
+          className="p-4 border-b border-blue-200"
         >
           {option.label}
         </Link>

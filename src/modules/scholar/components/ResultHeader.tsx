@@ -10,7 +10,7 @@ const ScholarResultHeader = ({ query, searchInfo }: any) => {
   const ResultHeaderFilter = dynamic(() => import("./ResultHeaderFilter"), {});
 
   return (
-    <div className="p-4 border-b border-white flex flex-row justify-between">
+    <div className="p-4 border-b border-white flex flex-row justify-between relative">
       <div className="container mx-auto flex flex-row items-center">
         <FaBookOpen className="text-xl mr-2" />
         <span>About {searchInfo.total_results} results</span>
