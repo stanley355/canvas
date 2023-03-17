@@ -3,12 +3,12 @@ import { FaBookOpen } from "react-icons/fa";
 import ResultCard from "../ResultCard";
 
 interface IScholarResultSkeleton {
-    searchInfo: any;
+  searchInfo: any;
   organicResults: any[];
 }
 
 const ScholarResultSkeleton = (props: IScholarResultSkeleton) => {
-  const {searchInfo, organicResults } = props;
+  const { searchInfo, organicResults } = props;
 
   return (
     <div>

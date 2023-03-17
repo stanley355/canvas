@@ -4,11 +4,14 @@ import { FaQuoteLeft } from "react-icons/fa";
 
 const ResultCard = ({ result }: any) => (
   <div className="p-4 border-b border-white lg:w-2/3">
-    <Link href={result.link} className="font-semibold text-xl text-blue-200 underline">
+    <Link
+      href={result.link}
+      className="font-semibold text-xl text-blue-200 underline"
+    >
       {result.title}
     </Link>
     <div className="flex flex-row items-center">
-      <FaQuoteLeft className="mr-2"/>
+      <FaQuoteLeft className="mr-2" />
       <span>Cited: {result.inline_links.cited_by.total}</span>
     </div>
     {/* TODO: Create scholar author page */}
