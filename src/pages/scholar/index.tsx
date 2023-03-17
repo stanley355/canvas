@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import { assignPageQueryToURL } from "@/common/lib/assignPageQueryToURL";
 import ScholarPageLayout from "@/modules/scholar/components/Layout";
 import ScholarSearchBox from "@/modules/scholar/components/SearchBox";
 import ScholarResultSkeleton from "@/modules/scholar/components/ResultSkeleton";
@@ -37,14 +38,10 @@ export const getServerSideProps: GetServerSideProps = async (
   let serpResult = [];
 
   if (query && query.q) {
-    const apiURL = new URL(
-      `${process.env.NEXT_PUBLIC_BASE_URL}api/serp/scholar`
-    );
-    Object.keys(query).forEach((key) => {
-      apiURL.searchParams.set(key, String(query[key]));
-    });
+    const targetURL = `${process.env.NEXT_PUBLIC_BASE_URL}api/serp/scholar`;
+    const queriedURL = assignPageQueryToURL(targetURL, query);
 
-    const serpRes: any = await axios.get(String(apiURL));
+    const serpRes: any = await axios.get(queriedURL);
 
     if (serpRes && serpRes.data) {
       serpResult = structuredClone(serpRes.data);
