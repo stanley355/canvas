@@ -12,7 +12,6 @@ interface IScholarResultSkeleton {
 const ScholarResultSkeleton = (props: IScholarResultSkeleton) => {
   const { searchInfo, organicResults } = props;
 
-
   return (
     <div>
       <ScholarResultHeader searchInfo={searchInfo} />
