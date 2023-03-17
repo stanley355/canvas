@@ -1,5 +1,5 @@
 import React from "react";
-import ResultCard from "../ResultCard";
+import ScholarResultCard from "../ResultCard";
 import ScholarResultHeader from "../ResultHeader";
 
 interface IScholarResultSkeleton {
@@ -16,7 +16,7 @@ const ScholarResultSkeleton = (props: IScholarResultSkeleton) => {
       <div className="container mx-auto">
         {organicResults.map((res) => (
           <div key={res.position}>
-            <ResultCard result={res} />
+            <ScholarResultCard result={res} />
           </div>
         ))}
       </div>

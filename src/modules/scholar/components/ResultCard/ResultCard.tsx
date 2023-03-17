@@ -2,8 +2,8 @@ import React from "react";
 import Link from "next/link";
 import { FaQuoteLeft } from "react-icons/fa";
 
-const ResultCard = ({ result }: any) => (
-  <div className="p-4 border-b border-white lg:w-2/3">
+const ScholarResultCard = ({ result }: any) => (
+  <div className="p-4 lg:px-0 border-b border-white lg:w-2/3">
     <Link
       href={result.link}
       className="font-semibold text-xl text-blue-200 underline"
@@ -20,4 +20,4 @@ const ResultCard = ({ result }: any) => (
   </div>
 );
 
-export default ResultCard;
+export default ScholarResultCard;
