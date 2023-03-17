@@ -21,6 +21,7 @@ const ScholarPage = (props: any) => {
     <ScholarPageLayout query={query}>
       {query && query.q ? (
         <ScholarResultSkeleton
+          query={query}
           pagination={serpResult.pagination}
           searchInfo={serpResult.search_information}
           organicResults={serpResult.organic_results}

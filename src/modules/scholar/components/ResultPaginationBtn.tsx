@@ -1,20 +1,38 @@
 import React from "react";
 import classNames from "classnames";
 import Link from "next/link";
+import { assignPageQueryToURL } from "@/common/lib/assignPageQueryToURL";
 
-const ScholarResultPaginationBtn = ({ pagination }: any) => {
+interface IScholarResultPagination {
+  query: any;
+  pagination: any;
+}
+
+const ScholarResultPaginationBtn = (props: IScholarResultPagination) => {
+  const { query, pagination } = props;
+
+  const createLinkURL = (pageNum: number) => {
+    const baseUrl = `${process.env.NEXT_PUBLIC_BASE_URL}scholar`;
+    const queriedURL = assignPageQueryToURL(baseUrl, query);
+
+    queriedURL.searchParams.set("start", String(pageNum * 10));
+
+    if (queriedURL) return String(queriedURL);
+    return "/scholar/";
+  };
+
   return (
-    <div className="flex flex-row items-center justify-center mt-4">
-      {[1, 2, 3, 4, 5].map((page: number) => (
+    <div className="flex flex-row items-center justify-center my-4 lg:w-2/3">
+      {[0, 1, 2, 3, 4].map((page: number) => (
         <Link
-          href="/"
+          href={createLinkURL(page)}
           key={page}
           className={classNames(
-            "px-1 border border-blue-200 text-lg rounded-sm mr-2",
-            pagination.current === page ? "bg-white text-black" : ""
+            "px-1 text-lg mr-2",
+            pagination.current === page + 1 ? "border rounded-sm" : ""
           )}
         >
-          {page}
+          {page + 1}
         </Link>
       ))}
     </div>

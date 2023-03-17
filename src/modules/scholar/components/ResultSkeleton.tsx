@@ -5,13 +5,14 @@ import ScholarResultHeader from "./ResultHeader";
 import ScholarResultPaginationBtn from "./ResultPaginationBtn";
 
 interface IScholarResultSkeleton {
+  query: any;
   searchInfo: any;
   organicResults: any[];
   pagination: any;
 }
 
 const ScholarResultSkeleton = (props: IScholarResultSkeleton) => {
-  const { searchInfo, organicResults, pagination } = props;
+  const { query, searchInfo, organicResults, pagination } = props;
 
   return (
     <div>
@@ -23,7 +24,7 @@ const ScholarResultSkeleton = (props: IScholarResultSkeleton) => {
           </div>
         ))}
       </div>
-      <ScholarResultPaginationBtn pagination={pagination} />
+      <ScholarResultPaginationBtn query={query} pagination={pagination} />
     </div>
   );
 };
