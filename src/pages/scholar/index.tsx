@@ -8,14 +8,19 @@ import ScholarResultSkeleton from "@/modules/scholar/components/ResultSkeleton";
 const ScholarPage = (props: any) => {
   const { query, serpResult } = props;
 
-  return (
-    <ScholarPageLayout>
+  const ScholarPageHome = () => (
+    <div className="container mx-auto p-4">
       <h1 className="font-bold text-3xl lg:text-4xl text-center">
         Scholar Data
       </h1>
+      <ScholarSearchBox />
+      <h3 className="text-lg text-center mt-4">Knowledge is Power</h3>
+    </div>
+  );
+
+  return (
+    <ScholarPageLayout>
       <ScholarResultSkeleton />
-      {/* <ScholarSearchBox />
-      <h3 className="text-lg text-center mt-4">Knowledge is Power</h3> */}
     </ScholarPageLayout>
   );
 };
