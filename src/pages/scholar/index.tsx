@@ -19,7 +19,7 @@ const ScholarPage = (props: any) => {
   );
 
   return (
-    <ScholarPageLayout>
+    <ScholarPageLayout query={query}>
       {query && query.q ? (
         <ScholarResultSkeleton
           searchInfo={serpResult.search_information}
