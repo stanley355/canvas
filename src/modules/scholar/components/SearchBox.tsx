@@ -2,7 +2,7 @@ import React from "react";
 import Router from "next/router";
 import { FaSearch } from "react-icons/fa";
 
-const ScholarSearchBox = ({query}:any) => {
+const ScholarSearchBox = ({ query }: any) => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const searchValue = e.target.search.value;

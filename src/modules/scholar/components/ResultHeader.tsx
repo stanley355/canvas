@@ -19,7 +19,7 @@ const ScholarResultHeader = ({ query, searchInfo }: any) => {
       {isMobile && (
         <button
           type="button"
-          onClick={()=> setShowFilter(!showFilter)}
+          onClick={() => setShowFilter(!showFilter)}
           className="flex flex-row items-center border rounded px-1"
         >
           <FaFilter className="mr-1" />
