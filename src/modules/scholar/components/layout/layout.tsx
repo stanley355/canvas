@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import classNames from "classnames";
 import { FaBuffer, FaUserCircle } from "react-icons/fa";
 import ScholarSearchBox from "../SearchBox";
 
@@ -13,7 +14,7 @@ const ScholarPageLayout = (props: IScholarPageLayout) => {
 
   return (
     <section>
-      <nav className="py-4 px-2 flex flex-row items-center justify-between border-b border-white">
+      <nav className={classNames("py-4 px-2 flex flex-row items-center border-b border-white", query && query.q ? "" : "justify-between")}>
         <button type="button" className="mr-2">
           <FaBuffer className="text-3xl" />
         </button>

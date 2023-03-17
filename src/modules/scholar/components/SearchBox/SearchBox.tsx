@@ -16,7 +16,7 @@ const ScholarSearchBox = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-row w-full lg:mt-8 lg:w-2/3 mx-auto"
+      className="flex flex-row w-full lg:w-2/3"
     >
       <input
         type="text"
