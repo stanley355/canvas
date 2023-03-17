@@ -31,5 +31,4 @@ const ScholarSearchBox = () => {
   );
 };
 
-
 export default ScholarSearchBox;

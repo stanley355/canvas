@@ -4,8 +4,8 @@ import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import ScholarPageLayout from "@/modules/scholar/components/layout";
 import ScholarSearchBox from "@/modules/scholar/components/SearchBox";
 
-const ScholarPage = (props:any) => {
-  const {query, searchResult}  = props;
+const ScholarPage = (props: any) => {
+  const { query, searchResult } = props;
 
   return (
     <ScholarPageLayout>
@@ -42,7 +42,7 @@ export const getServerSideProps: GetServerSideProps = async (
   return {
     props: {
       query,
-      searchResult
+      searchResult,
     },
   };
 };
