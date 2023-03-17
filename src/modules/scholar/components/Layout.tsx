@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import classNames from "classnames";
 import { FaBuffer, FaUserCircle } from "react-icons/fa";
-import Footer from "@/common/Footer";
+import Footer from "@/common/components/Footer";
 import ScholarSearchBox from "./SearchBox";
 
 interface IScholarPageLayout {
