@@ -7,10 +7,11 @@ import ScholarResultPaginationBtn from "./ResultPaginationBtn";
 interface IScholarResultSkeleton {
   searchInfo: any;
   organicResults: any[];
+  pagination: any;
 }
 
 const ScholarResultSkeleton = (props: IScholarResultSkeleton) => {
-  const { searchInfo, organicResults } = props;
+  const { searchInfo, organicResults, pagination } = props;
 
   return (
     <div>
@@ -22,7 +23,7 @@ const ScholarResultSkeleton = (props: IScholarResultSkeleton) => {
           </div>
         ))}
       </div>
-      <ScholarResultPaginationBtn />
+      <ScholarResultPaginationBtn pagination={pagination} />
     </div>
   );
 };
