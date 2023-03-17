@@ -5,7 +5,7 @@ import ScholarPageLayout from "@/modules/scholar/components/layout";
 import ScholarSearchBox from "@/modules/scholar/components/SearchBox";
 
 const ScholarPage = (props: any) => {
-  const { query, searchResult } = props;
+  const { query, serpResult } = props;
 
   return (
     <ScholarPageLayout>
@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   const { query } = context;
-  let searchResult = [];
+  let serpResult = [];
 
   if (query && query.q) {
     const apiURL = new URL(
@@ -35,14 +35,14 @@ export const getServerSideProps: GetServerSideProps = async (
     const serpRes: any = await axios.get(String(apiURL));
 
     if (serpRes && serpRes.data) {
-      searchResult = structuredClone(serpRes.data.organic_results);
+      serpResult = structuredClone(serpRes.data);
     }
   }
 
   return {
     props: {
       query,
-      searchResult,
+      serpResult,
     },
   };
 };
