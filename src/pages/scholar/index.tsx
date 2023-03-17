@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
-import ScholarPageLayout from "@/modules/scholar/components/layout";
+import ScholarPageLayout from "@/modules/scholar/components/Layout";
 import ScholarSearchBox from "@/modules/scholar/components/SearchBox";
 import ScholarResultSkeleton from "@/modules/scholar/components/ResultSkeleton";
 
