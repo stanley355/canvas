@@ -13,9 +13,7 @@ const ScholarPageLayout = ({ children }: { children: React.ReactNode }) => {
           <FaUserCircle className="text-3xl" />
         </Link>
       </nav>
-      <body className="p-4">
-      {children}
-      </body>
+      <div className="p-4">{children}</div>
     </section>
   );
 };
