@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import dynamic from "next/dynamic";
 import { FaBookOpen, FaFilter } from "react-icons/fa";
 import useMobileScreen from "@/common/lib/isMobile";
 
-const ScholarResultHeader = ({ searchInfo }: any) => {
+const ScholarResultHeader = ({ query, searchInfo }: any) => {
+  const [showFilter, setShowFilter] = useState(false);
   const isMobile = useMobileScreen();
 
-  
+  const ResultHeaderFilter = dynamic(() => import("./ResultHeaderFilter"), {});
 
   return (
     <div className="p-4 border-b border-white flex flex-row justify-between">
@@ -17,12 +19,14 @@ const ScholarResultHeader = ({ searchInfo }: any) => {
       {isMobile && (
         <button
           type="button"
+          onClick={()=> setShowFilter(!showFilter)}
           className="flex flex-row items-center border rounded px-1"
         >
           <FaFilter className="mr-1" />
           <span>Filter</span>
         </button>
       )}
+      {showFilter && <ResultHeaderFilter query={query} />}
     </div>
   );
 };

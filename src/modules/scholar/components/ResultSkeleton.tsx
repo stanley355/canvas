@@ -16,7 +16,7 @@ const ScholarResultSkeleton = (props: IScholarResultSkeleton) => {
 
   return (
     <div>
-      <ScholarResultHeader searchInfo={searchInfo} />
+      <ScholarResultHeader query={query} searchInfo={searchInfo} />
       <div className="container mx-auto">
         {organicResults.map((res) => (
           <div key={res.position}>
