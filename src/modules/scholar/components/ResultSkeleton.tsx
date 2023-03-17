@@ -1,6 +1,8 @@
 import React from "react";
+import Link from "next/link";
 import ScholarResultCard from "./ResultCard";
 import ScholarResultHeader from "./ResultHeader";
+import ScholarResultPaginationBtn from "./ResultPaginationBtn";
 
 interface IScholarResultSkeleton {
   searchInfo: any;
@@ -9,6 +11,7 @@ interface IScholarResultSkeleton {
 
 const ScholarResultSkeleton = (props: IScholarResultSkeleton) => {
   const { searchInfo, organicResults } = props;
+
 
   return (
     <div>
@@ -20,6 +23,7 @@ const ScholarResultSkeleton = (props: IScholarResultSkeleton) => {
           </div>
         ))}
       </div>
+      <ScholarResultPaginationBtn />
     </div>
   );
 };
