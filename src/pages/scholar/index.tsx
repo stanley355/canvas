@@ -1,5 +1,6 @@
 import React from "react";
 import Router from "next/router";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import ScholarPageLayout from "@/modules/scholar/components/layout";
 import ScholarSearchBox from "@/modules/scholar/components/SearchBox";
 
@@ -11,5 +12,18 @@ const ScholarPage = () => {
     </ScholarPageLayout>
   );
 };
+
+export const getServerSideProps: GetServerSideProps = async (
+    context: GetServerSidePropsContext
+  ) => {
+    const { query } = context;
+  
+    return {
+      props: {
+        query,
+      },
+    };
+  };
+  
 
 export default ScholarPage;

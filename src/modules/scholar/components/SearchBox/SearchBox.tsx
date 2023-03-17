@@ -1,6 +1,5 @@
 import React from "react";
 import Router from "next/router";
-import axios from "axios";
 import { FaSearch } from "react-icons/fa";
 
 const ScholarSearchBox = () => {
@@ -31,5 +30,6 @@ const ScholarSearchBox = () => {
     </form>
   );
 };
+
 
 export default ScholarSearchBox;
