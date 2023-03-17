@@ -20,10 +20,14 @@ const ScholarPage = (props: any) => {
 
   return (
     <ScholarPageLayout>
-      <ScholarResultSkeleton
-        searchInfo={serpResult.search_information}
-        organicResults={serpResult.organic_results}
-      />
+      {query && query.q ? (
+        <ScholarResultSkeleton
+          searchInfo={serpResult.search_information}
+          organicResults={serpResult.organic_results}
+        />
+      ) : (
+        <ScholarPageHome />
+      )}
     </ScholarPageLayout>
   );
 };
