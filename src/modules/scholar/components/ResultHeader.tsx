@@ -5,6 +5,8 @@ import useMobileScreen from "@/common/lib/isMobile";
 const ScholarResultHeader = ({ searchInfo }: any) => {
   const isMobile = useMobileScreen();
 
+  
+
   return (
     <div className="p-4 border-b border-white flex flex-row justify-between">
       <div className="container mx-auto flex flex-row items-center">
