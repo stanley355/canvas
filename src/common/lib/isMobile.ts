@@ -17,7 +17,7 @@ const useMobileScreen = () => {
     };
   }, [width]);
 
-  return width <= 768;
+  return typeof window !== 'undefined' ? width <= 768 : false;
 };
 
 export default useMobileScreen;
