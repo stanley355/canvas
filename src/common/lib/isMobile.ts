@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 
 const useMobileScreen = () => {
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(0);
+
+  if (typeof window !== "undefined" && !width) {
+    setWidth(window.innerWidth);
+  }
   const handleWindowSizeChange = () => {
     setWidth(window.innerWidth);
   };
@@ -11,7 +15,7 @@ const useMobileScreen = () => {
     return () => {
       window.removeEventListener("resize", handleWindowSizeChange);
     };
-  }, []);
+  }, [width]);
 
   return width <= 768;
 };
