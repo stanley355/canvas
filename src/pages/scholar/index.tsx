@@ -4,7 +4,6 @@ import ScholarPageLayout from "@/modules/scholar/components/layout";
 import ScholarSearchBox from "@/modules/scholar/components/SearchBox";
 
 const ScholarPage = () => {
-    console.log(typeof window !== 'undefined' && Router.query);
   return (
     <ScholarPageLayout>
       <h1 className="font-bold text-3xl lg:text-4xl text-center">Scholar Data</h1>
