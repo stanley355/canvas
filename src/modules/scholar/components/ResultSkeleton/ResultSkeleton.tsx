@@ -1,6 +1,6 @@
 import React from "react";
-import { FaBookOpen } from "react-icons/fa";
 import ResultCard from "../ResultCard";
+import ScholarResultHeader from "../ResultHeader";
 
 interface IScholarResultSkeleton {
   searchInfo: any;
@@ -12,11 +12,7 @@ const ScholarResultSkeleton = (props: IScholarResultSkeleton) => {
 
   return (
     <div>
-      <div className="p-4 border-b border-white flex flex-row items-center">
-        <FaBookOpen className="text-lg mr-2" />
-        <span>About {searchInfo.total_results} results</span>
-        <span>({searchInfo.time_taken_displayed} sec)</span>
-      </div>
+      <ScholarResultHeader searchInfo={searchInfo} />
       <div className="container mx-auto">
         {organicResults.map((res) => (
           <div key={res.position}>

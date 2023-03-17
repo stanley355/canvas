@@ -10,7 +10,7 @@ const ScholarPage = (props: any) => {
 
   const ScholarPageHome = () => (
     <div className="container mx-auto p-4">
-      <h1 className="font-bold text-3xl lg:text-4xl text-center">
+      <h1 className="font-bold text-3xl mb-4 lg:text-4xl text-center">
         Scholar Data
       </h1>
       <ScholarSearchBox />
