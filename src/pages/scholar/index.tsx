@@ -3,6 +3,7 @@ import axios from "axios";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import ScholarPageLayout from "@/modules/scholar/components/layout";
 import ScholarSearchBox from "@/modules/scholar/components/SearchBox";
+import ScholarResultSkeleton from "@/modules/scholar/components/ResultSkeleton";
 
 const ScholarPage = (props: any) => {
   const { query, serpResult } = props;
@@ -12,8 +13,9 @@ const ScholarPage = (props: any) => {
       <h1 className="font-bold text-3xl lg:text-4xl text-center">
         Scholar Data
       </h1>
-      <ScholarSearchBox />
-      <h3 className="text-lg text-center mt-4">Knowledge is Power</h3>
+      <ScholarResultSkeleton />
+      {/* <ScholarSearchBox />
+      <h3 className="text-lg text-center mt-4">Knowledge is Power</h3> */}
     </ScholarPageLayout>
   );
 };
