@@ -1,8 +1,9 @@
 import React from "react";
-import Link from "next/link";
+import useMobileScreen from "@/common/lib/isMobile";
 import ScholarResultCard from "./ResultCard";
 import ScholarResultHeader from "./ResultHeader";
 import ScholarResultPaginationBtn from "./ResultPaginationBtn";
+import ScholarResultFilter from "./ResultFilter";
 
 interface IScholarResultSkeleton {
   query: any;
@@ -14,15 +15,20 @@ interface IScholarResultSkeleton {
 const ScholarResultSkeleton = (props: IScholarResultSkeleton) => {
   const { query, searchInfo, organicResults, pagination } = props;
 
+  const isMobile = useMobileScreen();
+
   return (
     <div>
       <ScholarResultHeader query={query} searchInfo={searchInfo} />
-      <div className="container mx-auto">
-        {organicResults.map((res) => (
-          <div key={res.position}>
-            <ScholarResultCard result={res} />
-          </div>
-        ))}
+      <div className="container mx-auto lg:flex lg:flex-row lg:gap-4 lg:justify-between">
+        <div className="lg:w-2/3">
+          {organicResults.map((res) => (
+            <div key={res.position}>
+              <ScholarResultCard result={res} />
+            </div>
+          ))}
+        </div>
+        {!isMobile && <ScholarResultFilter query={query} />}
       </div>
       <ScholarResultPaginationBtn query={query} pagination={pagination} />
     </div>

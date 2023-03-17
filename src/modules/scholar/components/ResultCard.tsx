@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FaQuoteLeft } from "react-icons/fa";
 
 const ScholarResultCard = ({ result }: any) => (
-  <div className="p-4 lg:px-0 border-b border-white lg:w-2/3">
+  <div className="p-4 lg:pl-0 border-b border-white">
     <Link
       href={result?.link ?? ""}
       className="font-semibold text-xl text-blue-200 underline"
