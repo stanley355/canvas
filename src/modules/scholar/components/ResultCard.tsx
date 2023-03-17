@@ -10,10 +10,10 @@ const ScholarResultCard = ({ result }: any) => (
     >
       {result.title}
     </Link>
-    <div className="flex flex-row items-center">
+    {result.inline_links.cited_by && <div className="flex flex-row items-center">
       <FaQuoteLeft className="mr-2" />
-      <span>Cited: {result.inline_links.cited_by.total}</span>
-    </div>
+      <span>Cited: {result?.inline_links?.cited_by?.total}</span>
+    </div>}
     {/* TODO: Create scholar author page */}
     <div className="italic">{result.publication_info.summary}</div>
     <div>{result.snippet}</div>
