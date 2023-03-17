@@ -41,7 +41,7 @@ export const getServerSideProps: GetServerSideProps = async (
     const targetURL = `${process.env.NEXT_PUBLIC_BASE_URL}api/serp/scholar`;
     const queriedURL = assignPageQueryToURL(targetURL, query);
 
-    const serpRes: any = await axios.get(queriedURL);
+    const serpRes: any = await axios.get(String(queriedURL));
 
     if (serpRes && serpRes.data) {
       serpResult = structuredClone(serpRes.data);

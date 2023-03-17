@@ -4,5 +4,5 @@ export const assignPageQueryToURL = (url: string, query: any) => {
     targetURL.searchParams.set(key, String(query[key]));
   });
 
-  return String(targetURL);
+  return targetURL;
 };
