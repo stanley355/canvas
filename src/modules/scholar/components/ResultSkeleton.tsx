@@ -1,6 +1,6 @@
 import React from "react";
-import ScholarResultCard from "../ResultCard";
-import ScholarResultHeader from "../ResultHeader";
+import ScholarResultCard from "./ResultCard";
+import ScholarResultHeader from "./ResultHeader";
 
 interface IScholarResultSkeleton {
   searchInfo: any;

@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import classNames from "classnames";
 import { FaBuffer, FaUserCircle } from "react-icons/fa";
-import ScholarSearchBox from "../SearchBox";
+import ScholarSearchBox from "./SearchBox";
 
 interface IScholarPageLayout {
   query: any;
