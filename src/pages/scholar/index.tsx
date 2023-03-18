@@ -5,11 +5,12 @@ import { assignPageQueryToURL } from "@/common/lib/assignPageQueryToURL";
 import ScholarPageLayout from "@/modules/scholar/components/Layout";
 import ScholarSearchBox from "@/modules/scholar/components/SearchBox";
 import ScholarResultSkeleton from "@/modules/scholar/components/ResultSkeleton";
+import MetaSEO from "@/common/components/MetaSEO";
 import { fetchDatoCms } from "@/common/lib/fetchDatoCms";
 import { SCHOLAR_DATO_SEO_QUERY } from "@/modules/scholar/lib/query";
 
 const ScholarPage = (props: any) => {
-  const { query, serpResult } = props;
+  const { query,seo, serpResult } = props;
 
   const ScholarPageHome = () => (
     <div className="container mx-auto flex flex-col items-center justify-center p-4">
@@ -21,6 +22,7 @@ const ScholarPage = (props: any) => {
 
   return (
     <ScholarPageLayout query={query}>
+      <MetaSEO seo={seo} />
       {query && query.q ? (
         <ScholarResultSkeleton
           query={query}
@@ -41,9 +43,12 @@ export const getServerSideProps: GetServerSideProps = async (
   const { query } = context;
   let serpResult = [];
 
-  const datoSEO = await fetchDatoCms({query: SCHOLAR_DATO_SEO_QUERY, variables: ""})
+  const datoSEO: any = await fetchDatoCms({
+    query: SCHOLAR_DATO_SEO_QUERY,
+    variables: "",
+  });
 
-
+  console.log(datoSEO);
   if (query && query.q) {
     const targetURL = `${process.env.NEXT_PUBLIC_BASE_URL}api/serp/scholar`;
     const queriedURL = assignPageQueryToURL(targetURL, query);
@@ -58,6 +63,7 @@ export const getServerSideProps: GetServerSideProps = async (
   return {
     props: {
       query,
+      seo: datoSEO?.seo ?? null,
       serpResult,
     },
   };
