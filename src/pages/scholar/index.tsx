@@ -5,6 +5,8 @@ import { assignPageQueryToURL } from "@/common/lib/assignPageQueryToURL";
 import ScholarPageLayout from "@/modules/scholar/components/Layout";
 import ScholarSearchBox from "@/modules/scholar/components/SearchBox";
 import ScholarResultSkeleton from "@/modules/scholar/components/ResultSkeleton";
+import { fetchDatoCms } from "@/common/lib/fetchDatoCms";
+import { SCHOLAR_DATO_SEO_QUERY } from "@/modules/scholar/lib/query";
 
 const ScholarPage = (props: any) => {
   const { query, serpResult } = props;
@@ -38,6 +40,9 @@ export const getServerSideProps: GetServerSideProps = async (
 ) => {
   const { query } = context;
   let serpResult = [];
+
+  const datoSEO = await fetchDatoCms({query: SCHOLAR_DATO_SEO_QUERY, variables: ""})
+
 
   if (query && query.q) {
     const targetURL = `${process.env.NEXT_PUBLIC_BASE_URL}api/serp/scholar`;

@@ -1,6 +1,6 @@
 import { GraphQLClient } from "graphql-request";
 
-const fetchDatoCms = ({
+export const fetchDatoCms = ({
   query,
   variables,
 }: {
