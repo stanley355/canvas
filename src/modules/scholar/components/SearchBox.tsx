@@ -19,7 +19,7 @@ const ScholarSearchBox = ({ query }: any) => {
         type="text"
         name="search"
         id="search"
-        placeholder={query && query.q ? query.q : ""}
+        placeholder={query && query.q ? query.q : "What am I researching today?"}
         className="w-full bg-black text-white border-white border pl-2 rounded-sm"
       />
       <button type="submit" className="w-auto p-2 bg-white rounded-sm">
