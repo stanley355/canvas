@@ -20,7 +20,7 @@ const ScholarResultHeader = ({ query, searchInfo }: any) => {
         <button
           type="button"
           onClick={() => setShowFilter(!showFilter)}
-          className="flex flex-row items-center border rounded px-1"
+          className="flex flex-row items-center border border-black rounded px-1"
         >
           <FaFilter className="mr-1" />
           <span>Filter</span>

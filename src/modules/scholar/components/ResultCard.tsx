@@ -6,7 +6,7 @@ const ScholarResultCard = ({ result }: any) => (
   <div className="p-4 lg:pl-0 border-b border-white">
     <Link
       href={result?.link ?? ""}
-      className="font-semibold text-xl text-blue-200 underline"
+      className="font-semibold text-xl text-blue-600 underline"
     >
       {result.title}
     </Link>

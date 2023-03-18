@@ -15,21 +15,20 @@ const ScholarPageLayout = (props: IScholarPageLayout) => {
 
   return (
     <section className="relative">
-      <header
-        className={classNames(
-          "py-4 px-2 flex flex-row items-center border-b border-white",
-          query && query.q ? "" : "justify-between"
-        )}
-      >
-        <button type="button" className="mr-2">
-          <FaBuffer className="text-3xl" />
-        </button>
+      <header className="py-4 px-2 border-b border-white">
         {query && query.q ? (
-          <ScholarSearchBox query={query} />
+          <div className="container mx-auto">
+            <ScholarSearchBox query={query} />
+          </div>
         ) : (
-          <Link href="/login">
-            <FaUserCircle className="text-3xl" />
-          </Link>
+          <div className="flex flex-row items-center justify-between">
+            <button type="button" className="mr-2">
+              <FaBuffer className="text-3xl" />
+            </button>
+            <Link href="/login">
+              <FaUserCircle className="text-3xl" />
+            </Link>
+          </div>
         )}
       </header>
       <main className="min-h-screen">{children}</main>
