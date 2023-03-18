@@ -1,5 +1,6 @@
 ## TODO
 
 ### Scholar Page
-[ ] Navbar adjustment
+[ ] Navbar adjustment on Scholar Page
 [ ] Create scholar author page
+[ ] Favicon
