@@ -13,6 +13,7 @@ const ScholarResultFilter = ({ query }: any) => {
       </div>
       {SCHOLAR_FILTER_OPTIONS.map((option, index) => (
         <Link
+          passHref
           href={createFilterLink(query, option.query, String(option.value))}
           key={index}
           className="p-4 border-b border-blue-200 hover:bg-black hover:text-white"

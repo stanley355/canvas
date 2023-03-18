@@ -5,6 +5,7 @@ import { FaQuoteLeft } from "react-icons/fa";
 const ScholarResultCard = ({ result }: any) => (
   <div className="p-4 lg:pl-0 border-b border-white">
     <Link
+      passHref
       href={result?.link ?? ""}
       className="font-semibold text-xl text-blue-600 underline"
     >

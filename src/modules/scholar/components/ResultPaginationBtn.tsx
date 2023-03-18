@@ -25,6 +25,7 @@ const ScholarResultPaginationBtn = (props: IScholarResultPagination) => {
     <div className="flex flex-row items-center justify-center my-4 lg:w-2/3">
       {[0, 1, 2, 3, 4].map((page: number) => (
         <Link
+          passHref
           href={createLinkURL(page)}
           key={page}
           className={classNames(

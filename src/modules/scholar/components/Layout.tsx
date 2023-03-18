@@ -25,7 +25,7 @@ const ScholarPageLayout = (props: IScholarPageLayout) => {
             <button type="button" className="mr-2">
               <FaBuffer className="text-3xl" />
             </button>
-            <Link href="/login">
+            <Link href="/login" passHref>
               <FaUserCircle className="text-3xl" />
             </Link>
           </div>
