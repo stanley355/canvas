@@ -30,7 +30,7 @@ const ScholarResultPaginationBtn = (props: IScholarResultPagination) => {
           key={page}
           className={classNames(
             "px-1 text-lg mr-2",
-            pagination.current === page + 1 ? "border border-black rounded-sm" : ""
+            pagination.current === page + 1 ? "border rounded-sm" : ""
           )}
         >
           {page + 1}

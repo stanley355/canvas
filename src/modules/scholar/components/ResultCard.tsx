@@ -7,7 +7,7 @@ const ScholarResultCard = ({ result }: any) => (
     <Link
       passHref
       href={result?.link ?? ""}
-      className="font-semibold text-xl text-blue-600 underline"
+      className="font-semibold text-xl text-blue-200 underline"
     >
       {result.title}
     </Link>
