@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { FaBuffer, FaUserCircle } from "react-icons/fa";
+import NewsSearchBox from "./SearchBox";
 import Footer from "@/common/components/Footer";
 
 interface INewsPageLayout {
@@ -24,6 +25,7 @@ const NewsPageLayout = (props: INewsPageLayout) => {
           </Link>
         </div>
       </header>
+      <NewsSearchBox query={query} />
       <main className="min-h-screen">{children}</main>
       <Footer />
     </section>
