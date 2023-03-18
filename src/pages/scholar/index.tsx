@@ -48,7 +48,6 @@ export const getServerSideProps: GetServerSideProps = async (
     variables: "",
   });
 
-  console.log(datoSEO);
   if (query && query.q) {
     const targetURL = `${process.env.NEXT_PUBLIC_BASE_URL}api/serp/scholar`;
     const queriedURL = assignPageQueryToURL(targetURL, query);
@@ -63,7 +62,7 @@ export const getServerSideProps: GetServerSideProps = async (
   return {
     props: {
       query,
-      seo: datoSEO?.seo ?? null,
+      seo: datoSEO?.scholar?.seo ?? null,
       serpResult,
     },
   };
