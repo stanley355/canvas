@@ -4,13 +4,17 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        typing: "typing 2s linear",
-        "home-searchbox": "typing 2s linear 2s"
+        typing: "typing 3s linear",
+        "home-searchbox": "home-searchbox 2s linear"
       },
       keyframes: {
         typing: {
           "0%": { width: "0%" },
           "100%": { width: "100%" },
+        },
+        "home-searchbox": {
+          "0%": { width: "0%" },
+          "100%": { width: "66.6%" },
         },
       },
     },
