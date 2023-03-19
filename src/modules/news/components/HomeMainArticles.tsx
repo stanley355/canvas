@@ -9,12 +9,9 @@ interface INewsHomeMainArticles {
 const NewsHomeMainArticles = (props: INewsHomeMainArticles) => {
   const { articles } = props;
 
-  const filteredArticles = articles
-    .filter((article) => article.section !== "us");
-
   return (
     <div className="px-4 lg:w-2/3">
-      {filteredArticles.map((article) => (
+      {articles.map((article) => (
         <div
           key={article.short_url}
           className="py-4 border-b lg:flex lg:flex-row gap-2"

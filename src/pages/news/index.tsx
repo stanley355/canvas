@@ -2,27 +2,38 @@ import React from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { getFromRedis } from "@/common/lib/getFromRedis";
 import { storeToRedis } from "@/common/lib/storeToRedis";
-import NewsPageLayout from "@/modules/news/components/Layout";
+import { useDesktopScreen } from "@/common/lib/useDesktopScreen";
 import { getHomeNewsData } from "@/modules/news/lib/getHomeNewsData";
+import NewsPageLayout from "@/modules/news/components/Layout";
 import NewsHomeMainArticles from "@/modules/news/components/HomeMainArticles";
 import NewsHomeSideArticles from "@/modules/news/components/HomeSideArticles";
-import NewsHomeWeekendArticles from "@/modules/news/components/HomeWeekendArticles";
+import NewsHomeAdditionalArticles from "@/modules/news/components/HomeAdditionalArticles";
 
 const NewsPage = (props: any) => {
   const { nyt, theGuardian, newsAPI } = props;
 
-  console.log(theGuardian.length)
+  const isDesktop = useDesktopScreen();
+
   return (
     <NewsPageLayout query={{}}>
       <div className="lg:flex lg:flex-row">
-        <NewsHomeMainArticles articles={nyt} />
-        <NewsHomeSideArticles articles={theGuardian} />
+        <NewsHomeMainArticles articles={nyt.slice(0, isDesktop ? 2 : 5)} />
+        <NewsHomeSideArticles articles={theGuardian.slice(0, 5)} />
       </div>
-      <NewsHomeWeekendArticles articles={newsAPI} />
-      <div>
-
+      <NewsHomeAdditionalArticles
+        title="What to watch and read this weekendd"
+        articles={newsAPI.slice(0, 8)}
+      />
+      <div className="flex flex-row border-b">
         <NewsHomeSideArticles articles={theGuardian.slice(5)} />
+        <NewsHomeMainArticles
+          articles={nyt.slice(isDesktop ? 2 : 5, isDesktop ? 5 : 3)}
+        />
       </div>
+      <NewsHomeAdditionalArticles
+        title="Trending"
+        articles={newsAPI.slice(8, 24)}
+      />
     </NewsPageLayout>
   );
 };
