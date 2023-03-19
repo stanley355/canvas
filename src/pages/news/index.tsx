@@ -1,7 +1,9 @@
 import React from "react";
-import axios from "axios";
-import NewsPageLayout from "@/modules/news/components/Layout";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import axios from "axios";
+import { getFromRedis } from "@/common/lib/getFromRedis";
+import { storeToRedis } from "@/common/lib/storeToRedis";
+import NewsPageLayout from "@/modules/news/components/Layout";
 
 const NewsPage = () => {
   return <NewsPageLayout query={{}}>hi</NewsPageLayout>;
@@ -10,19 +12,13 @@ const NewsPage = () => {
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  const newsBaseEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}api/news/`;
-  const nyt = await axios.get(`${newsBaseEndpoint}nyt/`, {
-    headers: { path: "svc/topstories/v2/home.json" },
-  });
 
-  const theGuardian = await axios.get(`${newsBaseEndpoint}guardian/`, {
-    headers: { path: "search" },
-  });
+  const prevData = await getFromRedis("news:home");
 
+  if (!prevData) {
 
-  const newsAPI = await axios.get(`${newsBaseEndpoint}?q=world`, {
-    headers: { path: "everything" },
-  });
+  }
+
 
 
   context.res.setHeader(
