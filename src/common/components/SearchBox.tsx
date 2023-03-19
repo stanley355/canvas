@@ -3,15 +3,19 @@ import classNames from "classnames";
 import { FaSearch } from "react-icons/fa";
 
 interface ISearchBox {
+  className?: string;
   placeholder: string;
-  onSubmit: (e:any) => void;
+  onSubmit: (e: any) => void;
 }
 
 const SearchBox = (props: ISearchBox) => {
-  const {placeholder, onSubmit} = props;
+  const { className, placeholder, onSubmit } = props;
 
   return (
-    <form onSubmit={onSubmit} className={classNames("flex flex-row w-full lg:w-2/3", "animate-typing")}>
+    <form
+      onSubmit={onSubmit}
+      className={classNames("flex flex-row w-full lg:w-2/3", className)}
+    >
       <input
         type="text"
         name="search"

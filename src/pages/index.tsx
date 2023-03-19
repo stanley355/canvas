@@ -20,6 +20,7 @@ const Home = () => {
           All The Data You Need in The World
         </h1>
         <SearchBox
+          className="animate-home-searchbox"
           placeholder="Start Searching"
           onSubmit={(e) => console.log("hi")}
         />
