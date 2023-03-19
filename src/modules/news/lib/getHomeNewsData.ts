@@ -13,4 +13,12 @@ export const getHomeNewsData = async () => {
   const newsAPI = await axios.get(`${newsBaseEndpoint}?q=world`, {
     headers: { path: "everything" },
   });
+
+  const newsData = Promise.allSettled([
+    nyt?.data?.results,
+    theGuardian?.data?.response?.results,
+    newsAPI?.data?.articles,
+  ]);
+
+  return newsData;
 };
