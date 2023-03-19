@@ -11,16 +11,14 @@ const HomePageLayout = (props: IHomePageLayout) => {
   const { children } = props;
 
   return (
-    <section className="relative">
-      <header className="py-4 px-2 border-b border-white">
-        <div className="flex flex-row items-center justify-between">
-          <button type="button" className="mr-2">
-            <FaBuffer className="text-3xl" />
-          </button>
-          <Link href="/login" passHref>
-            <FaUserCircle className="text-3xl" />
-          </Link>
-        </div>
+    <section>
+      <header className="py-4 px-2 border-b flex flex-row justify-between">
+        <button type="button" className="mr-2">
+          <FaBuffer className="text-3xl" />
+        </button>
+        <Link href="/login" passHref>
+          <FaUserCircle className="text-3xl" />
+        </Link>
       </header>
       <main className="min-h-screen">{children}</main>
       <Footer />
