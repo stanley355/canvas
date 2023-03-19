@@ -4,11 +4,16 @@ import { getFromRedis } from "@/common/lib/getFromRedis";
 import { storeToRedis } from "@/common/lib/storeToRedis";
 import NewsPageLayout from "@/modules/news/components/Layout";
 import { getHomeNewsData } from "@/modules/news/lib/getHomeNewsData";
+import NewsHomeMainArticles from "@/modules/news/components/HomeMainArticles";
 
 const NewsPage = (props: any) => {
   const { nyt, theGuardian, newsAPI } = props;
-
-  return <NewsPageLayout query={{}}>hi</NewsPageLayout>;
+  console.log(nyt);
+  return (
+    <NewsPageLayout query={{}}>
+      <NewsHomeMainArticles articles={nyt} />
+    </NewsPageLayout>
+  );
 };
 
 export const getServerSideProps: GetServerSideProps = async (
@@ -28,6 +33,7 @@ export const getServerSideProps: GetServerSideProps = async (
     theGuardian = prevData[1].value;
     newsAPI = prevData[2].value;
   } else {
+    console.log(22, "red not found");
     const newsData = await getHomeNewsData();
     const storedData = await storeToRedis(REDIS_KEY, newsData);
 
