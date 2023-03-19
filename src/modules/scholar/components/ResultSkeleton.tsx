@@ -28,7 +28,7 @@ const ScholarResultSkeleton = (props: IScholarResultSkeleton) => {
             </div>
           ))}
         </div>
-        {!isDesktop && <ScholarResultFilter query={query} />}
+        {isDesktop && <ScholarResultFilter query={query} />}
       </div>
       <ScholarResultPaginationBtn query={query} pagination={pagination} />
     </div>

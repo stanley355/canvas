@@ -55,7 +55,6 @@ export const getServerSideProps: GetServerSideProps = async (
     theGuardian = prevData[1].value;
     newsAPI = prevData[2].value;
   } else {
-    console.log(22, "red not found");
     const newsData = await getHomeNewsData();
     const storedData = await storeToRedis(REDIS_KEY, newsData);
 
