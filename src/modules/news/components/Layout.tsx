@@ -39,6 +39,7 @@ const NewsPageLayout = (props: INewsPageLayout) => {
       <header className="py-4 px-2 border-b border-white">
         {isMobile ? <MobileView /> : <DesktopView />}
       </header>
+      {isMobile && !query.q && <NewsSearchBox /> }
       <main className="min-h-screen container mx-auto">{children}</main>
       <Footer />
     </section>
