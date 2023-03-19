@@ -10,11 +10,20 @@ const NewsPage = () => {
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  const nyt = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}api/nyt/`, {
+  const newsBaseEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}api/news/`;
+  const nyt = await axios.get(`${newsBaseEndpoint}nyt/`, {
     headers: { path: "svc/topstories/v2/home.json" },
   });
 
-  // console.log(nyt.data.results);
+  const theGuardian = await axios.get(`${newsBaseEndpoint}guardian/`, {
+    headers: { path: "search" },
+  });
+
+
+  const newsAPI = await axios.get(`${newsBaseEndpoint}?q=world`, {
+    headers: { path: "everything" },
+  });
+
 
   context.res.setHeader(
     "Cache-Control",
@@ -22,7 +31,11 @@ export const getServerSideProps: GetServerSideProps = async (
   );
 
   return {
-    props: {},
+    props: {
+      nyt: nyt?.data?.results ?? null,
+      theGuardian: theGuardian?.data?.response?.results ?? null,
+      newsAPI: newsAPI?.data?.articles ?? null
+    },
   };
 };
 
