@@ -10,7 +10,7 @@ import { fetchDatoCms } from "@/common/lib/fetchDatoCms";
 import { SCHOLAR_DATO_SEO_QUERY } from "@/modules/scholar/lib/query";
 
 const ScholarPage = (props: any) => {
-  const { query,seo, serpResult } = props;
+  const { query, seo, serpResult } = props;
 
   const ScholarPageHome = () => (
     <div className="container mx-auto flex flex-col items-center justify-center p-4">
@@ -52,7 +52,7 @@ export const getServerSideProps: GetServerSideProps = async (
     const url = new URL(`${process.env.SERPAPI_URL}search`);
     url.searchParams.set("api_key", String(process.env.SERPAPI_KEY));
     url.searchParams.set("engine", "google_scholar");
-  
+
     const queriedURL = assignPageQueryToURL(String(url), query);
 
     const serpRes: any = await axios.get(String(queriedURL));

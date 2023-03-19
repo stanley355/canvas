@@ -1,4 +1,5 @@
 ## Required product
+
 People search for a wide variety of data beyond the stock market, depending on their interests and needs. Here are some examples of commonly searched data:
 
 1. News: People search for the latest news on various topics, such as politics, sports, entertainment, technology, and more.
@@ -19,11 +20,13 @@ People search for a wide variety of data beyond the stock market, depending on t
 ## TODO
 
 ### General
+
 [ ] Firebase analytic setup
 [ ] Search engine
 [ ] Homepage
 
 ### Scholar Page
+
 [ ] Navbar adjustment on Scholar Page
 [ ] Create scholar author page
 [ ] Favicon
@@ -31,5 +34,6 @@ People search for a wide variety of data beyond the stock market, depending on t
 [ ] Consider to use Next caching or redis
 
 ### News
+
 [x] Reduce data fetching
 [ ] SEO Adjustment

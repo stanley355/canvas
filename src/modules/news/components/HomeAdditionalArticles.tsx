@@ -13,12 +13,24 @@ const NewsHomeAdditonalArticles = (props: INewsHomeAdditionalArticles) => {
     <div className="p-4 border-b">
       <div className="font-semibold text-lg mb-4">{title}</div>
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        {articles.filter(article => article.urlToImage).map((article) => (
-          <div key={article.url}>
-            <img src={article.urlToImage} alt={article.title} className="pb-2" />
-            <Link href={article.url} passHref className="font-semibold hover:underline">{article.title}</Link>
-          </div>
-        ))}
+        {articles
+          .filter((article) => article.urlToImage)
+          .map((article) => (
+            <div key={article.url}>
+              <img
+                src={article.urlToImage}
+                alt={article.title}
+                className="pb-2"
+              />
+              <Link
+                href={article.url}
+                passHref
+                className="font-semibold hover:underline"
+              >
+                {article.title}
+              </Link>
+            </div>
+          ))}
       </div>
     </div>
   );
