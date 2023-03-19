@@ -10,10 +10,11 @@ const NewsPage = () => {
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
+  const nyt = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}api/nyt/`, {
+    headers: { path: "svc/topstories/v2/home.json" },
+  });
 
-  // const nyt = await axios.get('http://localhost:3000/api/nyt');
-
-  // console.log(nyt);
+  // console.log(nyt.data.results);
 
   context.res.setHeader(
     "Cache-Control",
