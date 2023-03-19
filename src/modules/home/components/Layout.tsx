@@ -1,6 +1,5 @@
 import React from "react";
-import Link from "next/link";
-import { FaBuffer, FaUserCircle } from "react-icons/fa";
+import classNames from "classnames";
 import Footer from "@/common/components/Footer";
 
 interface IHomePageLayout {
@@ -12,13 +11,8 @@ const HomePageLayout = (props: IHomePageLayout) => {
 
   return (
     <section>
-      <header className="py-4 px-2 border-b flex flex-row justify-between">
-        <button type="button" className="mr-2">
-          <FaBuffer className="text-3xl" />
-        </button>
-        <Link href="/login" passHref>
-          <FaUserCircle className="text-3xl" />
-        </Link>
+      <header className={classNames("py-4 px-2 border-b text-center font-semibold text-3xl italic", "animate-slide-down")}>
+        Data
       </header>
       <main className="min-h-screen">{children}</main>
       <Footer />
