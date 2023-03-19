@@ -6,16 +6,18 @@ import NewsPageLayout from "@/modules/news/components/Layout";
 import { getHomeNewsData } from "@/modules/news/lib/getHomeNewsData";
 import NewsHomeMainArticles from "@/modules/news/components/HomeMainArticles";
 import NewsHomeSideArticles from "@/modules/news/components/HomeSideArticles";
+import NewsHomeWeekendArticles from "@/modules/news/components/HomeWeekendArticles";
 
 const NewsPage = (props: any) => {
   const { nyt, theGuardian, newsAPI } = props;
-  // console.log(theGuardian);
+  console.log(newsAPI[0]);
   return (
     <NewsPageLayout query={{}}>
       <div className="lg:flex lg:flex-row">
         <NewsHomeMainArticles articles={nyt} />
         <NewsHomeSideArticles articles={theGuardian} />
       </div>
+      <NewsHomeWeekendArticles articles={newsAPI} />
     </NewsPageLayout>
   );
 };

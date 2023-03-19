@@ -24,7 +24,7 @@ const NewsHomeMainArticles = (props: INewsHomeMainArticles) => {
             <Link
               href={article.url}
               passHref
-              className="text-blue-200 font-semibold text-2xl lg:text-base"
+              className="text-blue-200 font-semibold text-2xl lg:text-base hover:underline"
             >
               {article.title}
             </Link>
