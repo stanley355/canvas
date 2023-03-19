@@ -11,7 +11,7 @@ const HomePageLayout = (props: IHomePageLayout) => {
 
   return (
     <section>
-      <header className={classNames("py-4 px-2 border-b text-center font-semibold text-3xl italic", "animate-slide-down")}>
+      <header className="py-4 px-2 border-b text-center font-semibold text-3xl italic">
         Data
       </header>
       <main className="min-h-screen">{children}</main>
