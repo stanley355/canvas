@@ -5,13 +5,17 @@ import { storeToRedis } from "@/common/lib/storeToRedis";
 import NewsPageLayout from "@/modules/news/components/Layout";
 import { getHomeNewsData } from "@/modules/news/lib/getHomeNewsData";
 import NewsHomeMainArticles from "@/modules/news/components/HomeMainArticles";
+import NewsHomeSideArticles from "@/modules/news/components/HomeSideArticles";
 
 const NewsPage = (props: any) => {
   const { nyt, theGuardian, newsAPI } = props;
-  console.log(nyt);
+  // console.log(theGuardian);
   return (
     <NewsPageLayout query={{}}>
-      <NewsHomeMainArticles articles={nyt} />
+      <div className="lg:flex lg:flex-row">
+        <NewsHomeMainArticles articles={nyt} />
+        <NewsHomeSideArticles articles={theGuardian} />
+      </div>
     </NewsPageLayout>
   );
 };

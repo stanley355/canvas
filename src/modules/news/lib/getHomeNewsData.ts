@@ -6,7 +6,7 @@ export const getHomeNewsData = async () => {
     headers: { path: "svc/topstories/v2/home.json" },
   });
 
-  const theGuardian = await axios.get(`${newsBaseEndpoint}guardian/`, {
+  const theGuardian = await axios.get(`${newsBaseEndpoint}guardian/?show-elements=image`, {
     headers: { path: "search" },
   });
 
