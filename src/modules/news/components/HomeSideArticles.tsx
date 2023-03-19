@@ -8,11 +8,9 @@ interface INewsHomeSideArticles {
 const NewsHomeSideArticles = (props: INewsHomeSideArticles) => {
   const { articles } = props;
 
-  const filteredArticles = articles.filter((article, index) => index < 5);
-
   return (
     <div className="lg:w-1/3">
-      {filteredArticles.map((article) => (
+      {articles.map((article) => (
         <div key={article.webUrl} className="p-4 border-b">
           <Link href={article.webUrl} className="text-blue-200 hover:underline">
             {article.webTitle}

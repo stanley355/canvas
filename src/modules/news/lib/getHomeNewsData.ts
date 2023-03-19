@@ -10,7 +10,7 @@ export const getHomeNewsData = async () => {
     headers: { path: "search" },
   });
 
-  const newsAPI = await axios.get(`${newsBaseEndpoint}?q=world&pageSize=20`, {
+  const newsAPI = await axios.get(`${newsBaseEndpoint}?q=world&pageSize=25`, {
     headers: { path: "everything" },
   });
 

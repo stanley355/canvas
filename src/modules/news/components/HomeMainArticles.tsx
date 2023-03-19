@@ -10,8 +10,7 @@ const NewsHomeMainArticles = (props: INewsHomeMainArticles) => {
   const { articles } = props;
 
   const filteredArticles = articles
-    .filter((article) => article.section !== "us")
-    .filter((art, index) => index < (useDesktopScreen() ? 2 : 5));
+    .filter((article) => article.section !== "us");
 
   return (
     <div className="px-4 lg:w-2/3">

@@ -10,7 +10,8 @@ import NewsHomeWeekendArticles from "@/modules/news/components/HomeWeekendArticl
 
 const NewsPage = (props: any) => {
   const { nyt, theGuardian, newsAPI } = props;
-  console.log(newsAPI[0]);
+
+  console.log(theGuardian.length)
   return (
     <NewsPageLayout query={{}}>
       <div className="lg:flex lg:flex-row">
@@ -18,6 +19,10 @@ const NewsPage = (props: any) => {
         <NewsHomeSideArticles articles={theGuardian} />
       </div>
       <NewsHomeWeekendArticles articles={newsAPI} />
+      <div>
+
+        <NewsHomeSideArticles articles={theGuardian.slice(5)} />
+      </div>
     </NewsPageLayout>
   );
 };
