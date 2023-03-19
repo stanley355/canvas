@@ -30,4 +30,5 @@ People search for a wide variety of data beyond the stock market, depending on t
 [ ] SEO Adjustment
 [ ] Consider to use Next caching or redis
 
-
+### News
+[ ] Reduce data fetching

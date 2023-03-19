@@ -15,8 +15,8 @@ export const storeToRedis = async (key: string, value: any) => {
     return JSON.parse(redisData);
   } else {
     await client.setEx(key, 60 * 60 * 3, JSON.stringify(value)); // 3 hours
-    await client.disconnect();
     const storedValue = await client.get("key");
+    await client.disconnect();
     return storedValue;
   }
 };

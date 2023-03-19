@@ -5,23 +5,36 @@ import { storeToRedis } from "@/common/lib/storeToRedis";
 import NewsPageLayout from "@/modules/news/components/Layout";
 import { getHomeNewsData } from "@/modules/news/lib/getHomeNewsData";
 
-const NewsPage = () => {
+const NewsPage = (props: any) => {
+  const { nyt, theGuardian, newsAPI } = props;
+
   return <NewsPageLayout query={{}}>hi</NewsPageLayout>;
 };
 
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
+  let nyt = [];
+  let theGuardian = [];
+  let newsAPI = [];
 
-  // const prevData = await getFromRedis("news:home");
+  const REDIS_KEY = "news:home";
 
-  // if (!prevData) {
+  const prevData = await getFromRedis(REDIS_KEY);
 
-  // }
+  // TODO: Reduce data fetching
+  if (prevData) {
+    nyt = prevData[0].value;
+    theGuardian = prevData[1].value;
+    newsAPI = prevData[2].value;
+  } else {
+    const newsData = await getHomeNewsData();
+    const storedData = await storeToRedis(REDIS_KEY, newsData);
 
-  const newsData = await getHomeNewsData();
-
-  console.log(newsData);
+    nyt = storedData[0].value;
+    theGuardian = storedData[1].value;
+    newsAPI = storedData[2].value;
+  }
 
   context.res.setHeader(
     "Cache-Control",
@@ -30,9 +43,9 @@ export const getServerSideProps: GetServerSideProps = async (
 
   return {
     props: {
-      // nyt: nyt?.data?.results ?? null,
-      // theGuardian: theGuardian?.data?.response?.results ?? null,
-      // newsAPI: newsAPI?.data?.articles ?? null
+      nyt,
+      theGuardian,
+      newsAPI,
     },
   };
 };
