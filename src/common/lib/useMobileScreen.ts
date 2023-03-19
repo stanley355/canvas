@@ -3,11 +3,8 @@ import React, { useEffect, useState } from "react";
 const useMobileScreen = () => {
   const [width, setWidth] = useState(0);
 
-  if (typeof window !== "undefined" && !width) {
-    setWidth(window.innerWidth);
-  }
   const handleWindowSizeChange = () => {
-    setWidth(window.innerWidth);
+    !width && setWidth(window.innerWidth);
   };
 
   useEffect(() => {
@@ -17,7 +14,7 @@ const useMobileScreen = () => {
     };
   }, [width]);
 
-  return typeof window !== "undefined" ? width <= 768 : false;
+  return width <= 768;
 };
 
 export default useMobileScreen;

@@ -1,5 +1,5 @@
 import React from "react";
-import useMobileScreen from "@/common/lib/isMobile";
+import useMobileScreen from "@/common/lib/useMobileScreen";
 import ScholarResultCard from "./ResultCard";
 import ScholarResultHeader from "./ResultHeader";
 import ScholarResultPaginationBtn from "./ResultPaginationBtn";

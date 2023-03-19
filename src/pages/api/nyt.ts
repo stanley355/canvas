@@ -1,8 +1,8 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const newYorkTimesAPI = async (req: NextApiRequest, res: NextApiResponse) => {
-  const url = new URL(`${process.env.NYT_API_URL}snarch`);
+const newYorkTimeAPI = async (req: NextApiRequest, res: NextApiResponse) => {
+  const url = new URL(`${process.env.NYT_API_URL}${req.headers.path}`);
   url.searchParams.set("api-key", String(process.env.NYT_API_KEY));
 
   try {
@@ -13,4 +13,4 @@ const newYorkTimesAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default serpScholarAPI;
+export default newYorkTimeAPI;

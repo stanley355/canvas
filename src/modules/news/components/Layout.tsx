@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { FaBuffer, FaUserCircle } from "react-icons/fa";
-import useMobileScreen from "@/common/lib/isMobile";
+import useMobileScreen from "@/common/lib/useMobileScreen";
 import NewsSearchBox from "./SearchBox";
 import Footer from "@/common/components/Footer";
 
