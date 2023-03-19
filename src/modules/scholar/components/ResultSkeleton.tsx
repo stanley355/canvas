@@ -1,5 +1,5 @@
 import React from "react";
-import useMobileScreen from "@/common/lib/useMobileScreen";
+import { useDesktopScreen } from "@/common/lib/useDesktopScreen";
 import ScholarResultCard from "./ResultCard";
 import ScholarResultHeader from "./ResultHeader";
 import ScholarResultPaginationBtn from "./ResultPaginationBtn";
@@ -15,7 +15,7 @@ interface IScholarResultSkeleton {
 const ScholarResultSkeleton = (props: IScholarResultSkeleton) => {
   const { query, searchInfo, organicResults, pagination } = props;
 
-  const isMobile = useMobileScreen();
+  const isDesktop = useDesktopScreen();
 
   return (
     <div>
@@ -28,7 +28,7 @@ const ScholarResultSkeleton = (props: IScholarResultSkeleton) => {
             </div>
           ))}
         </div>
-        {!isMobile && <ScholarResultFilter query={query} />}
+        {!isDesktop && <ScholarResultFilter query={query} />}
       </div>
       <ScholarResultPaginationBtn query={query} pagination={pagination} />
     </div>

@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { FaBuffer, FaUserCircle } from "react-icons/fa";
-import useMobileScreen from "@/common/lib/useMobileScreen";
+import { useDesktopScreen } from "@/common/lib/useDesktopScreen";
+// import useMobileScreen from "@/common/lib/useMobileScreen";
 import NewsSearchBox from "./SearchBox";
 import Footer from "@/common/components/Footer";
 
@@ -13,7 +14,7 @@ interface INewsPageLayout {
 const NewsPageLayout = (props: INewsPageLayout) => {
   const { query, children } = props;
 
-  const isMobile = useMobileScreen();
+  const isDesktop = useDesktopScreen();
 
   const MobileView = () => (
     <div className="flex flex-row items-center justify-between">
@@ -37,9 +38,9 @@ const NewsPageLayout = (props: INewsPageLayout) => {
   return (
     <section className="relative">
       <header className="py-4 px-2 border-b border-white">
-        {isMobile ? <MobileView /> : <DesktopView />}
+        {!isDesktop ? <MobileView /> : <DesktopView />}
       </header>
-      {isMobile && !query.q && <NewsSearchBox /> }
+      {!isDesktop && !query.q && <NewsSearchBox /> }
       <main className="min-h-screen container mx-auto">{children}</main>
       <Footer />
     </section>

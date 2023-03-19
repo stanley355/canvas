@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import { FaBookOpen, FaFilter } from "react-icons/fa";
-import useMobileScreen from "@/common/lib/useMobileScreen";
+import { useDesktopScreen } from "@/common/lib/useDesktopScreen";
 
 const ScholarResultHeader = ({ query, searchInfo }: any) => {
   const [showFilter, setShowFilter] = useState(false);
-  const isMobile = useMobileScreen();
+  const isDesktop = useDesktopScreen();
 
   const ResultHeaderFilter = dynamic(() => import("./ResultHeaderFilter"), {});
 
@@ -16,7 +16,7 @@ const ScholarResultHeader = ({ query, searchInfo }: any) => {
         <span>About {searchInfo.total_results} results</span>
         <span className="ml-2">({searchInfo.time_taken_displayed} sec)</span>
       </div>
-      {isMobile && (
+      {!isDesktop && (
         <button
           type="button"
           onClick={() => setShowFilter(!showFilter)}
