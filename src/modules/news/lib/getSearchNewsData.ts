@@ -21,7 +21,7 @@ export const getSearchNewsData = async (keyword: string) => {
   );
 
   const newsData = Promise.allSettled([
-    nyt?.data?.results,
+    nyt?.data?.response?.docs,
     theGuardian?.data?.response?.results,
     newsAPI?.data?.articles,
   ]);
