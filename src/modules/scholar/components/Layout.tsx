@@ -1,9 +1,7 @@
 import React from "react";
-import Link from "next/link";
-import classNames from "classnames";
-import { FaBuffer, FaUserCircle } from "react-icons/fa";
+import SearchBox from "@/common/components/SearchBox";
+import { FaGraduationCap} from "react-icons/fa";
 import Footer from "@/common/components/Footer";
-import ScholarSearchBox from "./SearchBox";
 
 interface IScholarPageLayout {
   query: any;
@@ -15,21 +13,8 @@ const ScholarPageLayout = (props: IScholarPageLayout) => {
 
   return (
     <section className="relative">
-      <header className="py-4 px-2 border-b border-white">
-        {query && query.q ? (
-          <div className="container mx-auto">
-            <ScholarSearchBox query={query} />
-          </div>
-        ) : (
-          <div className="flex flex-row items-center justify-between">
-            <button type="button" className="mr-2">
-              <FaBuffer className="text-3xl" />
-            </button>
-            <Link href="/login" passHref>
-              <FaUserCircle className="text-3xl" />
-            </Link>
-          </div>
-        )}
+      <header className="py-4">
+        <FaGraduationCap className="mx-auto text-3xl" />
       </header>
       <main className="min-h-screen">{children}</main>
       <Footer />
