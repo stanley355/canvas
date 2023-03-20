@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import { FaBookOpen, FaFilter } from "react-icons/fa";
-import { useDesktopScreen } from "@/common/lib/useDesktopScreen";
+import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
 const ScholarResultHeader = ({ query, searchInfo }: any) => {
   const [showFilter, setShowFilter] = useState(false);

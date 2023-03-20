@@ -1,5 +1,5 @@
 import React from "react";
-import { useDesktopScreen } from "@/common/lib/useDesktopScreen";
+import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import ScholarResultCard from "./ResultCard";
 import ScholarResultHeader from "./ResultHeader";
 import ScholarResultPaginationBtn from "./ResultPaginationBtn";

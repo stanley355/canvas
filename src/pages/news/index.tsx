@@ -2,7 +2,7 @@ import React from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { getFromRedis } from "@/common/lib/getFromRedis";
 import { storeToRedis } from "@/common/lib/storeToRedis";
-import { useDesktopScreen } from "@/common/lib/useDesktopScreen";
+import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { getHomeNewsData } from "@/modules/news/lib/getHomeNewsData";
 import NewsPageLayout from "@/modules/news/components/Layout";
 import NewsHomeMainArticles from "@/modules/news/components/HomeMainArticles";

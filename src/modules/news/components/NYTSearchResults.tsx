@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { useDesktopScreen } from "@/common/lib/useDesktopScreen";
+import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
 interface INYTSearchResults {
   articles: any[];

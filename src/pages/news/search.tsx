@@ -2,7 +2,7 @@ import React from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import NewsPageLayout from "@/modules/news/components/Layout";
 import { getSearchNewsData } from "@/modules/news/lib/getSearchNewsData";
-import { useDesktopScreen } from "@/common/lib/useDesktopScreen";
+import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import NYTSearchResults from "@/modules/news/components/NYTSearchResults";
 import NewsAPISearchResults from "@/modules/news/components/NewsAPISearchResults";
 import TheGuardianSearchResults from "@/modules/news/components/TheGuardianSearchResults";
