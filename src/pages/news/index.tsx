@@ -4,6 +4,8 @@ import { getFromRedis } from "@/common/lib/getFromRedis";
 import { storeToRedis } from "@/common/lib/storeToRedis";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { getHomeNewsData } from "@/modules/news/lib/getHomeNewsData";
+import { fetchDatoCms } from "@/common/lib/fetchDatoCms";
+import { NEWS_SEO_QUERY } from "@/modules/news/lib/query";
 import NewsPageLayout from "@/modules/news/components/Layout";
 import NewsHomeMainArticles from "@/modules/news/components/HomeMainArticles";
 import NewsHomeSideArticles from "@/modules/news/components/HomeSideArticles";
@@ -41,6 +43,11 @@ const NewsPage = (props: any) => {
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
+  const datoSEO: any = await fetchDatoCms({
+    query: NEWS_SEO_QUERY,
+    variables: "",
+  });
+
   let nyt = [];
   let theGuardian = [];
   let newsAPI = [];
@@ -70,6 +77,7 @@ export const getServerSideProps: GetServerSideProps = async (
 
   return {
     props: {
+      seo: datoSEO?.news?.seo ?? null,
       nyt,
       theGuardian,
       newsAPI,
