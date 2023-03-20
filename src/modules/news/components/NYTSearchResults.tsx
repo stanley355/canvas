@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { useDesktopScreen } from "@/common/lib/useDesktopScreen";
 
 interface INYTSearchResults {
   articles: any[];
@@ -7,6 +8,8 @@ interface INYTSearchResults {
 
 const NYTSearchResults = (props: INYTSearchResults) => {
   const { articles } = props;
+
+  const isDesktop = useDesktopScreen();
 
   return (
     <div>
@@ -17,6 +20,7 @@ const NYTSearchResults = (props: INYTSearchResults) => {
             <Link href={article.web_url} passHref title={article.headline.main} className="text-blue-200">
               {article.headline.main}
             </Link>
+            {isDesktop && <div>{article.abstract}</div> }
           </div>
           <img
             src={`https://nytimes.com/${article.multimedia[0].url}`}

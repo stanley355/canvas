@@ -4,6 +4,7 @@ import NewsPageLayout from "@/modules/news/components/Layout";
 import { getFromRedis } from "@/common/lib/getFromRedis";
 import { storeToRedis } from "@/common/lib/storeToRedis";
 import { getSearchNewsData } from "@/modules/news/lib/getSearchNewsData";
+import { useDesktopScreen } from "@/common/lib/useDesktopScreen";
 import NYTSearchResults from "@/modules/news/components/NYTSearchResults";
 import NewsAPISearchResults from "@/modules/news/components/NewsAPISearchResults";
 import TheGuardianSearchResults from "@/modules/news/components/TheGuardianSearchResults";
@@ -11,14 +12,18 @@ import TheGuardianSearchResults from "@/modules/news/components/TheGuardianSearc
 const NewsSearchPage = (props: any) => {
   const { query, nyt, theGuardian, newsAPI } = props;
 
-  console.log(theGuardian[0])
+  const isDesktop = useDesktopScreen();
+
   return (
     <NewsPageLayout query={query}>
       <div className="border-b text-center py-2">
         Showing {nyt.length + theGuardian.length + newsAPI.length} News
       </div>
-      <NYTSearchResults articles={nyt}/>
+      <div className="lg:flex lg:flex-row lg:border-b">
+
+      <NYTSearchResults articles={isDesktop ? nyt.slice(0, 5) : nyt}/>
       <TheGuardianSearchResults articles={theGuardian}/>
+      </div>
       <NewsAPISearchResults articles={newsAPI}/>
     </NewsPageLayout>
   );
