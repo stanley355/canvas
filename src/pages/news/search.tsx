@@ -32,7 +32,6 @@ export const getServerSideProps: GetServerSideProps = async (
 
   const prevData = await getFromRedis(REDIS_KEY);
 
-  // TODO: Reduce data fetching
   if (prevData && prevData.length > 0) {
     nyt = prevData[0].value;
     theGuardian = prevData[1].value;
