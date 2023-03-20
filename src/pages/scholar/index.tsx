@@ -2,13 +2,15 @@ import React from "react";
 import Router from "next/router";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import axios from "axios";
+
 import { assignPageQueryToURL } from "@/common/lib/assignPageQueryToURL";
+import { fetchDatoCms } from "@/common/lib/fetchDatoCms";
+import { SCHOLAR_DATO_SEO_QUERY } from "@/modules/scholar/lib/query";
+
 import ScholarPageLayout from "@/modules/scholar/components/Layout";
 import ScholarResultSkeleton from "@/modules/scholar/components/ResultSkeleton";
 import SearchBox from "@/common/components/SearchBox";
 import MetaSEO from "@/common/components/MetaSEO";
-import { fetchDatoCms } from "@/common/lib/fetchDatoCms";
-import { SCHOLAR_DATO_SEO_QUERY } from "@/modules/scholar/lib/query";
 
 const ScholarPage = (props: any) => {
   const { query, seo, serpResult } = props;
