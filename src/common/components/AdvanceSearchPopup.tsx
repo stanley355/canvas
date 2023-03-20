@@ -30,13 +30,13 @@ const AdvanceSearchPopup = (props: IAdvanceSearchPopup) => {
       className:
         "p-2 mt-2 rounded-sm border bg-white text-black flex flex-row items-center justify-center",
     },
-    {
-      title: "Why not both",
-      href: "/news",
-      icon: <FaHandPeace className="text-xl mr-2" />,
-      className:
-        "p-2 mt-2 rounded-sm border bg-white text-black flex flex-row items-center justify-center",
-    },
+    // {
+    //   title: "Why not both",
+    //   href: "/news",
+    //   icon: <FaHandPeace className="text-xl mr-2" />,
+    //   className:
+    //     "p-2 mt-2 rounded-sm border bg-white text-black flex flex-row items-center justify-center",
+    // },
   ];
 
   return (
