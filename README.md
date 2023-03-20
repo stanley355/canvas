@@ -21,19 +21,18 @@ People search for a wide variety of data beyond the stock market, depending on t
 
 ### General
 
-[ ] Firebase analytic setup
-[ ] Search engine
-[ ] Homepage
+[ ] Favicon
+[x] Firebase analytic setup
+[x] Search engine
+[x] Homepage
 
 ### Scholar Page
 
-[ ] Navbar adjustment on Scholar Page
-[ ] Create scholar author page
-[ ] Favicon
-[ ] SEO Adjustment
-[ ] Consider to use Next caching or redis
+[x] Navbar adjustment on Scholar Page
+[x] Create scholar author page
+[x] SEO Adjustment
 
 ### News
 
 [x] Reduce data fetching
-[ ] SEO Adjustment
+[x] SEO Adjustment
