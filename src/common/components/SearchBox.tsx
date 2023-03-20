@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaSpinner } from "react-icons/fa";
 
 interface ISearchBox {
   className?: string;
+  isLoading?: boolean;
   placeholder: string;
   onChange?: (searchVal: any) => void;
   onSubmit: (searchVal: any) => void;
 }
 
 const SearchBox = (props: ISearchBox) => {
-  const { className, placeholder, onChange, onSubmit } = props;
+  const { className, isLoading, placeholder, onChange, onSubmit } = props;
   const [showError, setShowError] = useState(false);
 
   const handleOnChange = (e: any) => {
@@ -46,7 +47,7 @@ const SearchBox = (props: ISearchBox) => {
         )}
       />
       <button type="submit" className="w-auto p-2 bg-white rounded-sm">
-        <FaSearch className="text-2xl text-black" />
+        {isLoading ?  <FaSpinner className="text-2xl text-black animate-spin" /> : <FaSearch className="text-2xl text-black" />}
       </button>
     </form>
   );
