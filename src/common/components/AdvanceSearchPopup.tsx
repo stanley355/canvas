@@ -55,7 +55,7 @@ const AdvanceSearchPopup = (props: IAdvanceSearchPopup) => {
         />
         <div className="p-4 flex flex-col">
           <div className="mb-2 text-center">
-            Data is on Beta Version, which of these suits your need?
+            Databond is on Beta Version, which of these suits your need?
           </div>
           {ADVANCE_SEARCH_MENU.map((menu) => (
             <Link

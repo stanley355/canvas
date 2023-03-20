@@ -20,7 +20,7 @@ const HomePageLayout = (props: IHomePageLayout) => {
           inter.className
         )}
       >
-        Data
+        Databond
       </header>
       <main className="min-h-screen">{children}</main>
       <Footer />
