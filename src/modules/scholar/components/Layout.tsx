@@ -1,5 +1,6 @@
 import React from "react";
 import Router from "next/router";
+import Link from "next/link";
 import { FaGraduationCap } from "react-icons/fa";
 import classNames from "classnames";
 import SearchBox from "@/common/components/SearchBox";
@@ -21,12 +22,14 @@ const ScholarPageLayout = (props: IScholarPageLayout) => {
           query && query.q ? "flex flex-row items-start border-b pr-2" : ""
         )}
       >
-        <FaGraduationCap
-          className={classNames(
-            "text-3xl",
-            query && query.q ? "mx-2 lg:mx-4" : "mx-auto"
-          )}
-        />
+        <Link href="/scholar/" passHref title="scholar research">
+          <FaGraduationCap
+            className={classNames(
+              "text-3xl",
+              query && query.q ? "mx-2 lg:mx-4" : "mx-auto"
+            )}
+          />
+        </Link>
         {query && query.q ? (
           <SearchBox
             className="lg:w-2/3"
