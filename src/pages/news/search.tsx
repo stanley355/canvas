@@ -5,10 +5,10 @@ import { calculatePageLoadTime } from "@/common/components/calculatePageLoadTime
 import { getSearchNewsData } from "@/modules/news/lib/getSearchNewsData";
 
 const NewsSearchPage = (props: any) => {
-  const { nyt, theGuardian, newsAPI } = props;
+  const { query, nyt, theGuardian, newsAPI } = props;
 
   return (
-    <NewsPageLayout query={{}}>
+    <NewsPageLayout query={query}>
       <div className="border-b text-center py-2">
         Showing {nyt.length + theGuardian.length + newsAPI.length} News (
         {calculatePageLoadTime()} s)
@@ -34,6 +34,7 @@ export const getServerSideProps: GetServerSideProps = async (
 
   return {
     props: {
+      query,
       nyt,
       theGuardian,
       newsAPI,
