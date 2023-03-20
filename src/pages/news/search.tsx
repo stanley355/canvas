@@ -6,17 +6,19 @@ import { storeToRedis } from "@/common/lib/storeToRedis";
 import { getSearchNewsData } from "@/modules/news/lib/getSearchNewsData";
 import NYTSearchResults from "@/modules/news/components/NYTSearchResults";
 import NewsAPISearchResults from "@/modules/news/components/NewsAPISearchResults";
+import TheGuardianSearchResults from "@/modules/news/components/TheGuardianSearchResults";
 
 const NewsSearchPage = (props: any) => {
   const { query, nyt, theGuardian, newsAPI } = props;
 
-  console.log(newsAPI[0])
+  console.log(theGuardian[0])
   return (
     <NewsPageLayout query={query}>
       <div className="border-b text-center py-2">
         Showing {nyt.length + theGuardian.length + newsAPI.length} News
       </div>
-      {/* <NYTSearchResults articles={nyt}/> */}
+      <NYTSearchResults articles={nyt}/>
+      <TheGuardianSearchResults articles={theGuardian}/>
       <NewsAPISearchResults articles={newsAPI}/>
     </NewsPageLayout>
   );
