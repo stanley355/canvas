@@ -21,7 +21,7 @@ const NewsPage = (props: any) => {
         <NewsHomeSideArticles articles={theGuardian.slice(0, 5)} />
       </div>
       <NewsHomeAdditionalArticles
-        title="What to watch and read this weekendd"
+        title="What to watch and read this weekend"
         articles={newsAPI.slice(0, 8)}
       />
       <div className="flex flex-row border-b">
