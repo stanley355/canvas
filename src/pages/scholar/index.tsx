@@ -23,7 +23,7 @@ const ScholarPage = (props: any) => {
         onSubmit={(val) => Router.push(`/scholar?q=${val}`)}
         className="lg:w-2/3"
       />
-      <h3 className="text-lg mt-4">Knowledge is Power</h3>
+      <div className="text-lg mt-4">Knowledge is Power</div>
     </div>
   );
 
