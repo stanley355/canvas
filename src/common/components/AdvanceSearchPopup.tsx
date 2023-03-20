@@ -18,7 +18,7 @@ const AdvanceSearchPopup = (props: IAdvanceSearchPopup) => {
   const ADVANCE_SEARCH_MENU = [
     {
       title: "News Data",
-      href: "/news",
+      href: `/news/search?q=${searchVal}`,
       icon: <FaNewspaper className="text-xl mr-2" />,
       className:
         "p-2 mt-2 rounded-sm border bg-white text-black flex flex-row items-center justify-center",

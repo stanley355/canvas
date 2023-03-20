@@ -1,8 +1,6 @@
 import React from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import NewsPageLayout from "@/modules/news/components/Layout";
-import { getFromRedis } from "@/common/lib/getFromRedis";
-import { storeToRedis } from "@/common/lib/storeToRedis";
 import { getSearchNewsData } from "@/modules/news/lib/getSearchNewsData";
 import { useDesktopScreen } from "@/common/lib/useDesktopScreen";
 import NYTSearchResults from "@/modules/news/components/NYTSearchResults";
@@ -24,7 +22,7 @@ const NewsSearchPage = (props: any) => {
       <NYTSearchResults articles={isDesktop ? nyt.slice(0, 5) : nyt}/>
       <TheGuardianSearchResults articles={theGuardian}/>
       </div>
-      <NewsAPISearchResults articles={newsAPI}/>
+      <NewsAPISearchResults articles={newsAPI.filter((news:any) => news.urlToImage)}/>
     </NewsPageLayout>
   );
 };
@@ -34,33 +32,11 @@ export const getServerSideProps: GetServerSideProps = async (
 ) => {
   const { query } = context;
 
-  //   TODO: Remove static redis cache
-  let nyt = [];
-  let theGuardian = [];
-  let newsAPI = [];
+    const newsData: any = await getSearchNewsData(String(query.q));
 
-  const REDIS_KEY = "news:search";
-
-  const prevData = await getFromRedis(REDIS_KEY);
-
-  if (prevData && prevData.length > 0) {
-    nyt = prevData[0].value;
-    theGuardian = prevData[1].value;
-    newsAPI = prevData[2].value;
-  } else {
-    const newsData = await getSearchNewsData(String(query.q));
-    const storedData = await storeToRedis(REDIS_KEY, newsData);
-
-    nyt = storedData[0].value;
-    theGuardian = storedData[1].value;
-    newsAPI = storedData[2].value;
-  }
-
-  //   const newsData: any = await getSearchNewsData(String(query.q));
-
-  //   let nyt = newsData[0].value;
-  //   let theGuardian = newsData[1].value;
-  //   let newsAPI = newsData[2].value;
+    let nyt = newsData[0].value;
+    let theGuardian = newsData[1].value;
+    let newsAPI = newsData[2].value;
 
   context.res.setHeader(
     "Cache-Control",
