@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import getConfig from "next/config";
 import classNames from "classnames";
 import { sendFirebaseEvent } from "../lib/firebase/sendFirebaseEvent";
 import { FaSearch, FaSpinner } from "react-icons/fa";
+
+const { APP_ENV } = getConfig().publicRuntimeConfig;
 
 interface ISearchBox {
   className?: string;
@@ -29,7 +32,9 @@ const SearchBox = (props: ISearchBox) => {
       return "";
     }
 
-    sendFirebaseEvent("search", { value: searchVal });
+    if (APP_ENV !== "develop") {
+      sendFirebaseEvent("search", { value: searchVal });
+    }
     onSubmit(searchVal);
   };
 

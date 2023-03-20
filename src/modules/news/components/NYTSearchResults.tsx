@@ -34,9 +34,10 @@ const NYTSearchResults = (props: INYTSearchResults) => {
           <Image
             loader={() => `https://nytimes.com/${article.multimedia[0].url}`}
             src="next.svg"
+            className="w-full h-auto"
             alt={article.headline.main}
-            width={176}
-            height={100}
+            width={368}
+            height={275}
           />
         </div>
       ))}
