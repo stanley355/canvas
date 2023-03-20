@@ -1,10 +1,11 @@
 import React from "react";
-import axios from "axios";
+import Router from "next/router";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import axios from "axios";
 import { assignPageQueryToURL } from "@/common/lib/assignPageQueryToURL";
 import ScholarPageLayout from "@/modules/scholar/components/Layout";
-import ScholarSearchBox from "@/modules/scholar/components/SearchBox";
 import ScholarResultSkeleton from "@/modules/scholar/components/ResultSkeleton";
+import SearchBox from "@/common/components/SearchBox";
 import MetaSEO from "@/common/components/MetaSEO";
 import { fetchDatoCms } from "@/common/lib/fetchDatoCms";
 import { SCHOLAR_DATO_SEO_QUERY } from "@/modules/scholar/lib/query";
@@ -13,9 +14,13 @@ const ScholarPage = (props: any) => {
   const { query, seo, serpResult } = props;
 
   const ScholarPageHome = () => (
-    <div className="container mx-auto flex flex-col items-center justify-center p-4">
+    <div className="container mx-auto flex flex-col items-center justify-center mt-12 px-4">
       <h1 className="font-bold text-3xl mb-4 lg:text-4xl">Scholar Data</h1>
-      <ScholarSearchBox />
+      <SearchBox
+        placeholder="What am I researching today?"
+        onSubmit={(val) => Router.push(`/scholar?q=${val}`)}
+        className="lg:w-2/3"
+      />
       <h3 className="text-lg mt-4">Knowledge is Power</h3>
     </div>
   );
