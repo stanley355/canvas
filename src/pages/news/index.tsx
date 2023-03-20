@@ -57,17 +57,17 @@ export const getServerSideProps: GetServerSideProps = async (
   const prevData = await getFromRedis(REDIS_KEY);
 
   // TODO: Reduce data fetching
-  if (prevData && prevData.length > 0) {
+  if (prevData && prevData.length && prevData.length > 0) {
     nyt = prevData[0].value;
     theGuardian = prevData[1].value;
     newsAPI = prevData[2].value;
   } else {
-    const newsData = await getHomeNewsData();
-    const storedData = await storeToRedis(REDIS_KEY, newsData);
+    const newsData:any = await getHomeNewsData();
+    await storeToRedis(REDIS_KEY, 60 * 60 * 3, newsData); // 3 hours
 
-    nyt = storedData[0].value;
-    theGuardian = storedData[1].value;
-    newsAPI = storedData[2].value;
+    nyt = newsData[0].value;
+    theGuardian = newsData[1].value;
+    newsAPI = newsData[2].value;
   }
 
   context.res.setHeader(
