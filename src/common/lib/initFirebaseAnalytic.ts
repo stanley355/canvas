@@ -15,11 +15,8 @@ const initFirebaseAnalytic = () => {
     measurementId: FIREBASE_MEASUREMENT_ID,
   };
 
-  console.log(firebaseConfig);
-
   if (APP_ENV !== "develop") {
     const app = initializeApp(firebaseConfig);
-    console.log(app);
     getAnalytics(app);
   }
 };
