@@ -10,6 +10,7 @@ import TheGuardianSearchResults from "@/modules/news/components/TheGuardianSearc
 const NewsSearchPage = (props: any) => {
   const { query, nyt, theGuardian, newsAPI } = props;
 
+  const filteredNYT = nyt.filter((n: any) => n.multimedia.length > 0);
   const isDesktop = useDesktopScreen();
 
   return (
@@ -18,11 +19,14 @@ const NewsSearchPage = (props: any) => {
         Showing {nyt.length + theGuardian.length + newsAPI.length} News
       </div>
       <div className="lg:flex lg:flex-row lg:border-b">
-
-      <NYTSearchResults articles={isDesktop ? nyt.slice(0, 5) : nyt}/>
-      <TheGuardianSearchResults articles={theGuardian}/>
+        <NYTSearchResults
+          articles={isDesktop ? filteredNYT.slice(0, 5) : filteredNYT}
+        />
+        <TheGuardianSearchResults articles={theGuardian} />
       </div>
-      <NewsAPISearchResults articles={newsAPI.filter((news:any) => news.urlToImage)}/>
+      <NewsAPISearchResults
+        articles={newsAPI.filter((news: any) => news.urlToImage)}
+      />
     </NewsPageLayout>
   );
 };
@@ -32,11 +36,11 @@ export const getServerSideProps: GetServerSideProps = async (
 ) => {
   const { query } = context;
 
-    const newsData: any = await getSearchNewsData(String(query.q));
+  const newsData: any = await getSearchNewsData(String(query.q));
 
-    let nyt = newsData[0].value;
-    let theGuardian = newsData[1].value;
-    let newsAPI = newsData[2].value;
+  let nyt = newsData[0].value;
+  let theGuardian = newsData[1].value;
+  let newsAPI = newsData[2].value;
 
   context.res.setHeader(
     "Cache-Control",
