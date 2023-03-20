@@ -3,8 +3,8 @@ import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import NewsPageLayout from "@/modules/news/components/Layout";
 import { getFromRedis } from "@/common/lib/getFromRedis";
 import { storeToRedis } from "@/common/lib/storeToRedis";
-import { calculatePageLoadTime } from "@/common/components/calculatePageLoadTime";
 import { getSearchNewsData } from "@/modules/news/lib/getSearchNewsData";
+import NYTSearchResults from "@/modules/news/components/NYTSearchResults";
 
 const NewsSearchPage = (props: any) => {
   const { query, nyt, theGuardian, newsAPI } = props;
@@ -14,6 +14,7 @@ const NewsSearchPage = (props: any) => {
       <div className="border-b text-center py-2">
         Showing {nyt.length + theGuardian.length + newsAPI.length} News
       </div>
+      <NYTSearchResults articles={nyt}/>
     </NewsPageLayout>
   );
 };
