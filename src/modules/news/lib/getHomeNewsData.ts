@@ -7,7 +7,7 @@ export const getHomeNewsData = async () => {
   });
 
   const theGuardian = await axios.get(
-    `${newsBaseEndpoint}guardian/?show-elements=image`,
+    `${newsBaseEndpoint}guardian/`,
     {
       headers: { path: "search" },
     }
