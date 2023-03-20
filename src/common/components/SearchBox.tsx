@@ -49,7 +49,11 @@ const SearchBox = (props: ISearchBox) => {
           showError ? "bg-red-400 placeholder-white" : ""
         )}
       />
-      <button type="submit" className="w-auto p-2 bg-white rounded-sm" aria-label="search">
+      <button
+        type="submit"
+        className="w-auto p-2 bg-white rounded-sm"
+        aria-label="search"
+      >
         {isLoading ? (
           <FaSpinner className="text-2xl text-black animate-spin" />
         ) : (

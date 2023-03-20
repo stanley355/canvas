@@ -62,7 +62,7 @@ export const getServerSideProps: GetServerSideProps = async (
     theGuardian = prevData[1].value;
     newsAPI = prevData[2].value;
   } else {
-    const newsData:any = await getHomeNewsData();
+    const newsData: any = await getHomeNewsData();
     await storeToRedis(REDIS_KEY, 60 * 60 * 3, newsData); // 3 hours
 
     nyt = newsData[0].value;
