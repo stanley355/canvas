@@ -8,15 +8,17 @@ import NewsAPISearchResults from "@/modules/news/components/NewsAPISearchResults
 import TheGuardianSearchResults from "@/modules/news/components/TheGuardianSearchResults";
 import { fetchDatoCms } from "@/common/lib/fetchDatoCms";
 import { NEWS_SEO_QUERY } from "@/modules/news/lib/query";
+import MetaSEO from "@/common/components/MetaSEO";
 
 const NewsSearchPage = (props: any) => {
-  const { query, nyt, theGuardian, newsAPI } = props;
+  const { query, seo, nyt, theGuardian, newsAPI } = props;
 
   const filteredNYT = nyt.filter((n: any) => n.multimedia.length > 0);
   const isDesktop = useDesktopScreen();
 
   return (
     <NewsPageLayout query={query}>
+      <MetaSEO seo={seo} />
       <div className="border-b text-center py-2">
         Showing {nyt.length + theGuardian.length + newsAPI.length} News
       </div>

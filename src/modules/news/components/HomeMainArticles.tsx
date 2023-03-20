@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
 interface INewsHomeMainArticles {
@@ -27,11 +28,11 @@ const NewsHomeMainArticles = (props: INewsHomeMainArticles) => {
             <div className="py-2 lg:text-sm">{article.abstract}</div>
           </div>
           <div className="w-full lg:w-2/3">
-            <img
+            <Image
+              loader={() => article.multimedia[0].url}
               className="w-full h-auto max-h-80"
-              src={article.multimedia[0].url}
+              src="next.svg"
               alt={article.title}
-              loading="lazy"
               width={368}
               height={275}
             />

@@ -10,14 +10,16 @@ import NewsPageLayout from "@/modules/news/components/Layout";
 import NewsHomeMainArticles from "@/modules/news/components/HomeMainArticles";
 import NewsHomeSideArticles from "@/modules/news/components/HomeSideArticles";
 import NewsHomeAdditionalArticles from "@/modules/news/components/HomeAdditionalArticles";
+import MetaSEO from "@/common/components/MetaSEO";
 
 const NewsPage = (props: any) => {
-  const { nyt, theGuardian, newsAPI } = props;
+  const { seo, nyt, theGuardian, newsAPI } = props;
 
   const isDesktop = useDesktopScreen();
 
   return (
     <NewsPageLayout query={{}}>
+      <MetaSEO seo={seo} />
       <div className="lg:flex lg:flex-row">
         <NewsHomeMainArticles articles={nyt.slice(0, isDesktop ? 2 : 5)} />
         <NewsHomeSideArticles articles={theGuardian.slice(0, 5)} />

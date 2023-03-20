@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface INewsHomeAdditionalArticles {
   title: string;
@@ -17,10 +18,11 @@ const NewsHomeAdditonalArticles = (props: INewsHomeAdditionalArticles) => {
           .filter((article) => article.urlToImage)
           .map((article) => (
             <div key={article.url}>
-              <img
-                src={article.urlToImage}
-                alt={article.title}
+              <Image
+                loader={() => article.urlToImage}
                 className="pb-2"
+                src="next.svg"
+                alt={article.title}
                 width={176}
                 height={100}
               />
