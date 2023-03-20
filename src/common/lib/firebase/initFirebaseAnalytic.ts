@@ -2,7 +2,16 @@ import getConfig from "next/config";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
-const { APP_ENV, FIREBASE_API_KEY, FIREBASE_AUTH_DOMAIN, FIREBASE_PROJECT_ID, FIREBASE_STORAGE_BUCKET, FIREBASE_MESSAGING_SENDER, FIREBASE_APP_ID, FIREBASE_MEASUREMENT_ID } = getConfig().publicRuntimeConfig;
+const {
+  APP_ENV,
+  FIREBASE_API_KEY,
+  FIREBASE_AUTH_DOMAIN,
+  FIREBASE_PROJECT_ID,
+  FIREBASE_STORAGE_BUCKET,
+  FIREBASE_MESSAGING_SENDER,
+  FIREBASE_APP_ID,
+  FIREBASE_MEASUREMENT_ID,
+} = getConfig().publicRuntimeConfig;
 
 const initFirebaseAnalytic = () => {
   const firebaseConfig = {
