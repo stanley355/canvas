@@ -8,7 +8,7 @@ const newYorkTimeAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   Object.keys(req.query).forEach((key: string) => {
     url.searchParams.set(key, String(req.query[key]));
   });
- 
+
   try {
     const response = await axios.get(String(url));
     res.json(response?.data);

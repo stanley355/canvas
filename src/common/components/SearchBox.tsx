@@ -47,7 +47,11 @@ const SearchBox = (props: ISearchBox) => {
         )}
       />
       <button type="submit" className="w-auto p-2 bg-white rounded-sm">
-        {isLoading ?  <FaSpinner className="text-2xl text-black animate-spin" /> : <FaSearch className="text-2xl text-black" />}
+        {isLoading ? (
+          <FaSpinner className="text-2xl text-black animate-spin" />
+        ) : (
+          <FaSearch className="text-2xl text-black" />
+        )}
       </button>
     </form>
   );

@@ -15,12 +15,19 @@ const NYTSearchResults = (props: INYTSearchResults) => {
     <div>
       {articles.map((article) => (
         <div key={article._id} className="p-4 border-b grid grid-cols-2 gap-2">
-          <div >
-            <div className="text-white-500">{new Date(article.pub_date).toLocaleDateString()}</div>
-            <Link href={article.web_url} passHref title={article.headline.main} className="text-blue-200">
+          <div>
+            <div className="text-white-500">
+              {new Date(article.pub_date).toLocaleDateString()}
+            </div>
+            <Link
+              href={article.web_url}
+              passHref
+              title={article.headline.main}
+              className="text-blue-200"
+            >
               {article.headline.main}
             </Link>
-            {isDesktop && <div>{article.abstract}</div> }
+            {isDesktop && <div>{article.abstract}</div>}
           </div>
           <img
             src={`https://nytimes.com/${article.multimedia[0].url}`}
