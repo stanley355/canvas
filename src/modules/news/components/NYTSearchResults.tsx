@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
 interface INYTSearchResults {
@@ -29,10 +30,13 @@ const NYTSearchResults = (props: INYTSearchResults) => {
             </Link>
             {isDesktop && <div>{article.abstract}</div>}
           </div>
-          <img
-            src={`https://nytimes.com/${article.multimedia[0].url}`}
+
+          <Image
+            loader={() => `https://nytimes.com/${article.multimedia[0].url}`}
+            src="next.svg"
             alt={article.headline.main}
-            loading="lazy"
+            width={176}
+            height={100}
           />
         </div>
       ))}
