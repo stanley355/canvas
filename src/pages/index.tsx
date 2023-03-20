@@ -28,7 +28,7 @@ const Home = () => {
         </h1>
         {showSearch && (
           <SearchBox
-            className="animate-home-searchbox"
+            className="animate-home-searchbox lg:w-2/3"
             placeholder="Start Searching"
             onSubmit={(e) => console.log("hi")}
           />
