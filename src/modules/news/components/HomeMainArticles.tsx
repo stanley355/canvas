@@ -32,8 +32,8 @@ const NewsHomeMainArticles = (props: INewsHomeMainArticles) => {
               src={article.multimedia[0].url}
               alt={article.title}
               loading="lazy"
-              width={article.multimedia[0].width}
-              height={article.multimedia[0].height}
+              width={368}
+              height={275}
             />
           </div>
         </div>

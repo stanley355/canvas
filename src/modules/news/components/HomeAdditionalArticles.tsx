@@ -21,6 +21,8 @@ const NewsHomeAdditonalArticles = (props: INewsHomeAdditionalArticles) => {
                 src={article.urlToImage}
                 alt={article.title}
                 className="pb-2"
+                width={176}
+                height={100}
               />
               <Link
                 href={article.url}
