@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import classNames from "classnames";
 import SearchBox from "@/common/components/SearchBox";
 import HomePageLayout from "@/modules/home/components/Layout";
+import packageJson from "../..//package.json";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +33,8 @@ const Home = () => {
             onSubmit={(e) => console.log("hi")}
           />
         )}
+
+        <div>Beta v{packageJson.version}</div>
       </div>
     </HomePageLayout>
   );
