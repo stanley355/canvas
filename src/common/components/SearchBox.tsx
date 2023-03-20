@@ -14,7 +14,7 @@ const SearchBox = (props: ISearchBox) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    const searchVal = e.target.value;
+    const searchVal = e.target.search.value;
 
     if (!searchVal) {
       setShowError(true);

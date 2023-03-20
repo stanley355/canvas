@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        typing: "typing 2s linear",
+        typing: "typing 3s linear",
         "home-searchbox": "home-searchbox 2s linear"
       },
       keyframes: {
