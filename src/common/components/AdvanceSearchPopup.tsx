@@ -41,6 +41,7 @@ const AdvanceSearchPopup = (props: IAdvanceSearchPopup) => {
     <div
       className={classNames(
         "fixed inset-x-0 top-40 bg-black m-auto fit-content p-4",
+        "animate-slide-advance-search",
         className
       )}
     >
@@ -51,7 +52,7 @@ const AdvanceSearchPopup = (props: IAdvanceSearchPopup) => {
             Data is on Beta Version, which of these suits your need?
           </div>
           {ADVANCE_SEARCH_MENU.map((menu) => (
-            <Link href={menu.href} passHref className={menu.className}>
+            <Link href={menu.href} passHref className={menu.className} key={menu.title}>
               {menu.icon}
               <span>{menu.title}</span>
             </Link>

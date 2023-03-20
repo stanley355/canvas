@@ -26,7 +26,7 @@ const Home = () => {
 
   return (
     <HomePageLayout>
-      {searchVal && <AdvanceSearch placeholder={searchVal} onCloseClick={() => setSearchVal("")}/>}
+      {searchVal && <AdvanceSearch className="lg:w-1/3" placeholder={searchVal} onCloseClick={() => setSearchVal("")}/>}
       <div className="pt-40 flex flex-col items-center justify-center px-4 ">
         <h1
           className={classNames(
