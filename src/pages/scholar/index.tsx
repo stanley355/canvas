@@ -56,10 +56,7 @@ export const getServerSideProps: GetServerSideProps = async (
   });
 
   if (query && query.q) {
-    const url = new URL(`${process.env.SERPAPI_URL}search`);
-    url.searchParams.set("api_key", String(process.env.SERPAPI_KEY));
-    url.searchParams.set("engine", "google_scholar");
-
+    const url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL}api/serp/scholar`);
     const queriedURL = assignPageQueryToURL(String(url), query);
 
     const serpRes: any = await axios.get(String(queriedURL));
