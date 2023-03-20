@@ -15,7 +15,7 @@ import packageJson from "../..//package.json";
 const inter = Inter({ subsets: ["latin"] });
 
 const Home = (props: any) => {
-  const {seo} = props;
+  const { seo } = props;
 
   const [showSearch, setShowSearch] = useState(false);
   const [searchVal, setSearchVal] = useState("");

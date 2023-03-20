@@ -13,11 +13,10 @@ const SearchBox = (props: ISearchBox) => {
   const { className, placeholder, onChange, onSubmit } = props;
   const [showError, setShowError] = useState(false);
 
-  const handleOnChange = (e:any) => {
-    if (showError)  setShowError(false);
+  const handleOnChange = (e: any) => {
+    if (showError) setShowError(false);
     if (onChange) onChange(e.target.value);
-  }
-
+  };
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
