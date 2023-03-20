@@ -11,7 +11,6 @@ import MetaSEO from "@/common/components/MetaSEO";
 import { fetchDatoCms } from "@/common/lib/fetchDatoCms";
 import { HOME_SEO_QUERY } from "@/modules/home/lib/query";
 import packageJson from "../..//package.json";
-import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 const inter = Inter({ subsets: ["latin"] });
 
