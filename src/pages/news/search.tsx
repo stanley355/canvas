@@ -1,19 +1,20 @@
 import React from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import NewsPageLayout from "@/modules/news/components/Layout";
+import { calculatePageLoadTime } from "@/common/components/calculatePageLoadTime";
 import { getSearchNewsData } from "@/modules/news/lib/getSearchNewsData";
 
 const NewsSearchPage = (props: any) => {
   const { nyt, theGuardian, newsAPI } = props;
 
-  console.log(nyt);
-  //   console.log(nyt.length);
-  //   console.log(theGuardian.length);
-  //   console.log(newsAPI.length);
-  return <NewsPageLayout query={{}}>
-
-    
-  </NewsPageLayout>;
+  return (
+    <NewsPageLayout query={{}}>
+      <div className="border-b text-center py-2">
+        Showing {nyt.length + theGuardian.length + newsAPI.length} News (
+        {calculatePageLoadTime()} s)
+      </div>
+    </NewsPageLayout>
+  );
 };
 
 export const getServerSideProps: GetServerSideProps = async (
