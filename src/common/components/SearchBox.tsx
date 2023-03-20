@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import { getAnalytics, logEvent } from "firebase/analytics";
+import { sendFirebaseEvent } from "../lib/firebase/sendFirebaseEvent";
 import { FaSearch, FaSpinner } from "react-icons/fa";
 
 interface ISearchBox {
@@ -20,8 +20,6 @@ const SearchBox = (props: ISearchBox) => {
     if (onChange) onChange(e.target.value);
   };
 
-  
-
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const searchVal = e.target.search.value;
@@ -31,14 +29,7 @@ const SearchBox = (props: ISearchBox) => {
       return "";
     }
 
-
-    const analytics = getAnalytics();
-    console.log(analytics);
-    logEvent(analytics, "select_content", {
-      content_type: "image",
-      content_id: "P12453",
-    });
-    
+    sendFirebaseEvent("search", { value: searchVal });
     onSubmit(searchVal);
   };
 
