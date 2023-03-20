@@ -33,7 +33,6 @@ const Home = () => {
             onSubmit={(e) => console.log("hi")}
           />
         )}
-
         <div>Beta v{packageJson.version}</div>
       </div>
     </HomePageLayout>
