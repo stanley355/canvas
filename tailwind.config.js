@@ -6,7 +6,7 @@ module.exports = {
       animation: {
         typing: "typing 3s linear",
         "home-searchbox": "home-searchbox 2s linear",
-        "slide-advance-search": "slide-advance-search 3s linear",
+        "slide-advance-search": "slide-advance-search 2s linear",
       },
       keyframes: {
         typing: {
