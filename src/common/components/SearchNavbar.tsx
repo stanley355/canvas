@@ -25,12 +25,9 @@ const SearchNavbar = (props: ISearchNavbar) => {
 
   return (
     <nav className="py-4 px-2 border-b border-white flex flex-row items-center justify-between">
-      <Button
-        type="link"
-        href={basePagePath}
-        title={pageTitle}
-        children={pageIcon}
-      />
+      <Button type="link" href={basePagePath} title={pageTitle}>
+        {pageIcon}
+      </Button>
       <SearchBox placeholder={searchPlaceHolder} onSubmit={onSearchSubmit} />
       {isDesktop && <SideNavbarBtn />}
     </nav>

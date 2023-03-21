@@ -39,8 +39,9 @@ const SideNavbarBtn = () => {
         )}
         buttonClassName="p-2"
         onClick={() => setOpenBar(!openBar)}
-        children={<FaCrosshairs className="text-3xl" />}
-      />
+      >
+        <FaCrosshairs className="text-3xl" />
+      </Button>
       {openBar && (
         <div className="absolute z-10 top-14 left-2 bg-white flex flex-col items-center w-4/5 h-fit pb-2 m-auto rounded-xl">
           {MENU_OPTIONS.map((option) => (
@@ -49,8 +50,9 @@ const SideNavbarBtn = () => {
               href={option.href}
               wrapperClassName="text-black text-3xl pt-2 hover:text-blue-400"
               key={option.title}
-              children={option.icon}
-            />
+            >
+              {option.icon}
+            </Button>
           ))}
         </div>
       )}
