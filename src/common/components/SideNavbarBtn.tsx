@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Link from "next/link";
 import { FaCrosshairs, FaHome, FaGraduationCap } from "react-icons/fa";
+import Button from "./Button";
 
 const SideNavbarBtn = () => {
   const [openBar, setOpenBar] = useState(false);
@@ -24,10 +24,10 @@ const SideNavbarBtn = () => {
   ];
 
   return (
-    <div className="relative">
+    <div className="relative flex items-center">
       <button
         type="button"
-        className="mx-2"
+        className="mx-4"
         onClick={() => setOpenBar(!openBar)}
       >
         <FaCrosshairs className="text-3xl" />
@@ -35,7 +35,7 @@ const SideNavbarBtn = () => {
       {openBar && (
         <div>
           {MENU_OPTIONS.map((option) => (
-            <Link href={option.href}>{option.icon}</Link>
+            <Button type="link" key={option.title} children={option.icon} />
           ))}
         </div>
       )}

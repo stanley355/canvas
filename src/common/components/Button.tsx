@@ -9,8 +9,8 @@ interface IButton {
   ariaLabel?: string;
   children?: React.ReactNode;
   onClick?: () => void;
-  wrapperClassName: string;
-  buttonClassName: string;
+  wrapperClassName?: string;
+  buttonClassName?: string;
 }
 
 const Button = (props: IButton) => {
