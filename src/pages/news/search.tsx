@@ -6,8 +6,6 @@ import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import NYTSearchResults from "@/modules/news/components/NYTSearchResults";
 import NewsAPISearchResults from "@/modules/news/components/NewsAPISearchResults";
 import TheGuardianSearchResults from "@/modules/news/components/TheGuardianSearchResults";
-import { fetchDatoCms } from "@/common/lib/fetchDatoCms";
-import { NEWS_SEO_QUERY } from "@/modules/news/lib/query";
 import MetaSEO from "@/common/components/MetaSEO";
 
 const NewsSearchPage = (props: any) => {
@@ -54,11 +52,6 @@ export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   const { query } = context;
-
-  const datoSEO: any = await fetchDatoCms({
-    query: NEWS_SEO_QUERY,
-    variables: "",
-  });
 
   const newsData: any = await getSearchNewsData(String(query.q));
 

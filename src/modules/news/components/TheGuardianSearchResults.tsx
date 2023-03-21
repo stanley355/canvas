@@ -8,7 +8,6 @@ interface ITheGuardianSearchResults {
 const TheGuardianSearchResults = (props: ITheGuardianSearchResults) => {
   const { articles } = props;
 
-  console.log(articles[0]);
   return (
     <div>
       {articles.map((article) => (

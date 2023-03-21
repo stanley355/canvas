@@ -17,7 +17,7 @@ const NewsPage = (props: any) => {
 
   return (
     <NewsPageLayout query={{}}>
-      <MetaSEO seo={seo} />
+      {seo && <MetaSEO seo={seo} />}
       <div className="lg:flex lg:flex-row">
         <NewsHomeMainArticles articles={nyt.slice(0, isDesktop ? 2 : 5)} />
         <NewsHomeSideArticles articles={theGuardian.slice(0, 5)} />
