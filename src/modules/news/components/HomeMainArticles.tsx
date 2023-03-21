@@ -18,14 +18,15 @@ const NewsHomeMainArticles = (props: INewsHomeMainArticles) => {
           className="py-4 border-b lg:flex lg:flex-row gap-2"
         >
           <div className="lg:w-1/3">
+            <div>{new Date(article.published_date).toLocaleDateString()}</div>
             <Link
               href={article.url}
               passHref
-              className="text-blue-200 font-semibold text-2xl lg:text-base hover:underline"
+              className="text-blue-200 font-semibold text-2xl lg:text-xl hover:underline"
             >
               {article.title}
             </Link>
-            <div className="py-2 lg:text-sm">{article.abstract}</div>
+            <div className="py-2 lg:text-md">{article.abstract}</div>
           </div>
           <div className="w-full lg:w-2/3">
             <Image

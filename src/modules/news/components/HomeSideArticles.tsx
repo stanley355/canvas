@@ -15,7 +15,12 @@ const NewsHomeSideArticles = (props: INewsHomeSideArticles) => {
           <Link href={article.webUrl} className="text-blue-200 hover:underline">
             {article.webTitle}
           </Link>
-          <div>{article.sectionName}</div>
+          <div>
+            <span className="mr-2 italic">{article.sectionName}</span>
+            <span>
+              {new Date(article.webPublicationDate).toLocaleDateString()}
+            </span>
+          </div>
         </div>
       ))}
     </div>

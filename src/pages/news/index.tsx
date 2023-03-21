@@ -16,6 +16,7 @@ const NewsPage = (props: any) => {
   const { seo, nyt, theGuardian, newsAPI } = props;
 
   const isDesktop = useDesktopScreen();
+  console.log(newsAPI[0]);
 
   return (
     <NewsPageLayout query={{}}>
@@ -31,7 +32,7 @@ const NewsPage = (props: any) => {
       <div className="flex flex-row border-b">
         <NewsHomeSideArticles articles={theGuardian.slice(5)} />
         <NewsHomeMainArticles
-          articles={nyt.slice(isDesktop ? 2 : 5, isDesktop ? 5 : 3)}
+          articles={nyt.slice(isDesktop ? 2 : 5, isDesktop ? 4 : 3)}
         />
       </div>
       <NewsHomeAdditionalArticles
