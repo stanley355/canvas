@@ -7,7 +7,7 @@ interface IButton {
   href?: string;
   key?: string;
   ariaLabel?: string;
-  children?: any;
+  children?: React.ReactNode;
   onClick?: () => void;
   wrapperClassName: string;
   buttonClassName: string;
