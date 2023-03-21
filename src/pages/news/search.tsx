@@ -62,9 +62,10 @@ export const getServerSideProps: GetServerSideProps = async (
 
   const newsData: any = await getSearchNewsData(String(query.q));
 
-  let nyt = newsData[0].value;
-  let theGuardian = newsData[1].value;
-  let newsAPI = newsData[2].value;
+  let seo = newsData[0].value
+  let nyt = newsData[1].value;
+  let theGuardian = newsData[2].value;
+  let newsAPI = newsData[3].value;
 
   context.res.setHeader(
     "Cache-Control",
@@ -74,7 +75,7 @@ export const getServerSideProps: GetServerSideProps = async (
   return {
     props: {
       query,
-      seo: datoSEO?.news?.seo ?? null,
+      seo,
       nyt,
       theGuardian,
       newsAPI,
