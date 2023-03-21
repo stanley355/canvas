@@ -8,6 +8,7 @@ interface ITheGuardianSearchResults {
 const TheGuardianSearchResults = (props: ITheGuardianSearchResults) => {
   const { articles } = props;
 
+  console.log(articles[0]);
   return (
     <div>
       {articles.map((article) => (
@@ -20,8 +21,11 @@ const TheGuardianSearchResults = (props: ITheGuardianSearchResults) => {
           >
             {article.webTitle}
           </Link>
+          <div>
           <div className="text-white-500">
             {new Date(article.webPublicationDate).toLocaleDateString()}
+          </div>
+           <span>{article.sectionName}</span> 
           </div>
         </div>
       ))}

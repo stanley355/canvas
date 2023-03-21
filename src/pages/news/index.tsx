@@ -16,7 +16,6 @@ const NewsPage = (props: any) => {
   const { seo, nyt, theGuardian, newsAPI } = props;
 
   const isDesktop = useDesktopScreen();
-  console.log(newsAPI[0]);
 
   return (
     <NewsPageLayout query={{}}>
