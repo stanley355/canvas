@@ -38,12 +38,12 @@ const NewsSection = (props:any) => {
         {filteredNYT.length > 0 && <NYTSearchResults
           articles={isDesktop ? filteredNYT.slice(0, 2) : filteredNYT}
         />}
-        {theGuardian.length > 0 && <TheGuardianSearchResults articles={isDesktop ? theGuardian.slice(0, 5) : theGuardian} />}
+        {theGuardian && theGuardian.length > 0 && <TheGuardianSearchResults articles={isDesktop ? theGuardian.slice(0, 5) : theGuardian} />}
       </div>
-      {newsAPI.length > 0 && <NewsAPISearchResults
+      {newsAPI && newsAPI.length > 0 && <NewsAPISearchResults
         articles={newsAPI.filter((news: any) => news.urlToImage).slice(0, 8)}
       />}
-      {isDesktop && nyt.length > 0 && <DesktopOnlyView />}
+      {isDesktop && nyt && nyt.length > 0 && <DesktopOnlyView />}
     </NewsPageLayout>
   );
 };
@@ -68,9 +68,9 @@ export const getStaticProps: GetStaticProps = async (
   const { params } = context;
 
   let seo = null;
-  let nyt = null;
-  let theGuardian = null;
-  let newsAPI = null;
+  let nyt = [];
+  let theGuardian = [];
+  let newsAPI = [];
 
   const REDIS_KEY = `news:${params?.slug}`;
   const prevData = await getFromRedis(REDIS_KEY);
@@ -94,10 +94,10 @@ export const getStaticProps: GetStaticProps = async (
   return {
     props: {
       slug: params?.slug ?? null,
-      seo,
-      nyt,
-      theGuardian,
-      newsAPI,
+      seo: seo ?? null,
+      nyt: nyt ?? null,
+      theGuardian: theGuardian ?? null,
+      newsAPI: newsAPI ?? null,
     },
   };
 };
