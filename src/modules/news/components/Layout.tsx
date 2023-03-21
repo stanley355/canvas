@@ -1,9 +1,11 @@
 import React from "react";
 import Router from "next/router";
-import Link from "next/link";
 import { FaNewspaper } from "react-icons/fa";
-import SearchBox from "@/common/components/SearchBox";
+import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
+import { NEWS_SECTIONS } from "../lib/constant";
+import SearchNavbar from "@/common/components/SearchNavbar";
 import Footer from "@/common/components/Footer";
+import Button from "@/common/components/Button";
 
 interface INewsPageLayout {
   query: any;
@@ -13,17 +15,32 @@ interface INewsPageLayout {
 const NewsPageLayout = (props: INewsPageLayout) => {
   const { query, children } = props;
 
+  const isDesktop = useDesktopScreen();
+
   return (
     <section className="relative">
-      <header className="py-4 px-2  lg:pr-8 border-b border-white flex flex-row items-center">
-        <Link href="/news/" passHref title="news">
-        <FaNewspaper className="text-3xl mx-2 lg:mx-4" />
-        </Link>
-        <SearchBox
-          placeholder={query && query.q ? query.q : "What's my news today?"}
-          onSubmit={(val) => Router.push(`/news/search?q=${val}`)}
-        />
-      </header>
+      <SearchNavbar
+        pageTitle="News"
+        basePagePath="/news/"
+        pageIcon={<FaNewspaper className="text-3xl mx-2 lg:mx-4" />}
+        searchPlaceHolder={query && query.q ? query.q : "What's my news today?"}
+        onSearchSubmit={(val) => Router.push(`/news/search?q=${val}`)}
+      />
+      {isDesktop && (
+        <div className="w-full border-b py-2">
+          <div className="container mx-auto flex flex-row justify-evenly text-lg">
+            {NEWS_SECTIONS.map((section) => (
+              <Button
+                type="link"
+                key={section.title}
+                href={section.href}
+                buttonClassName="p-2 hover:text-black hover:bg-white"
+                title={section.title}
+              />
+            ))}
+          </div>
+        </div>
+      )}
       <main className="min-h-screen container mx-auto">{children}</main>
       <Footer />
     </section>

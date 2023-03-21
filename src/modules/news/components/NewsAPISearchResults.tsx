@@ -10,18 +10,19 @@ const NewsAPISearchResults = (props: INewsAPISearchResults) => {
   const { articles } = props;
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pb-4">
       {articles.map((article) => (
         <div key={article.title} className="p-4 pb-0">
           <Image
             loader={() => article.urlToImage}
             src="next.svg"
+            className="w-full h-auto"
             alt={article.title}
             width={176}
             height={100}
           />
           <div>
-            <div className="text-white-500">
+            <div>
               {new Date(article.publishedAt).toLocaleDateString()}
             </div>
             <Link

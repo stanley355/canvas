@@ -12,7 +12,7 @@ const NewsHomeAdditonalArticles = (props: INewsHomeAdditionalArticles) => {
 
   return (
     <div className="p-4 border-b">
-      <div className="font-semibold text-lg mb-4">{title}</div>
+      <div className="font-semibold text-xl mb-4">{title}</div>
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         {articles
           .filter((article) => article.urlToImage)
@@ -20,7 +20,7 @@ const NewsHomeAdditonalArticles = (props: INewsHomeAdditionalArticles) => {
             <div key={article.url}>
               <Image
                 loader={() => article.urlToImage}
-                className="pb-2"
+                className="pb-2 w-full h-auto"
                 src="next.svg"
                 alt={article.title}
                 width={176}
@@ -33,6 +33,7 @@ const NewsHomeAdditonalArticles = (props: INewsHomeAdditionalArticles) => {
               >
                 {article.title}
               </Link>
+              <div>{new Date(article.publishedAt).toLocaleDateString()}</div>
             </div>
           ))}
       </div>

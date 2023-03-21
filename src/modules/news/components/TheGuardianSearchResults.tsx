@@ -20,8 +20,11 @@ const TheGuardianSearchResults = (props: ITheGuardianSearchResults) => {
           >
             {article.webTitle}
           </Link>
+          <div>
           <div className="text-white-500">
             {new Date(article.webPublicationDate).toLocaleDateString()}
+          </div>
+           <span>{article.sectionName}</span> 
           </div>
         </div>
       ))}

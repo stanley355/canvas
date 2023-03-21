@@ -36,3 +36,13 @@ People search for a wide variety of data beyond the stock market, depending on t
 
 [x] Reduce data fetching
 [x] SEO Adjustment
+[ ] Make News to ISR
+
+## Versions
+### 0.1.2 :
+- Add Sidebar Navigation to News and Scholar page
+- Layout adjustment on News and Scholar page
+
+### 0.1.3 :
+- Page Performance Improvement
+- Add Dynamic News on ISR
