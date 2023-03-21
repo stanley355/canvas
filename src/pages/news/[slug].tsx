@@ -68,9 +68,9 @@ export const getStaticProps: GetStaticProps = async (
   const { params } = context;
 
   let seo = null;
-  let nyt = [];
-  let theGuardian = [];
-  let newsAPI = [];
+  let nyt = null;
+  let theGuardian = null;
+  let newsAPI = null;
 
   const REDIS_KEY = `news:${params?.slug}`;
   const prevData = await getFromRedis(REDIS_KEY);
