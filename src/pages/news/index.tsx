@@ -45,11 +45,8 @@ const NewsPage = (props: any) => {
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  const datoSEO: any = await fetchDatoCms({
-    query: NEWS_SEO_QUERY,
-    variables: "",
-  });
 
+  let seo = null;
   let nyt = [];
   let theGuardian = [];
   let newsAPI = [];
@@ -60,16 +57,18 @@ export const getServerSideProps: GetServerSideProps = async (
 
   // TODO: Reduce data fetching
   if (prevData && prevData.length && prevData.length > 0) {
-    nyt = prevData[0].value;
-    theGuardian = prevData[1].value;
-    newsAPI = prevData[2].value;
+    seo = prevData[0].value,
+    nyt = prevData[1].value;
+    theGuardian = prevData[2].value;
+    newsAPI = prevData[3].value;
   } else {
     const newsData: any = await getHomeNewsData();
     await storeToRedis(REDIS_KEY, 60 * 60 * 3, newsData); // 3 hours
 
-    nyt = newsData[0].value;
-    theGuardian = newsData[1].value;
-    newsAPI = newsData[2].value;
+    seo = newsData[0].value,
+    nyt = newsData[1].value;
+    theGuardian = newsData[2].value;
+    newsAPI = newsData[3].value;
   }
 
   context.res.setHeader(
@@ -79,7 +78,7 @@ export const getServerSideProps: GetServerSideProps = async (
 
   return {
     props: {
-      seo: datoSEO?.news?.seo ?? null,
+      seo,
       nyt,
       theGuardian,
       newsAPI,
