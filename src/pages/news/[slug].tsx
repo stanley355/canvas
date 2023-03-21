@@ -14,7 +14,7 @@ import MetaSEO from "@/common/components/MetaSEO";
 const NewsSection = (props:any) => {
   const { slug, seo, nyt, theGuardian, newsAPI } = props;
 
-  const filteredNYT = nyt && nyt.length && nyt.filter((n: any) => n.multimedia.length > 0);
+  const filteredNYT = nyt && nyt.length ? nyt.filter((n: any) => n.multimedia.length > 0) : [];
   const isDesktop = useDesktopScreen();
 
   const DesktopOnlyView = () => (
@@ -38,9 +38,9 @@ const NewsSection = (props:any) => {
         {filteredNYT.length > 0 && <NYTSearchResults
           articles={isDesktop ? filteredNYT.slice(0, 2) : filteredNYT}
         />}
-        {theGuardian && theGuardian.length > 0 && <TheGuardianSearchResults articles={isDesktop ? theGuardian.slice(0, 5) : theGuardian} />}
+        {theGuardian && theGuardian.length && theGuardian.length > 0 && <TheGuardianSearchResults articles={isDesktop ? theGuardian.slice(0, 5) : theGuardian} />}
       </div>
-      {newsAPI && newsAPI.length > 0 && <NewsAPISearchResults
+      {newsAPI && newsAPI.length && newsAPI.length > 0 && <NewsAPISearchResults
         articles={newsAPI.filter((news: any) => news.urlToImage).slice(0, 8)}
       />}
       {isDesktop && nyt && nyt.length > 0 && <DesktopOnlyView />}
@@ -57,7 +57,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 
   return {
     paths,
-    fallback: false
+    fallback: true
   };
 };
 
