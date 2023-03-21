@@ -14,7 +14,7 @@ import MetaSEO from "@/common/components/MetaSEO";
 const NewsSection = (props:any) => {
   const { slug, seo, nyt, theGuardian, newsAPI } = props;
 
-  const filteredNYT = nyt.filter((n: any) => n.multimedia.length > 0);
+  const filteredNYT = nyt && nyt.length && nyt.filter((n: any) => n.multimedia.length > 0);
   const isDesktop = useDesktopScreen();
 
   const DesktopOnlyView = () => (
@@ -35,15 +35,15 @@ const NewsSection = (props:any) => {
     <NewsPageLayout query={{q: slug}}>
       {seo && <MetaSEO seo={seo} />}
       <div className="lg:flex lg:flex-row">
-        <NYTSearchResults
+        {filteredNYT.length > 0 && <NYTSearchResults
           articles={isDesktop ? filteredNYT.slice(0, 2) : filteredNYT}
-        />
-        <TheGuardianSearchResults articles={isDesktop ? theGuardian.slice(0, 5) : theGuardian} />
+        />}
+        {theGuardian.length > 0 && <TheGuardianSearchResults articles={isDesktop ? theGuardian.slice(0, 5) : theGuardian} />}
       </div>
-      <NewsAPISearchResults
+      {newsAPI.length > 0 && <NewsAPISearchResults
         articles={newsAPI.filter((news: any) => news.urlToImage).slice(0, 8)}
-      />
-      {isDesktop && <DesktopOnlyView />}
+      />}
+      {isDesktop && nyt.length > 0 && <DesktopOnlyView />}
     </NewsPageLayout>
   );
 };
