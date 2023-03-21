@@ -40,4 +40,5 @@ People search for a wide variety of data beyond the stock market, depending on t
 
 ## Versions
 ### 0.1.2 :
-- 
+- Add Sidebar Navigation to News and Scholar page
+- Layout adjustment on News and Scholar page
