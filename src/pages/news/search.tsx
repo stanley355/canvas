@@ -47,7 +47,6 @@ export const getServerSideProps: GetServerSideProps = async (
 
   const newsData: any = await getSearchNewsData(String(query.q));
 
-  console.log(222, newsData);
   let nyt = newsData[0].value;
   let theGuardian = newsData[1].value;
   let newsAPI = newsData[2].value;

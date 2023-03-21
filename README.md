@@ -36,3 +36,4 @@ People search for a wide variety of data beyond the stock market, depending on t
 
 [x] Reduce data fetching
 [x] SEO Adjustment
+[ ] Make News to ISR
