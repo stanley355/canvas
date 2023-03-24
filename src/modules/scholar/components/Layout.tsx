@@ -16,7 +16,7 @@ const ScholarPageLayout = (props: IScholarPageLayout) => {
     router && router.query.q ? String(router.query.q) : "What am I Researching Today";
 
   return (
-    <section className="relative">
+    <section>
       {router.query && router.query.q ? (
         <SearchNavbar
           pageTitle="Scholar Research"
