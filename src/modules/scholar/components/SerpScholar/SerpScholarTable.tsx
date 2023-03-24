@@ -13,7 +13,7 @@ const SerpScholarTable = (props: ISearchScholarTable) => {
   const PaperTable = () => (
     <tbody>
       {paperList.map((paper: any) => (
-        <tr>
+        <tr key={paper.link}>
           <td>
             <Button
               type="link"

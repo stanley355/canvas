@@ -11,7 +11,7 @@ import { fetchSerpScholar } from "../../lib/fetchSerpScholar";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
 const SerpScholar = () => {
-  const [showTable, setShowTable] = useState(true);
+  const [showTable, setShowTable] = useState(false);
   const router = useRouter();
   const isDesktop = useDesktopScreen();
 
