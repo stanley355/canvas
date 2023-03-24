@@ -3,7 +3,6 @@ import {
   FaCrosshairs,
   FaHome,
   FaGraduationCap,
-  FaNewspaper,
 } from "react-icons/fa";
 import classNames from "classnames";
 import Button from "./Button";
@@ -16,11 +15,6 @@ const SideNavbarBtn = () => {
       title: "Home",
       href: "/",
       icon: <FaHome />,
-    },
-    {
-      title: "News",
-      href: "/news",
-      icon: <FaNewspaper />,
     },
     {
       title: "Scholar",

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import classNames from "classnames";
-import { FaNewspaper, FaGraduationCap, FaHandPeace } from "react-icons/fa";
+import { FaGraduationCap } from "react-icons/fa";
 import SearchBox from "./SearchBox";
 
 interface IAdvanceSearchPopup {
@@ -17,26 +17,12 @@ const AdvanceSearchPopup = (props: IAdvanceSearchPopup) => {
 
   const ADVANCE_SEARCH_MENU = [
     {
-      title: "News Data",
-      href: `/news/search?q=${searchVal}`,
-      icon: <FaNewspaper className="text-xl mr-2" />,
-      className:
-        "p-2 mt-2 rounded-sm border bg-white text-black flex flex-row items-center justify-center",
-    },
-    {
       title: "Research Journal/Paper",
       href: `/scholar?q=${searchVal}`,
       icon: <FaGraduationCap className="text-xl mr-2" />,
       className:
         "p-2 mt-2 rounded-sm border bg-white text-black flex flex-row items-center justify-center",
     },
-    // {
-    //   title: "Why not both",
-    //   href: "/news",
-    //   icon: <FaHandPeace className="text-xl mr-2" />,
-    //   className:
-    //     "p-2 mt-2 rounded-sm border bg-white text-black flex flex-row items-center justify-center",
-    // },
   ];
 
   return (
