@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 
 import SerpScholarMobileBar from "./MobileBar";
-import Button from "@/common/components/Button";
+import SerpScholarDesktopBar from "./DesktopBar";
 import SerpScholarTable from "./SerpScholarTable";
 
 import { fetchSerpScholar } from "../../lib/fetchSerpScholar";
@@ -54,34 +54,14 @@ const SerpScholar = () => {
     );
   };
 
-  const DesktopBar = () => (
-    <div className="flex flex-row items-center justify-between p-2 border rounded-sm w-full">
-      <span className="flex flex-row items-center text-xl">
-        <FaGraduationCap className="text-2xl" />
-        <span className="mx-2">Google Scholar</span>
-        <span>
-          {/* ({data && data.organic_results ? data.organic_results.length : 0}{" "} */}
-          Results
-        </span>
-      </span>
-      <div>
-        <Button
-          type="button"
-          buttonClassName="bg-white px-2 items-center text-black flex flex-row"
-        >
-          <span className="font-semibold mr-2">
-            {showTable ? "Hide" : "Show"}
-          </span>
-          {showTable ? <FaChevronUp /> : <FaChevronDown />}
-        </Button>
-      </div>
-    </div>
-  );
-
   return (
     <div>
       {isDesktop ? (
-        <DesktopBar />
+        <SerpScholarDesktopBar
+          showTable={showTable}
+          onToggleClick={() => setShowTable(!showTable)}
+          resultLength={0}
+        />
       ) : (
         <SerpScholarMobileBar
           showTable={showTable}
