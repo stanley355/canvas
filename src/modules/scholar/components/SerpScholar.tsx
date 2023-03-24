@@ -9,15 +9,20 @@ interface ISerpScholar {
 const SerpScholar = (props: ISerpScholar) => {
   const { paperList } = props;
 
+  const [showTable, setShowTable] = useState(false);
+
   return (
     <div>
-      <Button type="button" wrapperClassName="flex flex-row justify-between">
-        <span>
-          <FaGraduationCap />
+      <Button
+        type="button"
+        buttonClassName="flex flex-row items-center justify-between p-2 border border-white rounded-sm w-full"
+      >
+        <span className="flex flex-row items-center">
+          <FaGraduationCap className="text-xl mr-2" />
           <span>Google Scholar</span>
           <span>({paperList.length} Results)</span>
         </span>
-        <FaChevronUp />
+        {showTable ? <FaChevronUp /> : <FaChevronDown />}
       </Button>
     </div>
   );
