@@ -5,6 +5,7 @@ import { FaSpinner } from "react-icons/fa";
 
 import ScholarMobileBar from "../ScholarMobileBar";
 import ScholarDesktopBar from "../ScholarDesktopBar";
+import SemanticScholarTable from "./SemanticScholarTable";
 
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { fetchSemanticScholar } from "../../lib/fetchSemanticScholar";
@@ -42,11 +43,12 @@ const SemanticScholar = () => {
         </div>
       );
 
-    // if (data && data.organic_results) {
-    //   if (data.organic_results.length > 0) {
-    //     return <SerpScholarTable paperList={data.organic_results} />;
-    //   }
-    // }
+    if (data && data.data) {
+      if (data.data.length > 0) {
+        return <SemanticScholarTable paperList={data.data} />;
+      }
+    }
+
     return (
       <div className="p-4 text-center text-xl border rounded-sm">
         No Results
