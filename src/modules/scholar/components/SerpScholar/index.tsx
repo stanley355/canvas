@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 
 import Button from "@/common/components/Button";
-import { fetchSerpScholar } from "../lib/fetchSerpScholar";
+import { fetchSerpScholar } from "../../lib/fetchSerpScholar";
 import SerpScholarTable from "./SerpScholarTable";
 
 const SerpScholar = () => {

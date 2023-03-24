@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import Button from "@/common/components/Button";
-import styles from "./ScholarTable.module.scss";
+import styles from "../ScholarTable.module.scss";
 
 interface ISearchScholarTable {
   paperList: any[];
