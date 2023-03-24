@@ -10,6 +10,8 @@ import { SCHOLAR_DATO_SEO_QUERY } from "@/modules/scholar/lib/query";
 import MetaSEO from "@/common/components/MetaSEO";
 import ScholarPageLayout from "@/modules/scholar/components/Layout";
 import SearchBox from "@/common/components/SearchBox";
+import ScholarSearchSkeleton from "@/modules/scholar/components/ScholarSearchSkeleton";
+import SerpScholar from "@/modules/scholar/components/SerpScholar";
 import SerpScholarTable from "@/modules/scholar/components/SerpScholarTable";
 
 const ScholarPage = (props: any) => {
@@ -33,9 +35,10 @@ const ScholarPage = (props: any) => {
     <ScholarPageLayout query={query}>
       <MetaSEO seo={seo} />
       {/* <ScholarPageHome /> */}
-      <div className="container mx-auto">
-        <SerpScholarTable paperList={serpScholar.organic_results} />
-      </div>
+      <ScholarSearchSkeleton
+        searchQuery={query.q}
+        serpPaperList={serpScholar.organic_results ?? []}
+      />
     </ScholarPageLayout>
   );
 };
@@ -51,15 +54,15 @@ export const getServerSideProps: GetServerSideProps = async (
     variables: "",
   });
 
-  if (query && query.q) {
-    const url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL}api/serp/scholar`);
-    url.searchParams.set("num", "20");
-    const queriedURL = assignPageQueryToURL(String(url), query);
+  // if (query && query.q) {
+  //   const url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL}api/serp/scholar`);
+  //   url.searchParams.set("num", "20");
+  //   const queriedURL = assignPageQueryToURL(String(url), query);
 
-    const { data } = await axios.get(String(queriedURL));
+  //   const { data } = await axios.get(String(queriedURL));
 
-    serpScholar = data;
-  }
+  //   serpScholar = data;
+  // }
 
   context.res.setHeader(
     "Cache-Control",
