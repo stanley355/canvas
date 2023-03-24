@@ -10,7 +10,7 @@ const ScholarSearchSkeleton = () => {
   return (
     <QueryClientProvider client={newQueryClient}>
       <div className="container mx-auto p-4 lg:px-0">
-        <SerpScholar />
+        {/* <SerpScholar /> */}
       </div>
     </QueryClientProvider>
   );
