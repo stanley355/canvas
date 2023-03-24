@@ -16,28 +16,25 @@ const SemanticScholar = () => {
   const router = useRouter();
   const isDesktop = useDesktopScreen();
 
-  const { isLoading, data } = useQuery({
+  const { isLoading, data, isFetching } = useQuery({
     queryKey: ["fetchSemanticScholar"],
     queryFn: () => fetchSemanticScholar(String(router.query.q)),
   });
 
-  console.log(data);
-
-  // const queryClient = useQueryClient();
-  // const mutation = useMutation({
-  //   mutationFn: (filter: any) =>
-  //     fetchSerpScholar(String(router.query.q), {
-  //       key: filter.value[0],
-  //       value: filter.value[1],
-  //     })
-  //     ,
-  //   onSuccess: (newData) => {
-  //     queryClient.setQueryData(["fetchSerpScholar"], newData);
-  //   },
-  // });
+  const queryClient = useQueryClient();
+  const mutation = useMutation({
+    mutationFn: (filter: any) =>
+      fetchSemanticScholar(String(router.query.q), {
+        key: filter.value[0],
+        value: filter.value[1],
+      }),
+    onSuccess: (newData) => {
+      queryClient.setQueryData(["fetchSemanticScholar"], newData);
+    },
+  });
 
   const SemanticScholarResult = () => {
-    if (isLoading)
+    if (isLoading || isFetching)
       return (
         <div className="py-4 flex items-center justify-center">
           <FaSpinner className="animate-spin text-3xl" />
@@ -64,7 +61,7 @@ const SemanticScholar = () => {
           title="Semantic Scholar"
           showTable={showTable}
           filterOptions={SEMANTIC_SCHOLAR_FILTER_OPTIONS}
-          onFilterChange={() => {}}
+          onFilterChange={mutation.mutate}
           onToggleClick={() => setShowTable(!showTable)}
           resultLength={0}
         />

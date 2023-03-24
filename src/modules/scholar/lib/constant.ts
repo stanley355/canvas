@@ -34,15 +34,15 @@ export const SEMANTIC_SCHOLAR_FILTER_OPTIONS = [
   },
   {
     label: `Since ${currentYear - 1}`,
-    value: ["year", `-${currentYear - 1}`],
+    value: ["year", `${currentYear - 1}-`],
   },
   {
     label: `Since ${currentYear - 2}`,
-    value: ["year", `-${currentYear - 2}`],
+    value: ["year", `${currentYear - 2}-`],
   },
   {
     label: `Since ${currentYear - 4}`,
-    value: ["year", `-${currentYear - 4}`],
+    value: ["year", `${currentYear - 4}-`],
   },
   {
     label: "PDF Only",
