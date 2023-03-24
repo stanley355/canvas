@@ -4,6 +4,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { FaSpinner } from "react-icons/fa";
 
 import ScholarMobileBar from "../ScholarMobileBar";
+import ScholarDesktopBar from "../ScholarDesktopBar";
 
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
@@ -30,7 +31,7 @@ const SemanticScholar = () => {
   //     },
   //   });
 
-  const SerpScholarResult = () => {
+  const SemanticScholarResult = () => {
     // if (isLoading)
     //   return (
     //     <div className="py-4 flex items-center justify-center">
@@ -53,7 +54,14 @@ const SemanticScholar = () => {
   return (
     <div>
       {isDesktop ? (
-        <></>
+        <ScholarDesktopBar
+          title="Semantic Scholar"
+          showTable={showTable}
+          filterOptions={[{ label: "", value: "" }]}
+          onFilterChange={() => {}}
+          onToggleClick={() => setShowTable(!showTable)}
+          resultLength={0}
+        />
       ) : (
         <ScholarMobileBar
           title="Semantic Scholar"
@@ -63,8 +71,7 @@ const SemanticScholar = () => {
         />
       )}
       <div className="overflow-y-scroll lg:overflow-hidden">
-        hi
-        {/* {showTable && <SerpScholarResult />} */}
+        {showTable && <SemanticScholarResult />}
       </div>
     </div>
   );
