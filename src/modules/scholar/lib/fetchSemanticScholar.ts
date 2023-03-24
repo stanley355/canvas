@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const fetchSerpScholar = async (searchQuery: string) => {
+export const fetchSemanticScholar = async (searchQuery: string) => {
   const targetURL = `${process.env.NEXT_PUBLIC_BASE_URL}api/scholar/semantic`;
   const url = new URL(targetURL);
   url.searchParams.set("query", searchQuery);
@@ -9,6 +9,11 @@ export const fetchSerpScholar = async (searchQuery: string) => {
   const fields = "title,authors,url,abstract,year,citationCount";
   url.searchParams.set("fields", fields);
 
-  const { data } = await axios.get(String(url));
+  const { data } = await axios.get(String(url), {
+    headers: {
+      path: "paper/search",
+    },
+  });
+
   return data;
 };

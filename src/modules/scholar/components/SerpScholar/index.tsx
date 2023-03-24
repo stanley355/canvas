@@ -16,13 +16,12 @@ const SerpScholar = () => {
   const router = useRouter();
   const isDesktop = useDesktopScreen();
 
-  const queryClient = useQueryClient();
-
   const { isLoading, data } = useQuery({
     queryKey: ["fetchSerpScholar"],
     queryFn: () => fetchSerpScholar(String(router.query.q)),
   });
 
+  const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: (filter: any) =>
       fetchSerpScholar(String(router.query.q), {

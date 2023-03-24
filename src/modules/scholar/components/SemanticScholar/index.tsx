@@ -7,37 +7,40 @@ import ScholarMobileBar from "../ScholarMobileBar";
 import ScholarDesktopBar from "../ScholarDesktopBar";
 
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
+import { fetchSemanticScholar } from "../../lib/fetchSemanticScholar";
 
 const SemanticScholar = () => {
   const [showTable, setShowTable] = useState(true);
   const router = useRouter();
   const isDesktop = useDesktopScreen();
 
-  //   const queryClient = useQueryClient();
+  const { isLoading, data } = useQuery({
+    queryKey: ["fetchSemanticScholar"],
+    queryFn: () => fetchSemanticScholar(String(router.query.q)),
+  });
 
-  //   const { isLoading, data } = useQuery({
-  //     queryKey: ["fetchSerpScholar"],
-  //     queryFn: () => fetchSerpScholar(String(router.query.q)),
-  //   });
+  console.log(data);
 
-  //   const mutation = useMutation({
-  //     mutationFn: (filter: any) =>
-  //       fetchSerpScholar(String(router.query.q), {
-  //         key: filter.value[0],
-  //         value: filter.value[1],
-  //       }),
-  //     onSuccess: (newData) => {
-  //       queryClient.setQueryData(["fetchSerpScholar"], newData);
-  //     },
-  //   });
+  // const queryClient = useQueryClient();
+  // const mutation = useMutation({
+  //   mutationFn: (filter: any) =>
+  //     fetchSerpScholar(String(router.query.q), {
+  //       key: filter.value[0],
+  //       value: filter.value[1],
+  //     })
+  //     ,
+  //   onSuccess: (newData) => {
+  //     queryClient.setQueryData(["fetchSerpScholar"], newData);
+  //   },
+  // });
 
   const SemanticScholarResult = () => {
-    // if (isLoading)
-    //   return (
-    //     <div className="py-4 flex items-center justify-center">
-    //       <FaSpinner className="animate-spin text-3xl" />
-    //     </div>
-    //   );
+    if (isLoading)
+      return (
+        <div className="py-4 flex items-center justify-center">
+          <FaSpinner className="animate-spin text-3xl" />
+        </div>
+      );
 
     // if (data && data.organic_results) {
     //   if (data.organic_results.length > 0) {
