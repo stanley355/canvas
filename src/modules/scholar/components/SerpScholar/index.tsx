@@ -67,7 +67,7 @@ const SerpScholar = () => {
           showTable={showTable}
           onClick={() => setShowTable(!showTable)}
           resultLength={0}
-          // resultLength={
+          // resultLength={bonly
           //   data && data.organic_results ? data.organic_results.length : 0
           // }
         />
