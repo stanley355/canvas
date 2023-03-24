@@ -1,5 +1,4 @@
 import React from "react";
-import Router from "next/router";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import axios from "axios";
 
@@ -11,8 +10,6 @@ import MetaSEO from "@/common/components/MetaSEO";
 import ScholarPageLayout from "@/modules/scholar/components/Layout";
 import ScholarHome from "@/modules/scholar/components/ScholarHome";
 import ScholarSearchSkeleton from "@/modules/scholar/components/ScholarSearchSkeleton";
-import SerpScholar from "@/modules/scholar/components/SerpScholar";
-import SerpScholarTable from "@/modules/scholar/components/SerpScholarTable";
 
 const ScholarPage = (props: any) => {
   const { query, seo, serpScholar } = props;
@@ -23,8 +20,7 @@ const ScholarPage = (props: any) => {
 
       {query && query.q ? (
         <ScholarSearchSkeleton
-          searchQuery={query.q}
-          serpPaperList={serpScholar.organic_results ?? []}
+          serpPaperList={serpScholar?.organic_results ?? []}
         />
       ) : (
         <ScholarHome />
