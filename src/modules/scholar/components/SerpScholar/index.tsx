@@ -11,7 +11,7 @@ import { fetchSerpScholar } from "../../lib/fetchSerpScholar";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
 const SerpScholar = () => {
-  const [showTable, setShowTable] = useState(false);
+  const [showTable, setShowTable] = useState(true);
   const router = useRouter();
   const isDesktop = useDesktopScreen();
 
@@ -54,7 +54,7 @@ const SerpScholar = () => {
   };
 
   return (
-    <div>
+    <div className="mb-4">
       {isDesktop ? (
         <SerpScholarDesktopBar
           showTable={showTable}

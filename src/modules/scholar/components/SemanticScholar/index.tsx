@@ -7,8 +7,8 @@ import ScholarMobileBar from "../ScholarMobileBar";
 
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
-const SerpScholar = () => {
-  const [showTable, setShowTable] = useState(false);
+const SemanticScholar = () => {
+  const [showTable, setShowTable] = useState(true);
   const router = useRouter();
   const isDesktop = useDesktopScreen();
 
@@ -81,10 +81,11 @@ const SerpScholar = () => {
         />
       )} */}
       <div className="overflow-y-scroll lg:overflow-hidden">
+        hi
         {/* {showTable && <SerpScholarResult />} */}
       </div>
     </div>
   );
 };
 
-export default SerpScholar;
+export default SemanticScholar;
