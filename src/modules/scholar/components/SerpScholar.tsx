@@ -49,20 +49,27 @@ const SerpScholar = () => {
     );
   };
 
+  const MobileBar = () => (
+    <Button
+      type="button"
+      onClick={() => setShowTable(!showTable)}
+      buttonClassName="flex flex-row items-center justify-between p-2 border rounded-sm w-full"
+    >
+      <span className="flex flex-row items-center text-xl">
+        <FaGraduationCap className="text-2xl" />
+        <span className="mx-2">Google Scholar</span>
+        <span>
+          ({data && data.organic_results ? data.organic_results.length : 0}{" "}
+          Results)
+        </span>
+      </span>
+      {showTable ? <FaChevronUp /> : <FaChevronDown />}
+    </Button>
+  );
+
   return (
     <div>
-      <Button
-        type="button"
-        onClick={() => setShowTable(!showTable)}
-        buttonClassName="flex flex-row items-center justify-between p-2 border rounded-sm w-full"
-      >
-        <span className="flex flex-row items-center text-xl">
-          <FaGraduationCap className="text-2xl" />
-          <span className="mx-2">Google Scholar</span>
-          <span>({data && data.organic_results ? data.organic_results.length : 0} Results)</span>
-        </span>
-        {showTable ? <FaChevronUp /> : <FaChevronDown />}
-      </Button>
+      <MobileBar />
       <div className="overflow-y-scroll lg:overflow-hidden">
         {showTable && <SerpScholarResult />}
       </div>
