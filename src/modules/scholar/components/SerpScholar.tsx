@@ -1,19 +1,11 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { FaGraduationCap, FaChevronUp, FaChevronDown } from "react-icons/fa";
 
 import Button from "@/common/components/Button";
 import { fetchSerpScholar } from "../lib/fetchSerpScholar";
 import SerpScholarTable from "./SerpScholarTable";
-
-const newQueryClient = new QueryClient();
 
 interface ISerpScholar {
   paperList: any[];
@@ -30,6 +22,8 @@ const SerpScholar = (props: ISerpScholar) => {
     queryKey: ["fetchSerpScholar"],
     queryFn: () => fetchSerpScholar(String(router.query.q)),
   });
+
+  console.log(data);
 
   const mutation = useMutation({
     mutationFn: () => fetchSerpScholar(String(router.query.q)),
@@ -63,12 +57,10 @@ const SerpScholar = (props: ISerpScholar) => {
         </span>
         {showTable ? <FaChevronUp /> : <FaChevronDown />}
       </Button>
-      <QueryClientProvider client={newQueryClient}>
-        <div className="overflow-y-scroll lg:overflow-hidden">
-          {/* {showTable && <SerpScholarResult />} */}
-          {isLoading ? "Loading..." : "hi"}
-        </div>
-      </QueryClientProvider>
+      <div className="overflow-y-scroll lg:overflow-hidden">
+        {/* {showTable && <SerpScholarResult />} */}
+        {isLoading ? "Loading..." : "hi"}
+      </div>
     </div>
   );
 };
