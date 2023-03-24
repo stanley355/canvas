@@ -9,7 +9,7 @@ import { SCHOLAR_DATO_SEO_QUERY } from "@/modules/scholar/lib/query";
 
 import MetaSEO from "@/common/components/MetaSEO";
 import ScholarPageLayout from "@/modules/scholar/components/Layout";
-import SearchBox from "@/common/components/SearchBox";
+import ScholarHome from "@/modules/scholar/components/ScholarHome";
 import ScholarSearchSkeleton from "@/modules/scholar/components/ScholarSearchSkeleton";
 import SerpScholar from "@/modules/scholar/components/SerpScholar";
 import SerpScholarTable from "@/modules/scholar/components/SerpScholarTable";
@@ -17,28 +17,18 @@ import SerpScholarTable from "@/modules/scholar/components/SerpScholarTable";
 const ScholarPage = (props: any) => {
   const { query, seo, serpScholar } = props;
 
-  const ScholarPageHome = () => (
-    <div className="container mx-auto flex flex-col items-center justify-center mt-12 px-4">
-      <h1 className="font-bold text-3xl mb-4 lg:text-4xl">
-        Scholar Research Data
-      </h1>
-      <SearchBox
-        placeholder="What am I researching today?"
-        onSubmit={(val) => Router.push(`/scholar?q=${val}`)}
-        className="lg:w-2/3"
-      />
-      <div className="text-lg mt-4">Knowledge is Power</div>
-    </div>
-  );
-
   return (
     <ScholarPageLayout query={query}>
       <MetaSEO seo={seo} />
-      {/* <ScholarPageHome /> */}
-      <ScholarSearchSkeleton
-        searchQuery={query.q}
-        serpPaperList={serpScholar.organic_results ?? []}
-      />
+
+      {query && query.q ? (
+        <ScholarSearchSkeleton
+          searchQuery={query.q}
+          serpPaperList={serpScholar.organic_results ?? []}
+        />
+      ) : (
+        <ScholarHome />
+      )}
     </ScholarPageLayout>
   );
 };
