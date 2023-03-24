@@ -1,10 +1,8 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const serpScholarAPI = async (req: NextApiRequest, res: NextApiResponse) => {
-  const url = new URL(`${process.env.SERPAPI_URL}search`);
-  url.searchParams.set("api_key", String(process.env.SERPAPI_KEY));
-  url.searchParams.set("engine", "google_scholar");
+const semanticScholarAPI = async (req: NextApiRequest, res: NextApiResponse) => {
+  const url = new URL(`${process.env.SEMANTIC_SCHOLAR_URL}v1/${req.headers.path}`);
 
   Object.keys(req.query).forEach((key: string) => {
     url.searchParams.set(key, String(req.query[key]));
@@ -18,4 +16,4 @@ const serpScholarAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default serpScholarAPI;
+export default semanticScholarAPI;
