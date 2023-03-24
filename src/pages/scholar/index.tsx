@@ -2,7 +2,6 @@ import React from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import axios from "axios";
 
-import { assignPageQueryToURL } from "@/common/lib/assignPageQueryToURL";
 import { fetchDatoCms } from "@/common/lib/fetchDatoCms";
 import { SCHOLAR_DATO_SEO_QUERY } from "@/modules/scholar/lib/query";
 
@@ -14,7 +13,6 @@ import ScholarSearchSkeleton from "@/modules/scholar/components/ScholarSearchSke
 const ScholarPage = (props: any) => {
   const { query, seo, serpScholar } = props;
 
-  console.log(serpScholar);
   return (
     <ScholarPageLayout query={query}>
       <MetaSEO seo={seo} />

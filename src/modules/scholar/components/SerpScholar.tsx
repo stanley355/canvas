@@ -31,13 +31,15 @@ const SerpScholar = (props: ISerpScholar) => {
         buttonClassName="flex flex-row items-center justify-between p-2 border rounded-sm w-full"
       >
         <span className="flex flex-row items-center text-xl">
-          <FaGraduationCap className="text-2xl"/>
+          <FaGraduationCap className="text-2xl" />
           <span className="mx-2">Google Scholar</span>
           <span>({paperList.length} Results)</span>
         </span>
         {showTable ? <FaChevronUp /> : <FaChevronDown />}
       </Button>
-      {showTable && <SerpScholarResult />}
+      <div className="overflow-y-scroll lg:overflow-hidden">
+        {showTable && <SerpScholarResult />}
+      </div>
     </div>
   );
 };

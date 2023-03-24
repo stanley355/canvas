@@ -13,7 +13,7 @@ const SerpScholarTable = (props: ISearchScholarTable) => {
   const PaperTable = () => (
     <tbody>
       {paperList.map((paper: any) => (
-        <tr className="">
+        <tr>
           <td>
             <Button
               type="link"
@@ -33,10 +33,12 @@ const SerpScholarTable = (props: ISearchScholarTable) => {
   return (
     <table className={styles.scholar__table}>
       <thead>
-        <th>Title</th>
-        <th>Cited By</th>
-        <th>Summary</th>
-        <th>Abstract</th>
+        <tr>
+          <th>Title</th>
+          <th>Cited By</th>
+          <th>Summary</th>
+          <th>Abstract</th>
+        </tr>
       </thead>
       <PaperTable />
     </table>
