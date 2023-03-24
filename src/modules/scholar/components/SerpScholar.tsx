@@ -17,37 +17,37 @@ const SerpScholar = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
 
-  const { isLoading, data } = useQuery({
-    queryKey: ["fetchSerpScholar"],
-    queryFn: () => fetchSerpScholar(String(router.query.q)),
-  });
+  // const { isLoading, data } = useQuery({
+  //   queryKey: ["fetchSerpScholar"],
+  //   queryFn: () => fetchSerpScholar(String(router.query.q)),
+  // });
 
-  const mutation = useMutation({
-    mutationFn: () => fetchSerpScholar(String(router.query.q)),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["fetchSerpScholar"] });
-    },
-  });
+  // const mutation = useMutation({
+  //   mutationFn: () => fetchSerpScholar(String(router.query.q)),
+  //   onSuccess: () => {
+  //     queryClient.invalidateQueries({ queryKey: ["fetchSerpScholar"] });
+  //   },
+  // });
 
-  const SerpScholarResult = () => {
-    if (isLoading)
-      return (
-        <div className="py-4 flex items-center justify-center">
-          <FaSpinner className="animate-spin text-3xl" />
-        </div>
-      );
+  // const SerpScholarResult = () => {
+  //   if (isLoading)
+  //     return (
+  //       <div className="py-4 flex items-center justify-center">
+  //         <FaSpinner className="animate-spin text-3xl" />
+  //       </div>
+  //     );
 
-    if (data && data.organic_results) {
-      if (data.organic_results.length > 0) {
-        return <SerpScholarTable paperList={data.organic_results} />;
-      }
-    }
-    return (
-      <div className="p-4 text-center text-xl border rounded-sm">
-        No Results
-      </div>
-    );
-  };
+  //   if (data && data.organic_results) {
+  //     if (data.organic_results.length > 0) {
+  //       return <SerpScholarTable paperList={data.organic_results} />;
+  //     }
+  //   }
+  //   return (
+  //     <div className="p-4 text-center text-xl border rounded-sm">
+  //       No Results
+  //     </div>
+  //   );
+  // };
 
   const MobileBar = () => (
     <Button
@@ -59,19 +59,40 @@ const SerpScholar = () => {
         <FaGraduationCap className="text-2xl" />
         <span className="mx-2">Google Scholar</span>
         <span>
-          ({data && data.organic_results ? data.organic_results.length : 0}{" "}
-          Results)
+          {/* ({data && data.organic_results ? data.organic_results.length : 0}{" "} */}
+          {/* Results) */}
         </span>
       </span>
       {showTable ? <FaChevronUp /> : <FaChevronDown />}
     </Button>
   );
 
+  const DesktopBar = () => (
+    <div className="flex flex-row items-center justify-between p-2 border rounded-sm w-full">
+      <span className="flex flex-row items-center text-xl">
+        <FaGraduationCap className="text-2xl" />
+        <span className="mx-2">Google Scholar</span>
+        <span>
+          {/* ({data && data.organic_results ? data.organic_results.length : 0}{" "} */}
+          Results
+        </span>
+      </span>
+      <div>
+        <Button type="button" buttonClassName="bg-white px-2 items-center text-black flex flex-row">
+          <span className="font-semibold mr-2">
+            {showTable ? "Hide" : "Show"}
+          </span>
+          {showTable ? <FaChevronUp /> : <FaChevronDown />}
+        </Button>
+      </div>
+    </div>
+  );
+
   return (
     <div>
-      <MobileBar />
+      <DesktopBar />
       <div className="overflow-y-scroll lg:overflow-hidden">
-        {showTable && <SerpScholarResult />}
+        {/* {showTable && <SerpScholarResult />} */}
       </div>
     </div>
   );
