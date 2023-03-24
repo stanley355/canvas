@@ -62,24 +62,6 @@ const SemanticScholar = () => {
           onClick={() => setShowTable(!showTable)}
         />
       )}
-      {/* {isDesktop ? (
-        <SerpScholarDesktopBar
-          showTable={showTable}
-          onFilterChange={mutation.mutate}
-          onToggleClick={() => setShowTable(!showTable)}
-          resultLength={
-            data && data.organic_results ? data.organic_results.length : 0
-          }
-        />
-      ) : (
-        <SerpScholarMobileBar
-          showTable={showTable}
-          onClick={() => setShowTable(!showTable)}
-          resultLength={
-            data && data.organic_results ? data.organic_results.length : 0
-          }
-        />
-      )} */}
       <div className="overflow-y-scroll lg:overflow-hidden">
         hi
         {/* {showTable && <SerpScholarResult />} */}

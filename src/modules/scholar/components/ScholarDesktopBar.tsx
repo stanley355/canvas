@@ -3,55 +3,35 @@ import { FaGraduationCap, FaChevronUp, FaChevronDown } from "react-icons/fa";
 import Select from "react-select";
 import Button from "@/common/components/Button";
 
-interface ISerpScholarDesktopBar {
+interface IScholarDesktopBar {
+  title: string;
   showTable: boolean;
   resultLength: number;
-  onFilterChange: (filter:any) => void;
+  filterOptions: Array<{ label: any; value: any }>;
+  onFilterChange: (filter: any) => void;
   onToggleClick: () => void;
 }
 
-const SerpScholarDesktopBar = (props: ISerpScholarDesktopBar) => {
-  const { showTable, resultLength, onToggleClick, onFilterChange } = props;
-
-  const currentYear = new Date().getFullYear();
-
-  const FILTER_OPTIONS = [
-    {
-      label: "Any Time",
-      value: [],
-    },
-    {
-      label: `Since ${currentYear - 1}`,
-      value: ["as_ylo", String(currentYear - 1)],
-    },
-    {
-      label: `Since ${currentYear - 2}`,
-      value: ["as_ylo", String(currentYear - 2)],
-    },
-    {
-      label: `Since ${currentYear - 4}`,
-      value: ["as_ylo", String(currentYear - 4)],
-    },
-    {
-      label: "Sort By Relevance",
-      value: ["scisbd", "0"],
-    },
-    {
-      label: "Sort By Date",
-      value: ["scisbd", "2"],
-    },
-  ];
+const ScholarDesktopBar = (props: IScholarDesktopBar) => {
+  const {
+    title,
+    filterOptions,
+    showTable,
+    resultLength,
+    onToggleClick,
+    onFilterChange,
+  } = props;
 
   return (
     <div className="flex flex-row items-center justify-between p-2 border rounded-sm w-full">
       <span className="flex flex-row items-center text-xl">
         <FaGraduationCap className="text-2xl" />
-        <span className="mx-2">Google Scholar</span>
+        <span className="mx-2">{title}</span>
         <span>({resultLength} Results)</span>
       </span>
       <div className="flex flex-row items-center w-1/5">
         <Select
-          options={FILTER_OPTIONS}
+          options={filterOptions}
           name="filter_options"
           placeholder="Filter"
           className="mr-4 text-black w-full"
@@ -72,4 +52,4 @@ const SerpScholarDesktopBar = (props: ISerpScholarDesktopBar) => {
   );
 };
 
-export default SerpScholarDesktopBar;
+export default ScholarDesktopBar;

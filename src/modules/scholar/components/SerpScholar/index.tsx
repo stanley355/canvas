@@ -4,11 +4,12 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { FaSpinner } from "react-icons/fa";
 
 import ScholarMobileBar from "../ScholarMobileBar";
-import SerpScholarDesktopBar from "./DesktopBar";
+import ScholarDesktopBar from "../ScholarDesktopBar";
 import SerpScholarTable from "./SerpScholarTable";
 
 import { fetchSerpScholar } from "../../lib/fetchSerpScholar";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
+import { SERP_SCHOLAR_FILTER_OPTIONS } from "../../lib/constant";
 
 const SerpScholar = () => {
   const [showTable, setShowTable] = useState(true);
@@ -56,8 +57,10 @@ const SerpScholar = () => {
   return (
     <div className="mb-4">
       {isDesktop ? (
-        <SerpScholarDesktopBar
+        <ScholarDesktopBar
+          title="Google Scholar"
           showTable={showTable}
+          filterOptions={SERP_SCHOLAR_FILTER_OPTIONS}
           onFilterChange={mutation.mutate}
           onToggleClick={() => setShowTable(!showTable)}
           resultLength={
