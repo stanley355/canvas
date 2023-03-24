@@ -8,7 +8,6 @@ import { fetchDatoCms } from "@/common/lib/fetchDatoCms";
 import { SCHOLAR_DATO_SEO_QUERY } from "@/modules/scholar/lib/query";
 
 import ScholarPageLayout from "@/modules/scholar/components/Layout";
-import ScholarResultSkeleton from "@/modules/scholar/components/ResultSkeleton";
 import SearchBox from "@/common/components/SearchBox";
 import MetaSEO from "@/common/components/MetaSEO";
 
@@ -30,16 +29,7 @@ const ScholarPage = (props: any) => {
   return (
     <ScholarPageLayout query={query}>
       <MetaSEO seo={seo} />
-      {query && query.q ? (
-        <ScholarResultSkeleton
-          query={query}
-          pagination={serpResult.pagination}
-          searchInfo={serpResult.search_information}
-          organicResults={serpResult.organic_results}
-        />
-      ) : (
-        <ScholarPageHome />
-      )}
+      <ScholarPageHome />
     </ScholarPageLayout>
   );
 };
