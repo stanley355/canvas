@@ -1,5 +1,7 @@
 import React from "react";
+import classNames from "classnames";
 import Button from "@/common/components/Button";
+import styles from "./ScholarTable.module.scss";
 
 interface ISearchScholarTable {
   paperList: any[];
@@ -8,38 +10,39 @@ interface ISearchScholarTable {
 const SerpScholarTable = (props: ISearchScholarTable) => {
   const { paperList } = props;
 
-  const PaperTable = () => {
-    return (
-      <tbody>
-        {paperList.map((paper: any) => (
-          <tr>
-            <td>
-              <Button
-                type="link"
-                href={paper.link}
-                title={paper.title}
-                wrapperClassName="text-blue-200"
-              />
-            </td>
-            <td>{paper.inline_links.cited_by}</td>
-            <td>{paper.publication_info.Summary}</td>
-            <td>{paper.snippet}</td>
-          </tr>
-        ))}
-      </tbody>
-    );
-  };
+  const PaperTable = () => (
+    <tbody>
+      {paperList.map((paper: any) => (
+        <tr className="">
+          <td>
+            <Button
+              type="link"
+              href={paper.link}
+              title={paper.title}
+              wrapperClassName="text-blue-200"
+            />
+          </td>
+          <td>{paper.inline_links.cited_by.total}</td>
+          <td>{paper.publication_info.summary}</td>
+          <td>{paper.snippet}</td>
+        </tr>
+      ))}
+    </tbody>
+  );
 
   return (
-    <table>
-      <thead>
-        <td>Title</td>
-        <td>Cited By</td>
-        <td>Summary</td>
-        <td>Abstract</td>
-      </thead>
-      <PaperTable />
-    </table>
+    <div>
+      <div>Google Scholar Result</div>
+      <table className={styles.scholar__table}>
+        <thead>
+          <th>Title</th>
+          <th>Cited By</th>
+          <th>Summary</th>
+          <th>Abstract</th>
+        </thead>
+        <PaperTable />
+      </table>
+    </div>
   );
 };
 

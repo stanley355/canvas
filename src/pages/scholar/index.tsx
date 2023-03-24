@@ -33,7 +33,9 @@ const ScholarPage = (props: any) => {
     <ScholarPageLayout query={query}>
       <MetaSEO seo={seo} />
       {/* <ScholarPageHome /> */}
-      <SerpScholarTable paperList={serpScholar.organic_results} />
+      <div className="container mx-auto">
+        <SerpScholarTable paperList={serpScholar.organic_results} />
+      </div>
     </ScholarPageLayout>
   );
 };
@@ -42,7 +44,7 @@ export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   const { query } = context;
-  let serpScholar;
+  let serpScholar = null;
 
   const datoSEO: any = await fetchDatoCms({
     query: SCHOLAR_DATO_SEO_QUERY,
@@ -51,6 +53,7 @@ export const getServerSideProps: GetServerSideProps = async (
 
   if (query && query.q) {
     const url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL}api/serp/scholar`);
+    url.searchParams.set("num", "20");
     const queriedURL = assignPageQueryToURL(String(url), query);
 
     const { data } = await axios.get(String(queriedURL));
