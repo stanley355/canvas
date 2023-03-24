@@ -1,5 +1,4 @@
 import React from "react";
-import classNames from "classnames";
 import Button from "@/common/components/Button";
 import styles from "../ScholarTable.module.scss";
 
@@ -19,7 +18,7 @@ const SerpScholarTable = (props: ISearchScholarTable) => {
               type="link"
               href={paper.link}
               title={paper.title}
-              wrapperClassName="text-blue-200"
+              wrapperClassName="text-blue-200 hover:underline"
             />
           </td>
           <td>{paper.inline_links?.cited_by?.total ?? "Unknown" }</td>
