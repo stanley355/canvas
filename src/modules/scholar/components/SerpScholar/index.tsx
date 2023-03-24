@@ -59,6 +59,7 @@ const SerpScholar = () => {
       {isDesktop ? (
         <SerpScholarDesktopBar
           showTable={showTable}
+          onFilterChange={(filter:any) => {}}
           onToggleClick={() => setShowTable(!showTable)}
           resultLength={0}
         />

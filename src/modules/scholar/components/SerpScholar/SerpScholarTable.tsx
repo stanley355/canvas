@@ -22,7 +22,7 @@ const SerpScholarTable = (props: ISearchScholarTable) => {
               wrapperClassName="text-blue-200"
             />
           </td>
-          <td>{paper.inline_links.cited_by?.total}</td>
+          <td>{paper.inline_links?.cited_by?.total ?? "Unknown" }</td>
           <td>{paper.publication_info.summary}</td>
           <td>{paper.snippet}</td>
         </tr>
