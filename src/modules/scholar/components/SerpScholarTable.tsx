@@ -22,7 +22,7 @@ const SerpScholarTable = (props: ISearchScholarTable) => {
               wrapperClassName="text-blue-200"
             />
           </td>
-          <td>{paper.inline_links.cited_by.total}</td>
+          <td>{paper.inline_links.cited_by?.total}</td>
           <td>{paper.publication_info.summary}</td>
           <td>{paper.snippet}</td>
         </tr>
@@ -32,7 +32,7 @@ const SerpScholarTable = (props: ISearchScholarTable) => {
 
   return (
     <div>
-      <div>Google Scholar Result</div>
+      <div className="py-4 font-semibold text-2xl text-center">Google Scholar Result</div>
       <table className={styles.scholar__table}>
         <thead>
           <th>Title</th>
