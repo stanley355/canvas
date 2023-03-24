@@ -1,28 +1,29 @@
 import React from "react";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import { FaGraduationCap } from "react-icons/fa";
 import SearchNavbar from "@/common/components/SearchNavbar";
 import Footer from "@/common/components/Footer";
 
 interface IScholarPageLayout {
-  query: any;
   children: React.ReactNode;
 }
 
 const ScholarPageLayout = (props: IScholarPageLayout) => {
-  const { query, children } = props;
+  const { children } = props;
+
+  const router = useRouter();
+  const searchQuery =
+    router && router.query.q ? String(router.query.q) : "What am I Researching Today";
 
   return (
     <section className="relative">
-      {query && query.q ? (
+      {router.query && router.query.q ? (
         <SearchNavbar
           pageTitle="Scholar Research"
           basePagePath="/scholar/"
           pageIcon={<FaGraduationCap className="text-3xl mx-2 lg:mx-4" />}
-          searchPlaceHolder={
-            query && query.q ? query.q : "What am I researching today?"
-          }
-          onSearchSubmit={(val) => Router.push(`/scholar?q=${val}`)}
+          searchPlaceHolder={searchQuery}
+          onSearchSubmit={(val) => router.push(`/scholar?q=${val}`)}
         />
       ) : (
         <FaGraduationCap className="text-3xl mx-auto my-4" />
