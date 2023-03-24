@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import {
-  FaGraduationCap,
-  FaChevronUp,
-  FaChevronDown,
-  FaSpinner,
-} from "react-icons/fa";
+import { FaSpinner } from "react-icons/fa";
 
 import SerpScholarMobileBar from "./MobileBar";
 import SerpScholarDesktopBar from "./DesktopBar";
@@ -24,13 +19,17 @@ const SerpScholar = () => {
 
   const { isLoading, data } = useQuery({
     queryKey: ["fetchSerpScholar"],
-    // queryFn: () => fetchSerpScholar(String(router.query.q)),
+    queryFn: () => fetchSerpScholar(String(router.query.q)),
   });
 
   const mutation = useMutation({
-    mutationFn: () => fetchSerpScholar(String(router.query.q)),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["fetchSerpScholar"] });
+    mutationFn: (filter: any) =>
+      fetchSerpScholar(String(router.query.q), {
+        key: filter.value[0],
+        value: filter.value[1],
+      }),
+    onSuccess: (newData) => {
+      queryClient.setQueryData(["fetchSerpScholar"], newData);
     },
   });
 
@@ -42,11 +41,11 @@ const SerpScholar = () => {
         </div>
       );
 
-    // if (data && data.organic_results) {
-    //   if (data.organic_results.length > 0) {
-    //     return <SerpScholarTable paperList={data.organic_results} />;
-    //   }
-    // }
+    if (data && data.organic_results) {
+      if (data.organic_results.length > 0) {
+        return <SerpScholarTable paperList={data.organic_results} />;
+      }
+    }
     return (
       <div className="p-4 text-center text-xl border rounded-sm">
         No Results
@@ -59,18 +58,19 @@ const SerpScholar = () => {
       {isDesktop ? (
         <SerpScholarDesktopBar
           showTable={showTable}
-          onFilterChange={(filter:any) => {}}
+          onFilterChange={mutation.mutate}
           onToggleClick={() => setShowTable(!showTable)}
-          resultLength={0}
+          resultLength={
+            data && data.organic_results ? data.organic_results.length : 0
+          }
         />
       ) : (
         <SerpScholarMobileBar
           showTable={showTable}
           onClick={() => setShowTable(!showTable)}
-          resultLength={0}
-          // resultLength={bonly
-          //   data && data.organic_results ? data.organic_results.length : 0
-          // }
+          resultLength={
+            data && data.organic_results ? data.organic_results.length : 0
+          }
         />
       )}
       <div className="overflow-y-scroll lg:overflow-hidden">
