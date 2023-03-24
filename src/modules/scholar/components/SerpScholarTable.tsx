@@ -31,18 +31,15 @@ const SerpScholarTable = (props: ISearchScholarTable) => {
   );
 
   return (
-    <div>
-      <div className="py-4 font-semibold text-2xl text-center">Google Scholar Result</div>
-      <table className={styles.scholar__table}>
-        <thead>
-          <th>Title</th>
-          <th>Cited By</th>
-          <th>Summary</th>
-          <th>Abstract</th>
-        </thead>
-        <PaperTable />
-      </table>
-    </div>
+    <table className={styles.scholar__table}>
+      <thead>
+        <th>Title</th>
+        <th>Cited By</th>
+        <th>Summary</th>
+        <th>Abstract</th>
+      </thead>
+      <PaperTable />
+    </table>
   );
 };
 

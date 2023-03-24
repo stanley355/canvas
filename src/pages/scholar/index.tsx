@@ -14,6 +14,7 @@ import ScholarSearchSkeleton from "@/modules/scholar/components/ScholarSearchSke
 const ScholarPage = (props: any) => {
   const { query, seo, serpScholar } = props;
 
+  console.log(serpScholar);
   return (
     <ScholarPageLayout query={query}>
       <MetaSEO seo={seo} />
@@ -40,15 +41,15 @@ export const getServerSideProps: GetServerSideProps = async (
     variables: "",
   });
 
-  // if (query && query.q) {
-  //   const url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL}api/serp/scholar`);
-  //   url.searchParams.set("num", "20");
-  //   const queriedURL = assignPageQueryToURL(String(url), query);
+  if (query && query.q) {
+    const url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL}api/serp/scholar`);
+    url.searchParams.set("q", String(query.q));
+    url.searchParams.set("num", "20");
 
-  //   const { data } = await axios.get(String(queriedURL));
+    const { data } = await axios.get(String(url));
 
-  //   serpScholar = data;
-  // }
+    serpScholar = data;
+  }
 
   context.res.setHeader(
     "Cache-Control",

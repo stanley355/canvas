@@ -9,7 +9,7 @@ const ScholarSearchSkeleton = (props: IScholarSearchSkeleton) => {
   const { serpPaperList } = props;
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 lg:px-0">
       <SerpScholar paperList={serpPaperList} />
     </div>
   );
