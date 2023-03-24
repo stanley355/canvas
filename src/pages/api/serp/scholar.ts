@@ -11,8 +11,8 @@ const serpScholarAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   });
 
   try {
-    const response = await axios.get(String(url));
-    res.json(response?.data);
+    const { data } = await axios.get(String(url));
+    res.json(data);
   } catch (error) {
     res.json(error);
   }

@@ -16,7 +16,9 @@ const ScholarPage = (props: any) => {
 
   const ScholarPageHome = () => (
     <div className="container mx-auto flex flex-col items-center justify-center mt-12 px-4">
-      <h1 className="font-bold text-3xl mb-4 lg:text-4xl">Scholar Data</h1>
+      <h1 className="font-bold text-3xl mb-4 lg:text-4xl">
+        Scholar Research Data
+      </h1>
       <SearchBox
         placeholder="What am I researching today?"
         onSubmit={(val) => Router.push(`/scholar?q=${val}`)}
@@ -38,22 +40,20 @@ export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   const { query } = context;
-  let serpResult = [];
+  let serpScholar;
 
-  const datoSEO: any = await fetchDatoCms({
-    query: SCHOLAR_DATO_SEO_QUERY,
-    variables: "",
-  });
+  // const datoSEO: any = await fetchDatoCms({
+  //   query: SCHOLAR_DATO_SEO_QUERY,
+  //   variables: "",
+  // });
 
   if (query && query.q) {
     const url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL}api/serp/scholar`);
     const queriedURL = assignPageQueryToURL(String(url), query);
 
-    const serpRes: any = await axios.get(String(queriedURL));
+    const { data } = await axios.get(String(queriedURL));
 
-    if (serpRes && serpRes.data) {
-      serpResult = structuredClone(serpRes.data);
-    }
+    serpScholar = data;
   }
 
   context.res.setHeader(
@@ -64,8 +64,8 @@ export const getServerSideProps: GetServerSideProps = async (
   return {
     props: {
       query,
-      seo: datoSEO?.scholar?.seo ?? null,
-      serpResult,
+      // seo: datoSEO?.scholar?.seo ?? null,
+      serpScholar,
     },
   };
 };
