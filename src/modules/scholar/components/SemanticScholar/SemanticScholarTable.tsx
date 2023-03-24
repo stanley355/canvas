@@ -24,8 +24,8 @@ const SemanticScholarTable = (props: ISearchScholarTable) => {
               title={paper.title}
               wrapperClassName="text-blue-200 hover:underline"
             />
+            <div>({paper.year})</div>
           </td>
-          <td>{paper.year}</td>
           <td>{paper.citationCount}</td>
           <td>{handlePaperAuthors(paper.authors)}</td>
           <td>{paper.abstract}</td>
@@ -39,7 +39,6 @@ const SemanticScholarTable = (props: ISearchScholarTable) => {
       <thead>
         <tr>
           <th>Title</th>
-          <th>Year</th>
           <th>Cited By</th>
           <th>Author</th>
           <th>Abstract</th>

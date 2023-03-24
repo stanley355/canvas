@@ -9,6 +9,7 @@ import SemanticScholarTable from "./SemanticScholarTable";
 
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { fetchSemanticScholar } from "../../lib/fetchSemanticScholar";
+import { SEMANTIC_SCHOLAR_FILTER_OPTIONS } from "../../lib/constant";
 
 const SemanticScholar = () => {
   const [showTable, setShowTable] = useState(true);
@@ -62,7 +63,7 @@ const SemanticScholar = () => {
         <ScholarDesktopBar
           title="Semantic Scholar"
           showTable={showTable}
-          filterOptions={[{ label: "", value: "" }]}
+          filterOptions={SEMANTIC_SCHOLAR_FILTER_OPTIONS}
           onFilterChange={() => {}}
           onToggleClick={() => setShowTable(!showTable)}
           resultLength={0}
