@@ -14,15 +14,12 @@ const ScholarPage = (props: any) => {
       <MetaSEO seo={seo} />
 
       {router.query && router.query.q ? (
-        <ScholarSearchSkeleton
-          serpPaperList={serpScholar?.organic_results ?? []}
-        />
+        <ScholarSearchSkeleton />
       ) : (
         <ScholarHome />
       )}
     </ScholarPageLayout>
   );
 };
-
 
 export default ScholarPage;

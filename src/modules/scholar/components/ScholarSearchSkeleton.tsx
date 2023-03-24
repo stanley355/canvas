@@ -4,17 +4,13 @@ import SerpScholar from "./SerpScholar";
 
 const newQueryClient = new QueryClient();
 
-interface IScholarSearchSkeleton {
-  serpPaperList: any[];
-}
 
-const ScholarSearchSkeleton = (props: IScholarSearchSkeleton) => {
-  const { serpPaperList } = props;
+const ScholarSearchSkeleton = () => {
 
   return (
     <QueryClientProvider client={newQueryClient}>
       <div className="container mx-auto p-4 lg:px-0">
-        <SerpScholar paperList={serpPaperList} />
+        <SerpScholar />
       </div>
     </QueryClientProvider>
   );
