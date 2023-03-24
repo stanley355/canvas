@@ -46,3 +46,8 @@ People search for a wide variety of data beyond the stock market, depending on t
 ### 0.1.3 :
 - Page Performance Improvement
 - Add Dynamic News on ISR
+
+### 0.1.6
+- Remove News Page
+- Scholar Page Revamp
+- Add Semantic Scholar Result to Scholar Search
