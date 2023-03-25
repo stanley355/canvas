@@ -63,7 +63,7 @@ const SerpScholar = () => {
           onFilterChange={mutation.mutate}
           onToggleClick={() => setShowTable(!showTable)}
           resultLength={
-            data && data.organic_results ? data.organic_results.length : 0
+            data && data.search_information ? data.search_information.total_results : 0
           }
         />
       ) : (
@@ -72,7 +72,7 @@ const SerpScholar = () => {
           showTable={showTable}
           onClick={() => setShowTable(!showTable)}
           resultLength={
-            data && data.organic_results ? data.organic_results.length : 0
+            data && data.search_information ? data.search_information.total_results : 0
           }
         />
       )}

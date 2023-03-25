@@ -31,6 +31,13 @@ const SemanticScholarTable = (props: ISearchScholarTable) => {
           <td>{paper.abstract}</td>
         </tr>
       ))}
+
+      <tr>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+      </tr>
     </tbody>
   );
 

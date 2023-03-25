@@ -26,6 +26,12 @@ const SerpScholarTable = (props: ISearchScholarTable) => {
           <td>{paper.snippet}</td>
         </tr>
       ))}
+      <tr>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+      </tr>
     </tbody>
   );
 

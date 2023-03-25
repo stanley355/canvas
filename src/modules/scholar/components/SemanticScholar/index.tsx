@@ -63,13 +63,13 @@ const SemanticScholar = () => {
           filterOptions={SEMANTIC_SCHOLAR_FILTER_OPTIONS}
           onFilterChange={mutation.mutate}
           onToggleClick={() => setShowTable(!showTable)}
-          resultLength={0}
+          resultLength={data && data?.data?.length > 0 ? data.data.length : 0 }
         />
       ) : (
         <ScholarMobileBar
           title="Semantic Scholar"
           showTable={showTable}
-          resultLength={0}
+          resultLength={data && data?.data?.length > 0 ? data.data.length : 0 }
           onClick={() => setShowTable(!showTable)}
         />
       )}
