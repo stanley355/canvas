@@ -57,7 +57,7 @@ const SerpScholar = () => {
     <div className="mb-4">
       {isDesktop ? (
         <ScholarDesktopBar
-          title="Google Scholar"
+          title="Additional Search"
           showTable={showTable}
           filterOptions={SERP_SCHOLAR_FILTER_OPTIONS}
           onFilterChange={mutation.mutate}
@@ -68,7 +68,7 @@ const SerpScholar = () => {
         />
       ) : (
         <ScholarMobileBar
-          title="Google Scholar"
+          title="Additional Search"
           showTable={showTable}
           onClick={() => setShowTable(!showTable)}
           resultLength={

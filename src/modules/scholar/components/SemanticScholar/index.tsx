@@ -58,7 +58,7 @@ const SemanticScholar = () => {
     <div>
       {isDesktop ? (
         <ScholarDesktopBar
-          title="Semantic Scholar"
+          title="Main Search"
           showTable={showTable}
           filterOptions={SEMANTIC_SCHOLAR_FILTER_OPTIONS}
           onFilterChange={mutation.mutate}
@@ -67,7 +67,7 @@ const SemanticScholar = () => {
         />
       ) : (
         <ScholarMobileBar
-          title="Semantic Scholar"
+          title="Main Search"
           showTable={showTable}
           resultLength={data && data?.data?.length > 0 ? data.data.length : 0 }
           onClick={() => setShowTable(!showTable)}
