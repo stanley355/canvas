@@ -51,3 +51,6 @@ People search for a wide variety of data beyond the stock market, depending on t
 - Remove News Page
 - Scholar Page Revamp
 - Add Semantic Scholar Result to Scholar Search
+
+### 0.1.7
+- Bug fix for scholar search results
