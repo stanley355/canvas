@@ -3,6 +3,7 @@ import Link from "next/link";
 
 interface IButton {
   type: "button" | "submit" | "link";
+  disabled?: boolean;
   title?: string;
   href?: string;
   key?: string;
@@ -15,6 +16,7 @@ interface IButton {
 
 const Button = (props: IButton) => {
   const {
+    disabled,
     title,
     href,
     type,
@@ -39,6 +41,7 @@ const Button = (props: IButton) => {
         </Link>
       ) : (
         <button
+          disabled={disabled}
           type={type}
           onClick={onClick}
           aria-label={ariaLabel}

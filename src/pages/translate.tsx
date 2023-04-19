@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Select from "react-select";
-import { FaAngleDoubleRight } from "react-icons/fa";
+import { FaAngleDoubleRight, FaSpinner } from "react-icons/fa";
 import axios from "axios";
 import Button from "@/common/components/Button";
 import Layout from "@/common/components/Layout";
@@ -8,6 +8,8 @@ import { LANGUAGE_LIST } from "@/modules/translate/constant";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
 const LangTranslate = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [translateValue, setTranslateValue] = useState("");
   const isDesktop = useDesktopScreen();
 
   const handleSubmit = async (e: any) => {
@@ -32,12 +34,21 @@ const LangTranslate = () => {
       return "";
     }
 
+    setIsLoading(true);
     const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/openai/chat-completion/`;
     const reqData = {
       message: `Translate this text from ${oriLang} to ${targetLang}: "${oriLangText}"`,
     };
+
     const { data } = await axios.post(URL, reqData);
-    console.log(222, data);
+    if (data && data.choices.length > 0) {
+      setTranslateValue(data.choices[0].message.content);
+    } else {
+      alert("Something went wrong, please try again!");
+    }
+
+    setIsLoading(false);
+    return "";
   };
 
   return (
@@ -77,15 +88,25 @@ const LangTranslate = () => {
               cols={30}
               rows={10}
               className="w-full border rounded-md bg-transparent p-2"
+              value={translateValue}
               placeholder="..."
             />
           </div>
           <Button
             type="submit"
-            title="Submit"
+            disabled={isLoading}
             wrapperClassName="w-full lg:w-1/3 lg:mx-auto"
             buttonClassName="w-full bg-white text-black py-2 text-md rounded-md font-semibold text-center hover:border hover:border-white hover:bg-black hover:text-white"
-          />
+          >
+            {isLoading ? (
+              <div className="flex flex row items-center justify-center">
+                <span className="mr-2">Loading</span>
+                <FaSpinner className="animate-spin" />
+              </div>
+            ) : (
+              "Submit"
+            )}
+          </Button>
         </div>
       </form>
     </Layout>
