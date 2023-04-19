@@ -1,10 +1,10 @@
 import React from "react";
-import { Inter } from 'next/font/google'
-import {SiTaichilang} from 'react-icons/si';
+import { Inter } from "next/font/google";
+import { SiTaichilang } from "react-icons/si";
 import classNames from "classnames";
 import Button from "./Button";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 const Header = () => {
   return (
