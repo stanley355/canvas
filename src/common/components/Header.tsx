@@ -1,17 +1,21 @@
 import React from "react";
+import { Inter } from 'next/font/google'
+import {SiTaichilang} from 'react-icons/si';
+import classNames from "classnames";
 import Button from "./Button";
-import { FaRadiation } from "react-icons/fa";
+
+const inter = Inter({ subsets: ['latin'] })
 
 const Header = () => {
   return (
-    <header className="w-full p-4 border-b">
+    <header className={classNames("w-full p-4 border-b", inter.className)}>
       <Button
         type="button"
         title="LangAI"
         wrapperClassName="text-2xl font-semibold"
         buttonClassName="flex flex-row items-center"
       >
-        <FaRadiation className="border rounded-full mr-2" />
+        <SiTaichilang className="rounded-full mr-2" />
         <span>LangAI</span>
       </Button>
     </header>
