@@ -5,6 +5,7 @@ const openaiCompletionAPI = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
+
   const URL = `${process.env.OPENAI_URL}v1/chat/completions`;
 
   const axiosConfig = {
@@ -15,7 +16,7 @@ const openaiCompletionAPI = async (
     },
     data: {
       model: "gpt-3.5-turbo",
-      messages: [{ role: "system", content: req.body.prompt }],
+      messages: [{ role: "system", content: req.body.message }],
     },
   };
 

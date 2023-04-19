@@ -1,45 +1,93 @@
 import React from "react";
 import Select from "react-select";
 import { FaAngleDoubleRight } from "react-icons/fa";
+import axios from "axios";
 import Button from "@/common/components/Button";
 import Layout from "@/common/components/Layout";
+import { LANGUAGE_LIST } from "@/modules/translate/constant";
+import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
 const LangTranslate = () => {
+  const isDesktop = useDesktopScreen();
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
+    const oriLang = e.target.ori_lang.value;
+    const targetLang = e.target.target_lang.value;
+    const oriLangText = e.target.ori_lang_text.value;
+
+    if (!oriLang) {
+      alert("Source Language could not be empty!");
+      return "";
+    }
+
+    if (!targetLang) {
+      alert("Target Language could not be empty!");
+      return "";
+    }
+
+    if (!oriLangText) {
+      alert("Source Language Text could not be empty!");
+      return "";
+    }
+
+    const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/openai/chat-completion/`;
+    const reqData = {
+      message: `Translate this text from ${oriLang} to ${targetLang}: "${oriLangText}"`,
+    };
+    const { data } = await axios.post(URL, reqData);
+    console.log(222, data);
+  };
+
   return (
     <Layout>
-      <div className="container mx-auto px-2">
-        <div className="flex flex-row items-center justify-center w-full py-2">
-          <Select className="w-5/12" placeholder="Select Lang" />
-          <FaAngleDoubleRight className="w-2/12" />
-          <Select className="w-5/12" placeholder="Select Lang" />
+      <form className="container mx-auto px-2" onSubmit={handleSubmit}>
+        <h1 className="py-2 text-3xl">AI Translate</h1>
+        <div className="flex flex-row items-center justify-center w-full py-2 lg:gap-2">
+          <Select
+            className="w-5/12 lg:w-1/2 text-black"
+            placeholder={isDesktop ? "Select Source Language" : "Select Lang"}
+            id="ori_lang_select"
+            name="ori_lang"
+            options={LANGUAGE_LIST}
+          />
+          <FaAngleDoubleRight className="w-2/12 lg:hidden" />
+          <Select
+            className="w-5/12 lg:w-1/2 text-black"
+            placeholder={isDesktop ? "Select Target Language" : "Select Lang"}
+            id="target_lang_select"
+            name="target_lang"
+            options={LANGUAGE_LIST}
+          />
         </div>
-        <form onSubmit={() => {}}>
-            <div className="lg:flex lg:flex-row lg:gap-2 lg:mb-2">
-
-          <textarea
-            name="ori_lang_text"
-            id="ori_lang_textarea"
-            cols={30}
-            rows={10}
-            className="w-full border rounded-md bg-transparent p-2"
-            placeholder="..."
-          />
-          <textarea
-            name="target_lang_text"
-            id="target_lang_textarea"
-            cols={30}
-            rows={10}
-            className="w-full border rounded-md bg-transparent p-2"
-            placeholder="..."
-          />
-            </div>
+        <div>
+          <div className="lg:flex lg:flex-row lg:gap-2 lg:mb-2">
+            <textarea
+              name="ori_lang_text"
+              id="ori_lang_textarea"
+              cols={30}
+              rows={10}
+              className="w-full border rounded-md bg-transparent p-2"
+              placeholder="..."
+            />
+            <textarea
+              name="target_lang_text"
+              id="target_lang_textarea"
+              cols={30}
+              rows={10}
+              className="w-full border rounded-md bg-transparent p-2"
+              placeholder="..."
+            />
+          </div>
           <Button
             type="submit"
             title="Submit"
+            wrapperClassName="w-full lg:w-1/3 lg:mx-auto"
             buttonClassName="w-full bg-white text-black py-2 text-md rounded-md font-semibold text-center hover:border hover:border-white hover:bg-black hover:text-white"
           />
-        </form>
-      </div>
+        </div>
+      </form>
     </Layout>
   );
 };
