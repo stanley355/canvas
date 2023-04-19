@@ -1,13 +1,14 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Select from "react-select";
 import { FaAngleDoubleRight, FaSpinner } from "react-icons/fa";
 import axios from "axios";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import Button from "@/common/components/Button";
 import { LANGUAGE_LIST } from "../constant";
 
 const TranslateForm = () => {
-    const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [translateValue, setTranslateValue] = useState("");
   const isDesktop = useDesktopScreen();
 
@@ -34,6 +35,10 @@ const TranslateForm = () => {
     }
 
     setIsLoading(true);
+    sendFirebaseEvent("Translate", {
+      ori_lang: oriLang,
+      target_lange: targetLang,
+    });
     const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/openai/chat-completion/`;
     const reqData = {
       message: `Translate this text from ${oriLang} to ${targetLang}: "${oriLangText}"`,
