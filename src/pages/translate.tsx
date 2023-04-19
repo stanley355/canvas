@@ -53,62 +53,64 @@ const LangTranslate = () => {
 
   return (
     <Layout>
-      <form className="container mx-auto px-2" onSubmit={handleSubmit}>
-        <h1 className="py-2 text-3xl">AI Translate</h1>
-        <div className="flex flex-row items-center justify-center w-full py-2 lg:gap-2">
-          <Select
-            className="w-5/12 lg:w-1/2 text-black"
-            placeholder={isDesktop ? "Select Source Language" : "Select Lang"}
-            id="ori_lang_select"
-            name="ori_lang"
-            options={LANGUAGE_LIST}
-          />
-          <FaAngleDoubleRight className="w-2/12 lg:hidden" />
-          <Select
-            className="w-5/12 lg:w-1/2 text-black"
-            placeholder={isDesktop ? "Select Target Language" : "Select Lang"}
-            id="target_lang_select"
-            name="target_lang"
-            options={LANGUAGE_LIST}
-          />
-        </div>
-        <div>
-          <div className="lg:flex lg:flex-row lg:gap-2 lg:mb-2">
-            <textarea
-              name="ori_lang_text"
-              id="ori_lang_textarea"
-              cols={30}
-              rows={10}
-              className="w-full border rounded-md bg-transparent p-2"
-              placeholder="..."
+      <div className="container mx-auto px-2">
+        <form onSubmit={handleSubmit}>
+          <h1 className="py-2 text-3xl">AI Translate</h1>
+          <div className="flex flex-row items-center justify-center w-full py-2 lg:gap-2">
+            <Select
+              className="w-5/12 lg:w-1/2 text-black"
+              placeholder={isDesktop ? "Select Source Language" : "Select Lang"}
+              id="ori_lang_select"
+              name="ori_lang"
+              options={LANGUAGE_LIST}
             />
-            <textarea
-              name="target_lang_text"
-              id="target_lang_textarea"
-              cols={30}
-              rows={10}
-              className="w-full border rounded-md bg-transparent p-2"
-              value={translateValue}
-              placeholder="..."
+            <FaAngleDoubleRight className="w-2/12 lg:hidden" />
+            <Select
+              className="w-5/12 lg:w-1/2 text-black"
+              placeholder={isDesktop ? "Select Target Language" : "Select Lang"}
+              id="target_lang_select"
+              name="target_lang"
+              options={LANGUAGE_LIST}
             />
           </div>
-          <Button
-            type="submit"
-            disabled={isLoading}
-            wrapperClassName="w-full lg:w-1/3 lg:mx-auto"
-            buttonClassName="w-full bg-white text-black py-2 text-md rounded-md font-semibold text-center hover:border hover:border-white hover:bg-black hover:text-white"
-          >
-            {isLoading ? (
-              <div className="flex flex row items-center justify-center">
-                <span className="mr-2">Loading</span>
-                <FaSpinner className="animate-spin" />
-              </div>
-            ) : (
-              "Submit"
-            )}
-          </Button>
-        </div>
-      </form>
+          <div>
+            <div className="lg:flex lg:flex-row lg:gap-2 lg:mb-2">
+              <textarea
+                name="ori_lang_text"
+                id="ori_lang_textarea"
+                cols={30}
+                rows={10}
+                className="w-full border rounded-md bg-transparent p-2"
+                placeholder="..."
+              />
+              <textarea
+                name="target_lang_text"
+                id="target_lang_textarea"
+                cols={30}
+                rows={10}
+                className="w-full border rounded-md bg-transparent p-2"
+                value={translateValue}
+                placeholder="..."
+              />
+            </div>
+            <Button
+              type="submit"
+              disabled={isLoading}
+              wrapperClassName="w-full lg:w-1/3 lg:mx-auto"
+              buttonClassName="w-full bg-white text-black py-2 text-md rounded-md font-semibold text-center hover:border hover:border-white hover:bg-black hover:text-white"
+            >
+              {isLoading ? (
+                <div className="flex flex row items-center justify-center">
+                  <span className="mr-2">Loading</span>
+                  <FaSpinner className="animate-spin" />
+                </div>
+              ) : (
+                "Submit"
+              )}
+            </Button>
+          </div>
+        </form>
+      </div>
     </Layout>
   );
 };

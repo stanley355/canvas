@@ -5,7 +5,6 @@ const openaiCompletionAPI = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
-
   const URL = `${process.env.OPENAI_URL}v1/chat/completions`;
 
   const axiosConfig = {
