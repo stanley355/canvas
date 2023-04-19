@@ -2,7 +2,7 @@ import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
 const openaiCompletionAPI = async (req: NextApiRequest, res: NextApiResponse) => {
-  const URL = `${process.env.OPENAI_URL}v1/completions`;
+  const URL = `${process.env.OPENAI_URL}v1/chat/completions`;
 
   const axiosConfig = {
     method: req.method,
@@ -11,8 +11,8 @@ const openaiCompletionAPI = async (req: NextApiRequest, res: NextApiResponse) =>
       Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
     },
     data: {
-      model: "text-davinci-003",
-      prompt: JSON.stringify(req.body.prompt),
+      model: "gpt-3.5-turbo",
+      messages:[ {role: "system", content: req.body.prompt},]
     },
   };
 
