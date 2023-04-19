@@ -1,6 +1,5 @@
 import React from "react";
 import { GetStaticProps } from "next";
-import classNames from "classnames";
 import MetaSEO from "@/common/components/MetaSEO";
 import HomeHero from "@/modules/home/HomeHero";
 import Layout from "@/common/components/Layout";
