@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Layout from "@/common/components/Layout";
 import TranslateForm from "@/modules/translate/components/TranslateForm";
 import TranslateResult from "@/modules/translate/components/TranslateResult";
+import TranslateComparison from "@/modules/translate/components/TranslateComparison";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
 const LangTranslate = () => {
@@ -21,6 +22,7 @@ const LangTranslate = () => {
           <TranslateForm dispatchTranslateVal={(val) => setTranslateVal(val)} />
           <TranslateResult translateVal={translateVal} />
         </div>
+        <TranslateComparison />
       </div>
     </Layout>
   );
