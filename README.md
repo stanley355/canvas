@@ -26,7 +26,7 @@
 
 [ ] Generate text based on a given prompt or topic.
 [ ] Summarize a piece of text or an article.
-[ ] Translate text from one language to another.
+[x] Translate text from one language to another.
 [ ] Correct spelling and grammar errors.
 [ ] Answer questions based on a given topic.
 [ ] Generate poetry or other creative writing.
