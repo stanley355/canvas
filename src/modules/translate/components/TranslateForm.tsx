@@ -59,7 +59,7 @@ const TranslateForm = (props: ITranslateForm) => {
     if (data && data.choices.length > 0) {
       const content = data.choices[0].message.content;
       dispatchTranslateVal(content);
-      window.location.href = "#translate_result_textarea";
+      if (!isDesktop) window.location.href = "#translate_result_textarea";
     } else {
       alert("Something went wrong, please try again!");
     }
