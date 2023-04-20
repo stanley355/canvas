@@ -7,9 +7,13 @@ import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import Button from "@/common/components/Button";
 import { LANGUAGE_LIST } from "../constant";
 
-const TranslateForm = () => {
+interface ITranslateForm {
+  dispatchTranslateVal: (val: string) => void;
+}
+
+const TranslateForm = (props: ITranslateForm) => {
+  const {dispatchTranslateVal} = props;
   const [isLoading, setIsLoading] = useState(false);
-  const [translateValue, setTranslateValue] = useState("");
   const isDesktop = useDesktopScreen();
 
   const handleSubmit = async (e: any) => {
@@ -18,7 +22,7 @@ const TranslateForm = () => {
     const oriLang = e.target.ori_lang.value;
     const targetLang = e.target.target_lang.value;
     const oriLangText = e.target.ori_lang_text.value;
-    const contextText = e.target.contenxt_text.value;
+    const contextText = e.target.context_text.value;
 
     if (!oriLang) {
       alert("Source Language could not be empty!");
@@ -35,26 +39,33 @@ const TranslateForm = () => {
       return "";
     }
 
-    // setIsLoading(true);
-    // sendFirebaseEvent("Translate", {
-    //   ori_lang: oriLang,
-    //   target_lange: targetLang,
-    // });
-    // const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/openai/chat-completion/`;
-    // const reqData = {
-    //   message: `Translate this text from ${oriLang} to ${targetLang}: "${oriLangText}"`,
-    // };
+    sendFirebaseEvent("Translate", {
+      ori_lang: oriLang,
+      target_lange: targetLang,
+    });
 
-    // const { data } = await axios.post(URL, reqData);
-    // if (data && data.choices.length > 0) {
-    //   setTranslateValue(data.choices[0].message.content);
-    // } else {
-    //   alert("Something went wrong, please try again!");
-    // }
+    setIsLoading(true);
+    let baseMsg = `Translate this text from ${oriLang} to ${targetLang}`;
+    if (contextText) {
+      baseMsg + " " + `(${contextText}) `
+    }
+    const reqData = {
+      message: `${baseMsg}: "${oriLangText}"`,
+    };
 
-    // setIsLoading(false);
-    // return "";
+    const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/openai/chat-completion/`;
+    const { data } = await axios.post(URL, reqData);
+    if (data && data.choices.length > 0) {
+      const content = data.choices[0].message.content;
+      dispatchTranslateVal(content);
+    } else {
+      alert("Something went wrong, please try again!");
+    }
+
+    setIsLoading(false);
+    return "";
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="flex flex-row items-center justify-center w-full py-2 lg:gap-2">
@@ -90,7 +101,7 @@ const TranslateForm = () => {
             cols={30}
             rows={5}
             className="w-full border rounded-md bg-transparent p-2"
-            placeholder="Optional: Put your context here (e.g. the word big refers to...) "
+            placeholder="Optional: Put your context here (e.g. the word xyz refers to...) "
           />
         </div>
         <Button
