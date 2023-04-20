@@ -24,11 +24,6 @@ const TranslateForm = (props: ITranslateForm) => {
     const oriLangText = e.target.ori_lang_text.value;
     const contextText = e.target.context_text.value;
 
-    if (!oriLang) {
-      alert("Source Language could not be empty!");
-      return "";
-    }
-
     if (!targetLang) {
       alert("Target Language could not be empty!");
       return "";
@@ -45,7 +40,13 @@ const TranslateForm = (props: ITranslateForm) => {
     });
 
     setIsLoading(true);
-    let baseMsg = `Translate this text from ${oriLang} to ${targetLang}`;
+
+    let baseMsg = `Translate this to ${targetLang}`;
+
+    if (oriLang) {
+      baseMsg = `Translate this text from ${oriLang} to ${targetLang}`;
+    }
+
     if (contextText) {
       baseMsg + " " + `(${contextText}) `;
     }
