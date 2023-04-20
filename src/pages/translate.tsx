@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
 import TranslateForm from "@/modules/translate/components/TranslateForm";
 import TranslateResult from "@/modules/translate/components/TranslateResult";
@@ -10,8 +11,16 @@ const LangTranslate = () => {
 
   const isDesktop = useDesktopScreen();
 
+  const seo = {
+    title: "Upgrade Your Translation Game with LangAI - The Best Alternative to Google Translate",
+    description:
+      "Looking for an alternative to Google Translate? Look no further than LangAI - the intelligent translation tool that delivers superior accuracy and efficiency.",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}translate/`,
+  };
+
   return (
     <Layout>
+      <MetaSEO seo={seo} />
       <div className="container mx-auto px-2">
         <h1 className="py-2 text-3xl" id="title">
           {isDesktop

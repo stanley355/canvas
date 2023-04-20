@@ -7,14 +7,19 @@ import Button from "@/common/components/Button";
 import TranslateComparison from "@/modules/translate/components/TranslateComparison";
 import PackageJSON from "../../package.json";
 
-const Home = (props: any) => {
-  const { seo } = props;
+const Home = () => {
+  const seo = {
+    title: "LangAI - The most advanced language and words processing system",
+    description:
+      "LangAI - The cutting-edge language and words processing system that's replacing Gooogle Translate. Discover how our advanced technology is revolutionizing language analysis today.",
+    url: process.env.NEXT_PUBLIC_BASE_URL,
+  };
 
   const HomeTitle = () => (
     <div className="p-2 lg:py-8">
       <h3 className="text-3xl">Introducing LangAI {PackageJSON.version}</h3>
       <div className="text-lg">
-        The most advanced language and text processing system
+        The most advanced language and words processing system
       </div>
     </div>
   );
@@ -25,7 +30,7 @@ const Home = (props: any) => {
       <HomeHero />
       <div className="container mx-auto">
         <HomeTitle />
-        <ul className="p-2 border border-white border-x-0 list-disc lg:grid lg:grid-cols-4 lg:gap-2 lg:py-4">
+        <ul className="p-2 border border-white border-x-0 list-disc lg:grid lg:grid-cols-4 lg:gap-2 lg:py-4 lg:text-lg">
           <li className="ml-4 mb-4">
             <div className="mb-2">
               Having Trouble with Meaningful Translation?{" "}

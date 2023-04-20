@@ -6,8 +6,6 @@ interface IMetaSEO {
 }
 
 const MetaSEO = ({ seo }: IMetaSEO) => {
-  const isWindowDefined = typeof window !== "undefined";
-
   return (
     <Head>
       <title>hi</title>
@@ -32,17 +30,18 @@ const MetaSEO = ({ seo }: IMetaSEO) => {
       <meta property="og:description" content={seo?.description} />
       <meta
         property="og:url"
-        content={isWindowDefined ? window.location.href : ""}
+        content={seo?.url}
       />
       <meta
         property="og:site_name"
-        content={isWindowDefined ? window.location.origin : ""}
+        content="LangAI"
       />
       <meta property="og:image" content={seo?.image ?? ""} />
       <meta name="twitter:card" content={seo?.twitterCard} />
       <meta name="twitter:title" content={seo?.title} />
       <meta name="twitter:description" content={seo?.description} />
       <meta name="twitter:image" content={seo?.image?.url} />
+      <link rel="icon" type="image/png" href="/images/langai_icon.png" />
       {/* <meta name="twitter:creator" content="@localhost" />
     <meta name="twitter:site" content="@localhost" />
     <meta name="twitter:label1" content="@localhost" />
