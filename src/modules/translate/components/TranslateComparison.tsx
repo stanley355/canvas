@@ -20,13 +20,13 @@ const TranslateComparison = () => {
           </li>
           <li className="mb-2">
             In the source text, the speaker is complaining to the reader that
-            they promised to help with a task but hasn't turned up since then.
-            Then concludes with &quot;What's happening?&quot;
+            they promised to help with a task but hasn&apos;t turned up since then.
+            Then concludes with &quot;What&apos;s happening?&quot;
           </li>
           <li className="mb-2">
             While Google Translate understands &quot;Pidgin English&quot; to some
             extent, it failed woefully at translating the source text. Part of
-            the problem is due to Google Translate's limited ability to
+            the problem is due to Google Translate&apos;s limited ability to
             distinguish creole from English because of the presence of English
             words.
           </li>
@@ -42,7 +42,7 @@ const TranslateComparison = () => {
         </div>
         <ul className="list-disc ml-4 my-4">
           <li>
-            Although not flawlessly, LangAI's interpretation was able to clearly
+            Although not flawlessly, LangAI&apos;s interpretation was able to clearly
             convey the meaning and intent of the speaker. Considering the highly
             contextual nature of Pidgin English, the results are very
             impressive.
