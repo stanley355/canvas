@@ -1,5 +1,9 @@
 export const LANGUAGE_LIST = [
   {
+    label: "None",
+    value: ""
+  },
+  {
     label: "Chinese (Simplified)",
     value: "Chinese (Simplified)",
   },
