@@ -47,7 +47,7 @@ const HomeHero = () => (
     Curabitur ac commodo lacus.
     <h1 className="absolute top-[45%] left-[30%] lg:left-[45%] bg-black p-2 text-3xl flex flex-row items-center border">
       <SiTaichilang />
-      <span className="ml-2">LangAI</span>
+      <span className="ml-2">LanguageAI</span>
     </h1>
   </div>
 );

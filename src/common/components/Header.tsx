@@ -16,7 +16,7 @@ const Header = () => {
         buttonClassName="flex flex-row items-center"
       >
         <SiTaichilang className="rounded-full mr-2" />
-        <span>LangAI</span>
+        <span>LanguageAI</span>
       </Button>
     </header>
   );

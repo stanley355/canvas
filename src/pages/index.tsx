@@ -9,17 +9,17 @@ import PackageJSON from "../../package.json";
 
 const Home = () => {
   const seo = {
-    title: "LangAI - The most advanced language and words processing system",
+    title: "LanguageAI - The most advanced language and text processing system",
     description:
-      "LangAI - The cutting-edge language and words processing system that's replacing Gooogle Translate. Discover how our advanced technology is revolutionizing language analysis today.",
+      "LanguageAI - The cutting-edge language and words processing system that's replacing Gooogle Translate. Discover how our advanced technology is revolutionizing language analysis today.",
     url: process.env.NEXT_PUBLIC_BASE_URL,
   };
 
   const HomeTitle = () => (
     <div className="p-2 lg:py-8">
-      <h3 className="text-3xl">Introducing LangAI {PackageJSON.version}</h3>
+      <h3 className="text-3xl">Introducing LanguageAI {PackageJSON.version}</h3>
       <div className="text-lg">
-        The most advanced language and words processing system
+        The most advanced language and text processing system
       </div>
     </div>
   );

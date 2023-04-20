@@ -12,9 +12,9 @@ const LangTranslate = () => {
   const isDesktop = useDesktopScreen();
 
   const seo = {
-    title: "Upgrade Your Translation Game with LangAI - The Best Alternative to Google Translate",
+    title: "Upgrade Your Translation Game with LanguageAI - The Best Alternative to Google Translate",
     description:
-      "Looking for an alternative to Google Translate? Look no further than LangAI - the intelligent translation tool that delivers superior accuracy and efficiency.",
+      "Looking for an alternative to Google Translate? Look no further than LanguageAI - the intelligent translation tool that delivers superior accuracy and efficiency.",
     url: `${process.env.NEXT_PUBLIC_BASE_URL}translate/`,
   };
 
@@ -24,7 +24,7 @@ const LangTranslate = () => {
       <div className="container mx-auto px-2">
         <h1 className="py-2 text-3xl" id="title">
           {isDesktop
-            ? "LangAI Translate (with contextual features)"
+            ? "LanguageAI Translate (with contextual features)"
             : "AI Translate (+Context)"}
         </h1>
         <div className="lg:grid lg:grid-cols-2 lg:gap-2 lg:my-4">

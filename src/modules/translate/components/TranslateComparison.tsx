@@ -4,13 +4,13 @@ const TranslateComparison = () => {
   return (
     <div className="leading-4 text-md my-8" id="translate_comparison">
       <h3 className="text-2xl mb-4">
-        Comparing LangAI Translate vs Google Translate
+        Comparing LanguageAI Translate vs Google Translate
       </h3>
       <div>
         <ul className="list-disc ml-4">
           <li className="mb-2">
             Creoles, especially those that borrow many words from other
-            languages, are notoriously hard to translate. We tasked both LangAI
+            languages, are notoriously hard to translate. We tasked both LanguageAI
             and Google Translate to interpret a creole called &quot;Pidgin English,&quot;
             which is spoken in West Africa.
           </li>
@@ -42,7 +42,7 @@ const TranslateComparison = () => {
         </div>
         <ul className="list-disc ml-4 my-4">
           <li>
-            Although not flawlessly, LangAI&apos;s interpretation was able to clearly
+            Although not flawlessly, LanguageAI&apos;s interpretation was able to clearly
             convey the meaning and intent of the speaker. Considering the highly
             contextual nature of Pidgin English, the results are very
             impressive.
@@ -70,7 +70,7 @@ const TranslateComparison = () => {
           />
         </div>
         <ul className="list-disc ml-4 my-4">
-          <li>LangAI Translate: plz d ya know what to do</li>
+          <li>LanguageAI Translate: plz d ya know what to do</li>
         </ul>
         <div>
           <img src="/images/testimony/langai_meaning.png" alt="langai_creola"  className="w-full border border-white"
