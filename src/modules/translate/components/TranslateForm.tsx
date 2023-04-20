@@ -69,7 +69,7 @@ const TranslateForm = (props: ITranslateForm) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="flex flex-row items-center justify-center w-full py-2 lg:gap-2">
+      <div className="flex flex-row items-center justify-center w-full py-2 lg:gap-2 lg:pt-0">
         <Select
           className="w-5/12 lg:w-1/2 text-black"
           placeholder={isDesktop ? "Select Source Language" : "Select Lang"}
@@ -93,7 +93,7 @@ const TranslateForm = (props: ITranslateForm) => {
             id="ori_lang_textarea"
             cols={30}
             rows={10}
-            className="w-full border rounded-md bg-transparent p-2"
+            className="w-full border rounded-md bg-transparent p-2 lg:w-3/4"
             placeholder="Copy your text here"
           />
           <textarea
@@ -101,14 +101,14 @@ const TranslateForm = (props: ITranslateForm) => {
             id="context_text_textarea"
             cols={30}
             rows={5}
-            className="w-full border rounded-md bg-transparent p-2"
+            className="w-full border rounded-md bg-transparent p-2 lg:w-1/4"
             placeholder="Optional: Put your context here (e.g. the word xyz refers to...) "
           />
         </div>
         <Button
           type="submit"
           disabled={isLoading}
-          wrapperClassName="w-full lg:w-1/3 lg:mx-auto"
+          wrapperClassName="w-full lg:w-2/3 lg:mx-auto"
           buttonClassName="w-full bg-white text-black py-2 text-md rounded-md font-semibold text-center hover:border hover:border-white hover:bg-black hover:text-white"
         >
           {isLoading ? (
