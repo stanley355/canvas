@@ -10,8 +10,8 @@ const Header = () => {
   return (
     <header className={classNames("w-full p-4 border-b", inter.className)}>
       <Button
-        type="button"
-        title="LangGPT"
+        type="link"
+        href="/"
         wrapperClassName="text-2xl font-semibold"
         buttonClassName="flex flex-row items-center"
       >
