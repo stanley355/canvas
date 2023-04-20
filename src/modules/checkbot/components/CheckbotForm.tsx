@@ -1,11 +1,17 @@
 import React, { useState } from "react";
+import axios from "axios";
 import Select from "react-select";
 import { FaSpinner } from "react-icons/fa";
 import Button from "@/common/components/Button";
 import { CHECKBOT_OPTIONS } from "../constant";
 import { LANGUAGE_LIST } from "../../translate/constant";
 
-const CheckBotForm = () => {
+interface ICheckBotForm {
+  dispatchCheckbotVal: (val: string) => void;
+}
+
+const CheckBotForm = (props: ICheckBotForm) => {
+  const { dispatchCheckbotVal } = props;
   const [showPersonalInstruction, setShowPersonalInstruction] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -17,7 +23,20 @@ const CheckBotForm = () => {
     }
   };
 
-  const handleSubmit = (e: any) => {
+  const fetchAPIandDispatch = async (reqData: any) => {
+    const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/openai/chat-completion/`;
+    const { data } = await axios.post(URL, reqData);
+    if (data && data.choices.length > 0) {
+      const content = data.choices[0].message.content;
+      dispatchCheckbotVal(content);
+      // if (!isDesktop) window.location.href = "#translate_result_textarea";
+    } else {
+      alert("Something went wrong, please try again!");
+      return "";
+    }
+  };
+
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     const instruction = e.target.instruction.value;
     const outputLanguage = e.target.output_language.value;
@@ -33,12 +52,24 @@ const CheckBotForm = () => {
       return "";
     }
 
+    setIsLoading(true);
     if (instruction && instruction === "personal_instruction") {
-      const personalInstruction = e.target.personal_instruction.value;
+      let personalInstruction = e.target.personal_instruction.value;
       if (!personalInstruction) {
         alert("You haven't filled the personal instruction");
         return "";
       }
+
+      if (outputLanguage) {
+        personalInstruction + " " + `in ${outputLanguage}`;
+      }
+
+      const reqData = {
+        message: `${personalInstruction}, text: "${targetText}"`,
+      };
+
+      await fetchAPIandDispatch(reqData);
+      setIsLoading(false);
     } else {
     }
   };
@@ -75,20 +106,20 @@ const CheckBotForm = () => {
         placeholder="Copy your text here"
       />
       <Button
-          type="submit"
-          disabled={isLoading}
-          wrapperClassName="w-full"
-          buttonClassName="w-full bg-white text-black py-2 text-md rounded-md font-semibold text-center hover:border hover:border-white hover:bg-black hover:text-white"
-        >
-          {isLoading ? (
-            <div className="flex flex row items-center justify-center">
-              <span className="mr-2">Processing</span>
-              <FaSpinner className="animate-spin" />
-            </div>
-          ) : (
-            "Submit"
-          )}
-        </Button>
+        type="submit"
+        disabled={isLoading}
+        wrapperClassName="w-full"
+        buttonClassName="w-full bg-white text-black py-2 text-md rounded-md font-semibold text-center hover:border hover:border-white hover:bg-black hover:text-white"
+      >
+        {isLoading ? (
+          <div className="flex flex row items-center justify-center">
+            <span className="mr-2">Processing</span>
+            <FaSpinner className="animate-spin" />
+          </div>
+        ) : (
+          "Submit"
+        )}
+      </Button>
     </form>
   );
 };
