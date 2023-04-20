@@ -18,6 +18,7 @@ const TranslateForm = () => {
     const oriLang = e.target.ori_lang.value;
     const targetLang = e.target.target_lang.value;
     const oriLangText = e.target.ori_lang_text.value;
+    const contextText = e.target.contenxt_text.value;
 
     if (!oriLang) {
       alert("Source Language could not be empty!");
@@ -34,29 +35,28 @@ const TranslateForm = () => {
       return "";
     }
 
-    setIsLoading(true);
-    sendFirebaseEvent("Translate", {
-      ori_lang: oriLang,
-      target_lange: targetLang,
-    });
-    const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/openai/chat-completion/`;
-    const reqData = {
-      message: `Translate this text from ${oriLang} to ${targetLang}: "${oriLangText}"`,
-    };
+    // setIsLoading(true);
+    // sendFirebaseEvent("Translate", {
+    //   ori_lang: oriLang,
+    //   target_lange: targetLang,
+    // });
+    // const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/openai/chat-completion/`;
+    // const reqData = {
+    //   message: `Translate this text from ${oriLang} to ${targetLang}: "${oriLangText}"`,
+    // };
 
-    const { data } = await axios.post(URL, reqData);
-    if (data && data.choices.length > 0) {
-      setTranslateValue(data.choices[0].message.content);
-    } else {
-      alert("Something went wrong, please try again!");
-    }
+    // const { data } = await axios.post(URL, reqData);
+    // if (data && data.choices.length > 0) {
+    //   setTranslateValue(data.choices[0].message.content);
+    // } else {
+    //   alert("Something went wrong, please try again!");
+    // }
 
-    setIsLoading(false);
-    return "";
+    // setIsLoading(false);
+    // return "";
   };
   return (
     <form onSubmit={handleSubmit}>
-      <h1 className="py-2 text-3xl">AI Translate</h1>
       <div className="flex flex-row items-center justify-center w-full py-2 lg:gap-2">
         <Select
           className="w-5/12 lg:w-1/2 text-black"
@@ -82,16 +82,15 @@ const TranslateForm = () => {
             cols={30}
             rows={10}
             className="w-full border rounded-md bg-transparent p-2"
-            placeholder="..."
+            placeholder="Copy your text here"
           />
           <textarea
-            name="target_lang_text"
-            id="target_lang_textarea"
+            name="context_text"
+            id="context_text_textarea"
             cols={30}
-            rows={10}
+            rows={5}
             className="w-full border rounded-md bg-transparent p-2"
-            value={translateValue}
-            placeholder="..."
+            placeholder="Optional: Put your context here (e.g. the word big refers to...) "
           />
         </div>
         <Button
@@ -102,11 +101,11 @@ const TranslateForm = () => {
         >
           {isLoading ? (
             <div className="flex flex row items-center justify-center">
-              <span className="mr-2">Loading</span>
+              <span className="mr-2">Translating</span>
               <FaSpinner className="animate-spin" />
             </div>
           ) : (
-            "Submit"
+            "Translate"
           )}
         </Button>
       </div>
