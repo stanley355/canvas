@@ -3,7 +3,7 @@ import React from "react";
 const TranslateComparison = () => {
   return (
     <div className="leading-4 text-md my-8" id="translate_comparison">
-      <h3 className="text-2xl">
+      <h3 className="text-2xl mb-4">
         Comparing LangAI Translate vs Google Translate
       </h3>
       <div>
