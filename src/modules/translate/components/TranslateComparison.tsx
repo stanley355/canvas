@@ -11,20 +11,20 @@ const TranslateComparison = () => {
           <li className="mb-2">
             Creoles, especially those that borrow many words from other
             languages, are notoriously hard to translate. We tasked both LangAI
-            and Google Translate to interpret a creole called "Pidgin English,"
+            and Google Translate to interpret a creole called &quot;Pidgin English,&quot;
             which is spoken in West Africa.
           </li>
           <li className="italic mb-2">
-            Source Text: "Wetin come happen na. Since you say you go come help
-            me with that thing, I no come see your brake light. Wetin sup?"
+            Source Text: &quot;Wetin come happen na. Since you say you go come help
+            me with that thing, I no come see your brake light. Wetin sup?&quot;
           </li>
           <li className="mb-2">
             In the source text, the speaker is complaining to the reader that
             they promised to help with a task but hasn't turned up since then.
-            Then concludes with "What's happening?"
+            Then concludes with &quot;What's happening?&quot;
           </li>
           <li className="mb-2">
-            While Google Translate understands "Pidgin English '' to some
+            While Google Translate understands &quot;Pidgin English&quot; to some
             extent, it failed woefully at translating the source text. Part of
             the problem is due to Google Translate's limited ability to
             distinguish creole from English because of the presence of English
