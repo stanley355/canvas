@@ -10,7 +10,7 @@ const Home = (props: any) => {
 
   const HomeTitle = () => (
     <div className="py-2">
-      <h3 className="text-2xl">Introducing LangGPT {PackageJSON.version}</h3>
+      <h3 className="text-2xl">Introducing LangAI {PackageJSON.version}</h3>
       <div className="text-lg">
         The most advanced language and text processing system
       </div>

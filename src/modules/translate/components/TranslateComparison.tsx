@@ -7,7 +7,6 @@ const TranslateComparison = () => {
         Comparing LangAI Translate vs Google Translate
       </h3>
       <div>
-        <div className="text-xl mb-2">1. Meaningful translation</div>
         <ul className="list-disc ml-4">
           <li className="mb-2">
             Creoles, especially those that borrow many words from other

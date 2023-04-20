@@ -12,7 +12,7 @@ const Header = () => {
       <Button
         type="link"
         href="/"
-        wrapperClassName="text-2xl font-semibold"
+        wrapperClassName="text-2xl font-semibold cursor-pointer"
         buttonClassName="flex flex-row items-center"
       >
         <SiTaichilang className="rounded-full mr-2" />
