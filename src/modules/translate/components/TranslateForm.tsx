@@ -12,7 +12,7 @@ interface ITranslateForm {
 }
 
 const TranslateForm = (props: ITranslateForm) => {
-  const {dispatchTranslateVal} = props;
+  const { dispatchTranslateVal } = props;
   const [isLoading, setIsLoading] = useState(false);
   const isDesktop = useDesktopScreen();
 
@@ -47,7 +47,7 @@ const TranslateForm = (props: ITranslateForm) => {
     setIsLoading(true);
     let baseMsg = `Translate this text from ${oriLang} to ${targetLang}`;
     if (contextText) {
-      baseMsg + " " + `(${contextText}) `
+      baseMsg + " " + `(${contextText}) `;
     }
     const reqData = {
       message: `${baseMsg}: "${oriLangText}"`,
@@ -58,6 +58,7 @@ const TranslateForm = (props: ITranslateForm) => {
     if (data && data.choices.length > 0) {
       const content = data.choices[0].message.content;
       dispatchTranslateVal(content);
+      window.location.href = "#translate_result_textarea";
     } else {
       alert("Something went wrong, please try again!");
     }

@@ -8,6 +8,11 @@ interface ITranslateResult {
 const TranslateResult = (props: ITranslateResult) => {
     const {translateVal} = props;
 
+    const copyText = () => {
+        window.navigator.clipboard.writeText(translateVal);
+        alert("Text Copied to Clipboard");
+    }
+
   return (
     <div className="py-2">
       <textarea
@@ -19,8 +24,8 @@ const TranslateResult = (props: ITranslateResult) => {
         value={translateVal ? translateVal : "Your translation will show up here"}
       />
       <div className="grid grid-cols-2 gap-2">
-        <Button type="button" title="Copy" buttonClassName="w-full text-center p-2 bg-white text-black rounded-md" />
-        <Button type="link" title="Go to Top" wrapperClassName="flex items-center justify-center w-full" buttonClassName="w-full text-center p-2 bg-white text-black rounded-md" />
+        <Button type="button" title="Copy" buttonClassName="w-full text-center p-2 bg-white text-black rounded-md" onClick={copyText}/>
+        <Button type="link" href="#title" title="Go to Top" wrapperClassName="flex items-center justify-center w-full" buttonClassName="w-full text-center p-2 bg-white text-black rounded-md" />
       </div>
     </div>
   );
