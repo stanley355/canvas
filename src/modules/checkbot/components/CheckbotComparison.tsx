@@ -6,7 +6,7 @@ const CheckbotComparison = () => (
       Comparing LanguageAI Checkbot vs Grammarly
     </h3>
 
-    <p>
+    <p className="mb-4">
       One of the main advantages of incorporating LanguageAI Checkbot into
       editing and refining written content is its capacity to collaborate with
       specific prompts. For instance, you can utilize LanguageAI Checkbot to
@@ -16,7 +16,7 @@ const CheckbotComparison = () => (
       Grammarly takes a more cautious approach to its revisions.
     </p>
 
-    <p>
+    <p className="mb-4">
       To exhibit the efficiency of LanguageAI Checkbot in proofreading and
       refining written content, we will utilize a reasonably well-written source
       text, composed by a non-native speaker, as a reference point for our
@@ -24,29 +24,31 @@ const CheckbotComparison = () => (
       Checkbot can impact written content. Source Text:
     </p>
 
-    <div>
+    <div className="mb-4">
       <img
         src="/images/testimony/sourcetext_checkbot.png"
         alt="Source Text Checkbot"
         loading="lazy"
+        className="rounded-md"
       />
     </div>
 
-    <p>
+    <p className="mb-4">
       <strong>Grammarly revision:</strong>
       Grammarly (free) made revisions to the text that primarily address grammar
       errors. But since the text was already well-written, the revisions were
       minimal. 6 changes were made in total, 4% of the passage was rewritten.
     </p>
-    <div>
+    <div className="mb-4">
       <img
         src="/images/testimony/grammarly_free.png"
         alt="Source Text Checkbot"
         loading="lazy"
+        className="rounded-md"
       />
     </div>
 
-    <p>
+    <p className="mb-4">
       <strong>LanguageAI Checkbot revision (Light):</strong>
       By utilizing the "Proofread this:" personal instruction in LanguageAI
       Checkbot, you can expect to see some solid improvement in your writing. On
@@ -56,15 +58,16 @@ const CheckbotComparison = () => (
       prompt such as "Proofread this but only fix grammar" can help reduce the
       level of revisions.
     </p>
-    <div>
+    <div className="mb-4">
       <img
         src="/images/testimony/checkbot_light.png"
         alt="Source Text Checkbot"
         loading="lazy"
+        className="rounded-md"
       />
     </div>
 
-    <p>
+    <p className="mb-4">
       <strong>Grammarly Premium revision:</strong>
       Using Grammarly Premium ($10-30 per month), we get a deeper analysis of
       the text than free Grammarly. It goes beyond basic corrections and offers
@@ -72,15 +75,16 @@ const CheckbotComparison = () => (
       with this level of revision, only 17% of the text was rewritten for this
       particular example.
     </p>
-    <div>
+    <div className="mb-4">
       <img
         src="/images/testimony/grammarly_premium.png"
         alt="Source Text Checkbot"
         loading="lazy"
+        className="rounded-md"
       />
     </div>
 
-    <p>
+    <p className="mb-4">
       <strong>LanguageAI Checkbot revision (Heavy)</strong>
       By adding additional instructions "Proofread this and improve the clarity
       and flow:" to the personal instruction, we significantly enhanced our
@@ -88,11 +92,12 @@ const CheckbotComparison = () => (
       writing has greatly improved, perhaps even too much. Nevertheless, it
       serves as an example of how your writing can be improved.
     </p>
-    <div>
+    <div className="mb-4">
       <img
         src="/images/testimony/checkbot_heavy.png"
         alt="Source Text Checkbot"
         loading="lazy"
+        className="rounded-md"
       />
     </div>
   </div>
