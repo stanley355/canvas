@@ -24,7 +24,7 @@ const CheckboxResult = (props: ICheckbotResult) => {
         readOnly
         className="w-full rounded-md text-black p-2"
         cols={30}
-        rows={isDesktop ? 12 : 10}
+        rows={isDesktop ? 15 : 10}
         value={checkbotVal ? checkbotVal : "Your result will show up here"}
       />
       <div className="grid grid-cols-2 gap-2 lg:grid-cols-1">

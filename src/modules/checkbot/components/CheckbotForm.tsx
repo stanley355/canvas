@@ -99,7 +99,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
         id="target_text_textarea"
         cols={30}
         rows={10}
-        className="w-full bg-transparent text-white rounded-sm border my-2 p-2"
+        className="w-full bg-transparent text-white rounded-md border my-2 p-2"
         placeholder="Copy your text here"
       />
       <Button
