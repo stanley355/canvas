@@ -81,7 +81,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
         onChange={handleCheckbotOption}
       />
       <Select
-        placeholder="Output Lang (Default: English)"
+        placeholder="Optional: Output Language"
         name="output_language"
         options={LANGUAGE_LIST}
         className="w-full text-black mb-2"

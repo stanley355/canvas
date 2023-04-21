@@ -5,6 +5,7 @@ import HomeHero from "@/modules/home/HomeHero";
 import Layout from "@/common/components/Layout";
 import Button from "@/common/components/Button";
 import TranslateComparison from "@/modules/translate/components/TranslateComparison";
+import HomeCopywriting from "@/modules/home/HomeCopywriting";
 import PackageJSON from "../../package.json";
 
 const Home = () => {
@@ -16,7 +17,7 @@ const Home = () => {
   };
 
   const HomeTitle = () => (
-    <div className="p-2 lg:py-8">
+    <div className="p-4 lg:py-8 border-b">
       <h3 className="text-3xl">Introducing LanguageAI {PackageJSON.version}</h3>
       <div className="text-lg">
         The most advanced language and text processing system
@@ -30,10 +31,23 @@ const Home = () => {
       <HomeHero />
       <div className="container mx-auto">
         <HomeTitle />
-        <h3 className="px-2 my-4 text-4xl text-center">
-          Not Just English, but World Languages!
-        </h3>
-        <ul className="p-2 border border-white border-x-0 list-disc lg:grid lg:grid-cols-4 lg:gap-2 lg:py-4 lg:text-lg">
+        <HomeCopywriting />
+        {/* <div className="px-2 mb-8 flex flex-col items-center justify-center">
+          <TranslateComparison />
+          <div className="my-16">
+            <Button
+              type="link"
+              title="Let's translate"
+              href="/translate/"
+              buttonClassName="p-2 bg-white border mx-auto text-black hover:bg-black hover:text-white text-xl font-semibold"
+            />
+          </div>
+        </div> */}
+      </div>
+    </Layout>
+  );
+};
+<ul className="p-2 border border-white border-x-0 list-disc lg:grid lg:grid-cols-4 lg:gap-2 lg:py-4 lg:text-lg">
           <li className="ml-4 mb-4">
             <div className="mb-2">
               Having Trouble with Meaningful Translation?{" "}
@@ -66,22 +80,6 @@ const Home = () => {
             <div className="underline">Coming Soon</div>
           </li>
         </ul>
-        <div className="px-2 mb-8 flex flex-col items-center justify-center">
-          <TranslateComparison />
-          <div className="my-16">
-            <Button
-              type="link"
-              title="Let's translate"
-              href="/translate/"
-              buttonClassName="p-2 bg-white border mx-auto text-black hover:bg-black hover:text-white text-xl font-semibold"
-            />
-          </div>
-        </div>
-      </div>
-    </Layout>
-  );
-};
-
 export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {},
