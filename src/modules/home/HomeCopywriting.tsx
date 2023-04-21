@@ -3,7 +3,7 @@ import { FaLanguage, FaRobot, FaBook } from "react-icons/fa";
 import Button from "@/common/components/Button";
 
 const HomeCopywriting = () => (
-  <div className="px-2">
+  <div className="px-2 border-b pb-4">
     <h3 className="my-4 lg:my-8 text-4xl text-center">
       Not Just English, but World Languages!
     </h3>

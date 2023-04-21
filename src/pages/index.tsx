@@ -32,7 +32,7 @@ const Home = () => {
       <div className="container mx-auto">
         <HomeTitle />
         <HomeCopywriting />
-        {/* <div className="px-2 mb-8 flex flex-col items-center justify-center">
+        <div className="px-2 mb-8 flex flex-col items-center justify-center">
           <TranslateComparison />
           <div className="my-16">
             <Button
@@ -42,7 +42,7 @@ const Home = () => {
               buttonClassName="p-2 bg-white border mx-auto text-black hover:bg-black hover:text-white text-xl font-semibold"
             />
           </div>
-        </div> */}
+        </div>
       </div>
     </Layout>
   );
