@@ -50,12 +50,12 @@ const CheckbotComparison = () => (
 
     <p className="mb-4">
       <strong>LanguageAI Checkbot revision (Light):</strong>
-      By utilizing the "Proofread this:" personal instruction in LanguageAI
+      By utilizing the &quot;Proofread this:&quot; personal instruction in LanguageAI
       Checkbot, you can expect to see some solid improvement in your writing. On
-      average, a "Proofread this:" personal instruction will result in 10-20%
+      average, a &quot;Proofread this:&quot; personal instruction will result in 10-20%
       change from the original passage. This can help writers enhance their
       content while still preserving their voice. If this is too intrusive, a
-      prompt such as "Proofread this but only fix grammar" can help reduce the
+      prompt such as &quot;Proofread this but only fix grammar&quot; can help reduce the
       level of revisions.
     </p>
     <div className="mb-4">
@@ -86,8 +86,8 @@ const CheckbotComparison = () => (
 
     <p className="mb-4">
       <strong>LanguageAI Checkbot revision (Heavy)</strong>
-      By adding additional instructions "Proofread this and improve the clarity
-      and flow:" to the personal instruction, we significantly enhanced our
+      By adding additional instructions &quot;Proofread this and improve the clarity
+      and flow:&quot; to the personal instruction, we significantly enhanced our
       writing with LanguageAI Checkbot. As demonstrated in the markup below, the
       writing has greatly improved, perhaps even too much. Nevertheless, it
       serves as an example of how your writing can be improved.
