@@ -74,7 +74,7 @@ const HomeCopywriting = () => (
             20x better than Oxford/Cambridge Dictionary
           </li>
           <li>
-            Find All Word's meaning not just in English but World Languages
+            Find All Word&apos;s meaning not just in English but World Languages
           </li>
           <li>Example Sentence, Synonym, and Antonym as well</li>
           <li>
