@@ -2,13 +2,12 @@ import React from "react";
 import { Inter } from "next/font/google";
 import { SiTaichilang } from "react-icons/si";
 import classNames from "classnames";
-import Button from "./Button";
+import Button from "../Button";
 import MobileHeaderMenu from "./MobileHeaderMenu";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const Header = () => {
-
 
   return (
     <header
