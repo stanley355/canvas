@@ -4,10 +4,13 @@ import { SiTaichilang } from "react-icons/si";
 import classNames from "classnames";
 import Button from "../Button";
 import MobileHeaderMenu from "./MobileHeaderMenu";
+import DesktopHeaderMenu from "./DesktopHeaderMenu";
+import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const Header = () => {
+  const isDesktop = useDesktopScreen();
 
   return (
     <header
@@ -26,8 +29,7 @@ const Header = () => {
         <span>LanguageAI</span>
       </Button>
 
-      <MobileHeaderMenu />
-
+      {isDesktop ? <DesktopHeaderMenu /> : <MobileHeaderMenu />}
     </header>
   );
 };
