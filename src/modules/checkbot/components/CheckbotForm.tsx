@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import Select from "react-select";
 import { FaSpinner } from "react-icons/fa";
+import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import Button from "@/common/components/Button";
 import { CHECKBOT_OPTIONS } from "../constant";
 import { LANGUAGE_LIST } from "../../translate/constant";
+import { generateCheckbotPrompt } from "../lib/generateCheckbotPrompt";
 
 interface ICheckBotForm {
   dispatchCheckbotVal: (val: string) => void;
@@ -15,21 +17,20 @@ const CheckBotForm = (props: ICheckBotForm) => {
   const [showPersonalInstruction, setShowPersonalInstruction] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const isDesktop = useDesktopScreen();
+
   const handleCheckbotOption = (option: any) => {
-    if (option.value === "personal_instruction") {
-      setShowPersonalInstruction(true);
-    } else {
-      setShowPersonalInstruction(false);
-    }
+    const isPersonalInstruction = option.value === "personal_instruction";
+    setShowPersonalInstruction(isPersonalInstruction);
   };
 
-  const fetchAPIandDispatch = async (reqData: any) => {
+  const fetchAPIandDispatch = async (prompt: any) => {
     const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/ai/chat-completion/`;
-    const { data } = await axios.post(URL, reqData);
+    const { data } = await axios.post(URL, prompt);
     if (data && data.choices.length > 0) {
       const content = data.choices[0].message.content;
       dispatchCheckbotVal(content);
-      // if (!isDesktop) window.location.href = "#translate_result_textarea";
+      if (!isDesktop) window.location.href = "#checkbot_result_textarea";
     } else {
       alert("Something went wrong, please try again!");
       return "";
@@ -53,25 +54,31 @@ const CheckBotForm = (props: ICheckBotForm) => {
     }
 
     setIsLoading(true);
-    if (instruction && instruction === "personal_instruction") {
+    if (instruction === "personal_instruction") {
       let personalInstruction = e.target.personal_instruction.value;
       if (!personalInstruction) {
         alert("You haven't filled the personal instruction");
         return "";
       }
 
-      if (outputLanguage) {
-        personalInstruction + " " + `in ${outputLanguage}`;
-      }
-
-      const reqData = {
-        message: `${personalInstruction}, text: "${targetText}"`,
-      };
-
-      await fetchAPIandDispatch(reqData);
+      const prompt = generateCheckbotPrompt(
+        personalInstruction,
+        outputLanguage,
+        targetText
+      );
+      await fetchAPIandDispatch(prompt);
       setIsLoading(false);
-    } else {
+      return "";
     }
+
+    const prompt = generateCheckbotPrompt(
+      instruction,
+      outputLanguage,
+      targetText
+    );
+    await fetchAPIandDispatch(prompt);
+    setIsLoading(false);
+    return "";
   };
 
   return (

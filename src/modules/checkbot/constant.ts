@@ -5,38 +5,38 @@ export const CHECKBOT_OPTIONS = [
     },
     {
         label: "Analyse Strength and Weakness",
-        value: "strength_and_weakness",
+        value: "Analyze the strength and weakness from",
     },
     {
         label: "Correct Grammar",
-        value: "grammar_correction",
+        value: "Correct the Grammar from",
     },
     {
         label: "Correct Spelling",
-        value: "spelling_correction",
+        value: "Correct the Spelling from",
     },
     {
         label: "Correct Grammar & Spelling",
-        value: "grammar_spelling_correction",
+        value: "Correct the Grammar and Spelling from",
     },
     {
         label: "Find conclusion",
-        value: "conclusion",
+        value: "Find the conclusion of",
     },
     {
         label: "Paraphrase",
-        value: "paraphrase",
+        value: "Paraphrase",
     },
     {
         label: "Simplify this text",
-        value: "simplify",
+        value: "Simplify",
     },
     {
         label: "Rewrite this text",
-        value: "rewrite",
+        value: "Rewrite",
     },
     {
         label: "Review this text",
-        value: "review",
+        value: "Review",
     },
 ]
