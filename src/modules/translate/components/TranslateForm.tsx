@@ -54,7 +54,7 @@ const TranslateForm = (props: ITranslateForm) => {
       message: `${baseMsg}: "${oriLangText}"`,
     };
 
-    const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/openai/chat-completion/`;
+    const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/ai/chat-completion/`;
     const { data } = await axios.post(URL, reqData);
     if (data && data.choices.length > 0) {
       const content = data.choices[0].message.content;
