@@ -30,6 +30,7 @@ const Home = () => {
       <HomeHero />
       <div className="container mx-auto">
         <HomeTitle />
+        <h3 className="px-2 mb-4 text-4xl text-center">Not Just English, but World Languages!</h3>
         <ul className="p-2 border border-white border-x-0 list-disc lg:grid lg:grid-cols-4 lg:gap-2 lg:py-4 lg:text-lg">
           <li className="ml-4 mb-4">
             <div className="mb-2">
