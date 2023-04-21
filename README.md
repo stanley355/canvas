@@ -39,3 +39,4 @@
 [ ] Paraphrase or rephrase text to make it easier to understand.
 [ ] Create chatbot conversations or dialogue.
 [ ] Generate keyword or topic tags for articles or blog posts.
+[ ] Mute language detector

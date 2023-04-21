@@ -24,6 +24,10 @@ export const CHECKBOT_OPTIONS = [
         value: "Find the conclusion of",
     },
     {
+        label: "Find keyword",
+        value: "Find the keyword of",
+    },
+    {
         label: "Paraphrase",
         value: "Paraphrase",
     },
