@@ -28,7 +28,7 @@ const LangTranslate = () => {
             ? "LanguageAI Translate (with contextual features)"
             : "AI Translate (+Context)"}
         </h1>
-        <div className="lg:grid lg:grid-cols-2 lg:gap-2 lg:my-4">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-2 mb-20">
           <TranslateForm dispatchTranslateVal={(val) => setTranslateVal(val)} />
           <TranslateResult translateVal={translateVal} />
         </div>

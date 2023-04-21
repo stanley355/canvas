@@ -9,9 +9,17 @@ import MetaSEO from "@/common/components/MetaSEO";
 const CheckBot = () => {
   const [checkbotVal, setCheckbotVal] = useState("");
 
+  const seo = {
+    title:
+      "Improve your writing with LanguageAI Checkbot - The Best Alternative to Grammarly",
+    description:
+      "Looking for an alternative to Grammary? Look no further than LanguageAI - the intelligent grammar and spelling check that delivers superior accuracy and efficiency.",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}checkbot/`,
+  };
+
   return (
     <Layout>
-      <MetaSEO seo={{}} />
+      <MetaSEO seo={seo} />
       <div className="container mx-auto px-2" id="title">
         <h1 className="flex flex-row items-center text-xl justify-center my-4">
           <FaRobot className="text-3xl mr-2" />
