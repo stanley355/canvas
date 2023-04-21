@@ -7,6 +7,7 @@ import Button from "@/common/components/Button";
 import TranslateComparison from "@/modules/translate/components/TranslateComparison";
 import HomeCopywriting from "@/modules/home/HomeCopywriting";
 import PackageJSON from "../../package.json";
+import CheckbotComparison from "@/modules/checkbot/components/CheckbotComparison";
 
 const Home = () => {
   const seo = {
@@ -43,43 +44,21 @@ const Home = () => {
             />
           </div>
         </div>
+        <div className="px-2 mb-8 flex flex-col items-center justify-center">
+          <CheckbotComparison />
+          <div className="my-16">
+            <Button
+              type="link"
+              title="Let's check my writing"
+              href="/checkbot/"
+              buttonClassName="p-2 bg-white border mx-auto text-black hover:bg-black hover:text-white text-xl font-semibold"
+            />
+          </div>
+        </div>
       </div>
     </Layout>
   );
 };
-<ul className="p-2 border border-white border-x-0 list-disc lg:grid lg:grid-cols-4 lg:gap-2 lg:py-4 lg:text-lg">
-          <li className="ml-4 mb-4">
-            <div className="mb-2">
-              Having Trouble with Meaningful Translation?{" "}
-            </div>
-            <div className="grid grid-cols-2 gap-2">
-              <Button
-                type="link"
-                href="/translate/"
-                title="Try AI Translate"
-                wrapperClassName="border border-white p-1 text-center hover:bg-white hover:text-black"
-              />
-              <Button
-                type="link"
-                href="/translate/#translate_comparison"
-                title="See Docs"
-                wrapperClassName="border border-white p-1 text-center hover:bg-white hover:text-black"
-              />
-            </div>
-          </li>
-          <li className="ml-4 mb-4">
-            <div>Having Trouble Reviewing your Writing?</div>
-            <div className="underline">Coming Soon</div>
-          </li>
-          <li className="ml-4 mb-4">
-            <div>Having Trouble in Paraphrasing/Concluding?</div>
-            <div className="underline">Coming Soon</div>
-          </li>
-          <li className="ml-4 mb-4">
-            <div>Having Trouble in Word Meaning/Synonym?</div>
-            <div className="underline">Coming Soon</div>
-          </li>
-        </ul>
 export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {},

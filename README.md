@@ -1,36 +1,7 @@
 ## Versions
 
-### 0.1.2 :
-
-- Add Sidebar Navigation to News and Scholar page
-- Layout adjustment on News and Scholar page
-
-### 0.1.3 :
-
-- Page Performance Improvement
-- Add Dynamic News on ISR
-
-### 0.1.6
-
-- Remove News Page
-- Scholar Page Revamp
-- Add Semantic Scholar Result to Scholar Search
-
-### 0.1.7
-
-- Bug fix for scholar search results
-
-### 0.1.8
-
-- Remove scholar Product
-
-### 0.2.0
-
-- Add AI Translate
-
-### 0.2.1
-
-- Add Checkbot
+- 0.2.0: Add AI Translate
+- 0.2.1: Add Checkbot
 
 ## TODO:
 

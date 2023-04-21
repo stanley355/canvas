@@ -4,7 +4,7 @@ import Button from "@/common/components/Button";
 
 const HomeCopywriting = () => (
   <div className="px-2 border-b pb-4">
-    <h3 className="my-4 lg:my-8 text-4xl text-center">
+    <h3 className="my-4 lg:my-8 text-4xl text-center lg:text-5xl">
       Not Just English, but World Languages!
     </h3>
     <div className="px-2 lg:px-0 lg:grid lg:grid-cols-3 lg:gap-8 ">
