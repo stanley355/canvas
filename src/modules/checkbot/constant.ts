@@ -28,12 +28,20 @@ export const CHECKBOT_OPTIONS = [
         value: "Find the keyword of",
     },
     {
+        label: "Improvement Suggestion",
+        value: "Give improvment suggestions of",
+    },
+    {
         label: "Paraphrase",
         value: "Paraphrase",
     },
     {
         label: "Simplify this text",
         value: "Simplify",
+    },
+    {
+        label: "Summarize this text",
+        value: "Summarize",
     },
     {
         label: "Rewrite this text",
