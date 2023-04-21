@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import Select from "react-select";
 import { FaSpinner } from "react-icons/fa";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
@@ -7,6 +6,7 @@ import Button from "@/common/components/Button";
 import { CHECKBOT_OPTIONS } from "../constant";
 import { LANGUAGE_LIST } from "../../translate/constant";
 import { generateCheckbotPrompt } from "../lib/generateCheckbotPrompt";
+import { fetchCheckbotAndDispatch } from "../lib/fetchCheckbotAndDispatch";
 
 interface ICheckBotForm {
   dispatchCheckbotVal: (val: string) => void;
@@ -22,19 +22,6 @@ const CheckBotForm = (props: ICheckBotForm) => {
   const handleCheckbotOption = (option: any) => {
     const isPersonalInstruction = option.value === "personal_instruction";
     setShowPersonalInstruction(isPersonalInstruction);
-  };
-
-  const fetchAPIandDispatch = async (prompt: any) => {
-    const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/ai/chat-completion/`;
-    const { data } = await axios.post(URL, prompt);
-    if (data && data.choices.length > 0) {
-      const content = data.choices[0].message.content;
-      dispatchCheckbotVal(content);
-      if (!isDesktop) window.location.href = "#checkbot_result_textarea";
-    } else {
-      alert("Something went wrong, please try again!");
-      return "";
-    }
   };
 
   const handleSubmit = async (e: any) => {
@@ -66,7 +53,8 @@ const CheckBotForm = (props: ICheckBotForm) => {
         outputLanguage,
         targetText
       );
-      await fetchAPIandDispatch(prompt);
+      await fetchCheckbotAndDispatch(prompt, dispatchCheckbotVal);
+      if (!isDesktop) window.location.href = "#checkbot_result_textarea";
       setIsLoading(false);
       return "";
     }
@@ -76,7 +64,9 @@ const CheckBotForm = (props: ICheckBotForm) => {
       outputLanguage,
       targetText
     );
-    await fetchAPIandDispatch(prompt);
+
+    await fetchCheckbotAndDispatch(prompt, dispatchCheckbotVal);
+    if (!isDesktop) window.location.href = "#checkbot_result_textarea";
     setIsLoading(false);
     return "";
   };
