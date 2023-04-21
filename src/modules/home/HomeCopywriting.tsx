@@ -1,10 +1,10 @@
 import React from "react";
-import { FaLanguage, FaRobot } from "react-icons/fa";
+import { FaLanguage, FaRobot, FaBook } from "react-icons/fa";
 import Button from "@/common/components/Button";
 
 const HomeCopywriting = () => (
   <div className="px-2">
-    <h3 className="my-4 text-4xl text-center">
+    <h3 className="my-4 lg:my-8 text-4xl text-center">
       Not Just English, but World Languages!
     </h3>
     <div className="px-2 lg:px-0 lg:grid lg:grid-cols-3 lg:gap-8 ">
@@ -23,7 +23,7 @@ const HomeCopywriting = () => (
             type="link"
             title="Try it out"
             href="/translate/"
-            wrapperClassName="text-center border p-1 rounded-sm hover:text-black hover:bg-white"
+            wrapperClassName="text-center border p-1 rounded-sm hover:text-black hover:bg-white animate-pulse"
           />
           <Button
             type="link"
@@ -33,7 +33,7 @@ const HomeCopywriting = () => (
           />
         </div>
       </div>
-      <div id="checkbot_copywriting">
+      <div id="checkbot_copywriting" className="mb-8">
         <div className="flex flex-row items-center gap-2">
           <FaRobot className="text-4xl" />
           <span className="text-2xl">LanguageAI Checkbot</span>
@@ -48,7 +48,7 @@ const HomeCopywriting = () => (
             type="link"
             title="Try it out"
             href="/checkbot/"
-            wrapperClassName="text-center border p-1 rounded-sm hover:text-black hover:bg-white"
+            wrapperClassName="text-center border p-1 rounded-sm hover:text-black hover:bg-white animate-pulse"
           />
           <Button
             type="link"
@@ -56,6 +56,21 @@ const HomeCopywriting = () => (
             href="/checkbot/#checkbot_comparison"
             wrapperClassName="text-center border p-1 rounded-sm hover:text-black hover:bg-white"
           />
+        </div>
+      </div>
+      <div id="dictionary_copywriting">
+        <div className="flex flex-row items-center gap-2">
+          <FaBook className="text-3xl" />
+          <span className="text-2xl">LanguageAI Dictionary</span>
+        </div>
+        <ul className="list-disc ml-4 mt-2">
+          <li className="font-bold">20x better than Oxford/Cambridge Dictionary</li>
+          <li>Find All Word's meaning not just in English but World Languages</li>
+          <li>Example Sentence, Synonym, and Antonym as well</li>
+          <li>Define not just formal words, but Slang, Abbreviation, or Difficult Terms as well!</li>
+        </ul>
+        <div className="w-full text-center p-1 border rounded-md my-4">
+          Coming Soon!
         </div>
       </div>
     </div>
