@@ -40,8 +40,14 @@ const HomeCopywriting = () => (
         </div>
         <ul className="list-disc ml-4 mt-2">
           <li className="font-bold">10x better than Grammarly</li>
-          <li>Correct Grammar and Spelling, not just in English but World Languages</li>
-          <li>Can Provide Feedback, Rewrite, or Analyse Strength and Weaknesses of the writing </li>
+          <li>
+            Correct Grammar and Spelling, not just in English but World
+            Languages
+          </li>
+          <li>
+            Can Provide Feedback, Rewrite, or Analyse Strength and Weaknesses of
+            the writing{" "}
+          </li>
         </ul>
         <div className="grid grid-cols-2 gap-2 my-2 mt-4">
           <Button
@@ -64,10 +70,17 @@ const HomeCopywriting = () => (
           <span className="text-2xl">LanguageAI Dictionary</span>
         </div>
         <ul className="list-disc ml-4 mt-2">
-          <li className="font-bold">20x better than Oxford/Cambridge Dictionary</li>
-          <li>Find All Word's meaning not just in English but World Languages</li>
+          <li className="font-bold">
+            20x better than Oxford/Cambridge Dictionary
+          </li>
+          <li>
+            Find All Word's meaning not just in English but World Languages
+          </li>
           <li>Example Sentence, Synonym, and Antonym as well</li>
-          <li>Define not just formal words, but Slang, Abbreviation, or Difficult Terms as well!</li>
+          <li>
+            Define not just formal words, but Slang, Abbreviation, or Difficult
+            Terms as well!
+          </li>
         </ul>
         <div className="w-full text-center p-1 border rounded-md my-4">
           Coming Soon!
