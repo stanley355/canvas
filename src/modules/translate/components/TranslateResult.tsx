@@ -36,13 +36,15 @@ const TranslateResult = (props: ITranslateResult) => {
           buttonClassName="w-full text-center p-2 bg-white text-black rounded-md hover:border hover:border-white hover:bg-black hover:text-white"
           onClick={copyText}
         />
-        {!isDesktop && <Button
-          type="link"
-          href="#title"
-          title="Go to Top"
-          wrapperClassName="flex items-center justify-center w-full"
-          buttonClassName="w-full text-center p-2 bg-white text-black rounded-md hover:border hover:border-white hover:bg-black hover:text-white"
-        />}
+        {!isDesktop && (
+          <Button
+            type="link"
+            href="#title"
+            title="Go to Top"
+            wrapperClassName="flex items-center justify-center w-full"
+            buttonClassName="w-full text-center p-2 bg-white text-black rounded-md hover:border hover:border-white hover:bg-black hover:text-white"
+          />
+        )}
       </div>
     </div>
   );

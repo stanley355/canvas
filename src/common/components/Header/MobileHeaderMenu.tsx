@@ -28,7 +28,7 @@ const MobileHeaderMenu = () => {
         wrapperClassName="my-4 hover:bg-white hover:text-black"
       >
         <FaRobot className="text-3xl mr-2" />
-        <span className="pt-2 text-2xl">AI Checkbot</span>
+        <span className="pt-2 text-2xl">Checkbot</span>
         <FaAngleRight className="text-3xl float-right ml-8" />
       </Button>
       <Button
@@ -38,7 +38,7 @@ const MobileHeaderMenu = () => {
         wrapperClassName="my-4 hover:bg-white hover:text-black"
       >
         <FaLanguage className="text-3xl mr-2" />
-        <span className="text-2xl">AI Translate</span>
+        <span className="text-2xl">Translate</span>
         <FaAngleRight className="text-3xl float-right ml-8" />
       </Button>
     </div>

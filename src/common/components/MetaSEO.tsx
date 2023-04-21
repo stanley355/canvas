@@ -28,14 +28,8 @@ const MetaSEO = ({ seo }: IMetaSEO) => {
       <meta property="og:locale" content="id_ID" />
       <meta property="og:type" content="website" />
       <meta property="og:description" content={seo?.description} />
-      <meta
-        property="og:url"
-        content={seo?.url}
-      />
-      <meta
-        property="og:site_name"
-        content="LanguageAI"
-      />
+      <meta property="og:url" content={seo?.url} />
+      <meta property="og:site_name" content="LanguageAI" />
       <meta property="og:image" content={seo?.image ?? ""} />
       <meta name="twitter:card" content={seo?.twitterCard} />
       <meta name="twitter:title" content={seo?.title} />

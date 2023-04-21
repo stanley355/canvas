@@ -12,7 +12,8 @@ const LangTranslate = () => {
   const isDesktop = useDesktopScreen();
 
   const seo = {
-    title: "Upgrade Your Translation Game with LanguageAI - The Best Alternative to Google Translate",
+    title:
+      "Upgrade Your Translation Game with LanguageAI - The Best Alternative to Google Translate",
     description:
       "Looking for an alternative to Google Translate? Look no further than LanguageAI - the intelligent translation tool that delivers superior accuracy and efficiency.",
     url: `${process.env.NEXT_PUBLIC_BASE_URL}translate/`,
