@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import { FaRobot } from "react-icons/fa";
 import Layout from "@/common/components/Layout";
 import CheckBotForm from "@/modules/checkbot/components/CheckbotForm";
+import CheckboxResult from "@/modules/checkbot/components/CheckbotResult";
 
 const CheckBot = () => {
+  const [checkbotVal, setCheckbotVal] = useState("");
+
   return (
     <Layout>
       <div className="container mx-auto px-2">
@@ -11,7 +14,8 @@ const CheckBot = () => {
           <FaRobot className="text-3xl mr-2" />
           <span>LanguageAI Checkbot</span>
         </h1>
-        <CheckBotForm dispatchCheckbotVal={(val: string) => console.log(val)} />
+        <CheckBotForm dispatchCheckbotVal={(val: string) => setCheckbotVal(val)} />
+        <CheckboxResult checkbotVal={checkbotVal} />
       </div>
     </Layout>
   );
