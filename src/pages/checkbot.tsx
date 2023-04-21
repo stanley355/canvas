@@ -14,7 +14,7 @@ const CheckBot = () => {
           <FaRobot className="text-3xl mr-2" />
           <span>LanguageAI Checkbot</span>
         </h1>
-        <div className="grid grid-cols-2 gap-2">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-2">
 
         <CheckBotForm dispatchCheckbotVal={(val: string) => setCheckbotVal(val)} />
         <CheckboxResult checkbotVal={checkbotVal} />
