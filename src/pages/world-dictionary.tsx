@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "@/common/components/Layout";
-import WorldDictionaryForm from "@/modules/worldDictionary/WorldDictionaryForm";
+import WorldDictionaryForm from "@/modules/worldDictionary/components/WorldDictionaryForm";
 
 const WorldDictionary = () => {
   return (
