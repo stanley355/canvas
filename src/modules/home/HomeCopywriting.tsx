@@ -24,7 +24,7 @@ const HomeCopywriting = () => (
             type="link"
             title="Try it out"
             href="/translate/"
-            wrapperClassName="text-center border p-1 rounded-sm hover:text-black hover:bg-white animate-pulse"
+            wrapperClassName="text-center border-2 font-bold p-1 rounded-sm hover:text-black hover:bg-white animate-pulse"
           />
           <Button
             type="link"
@@ -55,7 +55,7 @@ const HomeCopywriting = () => (
             type="link"
             title="Try it out"
             href="/checkbot/"
-            wrapperClassName="text-center border p-1 rounded-sm hover:text-black hover:bg-white animate-pulse"
+            wrapperClassName="text-center border-2 font-bold p-1 rounded-sm hover:text-black hover:bg-white animate-pulse"
           />
           <Button
             type="link"
