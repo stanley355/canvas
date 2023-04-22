@@ -1,5 +1,5 @@
 import React from "react";
-import { FaLanguage, FaRobot, FaBook } from "react-icons/fa";
+import { FaLanguage, FaRobot, FaGlobeAmericas } from "react-icons/fa";
 import Button from "@/common/components/Button";
 
 const HomeCopywriting = () => (
@@ -7,7 +7,9 @@ const HomeCopywriting = () => (
     <h3 className="my-4 text-4xl text-center lg:text-5xl">
       Not Just English, but World Languages!
     </h3>
-    <div className="text-lg text-center my-4 lg:text-2xl">Indonesian, European, or African languages are all possible!</div>
+    <div className="text-lg text-center my-4 lg:text-2xl">
+      Indonesian, European, or African languages are all possible!
+    </div>
     <div className="px-2 lg:px-0 lg:grid lg:grid-cols-3 lg:gap-8 lg:mt-8">
       <div id="translate_copywriting" className="mb-8">
         <div className="flex flex-row items-center gap-2">
@@ -67,12 +69,12 @@ const HomeCopywriting = () => (
       </div>
       <div id="dictionary_copywriting">
         <div className="flex flex-row items-center gap-2">
-          <FaBook className="text-3xl" />
-          <span className="text-2xl">LanguageAI Dictionary</span>
+          <FaGlobeAmericas className="text-3xl" />
+          <span className="text-2xl">LanguageAI World Dictionary</span>
         </div>
         <ul className="list-disc ml-4 mt-2">
           <li className="font-bold">
-            20x better than Oxford/Cambridge Dictionary
+            20x more complete than All Dictionaries
           </li>
           <li>
             Find All Word&apos;s meaning not just in English but World Languages
@@ -83,9 +85,12 @@ const HomeCopywriting = () => (
             Terms as well!
           </li>
         </ul>
-        <div className="w-full text-center p-1 border rounded-md my-4">
-          Coming Soon!
-        </div>
+        <Button
+          type="link"
+          title="Try it out"
+          href="/world-dictionary/"
+          wrapperClassName="text-center border-2 font-bold p-1 rounded-sm hover:text-black hover:bg-white animate-pulse my-4 cursor-pointer"
+        />
       </div>
     </div>
   </div>

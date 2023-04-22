@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaLanguage } from "react-icons/fa";
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
 import TranslateForm from "@/modules/translate/components/TranslateForm";
@@ -23,10 +24,13 @@ const LangTranslate = () => {
     <Layout>
       <MetaSEO seo={seo} />
       <div className="container mx-auto px-2">
-        <h1 className="py-2 text-3xl" id="title">
+        <h1 className="py-2 text-3xl flex flex-row items-center justify-center lg:my-4" id="title">
+          <FaLanguage className="text-5xl mr-2" />
+          <span>
           {isDesktop
-            ? "LanguageAI Translate (5x better than Google Translate)"
-            : "AI Translate (5x better than Google Translate)"}
+            ? "LanguageAI Translate (with Contextual Feature)"
+            : "AI Translate"}
+          </span>
         </h1>
         <div className="lg:grid lg:grid-cols-2 lg:gap-2 mb-20">
           <TranslateForm dispatchTranslateVal={(val) => setTranslateVal(val)} />

@@ -2,6 +2,7 @@
 
 - 0.2.0: Add AI Translate
 - 0.2.1: Add Checkbot
+- 0.2.2: Add Dictionary
 
 ## TODO:
 

@@ -24,7 +24,7 @@ const WorldDictionary = () => {
           <WorldDictionaryForm dispatchWordMeaning={handleWordMeaning} />
           <div className="text-lg lg:mt-8">
             <div className="font-bold">
-              {targetWord ? targetWord : "You result will show here :"}
+              {targetWord ? targetWord : "Your result will show here :"}
             </div>
             {wordMeaning && <div>{wordMeaning}</div>}
           </div>
