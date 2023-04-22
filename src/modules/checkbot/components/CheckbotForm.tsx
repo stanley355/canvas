@@ -42,7 +42,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
     }
 
     setIsLoading(true);
-    sendFirebaseEvent("checkbot", { name: instruction });
+    sendFirebaseEvent("checkbot", { name: "checkbot", instruction: instruction });
     if (instruction === "personal_instruction") {
       let personalInstruction = e.target.personal_instruction.value;
       if (!personalInstruction) {
