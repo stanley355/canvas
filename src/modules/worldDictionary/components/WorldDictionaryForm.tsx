@@ -5,6 +5,7 @@ import axios from "axios";
 import Button from "@/common/components/Button";
 import { WORLD_DICTIONARY_ADDITION } from "../constant";
 import { LANGUAGE_LIST } from "../../translate/constant";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 interface IWorldDictionaryForm {
   dispatchWordMeaning: (word: string, meaning: string) => void;
@@ -30,7 +31,7 @@ const WorldDictionaryForm = (props: IWorldDictionaryForm) => {
     let baseMsg = `Give me the IPA and definition of ${targetWord} `;
 
     if (sourceLanguage) {
-      baseMsg += `from ${sourceLanguage} `
+      baseMsg += `from ${sourceLanguage} `;
     }
 
     if (dictionaryAddition && dictionaryAddition?.length > 0) {
@@ -40,7 +41,7 @@ const WorldDictionaryForm = (props: IWorldDictionaryForm) => {
     }
 
     if (targetLanguage) {
-      baseMsg  += `and explain it in ${targetLanguage}`;
+      baseMsg += `and explain it in ${targetLanguage}`;
     }
 
     const reqData = {
@@ -48,6 +49,10 @@ const WorldDictionaryForm = (props: IWorldDictionaryForm) => {
     };
 
     setIsLoading(true);
+    sendFirebaseEvent("world_dictionary", {
+      name: "world_dictionary",
+      message: baseMsg,
+    });
     const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/ai/chat-completion/`;
     const { data } = await axios.post(URL, reqData);
     if (data && data.choices.length > 0) {
