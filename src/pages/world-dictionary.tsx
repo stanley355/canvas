@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Layout from "@/common/components/Layout";
+import MetaSEO from "@/common/components/MetaSEO";
 import WorldDictionaryForm from "@/modules/worldDictionary/components/WorldDictionaryForm";
 
 const WorldDictionary = () => {
@@ -11,8 +12,17 @@ const WorldDictionary = () => {
     setWordMeaning(meaning);
   };
 
+  const seo = {
+    title:
+      "Complete Dictionary: English, European, Asian Languages Dictionary - LanguageAI World Dictionary",
+    description:
+      "LanguageAI's World Dictionary - the ultimate resource for all your language needs. Explore English, European, and Asian languages in one comprehensive dictionary.",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}world-dictionary/`,
+  };
+
   return (
     <Layout>
+      <MetaSEO seo={seo} />
       <div className="container mx-auto px-2 h-screen">
         <h1 className="my-4 text-3xl text-center font-semibold">
           World Dictionary

@@ -1,5 +1,5 @@
 import React from "react";
-import { FaRobot, FaLanguage } from "react-icons/fa";
+import { FaRobot, FaLanguage, FaGlobeAmericas } from "react-icons/fa";
 import Button from "../Button";
 
 const DesktopHeaderMenu = () => {
@@ -22,6 +22,15 @@ const DesktopHeaderMenu = () => {
       >
         <FaLanguage className="text-3xl mr-1" />
         <span className="text-xl">AI Translate</span>
+      </Button>
+      <Button
+        type="link"
+        href="/world-dictionary/"
+        buttonClassName="flex flex-row items-center"
+        wrapperClassName="hover:border-b"
+      >
+        <FaGlobeAmericas className="text-xl mr-1" />
+        <span className="text-xl">AI World Dictionary</span>
       </Button>
     </div>
   );
