@@ -25,8 +25,8 @@ const LangTranslate = () => {
       <div className="container mx-auto px-2">
         <h1 className="py-2 text-3xl" id="title">
           {isDesktop
-            ? "LanguageAI Translate (with contextual features)"
-            : "AI Translate (+Context)"}
+            ? "LanguageAI Translate (5x better than Google Translate)"
+            : "AI Translate (5x better than Google Translate)"}
         </h1>
         <div className="lg:grid lg:grid-cols-2 lg:gap-2 mb-20">
           <TranslateForm dispatchTranslateVal={(val) => setTranslateVal(val)} />
