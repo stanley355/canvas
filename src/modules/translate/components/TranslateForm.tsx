@@ -34,7 +34,7 @@ const TranslateForm = (props: ITranslateForm) => {
       return "";
     }
 
-    sendFirebaseEvent("Translate", {
+    sendFirebaseEvent("translate", {
       ori_lang: oriLang,
       target_lange: targetLang,
     });

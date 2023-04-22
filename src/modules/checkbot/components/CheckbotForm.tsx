@@ -7,6 +7,7 @@ import { CHECKBOT_OPTIONS } from "../constant";
 import { LANGUAGE_LIST } from "../../translate/constant";
 import { generateCheckbotPrompt } from "../lib/generateCheckbotPrompt";
 import { fetchCheckbotAndDispatch } from "../lib/fetchCheckbotAndDispatch";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 interface ICheckBotForm {
   dispatchCheckbotVal: (val: string) => void;
@@ -41,6 +42,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
     }
 
     setIsLoading(true);
+    sendFirebaseEvent("checkbot", { name: instruction });
     if (instruction === "personal_instruction") {
       let personalInstruction = e.target.personal_instruction.value;
       if (!personalInstruction) {
