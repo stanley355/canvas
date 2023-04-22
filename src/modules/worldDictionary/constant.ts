@@ -1,14 +1,14 @@
 export const WORLD_DICTIONARY_ADDITION = [
     {
         label: "Synonym",
-        value: "Synonym",
+        value: "provide the synonym",
     },
     {
         label: "Antonym",
-        value: "Antonym"
+        value: "provide the antonym"
     },
     {
         label: "Example Sentences",
-        value: "Example Sentences"
+        value: "provide example Sentences"
     }
 ]

@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "@/common/components/Layout";
 import WorldDictionaryForm from "@/modules/worldDictionary/components/WorldDictionaryForm";
 
 const WorldDictionary = () => {
+  const [targetWord, setTargetWord] = useState("");
+  const [wordMeaning, setWordMeaning] = useState("");
+
+  const handleWordMeaning = (word: string, meaning: string) => {
+    setTargetWord(word);
+    setWordMeaning(meaning);
+  };
+
   return (
     <Layout>
       <div className="container mx-auto px-2 h-screen">
@@ -12,7 +20,15 @@ const WorldDictionary = () => {
         <div className="text-xl text-center">
           Find Word Definition, not just in English but in All Languages
         </div>
-        <WorldDictionaryForm />
+        <div className="lg:grid lg:grid-cols-2 lg:gap-4">
+          <WorldDictionaryForm dispatchWordMeaning={handleWordMeaning} />
+          <div className="text-lg lg:mt-8">
+            <div className="font-bold">
+              {targetWord ? targetWord : "You result will show here :"}
+            </div>
+            {wordMeaning && <div>{wordMeaning}</div>}
+          </div>
+        </div>
       </div>
     </Layout>
   );
