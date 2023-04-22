@@ -11,7 +11,7 @@ const CheckBot = () => {
 
   const seo = {
     title:
-      "Improve your writing with LanguageAI Checkbot - The Best Alternative to Grammarly",
+      "10x better than Grammarly - LanguageAI Checkbot",
     description:
       "Looking for an alternative to Grammary? Look no further than LanguageAI - the intelligent grammar and spelling check that delivers superior accuracy and efficiency.",
     url: `${process.env.NEXT_PUBLIC_BASE_URL}checkbot/`,
