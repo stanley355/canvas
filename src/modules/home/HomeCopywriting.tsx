@@ -73,9 +73,7 @@ const HomeCopywriting = () => (
           <span className="text-2xl">LanguageAI World Dictionary</span>
         </div>
         <ul className="list-disc ml-4 mt-2">
-          <li className="font-bold">
-            20x more complete than All Dictionaries
-          </li>
+          <li className="font-bold">20x more complete than All Dictionaries</li>
           <li>
             Find All Word&apos;s meaning not just in English but World Languages
           </li>

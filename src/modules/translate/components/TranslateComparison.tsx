@@ -22,10 +22,10 @@ const TranslateComparison = () => {
       <p className="mb-4">
         The speaker in the original text expresses dissatisfaction to the reader
         regarding a promise to assist with a task that has not been fulfilled
-        yet. The speaker concludes by asking &quot;What&apos;s happening?&quot;. Google
-        Translate struggled to translate the source text adequately, likely due
-        to the difficulty in distinguishing between creole and English since
-        English words were present.
+        yet. The speaker concludes by asking &quot;What&apos;s happening?&quot;.
+        Google Translate struggled to translate the source text adequately,
+        likely due to the difficulty in distinguishing between creole and
+        English since English words were present.
       </p>
       <div className="mb-4">
         <img

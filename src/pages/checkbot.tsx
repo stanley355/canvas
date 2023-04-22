@@ -10,8 +10,7 @@ const CheckBot = () => {
   const [checkbotVal, setCheckbotVal] = useState("");
 
   const seo = {
-    title:
-      "10x better than Grammarly - LanguageAI Checkbot",
+    title: "10x better than Grammarly - LanguageAI Checkbot",
     description:
       "Looking for an alternative to Grammary? Look no further than LanguageAI - the intelligent grammar and spelling check that delivers superior accuracy and efficiency.",
     url: `${process.env.NEXT_PUBLIC_BASE_URL}checkbot/`,

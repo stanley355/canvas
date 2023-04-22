@@ -5,7 +5,7 @@ import {
   FaRobot,
   FaLanguage,
   FaAngleRight,
-  FaGlobeAmericas
+  FaGlobeAmericas,
 } from "react-icons/fa";
 import Button from "../Button";
 
