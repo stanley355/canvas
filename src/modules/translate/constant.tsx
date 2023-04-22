@@ -28,6 +28,10 @@ export const LANGUAGE_LIST = [
     value: "Hindi",
   },
   {
+    label: "Japanese",
+    value: "Japanese",
+  },
+  {
     label: "Indonesian",
     value: "Indonesian",
   },
