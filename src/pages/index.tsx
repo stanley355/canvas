@@ -19,7 +19,7 @@ const Home = () => {
 
   const HomeTitle = () => (
     <div className="p-4 lg:py-8 border-b">
-      <h3 className="text-3xl">Introducing LanguageAI {PackageJSON.version}</h3>
+      <h1 className="text-3xl">Introducing LanguageAI {PackageJSON.version}</h1>
       <div className="text-lg">
         The most advanced language and text processing system
       </div>

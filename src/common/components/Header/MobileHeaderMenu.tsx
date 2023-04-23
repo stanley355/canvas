@@ -59,6 +59,7 @@ const MobileHeaderMenu = () => {
     <div className="relative">
       <Button
         type="button"
+        ariaLabel="header_menu_btn"
         onClick={() => setShowMenu(true)}
         buttonClassName="flex items-center justify-center text-2xl"
       >

@@ -22,7 +22,7 @@ const MetaSEO = ({ seo }: IMetaSEO) => {
       />
       <meta
         name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
       <meta property="og:title" content={seo?.title} />
       <meta property="og:locale" content="id_ID" />
@@ -36,10 +36,10 @@ const MetaSEO = ({ seo }: IMetaSEO) => {
       <meta name="twitter:description" content={seo?.description} />
       <meta name="twitter:image" content={seo?.image?.url} />
       <link rel="icon" type="image/png" href="/images/langai_icon.png" />
-      {/* <meta name="twitter:creator" content="@localhost" />
-    <meta name="twitter:site" content="@localhost" />
-    <meta name="twitter:label1" content="@localhost" />
-    <meta name="twitter:data1" content="localhost" /> */}
+      <meta name="twitter:creator" content="@languageai" />
+      <meta name="twitter:site" content="@languageai" />
+      <meta name="twitter:label1" content="@languageai" />
+      <meta name="twitter:data1" content="LanguageAI" />
     </Head>
   );
 };

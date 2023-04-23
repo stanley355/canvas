@@ -49,6 +49,8 @@ const TranslateComparison = () => {
           alt="langai_creola"
           className="rounded-md border border-white"
           loading="lazy"
+          width={1264}
+          height={383}
         />
       </div>
       <p className="mb-4">
@@ -72,6 +74,8 @@ const TranslateComparison = () => {
           alt="langai_creola"
           className="rounded-md border border-white"
           loading="lazy"
+          width={1264}
+          height={354}
         />
       </div>
     </div>
