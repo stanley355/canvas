@@ -30,6 +30,8 @@ const CheckbotComparison = () => (
         alt="Source Text Checkbot"
         loading="lazy"
         className="rounded-md"
+        width={697}
+        height={471}
       />
     </div>
 
@@ -45,6 +47,8 @@ const CheckbotComparison = () => (
         alt="Source Text Checkbot"
         loading="lazy"
         className="rounded-md"
+        width={631}
+        height={550}
       />
     </div>
 

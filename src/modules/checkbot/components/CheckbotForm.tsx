@@ -78,19 +78,29 @@ const CheckBotForm = (props: ICheckBotForm) => {
 
   return (
     <form onSubmit={handleSubmit} className="mb-4">
-      <Select
-        placeholder="What can I help you with?"
-        name="instruction"
-        options={CHECKBOT_OPTIONS}
-        className="w-full text-black mb-2"
-        onChange={handleCheckbotOption}
-      />
-      <Select
-        placeholder="Optional: Output Language"
-        name="output_language"
-        options={LANGUAGE_LIST}
-        className="w-full text-black mb-2"
-      />
+      <label htmlFor="checkbot_instruction_select">
+        <Select
+          placeholder="What can I help you with?"
+          name="instruction"
+          options={CHECKBOT_OPTIONS}
+          className="w-full text-black mb-2"
+          id="checkbot_instruction_select"
+          aria-label="checkbot_instruction_select"
+          aria-labelledby="checkbot_instruction_select"
+          onChange={handleCheckbotOption}
+        />
+      </label>
+      <label htmlFor="checkbot_language_select">
+        <Select
+          placeholder="Optional: Output Language"
+          name="output_language"
+          options={LANGUAGE_LIST}
+          className="w-full text-black mb-2"
+          id="checkbot_language_select"
+          aria-label="checkbot_language_select"
+          aria-labelledby="checkbot_language_select"
+        />
+      </label>
       {showPersonalInstruction && (
         <input
           type="text"
@@ -99,14 +109,18 @@ const CheckBotForm = (props: ICheckBotForm) => {
           placeholder="What's your instruction?"
         />
       )}
-      <textarea
-        name="target_text"
-        id="target_text_textarea"
-        cols={30}
-        rows={10}
-        className="w-full bg-transparent text-white rounded-md border my-2 p-2"
-        placeholder="Copy your text here"
-      />
+      <label htmlFor="target_text_textarea">
+        <textarea
+          name="target_text"
+          id="target_text_textarea"
+          aria-label="target_text_textarea"
+          aria-labelledby="target_text_textarea"
+          cols={30}
+          rows={10}
+          className="w-full bg-transparent text-white rounded-md border my-2 p-2"
+          placeholder="Copy your text here"
+        />
+      </label>
       <Button
         type="submit"
         disabled={isLoading}
