@@ -2,9 +2,9 @@ import React from "react";
 
 const CheckbotComparison = () => (
   <div id="checkbot_comparison">
-    <h3 className="text-2xl mb-4">
+    <div className="text-2xl mb-4">
       Comparing LanguageAI Checkbot vs Grammarly
-    </h3>
+    </div>
 
     <p className="mb-4">
       One of the main advantages of incorporating LanguageAI Checkbot into
