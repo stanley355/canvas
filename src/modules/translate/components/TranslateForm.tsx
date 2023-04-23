@@ -72,21 +72,29 @@ const TranslateForm = (props: ITranslateForm) => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="flex flex-row items-center justify-center w-full py-2 lg:gap-2 lg:pt-0">
-        <Select
-          className="w-5/12 lg:w-1/2 text-black"
-          placeholder={isDesktop ? "Select Source Language" : "Select Lang"}
-          id="ori_lang_select"
-          name="ori_lang"
-          options={LANGUAGE_LIST}
-        />
+        <label htmlFor="ori_lang_select" className="w-5/12 lg:w-1/2">
+          <Select
+            className="text-black"
+            placeholder={isDesktop ? "Select Source Language" : "Select Lang"}
+            id="ori_lang_select"
+            name="ori_lang"
+            aria-label="ori_lang_select"
+            aria-labelledby="ori_lang_select"
+            options={LANGUAGE_LIST}
+          />
+        </label>
         <FaAngleDoubleRight className="w-2/12 lg:hidden" />
-        <Select
-          className="w-5/12 lg:w-1/2 text-black"
-          placeholder={isDesktop ? "Select Target Language" : "Select Lang"}
-          id="target_lang_select"
-          name="target_lang"
-          options={LANGUAGE_LIST}
-        />
+        <label htmlFor="target_lang_select" className="w-5/12 lg:w-1/2">
+          <Select
+            className="text-black"
+            placeholder={isDesktop ? "Select Target Language" : "Select Lang"}
+            id="target_lang_select"
+            name="target_lang"
+            aria-label="target_lang_select"
+            aria-labelledby="target_lang_select"
+            options={LANGUAGE_LIST}
+          />
+        </label>
       </div>
       <div>
         <div className="lg:flex lg:flex-row lg:gap-2 lg:mb-2">

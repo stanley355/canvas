@@ -4,9 +4,9 @@ import Image from "next/image";
 const TranslateComparison = () => {
   return (
     <div className="my-8" id="translate_comparison">
-      <h3 className="text-2xl mb-4">
+      <div className="text-2xl mb-4">
         Comparing LanguageAI Translate vs Google Translate
-      </h3>
+      </div>
       <p className="mb-4">
         Creoles, especially those that borrow many words from other languages,
         are notoriously hard to translate. We tasked both LanguageAI and Google
