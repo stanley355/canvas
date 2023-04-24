@@ -5,6 +5,7 @@ import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import Button from "@/common/components/Button";
 import { CHECKBOT_OPTIONS } from "../constant";
 import { LANGUAGE_LIST } from "../../translate/constant";
+import { reactSelectDarkStyle } from "@/common/lib/reactSelect";
 import { generateCheckbotPrompt } from "../lib/generateCheckbotPrompt";
 import { fetchCheckbotAndDispatch } from "../lib/fetchCheckbotAndDispatch";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
@@ -77,17 +78,18 @@ const CheckBotForm = (props: ICheckBotForm) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-4">
+    <form onSubmit={handleSubmit} className="mb-8">
       <label htmlFor="checkbot_instruction_select">
         <Select
           placeholder="What can I help you with?"
           name="instruction"
           options={CHECKBOT_OPTIONS}
-          className="w-full text-black mb-2"
+          className="w-full text-black mb-4"
           id="checkbot_instruction_select"
           aria-label="checkbot_instruction_select"
           aria-labelledby="checkbot_instruction_select"
           onChange={handleCheckbotOption}
+          styles={reactSelectDarkStyle}
         />
       </label>
       <label htmlFor="checkbot_language_select">
@@ -99,6 +101,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
           id="checkbot_language_select"
           aria-label="checkbot_language_select"
           aria-labelledby="checkbot_language_select"
+          styles={reactSelectDarkStyle}
         />
       </label>
       {showPersonalInstruction && (
@@ -133,7 +136,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
             <FaSpinner className="animate-spin" />
           </div>
         ) : (
-          "Submit"
+          "Check"
         )}
       </Button>
     </form>
