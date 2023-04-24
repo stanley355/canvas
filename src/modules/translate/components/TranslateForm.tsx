@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import Select from "react-select";
 import { FaAngleDoubleRight, FaSpinner } from "react-icons/fa";
 import axios from "axios";
+import Button from "@/common/components/Button";
+import { reactSelectDarkStyle } from "@/common/lib/reactSelect";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
-import Button from "@/common/components/Button";
 import { LANGUAGE_LIST } from "../constant";
 
 interface ITranslateForm {
@@ -81,6 +82,7 @@ const TranslateForm = (props: ITranslateForm) => {
             aria-label="ori_lang_select"
             aria-labelledby="ori_lang_select"
             options={LANGUAGE_LIST}
+            styles={reactSelectDarkStyle}
           />
         </label>
         <FaAngleDoubleRight className="w-2/12 lg:hidden" />
@@ -93,6 +95,7 @@ const TranslateForm = (props: ITranslateForm) => {
             aria-label="target_lang_select"
             aria-labelledby="target_lang_select"
             options={LANGUAGE_LIST}
+            styles={reactSelectDarkStyle}
           />
         </label>
       </div>
