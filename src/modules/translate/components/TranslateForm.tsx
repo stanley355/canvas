@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import { FaAngleDoubleRight, FaSpinner } from "react-icons/fa";
+import { FaAngleDoubleRight, FaSpinner, FaPlay } from "react-icons/fa";
 import axios from "axios";
 import Button from "@/common/components/Button";
 import { reactSelectDarkStyle } from "@/common/lib/reactSelect";
@@ -71,8 +71,8 @@ const TranslateForm = (props: ITranslateForm) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="flex flex-row items-center justify-center w-full py-2 lg:gap-2 lg:pt-0">
+    <form onSubmit={handleSubmit} className="mb-8">
+      <div className="flex flex-row items-center justify-center w-full mb-4 lg:gap-2 lg:pt-0">
         <label htmlFor="ori_lang_select" className="w-5/12 lg:w-1/2">
           <Select
             className="text-black"
@@ -85,7 +85,7 @@ const TranslateForm = (props: ITranslateForm) => {
             styles={reactSelectDarkStyle}
           />
         </label>
-        <FaAngleDoubleRight className="w-2/12 lg:hidden" />
+        <FaPlay className="w-2/12 text-xl lg:hidden" />
         <label htmlFor="target_lang_select" className="w-5/12 lg:w-1/2">
           <Select
             className="text-black"
@@ -100,24 +100,21 @@ const TranslateForm = (props: ITranslateForm) => {
         </label>
       </div>
       <div>
-        <div className="lg:flex lg:flex-row lg:gap-2 lg:mb-2">
-          <textarea
-            name="ori_lang_text"
-            id="ori_lang_textarea"
-            cols={30}
-            rows={10}
-            className="w-full border rounded-md bg-transparent p-2 lg:w-3/4"
-            placeholder="Copy your text here"
-          />
-          <textarea
-            name="context_text"
-            id="context_text_textarea"
-            cols={30}
-            rows={5}
-            className="w-full border rounded-md bg-transparent p-2 lg:w-1/4"
-            placeholder="Optional: Put your context here (e.g. the word xyz refers to...) "
-          />
-        </div>
+        <input
+          name="context_text"
+          id="context_text_textarea"
+          className="w-full border rounded-md bg-transparent p-2 mb-4"
+          placeholder="Optional: Context (xyz refers to...) "
+        />
+        <textarea
+          name="ori_lang_text"
+          id="ori_lang_textarea"
+          cols={30}
+          rows={10}
+          className="w-full border rounded-md bg-transparent p-2 mb-2"
+          placeholder="Copy your text here"
+        />
+
         <Button
           type="submit"
           disabled={isLoading}
