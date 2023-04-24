@@ -6,6 +6,7 @@ import Button from "@/common/components/Button";
 import { WORLD_DICTIONARY_ADDITION } from "../constant";
 import { LANGUAGE_LIST } from "../../translate/constant";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { reactSelectDarkStyle } from "@/common/lib/reactSelect";
 
 interface IWorldDictionaryForm {
   dispatchWordMeaning: (word: string, meaning: string) => void;
@@ -83,19 +84,22 @@ const WorldDictionaryForm = (props: IWorldDictionaryForm) => {
         options={LANGUAGE_LIST}
         name="source_language"
         className="text-black mb-4"
-      />
-      <Select
-        placeholder="Any additional topping? (You can choose more than one)"
-        options={WORLD_DICTIONARY_ADDITION}
-        className="text-black mb-4 bg-black"
-        name="dictionary_addition"
-        isMulti
+        styles={reactSelectDarkStyle}
       />
       <Select
         placeholder="Optional: Explanation Language"
         options={LANGUAGE_LIST}
         name="target_language"
         className="text-black mb-4"
+        styles={reactSelectDarkStyle}
+      />
+      <Select
+        placeholder="Any additional topping? (You can choose more than one)"
+        options={WORLD_DICTIONARY_ADDITION}
+        className="text-black mb-4 bg-black"
+        name="dictionary_addition"
+        styles={reactSelectDarkStyle}
+        isMulti
       />
       <Button
         type="submit"
@@ -109,7 +113,7 @@ const WorldDictionaryForm = (props: IWorldDictionaryForm) => {
             <FaSpinner className="animate-spin" />
           </div>
         ) : (
-          "Submit"
+          "Check"
         )}
       </Button>
     </form>
