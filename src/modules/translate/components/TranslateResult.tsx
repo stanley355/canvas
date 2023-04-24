@@ -21,10 +21,9 @@ const TranslateResult = (props: ITranslateResult) => {
       <textarea
         name="translate_result"
         id="translate_result_textarea"
-        readOnly
-        className="w-full rounded-md text-black p-2"
+        className="w-full rounded-md text-white p-2 bg-transparent border"
         cols={30}
-        rows={isDesktop ? 12 : 10}
+        rows={isDesktop ? 15 : 10}
         value={
           translateVal ? translateVal : "Your translation will show up here"
         }
