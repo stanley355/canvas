@@ -16,6 +16,10 @@ export const LANGUAGE_LIST = [
     value: "English",
   },
   {
+    label: "Filipino",
+    value: "Filipino",
+  },
+  {
     label: "French",
     value: "French",
   },
@@ -48,11 +52,24 @@ export const LANGUAGE_LIST = [
     value: "Korean",
   },
   {
+    label: "Malay",
+    value: "Malay",
+  },
+  {
+    label: "Thai",
+    value: "Thai",
+  },
+
+  {
     label: "Russian",
     value: "Russian",
   },
   {
     label: "Spanish",
     value: "Spanish",
+  },
+  {
+    label: "Vietnamese",
+    value: "Vietnamese",
   },
 ];
