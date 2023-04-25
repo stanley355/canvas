@@ -29,8 +29,6 @@ const openaiCompletionAPI = async (
     } else {
       response = err.message;
     }
-
-    console.log(response);
   }
 
   res.setHeader("Content-Type", "application/json");
