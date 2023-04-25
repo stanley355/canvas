@@ -112,7 +112,7 @@ const TranslateForm = (props: ITranslateForm) => {
           cols={30}
           rows={10}
           className="w-full border rounded-md bg-transparent p-2 mb-2"
-          placeholder="Copy your text here (max 2000 words)"
+          placeholder="Copy your text here"
         />
 
         <Button
