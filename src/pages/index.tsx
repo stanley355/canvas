@@ -1,7 +1,6 @@
 import React from "react";
 import { GetStaticProps } from "next";
 import MetaSEO from "@/common/components/MetaSEO";
-import HomeHero from "@/modules/home/HomeHero";
 import Layout from "@/common/components/Layout";
 import Button from "@/common/components/Button";
 import TranslateComparison from "@/modules/translate/components/TranslateComparison";
@@ -29,7 +28,6 @@ const Home = () => {
   return (
     <Layout>
       <MetaSEO seo={seo} />
-      <HomeHero />
       <div className="container mx-auto">
         <HomeTitle />
         <HomeCopywriting />
