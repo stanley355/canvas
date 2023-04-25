@@ -66,13 +66,10 @@ const TranslateForm = (props: ITranslateForm) => {
       },
     };
 
-    console.log(baseMsg);
-
     try {
       const { data } = await axios(axiosConfig);
       if (data && data.choices.length > 0) {
         const content = data.choices[0].message.content;
-        console.log(data.choices);
         dispatchTranslateVal(content);
       }
     } catch (err: any) {
