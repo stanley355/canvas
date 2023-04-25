@@ -24,7 +24,7 @@ const TranslateResult = (props: ITranslateResult) => {
         className="w-full rounded-md text-white p-2 bg-transparent border"
         cols={30}
         rows={isDesktop ? 15 : 10}
-        value={
+        defaultValue={
           translateVal ? translateVal : "Your translation will show up here"
         }
       />

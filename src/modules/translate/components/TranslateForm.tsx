@@ -73,7 +73,7 @@ const TranslateForm = (props: ITranslateForm) => {
   return (
     <form onSubmit={handleSubmit} className="mb-8">
       <div className="flex flex-row items-center justify-center w-full mb-4 lg:gap-2 lg:pt-0">
-        <label htmlFor="ori_lang_select" className="w-5/12 lg:w-1/2">
+        <label htmlFor="ori_lang_select" className="w-5/12">
           <Select
             className="text-black"
             placeholder={isDesktop ? "Select Source Language" : "Select Lang"}
@@ -85,8 +85,8 @@ const TranslateForm = (props: ITranslateForm) => {
             styles={reactSelectDarkStyle}
           />
         </label>
-        <FaPlay className="w-2/12 text-xl lg:hidden" />
-        <label htmlFor="target_lang_select" className="w-5/12 lg:w-1/2">
+        <FaPlay className="w-2/12 text-xl" />
+        <label htmlFor="target_lang_select" className="w-5/12">
           <Select
             className="text-black"
             placeholder={isDesktop ? "Select Target Language" : "Select Lang"}
