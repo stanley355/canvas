@@ -44,27 +44,51 @@ const TranslateForm = (props: ITranslateForm) => {
     setIsLoading(true);
 
     let baseMsg = `Translate this to ${targetLang}`;
-
     if (oriLang) {
       baseMsg = `Translate this text from ${oriLang} to ${targetLang}`;
     }
-
     if (contextText) {
       baseMsg + " " + `(${contextText}) `;
     }
-    const reqData = {
-      message: `${baseMsg}: "${oriLangText}"`,
+    baseMsg = `${baseMsg}: "${oriLangText}"`;
+
+    // TODO: Change this to fetch from next api on live hosting
+    const URL = `${process.env.NEXT_PUBLIC_OPENAI_URL}v1/chat/completions`;
+    const axiosConfig = {
+      method: "POST",
+      url: URL,
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
+      },
+      data: {
+        model: "gpt-3.5-turbo",
+        messages: [{ role: "system", content: baseMsg }],
+      },
     };
 
-    const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/ai/chat-completion/`;
-    const { data } = await axios.post(URL, reqData);
-    if (data && data.choices.length > 0) {
-      const content = data.choices[0].message.content;
-      dispatchTranslateVal(content);
-      if (!isDesktop) window.location.href = "#translate_result_textarea";
-    } else {
-      alert("Something went wrong, please try again!");
+    console.log(baseMsg);
+
+    try {
+      const { data } = await axios(axiosConfig);
+      if (data && data.choices.length > 0) {
+        const content = data.choices[0].message.content;
+        console.log(data.choices);
+        dispatchTranslateVal(content);
+      }
+    } catch (err: any) {
+      alert("Something went wrong, please try again");
     }
+
+    // TODO: Activate this on live hosting
+    // const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/ai/chat-completion/`;
+    // const { data } = await axios.post(URL, reqData);
+    // if (data && data.choices.length > 0) {
+    //   const content = data.choices[0].message.content;
+    //   dispatchTranslateVal(content);
+    //   if (!isDesktop) window.location.href = "#translate_result_textarea";
+    // } else {
+    //   alert("Something went wrong, please try again!");
+    // }
 
     setIsLoading(false);
     return "";
