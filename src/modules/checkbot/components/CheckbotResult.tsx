@@ -24,7 +24,8 @@ const CheckboxResult = (props: ICheckbotResult) => {
         className="w-full rounded-md text-white bg-transparent border p-2"
         cols={30}
         rows={isDesktop ? 15 : 10}
-        defaultValue={checkbotVal ? checkbotVal : "Your result will show up here"}
+        onChange={() => {}}
+        value={checkbotVal ? checkbotVal : "Your result will show up here"}
       />
       <div className="grid grid-cols-2 gap-2 lg:grid-cols-1">
         <Button

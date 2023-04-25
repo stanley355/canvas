@@ -121,7 +121,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
           cols={30}
           rows={10}
           className="w-full bg-transparent text-white rounded-md border my-2 p-2"
-          placeholder="Copy your text here"
+          placeholder="Copy your text here (max 2000 words)"
         />
       </label>
       <Button
