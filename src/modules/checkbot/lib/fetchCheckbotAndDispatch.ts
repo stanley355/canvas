@@ -14,7 +14,7 @@ export const fetchCheckbotAndDispatch = async (
     },
     data: {
       model: "gpt-3.5-turbo",
-      messages: [{ role: "system", content: prompt }],
+      messages: [{ role: "system", content: prompt.message }],
     },
   };
 
