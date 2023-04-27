@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
+import classNames from "classnames";
 import Button from "@/common/components/Button";
-import sendFirestoreData from "@/common/lib/firebase/sendFirestoreData";
+import addFirestoreData from "@/common/lib/firebase/addFirestoreData";
+import updateFirestoreData from "@/common/lib/firebase/updateFirestoreData";
 
 const TranslateReview = () => {
+  const [translateQuality, setTranslateQuality] = useState("");
   const [reviewID, setReviewID] = useState("");
-  const [showTextReview, setShowTextReview] = useState(false);
+  const [showThankYou, setShowThankYou] = useState(false);
 
-  const handleTextReviewSubmit = async (e: any) => {
+  const handleImprovementSubmit = async (e: any) => {
     e.preventDefault();
-
-    console.log("hi");
     const improvementInput = e.target.improvement_input.value;
 
     if (!improvementInput) {
@@ -18,46 +19,51 @@ const TranslateReview = () => {
       return "";
     }
 
-    const firestoreRes: any = await sendFirestoreData({
+    setShowThankYou(true);
+    await updateFirestoreData({
       collectionID: "translate_review",
       documentID: reviewID,
       data: {
-        quality: "good",
-        review: "",
+        quality: translateQuality,
+        improvement: improvementInput,
+      },
+    });
+  };
+
+  const handleGoodBadOnClick = async (quality: "good" | "bad") => {
+    setShowThankYou(false);
+    const firestoreRes: any = await addFirestoreData({
+      collectionID: "translate_review",
+      data: {
+        quality,
+        improvement: "",
       },
     });
 
-    console.log("res: ", firestoreRes);
+    if (firestoreRes && firestoreRes.id) {
+      setReviewID(firestoreRes.id);
+      setTranslateQuality(quality);
+    }
+
+    return "";
   };
 
-  const TextReview = () => (
-    <form onSubmit={handleTextReviewSubmit} className="mt-6 w-full">
+  const ImprovementForm = () => (
+    <form onSubmit={handleImprovementSubmit} className="mt-6 w-full lg:w-1/3 lg:mx-auto">
       <input
         type="text"
         placeholder="How can we improve?"
         name="improvement_input"
         className="w-full p-2 rounded-lg text-black"
       />
-      <Button type="submit" title="Submit" buttonClassName="p-2 text-center border w-full rounded-md" wrapperClassName="text-center mt-2" />
+      <Button
+        type="submit"
+        title="Submit"
+        buttonClassName="p-2 text-center border w-full rounded-md hover:bg-white hover:text-black"
+        wrapperClassName="text-center mt-2"
+      />
     </form>
   );
-
-  const handleGoodBadOnClick = async (quality: "good" | "bad") => {
-    const firestoreRes: any = await sendFirestoreData({
-      collectionID: "translate_review",
-      data: {
-        quality,
-        review: "",
-      },
-    });
-
-    if (firestoreRes && firestoreRes.id) {
-      setReviewID(firestoreRes.id);
-      setShowTextReview(true);
-    }
-
-    return "";
-  };
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -70,7 +76,12 @@ const TranslateReview = () => {
           buttonClassName="flex flex-col items-center"
           onClick={() => handleGoodBadOnClick("good")}
         >
-          <FaRegThumbsUp className="border rounded-full p-2 text-5xl hover:bg-white hover:text-black" />
+          <FaRegThumbsUp
+            className={classNames(
+              "border rounded-full p-2 text-5xl hover:bg-white hover:text-black",
+              translateQuality === "good" ? "bg-white text-black" : ""
+            )}
+          />
           <div>Good</div>
         </Button>
         <Button
@@ -78,11 +89,17 @@ const TranslateReview = () => {
           buttonClassName="flex flex-col items-center"
           onClick={() => handleGoodBadOnClick("bad")}
         >
-          <FaRegThumbsDown className="border rounded-full p-2 text-5xl hover:bg-white hover:text-black" />
+          <FaRegThumbsDown
+            className={classNames(
+              "border rounded-full p-2 text-5xl hover:bg-white hover:text-black",
+              translateQuality === "bad" ? "bg-white text-black" : ""
+            )}
+          />
           <div>Bad</div>
         </Button>
       </div>
-      <TextReview />
+      {translateQuality && <ImprovementForm />}
+      {showThankYou && <div className="text-4xl text-center my-4">Thank you for your review!</div>}
     </div>
   );
 };

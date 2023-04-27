@@ -4,13 +4,13 @@ import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 const { APP_ENV } = getConfig().publicRuntimeConfig;
 
-interface ISendFirestoreData {
+interface IAddFirestoreData {
   collectionID: string;
   documentID?: string;
   data: any;
 }
 
-const sendFirestoreData = async (payload: ISendFirestoreData) => {
+const addFirestoreData = async (payload: IAddFirestoreData) => {
   if (APP_ENV !== "develop") {
     const app: any = initFirebaseApp();
     const db = getFirestore(app);
@@ -36,4 +36,4 @@ const sendFirestoreData = async (payload: ISendFirestoreData) => {
   return null;
 };
 
-export default sendFirestoreData;
+export default addFirestoreData;
