@@ -7,16 +7,44 @@ const TranslateReview = () => {
   const [reviewID, setReviewID] = useState("");
   const [showTextReview, setShowTextReview] = useState(false);
 
+  const handleTextReviewSubmit = async (e: any) => {
+    e.preventDefault();
+
+    console.log("hi");
+    const improvementInput = e.target.improvement_input.value;
+
+    if (!improvementInput) {
+      alert("You haven't filled the text");
+      return "";
+    }
+
+    const firestoreRes: any = await sendFirestoreData({
+      collectionID: "translate_review",
+      documentID: reviewID,
+      data: {
+        quality: "good",
+        review: "",
+      },
+    });
+
+    console.log("res: ", firestoreRes);
+  };
+
   const TextReview = () => (
-    <form onSubmit={(e) => {}}>
-      <input type="text" placeholder="How can we improve?" />
-      <Button type="button" title="Submit" />
+    <form onSubmit={handleTextReviewSubmit} className="mt-6 w-full">
+      <input
+        type="text"
+        placeholder="How can we improve?"
+        name="improvement_input"
+        className="w-full p-2 rounded-lg text-black"
+      />
+      <Button type="submit" title="Submit" buttonClassName="p-2 text-center border w-full rounded-md" wrapperClassName="text-center mt-2" />
     </form>
   );
 
   const handleGoodBadOnClick = async (quality: "good" | "bad") => {
     const firestoreRes: any = await sendFirestoreData({
-      collectionName: "translate_review",
+      collectionID: "translate_review",
       data: {
         quality,
         review: "",
@@ -54,7 +82,7 @@ const TranslateReview = () => {
           <div>Bad</div>
         </Button>
       </div>
-      {showTextReview && <TextReview />}
+      <TextReview />
     </div>
   );
 };

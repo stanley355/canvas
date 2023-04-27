@@ -5,8 +5,8 @@ import { getFirestore, collection, addDoc } from "firebase/firestore";
 const { APP_ENV } = getConfig().publicRuntimeConfig;
 
 interface ISendFirestoreData {
-  collectionName: string;
-  documentName?: string;
+  collectionID: string;
+  documentID?: string;
   data: any;
 }
 
@@ -16,15 +16,15 @@ const sendFirestoreData = async (payload: ISendFirestoreData) => {
     const db = getFirestore(app);
 
     try {
-      if (payload.documentName) {
+      if (payload.documentID) {
         const docRef = await addDoc(
-          collection(db, payload.collectionName, payload.documentName),
+          collection(db, payload.collectionID, payload.documentID),
           payload.data
         );
         return docRef;
       }
       const docRef = await addDoc(
-        collection(db, payload.collectionName),
+        collection(db, payload.collectionID),
         payload.data
       );
       return docRef;
