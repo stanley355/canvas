@@ -5,6 +5,7 @@ import Layout from "@/common/components/Layout";
 import TranslateForm from "@/modules/translate/components/TranslateForm";
 import TranslateResult from "@/modules/translate/components/TranslateResult";
 import TranslateComparison from "@/modules/translate/components/TranslateComparison";
+import TranslateReview from "@/modules/translate/components/TranslateReview";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
 const LangTranslate = () => {
@@ -35,10 +36,11 @@ const LangTranslate = () => {
           </span>
         </h1>
         <h2 className="text-center text-lg mb-4">Try and Compare with Google Translate</h2>
-        <div className="lg:grid lg:grid-cols-2 lg:gap-2 mb-20">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-2 mb-8">
           <TranslateForm dispatchTranslateVal={(val) => setTranslateVal(val)} />
           <TranslateResult translateVal={translateVal} />
         </div>
+        <TranslateReview />
         <TranslateComparison />
       </div>
     </Layout>
