@@ -20,7 +20,6 @@ const Button = (props: IButton) => {
     title,
     href,
     type,
-    key,
     ariaLabel,
     children,
     onClick,
@@ -29,13 +28,14 @@ const Button = (props: IButton) => {
   } = props;
 
   return (
-    <div key={key} className={wrapperClassName}>
+    <div className={wrapperClassName}>
       {type === "link" ? (
         <Link
           href={String(href)}
           passHref
           title={title}
           className={buttonClassName}
+          onClick={onClick}
         >
           {children || title}
         </Link>
