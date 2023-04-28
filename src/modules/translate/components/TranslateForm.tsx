@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { FaSpinner, FaPlay } from "react-icons/fa";
 import axios from "axios";
 import Button from "@/common/components/Button";
+import SourceTextArea from "./SourceTextArea";
 import { reactSelectDarkStyle } from "@/common/lib/reactSelect";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
@@ -23,7 +24,7 @@ const TranslateForm = (props: ITranslateForm) => {
 
     const oriLang = e.target.ori_lang.value;
     const targetLang = e.target.target_lang.value;
-    const oriLangText = e.target.ori_lang_text.value;
+    const sourceText = e.target.source_text.value;
     const contextText = e.target.context_text.value;
 
     if (!targetLang) {
@@ -31,8 +32,8 @@ const TranslateForm = (props: ITranslateForm) => {
       return "";
     }
 
-    if (!oriLangText) {
-      toast.warning("Source Language Text could not be empty!");
+    if (!sourceText) {
+      toast.warning("You haven't input your text!");
       return "";
     }
 
@@ -51,7 +52,7 @@ const TranslateForm = (props: ITranslateForm) => {
     if (contextText) {
       baseMsg + " " + `(${contextText}) `;
     }
-    baseMsg = `${baseMsg}: "${oriLangText}"`;
+    baseMsg = `${baseMsg}: "${sourceText}"`;
 
     // TODO: Change this to fetch from next api on live hosting
     const URL = `${process.env.NEXT_PUBLIC_OPENAI_URL}v1/chat/completions`;
@@ -128,15 +129,7 @@ const TranslateForm = (props: ITranslateForm) => {
           className="w-full border rounded-md bg-transparent p-2 mb-4"
           placeholder="Optional: Context (xyz refers to...) "
         />
-        <textarea
-          name="ori_lang_text"
-          id="ori_lang_textarea"
-          cols={30}
-          rows={10}
-          className="w-full border rounded-md bg-transparent p-2 mb-2"
-          placeholder="Copy your text here"
-        />
-
+        <SourceTextArea />
         <Button
           type="submit"
           disabled={isLoading}
