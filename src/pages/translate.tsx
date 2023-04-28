@@ -35,7 +35,9 @@ const LangTranslate = () => {
               : "AI Translate"}
           </span>
         </h1>
-        <h2 className="text-center text-lg mb-4">Try and Compare with Google Translate</h2>
+        <h2 className="text-center text-lg mb-4">
+          Try and Compare with Google Translate
+        </h2>
         <div className="lg:grid lg:grid-cols-2 lg:gap-2 mb-8">
           <TranslateForm dispatchTranslateVal={(val) => setTranslateVal(val)} />
           <TranslateResult translateVal={translateVal} />

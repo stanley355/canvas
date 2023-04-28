@@ -1,10 +1,6 @@
 import getConfig from "next/config";
 import initFirebaseApp from "./initFirebaseApp";
-import {
-  getFirestore,
-  updateDoc,
-  doc,
-} from "firebase/firestore";
+import { getFirestore, updateDoc, doc } from "firebase/firestore";
 
 const { APP_ENV } = getConfig().publicRuntimeConfig;
 

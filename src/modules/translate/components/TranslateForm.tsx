@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import { FaAngleDoubleRight, FaSpinner, FaPlay } from "react-icons/fa";
+import { toast } from "react-toastify";
+import { FaSpinner, FaPlay } from "react-icons/fa";
 import axios from "axios";
 import Button from "@/common/components/Button";
 import { reactSelectDarkStyle } from "@/common/lib/reactSelect";
@@ -26,12 +27,12 @@ const TranslateForm = (props: ITranslateForm) => {
     const contextText = e.target.context_text.value;
 
     if (!targetLang) {
-      alert("Target Language could not be empty!");
+      toast.warning("Target Language Could Not be Empy");
       return "";
     }
 
     if (!oriLangText) {
-      alert("Source Language Text could not be empty!");
+      toast.warning("Source Language Text could not be empty!");
       return "";
     }
 
@@ -73,7 +74,7 @@ const TranslateForm = (props: ITranslateForm) => {
         dispatchTranslateVal(content);
       }
     } catch (err: any) {
-      alert("Something went wrong, please try again");
+      toast.error("Something went wrong, please try again");
     }
 
     // TODO: Activate this on live hosting

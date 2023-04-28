@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const fetchCheckbotAndDispatch = async (
   prompt: any,
@@ -25,7 +26,7 @@ export const fetchCheckbotAndDispatch = async (
       dispatch(content);
     }
   } catch (err: any) {
-    alert("Something went wrong, please try again");
+    toast.error("Something went wrong, please try again");
     return "";
   }
 

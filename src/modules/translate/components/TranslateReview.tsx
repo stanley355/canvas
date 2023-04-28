@@ -49,7 +49,10 @@ const TranslateReview = () => {
   };
 
   const ImprovementForm = () => (
-    <form onSubmit={handleImprovementSubmit} className="mt-6 w-full lg:w-1/3 lg:mx-auto">
+    <form
+      onSubmit={handleImprovementSubmit}
+      className="mt-6 w-full lg:w-1/3 lg:mx-auto"
+    >
       <input
         type="text"
         placeholder="How can we improve?"
@@ -99,7 +102,11 @@ const TranslateReview = () => {
         </Button>
       </div>
       {translateQuality && <ImprovementForm />}
-      {showThankYou && <div className="text-4xl text-center my-4">Thank you for your review!</div>}
+      {showThankYou && (
+        <div className="text-4xl text-center my-4">
+          Thank you for your review!
+        </div>
+      )}
     </div>
   );
 };

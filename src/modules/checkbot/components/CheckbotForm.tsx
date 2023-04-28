@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
+import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import Button from "@/common/components/Button";
@@ -33,12 +34,12 @@ const CheckBotForm = (props: ICheckBotForm) => {
     const targetText = e.target.target_text.value;
 
     if (!instruction) {
-      alert("You haven't chosen the instruction");
+      toast.warning("You haven't chosen the instruction");
       return "";
     }
 
     if (!targetText) {
-      alert("Text could not be empty");
+      toast.warning("Text could not be empty");
       return "";
     }
 

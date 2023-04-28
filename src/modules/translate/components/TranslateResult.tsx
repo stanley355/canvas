@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 import Button from "@/common/components/Button";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
@@ -13,7 +14,7 @@ const TranslateResult = (props: ITranslateResult) => {
 
   const copyText = () => {
     window.navigator.clipboard.writeText(translateVal);
-    alert("Text Copied to Clipboard");
+    toast.info("Text Copied to Clipboard");
   };
 
   return (

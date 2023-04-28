@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 import { FaSearch, FaSpinner } from "react-icons/fa";
 import Select from "react-select";
 import axios from "axios";
@@ -60,7 +61,7 @@ const WorldDictionaryForm = (props: IWorldDictionaryForm) => {
       const content = data.choices[0].message.content;
       dispatchWordMeaning(targetWord, content);
     } else {
-      alert("Something went wrong, please try again!");
+      toast.error("Something went wrong, please try again!");
     }
 
     setIsLoading(false);
