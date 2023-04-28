@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import Button from "@/common/components/Button";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 const SourceTextArea = () => {
   const [textValue, setTextValue] = useState("");
+
+  const handleClearClick = () => {
+    setTextValue("");
+    sendFirebaseEvent("clear_source_text", {});
+  };
 
   return (
     <div className="w-full border rounded-md bg-transparent p-2 mb-2 relative">
       <Button
         type="button"
         wrapperClassName="absolute top-0 right-0 bg-black border-l border-b flex items-center p-1"
-        onClick={() => setTextValue("")}
+        onClick={handleClearClick}
       >
         <FaTimes className="text-3xl" />
       </Button>
