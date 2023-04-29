@@ -8,8 +8,13 @@ import {
 import Button from "./Button";
 import { sendFirebaseEvent } from "../lib/firebase/sendFirebaseEvent";
 
-const SocialShare = () => {
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}translate/`;
+interface ISocialShare {
+  url: string;
+}
+
+const SocialShare = (props: ISocialShare) => {
+  const {url} = props;
+  
 
   const SOCIAL_LIST = [
     {

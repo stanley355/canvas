@@ -4,6 +4,7 @@ import Layout from "@/common/components/Layout";
 import CheckBotForm from "@/modules/checkbot/components/CheckbotForm";
 import CheckboxResult from "@/modules/checkbot/components/CheckbotResult";
 import CheckbotComparison from "@/modules/checkbot/components/CheckbotComparison";
+import SocialShare from "@/common/components/SocialShare";
 import MetaSEO from "@/common/components/MetaSEO";
 
 const CheckBot = () => {
@@ -24,13 +25,13 @@ const CheckBot = () => {
           <FaRobot className="text-3xl mr-2" />
           <span>LanguageAI Checkbot</span>
         </h1>
-        <div className="lg:grid lg:grid-cols-2 lg:gap-2 mb-20">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-2 mb-8">
           <CheckBotForm
             dispatchCheckbotVal={(val: string) => setCheckbotVal(val)}
           />
           <CheckboxResult checkbotVal={checkbotVal} />
         </div>
-
+        <SocialShare url={`${process.env.NEXT_PUBLIC_BASE_URL}checkbot/`} />
         <CheckbotComparison />
       </div>
     </Layout>

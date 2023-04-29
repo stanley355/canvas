@@ -4,6 +4,10 @@ export const LANGUAGE_LIST = [
     value: "",
   },
   {
+    label: "Arabic",
+    value: "Arabic",
+  },
+  {
     label: "Chinese (Simplified)",
     value: "Chinese (Simplified)",
   },
@@ -56,10 +60,9 @@ export const LANGUAGE_LIST = [
     value: "Malay",
   },
   {
-    label: "Thai",
-    value: "Thai",
+    label: "Portuguese",
+    value: "Portuguese",
   },
-
   {
     label: "Russian",
     value: "Russian",
@@ -67,6 +70,10 @@ export const LANGUAGE_LIST = [
   {
     label: "Spanish",
     value: "Spanish",
+  },
+  {
+    label: "Thai",
+    value: "Thai",
   },
   {
     label: "Vietnamese",

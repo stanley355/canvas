@@ -44,7 +44,7 @@ const LangTranslate = () => {
           <TranslateResult translateVal={translateVal} />
         </div>
         <TranslateReview />
-        <SocialShare />
+        <SocialShare url={`${process.env.NEXT_PUBLIC_BASE_URL}translate/`} />
         <TranslateComparison />
       </div>
     </Layout>
