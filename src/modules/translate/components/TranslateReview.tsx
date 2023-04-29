@@ -13,6 +13,7 @@ const TranslateReview = () => {
       collectionID: "translate_review",
       data: {
         quality,
+        created_at: new Date(),
       },
     });
 
