@@ -17,7 +17,7 @@ const LangTranslate = () => {
   const seo = {
     title: "5x better than Google Translate - LanguageAI Translate",
     description:
-      "Looking for an alternative to Google Translate? Look no further than LanguageAI - the intelligent translation tool that delivers superior accuracy and efficiency.",
+      "Looking for an alternative to Google Translate? Look no further than LanguageAI - the intelligent translation tool that delivers superior accuracy and efficiency. Language AI, offered free of charge, instantly translates words, phrases, and web pages between English and over 100 other languages.",
     url: `${process.env.NEXT_PUBLIC_BASE_URL}translate/`,
   };
 
