@@ -26,6 +26,7 @@ const CheckBot = () => {
           <FaRobot className="text-3xl mr-2" />
           <span>LanguageAI Checkbot</span>
         </h1>
+        <h2 className="text-lg lg:text-xl text-center mb-4">Checks not just English, but All Languages</h2>
         <div className="lg:grid lg:grid-cols-2 lg:gap-2 mb-8">
           <CheckBotForm
             dispatchCheckbotVal={(val: string) => setCheckbotVal(val)}
