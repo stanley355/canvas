@@ -14,7 +14,7 @@ const CheckBot = () => {
     title:
       "10x better than Grammarly - LanguageAI Checkbot. Free Grammar Checker (Online Editor)",
     description:
-      "Looking for an alternative to Grammary? Look no further than LanguageAI - the intelligent grammar and spelling check that delivers superior accuracy and efficiency. It's simple: copy and paste your text into the online editor to check grammar, spelling, and punctuation. Find the best words to improve any text instantly using GrammarCheck's AI-powered grammar checker.",
+      "Looking for an alternative to Grammary? Look no further than LanguageAI - the intelligent grammar and spelling check that delivers superior accuracy and efficiency. It's simple: copy and paste your text into the online editor to check grammar, spelling, and punctuation. Find the best words to improve any text instantly using Language AI grammar checker.",
     url: `${process.env.NEXT_PUBLIC_BASE_URL}checkbot/`,
   };
 
