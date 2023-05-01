@@ -78,7 +78,7 @@ const TranslateForm = (props: ITranslateForm) => {
     } catch (err: any) {
       toast.error("Something went wrong, please try again");
       addFirestoreData({collectionID: "chatgpt_error", data: {
-        time: new Date().toLocaleString(),
+        time: new Date(),
         err: err.message
       }})
     }

@@ -31,7 +31,7 @@ export const fetchCheckbotAndDispatch = async (
     addFirestoreData({
       collectionID: "chatgpt_error",
       data: {
-        time: new Date().toLocaleString(),
+        time: new Date(),
         err: err.message,
       },
     });
