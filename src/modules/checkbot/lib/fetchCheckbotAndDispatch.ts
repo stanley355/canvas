@@ -1,5 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import addFirestoreData from "@/common/lib/firebase/addFirestoreData";
 
 export const fetchCheckbotAndDispatch = async (
   prompt: any,
@@ -27,6 +28,13 @@ export const fetchCheckbotAndDispatch = async (
     }
   } catch (err: any) {
     toast.error("Something went wrong, please try again");
+    addFirestoreData({
+      collectionID: "chatgpt_error",
+      data: {
+        time: new Date().toLocaleString(),
+        err: err.message,
+      },
+    });
     return "";
   }
 

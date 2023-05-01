@@ -7,6 +7,7 @@ import Button from "@/common/components/Button";
 import SourceTextArea from "../../../common/components/SourceTextArea";
 import { reactSelectDarkStyle } from "@/common/lib/reactSelect";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import addFirestoreData from "@/common/lib/firebase/addFirestoreData";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { LANGUAGE_LIST } from "../constant";
 
@@ -76,6 +77,10 @@ const TranslateForm = (props: ITranslateForm) => {
       }
     } catch (err: any) {
       toast.error("Something went wrong, please try again");
+      addFirestoreData({collectionID: "chatgpt_error", data: {
+        time: new Date().toLocaleString(),
+        err: err.message
+      }})
     }
 
     // TODO: Activate this on live hosting
