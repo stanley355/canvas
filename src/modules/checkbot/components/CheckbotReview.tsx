@@ -4,13 +4,13 @@ import classNames from "classnames";
 import Button from "@/common/components/Button";
 import addFirestoreData from "@/common/lib/firebase/addFirestoreData";
 
-const TranslateReview = () => {
-  const [translateQuality, setTranslateQuality] = useState("");
+const CheckbotReview = () => {
+  const [checkbotQuality, setCheckbotQuality] = useState("");
 
   const handleGoodBadOnClick = async (quality: "good" | "bad") => {
-    setTranslateQuality(quality);
+    setCheckbotQuality(quality);
     await addFirestoreData({
-      collectionID: "translate_review",
+      collectionID: "checkbot_review",
       data: {
         quality,
         created_at: new Date(),
@@ -23,7 +23,7 @@ const TranslateReview = () => {
   return (
     <div className="flex flex-col items-center justify-center mb-8">
       <div className="text-2xl font-semibold mb-4">
-        How was the translation ?
+        How was the checkbot ?
       </div>
       <div className="flex flex-row w-full justify-evenly">
         <Button
@@ -34,7 +34,7 @@ const TranslateReview = () => {
           <FaRegThumbsUp
             className={classNames(
               "border rounded-full p-2 text-5xl hover:bg-white hover:text-black",
-              translateQuality === "good" ? "bg-white text-black" : ""
+              checkbotQuality === "good" ? "bg-white text-black" : ""
             )}
           />
           <div>Good</div>
@@ -47,7 +47,7 @@ const TranslateReview = () => {
           <FaRegThumbsDown
             className={classNames(
               "border rounded-full p-2 text-5xl hover:bg-white hover:text-black",
-              translateQuality === "bad" ? "bg-white text-black" : ""
+              checkbotQuality === "bad" ? "bg-white text-black" : ""
             )}
           />
           <div>Bad</div>
@@ -57,4 +57,4 @@ const TranslateReview = () => {
   );
 };
 
-export default TranslateReview;
+export default CheckbotReview;

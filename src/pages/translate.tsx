@@ -43,8 +43,8 @@ const LangTranslate = () => {
           <TranslateForm dispatchTranslateVal={(val) => setTranslateVal(val)} />
           <TranslateResult translateVal={translateVal} />
         </div>
-        <TranslateReview />
         <SocialShare url={`${process.env.NEXT_PUBLIC_BASE_URL}translate/`} />
+        <TranslateReview />
         <TranslateComparison />
       </div>
     </Layout>

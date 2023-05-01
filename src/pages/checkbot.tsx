@@ -4,6 +4,7 @@ import Layout from "@/common/components/Layout";
 import CheckBotForm from "@/modules/checkbot/components/CheckbotForm";
 import CheckboxResult from "@/modules/checkbot/components/CheckbotResult";
 import CheckbotComparison from "@/modules/checkbot/components/CheckbotComparison";
+import CheckbotReview from "@/modules/checkbot/components/CheckbotReview";
 import SocialShare from "@/common/components/SocialShare";
 import MetaSEO from "@/common/components/MetaSEO";
 
@@ -34,6 +35,7 @@ const CheckBot = () => {
           <CheckboxResult checkbotVal={checkbotVal} />
         </div>
         <SocialShare url={`${process.env.NEXT_PUBLIC_BASE_URL}checkbot/`} />
+        <CheckbotReview />
         <CheckbotComparison />
       </div>
     </Layout>
