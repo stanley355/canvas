@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { FaSpinner, FaPlay } from "react-icons/fa";
 import axios from "axios";
 import Button from "@/common/components/Button";
-import SourceTextArea from "./SourceTextArea";
+import SourceTextArea from "../../../common/components/SourceTextArea";
 import { reactSelectDarkStyle } from "@/common/lib/reactSelect";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";

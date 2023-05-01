@@ -7,6 +7,7 @@ import Button from "@/common/components/Button";
 import { CHECKBOT_OPTIONS } from "../constant";
 import { LANGUAGE_LIST } from "../../translate/constant";
 import { reactSelectDarkStyle } from "@/common/lib/reactSelect";
+import SourceTextArea from "@/common/components/SourceTextArea";
 import { generateCheckbotPrompt } from "../lib/generateCheckbotPrompt";
 import { fetchCheckbotAndDispatch } from "../lib/fetchCheckbotAndDispatch";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
@@ -31,14 +32,14 @@ const CheckBotForm = (props: ICheckBotForm) => {
     e.preventDefault();
     const instruction = e.target.instruction.value;
     const outputLanguage = e.target.output_language.value;
-    const targetText = e.target.target_text.value;
+    const sourceText = e.target.source_text.value;
 
     if (!instruction) {
       toast.warning("You haven't chosen the instruction");
       return "";
     }
 
-    if (!targetText) {
+    if (!sourceText) {
       toast.warning("Text could not be empty");
       return "";
     }
@@ -48,28 +49,20 @@ const CheckBotForm = (props: ICheckBotForm) => {
       name: "checkbot",
       instruction: instruction,
     });
+
+    let personalInstruction = "";
     if (instruction === "personal_instruction") {
-      let personalInstruction = e.target.personal_instruction.value;
+      personalInstruction = e.target.personal_instruction.value;
       if (!personalInstruction) {
         alert("You haven't filled the personal instruction");
         return "";
       }
-
-      const prompt = generateCheckbotPrompt(
-        personalInstruction,
-        outputLanguage,
-        targetText
-      );
-      await fetchCheckbotAndDispatch(prompt, dispatchCheckbotVal);
-      if (!isDesktop) window.location.href = "#checkbot_result_textarea";
-      setIsLoading(false);
-      return "";
     }
 
     const prompt = generateCheckbotPrompt(
-      instruction,
+      personalInstruction ? personalInstruction : instruction,
       outputLanguage,
-      targetText
+      sourceText
     );
 
     await fetchCheckbotAndDispatch(prompt, dispatchCheckbotVal);
@@ -113,18 +106,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
           placeholder="What's your instruction?"
         />
       )}
-      <label htmlFor="target_text_textarea">
-        <textarea
-          name="target_text"
-          id="target_text_textarea"
-          aria-label="target_text_textarea"
-          aria-labelledby="target_text_textarea"
-          cols={30}
-          rows={10}
-          className="w-full bg-transparent text-white rounded-md border my-2 p-2"
-          placeholder="Copy your text here"
-        />
-      </label>
+      <SourceTextArea />
       <Button
         type="submit"
         disabled={isLoading}
