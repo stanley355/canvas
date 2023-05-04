@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Allow: /translate
+Allow: /checkbot
+Allow: /world-dictionary
