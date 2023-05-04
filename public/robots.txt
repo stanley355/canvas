@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Disallow: 
+
+# Host
+Host: https://languageai.vercel.app
+
+# Sitemaps
+Sitemap: https://languageai.vercel.app/sitemap.xml
