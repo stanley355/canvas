@@ -5,7 +5,6 @@ import Layout from "@/common/components/Layout";
 import TranslateForm from "@/modules/translate/components/TranslateForm";
 import TranslateResult from "@/modules/translate/components/TranslateResult";
 import TranslateComparison from "@/modules/translate/components/TranslateComparison";
-import TranslateReview from "@/modules/translate/components/TranslateReview";
 import SocialShare from "@/common/components/SocialShare";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
@@ -44,7 +43,6 @@ const LangTranslate = () => {
           <TranslateResult translateVal={translateVal} />
         </div>
         <SocialShare url={`${process.env.NEXT_PUBLIC_BASE_URL}translate/`} />
-        <TranslateReview />
         <TranslateComparison />
       </div>
     </Layout>
