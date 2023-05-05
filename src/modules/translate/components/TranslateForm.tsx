@@ -5,7 +5,6 @@ import { FaSpinner, FaPlay } from "react-icons/fa";
 import axios from "axios";
 import Button from "@/common/components/Button";
 import SourceTextArea from "../../../common/components/SourceTextArea";
-import { reactSelectDarkStyle } from "@/common/lib/reactSelect";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import addFirestoreData from "@/common/lib/firebase/addFirestoreData";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
@@ -110,7 +109,6 @@ const TranslateForm = (props: ITranslateForm) => {
             aria-label="ori_lang_select"
             aria-labelledby="ori_lang_select"
             options={LANGUAGE_LIST}
-            styles={reactSelectDarkStyle}
           />
         </label>
         <FaPlay className="w-2/12 text-xl" />
@@ -123,7 +121,6 @@ const TranslateForm = (props: ITranslateForm) => {
             aria-label="target_lang_select"
             aria-labelledby="target_lang_select"
             options={LANGUAGE_LIST}
-            styles={reactSelectDarkStyle}
           />
         </label>
       </div>
@@ -131,7 +128,7 @@ const TranslateForm = (props: ITranslateForm) => {
         <input
           name="context_text"
           id="context_text_textarea"
-          className="w-full border rounded-md bg-transparent p-2 mb-4"
+          className="w-full border rounded-md bg-transparent p-2 mb-4 text-black bg-white"
           placeholder="Optional: Context (xyz refers to...) "
         />
         <SourceTextArea />

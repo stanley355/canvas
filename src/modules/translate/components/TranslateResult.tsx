@@ -22,7 +22,7 @@ const TranslateResult = (props: ITranslateResult) => {
       <textarea
         name="translate_result"
         id="translate_result_textarea"
-        className="w-full rounded-md text-white p-2 bg-transparent border"
+        className="w-full rounded-md text-black p-2 bg-white border"
         cols={30}
         rows={isDesktop ? 15 : 10}
         onChange={() => {}}

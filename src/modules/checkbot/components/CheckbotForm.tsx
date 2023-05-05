@@ -6,7 +6,6 @@ import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import Button from "@/common/components/Button";
 import { CHECKBOT_OPTIONS } from "../constant";
 import { LANGUAGE_LIST } from "../../translate/constant";
-import { reactSelectDarkStyle } from "@/common/lib/reactSelect";
 import SourceTextArea from "@/common/components/SourceTextArea";
 import { generateCheckbotPrompt } from "../lib/generateCheckbotPrompt";
 import { fetchCheckbotAndDispatch } from "../lib/fetchCheckbotAndDispatch";
@@ -83,7 +82,6 @@ const CheckBotForm = (props: ICheckBotForm) => {
           aria-label="checkbot_instruction_select"
           aria-labelledby="checkbot_instruction_select"
           onChange={handleCheckbotOption}
-          styles={reactSelectDarkStyle}
         />
       </label>
       <label htmlFor="checkbot_language_select">
@@ -95,14 +93,13 @@ const CheckBotForm = (props: ICheckBotForm) => {
           id="checkbot_language_select"
           aria-label="checkbot_language_select"
           aria-labelledby="checkbot_language_select"
-          styles={reactSelectDarkStyle}
         />
       </label>
       {showPersonalInstruction && (
         <input
           type="text"
           name="personal_instruction"
-          className="w-full mb-2 bg-transparent border p-2 rounded-sm"
+          className="w-full mb-2 border p-2 rounded-sm text-black bg-white"
           placeholder="What's your instruction?"
         />
       )}
