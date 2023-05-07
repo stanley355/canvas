@@ -26,7 +26,7 @@ const CheckbotComparison = () => (
 
     <div className="mb-4">
       <img
-        src="/images/testimony/sourcetext_checkbot.png"
+        src="/images/testimony/sourcetext_checkbot.webp"
         alt="Source Text Checkbot"
         loading="lazy"
         className="rounded-md"

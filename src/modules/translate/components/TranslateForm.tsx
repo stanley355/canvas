@@ -103,7 +103,7 @@ const TranslateForm = (props: ITranslateForm) => {
         <label htmlFor="ori_lang_select" className="w-5/12">
           <Select
             className="text-black"
-            placeholder={isDesktop ? "Select Source Language" : "Select Lang"}
+            placeholder={isDesktop ? "Select Source Language" : "Select Language"}
             id="ori_lang_select"
             name="ori_lang"
             aria-label="ori_lang_select"
@@ -115,7 +115,7 @@ const TranslateForm = (props: ITranslateForm) => {
         <label htmlFor="target_lang_select" className="w-5/12">
           <Select
             className="text-black"
-            placeholder={isDesktop ? "Select Target Language" : "Select Lang"}
+            placeholder={isDesktop ? "Select Target Language" : "Select Language"}
             id="target_lang_select"
             name="target_lang"
             aria-label="target_lang_select"

@@ -19,17 +19,19 @@ const TranslateResult = (props: ITranslateResult) => {
 
   return (
     <div className="my-4 lg:mt-0 ">
-      <textarea
-        name="translate_result"
-        id="translate_result_textarea"
-        className="w-full rounded-md text-black p-2 bg-white border"
-        cols={30}
-        rows={isDesktop ? 15 : 10}
-        onChange={() => {}}
-        value={
-          translateVal ? translateVal : "Your translation will show up here"
-        }
-      />
+      <label htmlFor="translate_result_textarea">
+        <textarea
+          name="translate_result"
+          id="translate_result_textarea"
+          className="w-full rounded-md text-black p-2 bg-white border"
+          cols={30}
+          rows={isDesktop ? 15 : 10}
+          onChange={() => {}}
+          value={
+            translateVal ? translateVal : "Your translation will show up here"
+          }
+        />
+      </label>
       <div className="grid grid-cols-2 gap-2 lg:grid-cols-1">
         <Button
           type="button"

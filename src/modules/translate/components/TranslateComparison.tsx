@@ -33,6 +33,8 @@ const TranslateComparison = () => {
           alt="gtrans_creola"
           className="rounded-md"
           loading="lazy"
+          width={1264}
+          height={383}
         />
       </div>
 

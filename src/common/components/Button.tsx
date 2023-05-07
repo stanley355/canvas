@@ -3,6 +3,7 @@ import Link from "next/link";
 
 interface IButton {
   type: "button" | "submit" | "link";
+  id?: string;
   disabled?: boolean;
   title?: string;
   href?: string;
@@ -16,6 +17,7 @@ interface IButton {
 
 const Button = (props: IButton) => {
   const {
+    id,
     disabled,
     title,
     href,
@@ -41,6 +43,7 @@ const Button = (props: IButton) => {
         </Link>
       ) : (
         <button
+          id={id}
           disabled={disabled}
           type={type}
           onClick={onClick}

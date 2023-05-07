@@ -19,15 +19,17 @@ const CheckboxResult = (props: ICheckbotResult) => {
 
   return (
     <div className="my-4 lg:mt-0 ">
-      <textarea
-        name="checkbot_result"
-        id="checkbot_result_textarea"
-        className="w-full rounded-md text-black bg-white border p-2"
-        cols={30}
-        rows={isDesktop ? 15 : 10}
-        onChange={() => {}}
-        value={checkbotVal ? checkbotVal : "Your result will show up here"}
-      />
+      <label htmlFor="checkbot_result_textarea">
+        <textarea
+          name="checkbot_result"
+          id="checkbot_result_textarea"
+          className="w-full rounded-md text-black bg-white border p-2"
+          cols={30}
+          rows={isDesktop ? 15 : 10}
+          onChange={() => {}}
+          value={checkbotVal ? checkbotVal : "Your result will show up here"}
+        />
+      </label>
       <div className="grid grid-cols-2 gap-2 lg:grid-cols-1">
         <Button
           type="button"
