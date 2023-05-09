@@ -13,7 +13,7 @@ const Header = () => {
   const isDesktop = useDesktopScreen();
 
   return (
-    <header
+    <nav
       className={classNames(
         "w-full p-4 border-b flex flex-row items-center justify-between",
         inter.className
@@ -30,7 +30,7 @@ const Header = () => {
       </Button>
 
       {isDesktop ? <DesktopHeaderMenu /> : <MobileHeaderMenu />}
-    </header>
+    </nav>
   );
 };
 
