@@ -1,11 +1,12 @@
-import Button from "@/common/components/Button";
 import React from "react";
 import { FaEnvelope, FaKey } from "react-icons/fa";
 import { SiTaichilang } from "react-icons/si";
+import Button from "@/common/components/Button";
+import GoogleLoginBtn from "./GoogleLoginBtn";
 
 const LoginForm = () => {
   return (
-    <div className="border border-white bg-gray-600 rounded-md p-4 mt-20 w-3/4 lg:w-1/2">
+    <div className="border border-white bg-gray-600 rounded-md p-4 mt-20 w-3/4 lg:w-1/3">
       <h1 className="flex flex-row items-center justify-center text-2xl font-bold">
         <SiTaichilang />
         <span className="ml-2">LanguageAI Login</span>
@@ -45,8 +46,9 @@ const LoginForm = () => {
           />
         </div>
 
-        <Button type="button" title="Login" wrapperClassName="text-center p-2 bg-transparent border rounded-md font-semibold"/>
+        <Button type="button" title="Login" wrapperClassName="text-center p-2 bg-transparent border rounded-md font-semibold mb-4 cursor-pointer hover:bg-white hover:text-gray-600"/>
       </form>
+      <GoogleLoginBtn />
     </div>
   );
 };
