@@ -10,9 +10,9 @@ import CheckbotComparison from "@/modules/checkbot/components/CheckbotComparison
 
 const Home = () => {
   const seo = {
-    title: "LanguageAI - The most advanced language and text processing system",
+    title: "LanguageAI - 10x Better Writing Check and Translation for All Languages",
     description:
-      "LanguageAI - The cutting-edge language and words processing system that's replacing Gooogle Translate. Discover how our advanced technology is revolutionizing language analysis today.",
+      "Discover LanguageAI's Checkbot and Translation products that provide 10x better grammar and translation accuracy than Grammarly and Google Translate. Our AI-powered technology can check your writing and correct grammar and spelling errors in any language. Translate any language in the world with LanguageAI, and provide context to get accurate and nuanced translations. Experience LanguageAI, the best language tool for writers and communicators worldwide.",
     url: process.env.NEXT_PUBLIC_BASE_URL,
   };
 
@@ -20,7 +20,7 @@ const Home = () => {
     <div className="p-4 lg:py-8 border-b">
       <h1 className="text-3xl">Introducing LanguageAI {PackageJSON.version}</h1>
       <div className="text-lg">
-        The most advanced language and text processing system
+        10x Better Writing Check and Translation for All Languages
       </div>
     </div>
   );

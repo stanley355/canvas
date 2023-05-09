@@ -12,9 +12,9 @@ const CheckBot = () => {
 
   const seo = {
     title:
-      "10x better than Grammarly - LanguageAI Checkbot. Free Grammar Checker (Online Editor)",
+      "LanguageAI Checkbot - The Ultimate Grammar and Spelling Checker",
     description:
-      "Looking for an alternative to Grammary? Look no further than LanguageAI - the intelligent grammar and spelling check that delivers superior accuracy and efficiency. It's simple: copy and paste your text into the online editor to check grammar, spelling, and punctuation. Find the best words to improve any text instantly using Language AI grammar checker.",
+      "LanguageAI Checkbot is the ultimate grammar and spelling checker that checks your writing in All Languages. 10x better than Grammarly. Try it now for free!",
     url: `${process.env.NEXT_PUBLIC_BASE_URL}checkbot/`,
   };
 
@@ -26,7 +26,7 @@ const CheckBot = () => {
           <FaRobot className="text-3xl mr-2" />
           <span>LanguageAI Checkbot</span>
         </h1>
-        <h2 className="text-lg lg:text-xl text-center mb-4">Checks not just English, but All Languages</h2>
+        <h2 className="text-lg lg:text-xl text-center mb-4">The Ultimate Grammar and Spelling Checker for All Languages</h2>
         <div className="lg:grid lg:grid-cols-2 lg:gap-2 mb-8">
           <CheckBotForm
             dispatchCheckbotVal={(val: string) => setCheckbotVal(val)}

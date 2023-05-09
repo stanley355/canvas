@@ -14,9 +14,9 @@ const LangTranslate = () => {
   const isDesktop = useDesktopScreen();
 
   const seo = {
-    title: "5x better than Google Translate - LanguageAI Translate",
+    title: "LanguageAI Translate - The Best Translation App for All Languages | Contextual Translation",
     description:
-      "Looking for an alternative to Google Translate? Look no further than LanguageAI - the intelligent translation tool that delivers superior accuracy and efficiency. Language AI, offered free of charge, instantly translates words, phrases, and web pages between English and over 100 other languages.",
+      "LanguageAI Translate is the top translation app for all languages in the world. Our app provides contextual translation, making it 10x better than Google Translate. Try LanguageAI Translate today for more accurate, reliable, and contextual translations.",
     url: `${process.env.NEXT_PUBLIC_BASE_URL}translate/`,
   };
 
@@ -36,7 +36,7 @@ const LangTranslate = () => {
           </span>
         </h1>
         <h2 className="text-center text-lg mb-4">
-          Try and Compare with Google Translate
+          #1 Translation App for All Languages + Contextual Translation
         </h2>
         <div className="lg:grid lg:grid-cols-2 lg:gap-2 mb-8">
           <TranslateForm dispatchTranslateVal={(val) => setTranslateVal(val)} />
