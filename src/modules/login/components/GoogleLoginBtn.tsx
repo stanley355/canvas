@@ -1,8 +1,10 @@
 import React from "react";
 import { toast } from "react-toastify";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
 const GoogleLoginBtn = () => {
+    const isDesktop = useDesktopScreen();
   return (
     <div className="flex items-center justify-center">
       <GoogleOAuthProvider
@@ -14,7 +16,8 @@ const GoogleLoginBtn = () => {
           logo_alignment="left"
           shape="rectangular"
           size="large"
-          width="300"
+          text="continue_with"
+          width={isDesktop ? "400" : "300"}
         />
       </GoogleOAuthProvider>
     </div>

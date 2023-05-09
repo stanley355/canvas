@@ -12,7 +12,9 @@ const LoginForm = () => {
         <span className="ml-2">LanguageAI Login</span>
       </h1>
       <h2 className="text-center text-lg mb-4">Don't worry, it's still free</h2>
+      <GoogleLoginBtn />
       <form
+        className="mt-4"
         onSubmit={(e: React.FormEvent) => {
           e.preventDefault();
         }}
@@ -46,9 +48,26 @@ const LoginForm = () => {
           />
         </div>
 
-        <Button type="button" title="Login" wrapperClassName="text-center p-2 bg-transparent border rounded-md font-semibold mb-4 cursor-pointer hover:bg-white hover:text-gray-600"/>
+        <Button
+          type="button"
+          title="Login"
+          wrapperClassName="text-center p-2 bg-transparent border rounded-md font-semibold mb-4 cursor-pointer hover:bg-white hover:text-gray-600"
+        />
       </form>
-      <GoogleLoginBtn />
+      <div className="mt-4 flex flex-row justify-between">
+        <Button
+          type="button"
+          title="Register"
+          wrapperClassName="p-1 border border-white rounded-md"
+          buttonClassName="hover:underline"
+        />
+        <Button
+          type="button"
+          title="Forgot Password?"
+          wrapperClassName="p-1 border border-white rounded-md"
+          buttonClassName="hover:underline"
+        />
+      </div>
     </div>
   );
 };
