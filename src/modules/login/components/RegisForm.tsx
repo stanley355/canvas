@@ -6,10 +6,9 @@ import GoogleLoginBtn from "./GoogleLoginBtn";
 
 const RegisForm = () => {
   return (
-    <div className="border border-white bg-gray-600 rounded-md p-4 mt-20 w-3/4 lg:w-1/3">
+    <div className="border border-white bg-gray-600 rounded-md p-4 lg:w-1/3">
       <h1 className="flex flex-row items-center justify-center pl-16 lg:pl-0 text-2xl font-bold">
-        <SiTaichilang />
-        <span className="ml-2">LanguageAI Registration</span>
+        LanguageAI Registration
       </h1>
       <h2 className="text-center text-lg mb-4">Don't worry, it's still free</h2>
       <GoogleLoginBtn />
