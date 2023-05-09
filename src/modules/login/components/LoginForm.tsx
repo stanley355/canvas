@@ -11,7 +11,7 @@ const LoginForm = () => {
         <SiTaichilang />
         <span className="ml-2">LanguageAI Login</span>
       </h1>
-      <h2 className="text-center text-lg mb-4">Don't worry, it's still free</h2>
+      <h2 className="text-center text-lg mb-4">Don&apos;t worry, it&apos;s still free</h2>
       <GoogleLoginBtn />
       <form
         className="mt-4"
