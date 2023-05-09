@@ -10,7 +10,9 @@ const RegisForm = () => {
       <h1 className="flex flex-row items-center justify-center pl-16 lg:pl-0 text-2xl font-bold">
         LanguageAI Registration
       </h1>
-      <h2 className="text-center text-lg mb-4">Don&apos;t worry, it&apos;s still free</h2>
+      <h2 className="text-center text-lg mb-4">
+        Don&apos;t worry, it&apos;s still free
+      </h2>
       <GoogleLoginBtn />
       <form
         className="mt-4"

@@ -76,10 +76,13 @@ const TranslateForm = (props: ITranslateForm) => {
       }
     } catch (err: any) {
       toast.error("Something went wrong, please try again");
-      addFirestoreData({collectionID: "chatgpt_error", data: {
-        time: new Date(),
-        err: err.message
-      }})
+      addFirestoreData({
+        collectionID: "chatgpt_error",
+        data: {
+          time: new Date(),
+          err: err.message,
+        },
+      });
     }
 
     // TODO: Activate this on live hosting
@@ -103,7 +106,9 @@ const TranslateForm = (props: ITranslateForm) => {
         <label htmlFor="ori_lang_select" className="w-5/12">
           <Select
             className="text-black"
-            placeholder={isDesktop ? "Select Source Language" : "Select Language"}
+            placeholder={
+              isDesktop ? "Select Source Language" : "Select Language"
+            }
             id="ori_lang_select"
             name="ori_lang"
             aria-label="ori_lang_select"
@@ -115,7 +120,9 @@ const TranslateForm = (props: ITranslateForm) => {
         <label htmlFor="target_lang_select" className="w-5/12">
           <Select
             className="text-black"
-            placeholder={isDesktop ? "Select Target Language" : "Select Language"}
+            placeholder={
+              isDesktop ? "Select Target Language" : "Select Language"
+            }
             id="target_lang_select"
             name="target_lang"
             aria-label="target_lang_select"

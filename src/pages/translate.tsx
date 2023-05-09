@@ -14,7 +14,8 @@ const LangTranslate = () => {
   const isDesktop = useDesktopScreen();
 
   const seo = {
-    title: "LanguageAI Translate - The Best Translation App for All Languages | Contextual Translation",
+    title:
+      "LanguageAI Translate - The Best Translation App for All Languages | Contextual Translation",
     description:
       "LanguageAI Translate is the top translation app for all languages in the world. Our app provides contextual translation, making it 10x better than Google Translate. Try LanguageAI Translate today for more accurate, reliable, and contextual translations.",
     url: `${process.env.NEXT_PUBLIC_BASE_URL}translate/`,

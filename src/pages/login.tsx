@@ -4,7 +4,6 @@ import LoginForm from "@/modules/login/components/LoginForm";
 import RegisForm from "@/modules/login/components/RegisForm";
 import ForgotPasswordForm from "@/modules/login/components/ForgotPasswordForm";
 
-
 const LoginPage = () => {
   return (
     <Layout>

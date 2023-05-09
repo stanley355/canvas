@@ -20,7 +20,9 @@ const ForgotPasswordForm = () => {
         <div className="flex flex-col mb-4">
           <label htmlFor="email_input" className="flex flex-row items-center">
             <FaEnvelope />
-            <span className="text-lg ml-2">We&apos;ll send a verification to your email</span>
+            <span className="text-lg ml-2">
+              We&apos;ll send a verification to your email
+            </span>
           </label>
           <input
             type="email"

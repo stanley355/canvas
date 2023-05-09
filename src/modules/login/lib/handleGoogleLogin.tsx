@@ -1,7 +1,7 @@
 import { CredentialResponse } from "@react-oauth/google";
 import axios from "axios";
-import jwtDecode from 'jwt-decode';
-import {toast} from 'react-toastify';
+import jwtDecode from "jwt-decode";
+import { toast } from "react-toastify";
 
 export const handleGoogleLogin = async (token: any) => {
   const decodedToken: any = jwtDecode(String(token.credential));
@@ -24,6 +24,6 @@ export const handleGoogleLogin = async (token: any) => {
     return data;
   } catch (err: any) {
     console.error(err);
-    toast.error('Something went wrong, please try again');
+    toast.error("Something went wrong, please try again");
   }
 };

@@ -11,8 +11,7 @@ const CheckBot = () => {
   const [checkbotVal, setCheckbotVal] = useState("");
 
   const seo = {
-    title:
-      "LanguageAI Checkbot - The Ultimate Grammar and Spelling Checker",
+    title: "LanguageAI Checkbot - The Ultimate Grammar and Spelling Checker",
     description:
       "LanguageAI Checkbot is the ultimate grammar and spelling checker that checks your writing in All Languages. 10x better than Grammarly. Try it now for free!",
     url: `${process.env.NEXT_PUBLIC_BASE_URL}checkbot/`,
@@ -26,7 +25,9 @@ const CheckBot = () => {
           <FaRobot className="text-3xl mr-2" />
           <span>LanguageAI Checkbot</span>
         </h1>
-        <h2 className="text-lg lg:text-xl text-center mb-4">The Ultimate Grammar and Spelling Checker for All Languages</h2>
+        <h2 className="text-lg lg:text-xl text-center mb-4">
+          The Ultimate Grammar and Spelling Checker for All Languages
+        </h2>
         <div className="lg:grid lg:grid-cols-2 lg:gap-2 mb-8">
           <CheckBotForm
             dispatchCheckbotVal={(val: string) => setCheckbotVal(val)}
