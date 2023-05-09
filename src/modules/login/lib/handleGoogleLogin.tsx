@@ -1,6 +1,6 @@
 import { CredentialResponse } from "@react-oauth/google";
 import axios from "axios";
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
 interface IDecodedToken {
   name: string;
@@ -8,7 +8,7 @@ interface IDecodedToken {
 }
 
 export const handleGoogleLogin = async (token: CredentialResponse) => {
-  const decodedToken: any = jwt.verify(String(token), 'secret');
+  const decodedToken: any = jwt.verify(String(token), "secret");
 
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/users/`;
   const axiosConfig = {
@@ -25,7 +25,7 @@ export const handleGoogleLogin = async (token: CredentialResponse) => {
 
   try {
     const { data } = await axios(axiosConfig);
-    console.log(data)
+    console.log(data);
     return data;
   } catch (err: any) {
     console.error(err);
