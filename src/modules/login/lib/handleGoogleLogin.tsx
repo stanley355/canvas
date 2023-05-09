@@ -1,4 +1,3 @@
-import { CredentialResponse } from "@react-oauth/google";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
