@@ -9,9 +9,9 @@ const LoginPage = () => {
   return (
     <Layout>
       <div className="container mx-auto flex items-center justify-center my-20 px-4">
-        {/* <LoginForm /> */}
+        <LoginForm />
         {/* <RegisForm /> */}
-        <ForgotPasswordForm />
+        {/* <ForgotPasswordForm /> */}
       </div>
     </Layout>
   );
