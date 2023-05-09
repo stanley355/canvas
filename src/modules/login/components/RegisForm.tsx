@@ -4,7 +4,7 @@ import { SiTaichilang } from "react-icons/si";
 import Button from "@/common/components/Button";
 import GoogleLoginBtn from "./GoogleLoginBtn";
 
-const LoginForm = () => {
+const RegisForm = () => {
   return (
     <div className="border border-white bg-gray-600 rounded-md p-4 mt-20 w-3/4 lg:w-1/3">
       <h1 className="flex flex-row items-center justify-center text-2xl font-bold">
@@ -12,7 +12,7 @@ const LoginForm = () => {
         <span className="ml-2">LanguageAI Login</span>
       </h1>
       <h2 className="text-center text-lg mb-4">Don't worry, it's still free</h2>
-      <GoogleLoginBtn text="signin_with" />
+      <GoogleLoginBtn text="signup_with" />
       <form
         className="mt-4"
         onSubmit={(e: React.FormEvent) => {
@@ -72,4 +72,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RegisForm;
