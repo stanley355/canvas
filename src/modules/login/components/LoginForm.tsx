@@ -4,7 +4,14 @@ import { SiTaichilang } from "react-icons/si";
 import Button from "@/common/components/Button";
 import GoogleLoginBtn from "./GoogleLoginBtn";
 
-const LoginForm = () => {
+interface ILoginForm {
+  onRegisClick: () => void;
+  onForgotPassClick: () => void;
+}
+
+const LoginForm = (props: ILoginForm) => {
+  const { onRegisClick, onForgotPassClick } = props;
+
   return (
     <div className="border border-white bg-gray-600 rounded-md p-4 lg:w-1/3">
       <h1 className="flex flex-row items-center justify-center text-2xl font-bold">
@@ -62,12 +69,14 @@ const LoginForm = () => {
           title="Register"
           wrapperClassName="p-1 border border-white rounded-md"
           buttonClassName="hover:underline"
+          onClick={onRegisClick}
         />
         <Button
           type="button"
           title="Forgot Password?"
           wrapperClassName="p-1 border border-white rounded-md"
           buttonClassName="hover:underline"
+          onClick={onForgotPassClick}
         />
       </div>
     </div>
