@@ -1,6 +1,5 @@
 import React from "react";
 import { FaEnvelope, FaKey } from "react-icons/fa";
-import { SiTaichilang } from "react-icons/si";
 import Button from "@/common/components/Button";
 import GoogleLoginBtn from "./GoogleLoginBtn";
 

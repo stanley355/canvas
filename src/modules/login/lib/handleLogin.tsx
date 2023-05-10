@@ -1,7 +1,6 @@
 import React from "react";
 import Router from "next/router";
 import axios from "axios";
-import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 
@@ -10,8 +9,6 @@ export const handleLogin = async (event: React.FormEvent) => {
   const target = event.target as any;
   const email = target.email.value;
   const password = target.password.value;
-
-  console.log(email, password);
 
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/users/`;
   const axiosConfig = {
