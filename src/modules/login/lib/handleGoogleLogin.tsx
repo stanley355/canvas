@@ -1,6 +1,7 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
+import Cookies from 'js-cookie';
 
 export const handleGoogleLogin = async (token: any) => {
   const decodedToken: any = jwtDecode(String(token.credential));
@@ -20,6 +21,9 @@ export const handleGoogleLogin = async (token: any) => {
 
   try {
     const { data } = await axios(axiosConfig);
+    if (data && data.token) {
+
+    }
     return data;
   } catch (err: any) {
     console.error(err);
