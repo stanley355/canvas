@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Router from "next/router";
 import Layout from "@/common/components/Layout";
 import LoginForm from "@/modules/login/components/LoginForm";
 import RegisForm from "@/modules/login/components/RegisForm";
