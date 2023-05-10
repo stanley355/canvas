@@ -65,7 +65,7 @@ const RegisForm = () => {
         </div>
 
         <Button
-          type="button"
+          type="submit"
           title="Register"
           wrapperClassName="text-center p-2 bg-transparent border rounded-md font-semibold mb-4 cursor-pointer hover:bg-white hover:text-gray-600"
         />

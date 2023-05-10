@@ -22,7 +22,7 @@ const authorAPI = async (req: NextApiRequest, res: NextApiResponse) => {
     const { data } = await axios(axiosConfig);
     response = data;
   } catch (err: any) {
-    response = err;
+    response = err.response.data;
   }
 
   res.setHeader("Content-Type", "application/json");

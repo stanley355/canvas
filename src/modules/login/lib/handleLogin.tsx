@@ -1,22 +1,28 @@
+import React from "react";
 import Router from "next/router";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 
-export const handleGoogleLogin = async (token: any) => {
-  const decodedToken: any = jwtDecode(String(token.credential));
+export const handleLogin = async (event: React.FormEvent) => {
+  event.preventDefault();
+  const target = event.target as any;
+  const email = target.email.value;
+  const password = target.password.value;
+
+  console.log(email, password);
 
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/users/`;
   const axiosConfig = {
     method: "POST",
     url: URL,
     headers: {
-      path: "/login/gmail/",
+      path: "/login/",
     },
     data: {
-      fullname: decodedToken.name,
-      email: decodedToken.email,
+      email,
+      password,
     },
   };
 

@@ -3,6 +3,7 @@ import { FaEnvelope, FaKey } from "react-icons/fa";
 import { SiTaichilang } from "react-icons/si";
 import Button from "@/common/components/Button";
 import GoogleLoginBtn from "./GoogleLoginBtn";
+import { handleLogin } from "../lib/handleLogin";
 
 interface ILoginForm {
   onRegisClick: () => void;
@@ -24,9 +25,7 @@ const LoginForm = (props: ILoginForm) => {
       <GoogleLoginBtn />
       <form
         className="mt-4"
-        onSubmit={(e: React.FormEvent) => {
-          e.preventDefault();
-        }}
+        onSubmit={handleLogin}
       >
         <div className="flex flex-col mb-4">
           <label htmlFor="email_input" className="flex flex-row items-center">
@@ -58,7 +57,7 @@ const LoginForm = (props: ILoginForm) => {
         </div>
 
         <Button
-          type="button"
+          type="submit"
           title="Login"
           wrapperClassName="text-center p-2 bg-transparent border rounded-md font-semibold mb-4 cursor-pointer hover:bg-white hover:text-gray-600"
         />
