@@ -13,7 +13,7 @@ const LoginModal = () => {
         <div className="text-center text-lg">
           Please Login To Continue Your work
         </div>
-        <h3 className="text-center text-lg mb-4 font-bold">
+        <h3 className="text-center text-2xl mb-4 font-bold">
           Don&apos;t worry, it&apos;s always free!
         </h3>
         <h4 className="text-center text-lg mb-2">
