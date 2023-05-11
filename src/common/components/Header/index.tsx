@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
-import Router from "next/router";
 import { Inter } from "next/font/google";
 import { SiTaichilang } from "react-icons/si";
+import cookie from "js-cookie";
 import classNames from "classnames";
 import Button from "../Button";
 import MobileHeaderMenu from "./MobileHeaderMenu";
 import DesktopHeaderMenu from "./DesktopHeaderMenu";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
-import cookie from "js-cookie";
+
+export interface IHeaderMenu {
+  token: string;
+  onLogoutClick: () => void;
+}
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -52,7 +56,7 @@ const Header = () => {
       </Button>
 
       {isDesktop ? (
-        <DesktopHeaderMenu />
+        <DesktopHeaderMenu token={token} onLogoutClick={onLogoutClick} />
       ) : (
         <MobileHeaderMenu token={token} onLogoutClick={onLogoutClick} />
       )}

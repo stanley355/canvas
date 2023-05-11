@@ -9,17 +9,12 @@ import {
   FaUserCircle,
 } from "react-icons/fa";
 import Button from "../Button";
+import { IHeaderMenu } from ".";
 
-interface IMobileHeaderMenu {
-  token: string;
-  onLogoutClick: () => void;
-}
-
-const MobileHeaderMenu = (props: IMobileHeaderMenu) => {
+const MobileHeaderMenu = (props: IHeaderMenu) => {
   const {token, onLogoutClick} = props;
   const [showMenu, setShowMenu] = useState(false);
   
-
   const Menu = () => (
     <div className="absolute -top-5 -right-4 bg-black border z-10 text-lg h-screen w-60">
       <Button
