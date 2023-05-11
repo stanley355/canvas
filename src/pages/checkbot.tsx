@@ -21,7 +21,7 @@ const CheckBot = () => {
   return (
     <Layout>
       <MetaSEO seo={seo} />
-      <LoginModal />
+      {/* <LoginModal /> */}
       <div className="container mx-auto px-2" id="title">
         <h1 className="flex flex-row items-center text-2xl lg:text-4xl justify-center my-4">
           <FaRobot className="text-3xl mr-2" />
