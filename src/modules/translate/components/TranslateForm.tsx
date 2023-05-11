@@ -9,18 +9,26 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import addFirestoreData from "@/common/lib/firebase/addFirestoreData";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { LANGUAGE_LIST } from "../constant";
+import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 
 interface ITranslateForm {
+  dispatchLoginForm: () => void;
   dispatchTranslateVal: (val: string) => void;
 }
 
 const TranslateForm = (props: ITranslateForm) => {
-  const { dispatchTranslateVal } = props;
+  const { dispatchLoginForm, dispatchTranslateVal } = props;
   const [isLoading, setIsLoading] = useState(false);
   const isDesktop = useDesktopScreen();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+
+    const freeTrial = hasFreeTrial();
+    if (!freeTrial) {
+      dispatchLoginForm();
+      return;
+    }
 
     const oriLang = e.target.ori_lang.value;
     const targetLang = e.target.target_lang.value;
