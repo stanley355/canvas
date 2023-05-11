@@ -35,6 +35,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
     const freeTrial = hasFreeTrial();
     if (!freeTrial) {
       dispatchLoginForm();
+      sendFirebaseEvent("login_popup", {});
       return;
     }
 

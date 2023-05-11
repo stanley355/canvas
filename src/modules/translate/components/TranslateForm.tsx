@@ -27,6 +27,7 @@ const TranslateForm = (props: ITranslateForm) => {
     const freeTrial = hasFreeTrial();
     if (!freeTrial) {
       dispatchLoginForm();
+      sendFirebaseEvent("login_popup", {});
       return;
     }
 
