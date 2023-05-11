@@ -9,7 +9,7 @@ export const hasFreeTrial = () => {
   }
 
   if (trial_count) {
-    if (Number(trial_count) > 3) {
+    if (Number(trial_count) === 3) {
       return false;
     }
     let count = Number(trial_count) + 1;
