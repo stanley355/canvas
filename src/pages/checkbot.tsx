@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { FaRobot } from "react-icons/fa";
 import Layout from "@/common/components/Layout";
 import CheckBotForm from "@/modules/checkbot/components/CheckbotForm";
@@ -10,6 +10,7 @@ import LoginModal from "@/modules/login/components/LoginModal";
 
 const CheckBot = () => {
   const [checkbotVal, setCheckbotVal] = useState("");
+  const [showLogin, setShowLogin] = useState(false);
 
   const seo = {
     title: "LanguageAI Checkbot - The Ultimate Grammar and Spelling Checker",
@@ -21,7 +22,6 @@ const CheckBot = () => {
   return (
     <Layout>
       <MetaSEO seo={seo} />
-      {/* <LoginModal /> */}
       <div className="container mx-auto px-2" id="title">
         <h1 className="flex flex-row items-center text-2xl lg:text-4xl justify-center my-4">
           <FaRobot className="text-3xl mr-2" />
@@ -32,6 +32,7 @@ const CheckBot = () => {
         </h2>
         <div className="lg:grid lg:grid-cols-2 lg:gap-2 mb-8">
           <CheckBotForm
+            dispatchLoginForm={() => setShowLogin(true)}
             dispatchCheckbotVal={(val: string) => setCheckbotVal(val)}
           />
           <CheckboxResult checkbotVal={checkbotVal} />
@@ -39,6 +40,7 @@ const CheckBot = () => {
         <SocialShare url={`${process.env.NEXT_PUBLIC_BASE_URL}checkbot/`} />
         <CheckbotComparison />
       </div>
+      {showLogin && <LoginModal />}
     </Layout>
   );
 };
