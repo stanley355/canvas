@@ -6,6 +6,7 @@ import CheckboxResult from "@/modules/checkbot/components/CheckbotResult";
 import CheckbotComparison from "@/modules/checkbot/components/CheckbotComparison";
 import SocialShare from "@/common/components/SocialShare";
 import MetaSEO from "@/common/components/MetaSEO";
+import LoginModal from "@/modules/login/components/LoginModal";
 
 const CheckBot = () => {
   const [checkbotVal, setCheckbotVal] = useState("");
@@ -20,6 +21,7 @@ const CheckBot = () => {
   return (
     <Layout>
       <MetaSEO seo={seo} />
+      <LoginModal />
       <div className="container mx-auto px-2" id="title">
         <h1 className="flex flex-row items-center text-2xl lg:text-4xl justify-center my-4">
           <FaRobot className="text-3xl mr-2" />
