@@ -19,7 +19,7 @@ const GoogleLoginBtn = () => {
           shape="rectangular"
           size="large"
           text="signin_with"
-          width={isDesktop ? "400" : "300"}
+          width={isDesktop ? "350" : "300"}
         />
       </GoogleOAuthProvider>
     </div>
