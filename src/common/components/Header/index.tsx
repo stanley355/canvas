@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Router from "next/router";
 import { Inter } from "next/font/google";
 import { SiTaichilang } from "react-icons/si";
 import classNames from "classnames";
@@ -6,11 +7,32 @@ import Button from "../Button";
 import MobileHeaderMenu from "./MobileHeaderMenu";
 import DesktopHeaderMenu from "./DesktopHeaderMenu";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
+import cookie from "js-cookie";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const Header = () => {
   const isDesktop = useDesktopScreen();
+
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    if (!token) {
+      const cookieToken = cookie.get("token");
+      if (cookieToken) {
+        setToken(String(cookieToken));
+      }
+    }
+  }, [isDesktop]);
+
+  const onLogoutClick = () => {
+    if (token) {
+      // Not using react router as it won't refresh the state
+      cookie.remove("token");
+      window.location.href = "/";
+    }
+    return "";
+  };
 
   return (
     <nav
@@ -29,7 +51,11 @@ const Header = () => {
         <span>LanguageAI</span>
       </Button>
 
-      {isDesktop ? <DesktopHeaderMenu /> : <MobileHeaderMenu />}
+      {isDesktop ? (
+        <DesktopHeaderMenu />
+      ) : (
+        <MobileHeaderMenu token={token} onLogoutClick={onLogoutClick} />
+      )}
     </nav>
   );
 };
