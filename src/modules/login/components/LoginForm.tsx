@@ -5,7 +5,7 @@ import GoogleLoginBtn from "./GoogleLoginBtn";
 const LoginForm = () => {
 
   return (
-    <div className="border border-white bg-gray-600 rounded-md p-4 lg:w-1/3">
+    <div className="border border-white bg-gray-600 rounded-md p-4 lg:w-1/3 mt-20 mx-auto">
       <h1 className="flex flex-row items-center justify-center text-2xl font-bold">
         <SiTaichilang />
         <span className="ml-2">LanguageAI Login</span>

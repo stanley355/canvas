@@ -6,6 +6,7 @@ import {
   FaLanguage,
   FaAngleRight,
   FaGlobeAmericas,
+  FaUserCircle
 } from "react-icons/fa";
 import Button from "../Button";
 
@@ -50,6 +51,16 @@ const MobileHeaderMenu = () => {
       >
         <FaGlobeAmericas className="text-3xl mr-2" />
         <span className="text-2xl">World Dictionary</span>
+        <FaAngleRight className="text-3xl float-right ml-8" />
+      </Button>
+      <Button
+        type="link"
+        href="/login/"
+        buttonClassName="p-4 flex flex-row items-center"
+        wrapperClassName="my-4 hover:bg-white hover:text-black"
+      >
+        <FaUserCircle className="text-3xl mr-2" />
+        <span className="text-2xl">Login</span>
         <FaAngleRight className="text-3xl float-right ml-8" />
       </Button>
     </div>
