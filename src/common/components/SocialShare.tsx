@@ -13,7 +13,8 @@ interface ISocialShare {
 }
 
 const SocialShare = (props: ISocialShare) => {
-  const { url } = props;
+  const {url} = props;
+  
 
   const SOCIAL_LIST = [
     {

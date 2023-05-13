@@ -7,16 +7,14 @@ import TranslateResult from "@/modules/translate/components/TranslateResult";
 import TranslateComparison from "@/modules/translate/components/TranslateComparison";
 import SocialShare from "@/common/components/SocialShare";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
-import LoginModal from "@/modules/login/components/LoginModal";
 
 const LangTranslate = () => {
   const [translateVal, setTranslateVal] = useState("");
-  const [showLogin, setShowLogin] = useState(false);
+
   const isDesktop = useDesktopScreen();
 
   const seo = {
-    title:
-      "LanguageAI Translate - The Best Translation App for All Languages | Contextual Translation",
+    title: "LanguageAI Translate - The Best Translation App for All Languages | Contextual Translation",
     description:
       "LanguageAI Translate is the top translation app for all languages in the world. Our app provides contextual translation, making it 10x better than Google Translate. Try LanguageAI Translate today for more accurate, reliable, and contextual translations.",
     url: `${process.env.NEXT_PUBLIC_BASE_URL}translate/`,
@@ -41,16 +39,12 @@ const LangTranslate = () => {
           #1 Translation App for All Languages + Contextual Translation
         </h2>
         <div className="lg:grid lg:grid-cols-2 lg:gap-2 mb-8">
-          <TranslateForm
-            dispatchLoginForm={() => setShowLogin(true)}
-            dispatchTranslateVal={(val) => setTranslateVal(val)}
-          />
+          <TranslateForm dispatchTranslateVal={(val) => setTranslateVal(val)} />
           <TranslateResult translateVal={translateVal} />
         </div>
         <SocialShare url={`${process.env.NEXT_PUBLIC_BASE_URL}translate/`} />
         <TranslateComparison />
       </div>
-      {showLogin && <LoginModal />}
     </Layout>
   );
 };

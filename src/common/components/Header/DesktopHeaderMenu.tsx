@@ -1,16 +1,8 @@
 import React from "react";
-import {
-  FaRobot,
-  FaLanguage,
-  FaGlobeAmericas,
-  FaUserCircle,
-} from "react-icons/fa";
+import { FaRobot, FaLanguage, FaGlobeAmericas } from "react-icons/fa";
 import Button from "../Button";
-import { IHeaderMenu } from ".";
 
-const DesktopHeaderMenu = (props: IHeaderMenu) => {
-  const { token, onLogoutClick } = props;
-
+const DesktopHeaderMenu = () => {
   return (
     <div className="flex flex-row items-center gap-4">
       <Button
@@ -39,16 +31,6 @@ const DesktopHeaderMenu = (props: IHeaderMenu) => {
       >
         <FaGlobeAmericas className="text-xl mr-1" />
         <span className="text-xl">AI World Dictionary</span>
-      </Button>
-      <Button
-        type={token ? "button" : "link"}
-        href="/login/"
-        buttonClassName="flex flex-row items-center"
-        wrapperClassName="hover:border-b"
-        onClick={onLogoutClick}
-      >
-        <FaUserCircle className="text-xl mr-1" />
-        <span className="text-xl">{token ? "Logout" : "Login"}</span>
       </Button>
     </div>
   );
