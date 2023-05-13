@@ -29,6 +29,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+
     const instruction = e.target.instruction.value;
     const outputLanguage = e.target.output_language.value;
     const sourceText = e.target.source_text.value;
