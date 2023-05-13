@@ -26,7 +26,7 @@ export const handleGoogleLogin = async (token: any) => {
   if (data && data.token) {
     sendFirebaseEvent("google_login", {});
     Cookies.set("token", data.token);
-    Router.push("/");
+    Router.push(Router.asPath);
     return "";
   }
 
