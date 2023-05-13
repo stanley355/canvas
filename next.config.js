@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   output: "standalone",
+  styledComponents: true,
   publicRuntimeConfig: {
     BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
     APP_ENV: process.env.APP_ENV,

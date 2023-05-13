@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaBuffer,
   FaTimes,
@@ -6,10 +6,13 @@ import {
   FaLanguage,
   FaAngleRight,
   FaGlobeAmericas,
+  FaUserCircle,
 } from "react-icons/fa";
 import Button from "../Button";
+import { IHeaderMenu } from ".";
 
-const MobileHeaderMenu = () => {
+const MobileHeaderMenu = (props: IHeaderMenu) => {
+  const { token, onLogoutClick } = props;
   const [showMenu, setShowMenu] = useState(false);
 
   const Menu = () => (
@@ -50,6 +53,17 @@ const MobileHeaderMenu = () => {
       >
         <FaGlobeAmericas className="text-3xl mr-2" />
         <span className="text-2xl">World Dictionary</span>
+        <FaAngleRight className="text-3xl float-right ml-8" />
+      </Button>
+      <Button
+        type={token ? "button" : "link"}
+        href="/login/"
+        buttonClassName="p-4 flex flex-row items-center"
+        wrapperClassName="my-4 hover:bg-white hover:text-black"
+        onClick={onLogoutClick}
+      >
+        <FaUserCircle className="text-3xl mr-2" />
+        <span className="text-2xl">{token ? "Logout" : "Login"}</span>
         <FaAngleRight className="text-3xl float-right ml-8" />
       </Button>
     </div>

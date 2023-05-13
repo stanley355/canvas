@@ -10,13 +10,15 @@ import SourceTextArea from "@/common/components/SourceTextArea";
 import { generateCheckbotPrompt } from "../lib/generateCheckbotPrompt";
 import { fetchCheckbotAndDispatch } from "../lib/fetchCheckbotAndDispatch";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 
 interface ICheckBotForm {
+  dispatchLoginForm: () => void;
   dispatchCheckbotVal: (val: string) => void;
 }
 
 const CheckBotForm = (props: ICheckBotForm) => {
-  const { dispatchCheckbotVal } = props;
+  const { dispatchLoginForm, dispatchCheckbotVal } = props;
   const [showPersonalInstruction, setShowPersonalInstruction] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -29,6 +31,14 @@ const CheckBotForm = (props: ICheckBotForm) => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+
+    const freeTrial = hasFreeTrial();
+    if (!freeTrial) {
+      dispatchLoginForm();
+      sendFirebaseEvent("login_popup", {});
+      return;
+    }
+
     const instruction = e.target.instruction.value;
     const outputLanguage = e.target.output_language.value;
     const sourceText = e.target.source_text.value;
