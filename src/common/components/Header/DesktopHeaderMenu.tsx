@@ -1,10 +1,15 @@
 import React from "react";
-import { FaRobot, FaLanguage, FaGlobeAmericas, FaUserCircle } from "react-icons/fa";
+import {
+  FaRobot,
+  FaLanguage,
+  FaGlobeAmericas,
+  FaUserCircle,
+} from "react-icons/fa";
 import Button from "../Button";
 import { IHeaderMenu } from ".";
 
 const DesktopHeaderMenu = (props: IHeaderMenu) => {
-  const {token, onLogoutClick} = props;
+  const { token, onLogoutClick } = props;
 
   return (
     <div className="flex flex-row items-center gap-4">

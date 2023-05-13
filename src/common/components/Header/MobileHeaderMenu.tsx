@@ -12,9 +12,9 @@ import Button from "../Button";
 import { IHeaderMenu } from ".";
 
 const MobileHeaderMenu = (props: IHeaderMenu) => {
-  const {token, onLogoutClick} = props;
+  const { token, onLogoutClick } = props;
   const [showMenu, setShowMenu] = useState(false);
-  
+
   const Menu = () => (
     <div className="absolute -top-5 -right-4 bg-black border z-10 text-lg h-screen w-60">
       <Button

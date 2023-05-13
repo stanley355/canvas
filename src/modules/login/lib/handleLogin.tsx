@@ -28,7 +28,7 @@ export const handleLogin = async (event: React.FormEvent) => {
     Cookies.set("token", data.token);
     Router.push("/");
     return "";
-  } 
+  }
 
   if (data && data.error) {
     toast.error(data.message);

@@ -42,7 +42,10 @@ const LangTranslate = () => {
           #1 Translation App for All Languages + Contextual Translation
         </h2>
         <div className="lg:grid lg:grid-cols-2 lg:gap-2 mb-8">
-          <TranslateForm dispatchLoginForm={() => setShowLogin(true)} dispatchTranslateVal={(val) => setTranslateVal(val)} />
+          <TranslateForm
+            dispatchLoginForm={() => setShowLogin(true)}
+            dispatchTranslateVal={(val) => setTranslateVal(val)}
+          />
           <TranslateResult translateVal={translateVal} />
         </div>
         <SocialShare url={`${process.env.NEXT_PUBLIC_BASE_URL}translate/`} />
