@@ -12,7 +12,6 @@ import LoginModal from "@/modules/login/components/LoginModal";
 const LangTranslate = () => {
   const [translateVal, setTranslateVal] = useState("");
   const [showLogin, setShowLogin] = useState(false);
-
   const isDesktop = useDesktopScreen();
 
   const seo = {
