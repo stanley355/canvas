@@ -32,12 +32,12 @@ const CheckBotForm = (props: ICheckBotForm) => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    const freeTrial = hasFreeTrial();
-    if (!freeTrial) {
-      dispatchLoginForm();
-      sendFirebaseEvent("login_popup", {});
-      return;
-    }
+    // const freeTrial = hasFreeTrial();
+    // if (!freeTrial) {
+    //   dispatchLoginForm();
+    //   sendFirebaseEvent("login_popup", {});
+    //   return;
+    // }
 
     const instruction = e.target.instruction.value;
     const outputLanguage = e.target.output_language.value;
