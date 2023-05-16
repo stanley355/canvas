@@ -22,7 +22,8 @@ const authorAPI = async (req: NextApiRequest, res: NextApiResponse) => {
     const { data } = await axios(axiosConfig);
     response = data;
   } catch (err: any) {
-    response = err.response.data;
+    console.log(err);
+    response = err.response?.data ?? err.response;
   }
 
   res.setHeader("Content-Type", "application/json");
