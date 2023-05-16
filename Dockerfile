@@ -69,7 +69,7 @@ COPY --from=builder /app/package.json ./package.json
 COPY --from=builder --chown=bloguser:bloggroup /app/.next/standalone ./
 COPY --from=builder --chown=bloguser:bloggroup /app/.next/static ./.next/static
 
-USER nextjs
+# USER nextjs
 
 EXPOSE 3000
 
