@@ -40,7 +40,7 @@ const DesktopHeaderMenu = (props: IHeaderMenu) => {
         <FaGlobeAmericas className="text-xl mr-1" />
         <span className="text-xl">AI World Dictionary</span>
       </Button>
-      {/* <Button
+      <Button
         type={token ? "button" : "link"}
         href="/login/"
         buttonClassName="flex flex-row items-center"
@@ -49,7 +49,7 @@ const DesktopHeaderMenu = (props: IHeaderMenu) => {
       >
         <FaUserCircle className="text-xl mr-1" />
         <span className="text-xl">{token ? "Logout" : "Login"}</span>
-      </Button> */}
+      </Button>
     </div>
   );
 };
