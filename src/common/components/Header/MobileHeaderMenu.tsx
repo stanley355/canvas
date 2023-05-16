@@ -55,7 +55,7 @@ const MobileHeaderMenu = (props: IHeaderMenu) => {
         <span className="text-2xl">World Dictionary</span>
         <FaAngleRight className="text-3xl float-right ml-8" />
       </Button>
-      <Button
+      {/* <Button
         type={token ? "button" : "link"}
         href="/login/"
         buttonClassName="p-4 flex flex-row items-center"
@@ -65,7 +65,7 @@ const MobileHeaderMenu = (props: IHeaderMenu) => {
         <FaUserCircle className="text-3xl mr-2" />
         <span className="text-2xl">{token ? "Logout" : "Login"}</span>
         <FaAngleRight className="text-3xl float-right ml-8" />
-      </Button>
+      </Button> */}
     </div>
   );
 
