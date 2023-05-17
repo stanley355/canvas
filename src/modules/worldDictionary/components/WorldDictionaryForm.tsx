@@ -47,7 +47,7 @@ const WorldDictionaryForm = (props: IWorldDictionaryForm) => {
     }
 
     const reqData = {
-      message: baseMsg,
+      content: baseMsg,
     };
 
     setIsLoading(true);
