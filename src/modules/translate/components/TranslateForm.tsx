@@ -64,31 +64,30 @@ const TranslateForm = (props: ITranslateForm) => {
     baseMsg = `${baseMsg}: "${sourceText}"`;
 
     const reqData = {
-      content: baseMsg
+      content: baseMsg,
     };
 
-    // TODO: Activate this on live hosting
     const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/ai/chat-completion/`;
     const { data } = await axios.post(URL, reqData);
+
     if (data && data.choices.length > 0) {
       const content = data.choices[0].message.content;
       dispatchTranslateVal(content);
+      setIsLoading(false);
       if (!isDesktop) window.location.href = "#translate_result_textarea";
-    } 
-    
-    if (data && data.error) {
+      return;
+    } else {
       toast.error("Something went wrong, please try again");
+      setIsLoading(false);
       addFirestoreData({
         collectionID: "chatgpt_error",
         data: {
           time: new Date(),
-          err: data.error
+          err: data?.error ? data.error : "Error Unknown",
         },
       });
+      return;
     }
-
-    setIsLoading(false);
-    return "";
   };
 
   return (
