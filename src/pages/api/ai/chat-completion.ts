@@ -25,8 +25,8 @@ const openaiCompletionAPI = async (
     response = data;
   } catch (err: any) {
     response = {
-      error: err.response.data ?? err.message
-    }
+      error: err.response.data ?? err.message,
+    };
   }
 
   res.setHeader("Content-Type", "application/json");

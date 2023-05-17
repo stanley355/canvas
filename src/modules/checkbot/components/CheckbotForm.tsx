@@ -78,7 +78,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
       prompt,
       dispatchCheckbotVal
     );
-    
+
     if (fetchSuccess && !isDesktop) {
       window.location.href = "#checkbot_result_textarea";
     }

@@ -6,7 +6,6 @@ export const fetchCheckbotAndDispatch = async (
   prompt: any,
   dispatch: (content: string) => void
 ) => {
-
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/ai/chat-completion/`;
   const { data } = await axios.post(URL, prompt);
 
