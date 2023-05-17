@@ -15,7 +15,7 @@ const openaiCompletionAPI = async (
     },
     data: {
       model: "gpt-3.5-turbo",
-      messages: [{ role: "system", content: req.body.message }],
+      messages: [{ role: "system", content: req.body.content }],
     },
   };
 
@@ -24,10 +24,8 @@ const openaiCompletionAPI = async (
     const { data } = await axios(axiosConfig);
     response = data;
   } catch (err: any) {
-    if (err.response) {
-      response = err.response.data;
-    } else {
-      response = err.message;
+    response = {
+      error: err.response.data ?? err.message
     }
   }
 
