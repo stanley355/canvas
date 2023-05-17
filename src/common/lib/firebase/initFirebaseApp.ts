@@ -13,15 +13,6 @@ const {
 } = getConfig().publicRuntimeConfig;
 
 const initFirebaseApp = () => {
-  // const firebaseConfig = {
-  //   apiKey: "AIzaSyB_vsJIee4nI_BSg6qETkUgWfvEXBhQG9Q",
-  //   authDomain: "canvas-d06f8.firebaseapp.com",
-  //   projectId: "canvas-d06f8",
-  //   storageBucket: "canvas-d06f8.appspot.com",
-  //   messagingSenderId: "986067471113",
-  //   appId: "1:986067471113:web:0638ed951b74031701e1d8",
-  //   measurementId: "G-8GCRHCQDMS"
-  // };
   const firebaseConfig = {
     apiKey: FIREBASE_API_KEY,
     authDomain: FIREBASE_AUTH_DOMAIN,
