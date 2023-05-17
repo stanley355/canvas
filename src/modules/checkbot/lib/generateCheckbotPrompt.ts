@@ -9,6 +9,6 @@ export const generateCheckbotPrompt = (
     baseMsg + " " + `in ${outputLang}`;
   }
   return {
-    message: baseMsg,
+    content: baseMsg,
   };
 };
