@@ -71,7 +71,8 @@ const RegisForm = () => {
       </form>
       <div className="mt-4 flex flex-row justify-between">
         <Button
-          type="button"
+          type="link"
+          href="/login/"
           title="Login"
           wrapperClassName="p-1 border border-white rounded-md"
           buttonClassName="hover:underline"
