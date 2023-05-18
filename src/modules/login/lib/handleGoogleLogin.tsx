@@ -26,8 +26,15 @@ export const handleGoogleLogin = async (token: any) => {
   if (data && data.token) {
     sendFirebaseEvent("google_login", {});
     Cookies.set("token", data.token);
+
+    const path = Router.asPath;
+    if (path === "/register" || path === "/login") {
+      window.location.href = "/";
+      return;
+    }
+
     window.location.reload();
-    return "";
+    return;
   }
 
   if (data && data.error) {
