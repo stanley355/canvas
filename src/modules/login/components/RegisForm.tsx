@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 import { FaEnvelope, FaKey, FaSpinner, FaUser } from "react-icons/fa";
 import Button from "@/common/components/Button";
 import GoogleLoginBtn from "./GoogleLoginBtn";
-import { toast } from "react-toastify";
+import { checkUserExist } from "../lib/checkUserExist";
+
 
 const RegisForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as any;
     const email = target.email.value;
@@ -37,6 +39,14 @@ const RegisForm = () => {
     if (password !== repassword) {
       setIsLoading(false);
       toast.error("Password not match!");
+      return;
+    }
+
+    const userExist = await checkUserExist(email);
+
+    if (userExist) {
+      setIsLoading(false);
+      toast.error("User with the same email already exists!");
       return;
     }
   };
