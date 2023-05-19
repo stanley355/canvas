@@ -1,9 +1,39 @@
-import React from "react";
-import { FaEnvelope, FaKey } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaEnvelope, FaKey, FaSpinner } from "react-icons/fa";
 import Button from "@/common/components/Button";
 import GoogleLoginBtn from "./GoogleLoginBtn";
+import { toast } from "react-toastify";
 
 const RegisForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const target = e.target as any;
+    const email = target.email.value;
+    const password = target.password.value;
+    const repassword = target.repassword.value;
+    setIsLoading(true);
+
+    if (!email) {
+      setIsLoading(false);
+      toast.error("Email is required!");
+      return;
+    }
+
+    if (!password || !repassword) {
+      setIsLoading(false);
+      toast.error("Password is required!");
+      return;
+    }
+
+    if (password !== repassword) {
+      setIsLoading(false);
+      toast.error("Password not match!");
+      return "";
+    }
+  };
+
   return (
     <div className="bg-transparent">
       <h1 className="text-center text-2xl font-bold">
@@ -20,11 +50,7 @@ const RegisForm = () => {
       <div className="text-lg text-center mb-2">
         Register with Email & Password:
       </div>
-      <form
-        onSubmit={(e: React.FormEvent) => {
-          e.preventDefault();
-        }}
-      >
+      <form onSubmit={handleSubmit}>
         <div className="flex flex-col mb-4">
           <label htmlFor="email_input" className="flex flex-row items-center">
             <FaEnvelope />
@@ -72,8 +98,18 @@ const RegisForm = () => {
         <Button
           type="submit"
           title="Register"
+          disabled={isLoading}
           wrapperClassName="text-center p-2 bg-transparent border rounded-md font-semibold mb-4 cursor-pointer hover:bg-white hover:text-gray-600"
-        />
+        >
+          {isLoading ? (
+            <div className="flex flex row items-center justify-center">
+              <span className="mr-2">Registering</span>
+              <FaSpinner className="animate-spin" />
+            </div>
+          ) : (
+            "Register"
+          )}
+        </Button>
       </form>
       <div className="my-8 flex flex-row justify-between text-lg">
         <Button
