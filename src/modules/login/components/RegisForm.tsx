@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { FaEnvelope, FaKey, FaSpinner, FaUser } from "react-icons/fa";
+import { getAuth, sendSignInLinkToEmail } from "firebase/auth";
+import jwt from "jsonwebtoken";
+import Cookies from "js-cookie";
 import Button from "@/common/components/Button";
 import GoogleLoginBtn from "./GoogleLoginBtn";
 import { checkUserExist } from "../lib/checkUserExist";
-
+import initFirebaseApp from "@/common/lib/firebase/initFirebaseApp";
 
 const RegisForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -23,7 +26,7 @@ const RegisForm = () => {
       toast.error("Email is required!");
       return;
     }
-    
+
     if (!fullname) {
       setIsLoading(false);
       toast.error("Fullname is required!");
@@ -42,12 +45,44 @@ const RegisForm = () => {
       return;
     }
 
-    const userExist = await checkUserExist(email);
-
+    // const userExist = await checkUserExist(email);
+    const userExist = false;
     if (userExist) {
       setIsLoading(false);
       toast.error("User with the same email already exists!");
       return;
+    } else {
+      // const data = {
+      //   fullname,
+      //   email,
+      //   password,
+      // };
+      // const verification_token = jwt.sign(data, "secret");
+      // Cookies.set("verification_token", verification_token);
+      const app = initFirebaseApp();
+      const auth = getAuth(app);
+      const actionCodeSettings = {
+        // URL you want to redirect back to. The domain (www.example.com) for this
+        // URL must be in the authorized domains list in the Firebase Console.
+        url: "https://www.example.com/verification/",
+        // This must be true.
+        handleCodeInApp: true,
+      };
+      sendSignInLinkToEmail(auth, email, actionCodeSettings)
+        .then(() => {
+          // The link was successfully sent. Inform the user.
+          // Save the email locally so you don't need to ask the user for it again
+          // if they open the link on the same device.
+          console.log("success");
+          window.localStorage.setItem("emailForSignIn", email);
+          // ...
+        })
+        .catch((error) => {
+          console.log("error: ", error);
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ...
+        });
     }
   };
 
