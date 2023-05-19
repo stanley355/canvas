@@ -70,7 +70,7 @@ const TranslateForm = (props: ITranslateForm) => {
     const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/ai/chat-completion/`;
     const { data } = await axios.post(URL, reqData);
 
-    if (data && data.choices.length > 0) {
+    if (data && data?.choices.length > 0) {
       const content = data.choices[0].message.content;
       dispatchTranslateVal(content);
       setIsLoading(false);
