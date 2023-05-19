@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaEnvelope, FaKey, FaSpinner } from "react-icons/fa";
+import { FaEnvelope, FaKey, FaSpinner, FaUser } from "react-icons/fa";
 import Button from "@/common/components/Button";
 import GoogleLoginBtn from "./GoogleLoginBtn";
 import { toast } from "react-toastify";
@@ -11,6 +11,7 @@ const RegisForm = () => {
     e.preventDefault();
     const target = e.target as any;
     const email = target.email.value;
+    const fullname = target.fullname.value;
     const password = target.password.value;
     const repassword = target.repassword.value;
     setIsLoading(true);
@@ -18,6 +19,12 @@ const RegisForm = () => {
     if (!email) {
       setIsLoading(false);
       toast.error("Email is required!");
+      return;
+    }
+    
+    if (!fullname) {
+      setIsLoading(false);
+      toast.error("Fullname is required!");
       return;
     }
 
@@ -30,7 +37,7 @@ const RegisForm = () => {
     if (password !== repassword) {
       setIsLoading(false);
       toast.error("Password not match!");
-      return "";
+      return;
     }
   };
 
@@ -62,6 +69,20 @@ const RegisForm = () => {
             id="email_input"
             aria-label="email_input"
             placeholder="zzz@mail.com"
+            className="p-2 rounded-md text-black"
+          />
+        </div>
+        <div className="flex flex-col mb-4">
+          <label htmlFor="email_input" className="flex flex-row items-center">
+            <FaUser />
+            <span className="text-lg ml-2">Fullname</span>
+          </label>
+          <input
+            type="text"
+            name="fullname"
+            id="fullname_input"
+            aria-label="fullname_input"
+            placeholder="fullname"
             className="p-2 rounded-md text-black"
           />
         </div>
