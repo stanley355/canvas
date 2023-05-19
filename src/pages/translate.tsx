@@ -37,8 +37,11 @@ const LangTranslate = () => {
               : "AI Translate"}
           </span>
         </h1>
-        <h2 className="text-center text-lg mb-4">
+        {/* <h2 className="text-center text-lg mb-4">
           #1 Translation App for All Languages + Contextual Translation
+        </h2> */}
+        <h2 className="text-center text-lg mb-4">
+          ANNOUNCEMENT: Starting from 1 June 2023, for better support, we will move our domain to <a href="https://languageai.world/" className="underline hover:text-blue-200">https://languageai.world/</a>
         </h2>
         <div className="lg:grid lg:grid-cols-2 lg:gap-2 mb-8">
           <TranslateForm

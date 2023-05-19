@@ -1,5 +1,4 @@
 import React from "react";
-import { GetStaticProps } from "next";
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
 import Button from "@/common/components/Button";
@@ -18,7 +17,7 @@ const Home = () => {
   };
 
   const HomeTitle = () => (
-    <div className="p-4 lg:py-8 border-b">
+    <div className="p-4 border-b">
       <h1 className="text-3xl">Introducing LanguageAI {PackageJSON.version}</h1>
       <div className="text-lg">
         10x Better Writing Check and Translation for All Languages
@@ -30,6 +29,9 @@ const Home = () => {
     <Layout>
       <MetaSEO seo={seo} />
       <div className="container mx-auto">
+        <h2 className="text-center text-2xl py-4 border-b">
+          ANNOUNCEMENT: Starting from 1 June 2023, for better support, we will move our domain to <a href="https://languageai.world/" className="underline hover:text-blue-200">https://languageai.world/</a>
+        </h2>
         <HomeTitle />
         <HomeCopywriting />
         <div className="px-2 mb-8 flex flex-col items-center justify-center">
