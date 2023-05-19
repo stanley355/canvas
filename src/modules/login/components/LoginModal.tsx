@@ -17,7 +17,7 @@ const LoginModal = () => {
           Don&apos;t worry, it&apos;s always free!
         </h3>
         <h4 className="text-center text-lg mb-2">
-          Sign Up & Login with One Click
+          Sign Up & Login in One Click
         </h4>
         <GoogleLoginBtn />
       </div>

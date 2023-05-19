@@ -23,7 +23,7 @@ const LoginPage = () => {
   return (
     <Layout>
       <MetaSEO seo={seo} />
-      <div className="container mx-auto h-screen px-4">
+      <div className="container mx-auto h-screen">
         <LoginForm />
       </div>
     </Layout>
