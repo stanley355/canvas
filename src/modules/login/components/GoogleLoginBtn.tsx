@@ -1,14 +1,10 @@
 import React from "react";
 import { toast } from "react-toastify";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
-import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { handleGoogleLogin } from "../lib/handleGoogleLogin";
 
 const GoogleLoginBtn = () => {
-  const isDesktop = useDesktopScreen();
-
   return (
-    <div className="flex items-center justify-center">
       <GoogleOAuthProvider
         clientId={String(process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID)}
       >
@@ -19,10 +15,9 @@ const GoogleLoginBtn = () => {
           shape="rectangular"
           size="large"
           text="signin_with"
-          width={isDesktop ? "350" : "300"}
+          width="350"
         />
       </GoogleOAuthProvider>
-    </div>
   );
 };
 

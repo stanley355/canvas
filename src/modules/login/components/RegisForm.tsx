@@ -5,16 +5,22 @@ import GoogleLoginBtn from "./GoogleLoginBtn";
 
 const RegisForm = () => {
   return (
-    <div className="border border-white bg-gray-600 rounded-md p-4 lg:w-1/3">
-      <h1 className="flex flex-row items-center justify-center pl-16 lg:pl-0 text-2xl font-bold">
+    <div className="bg-transparent">
+      <h1 className="text-center text-2xl font-bold">
         LanguageAI Registration
       </h1>
-      <h2 className="text-center text-lg mb-4">
-        Don&apos;t worry, it&apos;s still free
+      <h2 className="text-center text-2xl mb-4">
+        Don&apos;t worry, it&apos;s always free!
       </h2>
-      <GoogleLoginBtn />
+      <div className="text-lg mt-8 flex flex-col items-center justify-center">
+        <div className="mb-2">Direct Registration via Google:</div>
+        <GoogleLoginBtn />
+      </div>
+      <div className="text-center my-4 font-semibold">OR</div>
+      <div className="text-lg text-center mb-2">
+        Register with Email & Password:
+      </div>
       <form
-        className="mt-4"
         onSubmit={(e: React.FormEvent) => {
           e.preventDefault();
         }}
@@ -69,19 +75,18 @@ const RegisForm = () => {
           wrapperClassName="text-center p-2 bg-transparent border rounded-md font-semibold mb-4 cursor-pointer hover:bg-white hover:text-gray-600"
         />
       </form>
-      <div className="mt-4 flex flex-row justify-between">
+      <div className="my-8 flex flex-row justify-between text-lg">
         <Button
           type="link"
           href="/login/"
           title="Login"
-          wrapperClassName="p-1 border border-white rounded-md"
-          buttonClassName="hover:underline"
+          wrapperClassName="underline hover:text-blue-500"
         />
         <Button
-          type="button"
+          type="link"
+          href="/forgot-password/"
           title="Forgot Password?"
-          wrapperClassName="p-1 border border-white rounded-md"
-          buttonClassName="hover:underline"
+          wrapperClassName="underline hover:text-blue-500"
         />
       </div>
     </div>
