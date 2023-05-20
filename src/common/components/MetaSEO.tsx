@@ -6,8 +6,6 @@ interface IMetaSEO {
 }
 
 const MetaSEO = ({ seo }: IMetaSEO) => {
-  const isWindowDefined = typeof window !== "undefined";
-
   return (
     <Head>
       <title>hi</title>
@@ -24,29 +22,24 @@ const MetaSEO = ({ seo }: IMetaSEO) => {
       />
       <meta
         name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
       <meta property="og:title" content={seo?.title} />
       <meta property="og:locale" content="id_ID" />
       <meta property="og:type" content="website" />
       <meta property="og:description" content={seo?.description} />
-      <meta
-        property="og:url"
-        content={isWindowDefined ? window.location.href : ""}
-      />
-      <meta
-        property="og:site_name"
-        content={isWindowDefined ? window.location.origin : ""}
-      />
+      <meta property="og:url" content={seo?.url} />
+      <meta property="og:site_name" content="LanguageAI" />
       <meta property="og:image" content={seo?.image ?? ""} />
       <meta name="twitter:card" content={seo?.twitterCard} />
       <meta name="twitter:title" content={seo?.title} />
       <meta name="twitter:description" content={seo?.description} />
       <meta name="twitter:image" content={seo?.image?.url} />
-      {/* <meta name="twitter:creator" content="@localhost" />
-    <meta name="twitter:site" content="@localhost" />
-    <meta name="twitter:label1" content="@localhost" />
-    <meta name="twitter:data1" content="localhost" /> */}
+      <link rel="icon" type="image/png" href="/images/langai_icon.png" />
+      <meta name="twitter:creator" content="@languageai" />
+      <meta name="twitter:site" content="@languageai" />
+      <meta name="twitter:label1" content="@languageai" />
+      <meta name="twitter:data1" content="LanguageAI" />
     </Head>
   );
 };

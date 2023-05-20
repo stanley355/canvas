@@ -3,6 +3,8 @@ import Link from "next/link";
 
 interface IButton {
   type: "button" | "submit" | "link";
+  id?: string;
+  disabled?: boolean;
   title?: string;
   href?: string;
   key?: string;
@@ -15,10 +17,11 @@ interface IButton {
 
 const Button = (props: IButton) => {
   const {
+    id,
+    disabled,
     title,
     href,
     type,
-    key,
     ariaLabel,
     children,
     onClick,
@@ -27,18 +30,21 @@ const Button = (props: IButton) => {
   } = props;
 
   return (
-    <div key={key} className={wrapperClassName}>
+    <div className={wrapperClassName}>
       {type === "link" ? (
         <Link
           href={String(href)}
           passHref
           title={title}
           className={buttonClassName}
+          onClick={onClick}
         >
           {children || title}
         </Link>
       ) : (
         <button
+          id={id}
+          disabled={disabled}
           type={type}
           onClick={onClick}
           aria-label={ariaLabel}
