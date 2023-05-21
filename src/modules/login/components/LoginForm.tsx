@@ -91,7 +91,7 @@ const LoginForm = () => {
           {hasSubmit ? <FaSpinner className="animate-spin mx-auto" /> : "Login"}
         </Button>
       </form>
-      <div className="mt-8">Don't have an account? <Link href="/register/" className="underline hover:text-blue-300">Register here</Link> </div>
+      <div className="mt-8">Don&apos;t have an account? <Link href="/register/" className="underline hover:text-blue-300">Register here</Link> </div>
     </div>
   );
 };
