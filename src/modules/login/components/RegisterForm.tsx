@@ -15,7 +15,6 @@ const RegisterForm = () => {
     setHasSubmit(true);
 
     const inputValid = validateRegisForm(e);
-
     if (!inputValid) {
       setHasSubmit(false);
       return;
@@ -23,8 +22,8 @@ const RegisterForm = () => {
 
     const target = e.target as any;
     const email = target.email.value;
-    const userExist = await checkUserExist(email);
 
+    const userExist = await checkUserExist(email);
     if (userExist) {
       toast.error('User with the same email already exists!');
       return;
