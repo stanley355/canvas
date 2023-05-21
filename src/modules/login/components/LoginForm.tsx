@@ -1,11 +1,28 @@
 import React, { useState } from "react";
+import Link from "next/link";
 import { FaSpinner } from "react-icons/fa";
 import { SiTaichilang } from "react-icons/si";
 import GoogleLoginBtn from "./GoogleLoginBtn";
 import Button from "@/common/components/Button";
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
   const [hasSubmit, setHasSubmit] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setHasSubmit(true);
+    const target = e.target as any;
+    const email = target.email.value;
+    const password = target.password.value;
+    
+    if (!email || !password) {
+      setHasSubmit(false);
+      toast.error("Email and Password are required!");
+      return;
+    }
+
+  }
 
   return (
     <div className="flex flex-col items-center justify-center p-4 w-full lg:w-1/3 lg:mx-auto">
@@ -19,7 +36,7 @@ const LoginForm = () => {
       <h3 className="mb-2">Login with One Click</h3>
       <GoogleLoginBtn />
       <div className="my-4">or</div>
-      <form action="" className="w-full">
+      <form onSubmit={handleSubmit} className="w-full">
         <div className="flex flex-col mb-4">
           <label htmlFor="email">Email*</label>
           <input
@@ -49,6 +66,7 @@ const LoginForm = () => {
           {hasSubmit ? <FaSpinner className="animate-spin mx-auto" /> : "Login"}
         </Button>
       </form>
+      <div className="mt-8">Don't have an account? <Link href="/register/" className="underline hover:text-blue-300">Register here</Link> </div>
     </div>
   );
 };
