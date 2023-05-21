@@ -30,7 +30,14 @@ const Home = () => {
       <MetaSEO seo={seo} />
       <div className="container mx-auto">
         <h2 className="text-center text-2xl py-4 border-b">
-          ANNOUNCEMENT: Starting from 27 May 2023, for better support, we will move our domain to <a href="https://languageai.world/" className="underline hover:text-blue-200">https://languageai.world/</a>
+          ANNOUNCEMENT: Starting from 27 May 2023, for better support, we will
+          move our domain to{" "}
+          <a
+            href="https://languageai.world/"
+            className="underline hover:text-blue-200"
+          >
+            https://languageai.world/
+          </a>
         </h2>
         <HomeTitle />
         <HomeCopywriting />
