@@ -7,6 +7,7 @@ import Button from '@/common/components/Button';
 import { validateRegisForm } from '../lib/validateRegisForm';
 import { checkUserExist } from '../lib/checkUserExist';
 import { IRegisterUser, registerUser } from '../lib/registerUser';
+import Cookies from 'js-cookie';
 
 const RegisterForm = () => {
   const [hasSubmit, setHasSubmit] = useState(false);
@@ -27,6 +28,7 @@ const RegisterForm = () => {
     const userExist = await checkUserExist(email);
     if (userExist) {
       toast.error('User with the same email already exists!');
+      setHasSubmit(false);
       return;
     }
 
@@ -37,7 +39,17 @@ const RegisterForm = () => {
     }
 
     const registerResult = await registerUser(payload);
-    console.log("regis:", registerResult);
+    
+    if (registerResult?.token) {
+      setHasSubmit(false);
+      Cookies.set('token', registerResult.token);
+      window.location.href ="/profile";
+      return;
+    } else {
+      setHasSubmit(false);
+      toast.error("Something went wrong, please try again");
+      return;
+    }
   }
 
   return (

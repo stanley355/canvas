@@ -6,7 +6,7 @@ export interface IRegisterUser {
   password: string;
 }
 
-export const registerUser = async (body: IRegisterUser) => {
+export const registerUser = async (payload: IRegisterUser) => {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/users/`;
   const axiosConfig = {
     method: "POST",
@@ -14,7 +14,7 @@ export const registerUser = async (body: IRegisterUser) => {
     headers: {
       path: "/register/",
     },
-    body,
+    data: payload,
   };
 
   const { data } = await axios(axiosConfig);
