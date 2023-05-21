@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { FaSpinner } from 'react-icons/fa';
 import { SiTaichilang } from 'react-icons/si';
 import { toast } from 'react-toastify';
+import Cookies from 'js-cookie';
 import GoogleLoginBtn from './GoogleLoginBtn';
 import Button from '@/common/components/Button';
 import { validateRegisForm } from '../lib/validateRegisForm';
 import { checkUserExist } from '../lib/checkUserExist';
 import { IRegisterUser, registerUser } from '../lib/registerUser';
-import Cookies from 'js-cookie';
+import { sendFirebaseEvent } from '@/common/lib/firebase/sendFirebaseEvent';
 
 const RegisterForm = () => {
   const [hasSubmit, setHasSubmit] = useState(false);
@@ -42,6 +43,7 @@ const RegisterForm = () => {
     
     if (registerResult?.token) {
       setHasSubmit(false);
+      sendFirebaseEvent("register", {});
       Cookies.set('token', registerResult.token);
       window.location.href ="/profile";
       return;
