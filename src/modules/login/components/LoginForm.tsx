@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
 import { SiTaichilang } from "react-icons/si";
+import Cookies from "js-cookie";
 import GoogleLoginBtn from "./GoogleLoginBtn";
 import Button from "@/common/components/Button";
-import { toast } from "react-toastify";
+import { loginUser } from "../lib/loginUser";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 const LoginForm = () => {
   const [hasSubmit, setHasSubmit] = useState(false);
@@ -15,20 +18,42 @@ const LoginForm = () => {
     const target = e.target as any;
     const email = target.email.value;
     const password = target.password.value;
-    
+
     if (!email || !password) {
       setHasSubmit(false);
       toast.error("Email and Password are required!");
       return;
     }
 
+    const payload = {
+      email, password
+    };
+
+    sendFirebaseEvent("login", {});
+    const user = await loginUser(payload);
+    if (user?.error) {
+      setHasSubmit(false);
+      toast.error(user.message);
+      return;
+    }
+
+    if (user?.token) {
+      setHasSubmit(false);
+      Cookies.set("token", user.token);
+      window.location.href ="/";
+      return;
+    }
+
+    toast.error("Something went wrong, please try again");
+    setHasSubmit(false);
+    return;
   }
 
   return (
     <div className="flex flex-col items-center justify-center p-4 w-full lg:w-1/3 lg:mx-auto">
       <h1 className="flex flex-row items-center justify-center text-2xl mb-2">
         <SiTaichilang />
-        <span className="ml-2">LanguageAI Login</span>
+        <span className="ml-2">Login</span>
       </h1>
       <h2 className="text-2xl mb-4 font-semibold">
         Don&apos;t worry, it&apos;s always free!
