@@ -10,7 +10,7 @@ export const validateRegisForm = (e: React.FormEvent<HTMLFormElement>) => {
   }
 
   if (password.value !== repassword.value)  {
-    toast.error("Password doesn't match!");
+    toast.error("Password does not match!");
     return false;
   }
 

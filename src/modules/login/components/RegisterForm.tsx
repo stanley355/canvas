@@ -4,11 +4,13 @@ import { SiTaichilang } from 'react-icons/si';
 import GoogleLoginBtn from './GoogleLoginBtn';
 import Button from '@/common/components/Button';
 import { validateRegisForm } from '../lib/validateRegisForm';
+import { checkUserExist } from '../lib/checkUserExist';
+import { toast } from 'react-toastify';
 
 const RegisterForm = () => {
   const [hasSubmit, setHasSubmit] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setHasSubmit(true);
 
@@ -16,6 +18,15 @@ const RegisterForm = () => {
 
     if (!inputValid) {
       setHasSubmit(false);
+      return;
+    }
+
+    const target = e.target as any;
+    const email = target.email.value;
+    const userExist = await checkUserExist(email);
+
+    if (userExist) {
+      toast.error('User with the same email already exists!');
       return;
     }
 
