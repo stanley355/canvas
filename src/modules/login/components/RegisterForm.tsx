@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { FaSpinner } from 'react-icons/fa';
 import { SiTaichilang } from 'react-icons/si';
+import { toast } from 'react-toastify';
 import GoogleLoginBtn from './GoogleLoginBtn';
 import Button from '@/common/components/Button';
 import { validateRegisForm } from '../lib/validateRegisForm';
 import { checkUserExist } from '../lib/checkUserExist';
-import { toast } from 'react-toastify';
+import { IRegisterUser, registerUser } from '../lib/registerUser';
 
 const RegisterForm = () => {
   const [hasSubmit, setHasSubmit] = useState(false);
@@ -29,7 +30,14 @@ const RegisterForm = () => {
       return;
     }
 
+    const payload: IRegisterUser = {
+      email,
+      fullname: target.fullname.value,
+      password: target.password.value
+    }
 
+    const registerResult = await registerUser(payload);
+    console.log("regis:", registerResult);
   }
 
   return (

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-interface IRegisterUser {
+export interface IRegisterUser {
   fullname: string;
   email: string;
   password: string;
