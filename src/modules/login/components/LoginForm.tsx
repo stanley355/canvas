@@ -16,22 +16,37 @@ const LoginForm = () => {
       <h2 className="text-2xl mb-4 font-semibold">
         Don&apos;t worry, it&apos;s always free!
       </h2>
-      <h3 className="mb-2">
-        Login with One Click
-      </h3>
+      <h3 className="mb-2">Login with One Click</h3>
       <GoogleLoginBtn />
       <div className="my-4">or</div>
       <form action="" className="w-full">
         <div className="flex flex-col mb-4">
           <label htmlFor="email">Email*</label>
-          <input type="email" id='email_input' name='email' className='p-2 text-black rounded-sm' placeholder='myemail@email.com' />
+          <input
+            type="email"
+            id="email_input"
+            name="email"
+            className="p-2 text-black rounded-sm"
+            placeholder="myemail@email.com"
+          />
         </div>
         <div className="flex flex-col mb-8">
           <label htmlFor="password">Password*</label>
-          <input type="password" id='password_input' name='password' className='p-2 text-black rounded-sm' placeholder='******' />
+          <input
+            type="password"
+            id="password_input"
+            name="password"
+            className="p-2 text-black rounded-sm"
+            placeholder="******"
+          />
         </div>
-        <Button disabled={hasSubmit} type='submit' wrapperClassName='border border-white p-2 rounded-sm flex items-center justify-center bg-white text-black hover:bg-black hover:text-white' buttonClassName='w-full'>
-          {hasSubmit ? <FaSpinner className='animate-spin mx-auto' /> : "Login"}
+        <Button
+          disabled={hasSubmit}
+          type="submit"
+          wrapperClassName="border border-white p-2 rounded-sm flex items-center justify-center bg-white text-black hover:bg-black hover:text-white"
+          buttonClassName="w-full"
+        >
+          {hasSubmit ? <FaSpinner className="animate-spin mx-auto" /> : "Login"}
         </Button>
       </form>
     </div>

@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react';
-import Layout from '@/common/components/Layout';
-import RegisterForm from '@/modules/login/components/RegisterForm';
-import Cookies from 'js-cookie';
+import React, { useEffect } from "react";
+import Layout from "@/common/components/Layout";
+import RegisterForm from "@/modules/login/components/RegisterForm";
+import Cookies from "js-cookie";
 
 const Register = () => {
-
   useEffect(() => {
-    const token = Cookies.get('token');
+    const token = Cookies.get("token");
     if (token) {
-      window.location.href ="/";
+      window.location.href = "/";
     }
   });
 
@@ -18,7 +17,7 @@ const Register = () => {
         <RegisterForm />
       </div>
     </Layout>
-  )
+  );
 };
 
 export default Register;
