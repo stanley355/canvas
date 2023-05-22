@@ -36,6 +36,7 @@ const EmailPassForm = () => {
     }
 
     if (user?.token) {
+      sendFirebaseEvent("login_email_password", {});
       setHasSubmit(false);
       Cookies.set("token", user.token);
       window.location.href = "/";
