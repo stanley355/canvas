@@ -17,9 +17,9 @@ export const fetchCheckbotAndDispatch = async (
       prompt_token: data?.usage?.prompt_tokens,
       completion_token: data?.usage?.completion_tokens,
       prompt_text: prompt.content,
-      completion_text: content
-    }
-    await saveUserCheckbotData(saveUserCheckbotDataPayload)
+      completion_text: content,
+    };
+    await saveUserCheckbotData(saveUserCheckbotDataPayload);
 
     dispatch(content);
     return true;
