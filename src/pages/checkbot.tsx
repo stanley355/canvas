@@ -13,9 +13,9 @@ const CheckBot = () => {
   const [showLogin, setShowLogin] = useState(false);
 
   const seo = {
-    title: "LanguageAI Checkbot - The Ultimate Grammar and Spelling Checker",
+    title: "Free Grammar Checker - LanguageAI Checkbot",
     description:
-      "LanguageAI Checkbot is the ultimate grammar and spelling checker that checks your writing in All Languages. 10x better than Grammarly. Try it now for free!",
+      "Grammar check for free! Copy and paste your text in grammar checker. Fix grammar, spelling, and punctuation errors instantly with our cutting-edge AI technology. No sign-up required!",
     url: `${process.env.NEXT_PUBLIC_BASE_URL}checkbot/`,
   };
 
