@@ -1,4 +1,5 @@
-import React, { use, useState } from "react";
+import React, { useState } from "react";
+import dynamic from "next/dynamic";
 import { FaRobot } from "react-icons/fa";
 import Layout from "@/common/components/Layout";
 import CheckBotForm from "@/modules/checkbot/components/CheckbotForm";
@@ -6,7 +7,6 @@ import CheckboxResult from "@/modules/checkbot/components/CheckbotResult";
 import CheckbotComparison from "@/modules/checkbot/components/CheckbotComparison";
 import SocialShare from "@/common/components/SocialShare";
 import MetaSEO from "@/common/components/MetaSEO";
-import LoginModal from "@/modules/login/components/LoginModal";
 
 const CheckBot = () => {
   const [checkbotVal, setCheckbotVal] = useState("");
@@ -18,6 +18,10 @@ const CheckBot = () => {
       "LanguageAI Checkbot is the ultimate grammar and spelling checker that checks your writing in All Languages. 10x better than Grammarly. Try it now for free!",
     url: `${process.env.NEXT_PUBLIC_BASE_URL}checkbot/`,
   };
+
+  const LoginModal = dynamic(
+    () => import("../modules/login/components/LoginModal")
+  );
 
   return (
     <Layout>
@@ -50,7 +54,7 @@ const CheckBot = () => {
         <SocialShare url={`${process.env.NEXT_PUBLIC_BASE_URL}checkbot/`} />
         <CheckbotComparison />
       </div>
-      {showLogin && <LoginModal />}
+      <LoginModal />
     </Layout>
   );
 };
