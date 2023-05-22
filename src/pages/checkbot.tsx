@@ -54,7 +54,7 @@ const CheckBot = () => {
         <SocialShare url={`${process.env.NEXT_PUBLIC_BASE_URL}checkbot/`} />
         <CheckbotComparison />
       </div>
-      <LoginModal />
+      {showLogin && <LoginModal />}
     </Layout>
   );
 };
