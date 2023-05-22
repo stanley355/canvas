@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import dynamic from "next/dynamic";
 import { FaLanguage } from "react-icons/fa";
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
@@ -7,7 +8,6 @@ import TranslateResult from "@/modules/translate/components/TranslateResult";
 import TranslateComparison from "@/modules/translate/components/TranslateComparison";
 import SocialShare from "@/common/components/SocialShare";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
-import LoginModal from "@/modules/login/components/LoginModal";
 
 const LangTranslate = () => {
   const [translateVal, setTranslateVal] = useState("");
@@ -21,6 +21,10 @@ const LangTranslate = () => {
       "LanguageAI Translate is the top translation app for all languages in the world. Our app provides contextual translation, making it 10x better than Google Translate. Try LanguageAI Translate today for more accurate, reliable, and contextual translations.",
     url: `${process.env.NEXT_PUBLIC_BASE_URL}translate/`,
   };
+
+  const LoginModal = dynamic(
+    () => import("../modules/login/components/LoginModal")
+  );
 
   return (
     <Layout>
@@ -37,11 +41,8 @@ const LangTranslate = () => {
               : "AI Translate"}
           </span>
         </h1>
-        {/* <h2 className="text-center text-lg mb-4">
-          #1 Translation App for All Languages + Contextual Translation
-        </h2> */}
         <h2 className="text-center text-lg mb-4">
-          ANNOUNCEMENT: Starting from 27 May 2023, for better support, we will move our domain to <a href="https://languageai.world/" className="underline hover:text-blue-200">https://languageai.world/</a>
+          #1 Translation App for All Languages
         </h2>
         <div className="lg:grid lg:grid-cols-2 lg:gap-2 mb-8">
           <TranslateForm
