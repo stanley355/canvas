@@ -63,7 +63,7 @@ const CheckbotComparison = () => (
           <p className="mb-4">
             <strong>LanguageAI Checkbot Grammar Check: Improves Your Writing with 10-20% Changes:</strong>
             <p>
-              One of the features of LanguageAI Checkbot is the "Proofread" instruction.
+              One of the features of LanguageAI Checkbot is the &quot;Proofread&quot; instruction.
               This instruction allows you to specify the level of revision that you want LanguageAI Checkbot to make. LanguageAI Checkbot will make changes to your text that will result in a 10-20% change from the original passage.
               It enhances their content while still preserving their voice and it suggest changes to word choice, sentence structure, and punctuation. These changes can help to improve the clarity, conciseness, and overall quality of your writing.
             </p>
@@ -108,9 +108,9 @@ const CheckbotComparison = () => (
             <strong>LanguageAI Checkbot Grammar Check: Improve Clarity and Flow</strong>
             <p>
               LanguageAI Checkbot checks for grammar, spelling, and punctuation errors, and offers suggestions for improvement.
-              One of the features of LanguageAI Checkbot is the "Proofread" instruction. This instruction allows you to specify the level of revision that you want LanguageAI Checkbot to make. You can also add additional instructions to the personal instruction, such as "improve the clarity and flow."
-              When you add the "improve the clarity and flow" instruction to the personal instruction, it will make changes to your text that will improve the clarity and flow of your writing. LanguageAI Checkbot willl suggest changes to word choice, sentence structure, and punctuation.
-              In the example above, the writing has been significantly improved by adding the "improve the clarity and flow" instruction to the personal instruction. The writing is now more concise and easier to read. The changes made by LanguageAI Checkbot have also improved the flow of the writing.
+              One of the features of LanguageAI Checkbot is the &quot;Proofread&quot; instruction. This instruction allows you to specify the level of revision that you want LanguageAI Checkbot to make. You can also add additional instructions to the personal instruction, such as &quot;improve the clarity and flow.&quot;
+              When you add the &quot;improve the clarity and flow&quot; instruction to the personal instruction, it will make changes to your text that will improve the clarity and flow of your writing. LanguageAI Checkbot willl suggest changes to word choice, sentence structure, and punctuation.
+              In the example above, the writing has been significantly improved by adding the &quot;improve the clarity and flow&quot; instruction to the personal instruction. The writing is now more concise and easier to read. The changes made by LanguageAI Checkbot have also improved the flow of the writing.
             </p>
           </p>
         </div>

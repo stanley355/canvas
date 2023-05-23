@@ -8,11 +8,11 @@ const TranslateComparison = () => {
       </div>
 
       <p className="mb-4">
-        Translating creole languages, especially those that borrow many words from other languages, can be quite challenging. We assigned the task of deciphering a particular creole known as "Pidgin English," spoken in West Africa, to both LanguageAI and Google Translate.
+        Translating creole languages, especially those that borrow many words from other languages, can be quite challenging. We assigned the task of deciphering a particular creole known as &quot;Pidgin English,&quot; spoken in West Africa, to both LanguageAI and Google Translate.
       </p>
 
       <p className="mb-4">
-        The original text reads, <strong> <i>"Wetin come happen na. Since you say you go come help me with that thing, I no come see your brake light. Wetin sup?" </i> </strong> The speaker's displeasure at the lack of assistance promised to them is evident in this passage, with the final question "What's happening?" serving as a conclusion.
+        The original text reads, <strong> <i>&quot;Wetin come happen na. Since you say you go come help me with that thing, I no come see your brake light. Wetin sup?&quot; </i> </strong> The speaker&apos;s displeasure at the lack of assistance promised to them is evident in this passage, with the final question &quot;What&apos;s happening?&quot; serving as a conclusion.
       </p>
 
       <p>
@@ -31,7 +31,7 @@ const TranslateComparison = () => {
       </div>
 
       <p className="mb-4">
-        However, though not without some flaws, LanguageAI's interpretation successfully conveyed the speaker's meaning and intent. Given the highly contextual nature of Pidgin English, these results are quite impressive.
+        However, though not without some flaws, LanguageAI&apos;s interpretation successfully conveyed the speaker&apos;s meaning and intent. Given the highly contextual nature of Pidgin English, these results are quite impressive.
       </p>
 
       <div className="mb-4">
@@ -47,7 +47,7 @@ const TranslateComparison = () => {
 
       <div className="font-semibold text-lg">Conclusion</div>
       <div>
-        LanguageAI performed better than Google Translate in translation, a type of creole language spoken in West Africa. The speaker in the original text expressed displeasure at a promise of help not being fulfilled, with the question "What's happening?" serving as a conclusion. Despite its challenges, LanguageAI's interpretation successfully conveyed the speaker's meaning and intent.
+        LanguageAI performed better than Google Translate in translation, a type of creole language spoken in West Africa. The speaker in the original text expressed displeasure at a promise of help not being fulfilled, with the question &quot;What&apos;s happening?&quot; serving as a conclusion. Despite its challenges, LanguageAI&apos;s interpretation successfully conveyed the speaker&quot;s meaning and intent.
       </div>
     </div>
   );
