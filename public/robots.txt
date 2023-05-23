@@ -3,7 +3,7 @@ User-agent: *
 Disallow: 
 
 # Host
-Host: https://languageai.vercel.app
+Host: https://languageai.world
 
 # Sitemaps
-Sitemap: https://languageai.vercel.app/sitemap.xml
+Sitemap: https://languageai.world/sitemap.xml
