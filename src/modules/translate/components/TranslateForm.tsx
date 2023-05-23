@@ -3,13 +3,14 @@ import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner, FaPlay } from "react-icons/fa";
 import axios from "axios";
+import { LANGUAGE_LIST } from "../constant";
 import Button from "@/common/components/Button";
 import SourceTextArea from "../../../common/components/SourceTextArea";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import addFirestoreData from "@/common/lib/firebase/addFirestoreData";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
-import { LANGUAGE_LIST } from "../constant";
 import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
+import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 
 interface ITranslateForm {
   dispatchLoginForm: () => void;
@@ -72,6 +73,15 @@ const TranslateForm = (props: ITranslateForm) => {
 
     if (data && data?.choices.length > 0) {
       const content = data.choices[0].message.content;
+
+      const saveUserPromptPayload = {
+        prompt_token: data?.usage?.prompt_tokens,
+        completion_token: data?.usage?.completion_tokens,
+        prompt_text: baseMsg,
+        completion_text: content,
+      };
+      await saveUserPrompt(saveUserPromptPayload);
+
       dispatchTranslateVal(content);
       setIsLoading(false);
       if (!isDesktop) window.location.href = "#translate_result_textarea";

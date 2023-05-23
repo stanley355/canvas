@@ -13,13 +13,13 @@ export const fetchCheckbotAndDispatch = async (
   if (data && data?.choices.length > 0) {
     const content = data.choices[0].message.content;
 
-    const saveUserCheckbotDataPayload = {
+    const saveUserPromptPayload = {
       prompt_token: data?.usage?.prompt_tokens,
       completion_token: data?.usage?.completion_tokens,
       prompt_text: prompt.content,
       completion_text: content,
     };
-    await saveUserPrompt(saveUserCheckbotDataPayload);
+    await saveUserPrompt(saveUserPromptPayload);
 
     dispatch(content);
     return true;
