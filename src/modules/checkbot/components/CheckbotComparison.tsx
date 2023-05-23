@@ -39,7 +39,7 @@ const CheckbotComparison = () => (
               height={550}
             />
           </div>
-          <p className="mb-4">
+          <div className="mb-4">
             <strong>Grammarly Check: Minimal Changes to Well-Written Text</strong>
             <p>
               In the picture, Grammarly was used to check a well-written text. The text was free of grammar errors, but the revisions were minimal.
@@ -47,7 +47,7 @@ const CheckbotComparison = () => (
               These findings suggest that Grammarly can improve the quality of your writing. However, it is not a perfect tool.
               It make changes that you do not agree with, and it does not catch all grammar errors.
             </p>
-          </p>
+          </div>
         </div>
         <div>
           <div className="mb-4">
@@ -60,15 +60,14 @@ const CheckbotComparison = () => (
               height={550}
             />
           </div>
-          <p className="mb-4">
+          <div className="mb-4">
             <strong>LanguageAI Checkbot Grammar Check: Improves Your Writing with 10-20% Changes:</strong>
             <p>
               One of the features of LanguageAI Checkbot is the &quot;Proofread&quot; instruction.
               This instruction allows you to specify the level of revision that you want LanguageAI Checkbot to make. LanguageAI Checkbot will make changes to your text that will result in a 10-20% change from the original passage.
               It enhances their content while still preserving their voice and it suggest changes to word choice, sentence structure, and punctuation. These changes can help to improve the clarity, conciseness, and overall quality of your writing.
             </p>
-
-          </p>
+          </div>
         </div>
       </div>
     </div>
@@ -85,14 +84,14 @@ const CheckbotComparison = () => (
               className="rounded-md"
             />
           </div>
-          <p className="mb-4">
+          <div className="mb-4">
             <strong>Grammarly Premium Grammar Check: Deeper Analysis and Improved Writing</strong>
             <p>
               Grammarly Premium is a paid version of Grammarly that offers a deeper analysis of your writing than the free version. Grammarly Premium goes beyond basic corrections and offers suggestions for improving grammar, style, and tone.
               In a recent study, Grammarly Premium was used to check a well-written text. The text was free of grammar errors, but Grammarly Premium still made 17 changes. The changes were minor and did not significantly alter the meaning of the text. The total percentage of the passage that was rewritten was 17%.
               These findings suggest that Grammarly Premium ican improve the quality of your writing. However, it make changes that you do not agree with, and it does not catch all grammar errors.
             </p>
-          </p>
+          </div>
         </div>
 
         <div>
@@ -104,7 +103,7 @@ const CheckbotComparison = () => (
               className="rounded-md"
             />
           </div>
-          <p className="mb-4">
+          <div className="mb-4">
             <strong>LanguageAI Checkbot Grammar Check: Improve Clarity and Flow</strong>
             <p>
               LanguageAI Checkbot checks for grammar, spelling, and punctuation errors, and offers suggestions for improvement.
@@ -112,7 +111,7 @@ const CheckbotComparison = () => (
               When you add the &quot;improve the clarity and flow&quot; instruction to the personal instruction, it will make changes to your text that will improve the clarity and flow of your writing. LanguageAI Checkbot willl suggest changes to word choice, sentence structure, and punctuation.
               In the example above, the writing has been significantly improved by adding the &quot;improve the clarity and flow&quot; instruction to the personal instruction. The writing is now more concise and easier to read. The changes made by LanguageAI Checkbot have also improved the flow of the writing.
             </p>
-          </p>
+          </div>
         </div>
       </div>
     </div>
