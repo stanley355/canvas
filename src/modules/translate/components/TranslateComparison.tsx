@@ -1,32 +1,24 @@
 import React from "react";
-import Image from "next/image";
 
 const TranslateComparison = () => {
   return (
     <div className="my-8" id="translate_comparison">
-      <div className="text-2xl mb-4">
-        Comparing LanguageAI Translate vs Google Translate
+      <div className="text-2xl font-semibold mb-4">
+        Comparing <i>LanguageAI Translate</i>  vs <i>Google Translate</i> , why are we better?
       </div>
-      <p className="mb-4">
-        Creoles, especially those that borrow many words from other languages,
-        are notoriously hard to translate. We tasked both LanguageAI and Google
-        Translate to interpret a creole called &quot;Pidgin English,&quot; which
-        is spoken in West Africa. Source Text:
-      </p>
 
-      <p className="italic mb-4">
-        Source Text: &quot;Wetin come happen na. Since you say you go come help
-        me with that thing, I no come see your brake light. Wetin sup?&quot;
+      <p className="mb-4">
+        Translating creole languages, especially those that borrow many words from other languages, can be quite challenging. We assigned the task of deciphering a particular creole known as "Pidgin English," spoken in West Africa, to both LanguageAI and Google Translate.
       </p>
 
       <p className="mb-4">
-        The speaker in the original text expresses dissatisfaction to the reader
-        regarding a promise to assist with a task that has not been fulfilled
-        yet. The speaker concludes by asking &quot;What&apos;s happening?&quot;.
-        Google Translate struggled to translate the source text adequately,
-        likely due to the difficulty in distinguishing between creole and
-        English since English words were present.
+        The original text reads, <strong> <i>"Wetin come happen na. Since you say you go come help me with that thing, I no come see your brake light. Wetin sup?" </i> </strong> The speaker's displeasure at the lack of assistance promised to them is evident in this passage, with the final question "What's happening?" serving as a conclusion.
       </p>
+
+      <p>
+        Here, Google Translate struggled with the text, likely because the presence of English words made it difficult to distinguish between Pidgin English and English itself.
+      </p>
+
       <div className="mb-4">
         <img
           src="/images/testimony/gtrans_creola.webp"
@@ -39,10 +31,7 @@ const TranslateComparison = () => {
       </div>
 
       <p className="mb-4">
-        Although not flawlessly, LanguageAI&apos;s interpretation was able to
-        clearly convey the meaning and intent of the speaker. Considering the
-        highly contextual nature of Pidgin English, the results are very
-        impressive.
+        However, though not without some flaws, LanguageAI's interpretation successfully conveyed the speaker's meaning and intent. Given the highly contextual nature of Pidgin English, these results are quite impressive.
       </p>
 
       <div className="mb-4">
@@ -55,30 +44,10 @@ const TranslateComparison = () => {
           height={383}
         />
       </div>
-      <p className="mb-4">
-        Below is another example of Meaningful translation. Google Translate:
-        plz d ya know what to do:
-      </p>
-      <div className="mb-4">
-        <img
-          src="/images/testimony/gtrans_meaning.png"
-          alt="langai_creola"
-          className="rounded-md"
-          loading="lazy"
-        />
-      </div>
 
-      <p className="mb-4">LanguageAI Translate: plz d ya know what to do</p>
-
-      <div className="mb-4">
-        <img
-          src="/images/testimony/langai_meaning.png"
-          alt="langai_creola"
-          className="rounded-md border border-white"
-          loading="lazy"
-          width={1264}
-          height={354}
-        />
+      <div className="font-semibold text-lg">Conclusion</div>
+      <div>
+        LanguageAI performed better than Google Translate in translation, a type of creole language spoken in West Africa. The speaker in the original text expressed displeasure at a promise of help not being fulfilled, with the question "What's happening?" serving as a conclusion. Despite its challenges, LanguageAI's interpretation successfully conveyed the speaker's meaning and intent.
       </div>
     </div>
   );
