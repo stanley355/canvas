@@ -2,27 +2,27 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
 
-export interface ISaveUserCheckbotData {
+export interface ISaveUserPrompt {
   prompt_token: number;
   completion_token: number;
   prompt_text: string;
   completion_text: string;
 }
 
-export const saveUserCheckbotData = async (payload: ISaveUserCheckbotData) => {
+export const saveUserPrompt = async (payload: ISaveUserPrompt) => {
   const token = Cookies.get("token");
   if (!token) return;
 
   const decodedToken: any = jwtDecode(token);
-  const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/checkbots/`;
-  const saveCheckbotPayload = {
+  const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/prompts/`;
+  const savePromptPayload = {
     user_id: decodedToken.id,
     ...payload,
   };
   const axiosConfig = {
     method: "POST",
     url: URL,
-    data: saveCheckbotPayload,
+    data: savePromptPayload,
   };
 
   const { data } = await axios(axiosConfig);

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 import addFirestoreData from "@/common/lib/firebase/addFirestoreData";
-import { saveUserCheckbotData } from "./saveUserCheckbotData";
+import { saveUserPrompt} from "../../../common/lib/saveUserPrompt";
 
 export const fetchCheckbotAndDispatch = async (
   prompt: any,
@@ -19,7 +19,7 @@ export const fetchCheckbotAndDispatch = async (
       prompt_text: prompt.content,
       completion_text: content,
     };
-    await saveUserCheckbotData(saveUserCheckbotDataPayload);
+    await saveUserPrompt(saveUserCheckbotDataPayload);
 
     dispatch(content);
     return true;

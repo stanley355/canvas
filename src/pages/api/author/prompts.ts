@@ -2,7 +2,7 @@ import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
 const authorCheckbotAPI = async (req: NextApiRequest, res: NextApiResponse) => {
-  let URL = `${process.env.AUTHOR_URL}v1/checkbots/`;
+  let URL = `${process.env.AUTHOR_URL}v1/prompts/`;
 
   const axiosConfig = {
     method: req.method,
