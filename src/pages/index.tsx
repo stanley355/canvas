@@ -29,18 +29,19 @@ const Home = () => {
     <Layout>
       <MetaSEO seo={seo} />
       <div className="container mx-auto">
-        <h2 className="text-center text-2xl py-4 border-b">
-          ANNOUNCEMENT: Starting from 27 May 2023, for better support, we will
-          move our domain to{" "}
-          <a
-            href="https://languageai.world/"
-            className="underline hover:text-blue-200"
-          >
-            https://languageai.world/
-          </a>
-        </h2>
         <HomeTitle />
         <HomeCopywriting />
+        <div className="px-2 mt-4 mb-8 flex flex-col items-center justify-center">
+          <CheckbotComparison />
+          <div className="my-16">
+            <Button
+              type="link"
+              title="Let's check my writing"
+              href="/checkbot/"
+              buttonClassName="p-2 bg-white border mx-auto text-black hover:bg-black hover:text-white text-xl font-semibold"
+            />
+          </div>
+        </div>
         <div className="px-2 mb-8 flex flex-col items-center justify-center">
           <TranslateComparison />
           <div className="my-16">
@@ -48,17 +49,6 @@ const Home = () => {
               type="link"
               title="Let's translate"
               href="/translate/"
-              buttonClassName="p-2 bg-white border mx-auto text-black hover:bg-black hover:text-white text-xl font-semibold"
-            />
-          </div>
-        </div>
-        <div className="px-2 mb-8 flex flex-col items-center justify-center">
-          <CheckbotComparison />
-          <div className="my-16">
-            <Button
-              type="link"
-              title="Let's check my writing"
-              href="/checkbot/"
               buttonClassName="p-2 bg-white border mx-auto text-black hover:bg-black hover:text-white text-xl font-semibold"
             />
           </div>

@@ -36,6 +36,10 @@ export const CHECKBOT_OPTIONS = [
     value: "Paraphrase",
   },
   {
+    label: "Proofread",
+    value: "Proofread",
+  },
+  {
     label: "Simplify this text",
     value: "Simplify",
   },
