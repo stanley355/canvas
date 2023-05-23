@@ -22,7 +22,6 @@ const authorAPI = async (req: NextApiRequest, res: NextApiResponse) => {
     const { data } = await axios(axiosConfig);
     response = data;
   } catch (err: any) {
-    console.log(err);
     response = err.response?.data ?? err.response;
   }
 
