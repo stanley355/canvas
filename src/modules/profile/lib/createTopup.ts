@@ -1,11 +1,6 @@
 import axios from "axios";
 
-export interface ICreateTopup {
-  user_id: string;
-  topup_amount: string;
-}
-
-export const createTopup = async (payload: ICreateTopup) => {
+export const createTopup = async (user_id: string, topup_amount: number) => {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/topups/`;
   const axiosConfig = {
     method: "POST",
@@ -13,7 +8,10 @@ export const createTopup = async (payload: ICreateTopup) => {
     headers: {
       path: "/",
     },
-    data: payload,
+    data: {
+      user_id,
+      topup_amount 
+    },
   };
 
   const { data } = await axios(axiosConfig);

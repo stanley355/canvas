@@ -2,15 +2,17 @@ import React, {useState} from 'react';
 import { FaSpinner } from 'react-icons/fa';
 import Button from '@/common/components/Button';
 import { toast } from 'react-toastify';
+import { createTopup } from '../lib/createTopup';
 
 interface ITopupForm {
   id: string;
 }
 
 const TopupForm = (props: ITopupForm) => {
+  const {id} = props;
   const [hasSubmit, setHasSubmit] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setHasSubmit(true);
 
@@ -22,6 +24,9 @@ const TopupForm = (props: ITopupForm) => {
       toast.error("Topup amount is required!");
       return;
     }
+
+    const topup = await createTopup(id, Number(amount));
+    console.log(222, topup);
   }
 
   return (
