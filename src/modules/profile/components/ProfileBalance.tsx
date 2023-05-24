@@ -15,7 +15,7 @@ const ProfileBalance = (props: IProfileBalance) => {
       </div>
       <div className="border p-2 my-2">Rp {balance}</div>
       <div className="my-2">
-        *Topup more balance you can access our Premium Translation and Checkbot
+        *Topup more balance so you can access our Premium Translation and Checkbot
         (Better Result & Correction)
       </div>
       <div>
