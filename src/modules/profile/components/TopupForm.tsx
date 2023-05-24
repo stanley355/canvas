@@ -30,7 +30,6 @@ const TopupForm = (props: ITopupForm) => {
 
     if (topup?.id) {
       const midtrans = await createMidtransSnap(topup.id, Number(amount), user);
-      console.log(midtrans);
       if (midtrans?.redirect_url) {
         window.open(midtrans.redirect_url, '_blank');
         setHasSubmit(false);
