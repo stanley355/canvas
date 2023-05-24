@@ -1,46 +1,34 @@
 import React from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
-import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
 import Layout from "@/common/components/Layout";
-import Button from "@/common/components/Button";
-import ProfileBalance from "@/modules/profile/components/ProfileBalance";
+import { fetchUserData } from "@/modules/profile/lib/fetchUserData";
 
 interface IProfile {
   user: {
-    fullname: string;
-    email: string;
     balance: number;
   };
 }
 
-const Profile = (props: IProfile) => {
+const Topup = (props: IProfile) => {
   const { user } = props;
-
-  const onLogoutClick = () => {
-    Cookies.remove("token");
-    window.location.href = "/";
-  };
 
   return (
     <Layout>
       <div className="container mx-auto p-4 h-screen">
-        <div className="text-2xl">{user.fullname}</div>
-        <div>{user.email}</div>
+        <h1 className="text-center text-2xl font-bold my-4">Topup</h1>
 
-        <Button
-          type="button"
-          onClick={onLogoutClick}
-          title="logout"
-          wrapperClassName="mt-8 border border-white w-16 py-1 rounded text-center "
-          buttonClassName="w-full hover:underline"
-        />
+        <div className="font-semibold text-lg">
+          Oops you are running out of balance!
+        </div>
+        <div className="border p-2 my-2">Current Balance: Rp {user.balance}</div>
+        
       </div>
     </Layout>
   );
 };
 
-export default Profile;
+export default Topup;
 export const getServerSideProps: GetServerSideProps = async (
   ctx: GetServerSidePropsContext
 ) => {
@@ -55,11 +43,12 @@ export const getServerSideProps: GetServerSideProps = async (
     };
   }
 
-  const decodedToken = jwtDecode(token);
+  const decodedToken: any = jwtDecode(token);
+  const user = await fetchUserData(decodedToken.email);
 
   return {
     props: {
-      user: decodedToken,
+      user,
     },
   };
 };

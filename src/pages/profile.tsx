@@ -57,7 +57,6 @@ export const getServerSideProps: GetServerSideProps = async (
     };
   }
 
-  Cookies.set('token', token);
   const decodedToken : any = jwtDecode(token);
   const user = await fetchUserData(decodedToken.email);
 
