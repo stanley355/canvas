@@ -5,11 +5,13 @@ import jwtDecode from "jwt-decode";
 import Layout from "@/common/components/Layout";
 import Button from "@/common/components/Button";
 import ProfileBalance from "@/modules/profile/components/ProfileBalance";
+import { fetchUserData } from "@/modules/profile/lib/fetchUserData";
 
 interface IProfile {
   user: {
     fullname: string;
     email: string;
+    balance: number;
   };
 }
 
@@ -27,7 +29,7 @@ const Profile = (props: IProfile) => {
         <div className="text-2xl">{user.fullname}</div>
         <div>{user.email}</div>
 
-        <ProfileBalance />
+        <ProfileBalance balance={user.balance} />
         <Button
           type="button"
           onClick={onLogoutClick}
@@ -55,11 +57,13 @@ export const getServerSideProps: GetServerSideProps = async (
     };
   }
 
-  const decodedToken = jwtDecode(token);
+  Cookies.set('token', token);
+  const decodedToken : any = jwtDecode(token);
+  const user = await fetchUserData(decodedToken.email);
 
   return {
     props: {
-      user: decodedToken,
+      user,
     },
   };
 };

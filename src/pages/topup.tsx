@@ -28,7 +28,6 @@ const Profile = (props: IProfile) => {
         <div className="text-2xl">{user.fullname}</div>
         <div>{user.email}</div>
 
-        <ProfileBalance />
         <Button
           type="button"
           onClick={onLogoutClick}
