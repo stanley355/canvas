@@ -1,15 +1,16 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { FaSpinner } from 'react-icons/fa';
 import Button from '@/common/components/Button';
 import { toast } from 'react-toastify';
 import { createTopup } from '../lib/createTopup';
+import { createMidtransSnap } from '../lib/createMidtransSnap';
 
 interface ITopupForm {
   user: any;
 }
 
 const TopupForm = (props: ITopupForm) => {
-  const {user } = props;
+  const { user } = props;
   const [hasSubmit, setHasSubmit] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -28,7 +29,15 @@ const TopupForm = (props: ITopupForm) => {
     const topup = await createTopup(user.id, Number(amount));
 
     if (topup?.id) {
-
+      const midtrans = await createMidtransSnap(topup.id, Number(amount), user);
+      if (midtrans?.redirect_url) {
+        window.open(midtrans.redirect_url, '_blank');
+        setHasSubmit(false);
+        return;
+      }
+      toast.error("Something went wrong, please try again");
+      setHasSubmit(false);
+      return;
     }
 
     setHasSubmit(false);
@@ -46,7 +55,7 @@ const TopupForm = (props: ITopupForm) => {
         </div>
         <Button type='submit' wrapperClassName='w-full text-center mt-4 p-2 bg-white text-black font-semibold' buttonClassName='w-full' disabled={hasSubmit}>
           {hasSubmit ? <FaSpinner className='mx-auto animate-spin' /> : "Topup"}
-          </Button>
+        </Button>
       </form>
     </div>
   )
