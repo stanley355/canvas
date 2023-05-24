@@ -6,10 +6,7 @@ import { fetchUserData } from "@/modules/profile/lib/fetchUserData";
 import TopupForm from "@/modules/profile/components/TopupForm";
 
 interface ITopup {
-  user: {
-    id: string;
-    balance: number;
-  };
+  user: any;
 }
 
 const Topup = (props: ITopup) => {
@@ -24,7 +21,7 @@ const Topup = (props: ITopup) => {
           Oops you are running out of balance!
         </div>
         <div className="border p-2 my-2">Current Balance: Rp {user.balance}</div>
-        <TopupForm id={user.id} />
+        <TopupForm user={user} />
         <div className="my-2">
           *Topup more balance so you can access our Premium Translation and Checkbot
           (Better Result & Correction)

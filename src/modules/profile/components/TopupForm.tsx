@@ -5,11 +5,11 @@ import { toast } from 'react-toastify';
 import { createTopup } from '../lib/createTopup';
 
 interface ITopupForm {
-  id: string;
+  user: any;
 }
 
 const TopupForm = (props: ITopupForm) => {
-  const {id} = props;
+  const {user } = props;
   const [hasSubmit, setHasSubmit] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -25,8 +25,15 @@ const TopupForm = (props: ITopupForm) => {
       return;
     }
 
-    const topup = await createTopup(id, Number(amount));
-    console.log(222, topup);
+    const topup = await createTopup(user.id, Number(amount));
+
+    if (topup?.id) {
+
+    }
+
+    setHasSubmit(false);
+    toast.error("Something went wrong, please try again");
+    return;
   }
 
   return (
