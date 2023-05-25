@@ -3,7 +3,6 @@ import { FaSpinner } from 'react-icons/fa';
 import Button from '@/common/components/Button';
 import { toast } from 'react-toastify';
 import { createTopup } from '../lib/createTopup';
-import { createMidtransSnap } from '../lib/createMidtransSnap';
 
 interface ITopupForm {
   user: any;
@@ -29,12 +28,12 @@ const TopupForm = (props: ITopupForm) => {
     const topup = await createTopup(user.id, Number(amount));
 
     if (topup?.id) {
-      const midtrans = await createMidtransSnap(topup.id, Number(amount), user);
-      if (midtrans?.redirect_url) {
-        window.open(midtrans.redirect_url, '_blank');
-        setHasSubmit(false);
-        return;
-      }
+      // const midtrans = await createMidtransSnap(topup.id, Number(amount), user);
+      // if (midtrans?.redirect_url) {
+      //   window.open(midtrans.redirect_url, '_blank');
+      //   setHasSubmit(false);
+      //   return;
+      // }
       toast.error("Something went wrong, please try again");
       setHasSubmit(false);
       return;
