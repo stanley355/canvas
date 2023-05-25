@@ -4,6 +4,7 @@ import {
   FaLanguage,
   FaGlobeAmericas,
   FaUserCircle,
+  FaPhone,
 } from "react-icons/fa";
 import Button from "../Button";
 import { IHeaderMenu } from ".";
@@ -39,6 +40,15 @@ const DesktopHeaderMenu = (props: IHeaderMenu) => {
       >
         <FaGlobeAmericas className="text-xl mr-1" />
         <span className="text-xl">AI World Dictionary</span>
+      </Button>
+      <Button
+        type="link"
+        href="/contact/"
+        buttonClassName="flex flex-row items-center"
+        wrapperClassName="hover:border-b"
+      >
+        <FaPhone className="text-xl mr-1" />
+        <span className="text-xl">Contact</span>
       </Button>
       <Button
         type={token ? "button" : "link"}

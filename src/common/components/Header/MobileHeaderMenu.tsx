@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   FaBuffer,
   FaTimes,
@@ -7,6 +7,7 @@ import {
   FaAngleRight,
   FaGlobeAmericas,
   FaUserCircle,
+  FaPhone
 } from "react-icons/fa";
 import Button from "../Button";
 import { IHeaderMenu } from ".";
@@ -53,6 +54,16 @@ const MobileHeaderMenu = (props: IHeaderMenu) => {
       >
         <FaGlobeAmericas className="text-3xl mr-2" />
         <span className="text-2xl">World Dictionary</span>
+        <FaAngleRight className="text-3xl float-right ml-8" />
+      </Button>
+      <Button
+        type="link"
+        href="/contact/"
+        buttonClassName="p-4 flex flex-row items-center"
+        wrapperClassName="my-4 hover:bg-white hover:text-black"
+      >
+        <FaPhone className="text-3xl mr-2" />
+        <span className="text-2xl">Contact</span>
         <FaAngleRight className="text-3xl float-right ml-8" />
       </Button>
       <Button
