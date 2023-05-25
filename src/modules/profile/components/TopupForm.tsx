@@ -28,12 +28,7 @@ const TopupForm = (props: ITopupForm) => {
     const topup = await createTopup(user.id, Number(amount));
 
     if (topup?.id) {
-      // const midtrans = await createMidtransSnap(topup.id, Number(amount), user);
-      // if (midtrans?.redirect_url) {
-      //   window.open(midtrans.redirect_url, '_blank');
-      //   setHasSubmit(false);
-      //   return;
-      // }
+      // TODO: Put topup account here
       toast.error("Something went wrong, please try again");
       setHasSubmit(false);
       return;
