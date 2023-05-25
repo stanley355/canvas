@@ -7,7 +7,8 @@ const dokuCheckoutAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   let URL = process.env.DOKU_URL;
 
   const clientID = String(process.env.DOKU_CLIENT_ID);
-  const timestamp = generateUTC7Timestamp();
+  // const timestamp = generateUTC7Timestamp();
+  const timestamp = new Date().toISOString();
   const signaturePayload = {
     clientID,
     requestID: String(req.headers.request_id),
