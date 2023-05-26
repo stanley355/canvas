@@ -5,17 +5,12 @@ import { generateDokuSignature } from "@/modules/profile/lib/generateDokuSignatu
 const dokuCheckoutAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   const URL = String(process.env.DOKU_URL);
 
-  const clientID = String(process.env.DOKU_CLIENT_ID);
   const timestamp = new Date().toISOString();
-  const secretKey = String(process.env.DOKU_SECRET_KEY);
 
   const signaturePayload = {
-    clientID,
     requestID: String(req.headers.request_id),
-    requestTimestamp: String(timestamp),
-    requestTarget: "/checkout/v1/payment",
-    dokuSecretKey: secretKey,
-    body: req.body
+    dokuPath: "/checkout/v1/payment",
+    dokuPayload: req.body
   }
   const signature = generateDokuSignature(signaturePayload); 
 
