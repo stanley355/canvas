@@ -9,11 +9,12 @@ const dokuCheckoutAPI = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const signaturePayload = {
     requestID: String(req.headers.request_id),
-    dokuPath: "/checkout/v1/payment",
+    dokuPath: "/doku-virtual-account/v2/payment-code",
     dokuPayload: req.body
   }
   const signature = generateDokuSignature(signaturePayload); 
 
+  console.log(22, signature);
   const axiosConfig = {
     method: req.method,
     url: URL,
