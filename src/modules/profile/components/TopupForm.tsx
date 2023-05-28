@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { createTopup } from '../lib/createTopup';
 import { DOKU_VA_LIST } from '../lib/constant';
 import Button from '@/common/components/Button';
+import { createDokuVA } from '../lib/createDokuVA';
 
 interface ITopupForm {
   user: any;
@@ -20,6 +21,7 @@ const TopupForm = (props: ITopupForm) => {
 
     const target = e.target as any;
     const amount = target.amount.value;
+    const paymentMethod = target.payment_method.value;
 
     if (!amount) {
       setHasSubmit(false);
@@ -30,7 +32,19 @@ const TopupForm = (props: ITopupForm) => {
     const topup = await createTopup(user.id, Number(amount));
 
     if (topup?.id) {
-      // TODO: Put topup account here
+      const dokuVAPayload = {
+        dokuPath: paymentMethod,
+        topupID: topup.id,
+        amount: Number(amount),
+        user
+      }
+      const dokuVA = await createDokuVA(dokuVAPayload);
+      if (dokuVA?.virtual_account_info?.virtual_account_number) {
+        // TODO: Dispatch VA info to the page
+        setHasSubmit(false);
+        return;
+      }
+
       toast.error("Something went wrong, please try again");
       setHasSubmit(false);
       return;
@@ -49,7 +63,7 @@ const TopupForm = (props: ITopupForm) => {
           <label htmlFor="amount"></label>
           <input type="number" name="amount" id="amount_input" placeholder='Rp ...' className='text-black p-2 w-full rounded' disabled={hasSubmit} />
         </div>
-        <Select options={DOKU_VA_LIST} placeholder="Payment Method (Virtual Account)" className='text-black' />
+        <Select options={DOKU_VA_LIST} placeholder="Payment Method (Virtual Account)" className='text-black' name="payment_method" isDisabled={hasSubmit} />
         <Button type='submit' wrapperClassName='w-full text-center mt-4 p-2 bg-white text-black font-semibold' buttonClassName='w-full' disabled={hasSubmit}>
           {hasSubmit ? <FaSpinner className='mx-auto animate-spin' /> : "Topup"}
         </Button>
