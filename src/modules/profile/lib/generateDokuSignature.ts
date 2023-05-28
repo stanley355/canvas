@@ -5,6 +5,7 @@ import Base64 from "crypto-js/enc-base64";
 
 interface IDokuSignature {
   requestID: string;
+  timestamp: string;
   dokuPath: string;
   dokuPayload: string | any;
 }
@@ -21,7 +22,7 @@ const generateDokuDigest = (payload: IDokuSignature) => {
 const generateSignatureString = (payload: IDokuSignature) => {
   const clientID = `Client-Id:${process.env.DOKU_CLIENT_ID}`;
   const reqID = `Request-Id:${payload.requestID}`;
-  const reqTimestamp = `Request-Timestamp:${new Date().toISOString()}`;
+  const reqTimestamp = `Request-Timestamp:${payload.timestamp}`;
   const reqTarget = `Request-Target:${payload.dokuPath}`;
   const baseString =
     clientID + "\n" + reqID + "\n" + reqTimestamp + "\n" + reqTarget;
@@ -37,7 +38,6 @@ const generateSignatureString = (payload: IDokuSignature) => {
 // WARNING! Must be called on server side
 export const generateDokuSignature = (payload: IDokuSignature) => {
   const signatureString = generateSignatureString(payload);
-  console.log(11, signatureString);
   const privateKey = String(process.env.DOKU_SECRET_KEY);
   const hmac = hmacSHA256(signatureString, privateKey);
   const base64 = Base64.stringify(hmac);

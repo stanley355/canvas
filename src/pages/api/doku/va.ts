@@ -3,25 +3,26 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { generateDokuSignature } from "@/modules/profile/lib/generateDokuSignature";
 
 const dokuCheckoutAPI = async (req: NextApiRequest, res: NextApiResponse) => {
-  const URL = String(process.env.DOKU_URL);
-
+  const URL = `${process.env.DOKU_URL}${req.headers.doku_path}`;
+  const clientID = process.env.DOKU_CLIENT_ID;
   const requestID = req.headers.request_id;
   const timestamp = new Date().toISOString();
 
   const signaturePayload = {
+    timestamp,
     requestID: String(requestID),
-    dokuPath: "/doku-virtual-account/v2/payment-code",
+    dokuPath: String(req.headers.doku_path),
     dokuPayload: req.body
-  }
+  };
   const signature = generateDokuSignature(signaturePayload); 
 
   const axiosConfig = {
     method: req.method,
     url: URL,
     headers: {
-      'Client-Id': process.env.DOKU_CLIENT_ID,
+      'Client-Id': clientID,
       'Request-Id': requestID,
-      'Request-Timestamp': String(timestamp),
+      'Request-Timestamp': timestamp,
       'Signature': signature,
     },
     data: req.body,
