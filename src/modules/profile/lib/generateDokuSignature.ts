@@ -7,7 +7,7 @@ interface IDokuSignature {
   requestID: string;
   timestamp: string;
   dokuPath: string;
-  dokuPayload: string | any;
+  dokuPayload?: string | any;
 }
 
 const generateDokuDigest = (payload: IDokuSignature) => {
