@@ -10,7 +10,7 @@ const dokuCheckoutAPI = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const signaturePayload = {
     requestID: String(requestID),
-    dokuPath: "/checkout/v1/payment",
+    dokuPath: "/doku-virtual-account/v2/payment-code",
     dokuPayload: req.body
   }
   const signature = generateDokuSignature(signaturePayload); 
