@@ -6,7 +6,7 @@ import Base64 from "crypto-js/enc-base64";
 interface IDokuSignature {
   requestID: string;
   dokuPath: string;
-  dokuPayload: any;
+  dokuPayload: string | any;
 }
 
 const generateDokuDigest = (payload: IDokuSignature) => {
