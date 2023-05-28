@@ -10,7 +10,8 @@ interface IDokuSignature {
 }
 
 const generateDokuDigest = (payload: IDokuSignature) => {
-  const hashDigest = sha256(payload.dokuPayload);
+  const body = JSON.stringify(payload.dokuPayload);
+  const hashDigest = sha256(body);
   const hmacDigest = Base64.stringify(hashDigest);
   const digest = `Digest:${hmacDigest}`;
 

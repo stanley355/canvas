@@ -5,22 +5,22 @@ import { generateDokuSignature } from "@/modules/profile/lib/generateDokuSignatu
 const dokuCheckoutAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   const URL = String(process.env.DOKU_URL);
 
+  const requestID = req.headers.request_id;
   const timestamp = new Date().toISOString();
 
   const signaturePayload = {
-    requestID: String(req.headers.request_id),
-    dokuPath: "/doku-virtual-account/v2/payment-code",
+    requestID: String(requestID),
+    dokuPath: "/checkout/v1/payment",
     dokuPayload: req.body
   }
   const signature = generateDokuSignature(signaturePayload); 
 
-  console.log(22, signature);
   const axiosConfig = {
     method: req.method,
     url: URL,
     headers: {
       'Client-Id': process.env.DOKU_CLIENT_ID,
-      'Request-Id': req.headers.request_id,
+      'Request-Id': requestID,
       'Request-Timestamp': String(timestamp),
       'Signature': signature,
     },
