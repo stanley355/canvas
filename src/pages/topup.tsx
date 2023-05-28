@@ -2,8 +2,8 @@ import React from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import jwtDecode from "jwt-decode";
 import Layout from "@/common/components/Layout";
-import { fetchUserData } from "@/modules/profile/lib/fetchUserData";
 import TopupForm from "@/modules/profile/components/TopupForm";
+import { fetchUserData } from "@/modules/profile/lib/fetchUserData";
 
 interface ITopup {
   user: any;
@@ -15,20 +15,22 @@ const Topup = (props: ITopup) => {
   return (
     <Layout>
       <div className="container mx-auto p-4 h-screen">
-        <h1 className="text-center text-2xl font-bold my-4">Topup</h1>
+        <div className="lg:w-1/3 lg:mx-auto">
+          <h1 className="text-center text-2xl font-bold my-4">Topup</h1>
 
-        <div className="font-semibold text-lg">
-          Oops you are running out of balance!
-        </div>
-        <div className="border p-2 my-2">Current Balance: Rp {user.balance}</div>
-        <TopupForm user={user} />
-        <div className="my-2">
-          *Topup more balance so you can access our Premium Translation and Checkbot
-          (Better Result & Correction)
-        </div>
-        <div>
-          **You can even start Premium with Rp1000, we charge you by per word/token
-          basis (Rp 1 per word)
+          <div className="font-semibold text-lg">
+            Oops you are running out of balance!
+          </div>
+          <div className="border p-2 my-2">Current Balance: Rp {user.balance}</div>
+          <TopupForm user={user} />
+          <div className="my-2">
+            *Topup more balance so you can access our Premium Translation and Checkbot
+            (Better Result & Correction)
+          </div>
+          <div>
+            **You can even start Premium with Rp1000, we charge you by per word/token
+            basis (Rp 1 per word)
+          </div>
         </div>
       </div>
     </Layout>
