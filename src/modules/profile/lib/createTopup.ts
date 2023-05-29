@@ -10,7 +10,7 @@ export const createTopup = async (user_id: string, topup_amount: number) => {
     },
     data: {
       user_id,
-      topup_amount 
+      topup_amount,
     },
   };
 
