@@ -31,6 +31,13 @@ const TopupForm = (props: ITopupForm) => {
       return;
     }
 
+    if (amount < 10000) {
+
+      setHasSubmit(false);
+      toast.error("Minimum topup amount is Rp10.000!");
+      return;
+    }
+
     const topup = await createTopup(user.id, Number(amount));
 
     if (topup?.id) {
