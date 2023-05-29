@@ -12,18 +12,18 @@ const dokuCheckoutAPI = async (req: NextApiRequest, res: NextApiResponse) => {
     timestamp,
     requestID: String(requestID),
     dokuPath: String(req.headers.doku_path),
-    dokuPayload: req.body
+    dokuPayload: req.body,
   };
-  const signature = generateDokuSignature(signaturePayload); 
+  const signature = generateDokuSignature(signaturePayload);
 
   const axiosConfig = {
     method: req.method,
     url: URL,
     headers: {
-      'Client-Id': clientID,
-      'Request-Id': requestID,
-      'Request-Timestamp': timestamp,
-      'Signature': signature,
+      "Client-Id": clientID,
+      "Request-Id": requestID,
+      "Request-Timestamp": timestamp,
+      Signature: signature,
     },
     data: req.body,
   };

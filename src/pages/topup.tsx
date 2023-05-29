@@ -36,8 +36,14 @@ const Topup = (props: ITopup) => {
           <div className="font-semibold text-lg">
             Oops you are running out of balance!
           </div>
-          <div className="border p-2 my-2">Current Balance: Rp {user.balance}</div>
-          {vaInfo?.bank_name ? <VAinfo info={vaInfo} /> : <TopupForm user={user} dispatchVAinfo={setVaInfo} />}
+          <div className="border p-2 my-2">
+            Current Balance: Rp {user.balance}
+          </div>
+          {vaInfo?.bank_name ? (
+            <VAinfo info={vaInfo} />
+          ) : (
+            <TopupForm user={user} dispatchVAinfo={setVaInfo} />
+          )}
         </div>
       </div>
     </Layout>

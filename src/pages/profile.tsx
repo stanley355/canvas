@@ -57,7 +57,7 @@ export const getServerSideProps: GetServerSideProps = async (
     };
   }
 
-  const decodedToken : any = jwtDecode(token);
+  const decodedToken: any = jwtDecode(token);
   const user = await fetchUserData(decodedToken.email);
 
   return {
