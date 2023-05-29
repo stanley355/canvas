@@ -9,10 +9,12 @@ import { createDokuVA } from '../lib/createDokuVA';
 
 interface ITopupForm {
   user: any;
+  dispatchVAinfo: (info: any) => void;
 }
 
 const TopupForm = (props: ITopupForm) => {
-  const { user } = props;
+  const { user, dispatchVAinfo } = props;
+  const [vaBank, setVaBank] = useState("");
   const [hasSubmit, setHasSubmit] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -23,9 +25,9 @@ const TopupForm = (props: ITopupForm) => {
     const amount = target.amount.value;
     const paymentMethod = target.payment_method.value;
 
-    if (!amount) {
+    if (!amount || !paymentMethod) {
       setHasSubmit(false);
-      toast.error("Topup amount is required!");
+      toast.error("Topup amount and bank is required!");
       return;
     }
 
@@ -40,7 +42,10 @@ const TopupForm = (props: ITopupForm) => {
       }
       const dokuVA = await createDokuVA(dokuVAPayload);
       if (dokuVA?.virtual_account_info?.virtual_account_number) {
-        // TODO: Dispatch VA info to the page
+        const vaInfo = dokuVA.virtual_account_info;
+        vaInfo.bank_name = vaBank;
+        vaInfo.amount = amount;
+        dispatchVAinfo(vaInfo);
         setHasSubmit(false);
         return;
       }
@@ -63,11 +68,26 @@ const TopupForm = (props: ITopupForm) => {
           <label htmlFor="amount"></label>
           <input type="number" name="amount" id="amount_input" placeholder='Rp ...' className='text-black p-2 w-full rounded' disabled={hasSubmit} />
         </div>
-        <Select options={DOKU_VA_LIST} placeholder="Payment Method (Virtual Account)" className='text-black' name="payment_method" isDisabled={hasSubmit} />
+        <Select
+          options={DOKU_VA_LIST}
+          placeholder="Payment Method (Virtual Account)"
+          className='text-black'
+          name="payment_method"
+          isDisabled={hasSubmit}
+          onChange={(option) => setVaBank(String(option?.label))}
+        />
         <Button type='submit' wrapperClassName='w-full text-center mt-4 p-2 bg-white text-black font-semibold' buttonClassName='w-full' disabled={hasSubmit}>
           {hasSubmit ? <FaSpinner className='mx-auto animate-spin' /> : "Topup"}
         </Button>
       </form>
+      <div className="my-2">
+        *Topup more balance so you can access our Premium Translation and Checkbot
+        (Better Result & Correction)
+      </div>
+      <div>
+        **You can even start Premium with Rp1000, we charge you by per word/token
+        basis (Rp 1 per word)
+      </div>
     </div>
   );
 };
