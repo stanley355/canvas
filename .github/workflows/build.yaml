@@ -46,6 +46,9 @@ jobs:
             FIREBASE_MEASUREMENT_ID=${{ secrets.FIREBASE_MEASUREMENT_ID }}
             OPENAI_URL=${{ secrets.OPENAI_URL }}
             OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+            DOKU_URL=${{ secrets.DOKU_URL }}
+            DOKU_CLIENT_ID=${{ secrets.DOKU_CLIENT_ID }}
+            DOKU_SECRET_KEY=${{ secrets.DOKU_SECRET_KEY }}
 
       - name: Build staging Docker image
         if: github.ref == 'refs/heads/develop'
@@ -69,3 +72,6 @@ jobs:
             FIREBASE_MEASUREMENT_ID=${{ secrets.FIREBASE_MEASUREMENT_ID }}
             OPENAI_URL=${{ secrets.OPENAI_URL }}
             OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+            DOKU_URL=${{ secrets.DOKU_URL }}
+            DOKU_CLIENT_ID=${{ secrets.DOKU_CLIENT_ID }}
+            DOKU_SECRET_KEY=${{ secrets.DOKU_SECRET_KEY }}
