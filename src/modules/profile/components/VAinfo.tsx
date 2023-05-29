@@ -24,7 +24,7 @@ const VAinfo = ({ info }: IVAInfo) => (
       <Countdown date={new Date(info.expired_date_utc)} />
     </div>
     <div>Notes:</div>
-    <div>* Before payment: please don't refresh or close this page</div>
+    <div>* Before payment: please don&apos;t refresh or close this page</div>
     <div>
       ** After payment: please refresh the page to see your updated balance
     </div>
