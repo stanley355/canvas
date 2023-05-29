@@ -6,6 +6,7 @@ import { createTopup } from "../lib/createTopup";
 import { DOKU_VA_LIST } from "../lib/constant";
 import Button from "@/common/components/Button";
 import { createDokuVA } from "../lib/createDokuVA";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 interface ITopupForm {
   user: any;
@@ -32,35 +33,36 @@ const TopupForm = (props: ITopupForm) => {
     }
 
     if (amount < 10000) {
-
       setHasSubmit(false);
       toast.error("Minimum topup amount is Rp10.000!");
       return;
     }
 
-    const topup = await createTopup(user.id, Number(amount));
-
-    if (topup?.id) {
-      const dokuVAPayload = {
-        dokuPath: paymentMethod,
-        topupID: topup.id,
-        amount: Number(amount),
-        user,
-      };
-      const dokuVA = await createDokuVA(dokuVAPayload);
-      if (dokuVA?.virtual_account_info?.virtual_account_number) {
-        const vaInfo = dokuVA.virtual_account_info;
-        vaInfo.bank_name = vaBank;
-        vaInfo.amount = amount;
-        dispatchVAinfo(vaInfo);
-        setHasSubmit(false);
-        return;
-      }
-
-      toast.error("Something went wrong, please try again");
+    // TODO: Activate topup after doku notification testing done
+    // const topup = await createTopup(user.id, Number(amount));
+    // if (topup?.id) {
+    const dokuVAPayload = {
+      dokuPath: paymentMethod,
+      // topupID: topup.id,
+      topupID: amount,
+      amount: Number(amount),
+      user,
+    };
+    sendFirebaseEvent("doku_va", dokuVAPayload);
+    const dokuVA = await createDokuVA(dokuVAPayload);
+    if (dokuVA?.virtual_account_info?.virtual_account_number) {
+      const vaInfo = dokuVA.virtual_account_info;
+      vaInfo.bank_name = vaBank;
+      vaInfo.amount = amount;
+      dispatchVAinfo(vaInfo);
       setHasSubmit(false);
       return;
     }
+
+    //   toast.error("Something went wrong, please try again");
+    //   setHasSubmit(false);
+    //   return;
+    // }
 
     setHasSubmit(false);
     toast.error("Something went wrong, please try again");
