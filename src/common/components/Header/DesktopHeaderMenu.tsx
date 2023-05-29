@@ -9,7 +9,7 @@ import Button from "../Button";
 import { IHeaderMenu } from ".";
 
 const DesktopHeaderMenu = (props: IHeaderMenu) => {
-  const { token, onLogoutClick } = props;
+  const { token } = props;
 
   return (
     <div className="flex flex-row items-center gap-4">
@@ -41,14 +41,13 @@ const DesktopHeaderMenu = (props: IHeaderMenu) => {
         <span className="text-xl">AI World Dictionary</span>
       </Button>
       <Button
-        type={token ? "button" : "link"}
-        href="/login/"
+        type="link"
+        href={token ? "/profile/" : "/login/"}
         buttonClassName="flex flex-row items-center"
         wrapperClassName="hover:border-b"
-        onClick={onLogoutClick}
       >
         <FaUserCircle className="text-xl mr-1" />
-        <span className="text-xl">{token ? "Logout" : "Login"}</span>
+        <span className="text-xl">{token ? "Profile" : "Login"}</span>
       </Button>
     </div>
   );

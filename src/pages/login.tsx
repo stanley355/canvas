@@ -16,7 +16,7 @@ const LoginPage = () => {
   useEffect(() => {
     const cookieToken = Cookies.get("token");
     if (cookieToken) {
-      window.location.href = "/";
+      window.location.href = "/profile/";
     }
   }, [seo]);
 

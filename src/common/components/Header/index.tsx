@@ -10,7 +10,6 @@ import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
 export interface IHeaderMenu {
   token: string;
-  onLogoutClick: () => void;
 }
 
 const inter = Inter({ subsets: ["latin"] });
@@ -28,15 +27,6 @@ const Header = () => {
       }
     }
   }, [isDesktop]);
-
-  const onLogoutClick = () => {
-    if (token) {
-      // Not using react router as it won't refresh the state
-      cookie.remove("token");
-      window.location.href = "/";
-    }
-    return "";
-  };
 
   return (
     <nav
@@ -56,9 +46,9 @@ const Header = () => {
       </Button>
 
       {isDesktop ? (
-        <DesktopHeaderMenu token={token} onLogoutClick={onLogoutClick} />
+        <DesktopHeaderMenu token={token} />
       ) : (
-        <MobileHeaderMenu token={token} onLogoutClick={onLogoutClick} />
+        <MobileHeaderMenu token={token} />
       )}
     </nav>
   );
