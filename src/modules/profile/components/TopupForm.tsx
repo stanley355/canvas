@@ -48,8 +48,11 @@ const TopupForm = (props: ITopupForm) => {
       amount: Number(amount),
       user,
     };
+
+    console.log("va payload: ", dokuVAPayload)
     sendFirebaseEvent("doku_va", dokuVAPayload);
     const dokuVA = await createDokuVA(dokuVAPayload);
+    console.log("doku_va", dokuVAPayload)
     if (dokuVA?.virtual_account_info?.virtual_account_number) {
       const vaInfo = dokuVA.virtual_account_info;
       vaInfo.bank_name = vaBank;
