@@ -39,7 +39,7 @@ const dokuCheckoutAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   res.setHeader("Content-Type", "application/json");
-  res.json(axiosConfig);
+  res.json(response);
 };
 
 export default dokuCheckoutAPI;
