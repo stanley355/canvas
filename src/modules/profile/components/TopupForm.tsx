@@ -25,7 +25,7 @@ const TopupForm = (props: ITopupForm) => {
     const target = e.target as any;
     const amount = target.amount.value;
     const paymentMethod = target.payment_method.value;
-
+    console.log("payment_method: ", paymentMethod);
     if (!amount || !paymentMethod) {
       setHasSubmit(false);
       toast.error("Topup amount and bank is required!");
@@ -92,7 +92,9 @@ const TopupForm = (props: ITopupForm) => {
           className="text-black"
           name="payment_method"
           isDisabled={hasSubmit}
-          onChange={(option) => setVaBank(String(option?.label))}
+          onChange={(option) => {
+            console.log("option: ", option);
+            setVaBank(String(option?.label))}}
         />
         <Button
           type="submit"

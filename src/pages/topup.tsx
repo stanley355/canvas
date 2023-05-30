@@ -16,17 +16,6 @@ const Topup = (props: ITopup) => {
 
   console.log(vaInfo);
 
-  //   {
-  //     "virtual_account_number": "8000000000010446",
-  //     "created_date": "20230529090510",
-  //     "expired_date": "20230529100510",
-  //     "created_date_utc": "2023-05-29T02:05:10Z",
-  //     "expired_date_utc": "2023-05-29T03:05:10Z",
-  //     "how_to_pay_page": "https://sandbox.doku.com/how-to-pay/v2/doku-virtual-account/8000000000010446/LHidqYTdpkkclYaQckAl0MMh7l0c_Uwf9vZa5Fj07L8",
-  //     "how_to_pay_api": "https://api-sandbox.doku.com/doku-virtual-account/v2/how-to-pay-api/8000000000010446/LHidqYTdpkkclYaQckAl0MMh7l0c_Uwf9vZa5Fj07L8",
-  //     "bank_name": "BCA via DOKU"
-  // }
-
   return (
     <Layout>
       <div className="container mx-auto p-4 h-screen">
