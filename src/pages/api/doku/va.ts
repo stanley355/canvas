@@ -3,11 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { generateDokuSignature } from "@/modules/profile/lib/generateDokuSignature";
 
 const dokuCheckoutAPI = async (req: NextApiRequest, res: NextApiResponse) => {
-  let URL = String(process.env.DOKU_URL);
-
-  if (req.headers && req.headers.doku_path) {
-    URL += req.headers.doku_path;
-  }
+  const URL = String(process.env.DOKU_URL)  + String(req?.headers?.doku_path);
 
   const clientID = process.env.DOKU_CLIENT_ID;
   const requestID = req.headers.request_id;
