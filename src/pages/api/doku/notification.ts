@@ -9,8 +9,8 @@ const dokuNotificationAPI = (req: NextApiRequest, res: NextApiResponse) => {
     "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
   );
 
-  sendFirebaseEvent("doku_notification", req.body);
   console.log("notif", req.body);
+  sendFirebaseEvent("doku_notification", req.body);
 
   res.json({});
 };
