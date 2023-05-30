@@ -4,17 +4,17 @@ import { generateDokuSignature } from "@/modules/profile/lib/generateDokuSignatu
 
 const dokuCheckoutAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   const URL = String(process.env.DOKU_URL);
-  const dokuURL = `${URL}${req.headers.doku_path}`;
+  const dokuURL = `${URL}${req.body.headers.doku_path}`;
 
   const clientID = process.env.DOKU_CLIENT_ID;
-  const requestID = req.headers.request_id;
+  const requestID = req.body.headers.request_id;
   const timestamp = new Date().toISOString();
 
   const signaturePayload = {
     timestamp,
     requestID: String(requestID),
-    dokuPath: String(req.headers.doku_path),
-    dokuPayload: req.body,
+    dokuPath: String(req.body.headers.doku_path),
+    dokuPayload: req.body.main,
   };
   const signature = generateDokuSignature(signaturePayload);
 
@@ -27,7 +27,7 @@ const dokuCheckoutAPI = async (req: NextApiRequest, res: NextApiResponse) => {
       "Request-Timestamp": timestamp,
       Signature: signature,
     },
-    data: req.body,
+    data: req.body.main,
   };
 
   let response;
