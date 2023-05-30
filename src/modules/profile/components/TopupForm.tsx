@@ -94,7 +94,6 @@ const TopupForm = (props: ITopupForm) => {
           name="payment_method"
           isDisabled={hasSubmit}
           onChange={(option) => {
-            console.log("option: ", option);
             setVaBank(String(option?.label))}}
         />
         <Button

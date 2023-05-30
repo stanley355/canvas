@@ -4,7 +4,8 @@ import { generateDokuSignature } from "@/modules/profile/lib/generateDokuSignatu
 
 const dokuCheckoutAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   let URL = String(process.env.DOKU_URL);
-  if (req?.headers?.doku_path) {
+
+  if (req.headers && req.headers.doku_path) {
     URL += req.headers.doku_path;
   }
 
@@ -39,6 +40,11 @@ const dokuCheckoutAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   } catch (err: any) {
     response = err?.response?.data ?? err;
   }
+
+  response = {
+    url: URL,
+    ...response
+  };
 
   res.setHeader("Content-Type", "application/json");
   res.json(response);
