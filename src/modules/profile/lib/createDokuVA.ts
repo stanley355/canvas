@@ -32,6 +32,8 @@ export const createDokuVA = async (payload: ICreateDokuVA) => {
       payload.topupID;
   }
 
+  console.log(payload);
+
   const axiosConfig = {
     method: "POST",
     url: URL,
@@ -41,6 +43,8 @@ export const createDokuVA = async (payload: ICreateDokuVA) => {
     },
     data: dokuPayload,
   };
+
+  console.log("axios config", axiosConfig);
 
   const { data } = await axios(axiosConfig);
   return data;

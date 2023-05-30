@@ -25,7 +25,6 @@ const TopupForm = (props: ITopupForm) => {
     const target = e.target as any;
     const amount = target.amount.value;
     const paymentMethod = target.payment_method.value;
-    console.log("payment_method: ", paymentMethod);
     if (!amount || !paymentMethod) {
       setHasSubmit(false);
       toast.error("Topup amount and bank is required!");
@@ -49,10 +48,9 @@ const TopupForm = (props: ITopupForm) => {
       user,
     };
 
-    console.log("va payload: ", dokuVAPayload)
     sendFirebaseEvent("doku_va", dokuVAPayload);
     const dokuVA = await createDokuVA(dokuVAPayload);
-    console.log("doku_va", dokuVAPayload)
+    console.log("doku_va", dokuVA)
     if (dokuVA?.virtual_account_info?.virtual_account_number) {
       const vaInfo = dokuVA.virtual_account_info;
       vaInfo.bank_name = vaBank;
