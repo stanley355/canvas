@@ -5,7 +5,7 @@ import { generateDokuSignature } from "@/modules/profile/lib/generateDokuSignatu
 const dokuCheckoutAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   let URL = String(process.env.DOKU_URL);
   if (req?.headers?.doku_path) {
-    URL += req.headers.path;
+    URL += req.headers.doku_path;
   }
 
   const clientID = process.env.DOKU_CLIENT_ID;
