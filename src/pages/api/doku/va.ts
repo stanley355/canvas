@@ -3,7 +3,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { generateDokuSignature } from "@/modules/profile/lib/generateDokuSignature";
 
 const dokuCheckoutAPI = async (req: NextApiRequest, res: NextApiResponse) => {
-  const URL = String(process.env.DOKU_URL)  + String(req?.headers?.doku_path);
+  const URL = String(process.env.DOKU_URL);
+  const dokuURL = `${URL}${req.headers.doku_path}`;
 
   const clientID = process.env.DOKU_CLIENT_ID;
   const requestID = req.headers.request_id;
@@ -19,7 +20,7 @@ const dokuCheckoutAPI = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const axiosConfig = {
     method: req.method,
-    url: URL,
+    url: dokuURL,
     headers: {
       "Client-Id": clientID,
       "Request-Id": requestID,
@@ -38,7 +39,7 @@ const dokuCheckoutAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   response = {
-    url: URL,
+    ...axiosConfig,
     ...response
   };
 
