@@ -10,6 +10,7 @@ const dokuNotificationAPI = (req: NextApiRequest, res: NextApiResponse) => {
   );
 
   sendFirebaseEvent("doku_notification", req.body);
+  console.log("notif", req.body);
 
   res.json({});
 };
