@@ -14,6 +14,8 @@ const Topup = (props: ITopup) => {
   const { user } = props;
   const [vaInfo, setVaInfo] = useState<any>({});
 
+  console.log(vaInfo);
+
   return (
     <Layout>
       <div className="container mx-auto p-4 h-screen">
