@@ -33,15 +33,6 @@ const DesktopHeaderMenu = (props: IHeaderMenu) => {
       </Button>
       <Button
         type="link"
-        href="/world-dictionary/"
-        buttonClassName="flex flex-row items-center"
-        wrapperClassName="hover:border-b"
-      >
-        <FaGlobeAmericas className="text-xl mr-1" />
-        <span className="text-xl">AI World Dictionary</span>
-      </Button>
-      <Button
-        type="link"
         href={token ? "/profile/" : "/login/"}
         buttonClassName="flex flex-row items-center"
         wrapperClassName="hover:border-b"
