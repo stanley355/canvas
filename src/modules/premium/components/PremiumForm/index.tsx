@@ -8,7 +8,7 @@ const PremiumForm = () => {
   const isDesktop = useDesktopScreen();
   return (
     <>
-    { isDesktop ? <></>: <MobilePremiumForm />}
+    {isDesktop ? <></>: <MobilePremiumForm />}
     </>
   )
 };

@@ -4,7 +4,7 @@ import Button from "@/common/components/Button";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 const SourceTextArea = () => {
-  const [textValue, setTextValue] = useState("Copy your text here");
+  const [textValue, setTextValue] = useState("Put your text here");
 
   const handleClearClick = () => {
     setTextValue("");
@@ -17,7 +17,7 @@ const SourceTextArea = () => {
         type="button"
         id="clear_text_btn"
         ariaLabel="clear_text_btn"
-        wrapperClassName="absolute top-0 right-0 bg-black border-l border-b flex items-center p-1"
+        wrapperClassName="absolute top-1 right-1 bg-black border-l border-b flex items-center p-1 rounded-md"
         onClick={handleClearClick}
       >
         <FaTimes className="text-3xl" />
