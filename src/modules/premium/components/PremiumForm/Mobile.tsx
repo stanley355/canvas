@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
+import { toast } from 'react-toastify';
+import { FaSpinner } from 'react-icons/fa';
 import Button from '@/common/components/Button';
 import { PREMIUM_OPTIONS } from '../../lib/constant';
 import { LANGUAGE_LIST } from '@/modules/translate/constant';
 import SourceTextArea from '@/common/components/SourceTextArea';
-import { toast } from 'react-toastify';
+import { handlePremiumTranslation } from '../../lib/handlePremiumTranslation';
 
 const MobilePremiumForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [showLanguages, setShowLanguages] = useState(false);
 
   const onActionChange = (option: any) => {
@@ -15,8 +18,9 @@ const MobilePremiumForm = () => {
     else setShowLanguages(false);
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
 
     const target = e.target as any;
     const instruction = target.instruction.value;
@@ -24,17 +28,32 @@ const MobilePremiumForm = () => {
 
     if (!instruction) {
       toast.error("Instruction can't be empty!");
+      setIsLoading(false);
       return;
     }
 
-    console.log(sourceText);
-  }
+    if (instruction === "translate") {
+      const targetLang = target.target_lang.value;
+      if (!targetLang) {
+        toast.error("Target Language can't be empty!");
+        setIsLoading(false);
+        return;
+      }
 
-  const LanguageSelect = () => (
-    <label htmlFor="" >
-      <Select placeholder="Target Language" options={LANGUAGE_LIST} className='text-black mb-4' />
-    </label>
-  )
+      const completion = await handlePremiumTranslation(targetLang, sourceText);
+      if (!completion) {
+        toast.error("Something went wrong, please try again");
+        setIsLoading(false);
+        return;
+      }
+
+      setIsLoading(false);
+      return completion
+    }
+
+    setIsLoading(false);
+    return;
+  }
 
   return (
     <form onSubmit={handleSubmit} className="mb-4">
@@ -48,9 +67,26 @@ const MobilePremiumForm = () => {
           className='text-black mb-4'
         />
       </label>
-      {showLanguages && <LanguageSelect />}
+      <label htmlFor="target_lang" className={showLanguages ? "block" : "hidden"}>
+        <Select
+          placeholder="Target Language"
+          id="target_lang_select"
+          name="target_lang"
+          options={LANGUAGE_LIST}
+          className='text-black mb-4'
+        />
+      </label>
       <SourceTextArea />
-      <Button type='submit' title='Submit' wrapperClassName="mt-4 w-full bg-white text-black p-2 text-center rounded" buttonClassName="w-full" />
+      <Button type='submit' wrapperClassName="mt-4 w-full bg-white text-black p-2 text-center rounded" buttonClassName="w-full">
+        {isLoading ? (
+          <div className="flex flex row items-center justify-center">
+            <span className="mr-2">Processing</span>
+            <FaSpinner className="animate-spin" />
+          </div>
+        ) : (
+          "Submit"
+        )}
+      </Button>
     </form>
   )
 };

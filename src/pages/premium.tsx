@@ -12,7 +12,7 @@ const Premium = () => {
           <span>LanguageAI Premium</span>
         </h1>
         <h2 className="text-xl lg:text-xl text-center mb-4">
-          #1 Language App in the World (Powered by GPT-4)
+          #1 Language App in the World (Powered by OpenAI)
         </h2>
         <PremiumForm />
       </div>
