@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaLanguage } from "react-icons/fa";
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
-import TranslateForm from "@/modules/translate/components/TranslateForm";
+import PremiumTranslateForm from "@/modules/premium/components/TranslateForm";
 import TranslateResult from "@/modules/translate/components/TranslateResult";
 import SocialShare from "@/common/components/SocialShare";
 
@@ -34,7 +34,7 @@ const PremiumTranslate = () => {
           #1 Translation App for All Languages
         </h2>
         <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8">
-          <TranslateForm
+          <PremiumTranslateForm
             dispatchLoginForm={() => {}}
             dispatchTranslateVal={(val) => setTranslateVal(val)}
           />

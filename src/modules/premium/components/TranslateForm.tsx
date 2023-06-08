@@ -10,13 +10,14 @@ import addFirestoreData from "@/common/lib/firebase/addFirestoreData";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { LANGUAGE_LIST } from "@/modules/translate/constant";
 import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
+import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
 
 interface ITranslateForm {
   dispatchLoginForm: () => void;
   dispatchTranslateVal: (val: string) => void;
 }
 
-const TranslateForm = (props: ITranslateForm) => {
+const PremiumTranslateForm = (props: ITranslateForm) => {
   const { dispatchLoginForm, dispatchTranslateVal } = props;
   const [isLoading, setIsLoading] = useState(false);
   const isDesktop = useDesktopScreen();
@@ -90,37 +91,24 @@ const TranslateForm = (props: ITranslateForm) => {
     }
   };
 
+
+ 
   return (
     <form onSubmit={handleSubmit} className="mb-8">
-      <div className="flex flex-row items-center justify-center w-full mb-4 lg:gap-2 lg:pt-0">
-        <label htmlFor="ori_lang_select" className="w-5/12">
-          <Select
-            className="text-black"
-            placeholder={
-              isDesktop ? "Select Source Language" : "Select Language"
-            }
-            id="ori_lang_select"
-            name="ori_lang"
-            aria-label="ori_lang_select"
-            aria-labelledby="ori_lang_select"
-            options={LANGUAGE_LIST}
-          />
-        </label>
-        <FaPlay className="w-2/12 text-xl" />
-        <label htmlFor="target_lang_select" className="w-5/12">
-          <Select
-            className="text-black"
-            placeholder={
-              isDesktop ? "Select Target Language" : "Select Language"
-            }
-            id="target_lang_select"
-            name="target_lang"
-            aria-label="target_lang_select"
-            aria-labelledby="target_lang_select"
-            options={LANGUAGE_LIST}
-          />
-        </label>
-      </div>
+      <label htmlFor="target_lang_select" className="w-full mb-4">
+        <Select
+          className="text-black mb-4"
+          placeholder={
+            isDesktop ? "Select Target Language" : "Select Language"
+          }
+          id="target_lang_select"
+          name="target_lang"
+          aria-label="target_lang_select"
+          aria-labelledby="target_lang_select"
+          options={LANGUAGE_LIST}
+          styles={reactSelectDarkStyle}
+        />
+      </label>
       <div>
         <input
           name="context_text"
@@ -149,4 +137,4 @@ const TranslateForm = (props: ITranslateForm) => {
   );
 };
 
-export default TranslateForm;
+export default PremiumTranslateForm;
