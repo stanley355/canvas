@@ -8,7 +8,8 @@ import GoogleTranslateResult from "@/modules/premium/components/GoogleTranslateR
 import TranslateComparison from "@/modules/translate/components/TranslateComparison";
 
 const PremiumTranslate = () => {
-  const [translateVal, setTranslateVal] = useState("");
+  const [langTranslate, setLangTranslate] = useState("");
+  const [googleTranslate, setGoogleTranslate] = useState("");
 
   const seo = {
     title:
@@ -32,15 +33,14 @@ const PremiumTranslate = () => {
           </span>
         </h1>
         <h2 className="text-black mt-4 text-center text-lg mb-4">
-          #Translation updated with real time data 
+          #Translation updated with real time data
         </h2>
         <div className="lg:grid lg:grid-cols-3 lg:gap-2 mb-8">
-          <PremiumTranslateForm dispatchTranslateVal={setTranslateVal} />
-          <PremiumTranslateResult translateVal={translateVal} />
-          <GoogleTranslateResult translateVal={translateVal} />
+          <PremiumTranslateForm dispatchLangTranslate={setLangTranslate} dispatchGoogleTranslate={setGoogleTranslate} />
+          <PremiumTranslateResult translateVal={langTranslate} />
+          <GoogleTranslateResult translateVal={googleTranslate} />
         </div>
         <div className="text-black">
-
           <TranslateComparison />
         </div>
       </div>

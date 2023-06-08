@@ -2,22 +2,22 @@ import React, { useState } from "react";
 import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
-import axios from "axios";
 import Button from "@/common/components/Button";
 import PremiumSourceTextArea from "@/common/components/PremiumSourceTextArea";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import addFirestoreData from "@/common/lib/firebase/addFirestoreData";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { LANGUAGE_LIST } from "@/modules/translate/constant";
 import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
 import { handlePremiumTranslate } from "../lib/handlePremiumTranslate";
+import { handleGoogleTranslate } from "../lib/handleGoogleTranslate";
 
 interface ITranslateForm {
-  dispatchTranslateVal: (val: string) => void;
+  dispatchLangTranslate: (val: string) => void;
+  dispatchGoogleTranslate: (val: string) => void;
 }
 
 const PremiumTranslateForm = (props: ITranslateForm) => {
-  const { dispatchTranslateVal } = props;
+  const { dispatchLangTranslate, dispatchGoogleTranslate } = props;
 
   const [isLoading, setIsLoading] = useState(false);
   const [languageLabel, setLanguageLabel] = useState("");
@@ -52,11 +52,15 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
       prompt += `, (${context}) `;
     }
 
-    const langAITranslate = await handlePremiumTranslate(prompt);
-    dispatchTranslateVal(langAITranslate)
-    setIsLoading(false);
-  
-    if (!isDesktop) window.location.href = "#translate_result_textarea";
+    const languageTranslate = await handlePremiumTranslate(prompt);
+    const googleTranslate = await handleGoogleTranslate(languageCode, sourceText);
+
+    if (languageTranslate && googleTranslate) {
+      dispatchLangTranslate(languageTranslate)
+      dispatchGoogleTranslate(googleTranslate);
+      setIsLoading(false);
+      if (!isDesktop) window.location.href = "#translate_result_textarea";
+    }
     return;
   };
 

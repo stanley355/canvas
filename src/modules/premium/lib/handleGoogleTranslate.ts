@@ -1,15 +1,15 @@
 import axios from "axios";
 
-export const handlePremiumTranslate = async (prompt: string) => {
-  const reqData = { content: prompt };
+export const handleGoogleTranslate = async (
+  languageCode: string,
+  content: string
+) => {
+  const reqData = {
+    language_code: languageCode,
+    content,
+  };
 
-  const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/ai/chat-premium/`;
+  const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/gtrans/`;
   const { data } = await axios.post(URL, reqData);
-
-  if (data?.choices.length > 0) {
-    const content = data.choices[0].message.content;
-    return content;
-  } 
-
-  return "Server Error";
+  return data;
 };

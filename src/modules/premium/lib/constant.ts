@@ -16,11 +16,11 @@ export const PREMIUM_LANGUAGE_LIST = [
   },
   {
     label: "Chinese (Simplified)",
-    value: "zh-CN",
+    value: "zh",
   },
   {
     label: "Chinese (Traditional)",
-    value: "zh-CHT",
+    value: "zh",
   },
   {
     label: "English",
