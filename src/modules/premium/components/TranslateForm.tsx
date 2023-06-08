@@ -92,7 +92,7 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
   };
 
 
- 
+
   return (
     <form onSubmit={handleSubmit} className="mb-8">
       <label htmlFor="target_lang_select" className="w-full mb-4">
@@ -110,12 +110,14 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
         />
       </label>
       <div>
-        <input
-          name="context_text"
-          id="context_text_textarea"
-          className="w-full border rounded-md bg-transparent p-2 mb-4 text-black bg-white"
-          placeholder="Optional: Context (xyz refers to...) "
-        />
+        <label htmlFor="context">
+          <input
+            id="context_input"
+            name="context"
+            className="w-full rounded-md p-2 mb-4 bg-black text-white"
+            placeholder="Context (what the text is about) "
+          />
+        </label>
         <SourceTextArea />
         <Button
           type="submit"
