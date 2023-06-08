@@ -10,6 +10,7 @@ import TranslateComparison from "@/modules/translate/components/TranslateCompari
 const PremiumTranslate = () => {
   const [langTranslate, setLangTranslate] = useState("");
   const [googleTranslate, setGoogleTranslate] = useState("");
+  const [tokenUsed, setTokenUsed] = useState(0);
 
   const seo = {
     title:
@@ -35,11 +36,16 @@ const PremiumTranslate = () => {
         <h2 className="text-black mt-4 text-center text-lg mb-4 italic">
           #Translation updated with real time data
         </h2>
-        <div className="lg:grid lg:grid-cols-3 lg:gap-2 mb-8">
-          <PremiumTranslateForm dispatchLangTranslate={setLangTranslate} dispatchGoogleTranslate={setGoogleTranslate} />
+        <div className="lg:grid lg:grid-cols-3 lg:gap-2 mb-4">
+          <PremiumTranslateForm 
+            dispatchLangTranslate={setLangTranslate} 
+            dispatchGoogleTranslate={setGoogleTranslate} 
+            dispatchTokenUsed={setTokenUsed}
+            />
           <PremiumTranslateResult translateVal={langTranslate} />
           <GoogleTranslateResult translateVal={googleTranslate} />
         </div>
+        {tokenUsed && <div className="text-lg text-black">Token used: {tokenUsed} tokens</div> }
         <div className="text-black">
           <TranslateComparison />
         </div>

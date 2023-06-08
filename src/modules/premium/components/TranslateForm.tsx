@@ -11,13 +11,16 @@ import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
 import { handlePremiumTranslate } from "../lib/handlePremiumTranslate";
 import { handleGoogleTranslate } from "../lib/handleGoogleTranslate";
 
+// TODO: Redirect to Login if user hasn't login
+// TODO: Check user balance before prompting
 interface ITranslateForm {
   dispatchLangTranslate: (val: string) => void;
   dispatchGoogleTranslate: (val: string) => void;
+  dispatchTokenUsed: (val: number) => void;
 }
 
 const PremiumTranslateForm = (props: ITranslateForm) => {
-  const { dispatchLangTranslate, dispatchGoogleTranslate } = props;
+  const { dispatchLangTranslate, dispatchGoogleTranslate, dispatchTokenUsed } = props;
 
   const [isLoading, setIsLoading] = useState(false);
   const [languageLabel, setLanguageLabel] = useState("");
@@ -55,9 +58,10 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
     const languageTranslate = await handlePremiumTranslate(prompt);
     const googleTranslate = await handleGoogleTranslate(languageCode, sourceText);
 
-    if (languageTranslate && googleTranslate) {
-      dispatchLangTranslate(languageTranslate)
+    if (languageTranslate.content && googleTranslate) {
+      dispatchLangTranslate(languageTranslate.content)
       dispatchGoogleTranslate(googleTranslate);
+      dispatchTokenUsed(languageTranslate.prompt_tokens + languageTranslate.completion_tokens);
       setIsLoading(false);
       if (!isDesktop) window.location.href = "#translate_result_textarea";
     }
