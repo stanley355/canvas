@@ -7,6 +7,7 @@ import {
   FaAngleRight,
   FaGlobeAmericas,
   FaUserCircle,
+  FaPhone
 } from "react-icons/fa";
 import Button from "../Button";
 import { IHeaderMenu } from ".";
