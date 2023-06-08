@@ -4,6 +4,7 @@ import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
 import PremiumTranslateForm from "@/modules/premium/components/TranslateForm";
 import PremiumTranslateResult from "@/modules/premium/components/TranslateResult";
+import GoogleTranslateResult from "@/modules/premium/components/GoogleTranslateResult";
 import TranslateComparison from "@/modules/translate/components/TranslateComparison";
 
 const PremiumTranslate = () => {
@@ -31,13 +32,12 @@ const PremiumTranslate = () => {
           </span>
         </h1>
         <h2 className="text-black mt-4 text-center text-lg mb-4">
-          #1 Translation App for All Languages
+          #Translation updated with real time data 
         </h2>
         <div className="lg:grid lg:grid-cols-3 lg:gap-2 mb-8">
           <PremiumTranslateForm dispatchTranslateVal={setTranslateVal} />
           <PremiumTranslateResult translateVal={translateVal} />
-          {/* TODO: Add Google translate Result */}
-          <PremiumTranslateResult translateVal={translateVal} />
+          <GoogleTranslateResult translateVal={translateVal} />
         </div>
         <div className="text-black">
 
