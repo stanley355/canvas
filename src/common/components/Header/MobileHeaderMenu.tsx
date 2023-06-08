@@ -27,6 +27,16 @@ const MobileHeaderMenu = (props: IHeaderMenu) => {
       </Button>
       <Button
         type="link"
+        href="/premium/translate/"
+        buttonClassName="p-4 flex flex-row items-center"
+        wrapperClassName="my-4 bg-gray-300 text-black hover:bg-black hover:text-white"
+      >
+        <FaLanguage className="text-5xl mr-2" />
+        <span className="text-xl">Premium Translate</span>
+        <FaAngleRight className="text-3xl float-right ml-8" />
+      </Button>
+      <Button
+        type="link"
         href="/checkbot/"
         buttonClassName="p-4 flex flex-row items-center"
         wrapperClassName="my-4 hover:bg-white hover:text-black"

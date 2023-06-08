@@ -15,6 +15,15 @@ const DesktopHeaderMenu = (props: IHeaderMenu) => {
     <div className="flex flex-row items-center gap-4">
       <Button
         type="link"
+        href="/premium/translate/"
+        buttonClassName="flex flex-row items-center hover:underline"
+        wrapperClassName="bg-white text-black px-2 rounded"
+      >
+        <FaLanguage className="text-3xl mr-1" />
+        <span className="text-xl">Premium Translate</span>
+      </Button>
+      <Button
+        type="link"
         href="/checkbot/"
         buttonClassName="flex flex-row items-center"
         wrapperClassName="hover:border-b"
