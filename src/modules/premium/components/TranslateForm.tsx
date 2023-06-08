@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
+import { translate } from '@vitalets/google-translate-api';          
 import axios from "axios";
 import Button from "@/common/components/Button";
 import PremiumSourceTextArea from "@/common/components/PremiumSourceTextArea";
@@ -46,14 +47,17 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
       target_lang: language,
     });
 
-    let baseMsg = `Translate ${context}to ${language}`;
-    if (context) {
+    let baseMsg = `Translate ${sourceText}to ${language}`;
+    if (sourceText) {
       baseMsg += `, (${context}) `;
     }
 
     const reqData = {
       content: baseMsg,
     };
+
+    const { text } = await translate(sourceText, { to: languageCode });
+    dispatchTranslateVal(text)
 
     // const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/ai/chat-premium/`;
     // const { data } = await axios.post(URL, reqData);
