@@ -20,7 +20,7 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
   const { dispatchTranslateVal } = props;
 
   const [isLoading, setIsLoading] = useState(false);
-  const [language, setLanguage] = useState("");
+  const [languageLabel, setLanguageLabel] = useState("");
 
   const isDesktop = useDesktopScreen();
 
@@ -31,7 +31,7 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
     const sourceText = e.target.source_text.value;
     const context = e.target.context.value;
 
-    if (!language) {
+    if (!languageCode) {
       toast.warning("Target Language Could Not be Empy");
       return "";
     }
@@ -44,10 +44,10 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
     setIsLoading(true);
     sendFirebaseEvent("premium_translate", {
       name: "premium_translate",
-      target_lang: language,
+      target_lang: languageLabel,
     });
 
-    let prompt = `Translate ${sourceText}to ${language}`;
+    let prompt = `Translate ${sourceText}to ${languageLabel}`;
     if (sourceText) {
       prompt += `, (${context}) `;
     }
@@ -59,8 +59,6 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
     if (!isDesktop) window.location.href = "#translate_result_textarea";
     return;
   };
-
-
 
   return (
     <form onSubmit={handleSubmit} className="mb-8">
@@ -76,7 +74,7 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
           aria-labelledby="target_lang_select"
           options={LANGUAGE_LIST}
           styles={reactSelectDarkStyle}
-          onChange={(opt: any) => setLanguage(opt?.label)}
+          onChange={(opt: any) => setLanguageLabel(opt?.label)}
         />
       </label>
       <div>
