@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { FaSpinner, FaPlay } from "react-icons/fa";
 import axios from "axios";
 import Button from "@/common/components/Button";
-import SourceTextArea from "../../../common/components/SourceTextArea";
+import PremiumSourceTextArea from "@/common/components/PremiumSourceTextArea";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import addFirestoreData from "@/common/lib/firebase/addFirestoreData";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
@@ -118,7 +118,7 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
             placeholder="Context (what the text is about) "
           />
         </label>
-        <SourceTextArea />
+        <PremiumSourceTextArea />
         <Button
           type="submit"
           disabled={isLoading}
