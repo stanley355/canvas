@@ -32,7 +32,7 @@ const PremiumTranslate = () => {
             LanguageAI Premium
           </span>
         </h1>
-        <h2 className="text-black mt-4 text-center text-lg mb-4">
+        <h2 className="text-black mt-4 text-center text-lg mb-4 italic">
           #Translation updated with real time data
         </h2>
         <div className="lg:grid lg:grid-cols-3 lg:gap-2 mb-8">

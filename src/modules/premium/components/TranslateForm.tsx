@@ -6,7 +6,7 @@ import Button from "@/common/components/Button";
 import PremiumSourceTextArea from "@/common/components/PremiumSourceTextArea";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
-import { LANGUAGE_LIST } from "@/modules/translate/constant";
+import { PREMIUM_LANGUAGE_LIST } from "../lib/constant";
 import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
 import { handlePremiumTranslate } from "../lib/handlePremiumTranslate";
 import { handleGoogleTranslate } from "../lib/handleGoogleTranslate";
@@ -76,7 +76,7 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
           name="target_lang"
           aria-label="target_lang_select"
           aria-labelledby="target_lang_select"
-          options={LANGUAGE_LIST}
+          options={PREMIUM_LANGUAGE_LIST}
           styles={reactSelectDarkStyle}
           onChange={(opt: any) => setLanguageLabel(opt?.label)}
         />
