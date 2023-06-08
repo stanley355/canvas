@@ -20,8 +20,8 @@ export const LANGUAGE_LIST = [
     value: "English",
   },
   {
-    label: "Filipino",
-    value: "Filipino",
+    label: "Tagalog",
+    value: "Tagalog",
   },
   {
     label: "French",

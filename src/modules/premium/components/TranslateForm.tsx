@@ -17,16 +17,20 @@ interface ITranslateForm {
 
 const PremiumTranslateForm = (props: ITranslateForm) => {
   const { dispatchTranslateVal } = props;
+
   const [isLoading, setIsLoading] = useState(false);
+  const [language, setLanguage] = useState("");
+
   const isDesktop = useDesktopScreen();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const targetLang = e.target.target_lang.value;
+
+    const languageCode = e.target.target_lang.value;
     const sourceText = e.target.source_text.value;
     const context = e.target.context.value;
 
-    if (!targetLang) {
+    if (!language) {
       toast.warning("Target Language Could Not be Empy");
       return "";
     }
@@ -39,10 +43,10 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
     setIsLoading(true);
     sendFirebaseEvent("premium_translate", {
       name: "premium_translate",
-      target_lang: targetLang,
+      target_lang: language,
     });
 
-    let baseMsg = `Translate ${context}to ${targetLang}`;
+    let baseMsg = `Translate ${context}to ${language}`;
     if (context) {
       baseMsg += `, (${context}) `;
     }
@@ -51,20 +55,20 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
       content: baseMsg,
     };
 
-    const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/ai/chat-premium/`;
-    const { data } = await axios.post(URL, reqData);
+    // const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/ai/chat-premium/`;
+    // const { data } = await axios.post(URL, reqData);
 
-    if (data && data?.choices.length > 0) {
-      const content = data.choices[0].message.content;
-      dispatchTranslateVal(content);
-      setIsLoading(false);
-      if (!isDesktop) window.location.href = "#translate_result_textarea";
-      return;
-    } else {
-      toast.error("Something went wrong, please try again");
-      setIsLoading(false);
-      return;
-    }
+    // if (data && data?.choices.length > 0) {
+    //   const content = data.choices[0].message.content;
+    //   dispatchTranslateVal(content);
+    //   setIsLoading(false);
+    //   if (!isDesktop) window.location.href = "#translate_result_textarea";
+    //   return;
+    // } else {
+    //   toast.error("Something went wrong, please try again");
+    //   setIsLoading(false);
+    //   return;
+    // }
   };
 
 
@@ -83,6 +87,7 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
           aria-labelledby="target_lang_select"
           options={LANGUAGE_LIST}
           styles={reactSelectDarkStyle}
+          onChange={(opt:any) => setLanguage(opt?.label)}
         />
       </label>
       <div>
