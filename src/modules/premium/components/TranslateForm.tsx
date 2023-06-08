@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
-import { translate } from '@vitalets/google-translate-api';          
 import axios from "axios";
 import Button from "@/common/components/Button";
 import PremiumSourceTextArea from "@/common/components/PremiumSourceTextArea";
@@ -11,6 +10,7 @@ import addFirestoreData from "@/common/lib/firebase/addFirestoreData";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { LANGUAGE_LIST } from "@/modules/translate/constant";
 import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
+import { handlePremiumTranslate } from "../lib/handlePremiumTranslate";
 
 interface ITranslateForm {
   dispatchTranslateVal: (val: string) => void;
@@ -47,32 +47,17 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
       target_lang: language,
     });
 
-    let baseMsg = `Translate ${sourceText}to ${language}`;
+    let prompt = `Translate ${sourceText}to ${language}`;
     if (sourceText) {
-      baseMsg += `, (${context}) `;
+      prompt += `, (${context}) `;
     }
 
-    const reqData = {
-      content: baseMsg,
-    };
-
-    const { text } = await translate(sourceText, { to: languageCode });
-    dispatchTranslateVal(text)
-
-    // const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/ai/chat-premium/`;
-    // const { data } = await axios.post(URL, reqData);
-
-    // if (data && data?.choices.length > 0) {
-    //   const content = data.choices[0].message.content;
-    //   dispatchTranslateVal(content);
-    //   setIsLoading(false);
-    //   if (!isDesktop) window.location.href = "#translate_result_textarea";
-    //   return;
-    // } else {
-    //   toast.error("Something went wrong, please try again");
-    //   setIsLoading(false);
-    //   return;
-    // }
+    const langAITranslate = await handlePremiumTranslate(prompt);
+    dispatchTranslateVal(langAITranslate)
+    setIsLoading(false);
+  
+    if (!isDesktop) window.location.href = "#translate_result_textarea";
+    return;
   };
 
 
@@ -91,7 +76,7 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
           aria-labelledby="target_lang_select"
           options={LANGUAGE_LIST}
           styles={reactSelectDarkStyle}
-          onChange={(opt:any) => setLanguage(opt?.label)}
+          onChange={(opt: any) => setLanguage(opt?.label)}
         />
       </label>
       <div>
