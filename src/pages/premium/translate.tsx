@@ -3,10 +3,10 @@ import { FaLanguage } from "react-icons/fa";
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
 import PremiumTranslateForm from "@/modules/premium/components/TranslateForm";
-import TranslateResult from "@/modules/translate/components/TranslateResult";
-import SocialShare from "@/common/components/SocialShare";
+import PremiumTranslateResult from "@/modules/premium/components/TranslateResult";
+import TranslateComparison from "@/modules/translate/components/TranslateComparison";
 
-const PremiumTranslate = () => { 
+const PremiumTranslate = () => {
   const [translateVal, setTranslateVal] = useState("");
 
   const seo = {
@@ -33,12 +33,15 @@ const PremiumTranslate = () => {
         <h2 className="text-black mt-4 text-center text-lg mb-4">
           #1 Translation App for All Languages
         </h2>
-        <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8">
-          <PremiumTranslateForm
-            dispatchLoginForm={() => {}}
-            dispatchTranslateVal={(val) => setTranslateVal(val)}
-          />
-          <TranslateResult translateVal={translateVal} />
+        <div className="lg:grid lg:grid-cols-3 lg:gap-2 mb-8">
+          <PremiumTranslateForm dispatchTranslateVal={setTranslateVal} />
+          <PremiumTranslateResult translateVal={translateVal} />
+          {/* TODO: Add Google translate Result */}
+          <PremiumTranslateResult translateVal={translateVal} />
+        </div>
+        <div className="text-black">
+
+          <TranslateComparison />
         </div>
       </div>
     </Layout>

@@ -7,7 +7,7 @@ interface ITranslateResult {
   translateVal: string;
 }
 
-const TranslateResult = (props: ITranslateResult) => {
+const PremiumTranslateResult = (props: ITranslateResult) => {
   const { translateVal } = props;
 
   const isDesktop = useDesktopScreen();
@@ -18,25 +18,23 @@ const TranslateResult = (props: ITranslateResult) => {
   };
 
   return (
-    <div className="my-4 lg:mt-0 ">
-      <label htmlFor="translate_result_textarea">
+    <div className="my-4 lg:mt-0">
+      <div className="bg-black w-fit p-2 rounded mb-2">LanguageAI Translation</div>
+      <label htmlFor="translate_result">
         <textarea
           name="translate_result"
           id="translate_result_textarea"
-          className="w-full rounded-md text-black p-2 bg-white border"
+          className="w-full rounded-md bg-black text-white p-2 border"
           cols={30}
           rows={isDesktop ? 15 : 10}
-          onChange={() => {}}
-          value={
-            translateVal ? translateVal : "Your translation will show up here"
-          }
+          value={translateVal ? translateVal : "Your translation will show up here"}
         />
       </label>
       <div className="grid grid-cols-2 gap-2 lg:grid-cols-1">
         <Button
           type="button"
           title="Copy"
-          buttonClassName="w-full text-center p-2 bg-white text-black rounded-md hover:border hover:border-white hover:bg-black hover:text-white"
+          buttonClassName="w-full text-center p-2 bg-black text-white rounded-md hover:bg-gray-500"
           onClick={copyText}
         />
         {!isDesktop && (
@@ -45,7 +43,7 @@ const TranslateResult = (props: ITranslateResult) => {
             href="#title"
             title="Go to Top"
             wrapperClassName="flex items-center justify-center w-full"
-            buttonClassName="w-full text-center p-2 bg-white text-black rounded-md hover:border hover:border-white hover:bg-black hover:text-white"
+            buttonClassName="w-full text-center p-2 bg-black text-white rounded-md hover:bg-gray-500"
           />
         )}
       </div>
@@ -53,4 +51,4 @@ const TranslateResult = (props: ITranslateResult) => {
   );
 };
 
-export default TranslateResult;
+export default PremiumTranslateResult;
