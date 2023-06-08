@@ -20,7 +20,7 @@ export const PREMIUM_LANGUAGE_LIST = [
   },
   {
     label: "Chinese (Traditional)",
-    value: "zh-CHT",
+    value: "zh",
   },
   {
     label: "English",
