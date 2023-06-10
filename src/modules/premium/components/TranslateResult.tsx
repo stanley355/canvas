@@ -19,7 +19,7 @@ const PremiumTranslateResult = (props: ITranslateResult) => {
 
   return (
     <div className="my-4 lg:mt-0">
-      <div className="bg-black w-fit p-2 rounded mb-2">LanguageAI 4.0</div>
+      <div className="bg-black w-fit p-2 rounded mb-2">LanguageAI Premium</div>
       <label htmlFor="translate_result">
         <textarea
           name="translate_result"
