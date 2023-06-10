@@ -12,7 +12,6 @@ import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
 import { handlePremiumTranslate } from "../lib/handlePremiumTranslate";
 import { handleGoogleTranslate } from "../lib/handleGoogleTranslate";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
-import { reduceUserBalanceToken } from "../lib/reduceUserBalanceToken";
 
 const InsufficientBalanceModal = dynamic(() => import("./InsufficientBalanceModal"));
 
@@ -34,7 +33,7 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    const hasBalance = checkUserCurrentBalance();
+    const hasBalance = await checkUserCurrentBalance();
     if (!hasBalance) {
       setShowModal(true);
       return;
@@ -70,12 +69,9 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
 
     if (languageTranslate.content && googleTranslate) {
       const totalToken = languageTranslate.prompt_tokens + languageTranslate.completion_tokens;
-
       dispatchTokenUsed(totalToken);
       dispatchLangTranslate(languageTranslate.content)
       dispatchGoogleTranslate(googleTranslate);
-
-      reduceUserBalanceToken(totalToken);
       setIsLoading(false);
       if (!isDesktop) window.location.href = "#translate_result_textarea";
     }

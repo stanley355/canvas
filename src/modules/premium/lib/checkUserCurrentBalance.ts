@@ -1,9 +1,11 @@
 import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
+import { fetchUserData } from "@/modules/profile/lib/fetchUserData";
 
-export const checkUserCurrentBalance = (): Boolean => {
+export const checkUserCurrentBalance = async () => {
   const token = Cookies.get("token");
   const user: any = jwtDecode(String(token));
+  const userData = await fetchUserData(user.email);
 
-  return user.balance > 0;
+  return userData.balance > 0;
 }
