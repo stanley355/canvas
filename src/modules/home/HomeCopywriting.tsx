@@ -1,16 +1,16 @@
 import React from "react";
-import { FaLanguage, FaRobot, FaGlobeAmericas } from "react-icons/fa";
+import { FaLanguage, FaRobot } from "react-icons/fa";
 import Button from "@/common/components/Button";
 
 const HomeCopywriting = () => (
-  <div className="px-2 border-b pb-4">
+  <div className="px-4 border-b py-12">
     <h3 className="my-4 text-4xl text-center lg:text-5xl">
       Not Just English, but World Languages!
     </h3>
-    <div className="text-lg text-center my-4 lg:text-2xl">
+    <div className="text-xl lg:text-3xl text-center my-4 lg:mb-8">
       Indonesian, European, or African languages are all possible!
     </div>
-    <div className="px-2 lg:px-0 lg:grid lg:grid-cols-2 lg:items-center lg:gap-16 lg:mt-8">
+    <div className="text-lg lg:grid lg:grid-cols-2 lg:gap-16">
       <div id="translate_copywriting" className="mb-8">
         <div className="flex flex-row items-center gap-2">
           <FaLanguage className="text-5xl" />

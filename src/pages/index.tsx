@@ -4,8 +4,8 @@ import Layout from "@/common/components/Layout";
 import Button from "@/common/components/Button";
 import TranslateComparison from "@/modules/translate/components/TranslateComparison";
 import HomeCopywriting from "@/modules/home/HomeCopywriting";
-import PackageJSON from "../../package.json";
 import CheckbotComparison from "@/modules/checkbot/components/CheckbotComparison";
+import HomeHero from "@/modules/home/HomeHero";
 
 const Home = () => {
   const seo = {
@@ -16,20 +16,11 @@ const Home = () => {
     url: process.env.NEXT_PUBLIC_BASE_URL,
   };
 
-  const HomeTitle = () => (
-    <div className="p-4 border-b">
-      <h1 className="text-3xl">Introducing LanguageAI {PackageJSON.version}</h1>
-      <div className="text-lg">
-        10x Better Writing Check and Translation for All Languages
-      </div>
-    </div>
-  );
-
   return (
     <Layout>
       <MetaSEO seo={seo} />
       <div className="container mx-auto">
-        <HomeTitle />
+        <HomeHero />
         <HomeCopywriting />
         <div className="px-2 mt-4 mb-8 flex flex-col items-center justify-center">
           <CheckbotComparison />
