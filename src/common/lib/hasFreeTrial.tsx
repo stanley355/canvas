@@ -8,15 +8,11 @@ export const hasFreeTrial = () => {
     return true;
   }
 
-  if (trial_count) {
-    if (Number(trial_count) === 3) {
-      return false;
-    }
-    let count = Number(trial_count) + 1;
-    Cookies.set("trial_count", String(count));
-    return true;
-  } else {
-    Cookies.set("trial_count", "1");
-    return true;
+  if (trial_count && Number(trial_count) === 3) {
+    return false;
   }
+
+  const count = trial_count ? (Number(trial_count) + 1) : 1;
+  Cookies.set("trial_count", String(count));
+  return true;
 };
