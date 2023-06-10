@@ -1,5 +1,5 @@
 import React from "react";
-import { FaLanguage, FaRobot } from "react-icons/fa";
+import { FaLanguage, FaRobot, FaPlusCircle } from "react-icons/fa";
 import Button from "@/common/components/Button";
 
 const HomeCopywriting = () => (
@@ -64,6 +64,59 @@ const HomeCopywriting = () => (
             title="See Docs"
             href="/checkbot/#checkbot_comparison"
             wrapperClassName="text-center border p-1 rounded-sm hover:text-black hover:bg-white"
+          />
+        </div>
+      </div>
+      <div id="premium_translate_copywriting" className="mb-8">
+        <div className="flex flex-row items-center gap-2 bg-white text-black px-2 rounded w-fit font-semibold">
+          <FaLanguage className="text-5xl" />
+          <span className="text-2xl">Premium Translate</span>
+        </div>
+        <ul className="list-disc ml-4 mt-2">
+          <li className="font-bold">Translation Updated with Real Time Data</li>
+          <li className="font-bold">10x better than Google Translate</li>
+          <li>User can provide context to translation</li>
+          <li>Meaningful result, even for non-english translation</li>
+          <li>Only Rp1 per token/word</li>
+        </ul>
+        <div className="grid grid-cols-2 gap-2 my-2 mt-4">
+          <Button
+            type="link"
+            title="Try it out"
+            href="/premium/translate/"
+            wrapperClassName="text-center border-2 font-bold p-1 rounded-sm hover:text-black hover:bg-white animate-pulse"
+          />
+          <Button
+            type="link"
+            title="See Docs"
+            href="/premium/translate/#translate_comparison"
+            wrapperClassName="text-center border p-1 rounded-sm hover:text-black hover:bg-white"
+          />
+        </div>
+      </div>
+      <div id="premium_checkbot_copywriting" className="mb-8">
+        <div className="flex flex-row items-center gap-2 bg-white text-black px-2 py-1 rounded w-fit font-semibold">
+          <FaPlusCircle className="text-3xl" />
+          <span className="text-2xl">Premium Checkbot</span>
+        </div>
+        <ul className="list-disc ml-4 mt-2">
+          <li className="font-bold">20x better than Grammarly</li>
+          <li className="font-bold">Writing Check updated with real time Language Data</li>
+          <li>
+            Correct Grammar and Spelling, not just in English but World
+            Languages
+          </li>
+          <li>
+            Can Provide Feedback, Rewrite, or Analyse Strength and Weaknesses of
+            the writing{" "}
+          </li>
+        </ul>
+        <div className="grid grid-cols-1 gap-2 my-2 mt-4">
+          <Button
+            type="link"
+            title="Coming Soon"
+            href="/checkbot/"
+            wrapperClassName="text-center border-2 font-bold p-1 rounded-sm hover:text-black hover:bg-white animate-pulse"
           />
         </div>
       </div>
