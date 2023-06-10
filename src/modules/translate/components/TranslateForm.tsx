@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import dynamic from "next/dynamic";
 import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner, FaPlay } from "react-icons/fa";
@@ -11,6 +12,9 @@ import addFirestoreData from "@/common/lib/firebase/addFirestoreData";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
+import { showPremiumOffer } from "@/common/lib/showPremiumOffer";
+
+const PremiumOfferModal = dynamic(() => import("../../../common/components/PremiumTranslationModal"));
 
 interface ITranslateForm {
   dispatchLoginForm: () => void;
@@ -19,6 +23,8 @@ interface ITranslateForm {
 
 const TranslateForm = (props: ITranslateForm) => {
   const { dispatchLoginForm, dispatchTranslateVal } = props;
+
+  const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const isDesktop = useDesktopScreen();
 
@@ -26,6 +32,7 @@ const TranslateForm = (props: ITranslateForm) => {
     e.preventDefault();
 
     const freeTrial = hasFreeTrial();
+    const showOffer = showPremiumOffer();
     if (!freeTrial) {
       dispatchLoginForm();
       sendFirebaseEvent("login_popup", {});
@@ -71,9 +78,8 @@ const TranslateForm = (props: ITranslateForm) => {
     const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/ai/chat-completion/`;
     const { data } = await axios.post(URL, reqData);
 
-    if (data && data?.choices.length > 0) {
+    if (data?.choices?.length > 0) {
       const content = data.choices[0].message.content;
-
       const saveUserPromptPayload = {
         prompt_token: data?.usage?.prompt_tokens,
         completion_token: data?.usage?.completion_tokens,
@@ -85,23 +91,18 @@ const TranslateForm = (props: ITranslateForm) => {
       dispatchTranslateVal(content);
       setIsLoading(false);
       if (!isDesktop) window.location.href = "#translate_result_textarea";
-      return;
-    } else {
-      toast.error("Something went wrong, please try again");
-      setIsLoading(false);
-      addFirestoreData({
-        collectionID: "chatgpt_error",
-        data: {
-          time: new Date(),
-          err: data?.error ? data.error : "Error Unknown",
-        },
-      });
+      if (showOffer) setShowModal(true);
       return;
     }
+
+    toast.error("Something went wrong, please try again");
+    setIsLoading(false);
+    return;
   };
 
   return (
     <form onSubmit={handleSubmit} className="mb-8">
+      {showModal && < PremiumOfferModal onCloseClick={() => setShowModal(false)} />}
       <div className="flex flex-row items-center justify-center w-full mb-4 lg:gap-2 lg:pt-0">
         <label htmlFor="ori_lang_select" className="w-5/12">
           <Select
