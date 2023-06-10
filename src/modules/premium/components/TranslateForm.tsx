@@ -13,6 +13,8 @@ import { handlePremiumTranslate } from "../lib/handlePremiumTranslate";
 import { handleGoogleTranslate } from "../lib/handleGoogleTranslate";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 
+const InsufficientBalanceModal = dynamic(() => import("./InsufficientBalanceModal"));
+
 interface ITranslateForm {
   dispatchLangTranslate: (val: string) => void;
   dispatchGoogleTranslate: (val: string) => void;
@@ -27,8 +29,6 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
   const [languageLabel, setLanguageLabel] = useState("");
 
   const isDesktop = useDesktopScreen();
-
-  const InsufficientBalanceModal = dynamic(() => import("./InsufficientBalanceModal"));
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
