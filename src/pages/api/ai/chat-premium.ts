@@ -1,7 +1,8 @@
+
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const openaiCompletionAPI = async (
+const premiumCompletionAPI = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
@@ -15,7 +16,7 @@ const openaiCompletionAPI = async (
     },
     data: {
       model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: req.body.content }],
+      messages: [{ role: "system", content: req.body.content }],
     },
   };
 
@@ -33,4 +34,5 @@ const openaiCompletionAPI = async (
   res.json(response);
 };
 
-export default openaiCompletionAPI;
+export default premiumCompletionAPI;
+

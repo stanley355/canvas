@@ -10,7 +10,7 @@ const HomeCopywriting = () => (
     <div className="text-lg text-center my-4 lg:text-2xl">
       Indonesian, European, or African languages are all possible!
     </div>
-    <div className="px-2 lg:px-0 lg:grid lg:grid-cols-3 lg:gap-8 lg:mt-8">
+    <div className="px-2 lg:px-0 lg:grid lg:grid-cols-2 lg:items-center lg:gap-16 lg:mt-8">
       <div id="translate_copywriting" className="mb-8">
         <div className="flex flex-row items-center gap-2">
           <FaLanguage className="text-5xl" />
@@ -66,29 +66,6 @@ const HomeCopywriting = () => (
             wrapperClassName="text-center border p-1 rounded-sm hover:text-black hover:bg-white"
           />
         </div>
-      </div>
-      <div id="dictionary_copywriting">
-        <div className="flex flex-row items-center gap-2">
-          <FaGlobeAmericas className="text-3xl" />
-          <span className="text-2xl">LanguageAI World Dictionary</span>
-        </div>
-        <ul className="list-disc ml-4 mt-2">
-          <li className="font-bold">20x more complete than All Dictionaries</li>
-          <li>
-            Find All Word&apos;s meaning not just in English but World Languages
-          </li>
-          <li>Example Sentence, Synonym, and Antonym as well</li>
-          <li>
-            Define not just formal words, but Slang, Abbreviation, or Difficult
-            Terms as well!
-          </li>
-        </ul>
-        <Button
-          type="link"
-          title="Try it out"
-          href="/world-dictionary/"
-          wrapperClassName="text-center border-2 font-bold p-1 rounded-sm hover:text-black hover:bg-white animate-pulse my-4 cursor-pointer"
-        />
       </div>
     </div>
   </div>

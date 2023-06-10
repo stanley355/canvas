@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import Button from "@/common/components/Button";
 
 interface IProfileBalance {
@@ -19,8 +20,8 @@ const ProfileBalance = (props: IProfileBalance) => {
         Checkbot (Better Result & Correction)
       </div>
       <div>
-        **You can even start Premium with Rp1000, we charge you by per
-        word/token basis (Rp 1 per word)
+        **You can even start Premium with <strong>Rp1000</strong>, we only charge Rp1 per
+        <Link className="mx-2 underline text-blue-300" href="https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them">word/token</Link>
       </div>
       <div className="grid grid-cols-2 gap-4 my-4">
         <Button

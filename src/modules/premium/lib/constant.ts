@@ -1,82 +1,89 @@
-export const LANGUAGE_LIST = [
+export const PREMIUM_OPTIONS = [
+  {
+    label: "Translate",
+    value: "translate"
+  },
+];
+
+export const PREMIUM_LANGUAGE_LIST = [
   {
     label: "None",
     value: "",
   },
   {
     label: "Arabic",
-    value: "Arabic",
+    value: "ar",
   },
   {
     label: "Chinese (Simplified)",
-    value: "Chinese (Simplified)",
+    value: "zh",
   },
   {
     label: "Chinese (Traditional)",
-    value: "Chinese (Traditional)",
+    value: "zh",
   },
   {
     label: "English",
-    value: "English",
+    value: "en",
   },
   {
     label: "Tagalog",
-    value: "Tagalog",
+    value: "tl",
   },
   {
     label: "French",
-    value: "French",
+    value: "fr",
   },
   {
     label: "German",
-    value: "German",
+    value: "de",
   },
   {
     label: "Hindi",
-    value: "Hindi",
+    value: "hi",
   },
   {
     label: "Japanese",
-    value: "Japanese",
+    value: "ja",
   },
   {
     label: "Javanese",
-    value: "Javanese",
+    value: "jv",
   },
   {
     label: "Indonesian",
-    value: "Indonesian",
+    value: "id",
   },
   {
     label: "Italian",
-    value: "Italian",
+    value: "it",
   },
   {
     label: "Korean",
-    value: "Korean",
+    value: "ko",
   },
   {
     label: "Malay",
-    value: "Malay",
+    value: "ms",
   },
   {
     label: "Portuguese",
-    value: "Portuguese",
+    value: "pt",
   },
   {
     label: "Russian",
-    value: "Russian",
+    value: "ru",
   },
   {
     label: "Spanish",
-    value: "Spanish",
+    value: "es",
   },
   {
     label: "Thai",
-    value: "Thai",
+    value: "th",
   },
   {
     label: "Vietnamese",
-    value: "Vietnamese",
+    value: "vi",
   },
 ];
