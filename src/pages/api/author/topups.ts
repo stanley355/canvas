@@ -11,9 +11,6 @@ const topupAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   const axiosConfig = {
     method: req.method,
     url: URL,
-    headers: {
-      Authorization: `Bearer ${process.env.AUTHOR_TOKEN}`,
-    },
     data: req.body,
   };
 
