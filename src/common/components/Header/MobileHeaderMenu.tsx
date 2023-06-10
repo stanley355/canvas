@@ -13,7 +13,7 @@ import Button from "../Button";
 import { IHeaderMenu } from ".";
 
 const MobileHeaderMenu = (props: IHeaderMenu) => {
-  const { token, onLogoutClick } = props;
+  const { token } = props;
   const [showMenu, setShowMenu] = useState(false);
 
   const Menu = () => (
@@ -25,6 +25,16 @@ const MobileHeaderMenu = (props: IHeaderMenu) => {
         onClick={() => setShowMenu(false)}
       >
         <FaTimes />
+      </Button>
+      <Button
+        type="link"
+        href="/premium/translate/"
+        buttonClassName="p-4 flex flex-row items-center"
+        wrapperClassName="my-4 bg-gray-300 text-black hover:bg-black hover:text-white"
+      >
+        <FaLanguage className="text-5xl mr-2" />
+        <span className="text-xl">Premium Translate</span>
+        <FaAngleRight className="text-3xl float-right ml-8" />
       </Button>
       <Button
         type="link"
@@ -48,23 +58,12 @@ const MobileHeaderMenu = (props: IHeaderMenu) => {
       </Button>
       <Button
         type="link"
-        href="/world-dictionary/"
+        href={token ? "/profile/" : "/login/"}
         buttonClassName="p-4 flex flex-row items-center"
         wrapperClassName="my-4 hover:bg-white hover:text-black"
-      >
-        <FaGlobeAmericas className="text-3xl mr-2" />
-        <span className="text-2xl">World Dictionary</span>
-        <FaAngleRight className="text-3xl float-right ml-8" />
-      </Button>
-      <Button
-        type={token ? "button" : "link"}
-        href="/login/"
-        buttonClassName="p-4 flex flex-row items-center"
-        wrapperClassName="my-4 hover:bg-white hover:text-black"
-        onClick={onLogoutClick}
       >
         <FaUserCircle className="text-3xl mr-2" />
-        <span className="text-2xl">{token ? "Logout" : "Login"}</span>
+        <span className="text-2xl">{token ? "Profile" : "Login"}</span>
         <FaAngleRight className="text-3xl float-right ml-8" />
       </Button>
     </div>

@@ -10,10 +10,19 @@ import Button from "../Button";
 import { IHeaderMenu } from ".";
 
 const DesktopHeaderMenu = (props: IHeaderMenu) => {
-  const { token, onLogoutClick } = props;
+  const { token } = props;
 
   return (
     <div className="flex flex-row items-center gap-4">
+      <Button
+        type="link"
+        href="/premium/translate/"
+        buttonClassName="flex flex-row items-center hover:underline"
+        wrapperClassName="bg-white text-black px-2 rounded"
+      >
+        <FaLanguage className="text-3xl mr-1" />
+        <span className="text-xl">Premium Translate</span>
+      </Button>
       <Button
         type="link"
         href="/checkbot/"
@@ -34,22 +43,12 @@ const DesktopHeaderMenu = (props: IHeaderMenu) => {
       </Button>
       <Button
         type="link"
-        href="/world-dictionary/"
+        href={token ? "/profile/" : "/login/"}
         buttonClassName="flex flex-row items-center"
         wrapperClassName="hover:border-b"
-      >
-        <FaGlobeAmericas className="text-xl mr-1" />
-        <span className="text-xl">AI World Dictionary</span>
-      </Button>
-      <Button
-        type={token ? "button" : "link"}
-        href="/login/"
-        buttonClassName="flex flex-row items-center"
-        wrapperClassName="hover:border-b"
-        onClick={onLogoutClick}
       >
         <FaUserCircle className="text-xl mr-1" />
-        <span className="text-xl">{token ? "Logout" : "Login"}</span>
+        <span className="text-xl">{token ? "Profile" : "Login"}</span>
       </Button>
     </div>
   );

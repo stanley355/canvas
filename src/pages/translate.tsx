@@ -44,7 +44,7 @@ const LangTranslate = () => {
         <h2 className="text-center text-lg mb-4">
           #1 Translation App for All Languages
         </h2>
-        <div className="lg:grid lg:grid-cols-2 lg:gap-2 mb-8">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8">
           <TranslateForm
             dispatchLoginForm={() => setShowLogin(true)}
             dispatchTranslateVal={(val) => setTranslateVal(val)}
