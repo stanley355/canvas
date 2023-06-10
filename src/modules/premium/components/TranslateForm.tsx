@@ -12,6 +12,7 @@ import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
 import { handlePremiumTranslate } from "../lib/handlePremiumTranslate";
 import { handleGoogleTranslate } from "../lib/handleGoogleTranslate";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
+import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
 
 const InsufficientBalanceModal = dynamic(() => import("./InsufficientBalanceModal"));
 
@@ -69,6 +70,14 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
 
     if (languageTranslate.content && googleTranslate) {
       const totalToken = languageTranslate.prompt_tokens + languageTranslate.completion_tokens;
+      const saveUserPromptPayload = {
+        prompt_token: languageTranslate.prompt_tokens,
+        completion_token: languageTranslate.completion_tokens,
+        prompt_text: prompt,
+        completion_text: languageTranslate.content,
+      };
+      await saveUserPremiumPrompt(saveUserPromptPayload);
+
       dispatchTokenUsed(totalToken);
       dispatchLangTranslate(languageTranslate.content)
       dispatchGoogleTranslate(googleTranslate);
