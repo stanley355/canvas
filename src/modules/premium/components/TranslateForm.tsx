@@ -10,8 +10,8 @@ import { PREMIUM_LANGUAGE_LIST } from "../lib/constant";
 import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
 import { handlePremiumTranslate } from "../lib/handlePremiumTranslate";
 import { handleGoogleTranslate } from "../lib/handleGoogleTranslate";
+import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 
-// TODO: Redirect to Login if user hasn't login
 // TODO: Check user balance before prompting
 interface ITranslateForm {
   dispatchLangTranslate: (val: string) => void;
@@ -30,18 +30,23 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
+    const hasBalance = checkUserCurrentBalance();
+
+    console.log(hasBalance);
+    return;
+
     const languageCode = e.target.target_lang.value;
     const sourceText = e.target.source_text.value;
     const context = e.target.context.value;
 
     if (!languageCode) {
       toast.warning("Target Language Could Not be Empy");
-      return "";
+      return; 
     }
 
     if (!sourceText) {
       toast.warning("You haven't input your text!");
-      return "";
+      return; 
     }
 
     setIsLoading(true);
