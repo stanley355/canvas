@@ -12,6 +12,7 @@ import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
 import { handlePremiumTranslate } from "../lib/handlePremiumTranslate";
 import { handleGoogleTranslate } from "../lib/handleGoogleTranslate";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
+import { reduceUserBalanceToken } from "../lib/reduceUserBalanceToken";
 
 const InsufficientBalanceModal = dynamic(() => import("./InsufficientBalanceModal"));
 
@@ -68,9 +69,13 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
     const googleTranslate = await handleGoogleTranslate(languageCode, sourceText);
 
     if (languageTranslate.content && googleTranslate) {
+      const totalToken = languageTranslate.prompt_tokens + languageTranslate.completion_tokens;
+
+      dispatchTokenUsed(totalToken);
       dispatchLangTranslate(languageTranslate.content)
       dispatchGoogleTranslate(googleTranslate);
-      dispatchTokenUsed(languageTranslate.prompt_tokens + languageTranslate.completion_tokens);
+
+      reduceUserBalanceToken(totalToken);
       setIsLoading(false);
       if (!isDesktop) window.location.href = "#translate_result_textarea";
     }
