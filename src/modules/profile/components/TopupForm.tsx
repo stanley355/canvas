@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Select from "react-select";
 import { FaSpinner } from "react-icons/fa";
 import { toast } from "react-toastify";
+import Link from "next/link";
 import { createTopup } from "../lib/createTopup";
 import { DOKU_VA_LIST } from "../lib/constant";
 import Button from "@/common/components/Button";
@@ -109,8 +110,8 @@ const TopupForm = (props: ITopupForm) => {
         Checkbot (Better Result & Correction)
       </div>
       <div>
-        **You can even start Premium with Rp1000, we charge you by per
-        word/token basis (Rp 1 per word)
+        **You can even start Premium with <strong>Rp1000</strong>, we only charge Rp1 per
+        <Link className="mx-2 underline text-blue-300" href="https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them">word/token</Link>
       </div>
     </div>
   );
