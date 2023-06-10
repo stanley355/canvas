@@ -19,12 +19,13 @@ const PremiumTranslateResult = (props: ITranslateResult) => {
 
   return (
     <div className="my-4 lg:mt-0">
-      <div className="bg-black w-fit p-2 rounded mb-2">LanguageAI Translation</div>
+      <div className="bg-black w-fit p-2 rounded mb-2">LanguageAI 4.0</div>
       <label htmlFor="translate_result">
         <textarea
           name="translate_result"
           id="translate_result_textarea"
           className="w-full rounded-md bg-black text-white p-2 border"
+          onChange={() => {}} //remove warning
           cols={30}
           rows={isDesktop ? 15 : 10}
           value={translateVal ? translateVal : "Your translation will show up here"}

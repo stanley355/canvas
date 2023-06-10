@@ -23,7 +23,7 @@ const PremiumTranslate = () => {
   return (
     <Layout>
       <MetaSEO seo={seo} />
-      <div className="container mx-auto p-2 bg-white">
+      <div className="container mx-auto p-2 lg:p-4 bg-white">
         <h1
           className="bg-black text-3xl rounded flex flex-row items-center justify-center mt-2 lg:my-4 lg:w-1/3 lg:mx-auto"
           id="title"

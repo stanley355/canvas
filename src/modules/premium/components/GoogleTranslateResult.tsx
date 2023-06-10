@@ -25,6 +25,7 @@ const GoogleTranslateResult = (props: ITranslateResult) => {
           name="translate_result"
           id="translate_result_textarea"
           className="w-full rounded-md bg-black text-white p-2 border"
+          onChange={() => {}} //remove warning
           cols={30}
           rows={isDesktop ? 15 : 10}
           value={translateVal ? translateVal : "Your translation will show up here"}
