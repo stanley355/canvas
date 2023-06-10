@@ -36,7 +36,6 @@ jobs:
             NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}
             NEXT_PUBLIC_GOOGLE_CLIENT_ID=${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}
             AUTHOR_URL=${{ secrets.AUTHOR_URL }}
-            AUTHOR_TOKEN=${{ secrets.AUTHOR_TOKEN }}
             APP_ENV=${{ secrets.APP_ENV }}
             FIREBASE_API_KEY=${{ secrets.FIREBASE_API_KEY }}
             FIREBASE_AUTH_DOMAIN=${{ secrets.FIREBASE_AUTH_DOMAIN }}
@@ -62,7 +61,6 @@ jobs:
             NEXT_PUBLIC_BASE_URL=https://stage.languageai.world/
             NEXT_PUBLIC_GOOGLE_CLIENT_ID=${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}
             AUTHOR_URL=${{ secrets.AUTHOR_URL }}
-            AUTHOR_TOKEN=${{ secrets.AUTHOR_TOKEN }}
             APP_ENV=${{ secrets.APP_ENV }}
             FIREBASE_API_KEY=${{ secrets.FIREBASE_API_KEY }}
             FIREBASE_AUTH_DOMAIN=${{ secrets.FIREBASE_AUTH_DOMAIN }}
