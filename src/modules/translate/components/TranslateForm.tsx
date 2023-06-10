@@ -8,7 +8,6 @@ import { LANGUAGE_LIST } from "../constant";
 import Button from "@/common/components/Button";
 import SourceTextArea from "../../../common/components/SourceTextArea";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import addFirestoreData from "@/common/lib/firebase/addFirestoreData";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";

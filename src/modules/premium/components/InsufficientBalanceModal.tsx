@@ -23,8 +23,8 @@ const InsufficientBalanceModal = (props: IInsufficientBalanceModal) => {
           <Link className="mx-2 underline text-blue-300" href="https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them">word/token</Link>
         </div>
         <div className="w-full grid grid-cols-2 gap-4 mt-8 text-lg">
-          <Button type="button" title="Later" wrapperClassName="w-full text-center p-2" buttonClassName="w-full hover:underline" onClick={onCloseClick} />
-          <Button type="link" href="/topup/" title="Let's Go" wrapperClassName="cursor-pointer w-full bg-white text-center text-black p-2 rounded hover:underline" buttonClassName="w-full" />
+          <Button type="button" title="Later" wrapperClassName="w-full border border-white text-center p-2" buttonClassName="w-full hover:underline" onClick={onCloseClick} />
+          <Button type="link" href="/topup/" title="Let's Go" wrapperClassName="cursor-pointer font-bold w-full bg-white text-center text-black p-2 rounded hover:underline" buttonClassName="w-full" />
         </div>
       </div>
     </div>
