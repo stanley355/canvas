@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
+import dynamic from "next/dynamic";
 import Button from "@/common/components/Button";
 import PremiumSourceTextArea from "@/common/components/PremiumSourceTextArea";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
@@ -12,7 +13,6 @@ import { handlePremiumTranslate } from "../lib/handlePremiumTranslate";
 import { handleGoogleTranslate } from "../lib/handleGoogleTranslate";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 
-// TODO: Check user balance before prompting
 interface ITranslateForm {
   dispatchLangTranslate: (val: string) => void;
   dispatchGoogleTranslate: (val: string) => void;
@@ -22,18 +22,22 @@ interface ITranslateForm {
 const PremiumTranslateForm = (props: ITranslateForm) => {
   const { dispatchLangTranslate, dispatchGoogleTranslate, dispatchTokenUsed } = props;
 
+  const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [languageLabel, setLanguageLabel] = useState("");
 
   const isDesktop = useDesktopScreen();
 
+  const InsufficientBalanceModal = dynamic(() => import("./InsufficientBalanceModal"));
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     const hasBalance = checkUserCurrentBalance();
-
-    console.log(hasBalance);
-    return;
+    if (!hasBalance) {
+      setShowModal(true);
+      return;
+    }
 
     const languageCode = e.target.target_lang.value;
     const sourceText = e.target.source_text.value;
@@ -41,12 +45,12 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
 
     if (!languageCode) {
       toast.warning("Target Language Could Not be Empy");
-      return; 
+      return;
     }
 
     if (!sourceText) {
       toast.warning("You haven't input your text!");
-      return; 
+      return;
     }
 
     setIsLoading(true);
@@ -75,6 +79,7 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
 
   return (
     <form onSubmit={handleSubmit} className="mb-8">
+      {showModal && <InsufficientBalanceModal onCloseClick={() => setShowModal(false)} />}
       <label htmlFor="target_lang_select" className="w-full mb-4">
         <Select
           className="text-black mb-4"
