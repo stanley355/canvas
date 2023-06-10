@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaLanguage } from "react-icons/fa";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
 import PremiumTranslateForm from "@/modules/premium/components/TranslateForm";
@@ -37,15 +38,15 @@ const PremiumTranslate = () => {
           #Translation updated with real time data
         </h2>
         <div className="lg:grid lg:grid-cols-3 lg:gap-2 mb-4">
-          <PremiumTranslateForm 
-            dispatchLangTranslate={setLangTranslate} 
-            dispatchGoogleTranslate={setGoogleTranslate} 
+          <PremiumTranslateForm
+            dispatchLangTranslate={setLangTranslate}
+            dispatchGoogleTranslate={setGoogleTranslate}
             dispatchTokenUsed={setTokenUsed}
-            />
+          />
           <PremiumTranslateResult translateVal={langTranslate} />
           <GoogleTranslateResult translateVal={googleTranslate} />
         </div>
-        {tokenUsed && <div className="text-lg text-black">Token used: {tokenUsed} tokens</div> }
+        {tokenUsed && <div className="text-lg text-black">Token used: {tokenUsed} tokens</div>}
         <div className="text-black">
           <TranslateComparison />
         </div>
@@ -55,3 +56,21 @@ const PremiumTranslate = () => {
 };
 
 export default PremiumTranslate;
+export const getServerSideProps: GetServerSideProps = async (
+  ctx: GetServerSidePropsContext
+) => {
+  const token = ctx.req.cookies.token;
+
+  if (!token) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/login/",
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};
