@@ -54,6 +54,7 @@ const TopupForm = (props: ITopupForm) => {
         vaInfo.bank_name = vaBank;
         vaInfo.amount = amount;
         dispatchVAinfo(vaInfo);
+        console.log(vaInfo)
         setHasSubmit(false);
         return;
       }
@@ -73,7 +74,7 @@ const TopupForm = (props: ITopupForm) => {
       <div className="font-semibold mb-2 text-xl">
         How much would you like to topup?
       </div>
-      <form onSubmit={handleSubmit} className="w-full">
+      <form onSubmit={handleSubmit} className="w-full mb-4">
         <div className="mb-4">
           <label htmlFor="amount"></label>
           <input
@@ -97,7 +98,7 @@ const TopupForm = (props: ITopupForm) => {
         />
         <Button
           type="submit"
-          wrapperClassName="w-full text-center mt-4 p-2 bg-white text-black font-semibold"
+          wrapperClassName="w-full text-center mt-4 p-2 bg-white text-black font-semibold rounded"
           buttonClassName="w-full"
           disabled={hasSubmit}
         >
@@ -105,12 +106,15 @@ const TopupForm = (props: ITopupForm) => {
         </Button>
       </form>
       <div className="my-2">
-        *Topup more balance so you can access our Premium Translation and
-        Checkbot (Better Result & Correction)
+        * Topup more balance so you can access our Premium Translation and
+        Checkbot <b>(10x better Translation & Correction) </b>
+      </div>
+      <div className="mb-2">
+        * You can even start Premium with <strong>Rp1000</strong>, we only charge <b>Rp1</b> per
+        <Link className="mx-2 underline text-blue-300" href="https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them">word/token</Link>
       </div>
       <div>
-        **You can even start Premium with <strong>Rp1000</strong>, we only charge Rp1 per
-        <Link className="mx-2 underline text-blue-300" href="https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them">word/token</Link>
+        * After Topup: If Balance is not updated, please wait for 5 minutes delay.
       </div>
     </div>
   );

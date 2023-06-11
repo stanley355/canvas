@@ -11,16 +11,16 @@ const ProfileBalance = (props: IProfileBalance) => {
 
   return (
     <div className="mt-8 lg:w-1/3">
-      <div className="font-semibold text-lg">
+      {balance < 2500 && <div className="font-semibold text-lg">
         Oops you are running out of balance!
-      </div>
+      </div>}
       <div className="border p-2 my-2">Rp {balance}</div>
       <div className="my-2">
         *Topup more balance so you can access our Premium Translation and
-        Checkbot (Better Result & Correction)
+        Checkbot <b>(10x better Translation & Correction) </b>
       </div>
       <div>
-        **You can even start Premium with <strong>Rp1000</strong>, we only charge Rp1 per
+        **You can start Premium with <strong>Rp1000</strong>, we only charge <b>Rp1</b> per
         <Link className="mx-2 underline text-blue-300" href="https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them">word/token</Link>
       </div>
       <div className="grid grid-cols-2 gap-4 my-4">
