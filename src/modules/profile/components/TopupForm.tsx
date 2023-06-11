@@ -38,7 +38,7 @@ const TopupForm = (props: ITopupForm) => {
       return;
     }
 
-    // TODO: Activate topup after doku notification testing done
+    sendFirebaseEvent("topup_va", {});
     const topup = await createTopup(user.id, Number(amount));
     if (topup?.id) {
       const dokuVAPayload = {
@@ -48,7 +48,6 @@ const TopupForm = (props: ITopupForm) => {
         user,
       };
 
-      sendFirebaseEvent("doku_va", dokuVAPayload);
       const dokuVA = await createDokuVA(dokuVAPayload);
       if (dokuVA?.virtual_account_info?.virtual_account_number) {
         const vaInfo = dokuVA.virtual_account_info;

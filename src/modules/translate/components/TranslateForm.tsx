@@ -31,7 +31,6 @@ const TranslateForm = (props: ITranslateForm) => {
     e.preventDefault();
 
     const freeTrial = hasFreeTrial();
-    const showOffer = showPremiumOffer();
     if (!freeTrial) {
       dispatchLoginForm();
       sendFirebaseEvent("login_popup", {});
@@ -78,6 +77,8 @@ const TranslateForm = (props: ITranslateForm) => {
     const { data } = await axios.post(URL, reqData);
 
     if (data?.choices?.length > 0) {
+      setIsLoading(false);
+
       const content = data.choices[0].message.content;
       const saveUserPromptPayload = {
         prompt_token: data?.usage?.prompt_tokens,
@@ -85,12 +86,17 @@ const TranslateForm = (props: ITranslateForm) => {
         prompt_text: baseMsg,
         completion_text: content,
       };
-      await saveUserPrompt(saveUserPromptPayload);
 
+      await saveUserPrompt(saveUserPromptPayload);
       dispatchTranslateVal(content);
-      setIsLoading(false);
+
       if (!isDesktop) window.location.href = "#translate_result_textarea";
-      if (showOffer) setShowModal(true);
+
+      const showOffer = showPremiumOffer();
+      if (showOffer) {
+        setShowModal(true);
+        sendFirebaseEvent("premium_offer", {});
+      };
       return;
     }
 
@@ -101,7 +107,7 @@ const TranslateForm = (props: ITranslateForm) => {
 
   return (
     <form onSubmit={handleSubmit} className="mb-8">
-      {showModal && < PremiumOfferModal onCloseClick={() => setShowModal(false)} />}
+      {showModal && <PremiumOfferModal onCloseClick={() => setShowModal(false)} />}
       <div className="flex flex-row items-center justify-center w-full mb-4 lg:gap-2 lg:pt-0">
         <label htmlFor="ori_lang_select" className="w-5/12">
           <Select

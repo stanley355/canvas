@@ -9,7 +9,7 @@ export const showPremiumOffer = () => {
     const user: any = jwtDecode(token);
     const hasBalance = user.balance > 0;
     if (!hasBalance) {
-      if (offerCount && Number(offerCount) === 10) {
+      if (offerCount && Number(offerCount) === 8) {
         Cookies.set("offer_count", String(1));
         return true;
       }
