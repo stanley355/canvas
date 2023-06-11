@@ -24,4 +24,8 @@ export const DOKU_VA_LIST = [
     label: "Bank CIMB",
     value: "/cimb-virtual-account/v2/payment-code",
   },
+  {
+    label: "ATM Bersama",
+    value: "/doku-virtual-account/v2/payment-code",
+  },
 ];
