@@ -7,5 +7,5 @@ export const checkUserCurrentBalance = async () => {
   const user: any = jwtDecode(String(token));
   const userData = await fetchUserData(user.email);
 
-  return userData.balance > 0;
+  return userData?.balance > 0;
 }
