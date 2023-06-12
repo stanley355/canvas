@@ -81,50 +81,42 @@ export const PREMIUM_LANGUAGE_LIST = [
   },
 ];
 
-export const CHECKBOT_OPTIONS = [
+export const PREMIUM_CHECKBOT_OPTIONS = [
   {
     label: "I'll give you my instruction",
     value: "personal_instruction",
   },
   {
     label: "Analyse Strength and Weakness",
-    value: "Analyze the strength and weakness from",
-  },
-  {
-    label: "Correct Grammar",
-    value: "Correct the Grammar from",
-  },
-  {
-    label: "Correct Spelling",
-    value: "Correct the Spelling from",
+    value: "Analyze the strength and weakness from this text:",
   },
   {
     label: "Correct Grammar & Spelling",
-    value: "Correct the Grammar and Spelling from",
+    value: "Correct the grammar and spelling from this text:",
   },
   {
     label: "Find conclusion",
-    value: "Find the conclusion of",
+    value: "Find the conclusion of this text:",
   },
   {
     label: "Find keyword",
-    value: "Find the keyword of",
+    value: "Find the keywords of this text:",
   },
   {
     label: "Improvement Suggestion",
-    value: "Give improvment suggestions of",
+    value: "Give improvement suggestions from this text:",
   },
   {
     label: "Paraphrase",
-    value: "Paraphrase",
+    value: "Paraphrase this text:",
   },
   {
     label: "Proofread",
-    value: "Proofread",
+    value: "Proofread this text:",
   },
   {
     label: "Simplify this text",
-    value: "Simplify",
+    value: "Simplify this text:",
   },
   {
     label: "Summarize this text",

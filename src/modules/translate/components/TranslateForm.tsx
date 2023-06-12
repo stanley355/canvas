@@ -13,7 +13,7 @@ import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 import { showPremiumOffer } from "@/common/lib/showPremiumOffer";
 
-const PremiumOfferModal = dynamic(() => import("../../../common/components/PremiumTranslationModal"));
+const PremiumOfferModal = dynamic(() => import("../../premium/components/PremiumTranslationModal"));
 
 interface ITranslateForm {
   dispatchLoginForm: () => void;

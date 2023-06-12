@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
 import dynamic from "next/dynamic";
 import Button from "@/common/components/Button";
-import PremiumSourceTextArea from "@/common/components/PremiumSourceTextArea";
+import PremiumSourceTextArea from "./PremiumSourceTextArea";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { PREMIUM_LANGUAGE_LIST } from "../lib/constant";

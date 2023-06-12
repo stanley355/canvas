@@ -11,6 +11,8 @@ import SourceTextArea from "@/common/components/SourceTextArea";
 // import { fetchCheckbotAndDispatch } from "../lib/fetchCheckbotAndDispatch";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
+import { PREMIUM_CHECKBOT_OPTIONS } from "../lib/constant";
+import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
 
 interface IPremiumCheckBotForm {
   dispatchLoginForm: () => void;
@@ -40,7 +42,6 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     }
 
     const instruction = e.target.instruction.value;
-    const outputLanguage = e.target.output_language.value;
     const sourceText = e.target.source_text.value;
 
     if (!instruction) {
@@ -92,32 +93,24 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
         <Select
           placeholder="What can I help you with?"
           name="instruction"
-          // options={CHECKBOT_OPTIONS}
+          options={PREMIUM_CHECKBOT_OPTIONS}
           className="w-full text-black mb-4"
           id="checkbot_instruction_select"
           aria-label="checkbot_instruction_select"
           aria-labelledby="checkbot_instruction_select"
           onChange={handleCheckbotOption}
-        />
-      </label>
-      <label htmlFor="checkbot_language_select">
-        <Select
-          placeholder="Optional: Output Language"
-          name="output_language"
-          options={LANGUAGE_LIST}
-          className="w-full text-black mb-2"
-          id="checkbot_language_select"
-          aria-label="checkbot_language_select"
-          aria-labelledby="checkbot_language_select"
+          styles={reactSelectDarkStyle}
         />
       </label>
       {showPersonalInstruction && (
-        <input
-          type="text"
-          name="personal_instruction"
-          className="w-full mb-2 border p-2 rounded-sm text-black bg-white"
-          placeholder="What's your instruction?"
-        />
+        <label htmlFor="personal_instruction">
+          <input
+            type="text"
+            name="personal_instruction"
+            className="w-full mb-2 border p-2 rounded-md text-white bg-black"
+            placeholder="What's your instruction?"
+          />
+        </label>
       )}
       <SourceTextArea />
       <Button
