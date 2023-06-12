@@ -95,7 +95,7 @@ const TranslateForm = (props: ITranslateForm) => {
       const showOffer = showPremiumOffer();
       if (showOffer) {
         setShowModal(true);
-        sendFirebaseEvent("premium_offer", {});
+        sendFirebaseEvent("premium_offer_popup", {});
       };
       return;
     }
