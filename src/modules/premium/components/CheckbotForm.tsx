@@ -2,17 +2,13 @@ import React, { useState } from "react";
 import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
-import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import Button from "@/common/components/Button";
-// import { CHECKBOT_OPTIONS } from "../constant";
-import { LANGUAGE_LIST } from "../../translate/constant";
-import SourceTextArea from "@/common/components/SourceTextArea";
-// import { generateCheckbotPrompt } from "../lib/generateCheckbotPrompt";
-// import { fetchCheckbotAndDispatch } from "../lib/fetchCheckbotAndDispatch";
+import PremiumSourceTextArea from "./PremiumSourceTextArea";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { PREMIUM_CHECKBOT_OPTIONS } from "../lib/constant";
 import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
+import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
 interface IPremiumCheckBotForm {
   dispatchLoginForm: () => void;
@@ -112,22 +108,22 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
           />
         </label>
       )}
-      <SourceTextArea />
+      <PremiumSourceTextArea />
       <Button
-        type="submit"
-        disabled={isLoading}
-        wrapperClassName="w-full"
-        buttonClassName="w-full bg-white text-black py-2 text-md rounded-md font-semibold text-center hover:border hover:border-white hover:bg-black hover:text-white"
-      >
-        {isLoading ? (
-          <div className="flex flex row items-center justify-center">
-            <span className="mr-2">Processing</span>
-            <FaSpinner className="animate-spin" />
-          </div>
-        ) : (
-          "Check"
-        )}
-      </Button>
+          type="submit"
+          disabled={isLoading}
+          wrapperClassName="w-full"
+          buttonClassName="w-full bg-black text-white py-2 text-md rounded-md font-semibold text-center hover:bg-gray-500"
+        >
+          {isLoading ? (
+            <div className="flex flex row items-center justify-center">
+              <span className="mr-2">Processing...</span>
+              <FaSpinner className="animate-spin" />
+            </div>
+          ) : (
+            "Submit"
+          )}
+        </Button>
     </form>
   );
 };
