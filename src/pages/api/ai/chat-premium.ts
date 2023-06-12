@@ -12,7 +12,7 @@ const premiumCompletionAPI = async (
     method: req.method,
     url: URL,
     headers: {
-      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY_PREMIUM}`,
     },
     data: {
       model: "gpt-3.5-turbo",
