@@ -19,7 +19,7 @@ const PremiumCheckbotResult = (props: ITranslateResult) => {
 
   return (
     <div className="my-4 lg:mt-0">
-      <div className="bg-black w-fit p-2 rounded mb-2">LanguageAI Premium</div>
+      <div className="bg-black w-fit px-2 py-1 rounded mb-2">LanguageAI Premium</div>
       <label htmlFor="checkbot_result">
         <textarea
           name="checkbot_result"
@@ -27,7 +27,7 @@ const PremiumCheckbotResult = (props: ITranslateResult) => {
           className="w-full rounded-md bg-black text-white p-2 border"
           onChange={() => {}} //remove warning
           cols={30}
-          rows={isDesktop ? 15 : 10}
+          rows={isDesktop ? 13 : 10}
           value={checkbotVal ? checkbotVal : "Your result will show up here"}
         />
       </label>

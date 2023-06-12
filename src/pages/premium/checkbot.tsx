@@ -4,9 +4,11 @@ import Layout from "@/common/components/Layout";
 import PremiumCheckBotForm from "@/modules/premium/components/CheckbotForm";
 import CheckbotComparison from "@/modules/checkbot/components/CheckbotComparison";
 import MetaSEO from "@/common/components/MetaSEO";
+import PremiumCheckbotResult from "@/modules/premium/components/CheckbotResult";
 
 const CheckBot = () => {
   const [checkbotVal, setCheckbotVal] = useState("");
+  const [tokenUsed, setTokenUsed] = useState(0);
   const [showLogin, setShowLogin] = useState(false);
 
   const seo = {
@@ -32,12 +34,14 @@ const CheckBot = () => {
         <h2 className="text-black mt-4 text-center text-lg mb-4 italic">
           #Ultimate Writing Check for All Languages
         </h2>
-        <div className="lg:grid lg:grid-cols-3 lg:gap-4 mb-8">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8">
           <PremiumCheckBotForm
-            dispatchCheckbotVal={(val) => { }}
-            dispatchTokenUsed={(token) => {}}
+            dispatchCheckbotVal={setCheckbotVal}
+            dispatchTokenUsed={setTokenUsed}
           />
+          <PremiumCheckbotResult checkbotVal={checkbotVal} />
         </div>
+        {tokenUsed && <div className="text-lg text-black">Token used: {tokenUsed} tokens</div>}
         <div className="text-black">
           <CheckbotComparison />
         </div>
