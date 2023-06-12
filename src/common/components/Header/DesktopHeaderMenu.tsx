@@ -5,6 +5,7 @@ import {
   FaGlobeAmericas,
   FaUserCircle,
   FaPhone,
+  FaPlusCircle,
 } from "react-icons/fa";
 import Button from "../Button";
 import { IHeaderMenu } from ".";
@@ -16,9 +17,18 @@ const DesktopHeaderMenu = (props: IHeaderMenu) => {
     <div className="flex flex-row items-center gap-4">
       <Button
         type="link"
+        href="/premium/checkbot/"
+        buttonClassName="flex flex-row items-center hover:underline"
+        wrapperClassName="bg-white text-black px-2 py-1 rounded"
+      >
+        <FaPlusCircle className="text-2xl mr-1" />
+        <span className="text-xl">Premium Checkbot</span>
+      </Button>
+      <Button
+        type="link"
         href="/premium/translate/"
         buttonClassName="flex flex-row items-center hover:underline"
-        wrapperClassName="bg-white text-black px-2 rounded"
+        wrapperClassName="bg-white text-black px-2 py-1 rounded"
       >
         <FaLanguage className="text-3xl mr-1" />
         <span className="text-xl">Premium Translate</span>

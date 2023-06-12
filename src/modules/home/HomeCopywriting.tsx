@@ -111,12 +111,18 @@ const HomeCopywriting = () => (
             the writing{" "}
           </li>
         </ul>
-        <div className="grid grid-cols-1 gap-2 my-2 mt-4">
+        <div className="grid grid-cols-2 gap-2 my-2 mt-4">
           <Button
             type="link"
-            title="Coming Soon"
-            href="/checkbot/"
+            title="Try it out"
+            href="/premium/checkbot/"
             wrapperClassName="text-center border-2 font-bold p-1 rounded-sm hover:text-black hover:bg-white animate-pulse"
+          />
+          <Button
+            type="link"
+            title="See Docs"
+            href="/premium/checkbot/#checkbot_comparison"
+            wrapperClassName="text-center border p-1 rounded-sm hover:text-black hover:bg-white"
           />
         </div>
       </div>

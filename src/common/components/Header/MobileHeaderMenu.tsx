@@ -7,7 +7,8 @@ import {
   FaAngleRight,
   FaGlobeAmericas,
   FaUserCircle,
-  FaPhone
+  FaPhone,
+  FaPlusCircle
 } from "react-icons/fa";
 import Button from "../Button";
 import { IHeaderMenu } from ".";
@@ -25,6 +26,16 @@ const MobileHeaderMenu = (props: IHeaderMenu) => {
         onClick={() => setShowMenu(false)}
       >
         <FaTimes />
+      </Button>
+      <Button
+        type="link"
+        href="/premium/checkbot/"
+        buttonClassName="p-4 flex flex-row items-center"
+        wrapperClassName="my-4 bg-gray-300 text-black hover:bg-black hover:text-white"
+      >
+        <FaPlusCircle className="text-3xl mr-2" />
+        <span className="text-xl">Premium Checkbot</span>
+        <FaAngleRight className="text-3xl float-right ml-8" />
       </Button>
       <Button
         type="link"
