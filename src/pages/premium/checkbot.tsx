@@ -34,8 +34,8 @@ const CheckBot = () => {
         </h2>
         <div className="lg:grid lg:grid-cols-3 lg:gap-4 mb-8">
           <PremiumCheckBotForm
-            dispatchLoginForm={() => {}}
             dispatchCheckbotVal={(val) => { }}
+            dispatchTokenUsed={(token) => {}}
           />
         </div>
         <div className="text-black">

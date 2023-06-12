@@ -9,7 +9,7 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { PREMIUM_LANGUAGE_LIST } from "../lib/constant";
 import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
-import { handlePremiumTranslate } from "../lib/handlePremiumTranslate";
+import { handlePremiumPrompt } from "../lib/handlePremiumPrompt";
 import { handleGoogleTranslate } from "../lib/handleGoogleTranslate";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
@@ -65,7 +65,7 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
       prompt += `, (${context}) `;
     }
 
-    const languageTranslate = await handlePremiumTranslate(prompt);
+    const languageTranslate = await handlePremiumPrompt(prompt);
     const googleTranslate = await handleGoogleTranslate(languageCode, sourceText);
 
     if (languageTranslate.content && googleTranslate) {
@@ -81,9 +81,14 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
       dispatchTokenUsed(totalToken);
       dispatchLangTranslate(languageTranslate.content)
       dispatchGoogleTranslate(googleTranslate);
-      setIsLoading(false);
+
       if (!isDesktop) window.location.href = "#translate_result_textarea";
+      setIsLoading(false);
+      return;
     }
+
+    toast.error("Something went wrong, please try again");
+    setIsLoading(false);
     return;
   };
 

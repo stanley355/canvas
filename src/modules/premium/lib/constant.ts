@@ -83,7 +83,7 @@ export const PREMIUM_LANGUAGE_LIST = [
 
 export const PREMIUM_CHECKBOT_OPTIONS = [
   {
-    label: "I'll give you my instruction",
+    label: "Custom instruction",
     value: "personal_instruction",
   },
   {
