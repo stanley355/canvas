@@ -9,7 +9,6 @@ import PremiumCheckbotResult from "@/modules/premium/components/CheckbotResult";
 const CheckBot = () => {
   const [checkbotVal, setCheckbotVal] = useState("");
   const [tokenUsed, setTokenUsed] = useState(0);
-  const [showLogin, setShowLogin] = useState(false);
 
   const seo = {
     title: "Free Grammar Checker - LanguageAI Checkbot",

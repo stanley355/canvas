@@ -1,4 +1,5 @@
-import React, { FormEvent, useState } from "react";
+import React, { useState } from "react";
+import dynamic from "next/dynamic";
 import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
@@ -10,7 +11,9 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
+import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 
+const InsufficientBalanceModal = dynamic(() => import("./InsufficientBalanceModal"));
 interface IPremiumCheckBotForm {
   dispatchCheckbotVal: (val: string) => void;
   dispatchTokenUsed: (token: number) => void;
@@ -18,8 +21,10 @@ interface IPremiumCheckBotForm {
 
 const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
   const { dispatchCheckbotVal, dispatchTokenUsed } = props;
+
   const [showPersonalInstruction, setShowPersonalInstruction] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const isDesktop = useDesktopScreen();
 
@@ -30,6 +35,12 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const hasBalance = await checkUserCurrentBalance();
+    if (!hasBalance) {
+      setShowModal(true);
+      return;
+    }
 
     const target = e.target as any;
     const instruction = target.instruction.value;
@@ -86,6 +97,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
 
   return (
     <form onSubmit={handleSubmit} className="mb-8">
+      {showModal && <InsufficientBalanceModal onCloseClick={() => setShowModal(false)} />}
       <label htmlFor="checkbot_instruction_select">
         <Select
           placeholder="Instruction"
@@ -118,7 +130,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
       >
         {isLoading ? (
           <div className="flex flex row items-center justify-center">
-            <span className="mr-2">Processing...</span>
+            <span className="mr-2">Processing</span>
             <FaSpinner className="animate-spin" />
           </div>
         ) : (
