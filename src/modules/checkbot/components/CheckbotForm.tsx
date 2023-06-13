@@ -91,7 +91,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
       const showOffer = showPremiumOffer();
       if (showOffer) {
         setShowModal(true);
-        sendFirebaseEvent("premium_offer_popup", {});
+        sendFirebaseEvent("premium_offer", {});
       };
       return;
     }

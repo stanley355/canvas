@@ -1,5 +1,5 @@
 import React from "react";
-import { FaLanguage, FaRobot, FaPlusCircle } from "react-icons/fa";
+import { FaLanguage, FaRobot, FaPlusCircle, FaPlusSquare } from "react-icons/fa";
 import Button from "@/common/components/Button";
 
 const HomeCopywriting = () => (
@@ -69,7 +69,7 @@ const HomeCopywriting = () => (
       </div>
       <div id="premium_translate_copywriting" className="mb-8">
         <div className="flex flex-row items-center gap-2 bg-white text-black px-2 rounded w-fit font-semibold">
-          <FaLanguage className="text-5xl" />
+          <FaPlusSquare className="text-3xl" />
           <span className="text-2xl">Premium Translate</span>
         </div>
         <ul className="list-disc ml-4 mt-2">

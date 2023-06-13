@@ -63,8 +63,8 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     }
 
     setIsLoading(true);
-    sendFirebaseEvent("checkbot", {
-      name: "checkbot",
+    sendFirebaseEvent("premium_checkbot", {
+      name: "premium_checkbot",
       instruction: instruction,
     });
 
