@@ -2,9 +2,9 @@ import React from "react";
 import {
   FaRobot,
   FaLanguage,
-  FaGlobeAmericas,
   FaUserCircle,
-  FaPhone,
+  FaPlusCircle,
+  FaPlusSquare,
 } from "react-icons/fa";
 import Button from "../Button";
 import { IHeaderMenu } from ".";
@@ -16,11 +16,20 @@ const DesktopHeaderMenu = (props: IHeaderMenu) => {
     <div className="flex flex-row items-center gap-4">
       <Button
         type="link"
-        href="/premium/translate/"
-        buttonClassName="flex flex-row items-center hover:underline"
-        wrapperClassName="bg-white text-black px-2 rounded"
+        href="/premium/checkbot/"
+        buttonClassName="flex flex-row items-center"
+        wrapperClassName="hover:border-b"
       >
-        <FaLanguage className="text-3xl mr-1" />
+        <FaPlusCircle className="text-2xl mr-1" />
+        <span className="text-xl">Premium Checkbot</span>
+      </Button>
+      <Button
+        type="link"
+        href="/premium/translate/"
+        buttonClassName="flex flex-row items-center"
+        wrapperClassName="hover:border-b"
+      >
+        <FaPlusSquare className="text-2xl mr-1" />
         <span className="text-xl">Premium Translate</span>
       </Button>
       <Button

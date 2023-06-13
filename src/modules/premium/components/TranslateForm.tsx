@@ -4,17 +4,19 @@ import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
 import dynamic from "next/dynamic";
 import Button from "@/common/components/Button";
-import PremiumSourceTextArea from "@/common/components/PremiumSourceTextArea";
+import PremiumSourceTextArea from "./PremiumSourceTextArea";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { PREMIUM_LANGUAGE_LIST } from "../lib/constant";
 import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
-import { handlePremiumTranslate } from "../lib/handlePremiumTranslate";
+import { handlePremiumPrompt } from "../lib/handlePremiumPrompt";
 import { handleGoogleTranslate } from "../lib/handleGoogleTranslate";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
 
-const InsufficientBalanceModal = dynamic(() => import("./InsufficientBalanceModal"));
+const InsufficientBalanceModal = dynamic(
+  () => import("./InsufficientBalanceModal")
+);
 
 interface ITranslateForm {
   dispatchLangTranslate: (val: string) => void;
@@ -23,7 +25,8 @@ interface ITranslateForm {
 }
 
 const PremiumTranslateForm = (props: ITranslateForm) => {
-  const { dispatchLangTranslate, dispatchGoogleTranslate, dispatchTokenUsed } = props;
+  const { dispatchLangTranslate, dispatchGoogleTranslate, dispatchTokenUsed } =
+    props;
 
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -65,11 +68,15 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
       prompt += `, (${context}) `;
     }
 
-    const languageTranslate = await handlePremiumTranslate(prompt);
-    const googleTranslate = await handleGoogleTranslate(languageCode, sourceText);
+    const languageTranslate = await handlePremiumPrompt(prompt);
+    const googleTranslate = await handleGoogleTranslate(
+      languageCode,
+      sourceText
+    );
 
     if (languageTranslate.content && googleTranslate) {
-      const totalToken = languageTranslate.prompt_tokens + languageTranslate.completion_tokens;
+      const totalToken =
+        languageTranslate.prompt_tokens + languageTranslate.completion_tokens;
       const saveUserPromptPayload = {
         prompt_token: languageTranslate.prompt_tokens,
         completion_token: languageTranslate.completion_tokens,
@@ -79,23 +86,28 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
       await saveUserPremiumPrompt(saveUserPromptPayload);
 
       dispatchTokenUsed(totalToken);
-      dispatchLangTranslate(languageTranslate.content)
+      dispatchLangTranslate(languageTranslate.content);
       dispatchGoogleTranslate(googleTranslate);
-      setIsLoading(false);
+
       if (!isDesktop) window.location.href = "#translate_result_textarea";
+      setIsLoading(false);
+      return;
     }
+
+    toast.error("Something went wrong, please try again");
+    setIsLoading(false);
     return;
   };
 
   return (
     <form onSubmit={handleSubmit} className="mb-8">
-      {showModal && <InsufficientBalanceModal onCloseClick={() => setShowModal(false)} />}
+      {showModal && (
+        <InsufficientBalanceModal onCloseClick={() => setShowModal(false)} />
+      )}
       <label htmlFor="target_lang_select" className="w-full mb-4">
         <Select
           className="text-black mb-4"
-          placeholder={
-            isDesktop ? "Select Target Language" : "Select Language"
-          }
+          placeholder={isDesktop ? "Select Target Language" : "Select Language"}
           id="target_lang_select"
           name="target_lang"
           aria-label="target_lang_select"

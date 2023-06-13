@@ -20,9 +20,11 @@ const Topup = (props: ITopup) => {
         <div className="lg:w-1/3 lg:mx-auto">
           <h1 className="text-center text-2xl font-bold my-4">Topup</h1>
 
-          {user.balance < 2500 && <div className="font-semibold text-lg">
-            Oops you are running out of balance!
-          </div>}
+          {user.balance < 2500 && (
+            <div className="font-semibold text-lg">
+              Oops you are running out of balance!
+            </div>
+          )}
           <div className="border p-2 my-2">
             Current Balance: Rp {user.balance}
           </div>

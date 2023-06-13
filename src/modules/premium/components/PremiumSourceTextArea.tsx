@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import Button from "@/common/components/Button";
-import { useDesktopScreen } from "../hooks/useDesktopScreen";
+import { useDesktopScreen } from "../../../common/hooks/useDesktopScreen";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 const PremiumSourceTextArea = () => {

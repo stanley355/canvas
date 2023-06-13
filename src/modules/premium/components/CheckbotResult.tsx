@@ -4,33 +4,33 @@ import Button from "@/common/components/Button";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
 interface ITranslateResult {
-  translateVal: string;
+  checkbotVal: string;
 }
 
-const GoogleTranslateResult = (props: ITranslateResult) => {
-  const { translateVal } = props;
+const PremiumCheckbotResult = (props: ITranslateResult) => {
+  const { checkbotVal } = props;
 
   const isDesktop = useDesktopScreen();
 
   const copyText = () => {
-    window.navigator.clipboard.writeText(translateVal);
+    window.navigator.clipboard.writeText(checkbotVal);
     toast.info("Text Copied to Clipboard");
   };
 
   return (
     <div className="my-4 lg:mt-0">
-      <div className="bg-black w-fit p-2 rounded mb-2">Google Translate</div>
-      <label htmlFor="translate_result">
+      <div className="bg-black w-fit px-2 py-1 rounded mb-2">
+        LanguageAI Premium
+      </div>
+      <label htmlFor="checkbot_result">
         <textarea
-          name="translate_result"
-          id="translate_result_textarea"
+          name="checkbot_result"
+          id="checkbot_result_textarea"
           className="w-full rounded-md bg-black text-white p-2 border"
           onChange={() => {}} //remove warning
           cols={30}
-          rows={isDesktop ? 15 : 10}
-          value={
-            translateVal ? translateVal : "Your translation will show up here"
-          }
+          rows={isDesktop ? 13 : 10}
+          value={checkbotVal ? checkbotVal : "Your result will show up here"}
         />
       </label>
       <div className="grid grid-cols-2 gap-2 lg:grid-cols-1">
@@ -54,4 +54,4 @@ const GoogleTranslateResult = (props: ITranslateResult) => {
   );
 };
 
-export default GoogleTranslateResult;
+export default PremiumCheckbotResult;

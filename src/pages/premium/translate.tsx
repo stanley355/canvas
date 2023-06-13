@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaLanguage } from "react-icons/fa";
+import { FaLanguage, FaPlusSquare } from "react-icons/fa";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
@@ -26,13 +26,11 @@ const PremiumTranslate = () => {
       <MetaSEO seo={seo} />
       <div className="container mx-auto p-2 lg:p-4 bg-white">
         <h1
-          className="bg-black text-3xl rounded flex flex-row items-center justify-center mt-2 lg:my-4 lg:w-1/3 lg:mx-auto"
+          className="bg-black py-1 text-3xl rounded flex flex-row items-center justify-center mt-2 lg:my-4 lg:w-1/3 lg:mx-auto"
           id="title"
         >
-          <FaLanguage className="text-5xl mr-2" />
-          <span>
-            LanguageAI Premium
-          </span>
+          <FaPlusSquare className="text-3xl mr-2" />
+          <span>LanguageAI Premium</span>
         </h1>
         <h2 className="text-black mt-4 text-center text-lg mb-4 italic">
           #Translation updated with real time data
@@ -46,7 +44,11 @@ const PremiumTranslate = () => {
           <PremiumTranslateResult translateVal={langTranslate} />
           <GoogleTranslateResult translateVal={googleTranslate} />
         </div>
-        {tokenUsed && <div className="text-lg text-black">Token used: {tokenUsed} tokens</div>}
+        {tokenUsed && (
+          <div className="text-lg text-black">
+            Token used: {tokenUsed} tokens
+          </div>
+        )}
         <div className="text-black">
           <TranslateComparison />
         </div>
@@ -71,7 +73,6 @@ export const getServerSideProps: GetServerSideProps = async (
   }
 
   return {
-    props: {
-    },
+    props: {},
   };
 };

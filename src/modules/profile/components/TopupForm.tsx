@@ -54,7 +54,7 @@ const TopupForm = (props: ITopupForm) => {
         vaInfo.bank_name = vaBank;
         vaInfo.amount = amount;
         dispatchVAinfo(vaInfo);
-        console.log(vaInfo)
+        console.log(vaInfo);
         setHasSubmit(false);
         return;
       }
@@ -93,7 +93,7 @@ const TopupForm = (props: ITopupForm) => {
           name="payment_method"
           isDisabled={hasSubmit}
           onChange={(option) => {
-            setVaBank(String(option?.label))
+            setVaBank(String(option?.label));
           }}
         />
         <Button
@@ -110,11 +110,18 @@ const TopupForm = (props: ITopupForm) => {
         Checkbot <b>(10x better Translation & Correction) </b>
       </div>
       <div className="mb-2">
-        * You can even start Premium with <strong>Rp1000</strong>, we only charge <b>Rp1</b> per
-        <Link className="mx-2 underline text-blue-300" href="https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them">word/token</Link>
+        * You can even start Premium with <strong>Rp1000</strong>, we only
+        charge <b>Rp1</b> per
+        <Link
+          className="mx-2 underline text-blue-300"
+          href="https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them"
+        >
+          word/token
+        </Link>
       </div>
       <div>
-        * After Topup: If Balance is not updated, please wait for 5 minutes delay.
+        * After Topup: If Balance is not updated, please wait for 5 minutes
+        delay.
       </div>
     </div>
   );

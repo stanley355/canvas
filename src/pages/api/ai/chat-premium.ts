@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -12,7 +11,7 @@ const premiumCompletionAPI = async (
     method: req.method,
     url: URL,
     headers: {
-      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY_PREMIUM}`,
     },
     data: {
       model: "gpt-3.5-turbo",
@@ -35,4 +34,3 @@ const premiumCompletionAPI = async (
 };
 
 export default premiumCompletionAPI;
-
