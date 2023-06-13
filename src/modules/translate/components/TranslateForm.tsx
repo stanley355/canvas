@@ -13,7 +13,9 @@ import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 import { showPremiumOffer } from "@/common/lib/showPremiumOffer";
 
-const PremiumOfferModal = dynamic(() => import("../../premium/components/PremiumTranslationModal"));
+const PremiumOfferModal = dynamic(
+  () => import("../../premium/components/PremiumTranslationModal")
+);
 
 interface ITranslateForm {
   dispatchLoginForm: () => void;
@@ -96,7 +98,7 @@ const TranslateForm = (props: ITranslateForm) => {
       if (showOffer) {
         setShowModal(true);
         sendFirebaseEvent("premium_offer", {});
-      };
+      }
       return;
     }
 
@@ -107,7 +109,9 @@ const TranslateForm = (props: ITranslateForm) => {
 
   return (
     <form onSubmit={handleSubmit} className="mb-8">
-      {showModal && <PremiumOfferModal onCloseClick={() => setShowModal(false)} />}
+      {showModal && (
+        <PremiumOfferModal onCloseClick={() => setShowModal(false)} />
+      )}
       <div className="flex flex-row items-center justify-center w-full mb-4 lg:gap-2 lg:pt-0">
         <label htmlFor="ori_lang_select" className="w-5/12">
           <Select

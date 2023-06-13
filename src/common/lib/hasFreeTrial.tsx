@@ -12,7 +12,7 @@ export const hasFreeTrial = () => {
     return false;
   }
 
-  const count = trial_count ? (Number(trial_count) + 1) : 1;
+  const count = trial_count ? Number(trial_count) + 1 : 1;
   Cookies.set("trial_count", String(count));
   return true;
 };

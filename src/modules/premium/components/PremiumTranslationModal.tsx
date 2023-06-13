@@ -17,17 +17,42 @@ const PremiumTranslationModal = (props: IPremiumTranslationModal) => {
           <SiTaichilang />
           <span className="ml-2">LanguageAI</span>
         </h1>
-        <div className="text-2xl text-center font-semibold my-4">Hi bro, would you like to try our Premium Translation?</div>
+        <div className="text-2xl text-center font-semibold my-4">
+          Hi bro, would you like to try our Premium Translation?
+        </div>
 
-        <div className="text-lg italic mb-2">1. Translation is updated with <strong>real time language data</strong> </div>
-        <div className="text-lg italic mb-2">2. Translation quality is <strong>5x more contextual and meaningful</strong>  than non-premium</div>
+        <div className="text-lg italic mb-2">
+          1. Translation is updated with{" "}
+          <strong>real time language data</strong>{" "}
+        </div>
+        <div className="text-lg italic mb-2">
+          2. Translation quality is{" "}
+          <strong>5x more contextual and meaningful</strong> than non-premium
+        </div>
         <div className="text-lg italic">
           3. Start Premium with <strong>Rp1000</strong>, we only charge Rp1 per
-          <Link className="mx-2 underline text-blue-300" href="https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them">word/token</Link>
+          <Link
+            className="mx-2 underline text-blue-300"
+            href="https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them"
+          >
+            word/token
+          </Link>
         </div>
         <div className="w-full grid grid-cols-2 gap-4 mt-8 text-lg">
-          <Button type="button" title="Later" wrapperClassName="w-full border border-white rounded text-center p-2" buttonClassName="w-full hover:underline" onClick={onCloseClick} />
-          <Button type="link" href="/topup/" title="Let me try" wrapperClassName="cursor-pointer font-bold w-full bg-white text-center text-black p-2 rounded hover:underline" buttonClassName="w-full" />
+          <Button
+            type="button"
+            title="Later"
+            wrapperClassName="w-full border border-white rounded text-center p-2"
+            buttonClassName="w-full hover:underline"
+            onClick={onCloseClick}
+          />
+          <Button
+            type="link"
+            href="/topup/"
+            title="Let me try"
+            wrapperClassName="cursor-pointer font-bold w-full bg-white text-center text-black p-2 rounded hover:underline"
+            buttonClassName="w-full"
+          />
         </div>
       </div>
     </div>

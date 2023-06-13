@@ -9,7 +9,7 @@ import {
   FaUserCircle,
   FaPhone,
   FaPlusCircle,
-  FaPlusSquare
+  FaPlusSquare,
 } from "react-icons/fa";
 import Button from "../Button";
 import { IHeaderMenu } from ".";

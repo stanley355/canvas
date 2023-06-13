@@ -30,9 +30,7 @@ const PremiumTranslate = () => {
           id="title"
         >
           <FaPlusSquare className="text-3xl mr-2" />
-          <span>
-            LanguageAI Premium
-          </span>
+          <span>LanguageAI Premium</span>
         </h1>
         <h2 className="text-black mt-4 text-center text-lg mb-4 italic">
           #Translation updated with real time data
@@ -46,7 +44,11 @@ const PremiumTranslate = () => {
           <PremiumTranslateResult translateVal={langTranslate} />
           <GoogleTranslateResult translateVal={googleTranslate} />
         </div>
-        {tokenUsed && <div className="text-lg text-black">Token used: {tokenUsed} tokens</div>}
+        {tokenUsed && (
+          <div className="text-lg text-black">
+            Token used: {tokenUsed} tokens
+          </div>
+        )}
         <div className="text-black">
           <TranslateComparison />
         </div>
@@ -71,7 +73,6 @@ export const getServerSideProps: GetServerSideProps = async (
   }
 
   return {
-    props: {
-    },
+    props: {},
   };
 };

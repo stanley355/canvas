@@ -1,5 +1,10 @@
 import React from "react";
-import { FaLanguage, FaRobot, FaPlusCircle, FaPlusSquare } from "react-icons/fa";
+import {
+  FaLanguage,
+  FaRobot,
+  FaPlusCircle,
+  FaPlusSquare,
+} from "react-icons/fa";
 import Button from "@/common/components/Button";
 
 const HomeCopywriting = () => (
@@ -101,7 +106,9 @@ const HomeCopywriting = () => (
         </div>
         <ul className="list-disc ml-4 mt-2">
           <li className="font-bold">20x better than Grammarly</li>
-          <li className="font-bold">Writing Check updated with real time Language Data</li>
+          <li className="font-bold">
+            Writing Check updated with real time Language Data
+          </li>
           <li>
             Correct Grammar and Spelling, not just in English but World
             Languages

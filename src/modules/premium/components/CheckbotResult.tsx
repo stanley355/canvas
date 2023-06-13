@@ -19,7 +19,9 @@ const PremiumCheckbotResult = (props: ITranslateResult) => {
 
   return (
     <div className="my-4 lg:mt-0">
-      <div className="bg-black w-fit px-2 py-1 rounded mb-2">LanguageAI Premium</div>
+      <div className="bg-black w-fit px-2 py-1 rounded mb-2">
+        LanguageAI Premium
+      </div>
       <label htmlFor="checkbot_result">
         <textarea
           name="checkbot_result"

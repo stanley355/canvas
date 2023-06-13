@@ -26,9 +26,7 @@ const CheckBot = () => {
           id="title"
         >
           <FaPlusCircle className="text-3xl mr-2" />
-          <span>
-            LanguageAI Premium
-          </span>
+          <span>LanguageAI Premium</span>
         </h1>
         <h2 className="text-black mt-4 text-center text-lg mb-4 italic">
           #Ultimate Writing Check for All Languages
@@ -40,7 +38,11 @@ const CheckBot = () => {
           />
           <PremiumCheckbotResult checkbotVal={checkbotVal} />
         </div>
-        {tokenUsed && <div className="text-lg text-black">Token used: {tokenUsed} tokens</div>}
+        {tokenUsed && (
+          <div className="text-lg text-black">
+            Token used: {tokenUsed} tokens
+          </div>
+        )}
         <div className="text-black">
           <CheckbotComparison />
         </div>

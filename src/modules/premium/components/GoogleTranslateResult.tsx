@@ -28,7 +28,9 @@ const GoogleTranslateResult = (props: ITranslateResult) => {
           onChange={() => {}} //remove warning
           cols={30}
           rows={isDesktop ? 15 : 10}
-          value={translateVal ? translateVal : "Your translation will show up here"}
+          value={
+            translateVal ? translateVal : "Your translation will show up here"
+          }
         />
       </label>
       <div className="grid grid-cols-2 gap-2 lg:grid-cols-1">

@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -35,4 +34,3 @@ const premiumCompletionAPI = async (
 };
 
 export default premiumCompletionAPI;
-

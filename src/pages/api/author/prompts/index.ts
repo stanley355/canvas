@@ -10,7 +10,6 @@ const authorCheckbotAPI = async (req: NextApiRequest, res: NextApiResponse) => {
     data: req.body,
   };
 
-
   let response;
   try {
     const { data } = await axios(axiosConfig);

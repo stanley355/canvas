@@ -10,7 +10,7 @@ export const reactSelectDarkStyle = {
     "&:hover": {
       backgroundColor: "white",
       color: "black",
-      cursor: "pointer"
+      cursor: "pointer",
     },
   }),
 

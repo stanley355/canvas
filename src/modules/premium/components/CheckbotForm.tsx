@@ -13,7 +13,9 @@ import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 
-const InsufficientBalanceModal = dynamic(() => import("./InsufficientBalanceModal"));
+const InsufficientBalanceModal = dynamic(
+  () => import("./InsufficientBalanceModal")
+);
 interface IPremiumCheckBotForm {
   dispatchCheckbotVal: (val: string) => void;
   dispatchTokenUsed: (token: number) => void;
@@ -68,11 +70,14 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
       instruction: instruction,
     });
 
-    const prompt = personalInstruction ? `${personalInstruction}, text: "${sourceText}"` : `${instruction} "${sourceText}"`;
+    const prompt = personalInstruction
+      ? `${personalInstruction}, text: "${sourceText}"`
+      : `${instruction} "${sourceText}"`;
     const langAICheck = await handlePremiumPrompt(prompt);
 
     if (langAICheck.content) {
-      const totalToken = langAICheck.prompt_tokens + langAICheck.completion_tokens;
+      const totalToken =
+        langAICheck.prompt_tokens + langAICheck.completion_tokens;
       const saveUserPromptPayload = {
         prompt_token: langAICheck.prompt_tokens,
         completion_token: langAICheck.completion_tokens,
@@ -83,7 +88,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
       await saveUserPremiumPrompt(saveUserPromptPayload);
 
       dispatchTokenUsed(totalToken);
-      dispatchCheckbotVal(langAICheck.content)
+      dispatchCheckbotVal(langAICheck.content);
 
       if (!isDesktop) window.location.href = "#translate_result_textarea";
       setIsLoading(false);
@@ -97,7 +102,9 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
 
   return (
     <form onSubmit={handleSubmit} className="mb-8">
-      {showModal && <InsufficientBalanceModal onCloseClick={() => setShowModal(false)} />}
+      {showModal && (
+        <InsufficientBalanceModal onCloseClick={() => setShowModal(false)} />
+      )}
       <label htmlFor="checkbot_instruction_select">
         <Select
           placeholder="Instruction"

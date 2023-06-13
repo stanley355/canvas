@@ -8,4 +8,4 @@ export const checkUserCurrentBalance = async () => {
   const userData = await fetchUserData(user.email);
 
   return userData?.balance > 0;
-}
+};

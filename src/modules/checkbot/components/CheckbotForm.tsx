@@ -14,7 +14,9 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { showPremiumOffer } from "@/common/lib/showPremiumOffer";
 
-const PremiumCheckbotModal = dynamic(() => import("../../premium/components/PremiumCheckbotModal"));
+const PremiumCheckbotModal = dynamic(
+  () => import("../../premium/components/PremiumCheckbotModal")
+);
 
 interface ICheckBotForm {
   dispatchLoginForm: () => void;
@@ -92,14 +94,16 @@ const CheckBotForm = (props: ICheckBotForm) => {
       if (showOffer) {
         setShowModal(true);
         sendFirebaseEvent("premium_offer", {});
-      };
+      }
       return;
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="mb-8">
-      {showModal && <PremiumCheckbotModal onCloseClick={() => setShowModal(false)} />}
+      {showModal && (
+        <PremiumCheckbotModal onCloseClick={() => setShowModal(false)} />
+      )}
       <label htmlFor="checkbot_instruction_select">
         <Select
           placeholder="What can I help you with?"

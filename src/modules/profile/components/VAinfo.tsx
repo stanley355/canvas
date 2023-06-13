@@ -27,10 +27,16 @@ const VAinfo = ({ info }: IVAInfo) => (
       <Countdown date={new Date(info?.expired_date_utc ?? info.expired_date)} />
     </div>
     <div className="font-semibold">Notes:</div>
-    <div className="mb-4">1. Before payment: <b>Don&apos;t </b> refresh or close this page</div>
-    <div className="mb-4">2. During payment: <b>Transfer the exact amount </b> e.g. transfer Rp11.000 if your topup is Rp11.000</div>
+    <div className="mb-4">
+      1. Before payment: <b>Don&apos;t </b> refresh or close this page
+    </div>
+    <div className="mb-4">
+      2. During payment: <b>Transfer the exact amount </b> e.g. transfer
+      Rp11.000 if your topup is Rp11.000
+    </div>
     <div>
-      3. After payment: Refresh the page to see updated balance, there might be <i>a 5 minutes delay</i>
+      3. After payment: Refresh the page to see updated balance, there might be{" "}
+      <i>a 5 minutes delay</i>
     </div>
   </div>
 );

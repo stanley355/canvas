@@ -1,5 +1,5 @@
 import React from "react";
-import PackageJson from '../../../package.json';
+import PackageJson from "../../../package.json";
 
 const HomeHero = () => (
   <div className="p-4 border-b flex flex-col justify-center h-screen lg:h-80">

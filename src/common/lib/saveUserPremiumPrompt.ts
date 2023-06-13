@@ -9,7 +9,9 @@ export interface ISaveUserPremiumPrompt {
   completion_text: string;
 }
 
-export const saveUserPremiumPrompt = async (payload: ISaveUserPremiumPrompt) => {
+export const saveUserPremiumPrompt = async (
+  payload: ISaveUserPremiumPrompt
+) => {
   const token = Cookies.get("token");
   if (!token) return;
 

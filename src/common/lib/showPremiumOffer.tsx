@@ -14,7 +14,7 @@ export const showPremiumOffer = () => {
         return true;
       }
 
-      const count = offerCount ? (Number(offerCount) + 1) : 1;
+      const count = offerCount ? Number(offerCount) + 1 : 1;
       Cookies.set("offer_count", String(count));
       return false;
     }
