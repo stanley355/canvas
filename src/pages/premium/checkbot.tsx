@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { FaPlusCircle } from "react-icons/fa";
 import Layout from "@/common/components/Layout";
 import PremiumCheckBotForm from "@/modules/premium/components/CheckbotForm";
@@ -52,3 +53,21 @@ const CheckBot = () => {
 };
 
 export default CheckBot;
+export const getServerSideProps: GetServerSideProps = async (
+  ctx: GetServerSidePropsContext
+) => {
+  const token = ctx.req.cookies.token;
+
+  if (!token) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/login/",
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};
