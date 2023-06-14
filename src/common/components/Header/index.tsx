@@ -32,7 +32,7 @@ const Header = () => {
   return (
     <nav
       className={classNames(
-        "bg-black w-full p-4 flex flex-row items-center justify-between fixed lg:relative",
+        "bg-black w-full p-4 flex flex-row items-center justify-between fixed lg:relative z-10",
         inter.className
       )}
     >

@@ -24,7 +24,7 @@ const LoginModal = () => {
         <EmailPassForm />
         <div className="mt-8">
           Don&apos;t have an account?{" "}
-          <Link href="/register/" className="underline hover:text-blue-300">
+          <Link href="/register/" className="underline text-blue-300">
             Register here
           </Link>{" "}
         </div>

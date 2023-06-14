@@ -18,7 +18,7 @@ const MobileHeaderMenu = (props: IHeaderMenu) => {
   const { token } = props;
 
   return (
-    <div className="absolute top-16 left-0 bg-black z-10 text-lg h-screen w-full px-2">
+    <div className="absolute top-16 left-0 bg-black text-lg h-screen w-full px-2">
       <Button
         type="link"
         href="/premium/checkbot/"

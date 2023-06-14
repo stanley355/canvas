@@ -19,8 +19,8 @@ const Home = () => {
   return (
     <Layout>
       <MetaSEO seo={seo} />
+      <HomeHero />
       <div className="container mx-auto">
-        <HomeHero />
         <HomeCopywriting />
         <div className="px-2 mt-4 mb-8 flex flex-col items-center justify-center">
           <CheckbotComparison />
