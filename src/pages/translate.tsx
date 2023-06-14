@@ -31,15 +31,11 @@ const LangTranslate = () => {
       <MetaSEO seo={seo} />
       <div className="container mx-auto px-2">
         <h1
-          className="py-2 text-3xl flex flex-row items-center justify-center lg:my-4"
+          className="py-2 text-2xl lg:text-4xl flex flex-row items-center justify-center lg:my-4"
           id="title"
         >
           <FaLanguage className="text-5xl mr-2" />
-          <span>
-            {isDesktop
-              ? "LanguageAI Translate (with Contextual Feature)"
-              : "AI Translate"}
-          </span>
+          <span> LanguageAI Translate</span>
         </h1>
         <h2 className="text-center text-lg mb-4">
           #1 Translation App for All Languages

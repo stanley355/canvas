@@ -32,7 +32,7 @@ const CheckBot = () => {
           <span>LanguageAI Checkbot</span>
         </h1>
         <h2 className="text-lg lg:text-xl text-center mb-4">
-          The Ultimate Free Grammar and Spelling Checker for All Languages
+          #1 Grammar and Spelling Checker for All Languages
         </h2>
         <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8">
           <CheckBotForm

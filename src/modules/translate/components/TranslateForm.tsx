@@ -39,7 +39,6 @@ const TranslateForm = (props: ITranslateForm) => {
       return;
     }
 
-    const oriLang = e.target.ori_lang.value;
     const targetLang = e.target.target_lang.value;
     const sourceText = e.target.source_text.value;
     const contextText = e.target.context_text.value;
@@ -56,18 +55,14 @@ const TranslateForm = (props: ITranslateForm) => {
 
     sendFirebaseEvent("translate", {
       name: "translate",
-      ori_lang: oriLang,
       target_lange: targetLang,
     });
 
     setIsLoading(true);
 
     let baseMsg = `Translate this to ${targetLang}`;
-    if (oriLang) {
-      baseMsg = `Translate this text from ${oriLang} to ${targetLang}`;
-    }
     if (contextText) {
-      baseMsg + " " + `(${contextText}) `;
+      baseMsg + "," + `(${contextText}) `;
     }
     baseMsg = `${baseMsg}: "${sourceText}"`;
 
@@ -112,36 +107,20 @@ const TranslateForm = (props: ITranslateForm) => {
       {showModal && (
         <PremiumOfferModal onCloseClick={() => setShowModal(false)} />
       )}
-      <div className="flex flex-row items-center justify-center w-full mb-4 lg:gap-2 lg:pt-0">
-        <label htmlFor="ori_lang_select" className="w-5/12">
-          <Select
-            className="text-black"
-            placeholder={
-              isDesktop ? "Select Source Language" : "Select Language"
-            }
-            id="ori_lang_select"
-            name="ori_lang"
-            aria-label="ori_lang_select"
-            aria-labelledby="ori_lang_select"
-            options={LANGUAGE_LIST}
-          />
-        </label>
-        <FaPlay className="w-2/12 text-xl" />
-        <label htmlFor="target_lang_select" className="w-5/12">
-          <Select
-            className="text-black"
-            placeholder={
-              isDesktop ? "Select Target Language" : "Select Language"
-            }
-            id="target_lang_select"
-            name="target_lang"
-            aria-label="target_lang_select"
-            aria-labelledby="target_lang_select"
-            options={LANGUAGE_LIST}
-          />
-        </label>
-      </div>
-      <div>
+      <label htmlFor="target_lang_select" className="w-full">
+        <Select
+          className="text-black"
+          placeholder={
+            isDesktop ? "Select Target Language" : "Select Language"
+          }
+          id="target_lang_select"
+          name="target_lang"
+          aria-label="target_lang_select"
+          aria-labelledby="target_lang_select"
+          options={LANGUAGE_LIST}
+        />
+      </label>
+      <div className="mt-4">
         <input
           name="context_text"
           id="context_text_textarea"
