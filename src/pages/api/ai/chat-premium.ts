@@ -14,7 +14,7 @@ const premiumCompletionAPI = async (
       Authorization: `Bearer ${process.env.OPENAI_API_KEY_PREMIUM}`,
     },
     data: {
-      model: "gpt-3.5-turbo",
+      model: "gpt-3.5-turbo-16k",
       messages: [{ role: "system", content: req.body.content }],
     },
   };
