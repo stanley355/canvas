@@ -4,12 +4,12 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        typing: "typing 3s linear",
+        visible: "visible 3s linear",
       },
       keyframes: {
-        typing: {
-          "0%": { width: "0%" },
-          "100%": { width: "100%" },
+        visible: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
         },
       },
     },

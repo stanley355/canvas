@@ -1,9 +1,11 @@
 import React from "react";
-import PackageJson from "../../../package.json";
+import classNames from "classnames";
+import PackageJson from "../../../../package.json";
+import styles from './home.module.scss';
 
 const HomeHero = () => (
-  <div className="p-4 border-b flex flex-col justify-center h-screen lg:h-80">
-    <div className="mb-4 lg:flex lg:gap-4 lg:items-center">
+  <div className={classNames(styles.home__hero, "p-4 pb-12 lg:pb-40 flex flex-col h-screen")}>
+    <div className="mb-4 lg:flex lg:gap-4 lg:items-center mt-auto">
       <h1 className="text-6xl mb-4 lg:mb-0">LanguageAI</h1>
       <h2 className="text-6xl">v{PackageJson.version}</h2>
     </div>
