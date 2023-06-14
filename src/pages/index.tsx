@@ -2,10 +2,10 @@ import React from "react";
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
 import Button from "@/common/components/Button";
+import HomeHero from "@/modules/home/components/HomeHero";
+import HomeCopywriting from "@/modules/home/components/HomeCopywriting";
 import TranslateComparison from "@/modules/translate/components/TranslateComparison";
-import HomeCopywriting from "@/modules/home/HomeCopywriting";
 import CheckbotComparison from "@/modules/checkbot/components/CheckbotComparison";
-import HomeHero from "@/modules/home/HomeHero";
 
 const Home = () => {
   const seo = {

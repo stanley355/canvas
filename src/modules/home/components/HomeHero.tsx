@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import PackageJson from "../../../package.json";
+import PackageJson from "../../../../package.json";
 import styles from './home.module.scss';
 
 const HomeHero = () => (
