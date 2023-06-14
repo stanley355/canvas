@@ -26,7 +26,7 @@ const HomeCopywriting = () => {
             <div className="text-2xl font-semibold">{copy.title}</div>
             <ul className="text-xl mt-4">
               {copy.features.map((feature: string) =>
-                <li className="flex items-center gap-2 py-2">
+                <li className="flex items-center gap-2 py-2" key={`${copy.title}_${feature}`}>
                   <FaCheck />
                   <span>{feature}</span>
                 </li>)}
