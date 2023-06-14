@@ -17,6 +17,7 @@ const inter = Inter({ subsets: ["latin"] });
 const Header = () => {
   const isDesktop = useDesktopScreen();
 
+  const [showModal, setShowModal] = useState(false);
   const [token, setToken] = useState("");
 
   useEffect(() => {
@@ -31,7 +32,7 @@ const Header = () => {
   return (
     <nav
       className={classNames(
-        "w-full p-4 border-b flex flex-row items-center justify-between",
+        "bg-black w-full p-4 flex flex-row items-center justify-between fixed lg:relative",
         inter.className
       )}
     >
@@ -39,17 +40,24 @@ const Header = () => {
         type="link"
         href="/"
         wrapperClassName="text-2xl font-semibold cursor-pointer"
-        buttonClassName="flex flex-row items-center"
+        buttonClassName="flex items-center w-full"
       >
-        <SiTaichilang className="rounded-full mr-2" />
+        <SiTaichilang className="mr-2" />
         <span>LanguageAI</span>
       </Button>
 
       {isDesktop ? (
         <DesktopHeaderMenu token={token} />
       ) : (
-        <MobileHeaderMenu token={token} />
+        <Button
+          type="button"
+          title={showModal ? "Close" : "Menu"}
+          ariaLabel="header_menu_btn"
+          onClick={() => setShowModal(!showModal)}
+          wrapperClassName="text-md active:underline"
+        />
       )}
+      {showModal && <MobileHeaderMenu token={token} />}
     </nav>
   );
 };

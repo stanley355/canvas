@@ -16,82 +16,59 @@ import { IHeaderMenu } from ".";
 
 const MobileHeaderMenu = (props: IHeaderMenu) => {
   const { token } = props;
-  const [showMenu, setShowMenu] = useState(false);
 
-  const Menu = () => (
-    <div className="absolute -top-5 -right-4 bg-black border z-10 text-lg h-screen w-60">
-      <Button
-        type="button"
-        buttonClassName="p-4"
-        wrapperClassName="text-right text-2xl mt-2"
-        onClick={() => setShowMenu(false)}
-      >
-        <FaTimes />
-      </Button>
+  return (
+    <div className="absolute top-16 left-0 bg-black z-10 text-lg h-screen w-full px-2">
       <Button
         type="link"
         href="/premium/checkbot/"
-        buttonClassName="p-4 flex flex-row items-center"
-        wrapperClassName="my-4 hover:bg-white hover:text-black"
+        buttonClassName="flex items-center"
+        wrapperClassName="border-t p-2"
       >
-        <FaPlusCircle className="text-4xl mr-3" />
-        <span className="text-2xl">Premium Checkbot</span>
-        <FaAngleRight className="text-3xl float-right ml-8" />
+        <FaPlusCircle className="mr-2" />
+        <span>Premium Checkbot</span>
+        <FaAngleRight className="ml-auto" />
       </Button>
       <Button
         type="link"
         href="/premium/translate/"
-        buttonClassName="p-4 flex flex-row items-center"
-        wrapperClassName="my-4 hover:bg-white hover:text-black"
+        buttonClassName="flex items-center"
+        wrapperClassName="border-t p-2"
       >
-        <FaPlusSquare className="text-4xl mr-3" />
-        <span className="text-2xl">Premium Translate</span>
-        <FaAngleRight className="text-3xl float-right ml-8" />
+        <FaPlusSquare className="mr-2" />
+        <span>Premium Translate</span>
+        <FaAngleRight className="ml-auto" />
       </Button>
       <Button
         type="link"
         href="/checkbot/"
-        buttonClassName="p-4 flex flex-row items-center"
-        wrapperClassName="my-4 hover:bg-white hover:text-black"
+        buttonClassName="flex items-center"
+        wrapperClassName="border-t p-2"
       >
-        <FaRobot className="text-3xl mr-2" />
-        <span className="pt-2 text-2xl">Checkbot</span>
-        <FaAngleRight className="text-3xl float-right ml-8" />
+        <FaRobot className="mr-2" />
+        <span>LanguageAI Checkbot</span>
+        <FaAngleRight className="ml-auto" />
       </Button>
       <Button
         type="link"
         href="/translate/"
-        buttonClassName="p-4 flex flex-row items-center"
-        wrapperClassName="my-4 hover:bg-white hover:text-black"
+        buttonClassName="flex items-center"
+        wrapperClassName="border-t p-2"
       >
-        <FaLanguage className="text-3xl mr-2" />
-        <span className="text-2xl">Translate</span>
-        <FaAngleRight className="text-3xl float-right ml-8" />
+        <FaLanguage className="mr-2" />
+        <span>LanguageAI Translate</span>
+        <FaAngleRight className="ml-auto" />
       </Button>
       <Button
         type="link"
         href={token ? "/profile/" : "/login/"}
-        buttonClassName="p-4 flex flex-row items-center"
-        wrapperClassName="my-4 hover:bg-white hover:text-black"
+        buttonClassName="flex items-center"
+        wrapperClassName="border-y p-2"
       >
-        <FaUserCircle className="text-3xl mr-2" />
-        <span className="text-2xl">{token ? "Profile" : "Login"}</span>
-        <FaAngleRight className="text-3xl float-right ml-8" />
+        <FaUserCircle className="mr-2" />
+        <span>{token ? "Profile" : "Login"}</span>
+        <FaAngleRight className="ml-auto"/>
       </Button>
-    </div>
-  );
-
-  return (
-    <div className="relative">
-      <Button
-        type="button"
-        ariaLabel="header_menu_btn"
-        onClick={() => setShowMenu(true)}
-        buttonClassName="flex items-center justify-center text-2xl"
-      >
-        <FaBuffer />
-      </Button>
-      {showMenu && <Menu />}
     </div>
   );
 };
