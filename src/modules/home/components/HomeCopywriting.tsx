@@ -5,12 +5,6 @@ import { HOME_COPYWRITING } from "../lib/constant";
 
 const HomeCopywriting = () => {
 
-  const TranslateCopywriting = () => (
-    <div>
-
-    </div>
-  )
-
   return (
     <div className="px-4 py-12">
       <h3 className="my-4 text-4xl text-center lg:text-5xl">
