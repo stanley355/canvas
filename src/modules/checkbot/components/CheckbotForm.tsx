@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import dynamic from "next/dynamic";
 import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
@@ -12,11 +11,6 @@ import { generateCheckbotPrompt } from "../lib/generateCheckbotPrompt";
 import { fetchCheckbotAndDispatch } from "../lib/fetchCheckbotAndDispatch";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
-import { showPremiumOffer } from "@/common/lib/showPremiumOffer";
-
-const PremiumCheckbotModal = dynamic(
-  () => import("../../premium/components/PremiumCheckbotModal")
-);
 
 interface ICheckBotForm {
   dispatchLoginForm: () => void;
@@ -27,7 +21,6 @@ const CheckBotForm = (props: ICheckBotForm) => {
   const { dispatchLoginForm, dispatchCheckbotVal } = props;
   const [showPersonalInstruction, setShowPersonalInstruction] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [showModal, setShowModal] = useState(false);
 
   const isDesktop = useDesktopScreen();
 
@@ -66,9 +59,8 @@ const CheckBotForm = (props: ICheckBotForm) => {
       instruction: instruction,
     });
 
-    let personalInstruction = "";
+    const personalInstruction = e.target?.personal_instruction?.value;
     if (instruction === "personal_instruction") {
-      personalInstruction = e.target.personal_instruction.value;
       if (!personalInstruction) {
         alert("You haven't filled the personal instruction");
         return "";
@@ -81,29 +73,18 @@ const CheckBotForm = (props: ICheckBotForm) => {
       sourceText
     );
 
-    const fetchSuccess = await fetchCheckbotAndDispatch(
+    await fetchCheckbotAndDispatch(
       prompt,
       dispatchCheckbotVal
     );
 
     if (!isDesktop) window.location.href = "#checkbot_result_textarea";
-
-    if (fetchSuccess) {
-      setIsLoading(false);
-      const showOffer = showPremiumOffer();
-      if (showOffer) {
-        setShowModal(true);
-        sendFirebaseEvent("premium_offer", {});
-      }
-      return;
-    }
+    setIsLoading(false);
+    return;
   };
 
   return (
     <form onSubmit={handleSubmit} className="mb-8">
-      {showModal && (
-        <PremiumCheckbotModal onCloseClick={() => setShowModal(false)} />
-      )}
       <label htmlFor="checkbot_instruction_select">
         <Select
           placeholder="What can I help you with?"

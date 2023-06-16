@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import dynamic from "next/dynamic";
 import Select from "react-select";
 import { toast } from "react-toastify";
-import { FaSpinner, FaPlay } from "react-icons/fa";
+import { FaSpinner } from "react-icons/fa";
 import axios from "axios";
 import { LANGUAGE_LIST } from "../constant";
 import Button from "@/common/components/Button";
@@ -11,11 +10,6 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
-import { showPremiumOffer } from "@/common/lib/showPremiumOffer";
-
-const PremiumOfferModal = dynamic(
-  () => import("../../premium/components/PremiumTranslationModal")
-);
 
 interface ITranslateForm {
   dispatchLoginForm: () => void;
@@ -25,7 +19,6 @@ interface ITranslateForm {
 const TranslateForm = (props: ITranslateForm) => {
   const { dispatchLoginForm, dispatchTranslateVal } = props;
 
-  const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const isDesktop = useDesktopScreen();
 
@@ -88,12 +81,6 @@ const TranslateForm = (props: ITranslateForm) => {
       dispatchTranslateVal(content);
 
       if (!isDesktop) window.location.href = "#translate_result_textarea";
-
-      const showOffer = showPremiumOffer();
-      if (showOffer) {
-        setShowModal(true);
-        sendFirebaseEvent("premium_offer", {});
-      }
       return;
     }
 
@@ -104,9 +91,6 @@ const TranslateForm = (props: ITranslateForm) => {
 
   return (
     <form onSubmit={handleSubmit} className="mb-8">
-      {showModal && (
-        <PremiumOfferModal onCloseClick={() => setShowModal(false)} />
-      )}
       <label htmlFor="target_lang_select" className="w-full">
         <Select
           className="text-black"
