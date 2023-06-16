@@ -18,7 +18,7 @@ const LoginPage = () => {
     if (cookieToken) {
       window.location.href = "/profile/";
     }
-  }, [seo]);
+  }, []);
 
   return (
     <Layout>

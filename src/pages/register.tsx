@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Layout from "@/common/components/Layout";
 import RegisterForm from "@/modules/login/components/RegisterForm";
 import Cookies from "js-cookie";
+import MetaSEO from "@/common/components/MetaSEO";
 
 const Register = () => {
   const seo = {
@@ -17,10 +18,11 @@ const Register = () => {
     if (cookieToken) {
       window.location.href = "/profile/";
     }
-  }, [seo]);
+  }, []);
 
   return (
     <Layout>
+      <MetaSEO seo={seo} />
       <div className="container mx-auto h-screen p-4">
         <RegisterForm />
       </div>
