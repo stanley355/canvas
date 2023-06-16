@@ -7,12 +7,10 @@ import TranslateForm from "@/modules/translate/components/TranslateForm";
 import TranslateResult from "@/modules/translate/components/TranslateResult";
 import TranslateComparison from "@/modules/translate/components/TranslateComparison";
 import SocialShare from "@/common/components/SocialShare";
-import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
 const LangTranslate = () => {
   const [translateVal, setTranslateVal] = useState("");
   const [showLogin, setShowLogin] = useState(false);
-  const isDesktop = useDesktopScreen();
 
   const seo = {
     title:
