@@ -1,74 +1,30 @@
-import React, { useState } from "react";
-import {
-  FaBuffer,
-  FaTimes,
-  FaRobot,
-  FaLanguage,
-  FaAngleRight,
-  FaGlobeAmericas,
-  FaUserCircle,
-  FaPhone,
-  FaPlusCircle,
-  FaPlusSquare,
-} from "react-icons/fa";
+import React from "react";
+import { FaAngleRight } from "react-icons/fa";
+import classNames from "classnames";
 import Button from "../Button";
 import { IHeaderMenu } from ".";
+import { HEADER_MENU } from "./constant";
 
 const MobileHeaderMenu = (props: IHeaderMenu) => {
   const { token } = props;
 
   return (
     <div className="absolute top-16 left-0 bg-black text-lg h-screen w-full px-2">
-      <Button
-        type="link"
-        href="/premium/checkbot/"
-        buttonClassName="flex items-center"
-        wrapperClassName="border-t p-2"
-      >
-        <FaPlusCircle className="mr-2" />
-        <span>Premium Checkbot</span>
-        <FaAngleRight className="ml-auto" />
-      </Button>
-      <Button
-        type="link"
-        href="/premium/translate/"
-        buttonClassName="flex items-center"
-        wrapperClassName="border-t p-2"
-      >
-        <FaPlusSquare className="mr-2" />
-        <span>Premium Translate</span>
-        <FaAngleRight className="ml-auto" />
-      </Button>
-      <Button
-        type="link"
-        href="/checkbot/"
-        buttonClassName="flex items-center"
-        wrapperClassName="border-t p-2"
-      >
-        <FaRobot className="mr-2" />
-        <span>LanguageAI Checkbot</span>
-        <FaAngleRight className="ml-auto" />
-      </Button>
-      <Button
-        type="link"
-        href="/translate/"
-        buttonClassName="flex items-center"
-        wrapperClassName="border-t p-2"
-      >
-        <FaLanguage className="mr-2" />
-        <span>LanguageAI Translate</span>
-        <FaAngleRight className="ml-auto" />
-      </Button>
-      <Button
-        type="link"
-        href={token ? "/profile/" : "/login/"}
-        buttonClassName="flex items-center"
-        wrapperClassName="border-y p-2"
-      >
-        <FaUserCircle className="mr-2" />
-        <span>{token ? "Profile" : "Login"}</span>
-        <FaAngleRight className="ml-auto"/>
-      </Button>
+      {HEADER_MENU
+        .filter(menu =>
+          token ? menu.title !== "Login" : menu.title !== "Profile"
+        ).map((menu, i) =>
+          <Button
+            type="link"
+            href={menu.url}
+            buttonClassName="flex items-center gap-2"
+            wrapperClassName={classNames("border-b p-2", i === 0 ? "border-t" : "")}
+          >
+            {menu.icon}
+            <span>{menu.title}</span>
+            <FaAngleRight className="ml-auto" />
+          </Button>
+        )}
     </div>
   );
 };
