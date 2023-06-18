@@ -55,6 +55,7 @@ const Header = () => {
           ).map((menu, i) =>
             <Button
               type="link"
+              key={menu.url}
               href={menu.url}
               buttonClassName="flex items-center gap-2"
               wrapperClassName={classNames("border-b lg:border-b-0 p-2 lg:p-0 hover:border-b", i === 0 ? "border-t lg:border-t-0" : "")}
