@@ -8,12 +8,13 @@ interface IMetaSEO {
 const MetaSEO = ({ seo }: IMetaSEO) => {
   return (
     <Head>
-      <title>hi</title>
+      <link rel="icon" type="image/png" href="/images/langai_icon.png" />
       <title>{seo?.title}</title>
       <meta name="description" content={seo?.description} />
+      <meta name="keywords" content={seo?.keywords} />
       <meta charSet="utf-8" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-      <meta httpEquiv="content-language" content="ID" />
+      <meta httpEquiv="content-language" content="EN" />
       <meta name="theme-color" content="#1D66DD" />
       <meta name="mobile-web-app-capable" content="yes" />
       <meta
@@ -29,17 +30,13 @@ const MetaSEO = ({ seo }: IMetaSEO) => {
       <meta property="og:type" content="website" />
       <meta property="og:description" content={seo?.description} />
       <meta property="og:url" content={seo?.url} />
-      <meta property="og:site_name" content="LanguageAI" />
-      <meta property="og:image" content={seo?.image ?? ""} />
-      <meta name="twitter:card" content={seo?.twitterCard} />
+      <meta property="og:site_name" content="Language AI" />
       <meta name="twitter:title" content={seo?.title} />
       <meta name="twitter:description" content={seo?.description} />
-      <meta name="twitter:image" content={seo?.image?.url} />
-      <link rel="icon" type="image/png" href="/images/langai_icon.png" />
-      <meta name="twitter:creator" content="@languageai" />
-      <meta name="twitter:site" content="@languageai" />
+      <meta name="twitter:site" content={seo?.url} />
+      <meta name="twitter:creator" content="winatastanley355@gmail.com" />
       <meta name="twitter:label1" content="@languageai" />
-      <meta name="twitter:data1" content="LanguageAI" />
+      <meta name="twitter:data1" content="Language AI" />
     </Head>
   );
 };
