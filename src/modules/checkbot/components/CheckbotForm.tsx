@@ -73,10 +73,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
       sourceText
     );
 
-    await fetchCheckbotAndDispatch(
-      prompt,
-      dispatchCheckbotVal
-    );
+    await fetchCheckbotAndDispatch(prompt, dispatchCheckbotVal);
 
     if (!isDesktop) window.location.href = "#checkbot_result_textarea";
     setIsLoading(false);
