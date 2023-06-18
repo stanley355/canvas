@@ -1,5 +1,4 @@
 import React from "react";
-import { GetStaticProps } from "next";
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
 import HomeHero from "@/modules/home/components/HomeHero";
@@ -7,15 +6,13 @@ import HomeServices from "@/modules/home/components/HomeServices";
 import HomeFeaturedIn from "@/modules/home/components/HomeFeaturedIn";
 import HomeStatistic from "@/modules/home/components/HomeStatistic";
 import LoginForm from "@/modules/login/components/LoginForm";
-import { fetchDatoCms } from "@/common/lib/fetchDatoCms";
-import { HOME_GRAPHQL_QUERY } from "@/modules/home/lib/graphqlquery";
+import { HOME_SEO } from "@/modules/home/lib/constant";
 
-const Home = (props: any) => {
-  const { dato } = props;
+const Home = () => {
 
   return (
     <Layout>
-      <MetaSEO seo={dato?.blog} />
+      <MetaSEO seo={HOME_SEO} />
       <HomeHero />
       <div className="container mx-auto">
         <HomeServices />
@@ -30,13 +27,3 @@ const Home = (props: any) => {
 };
 
 export default Home;
-export const getStaticProps: GetStaticProps = async () => {
-  const dato: any = await fetchDatoCms(HOME_GRAPHQL_QUERY);
-  if (dato?.blog) {
-    dato.blog.url = process.env.NEXT_PUBLIC_BASE_URL;
-  }
-
-  return {
-    props: { dato }
-  }
-}
