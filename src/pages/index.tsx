@@ -33,7 +33,7 @@ export default Home;
 export const getStaticProps: GetStaticProps = async () => {
   const dato: any = await fetchDatoCms(HOME_GRAPHQL_QUERY);
   if (dato?.blog) {
-    dato.url = process.env.NEXT_PUBLIC_BASE_URL;
+    dato.blog.url = process.env.NEXT_PUBLIC_BASE_URL;
   }
 
   return {
