@@ -8,6 +8,7 @@ import HomeFeaturedIn from "@/modules/home/components/HomeFeaturedIn";
 import HomeStatistic from "@/modules/home/components/HomeStatistic";
 import TranslateComparison from "@/modules/translate/components/TranslateComparison";
 import CheckbotComparison from "@/modules/checkbot/components/CheckbotComparison";
+import LoginForm from "@/modules/login/components/LoginForm";
 
 const Home = () => {
   const seo = {
@@ -26,6 +27,10 @@ const Home = () => {
         <HomeServices />
         <HomeFeaturedIn />
         <HomeStatistic />
+        <div className="py-4">
+
+        <LoginForm />
+        </div>
       </div>
     </Layout>
   );
