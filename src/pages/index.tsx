@@ -3,9 +3,10 @@ import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
 import Button from "@/common/components/Button";
 import HomeHero from "@/modules/home/components/HomeHero";
+import HomeServices from "@/modules/home/components/HomeServices";
+import HomeFeaturedIn from "@/modules/home/components/HomeFeaturedIn";
 import TranslateComparison from "@/modules/translate/components/TranslateComparison";
 import CheckbotComparison from "@/modules/checkbot/components/CheckbotComparison";
-import HomeServices from "@/modules/home/components/HomeServices";
 
 const Home = () => {
   const seo = {
@@ -22,6 +23,7 @@ const Home = () => {
       <HomeHero />
       <div className="container mx-auto">
         <HomeServices />
+        <HomeFeaturedIn />
         <div className="px-2 mt-4 mb-8 flex flex-col items-center justify-center">
           <CheckbotComparison />
           <div className="my-16">
