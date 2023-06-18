@@ -1,12 +1,6 @@
 import { GraphQLClient } from "graphql-request";
 
-export const fetchDatoCms = ({
-  query,
-  variables,
-}: {
-  query: string;
-  variables: any;
-}) => {
+export const fetchDatoCms = (query: string, variables?: any) => {
   const headers = {
     authorization: `Bearer ${process.env.DATOCMS_TOKEN}`,
     "X-Exclude-Invalid": "true",
@@ -16,5 +10,12 @@ export const fetchDatoCms = ({
   const client = new GraphQLClient(url, {
     headers,
   });
-  return client.request(query, variables);
+
+  try {
+    return client.request(query, variables);
+  } catch (err: any) {
+    return {
+      error: err.message,
+    };
+  }
 };
