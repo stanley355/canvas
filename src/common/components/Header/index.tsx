@@ -12,7 +12,6 @@ const inter = Inter({ subsets: ["latin"] });
 
 const Header = () => {
   const isDesktop = useDesktopScreen();
-
   const [showModal, setShowModal] = useState(false);
   const [token, setToken] = useState("");
 
@@ -23,7 +22,7 @@ const Header = () => {
         setToken(String(cookieToken));
       }
     }
-  }, [isDesktop]);
+  }, [token]);
 
   return (
     <nav

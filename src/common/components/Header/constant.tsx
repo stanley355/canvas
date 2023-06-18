@@ -18,7 +18,7 @@ export const HEADER_MENU = [
   },
   {
     title: "AI Translate",
-    url: "/checkbot/",
+    url: "/translate/",
     icon: <FaLanguage />
   },
   {
