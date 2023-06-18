@@ -94,9 +94,7 @@ const TranslateForm = (props: ITranslateForm) => {
       <label htmlFor="target_lang_select" className="w-full">
         <Select
           className="text-black"
-          placeholder={
-            isDesktop ? "Select Target Language" : "Select Language"
-          }
+          placeholder={isDesktop ? "Select Target Language" : "Select Language"}
           id="target_lang_select"
           name="target_lang"
           aria-label="target_lang_select"

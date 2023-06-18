@@ -47,24 +47,28 @@ const Header = () => {
         onClick={() => setShowModal(!showModal)}
         wrapperClassName="text-md active:underline lg:hidden"
       />
-      {(showModal || isDesktop) && <div className="bg-black absolute lg:static lg:flex lg:gap-4 top-16 left-0 text-lg lg:text-xl w-full lg:w-fit h-screen lg:h-fit px-2 lg:px-0">
-        {HEADER_MENU
-          .filter(menu =>
+      {(showModal || isDesktop) && (
+        <div className="bg-black absolute lg:static lg:flex lg:gap-4 top-16 left-0 text-lg lg:text-xl w-full lg:w-fit h-screen lg:h-fit px-2 lg:px-0">
+          {HEADER_MENU.filter((menu) =>
             token ? menu.title !== "Login" : menu.title !== "Profile"
-          ).map((menu, i) =>
+          ).map((menu, i) => (
             <Button
               type="link"
               key={menu.url}
               href={menu.url}
               buttonClassName="flex items-center gap-2"
-              wrapperClassName={classNames("border-b lg:border-b-0 p-2 lg:p-0 hover:border-b", i === 0 ? "border-t lg:border-t-0" : "")}
+              wrapperClassName={classNames(
+                "border-b lg:border-b-0 p-2 lg:p-0 hover:border-b",
+                i === 0 ? "border-t lg:border-t-0" : ""
+              )}
             >
               {menu.icon}
               <span>{menu.title}</span>
               <FaAngleRight className="ml-auto lg:hidden" />
             </Button>
-          )}
-      </div>}
+          ))}
+        </div>
+      )}
     </nav>
   );
 };

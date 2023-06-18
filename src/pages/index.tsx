@@ -28,8 +28,7 @@ const Home = () => {
         <HomeFeaturedIn />
         <HomeStatistic />
         <div className="py-4">
-
-        <LoginForm />
+          <LoginForm />
         </div>
       </div>
     </Layout>

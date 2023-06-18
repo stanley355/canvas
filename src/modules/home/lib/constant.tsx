@@ -1,9 +1,5 @@
-import React from 'react'
-import {
-  FaLanguage,
-  FaRobot,
-  FaPlusCircle,
-} from "react-icons/fa";
+import React from "react";
+import { FaLanguage, FaRobot, FaPlusCircle } from "react-icons/fa";
 
 export const HOME_COPYWRITING = [
   {
@@ -18,8 +14,8 @@ export const HOME_COPYWRITING = [
       "Online Translation",
       "Contextual and Accurate Translation",
       "Free Translation",
-      "4000 words max translation"
-    ]
+      "4000 words max translation",
+    ],
   },
   {
     icon: <FaPlusCircle />,
@@ -33,8 +29,8 @@ export const HOME_COPYWRITING = [
       "Online Translation",
       "Contextual and Accurate Translation",
       "Rp1 per word/token",
-      "8000 words max translation"
-    ]
+      "8000 words max translation",
+    ],
   },
   {
     icon: <FaRobot />,
@@ -48,8 +44,8 @@ export const HOME_COPYWRITING = [
       "Online Editor for Grammar Check",
       "AI powered Grammar Check",
       "Free Grammar Checker",
-      "4000 words max"
-    ]
+      "4000 words max",
+    ],
   },
   {
     icon: <FaPlusCircle />,
@@ -63,7 +59,7 @@ export const HOME_COPYWRITING = [
       "Online Editor for Grammar Check",
       "AI powered Grammar Check",
       "Rp1 per word/token",
-      "8000 words max"
-    ]
+      "8000 words max",
+    ],
   },
-]
+];

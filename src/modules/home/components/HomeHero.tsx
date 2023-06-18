@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import PackageJson from "../../../../package.json";
-import styles from './home.module.scss';
+import styles from "./home.module.scss";
 
 const HomeHero = () => (
   <div className={classNames(styles.home__hero, "p-2 lg:px-4 h-screen")}>
