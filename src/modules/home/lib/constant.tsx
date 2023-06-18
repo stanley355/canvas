@@ -8,15 +8,17 @@ import {
 export const HOME_COPYWRITING = [
   {
     icon: <FaLanguage />,
-    title: "LanguageAI Translate",
+    title: "Language AI Translate",
     link: "/translate/",
     ctaText: "Translate",
     features: [
-      "5x Google Translate Quality",
-      "All Languages Support",
-      "Natural Language Detection",
-      "Context Support",
-      "2000 words max"
+      "Translate words, texts, and phrases",
+      "Translate English and All Languages",
+      "Machine Translation",
+      "Online Translation",
+      "Contextual and Accurate Translation",
+      "Free Translation",
+      "4000 words max translation"
     ]
   },
   {
@@ -25,16 +27,18 @@ export const HOME_COPYWRITING = [
     link: "/translate/",
     ctaText: "Translate",
     features: [
-      "10x Google Translate Quality",
-      "All Languages Support",
-      "Natural Language Detection",
-      "Context Support",
-      "8000 words max"
+      "Translate words, texts, and phrases",
+      "Translate English and All Languages",
+      "Machine Translation",
+      "Online Translation",
+      "Contextual and Accurate Translation",
+      "Rp1 per word/token",
+      "8000 words max translation"
     ]
   },
   {
     icon: <FaRobot />,
-    title: "LanguageAI Checkbot",
+    title: "Language AI Checkbot",
     link: "/checkbot/",
     ctaText: "Let's Check",
     features: [
