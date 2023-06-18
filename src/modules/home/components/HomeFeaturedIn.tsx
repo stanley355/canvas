@@ -4,7 +4,7 @@ import Button from '@/common/components/Button';
 
 const HomeFeaturedIn = () => {
   return (
-    <div className='p-4 mb-16 border-y'>
+    <div className='p-4 border-y'>
       <div className='text-3xl font-semibold text-center mb-8'>Featured In</div>
       <div className='lg:grid lg:grid-cols-2'>
         <div className='mb-8'>
