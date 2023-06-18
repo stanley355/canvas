@@ -42,12 +42,13 @@ export const HOME_COPYWRITING = [
     link: "/checkbot/",
     ctaText: "Let's Check",
     features: [
-      "10x Grammarly Quality",
-      "All Languages Support",
-      "Natural Language Detection",
-      "Context Support",
-      "Proofread, Rewrite, or Paraphrase",
-      "2000 words max"
+      "Check Grammar, Spelling, and Punctuation",
+      "Improve Writing and Sentence Clarity",
+      "Correct English and All Languages",
+      "Online Editor for Grammar Check",
+      "AI powered Grammar Check",
+      "Free Grammar Checker",
+      "4000 words max"
     ]
   },
   {
@@ -56,11 +57,12 @@ export const HOME_COPYWRITING = [
     link: "/premium/checkbot/",
     ctaText: "Let's Check",
     features: [
-      "20x Grammarly Quality",
-      "All Languages Support",
-      "Natural Language Detection",
-      "Context Support",
-      "Proofread, Rewrite, or Paraphrase",
+      "Check Grammar, Spelling, and Punctuation",
+      "Improve Writing and Sentence Clarity",
+      "Correct English and All Languages",
+      "Online Editor for Grammar Check",
+      "AI powered Grammar Check",
+      "Rp1 per word/token",
       "8000 words max"
     ]
   },
