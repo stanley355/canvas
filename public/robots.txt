@@ -1,6 +1,7 @@
 # *
 User-agent: *
-Disallow: 
+Disallow: /login
+Disallow: /register
 
 # Host
 Host: https://languageai.world
