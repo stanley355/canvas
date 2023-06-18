@@ -6,12 +6,9 @@ import { HOME_COPYWRITING } from "../lib/constant";
 const HomeCopywriting = () => {
 
   return (
-    <div className="px-4 py-12">
-      <h3 className="my-4 text-4xl text-center lg:text-5xl">
-        Not Just English, but World Languages!
-      </h3>
-      <div className="text-xl lg:text-3xl text-center my-4 hidden lg:block">
-        European, African, or Asian languages are all possible!
+    <div className="px-4 py-8">
+      <div className="font-semibold text-4xl text-center">
+        Translate and Check Not Just English, but All Languages!
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mt-8" >
         {HOME_COPYWRITING.map((copy: any) =>
