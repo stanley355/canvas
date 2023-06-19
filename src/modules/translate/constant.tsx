@@ -80,3 +80,10 @@ export const LANGUAGE_LIST = [
     value: "Vietnamese",
   },
 ];
+
+export const TRANSLATE_SEO = {
+  title: "Language AI - English and other Language Translator",
+  description: "Unlock seamless translation across languages with Language AI's free and fast translation service. Effortlessly translate words, phrases, and web pages between English and over 100 languages. Join millions of individuals and teams benefiting from accurate translations instantly, and experience the power of Language AI today.",
+  keywords: "translate, translations, translation, translator, machine translation, online translation",
+  url: `${process.env.NEXT_PUBLIC_BASE_URL}/translate`
+};

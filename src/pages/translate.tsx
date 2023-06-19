@@ -6,19 +6,12 @@ import Layout from "@/common/components/Layout";
 import TranslateForm from "@/modules/translate/components/TranslateForm";
 import TranslateResult from "@/modules/translate/components/TranslateResult";
 import TranslateComparison from "@/modules/translate/components/TranslateComparison";
+import { TRANSLATE_SEO } from "@/modules/translate/constant";
 import SocialShare from "@/common/components/SocialShare";
 
 const LangTranslate = () => {
   const [translateVal, setTranslateVal] = useState("");
   const [showLogin, setShowLogin] = useState(false);
-
-  const seo = {
-    title:
-      "LanguageAI Translate - The Best Translation App for All Languages | Contextual Translation",
-    description:
-      "LanguageAI Translate is the top translation app for all languages in the world. Our app provides contextual translation, making it 10x better than Google Translate. Try LanguageAI Translate today for more accurate, reliable, and contextual translations.",
-    url: `${process.env.NEXT_PUBLIC_BASE_URL}translate/`,
-  };
 
   const LoginModal = dynamic(
     () => import("../modules/login/components/LoginModal")
@@ -26,7 +19,7 @@ const LangTranslate = () => {
 
   return (
     <Layout>
-      <MetaSEO seo={seo} />
+      <MetaSEO seo={TRANSLATE_SEO} />
       <div className="container mx-auto px-2">
         <h1
           className="py-2 text-2xl lg:text-4xl flex flex-row items-center justify-center lg:my-4"
