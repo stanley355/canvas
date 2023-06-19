@@ -5,17 +5,11 @@ import Layout from "@/common/components/Layout";
 import CheckBotForm from "@/modules/checkbot/components/CheckbotForm";
 import CheckboxResult from "@/modules/checkbot/components/CheckbotResult";
 import MetaSEO from "@/common/components/MetaSEO";
+import { CHECKBOT_SEO } from "@/modules/checkbot/constant";
 
 const CheckBot = () => {
   const [checkbotVal, setCheckbotVal] = useState("");
   const [showLogin, setShowLogin] = useState(false);
-
-  const seo = {
-    title: "Free Grammar Checker - LanguageAI Checkbot",
-    description:
-      "Grammar check for free! Copy and paste your text in grammar checker. Fix grammar, spelling, and punctuation errors instantly with our cutting-edge AI technology. No sign-up required!",
-    url: `${process.env.NEXT_PUBLIC_BASE_URL}checkbot/`,
-  };
 
   const LoginModal = dynamic(
     () => import("../modules/login/components/LoginModal")
@@ -23,7 +17,7 @@ const CheckBot = () => {
 
   return (
     <Layout>
-      <MetaSEO seo={seo} />
+      <MetaSEO seo={CHECKBOT_SEO} />
       <div className="lg:w-3/4 mx-auto px-2 lg:px-0 lg:h-screen" id="title">
         <h1 className="flex flex-row items-center text-2xl lg:text-4xl justify-center my-4">
           <FaRobot className="text-3xl mr-2" />

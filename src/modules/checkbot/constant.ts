@@ -1,4 +1,3 @@
-
 export const CHECKBOT_OPTIONS = [
   {
     label: "Custom instruction",
@@ -57,3 +56,12 @@ export const CHECKBOT_OPTIONS = [
     value: "Review this text:",
   },
 ];
+
+export const CHECKBOT_SEO = {
+  title: "Language AI Checkbot - Free Grammar Check",
+  description:
+    "Enhance Your Writing with Language AI  Grammar Checker | Fix Grammar, Spelling, and Punctuation Errors Instantly.",
+  keywords:
+    "check grammar, spelling, punctuation, improve text, AI grammar checker, free grammar check, fix grammar, free online grammar check, improve writing, English checker tool, online grammar fixer",
+  url: `${process.env.NEXT_PUBLIC_BASE_URL}/checkbot`,
+};
