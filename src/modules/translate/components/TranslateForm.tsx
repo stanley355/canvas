@@ -113,7 +113,7 @@ const TranslateForm = (props: ITranslateForm) => {
         <Button
           type="submit"
           disabled={isLoading}
-          wrapperClassName="w-full lg:w-2/3 lg:mx-auto"
+          wrapperClassName="w-full lg:mx-auto"
           buttonClassName="w-full bg-white text-black py-2 text-md rounded-md font-semibold text-center hover:border hover:border-white hover:bg-black hover:text-white"
         >
           {isLoading ? (
