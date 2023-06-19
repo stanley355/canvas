@@ -91,8 +91,16 @@ export const PREMIUM_CHECKBOT_OPTIONS = [
     value: "Analyze the strength and weakness from this text:",
   },
   {
+    label: "Correct Grammar",
+    value: "Correct the grammar of this text:",
+  },
+  {
+    label: "Correct Spelling",
+    value: "Correct the spelling of this text:",
+  },
+  {
     label: "Correct Grammar & Spelling",
-    value: "Correct the grammar and spelling from this text:",
+    value: "Correct the grammar and spelling of this text:",
   },
   {
     label: "Find conclusion",
@@ -104,7 +112,7 @@ export const PREMIUM_CHECKBOT_OPTIONS = [
   },
   {
     label: "Improvement Suggestion",
-    value: "Give improvement suggestions from this text:",
+    value: "Give improvement suggestions of this text:",
   },
   {
     label: "Paraphrase",
@@ -120,14 +128,14 @@ export const PREMIUM_CHECKBOT_OPTIONS = [
   },
   {
     label: "Summarize this text",
-    value: "Summarize",
+    value: "Summarize this text:",
   },
   {
     label: "Rewrite this text",
-    value: "Rewrite",
+    value: "Rewrite this text:",
   },
   {
     label: "Review this text",
-    value: "Review",
+    value: "Review this text:",
   },
 ];
