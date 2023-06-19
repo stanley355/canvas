@@ -6,6 +6,7 @@ import HomeServices from "@/modules/home/components/HomeServices";
 import HomeFeaturedIn from "@/modules/home/components/HomeFeaturedIn";
 import HomeStatistic from "@/modules/home/components/HomeStatistic";
 import LoginForm from "@/modules/login/components/LoginForm";
+import FeedbackBox from "@/common/components/FeedbackBox";
 import { HOME_SEO } from "@/modules/home/lib/constant";
 
 const Home = () => {
@@ -21,6 +22,7 @@ const Home = () => {
         <div className="py-4">
           <LoginForm />
         </div>
+        <FeedbackBox />
       </div>
     </Layout>
   );
