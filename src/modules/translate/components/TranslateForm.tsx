@@ -10,6 +10,7 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
+import { handlePrompt } from "@/common/lib/handlePrompt";
 
 interface ITranslateForm {
   dispatchLoginForm: () => void;
@@ -52,35 +53,22 @@ const TranslateForm = (props: ITranslateForm) => {
     });
 
     setIsLoading(true);
+    const prompt = `Translate "${sourceText}" to ${targetLang}. ${contextText ?? ""}`;
+    const { content, prompt_tokens, completion_tokens } = await handlePrompt(prompt);
 
-    let baseMsg = `Translate this to ${targetLang}`;
-    if (contextText) {
-      baseMsg + "," + `(${contextText}) `;
-    }
-    baseMsg = `${baseMsg}: "${sourceText}"`;
-
-    const reqData = {
-      content: baseMsg,
-    };
-
-    const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/ai/chat-completion/`;
-    const { data } = await axios.post(URL, reqData);
-
-    if (data?.choices?.length > 0) {
+    if (content) {
       setIsLoading(false);
-
-      const content = data.choices[0].message.content;
+      dispatchTranslateVal(content);
+      if (!isDesktop) window.location.href = "#translate_result_textarea";
+      
       const saveUserPromptPayload = {
-        prompt_token: data?.usage?.prompt_tokens,
-        completion_token: data?.usage?.completion_tokens,
-        prompt_text: baseMsg,
+        prompt_token: prompt_tokens,
+        completion_token: completion_tokens,
+        prompt_text: prompt,
         completion_text: content,
       };
 
       await saveUserPrompt(saveUserPromptPayload);
-      dispatchTranslateVal(content);
-
-      if (!isDesktop) window.location.href = "#translate_result_textarea";
       return;
     }
 
