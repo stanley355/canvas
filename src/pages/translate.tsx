@@ -5,6 +5,7 @@ import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
 import TranslateForm from "@/modules/translate/components/TranslateForm";
 import TranslateResult from "@/modules/translate/components/TranslateResult";
+import FeedbackBox from "@/common/components/FeedbackBox";
 import { TRANSLATE_SEO } from "@/modules/translate/constant";
 
 const LangTranslate = () => {
@@ -18,7 +19,7 @@ const LangTranslate = () => {
   return (
     <Layout>
       <MetaSEO seo={TRANSLATE_SEO} />
-      <div className="lg:w-3/4 mx-auto px-2 lg:px-0 lg:h-screen">
+      <div className="lg:w-3/4 mx-auto px-2 lg:px-0">
         <h1
           className="py-2 text-2xl lg:text-4xl flex items-center justify-center lg:my-4"
           id="title"
@@ -33,6 +34,7 @@ const LangTranslate = () => {
           />
           <TranslateResult translateVal={translateVal} />
         </div>
+        <FeedbackBox />
       </div>
       {showLogin && <LoginModal />}
     </Layout>

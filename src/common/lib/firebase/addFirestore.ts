@@ -27,6 +27,7 @@ const addFirestore = async (payload: IAddFirestoreData) => {
         collection(db, payload.collectionID),
         payload.data
       );
+
       return docRef;
     } catch (e) {
       return e;
