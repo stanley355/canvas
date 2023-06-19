@@ -20,17 +20,14 @@ const LangTranslate = () => {
   return (
     <Layout>
       <MetaSEO seo={TRANSLATE_SEO} />
-      <div className="container mx-auto px-2">
+      <div className="container mx-auto px-2 lg:px-0 lg:h-screen">
         <h1
           className="py-2 text-2xl lg:text-4xl flex flex-row items-center justify-center lg:my-4"
           id="title"
         >
           <FaLanguage className="text-5xl mr-2" />
-          <span> LanguageAI Translate</span>
+          <span>AI Translate</span>
         </h1>
-        <h2 className="text-center text-lg mb-4">
-          #1 Translation App for All Languages
-        </h2>
         <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8">
           <TranslateForm
             dispatchLoginForm={() => setShowLogin(true)}
@@ -38,8 +35,6 @@ const LangTranslate = () => {
           />
           <TranslateResult translateVal={translateVal} />
         </div>
-        <SocialShare url={`${process.env.NEXT_PUBLIC_BASE_URL}translate/`} />
-        <TranslateComparison />
       </div>
       {showLogin && <LoginModal />}
     </Layout>
