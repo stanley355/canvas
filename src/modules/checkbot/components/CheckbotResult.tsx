@@ -25,7 +25,7 @@ const CheckboxResult = (props: ICheckbotResult) => {
           id="checkbot_result_textarea"
           className="w-full rounded-md text-black bg-white border p-2"
           cols={30}
-          rows={isDesktop ? 15 : 10}
+          rows={isDesktop ? 13 : 10}
           onChange={() => {}}
           value={checkbotVal ? checkbotVal : "Your result will show up here"}
         />

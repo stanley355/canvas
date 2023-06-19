@@ -3,14 +3,13 @@ import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
-import Button from "@/common/components/Button";
 import { CHECKBOT_OPTIONS } from "../constant";
-import { LANGUAGE_LIST } from "../../translate/constant";
+import Button from "@/common/components/Button";
 import SourceTextArea from "@/common/components/SourceTextArea";
-import { generateCheckbotPrompt } from "../lib/generateCheckbotPrompt";
-import { fetchCheckbotAndDispatch } from "../lib/fetchCheckbotAndDispatch";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
+import { handlePrompt } from "@/common/lib/handlePrompt";
+import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 
 interface ICheckBotForm {
   dispatchLoginForm: () => void;
@@ -40,17 +39,22 @@ const CheckBotForm = (props: ICheckBotForm) => {
     }
 
     const instruction = e.target.instruction.value;
-    const outputLanguage = e.target.output_language.value;
     const sourceText = e.target.source_text.value;
-
     if (!instruction) {
       toast.warning("You haven't chosen the instruction");
-      return "";
+      return; 
     }
 
     if (!sourceText) {
       toast.warning("Text could not be empty");
-      return "";
+      return; 
+    }
+
+
+    const personalInstruction = e.target?.personal_instruction?.value;
+    if (instruction === "personal_instruction" && !personalInstruction) {
+      toast.warning("You haven't filled the personal instruction");
+      return; 
     }
 
     setIsLoading(true);
@@ -58,24 +62,25 @@ const CheckBotForm = (props: ICheckBotForm) => {
       name: "checkbot",
       instruction: instruction,
     });
+    const prompt = `${personalInstruction ?? instruction} ${personalInstruction ? ", text: " : ""} ${sourceText}`;
+    const { content, prompt_tokens, completion_tokens } = await handlePrompt(prompt);
+    if (content) {
+      setIsLoading(false);
+      dispatchCheckbotVal(content);
+      if (!isDesktop) window.location.href = "#translate_result_textarea";
 
-    const personalInstruction = e.target?.personal_instruction?.value;
-    if (instruction === "personal_instruction") {
-      if (!personalInstruction) {
-        alert("You haven't filled the personal instruction");
-        return "";
-      }
+      const saveUserPromptPayload = {
+        prompt_token: prompt_tokens,
+        completion_token: completion_tokens,
+        prompt_text: prompt,
+        completion_text: content,
+      };
+
+      await saveUserPrompt(saveUserPromptPayload);
+      return;
     }
 
-    const prompt = generateCheckbotPrompt(
-      personalInstruction ? personalInstruction : instruction,
-      outputLanguage,
-      sourceText
-    );
-
-    await fetchCheckbotAndDispatch(prompt, dispatchCheckbotVal);
-
-    if (!isDesktop) window.location.href = "#checkbot_result_textarea";
+    toast.error("Something went wrong, please try again");
     setIsLoading(false);
     return;
   };
@@ -94,17 +99,6 @@ const CheckBotForm = (props: ICheckBotForm) => {
           onChange={handleCheckbotOption}
         />
       </label>
-      <label htmlFor="checkbot_language_select">
-        <Select
-          placeholder="Optional: Output Language"
-          name="output_language"
-          options={LANGUAGE_LIST}
-          className="w-full text-black mb-2"
-          id="checkbot_language_select"
-          aria-label="checkbot_language_select"
-          aria-labelledby="checkbot_language_select"
-        />
-      </label>
       {showPersonalInstruction && (
         <input
           type="text"
@@ -117,8 +111,8 @@ const CheckBotForm = (props: ICheckBotForm) => {
       <Button
         type="submit"
         disabled={isLoading}
-        wrapperClassName="w-full"
-        buttonClassName="w-full bg-white text-black py-2 text-md rounded-md font-semibold text-center hover:border hover:border-white hover:bg-black hover:text-white"
+        wrapperClassName="w-full mt-4"
+        buttonClassName="w-full bg-white text-black py-2 mttext-md rounded-md font-semibold text-center hover:border hover:border-white hover:bg-black hover:text-white"
       >
         {isLoading ? (
           <div className="flex flex row items-center justify-center">

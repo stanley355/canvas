@@ -10,7 +10,7 @@ interface IAddFirestoreData {
   data: any;
 }
 
-const addFirestoreData = async (payload: IAddFirestoreData) => {
+const addFirestore = async (payload: IAddFirestoreData) => {
   if (APP_ENV !== "develop") {
     const app: any = initFirebaseApp();
     const db = getFirestore(app);
@@ -36,4 +36,4 @@ const addFirestoreData = async (payload: IAddFirestoreData) => {
   return null;
 };
 
-export default addFirestoreData;
+export default addFirestore;

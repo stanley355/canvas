@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { FaLanguage, FaPlusSquare } from "react-icons/fa";
+import { FaPlusSquare } from "react-icons/fa";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
 import PremiumTranslateForm from "@/modules/premium/components/TranslateForm";
 import PremiumTranslateResult from "@/modules/premium/components/TranslateResult";
 import GoogleTranslateResult from "@/modules/premium/components/GoogleTranslateResult";
-import TranslateComparison from "@/modules/translate/components/TranslateComparison";
 
 const PremiumTranslate = () => {
   const [langTranslate, setLangTranslate] = useState("");
@@ -49,9 +48,6 @@ const PremiumTranslate = () => {
             Token used: {tokenUsed} tokens
           </div>
         )}
-        <div className="text-black">
-          <TranslateComparison />
-        </div>
       </div>
     </Layout>
   );

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const handlePremiumPrompt = async (prompt: string) => {
+export const handlePrompt = async (prompt: string) => {
   const reqData = { content: prompt };
 
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/ai/chat-premium/`;
