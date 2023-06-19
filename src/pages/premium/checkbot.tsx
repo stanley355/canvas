@@ -3,7 +3,6 @@ import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { FaPlusCircle } from "react-icons/fa";
 import Layout from "@/common/components/Layout";
 import PremiumCheckBotForm from "@/modules/premium/components/CheckbotForm";
-import CheckbotComparison from "@/modules/checkbot/components/CheckbotComparison";
 import MetaSEO from "@/common/components/MetaSEO";
 import PremiumCheckbotResult from "@/modules/premium/components/CheckbotResult";
 
@@ -44,9 +43,6 @@ const CheckBot = () => {
             Token used: {tokenUsed} tokens
           </div>
         )}
-        <div className="text-black">
-          <CheckbotComparison />
-        </div>
       </div>
     </Layout>
   );
