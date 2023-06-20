@@ -146,3 +146,12 @@ export const PREMIUM_TRANSLATE_SEO = {
   keywords: "translate, translations, translation, translator, machine translation, online translation",
   url: `${process.env.NEXT_PUBLIC_BASE_URL}/premium/translate`
 };
+
+export const PREMIUM_CHECKBOT_SEO = {
+  title: "Language AI Checkbot - Grammar Checker",
+  description:
+    "Enhance Your Writing with Language AI  Grammar Checker | Fix Grammar, Spelling, and Punctuation Errors Instantly.",
+  keywords:
+    "check grammar, spelling, punctuation, improve text, AI grammar checker, fix grammar, free online grammar check, improve writing, English checker tool, online grammar fixer",
+  url: `${process.env.NEXT_PUBLIC_BASE_URL}/premium/checkbot`,
+};

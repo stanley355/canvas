@@ -5,13 +5,11 @@ import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
 import PremiumTranslateForm from "@/modules/premium/components/TranslateForm";
 import PremiumTranslateResult from "@/modules/premium/components/TranslateResult";
-import GoogleTranslateResult from "@/modules/premium/components/GoogleTranslateResult";
 import { PREMIUM_TRANSLATE_SEO } from "@/modules/premium/lib/constant";
 
 const PremiumTranslate = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [langTranslate, setLangTranslate] = useState("");
-  const [googleTranslate, setGoogleTranslate] = useState("");
   const [tokenUsed, setTokenUsed] = useState(0);
 
   const LoginModal = dynamic(
@@ -20,8 +18,8 @@ const PremiumTranslate = () => {
 
   return (
     <Layout>
-      <MetaSEO seo={PREMIUM_TRANSLATE_SEO} />
       {showLogin && <LoginModal />}
+      <MetaSEO seo={PREMIUM_TRANSLATE_SEO} />
       <div className="bg-white lg:h-screen">
         <div className="container mx-auto p-2 lg:px-0">
           <h1
@@ -34,15 +32,14 @@ const PremiumTranslate = () => {
           <h2 className="text-black mt-4 text-center text-lg mb-4 italic">
             #Translation updated with real time data
           </h2>
-          <div className="lg:grid lg:grid-cols-3 lg:gap-4 mb-2">
+          <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-2">
+
             <PremiumTranslateForm
               dispatchLoginForm={() => setShowLogin(true)}
               dispatchLangTranslate={setLangTranslate}
-              dispatchGoogleTranslate={setGoogleTranslate}
               dispatchTokenUsed={setTokenUsed}
             />
             <PremiumTranslateResult translateVal={langTranslate} />
-            <GoogleTranslateResult translateVal={googleTranslate} />
           </div>
           {tokenUsed && (
             <div className="text-lg text-black">

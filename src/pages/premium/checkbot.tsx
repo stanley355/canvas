@@ -1,24 +1,25 @@
 import React, { useState } from "react";
 import { FaPlusCircle } from "react-icons/fa";
+import dynamic from "next/dynamic";
 import Layout from "@/common/components/Layout";
-import PremiumCheckBotForm from "@/modules/premium/components/CheckbotForm";
 import MetaSEO from "@/common/components/MetaSEO";
+import PremiumCheckBotForm from "@/modules/premium/components/CheckbotForm";
 import PremiumCheckbotResult from "@/modules/premium/components/CheckbotResult";
+import { PREMIUM_CHECKBOT_SEO } from "@/modules/premium/lib/constant";
 
 const CheckBot = () => {
+  const [showLogin, setShowLogin] = useState(false);
   const [checkbotVal, setCheckbotVal] = useState("");
   const [tokenUsed, setTokenUsed] = useState(0);
 
-  const seo = {
-    title: "Free Grammar Checker - LanguageAI Checkbot",
-    description:
-      "Grammar check for free! Copy and paste your text in grammar checker. Fix grammar, spelling, and punctuation errors instantly with our cutting-edge AI technology. No sign-up required!",
-    url: `${process.env.NEXT_PUBLIC_BASE_URL}checkbot/`,
-  };
+  const LoginModal = dynamic(
+    () => import("../../modules/login/components/LoginModal")
+  );
 
   return (
     <Layout>
-      <MetaSEO seo={seo} />
+      {showLogin && <LoginModal />}
+      <MetaSEO seo={PREMIUM_CHECKBOT_SEO} />
       <div className="bg-white lg:h-screen">
         <div className="container mx-auto p-2 lg:px-0">
           <h1
