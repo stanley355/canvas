@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
+import Cookies from "js-cookie";
 import Button from "@/common/components/Button";
 import PremiumSourceTextArea from "./PremiumSourceTextArea";
 import { handlePremiumPrompt } from "../lib/handlePremiumPrompt";
@@ -13,22 +14,24 @@ import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 
-const InsufficientBalanceModal = dynamic(
-  () => import("./InsufficientBalanceModal")
-);
+
 interface IPremiumCheckBotForm {
+  dispatchLoginForm: () => void;
   dispatchCheckbotVal: (val: string) => void;
   dispatchTokenUsed: (token: number) => void;
 }
 
 const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
-  const { dispatchCheckbotVal, dispatchTokenUsed } = props;
+  const { dispatchLoginForm, dispatchCheckbotVal, dispatchTokenUsed } = props;
 
+  const isDesktop = useDesktopScreen();
   const [showPersonalInstruction, setShowPersonalInstruction] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  const isDesktop = useDesktopScreen();
+  const InsufficientBalanceModal = dynamic(
+    () => import("./InsufficientBalanceModal")
+  );
 
   const handleCheckbotOption = (option: any) => {
     const isPersonalInstruction = option.value === "personal_instruction";
@@ -38,9 +41,9 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const hasBalance = await checkUserCurrentBalance();
-    if (!hasBalance) {
-      setShowModal(true);
+    const token = Cookies.get("token");
+    if (!token) {
+      dispatchLoginForm();
       return;
     }
 
@@ -65,6 +68,13 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     }
 
     setIsLoading(true);
+    const hasBalance = await checkUserCurrentBalance();
+    if (!hasBalance) {
+      setShowModal(true);
+      setIsLoading(false);
+      return;
+    }
+
     sendFirebaseEvent("premium_checkbot", {
       name: "premium_checkbot",
       instruction: instruction,
@@ -73,29 +83,27 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     const prompt = personalInstruction
       ? `${personalInstruction}, text: "${sourceText}"`
       : `${instruction} "${sourceText}"`;
-    const langAICheck = await handlePremiumPrompt(prompt);
+    const { content, prompt_tokens, completion_tokens } = await handlePremiumPrompt(prompt);
 
-    if (langAICheck.content) {
-      const totalToken =
-        langAICheck.prompt_tokens + langAICheck.completion_tokens;
+    if (content) {
+      if (!isDesktop) window.location.href = "#translate_result_textarea";
+      const totalToken = prompt_tokens + completion_tokens;
+      dispatchTokenUsed(totalToken);
+      dispatchCheckbotVal(content);
+      setIsLoading(false);
+
       const saveUserPromptPayload = {
-        prompt_token: langAICheck.prompt_tokens,
-        completion_token: langAICheck.completion_tokens,
+        prompt_token: prompt_tokens,
+        completion_token: completion_tokens,
         prompt_text: prompt,
-        completion_text: langAICheck.content,
+        completion_text: content,
       };
 
       await saveUserPremiumPrompt(saveUserPromptPayload);
-
-      dispatchTokenUsed(totalToken);
-      dispatchCheckbotVal(langAICheck.content);
-
-      if (!isDesktop) window.location.href = "#translate_result_textarea";
-      setIsLoading(false);
       return;
     }
 
-    if (!isDesktop) window.location.href = "#checkbot_result_textarea";
+    toast.error("Something went wrong, please try again");
     setIsLoading(false);
     return "";
   };

@@ -4,7 +4,13 @@ import { SiTaichilang } from "react-icons/si";
 import GoogleLoginBtn from "./GoogleLoginBtn";
 import EmailPassForm from "./EmailPassForm";
 
-const LoginModal = () => {
+interface ILoginModal {
+  isFree: boolean;
+}
+
+const LoginModal = (props: ILoginModal) => {
+  const { isFree } = props;
+
   return (
     <div className="fixed top-0 left-0 w-full h-full z-10 bg-white bg-opacity-90">
       <div className="border border-white bg-black rounded-md p-4 py-8 flex flex-col items-center justify-center lg:w-1/3 mt-24 mx-auto">
@@ -15,9 +21,9 @@ const LoginModal = () => {
         <div className="text-center text-lg font-semibold">
           Please Login To Continue & Save Your Work
         </div>
-        <h3 className="text-center text-2xl mb-4 font-bold">
+        {isFree && <h3 className="text-center text-2xl mb-4 font-bold">
           Don&apos;t worry, it&apos;s always free!
-        </h3>
+        </h3>}
         <h4 className="text-center mb-2">Sign Up & Login in One Click</h4>
         <GoogleLoginBtn />
         <div className="my-4">or</div>

@@ -3,6 +3,7 @@ import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
 import dynamic from "next/dynamic";
+import Cookies from "js-cookie";
 import Button from "@/common/components/Button";
 import PremiumSourceTextArea from "./PremiumSourceTextArea";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
@@ -10,7 +11,6 @@ import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { PREMIUM_LANGUAGE_LIST } from "../lib/constant";
 import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
 import { handlePremiumPrompt } from "../lib/handlePremiumPrompt";
-import { handleGoogleTranslate } from "../lib/handleGoogleTranslate";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
 
@@ -19,13 +19,13 @@ const InsufficientBalanceModal = dynamic(
 );
 
 interface ITranslateForm {
+  dispatchLoginForm: () => void;
   dispatchLangTranslate: (val: string) => void;
-  dispatchGoogleTranslate: (val: string) => void;
   dispatchTokenUsed: (val: number) => void;
 }
 
 const PremiumTranslateForm = (props: ITranslateForm) => {
-  const { dispatchLangTranslate, dispatchGoogleTranslate, dispatchTokenUsed } =
+  const { dispatchLangTranslate, dispatchTokenUsed, dispatchLoginForm } =
     props;
 
   const [showModal, setShowModal] = useState(false);
@@ -37,9 +37,9 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    const hasBalance = await checkUserCurrentBalance();
-    if (!hasBalance) {
-      setShowModal(true);
+    const token = Cookies.get("token");
+    if (!token) {
+      dispatchLoginForm();
       return;
     }
 
@@ -58,39 +58,36 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
     }
 
     setIsLoading(true);
+    const hasBalance = await checkUserCurrentBalance();
+    if (!hasBalance) {
+      setShowModal(true);
+      setIsLoading(false);
+      return;
+    }
+
     sendFirebaseEvent("premium_translate", {
       name: "premium_translate",
       target_lang: languageLabel,
     });
 
-    let prompt = `Translate ${sourceText}to ${languageLabel}`;
-    if (sourceText) {
-      prompt += `, (${context}) `;
-    }
+    const prompt = `Translate ${sourceText} to ${languageLabel} ${context ?? ""}`;
+    const { content, prompt_tokens, completion_tokens } = await handlePremiumPrompt(prompt);
 
-    const languageTranslate = await handlePremiumPrompt(prompt);
-    const googleTranslate = await handleGoogleTranslate(
-      languageCode,
-      sourceText
-    );
+    if (content) {
+      if (!isDesktop) window.location.href = "#translate_result_textarea";
+      const totalToken = prompt_tokens + completion_tokens;
+      dispatchTokenUsed(totalToken);
+      dispatchLangTranslate(content);
+      setIsLoading(false);
 
-    if (languageTranslate.content && googleTranslate) {
-      const totalToken =
-        languageTranslate.prompt_tokens + languageTranslate.completion_tokens;
       const saveUserPromptPayload = {
-        prompt_token: languageTranslate.prompt_tokens,
-        completion_token: languageTranslate.completion_tokens,
+        prompt_token: prompt_tokens,
+        completion_token: completion_tokens,
         prompt_text: prompt,
-        completion_text: languageTranslate.content,
+        completion_text: content,
       };
       await saveUserPremiumPrompt(saveUserPromptPayload);
 
-      dispatchTokenUsed(totalToken);
-      dispatchLangTranslate(languageTranslate.content);
-      dispatchGoogleTranslate(googleTranslate);
-
-      if (!isDesktop) window.location.href = "#translate_result_textarea";
-      setIsLoading(false);
       return;
     }
 
