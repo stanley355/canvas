@@ -22,8 +22,7 @@ const PremiumTranslate = () => {
     <Layout>
       <MetaSEO seo={PREMIUM_TRANSLATE_SEO} />
       {showLogin && <LoginModal />}
-      <div className="bg-white">
-
+      <div className="bg-white lg:h-screen">
         <div className="container mx-auto p-2 lg:px-0">
           <h1
             className="bg-black py-1 text-3xl rounded flex flex-row items-center justify-center mt-2 lg:my-4 lg:w-1/3 lg:mx-auto"
