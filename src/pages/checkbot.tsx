@@ -33,7 +33,7 @@ const CheckBot = () => {
         </div>
         <FeedbackBox />
       </div>
-      {showLogin && <LoginModal />}
+      {showLogin && <LoginModal isFree/>}
     </Layout>
   );
 };

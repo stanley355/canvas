@@ -18,7 +18,7 @@ const PremiumTranslate = () => {
 
   return (
     <Layout>
-      {showLogin && <LoginModal />}
+      {showLogin && <LoginModal isFree={false} />}
       <MetaSEO seo={PREMIUM_TRANSLATE_SEO} />
       <div className="bg-white lg:h-screen">
         <div className="container mx-auto p-2 lg:px-0">

@@ -18,7 +18,7 @@ const CheckBot = () => {
 
   return (
     <Layout>
-      {showLogin && <LoginModal />}
+      {showLogin && <LoginModal isFree={false} />}
       <MetaSEO seo={PREMIUM_CHECKBOT_SEO} />
       <div className="bg-white lg:h-screen">
         <div className="container mx-auto p-2 lg:px-0">

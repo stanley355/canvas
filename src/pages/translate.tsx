@@ -36,7 +36,7 @@ const LangTranslate = () => {
         </div>
         <FeedbackBox />
       </div>
-      {showLogin && <LoginModal />}
+      {showLogin && <LoginModal isFree/>}
     </Layout>
   );
 };
