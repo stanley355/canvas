@@ -34,6 +34,7 @@ const CheckBot = () => {
           </h2>
           <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-4">
             <PremiumCheckBotForm
+              dispatchLoginForm={() => setShowLogin(true)}
               dispatchCheckbotVal={setCheckbotVal}
               dispatchTokenUsed={setTokenUsed}
             />
