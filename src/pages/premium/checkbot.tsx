@@ -35,7 +35,7 @@ const CheckBot = () => {
           <h2 className="text-black mt-4 text-center text-lg mb-4 italic">
             #Ultimate Writing Check for All Languages
           </h2>
-          <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-4 lg:mb-2">
+          <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-2">
             <PremiumCheckBotForm
               dispatchLoginForm={() => setShowLogin(true)}
               dispatchCheckbotVal={setCheckbotVal}
@@ -43,9 +43,6 @@ const CheckBot = () => {
             />
             <PremiumCheckbotResult checkbotVal={checkbotVal} />
           </div>
-            <div className="text-lg text-black">
-              Token used: {tokenUsed} tokens
-            </div>
           {tokenUsed && (
             <div className="text-lg text-black">
               Token used: {tokenUsed} tokens
@@ -55,8 +52,7 @@ const CheckBot = () => {
             <div>How does Premium Checkbot Compared to the Original?</div>
             <ComparisonTable comparisons={CHECKBOT_COMPARISON} />
           </div>
-
-          <div className="bg-black py-2 rounded">
+          <div className="bg-black py-4 rounded">
             <FeedbackBox />
           </div>
         </div>

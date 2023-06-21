@@ -5,6 +5,9 @@ import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
 import PremiumTranslateForm from "@/modules/premium/components/TranslateForm";
 import PremiumTranslateResult from "@/modules/premium/components/TranslateResult";
+import ComparisonTable from "@/common/components/ComparisonTable";
+import FeedbackBox from "@/common/components/FeedbackBox";
+import { TRANSLATE_COMPARISON } from "@/modules/translate/constant";
 import { PREMIUM_TRANSLATE_SEO } from "@/modules/premium/lib/constant";
 
 const PremiumTranslate = () => {
@@ -20,7 +23,7 @@ const PremiumTranslate = () => {
     <Layout>
       {showLogin && <LoginModal isFree={false} />}
       <MetaSEO seo={PREMIUM_TRANSLATE_SEO} />
-      <div className="bg-white lg:h-screen">
+      <div className="bg-white">
         <div className="container mx-auto p-2 lg:px-0">
           <h1
             className="bg-black py-1 text-3xl rounded flex flex-row items-center justify-center mt-2 lg:my-4 lg:w-1/3 lg:mx-auto"
@@ -33,7 +36,6 @@ const PremiumTranslate = () => {
             #Translation updated with real time data
           </h2>
           <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-2">
-
             <PremiumTranslateForm
               dispatchLoginForm={() => setShowLogin(true)}
               dispatchLangTranslate={setLangTranslate}
@@ -46,6 +48,13 @@ const PremiumTranslate = () => {
               Token used: {tokenUsed} tokens
             </div>
           )}
+          <div className="text-black mb-4">
+            <div>How does Premium Checkbot Compared to the Original?</div>
+            <ComparisonTable comparisons={TRANSLATE_COMPARISON} />
+          </div>
+          <div className="bg-black py-4 rounded">
+            <FeedbackBox />
+          </div>
         </div>
       </div>
     </Layout>
