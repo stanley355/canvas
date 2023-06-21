@@ -1,3 +1,5 @@
+import { FaCheckDouble, FaCross, FaTimes } from "react-icons/fa";
+
 export const LANGUAGE_LIST = [
   {
     label: "None",
@@ -87,3 +89,41 @@ export const TRANSLATE_SEO = {
   keywords: "translate, translations, translation, translator, machine translation, online translation",
   url: `${process.env.NEXT_PUBLIC_BASE_URL}/translate`
 };
+
+export const TRANSLATE_COMPARISON = [
+  {
+    title: "Translate All Languages",
+    original: <FaCheckDouble />,
+    premium: <FaCheckDouble />
+  },
+  {
+    title: "Machine Translation",
+    original: <FaCheckDouble />,
+    premium: <FaCheckDouble />
+  },
+  {
+    title: "Contextual & Accurate Translation",
+    original: <FaCheckDouble />,
+    premium: <FaCheckDouble />
+  },
+  {
+    title: "Updated Language",
+    original: "Yearly Updates",
+    premium: "Weekly Updates"
+  },
+  {
+    title: "Downtime",
+    original: "Sometime",
+    premium: "Never"
+  },
+  {
+    title: "Words Limit",
+    original: "4000 words/token",
+    premium: "8000 words/token"
+  },
+  {
+    title: "Cost",
+    original: "Always Free",
+    premium: "Just Rp1 per words/token"
+  },
+]
