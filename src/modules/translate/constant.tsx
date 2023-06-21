@@ -1,4 +1,4 @@
-import { FaCheckDouble, FaCross, FaTimes } from "react-icons/fa";
+import { FaCheckDouble, FaCross, FaTimes, FaCheck } from "react-icons/fa";
 
 export const LANGUAGE_LIST = [
   {
@@ -93,28 +93,33 @@ export const TRANSLATE_SEO = {
 export const TRANSLATE_COMPARISON = [
   {
     title: "Translate All Languages",
-    original: <FaCheckDouble />,
-    premium: <FaCheckDouble />
+    original: <FaCheck className="mx-auto" />,
+    premium: <FaCheck className="mx-auto" />
   },
   {
     title: "Machine Translation",
-    original: <FaCheckDouble />,
-    premium: <FaCheckDouble />
+    original: <FaCheck className="mx-auto" />,
+    premium: <FaCheck className="mx-auto" />
   },
   {
-    title: "Contextual & Accurate Translation",
-    original: <FaCheckDouble />,
-    premium: <FaCheckDouble />
+    title: "Accurate Translation",
+    original: <FaCheck className="mx-auto" />,
+    premium: <FaCheck className="mx-auto" />
   },
   {
-    title: "Updated Language",
-    original: "Yearly Updates",
-    premium: "Weekly Updates"
+    title: "Language Update",
+    original: "Quarterly",
+    premium: "Weekly"
   },
   {
     title: "Downtime",
     original: "Sometime",
     premium: "Never"
+  },
+  {
+    title: "Quality to Google Translate",
+    original: "5x Better",
+    premium: "10x Better"
   },
   {
     title: "Words Limit",
