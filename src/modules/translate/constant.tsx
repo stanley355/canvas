@@ -123,12 +123,12 @@ export const TRANSLATE_COMPARISON = [
   },
   {
     title: "Words Limit",
-    original: "4000 words/token",
-    premium: "8000 words/token"
+    original: "4000 words",
+    premium: "8000 words"
   },
   {
     title: "Cost",
     original: "Always Free",
-    premium: "Just Rp1 per words/token"
+    premium: "Just Rp1 per words"
   },
 ]
