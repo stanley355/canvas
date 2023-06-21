@@ -24,7 +24,7 @@ const PremiumSourceTextArea = () => {
       >
         <FaTimes className="text-3xl" />
       </Button>
-      <label htmlFor="source_textarea">
+      <label htmlFor="source_text">
         <textarea
           name="source_text"
           id="source_textarea"

@@ -113,7 +113,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
       {showModal && (
         <InsufficientBalanceModal onCloseClick={() => setShowModal(false)} />
       )}
-      <label htmlFor="checkbot_instruction_select">
+      <label htmlFor="instruction">
         <Select
           placeholder="Instruction"
           name="instruction"
