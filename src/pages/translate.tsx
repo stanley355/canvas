@@ -5,6 +5,7 @@ import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
 import TranslateForm from "@/modules/translate/components/TranslateForm";
 import TranslateResult from "@/modules/translate/components/TranslateResult";
+import TranslateComparison from "@/modules/translate/components/TranslateComparison";
 import FeedbackBox from "@/common/components/FeedbackBox";
 import { TRANSLATE_SEO } from "@/modules/translate/constant";
 
@@ -34,6 +35,7 @@ const LangTranslate = () => {
           />
           <TranslateResult translateVal={translateVal} />
         </div>
+        <TranslateComparison />
         <FeedbackBox />
       </div>
       {showLogin && <LoginModal isFree/>}

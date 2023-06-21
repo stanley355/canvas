@@ -1,3 +1,5 @@
+import { FaCheck } from "react-icons/fa";
+
 export const CHECKBOT_OPTIONS = [
   {
     label: "Custom instruction",
@@ -65,3 +67,46 @@ export const CHECKBOT_SEO = {
     "check grammar, spelling, punctuation, improve text, AI grammar checker, free grammar check, fix grammar, free online grammar check, improve writing, English checker tool, online grammar fixer",
   url: `${process.env.NEXT_PUBLIC_BASE_URL}/checkbot`,
 };
+
+export const CHECKBOT_COMPARISON = [
+  {
+    title: "All Language Check",
+    original: <FaCheck className="mx-auto" />,
+    premium: <FaCheck className="mx-auto" />
+  },
+  {
+    title: "Grammar & Spelling Check",
+    original: <FaCheck className="mx-auto" />,
+    premium: <FaCheck className="mx-auto" />
+  },
+  {
+    title: "Writing Improvement",
+    original: <FaCheck className="mx-auto" />,
+    premium: <FaCheck className="mx-auto" />
+  },
+  {
+    title: "AI Powered Check",
+    original: <FaCheck className="mx-auto" />,
+    premium: <FaCheck className="mx-auto" />
+  },
+  {
+    title: "Downtime",
+    original: "Sometime",
+    premium: "Never"
+  },
+  {
+    title: "Quality to Grammarly",
+    original: "10x Better",
+    premium: "20x Better"
+  },
+  {
+    title: "Words Limit",
+    original: "4000 words",
+    premium: "8000 words"
+  },
+  {
+    title: "Cost",
+    original: "Always Free",
+    premium: "Just Rp1 per words"
+  },
+]

@@ -4,7 +4,7 @@ import { FaLanguage, FaRobot, FaPlusCircle } from "react-icons/fa";
 export const HOME_COPYWRITING = [
   {
     icon: <FaLanguage />,
-    title: "Language AI Translate",
+    title: "AI Translate",
     link: "/translate/",
     ctaText: "Translate",
     features: [
@@ -34,7 +34,7 @@ export const HOME_COPYWRITING = [
   },
   {
     icon: <FaRobot />,
-    title: "Language AI Checkbot",
+    title: "AI Checkbot",
     link: "/checkbot/",
     ctaText: "Let's Check",
     features: [

@@ -7,6 +7,7 @@ import CheckboxResult from "@/modules/checkbot/components/CheckbotResult";
 import MetaSEO from "@/common/components/MetaSEO";
 import { CHECKBOT_SEO } from "@/modules/checkbot/constant";
 import FeedbackBox from "@/common/components/FeedbackBox";
+import CheckbotComparison from "@/modules/checkbot/components/CheckbotComparison";
 
 const CheckBot = () => {
   const [checkbotVal, setCheckbotVal] = useState("");
@@ -31,6 +32,7 @@ const CheckBot = () => {
           />
           <CheckboxResult checkbotVal={checkbotVal} />
         </div>
+        <CheckbotComparison />
         <FeedbackBox />
       </div>
       {showLogin && <LoginModal isFree/>}
