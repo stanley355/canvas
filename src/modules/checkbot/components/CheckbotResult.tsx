@@ -19,7 +19,7 @@ const CheckboxResult = (props: ICheckbotResult) => {
 
   return (
     <div className="my-4 lg:mt-0 ">
-      <label htmlFor="checkbot_result_textarea">
+      <label htmlFor="checkbot_result">
         <textarea
           name="checkbot_result"
           id="checkbot_result_textarea"
