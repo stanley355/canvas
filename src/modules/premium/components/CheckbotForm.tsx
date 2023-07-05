@@ -97,6 +97,10 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
         completion_token: completion_tokens,
         prompt_text: prompt,
         completion_text: content,
+        instruction: personalInstruction ?? instruction,
+        instruction_type: "Checkbot",
+        original_text: sourceText,
+        is_save: false,
       };
 
       await saveUserPremiumPrompt(saveUserPromptPayload);

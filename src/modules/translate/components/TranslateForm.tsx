@@ -65,6 +65,10 @@ const TranslateForm = (props: ITranslateForm) => {
         completion_token: completion_tokens,
         prompt_text: prompt,
         completion_text: content,
+        instruction: `Translate to ${targetLang}`,
+        instruction_type: "Translate",
+        original_text: sourceText,
+        is_save: false,
       };
 
       await saveUserPrompt(saveUserPromptPayload);
