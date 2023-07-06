@@ -3,13 +3,14 @@ import { FaLanguage, FaPlusSquare } from "react-icons/fa";
 import dynamic from "next/dynamic";
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
+import MediaSelect from "@/common/components/MediaSelect";
+import PremiumImageTranslateForm from "@/modules/premium/components/ImageTranslateForm";
 import PremiumTranslateForm from "@/modules/premium/components/TranslateForm";
 import PremiumTranslateResult from "@/modules/premium/components/TranslateResult";
 import ComparisonTable from "@/common/components/ComparisonTable";
 import FeedbackBox from "@/common/components/FeedbackBox";
 import { TRANSLATE_COMPARISON } from "@/modules/translate/constant";
 import { PREMIUM_TRANSLATE_SEO } from "@/modules/premium/lib/constant";
-import MediaSelect from "@/common/components/MediaSelect";
 
 const PremiumTranslate = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -37,7 +38,12 @@ const PremiumTranslate = () => {
             <MediaSelect onChange={(option) => console.log(option)} />
           </div>
           <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-2">
-            <PremiumTranslateForm
+            {/* <PremiumTranslateForm
+              dispatchLoginForm={() => setShowLogin(true)}
+              dispatchLangTranslate={setLangTranslate}
+              dispatchTokenUsed={setTokenUsed}
+            /> */}
+            <PremiumImageTranslateForm
               dispatchLoginForm={() => setShowLogin(true)}
               dispatchLangTranslate={setLangTranslate}
               dispatchTokenUsed={setTokenUsed}

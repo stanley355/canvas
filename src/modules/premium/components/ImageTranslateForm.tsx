@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import { toast } from "react-toastify";
-import { FaSpinner } from "react-icons/fa";
+import { FaCloudUploadAlt } from "react-icons/fa";
 import dynamic from "next/dynamic";
 import Cookies from "js-cookie";
-import Button from "@/common/components/Button";
-import PremiumSourceTextArea from "./PremiumSourceTextArea";
+import { ITranslateForm } from "./TranslateForm";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { PREMIUM_LANGUAGE_LIST } from "../lib/constant";
@@ -18,13 +17,7 @@ const InsufficientBalanceModal = dynamic(
   () => import("./InsufficientBalanceModal")
 );
 
-export interface ITranslateForm {
-  dispatchLoginForm: () => void;
-  dispatchLangTranslate: (val: string) => void;
-  dispatchTokenUsed: (val: number) => void;
-}
-
-const PremiumTranslateForm = (props: ITranslateForm) => {
+const PremiumImageTranslateForm = (props: ITranslateForm) => {
   const { dispatchLangTranslate, dispatchTokenUsed, dispatchLoginForm } =
     props;
 
@@ -96,6 +89,19 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
     return;
   };
 
+  const ImageUploader = () => {
+    return (
+      <div className="bg-black rounded ">
+        <label htmlFor="image_input" className="text-white cursor-pointer w-full h-60 lg:h-64 flex flex-col items-center justify-center">
+          <input type="file" name="image_input" id="image_input" hidden size={60} accept="image/png, image/jpeg, image/jpg" />
+          <FaCloudUploadAlt className="text-5xl" />
+          <div className="font-semibold text-xl">Upload your Image</div>
+          <div className="font-semibold text-lg">(.png, .jpeg, .jpg)</div>
+        </label>
+      </div>
+    );
+  };
+
   return (
     <form onSubmit={handleSubmit} className="mb-2 lg:mb-0 relative">
       {showModal && (
@@ -123,8 +129,8 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
             placeholder="Context (what the text is about) "
           />
         </label>
-        <PremiumSourceTextArea />
-        <Button
+        <ImageUploader />
+        {/* <Button
           type="submit"
           disabled={isLoading}
           wrapperClassName="absolute right-2 bottom-2 lg:bottom-4 w-1/3 p-2 rounded bg-white text-black font-semibold"
@@ -138,10 +144,10 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
           ) : (
             "Translate"
           )}
-        </Button>
+        </Button> */}
       </div>
     </form>
   );
 };
 
-export default PremiumTranslateForm;
+export default PremiumImageTranslateForm;
