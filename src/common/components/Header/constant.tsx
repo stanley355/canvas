@@ -9,12 +9,12 @@ export const HEADER_MENU = [
   {
     title: "Premium Checkbot",
     url: "/premium/checkbot/",
-    icon: <FaPlusCircle />,
+    icon: <FaRobot />,
   },
   {
     title: "Premium Translate",
     url: "/premium/translate/",
-    icon: <FaPlusCircle />,
+    icon: <FaLanguage />,
   },
   {
     title: "AI Checkbot",

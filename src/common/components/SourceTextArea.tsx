@@ -3,8 +3,15 @@ import { FaTimes } from "react-icons/fa";
 import Button from "@/common/components/Button";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
-const SourceTextArea = () => {
-  const [textValue, setTextValue] = useState("Put your text here");
+interface ISourceTextArea {
+  sourceText?: string;
+}
+
+const SourceTextArea = (props: ISourceTextArea) => {
+  const { sourceText } = props;
+  const [textValue, setTextValue] = useState(
+    sourceText ?? "Put your text here"
+  );
 
   const handleClearClick = () => {
     setTextValue("");
@@ -12,7 +19,7 @@ const SourceTextArea = () => {
   };
 
   return (
-    <div className="w-full border rounded-md bg-white p-2 mb-2 relative">
+    <div className="w-full bg-transparent p-2 pb-0 relative">
       <Button
         type="button"
         id="clear_text_btn"

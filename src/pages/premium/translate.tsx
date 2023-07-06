@@ -1,23 +1,34 @@
 import React, { useState } from "react";
-import { FaPlusSquare } from "react-icons/fa";
+import { FaLanguage, FaPlusSquare } from "react-icons/fa";
 import dynamic from "next/dynamic";
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
+import MediaSelect from "@/common/components/MediaSelect";
 import PremiumTranslateForm from "@/modules/premium/components/TranslateForm";
 import PremiumTranslateResult from "@/modules/premium/components/TranslateResult";
 import ComparisonTable from "@/common/components/ComparisonTable";
 import FeedbackBox from "@/common/components/FeedbackBox";
 import { TRANSLATE_COMPARISON } from "@/modules/translate/constant";
 import { PREMIUM_TRANSLATE_SEO } from "@/modules/premium/lib/constant";
+import ImageToTextUploader from "@/common/components/ImageToTextUploader";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 const PremiumTranslate = () => {
+  const [isImageTranslate, setIsImageTranslate] = useState(false);
+  const [imageText, setImageText] = useState("");
   const [showLogin, setShowLogin] = useState(false);
   const [langTranslate, setLangTranslate] = useState("");
-  const [tokenUsed, setTokenUsed] = useState(0);
 
   const LoginModal = dynamic(
     () => import("../../modules/login/components/LoginModal")
   );
+
+  const onImageTextDispatch = (txt: string) => {
+    sendFirebaseEvent("image_translate", {});
+    setImageText(txt);
+    setIsImageTranslate(false);
+    return;
+  };
 
   return (
     <Layout>
@@ -25,29 +36,39 @@ const PremiumTranslate = () => {
       <MetaSEO seo={PREMIUM_TRANSLATE_SEO} />
       <div className="bg-white">
         <div className="container mx-auto p-2 lg:px-0">
-          <h1
-            className="bg-black py-1 text-3xl rounded flex flex-row items-center justify-center mt-2 lg:my-4 lg:w-1/3 lg:mx-auto"
-            id="title"
-          >
-            <FaPlusSquare className="text-3xl mr-2" />
-            <span>LanguageAI Premium</span>
-          </h1>
-          <h2 className="text-black mt-4 text-center text-lg mb-4 italic">
-            #Translation updated with real time data
-          </h2>
-          <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-2">
-            <PremiumTranslateForm
-              dispatchLoginForm={() => setShowLogin(true)}
-              dispatchLangTranslate={setLangTranslate}
-              dispatchTokenUsed={setTokenUsed}
+          <div className="flex items-center gap-4 justify-between text-black">
+            <h1
+              className="text-2xl font-semibold rounded flex items-center justify-center my-4"
+              id="title"
+            >
+              <FaLanguage className="text-4xl mr-2" />
+              <span>Translate+</span>
+            </h1>
+            <MediaSelect
+              style="dark"
+              onChange={(option) =>
+                setIsImageTranslate(option.value === "image")
+              }
             />
+          </div>
+          <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8">
+            {isImageTranslate ? (
+              <div className="mb-2">
+                <ImageToTextUploader
+                  style="dark"
+                  dispatch={onImageTextDispatch}
+                />
+              </div>
+            ) : (
+              <PremiumTranslateForm
+                imageText={imageText}
+                onReuploadClick={() => setIsImageTranslate(true)}
+                dispatchLoginForm={() => setShowLogin(true)}
+                dispatchLangTranslate={setLangTranslate}
+              />
+            )}
             <PremiumTranslateResult translateVal={langTranslate} />
           </div>
-          {tokenUsed && (
-            <div className="text-lg text-black">
-              Token used: {tokenUsed} tokens
-            </div>
-          )}
           <div className="text-black mb-4">
             <div>How does Premium Checkbot Compared to the Original?</div>
             <ComparisonTable comparisons={TRANSLATE_COMPARISON} />

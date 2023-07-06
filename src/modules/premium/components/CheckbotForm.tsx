@@ -10,21 +10,17 @@ import { handlePremiumPrompt } from "../lib/handlePremiumPrompt";
 import { PREMIUM_CHECKBOT_OPTIONS } from "../lib/constant";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
-import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
-
 
 interface IPremiumCheckBotForm {
   dispatchLoginForm: () => void;
   dispatchCheckbotVal: (val: string) => void;
-  dispatchTokenUsed: (token: number) => void;
 }
 
 const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
-  const { dispatchLoginForm, dispatchCheckbotVal, dispatchTokenUsed } = props;
+  const { dispatchLoginForm, dispatchCheckbotVal } = props;
 
-  const isDesktop = useDesktopScreen();
   const [showPersonalInstruction, setShowPersonalInstruction] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -83,12 +79,10 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     const prompt = personalInstruction
       ? `${personalInstruction}, text: "${sourceText}"`
       : `${instruction} "${sourceText}"`;
-    const { content, prompt_tokens, completion_tokens } = await handlePremiumPrompt(prompt);
+    const { content, prompt_tokens, completion_tokens } =
+      await handlePremiumPrompt(prompt);
 
     if (content) {
-      if (!isDesktop) window.location.href = "#translate_result_textarea";
-      const totalToken = prompt_tokens + completion_tokens;
-      dispatchTokenUsed(totalToken);
       dispatchCheckbotVal(content);
       setIsLoading(false);
 
@@ -109,7 +103,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-8 lg:mb-0">
+    <form onSubmit={handleSubmit} className="mb-2 lg:mb-0">
       {showModal && (
         <InsufficientBalanceModal onCloseClick={() => setShowModal(false)} />
       )}
@@ -118,7 +112,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
           placeholder="Instruction"
           name="instruction"
           options={PREMIUM_CHECKBOT_OPTIONS}
-          className="w-full text-black mb-4"
+          className="w-full text-black mb-2"
           id="checkbot_instruction_select"
           aria-label="checkbot_instruction_select"
           aria-labelledby="checkbot_instruction_select"
@@ -136,22 +130,24 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
           />
         </label>
       )}
-      <PremiumSourceTextArea />
-      <Button
-        type="submit"
-        disabled={isLoading}
-        wrapperClassName="w-full"
-        buttonClassName="w-full bg-black text-white py-2 text-md rounded-md font-semibold text-center hover:bg-gray-500"
-      >
-        {isLoading ? (
-          <div className="flex flex row items-center justify-center">
-            <span className="mr-2">Processing</span>
-            <FaSpinner className="animate-spin" />
-          </div>
-        ) : (
-          "Submit"
-        )}
-      </Button>
+      <div className="bg-black rounded pb-2">
+        <PremiumSourceTextArea />
+        <Button
+          type="submit"
+          disabled={isLoading}
+          wrapperClassName="w-1/3 lg:w-1/5 ml-auto mr-2 bg-white text-black py-2 text-md rounded-md font-semibold text-center"
+          buttonClassName="w-full"
+        >
+          {isLoading ? (
+            <div className="flex flex row items-center justify-center">
+              <span className="mr-2">Processing</span>
+              <FaSpinner className="animate-spin" />
+            </div>
+          ) : (
+            "Submit"
+          )}
+        </Button>
+      </div>
     </form>
   );
 };

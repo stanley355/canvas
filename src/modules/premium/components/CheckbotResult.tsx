@@ -18,38 +18,25 @@ const PremiumCheckbotResult = (props: ITranslateResult) => {
   };
 
   return (
-    <div className="my-4 lg:my-0">
-      <div className="bg-black w-fit px-2 py-1 rounded mb-2">
-        LanguageAI Premium
-      </div>
+    <div className="my-4 lg:my-0 bg-black pb-2 rounded">
       <label htmlFor="checkbot_result">
         <textarea
           name="checkbot_result"
           id="checkbot_result_textarea"
-          className="w-full rounded-md bg-black text-white p-2 border"
+          className="w-full bg-transparent text-white p-2 "
           onChange={() => {}} //remove warning
           cols={30}
-          rows={isDesktop ? 13 : 10}
+          rows={isDesktop ? 11 : 10}
           value={checkbotVal ? checkbotVal : "Your result will show up here"}
         />
       </label>
-      <div className="grid grid-cols-2 gap-2 lg:grid-cols-1">
-        <Button
-          type="button"
-          title="Copy"
-          buttonClassName="w-full text-center p-2 bg-black text-white rounded-md hover:bg-gray-500"
-          onClick={copyText}
-        />
-        {!isDesktop && (
-          <Button
-            type="link"
-            href="#title"
-            title="Go to Top"
-            wrapperClassName="flex items-center justify-center w-full"
-            buttonClassName="w-full text-center p-2 bg-black text-white rounded-md hover:bg-gray-500"
-          />
-        )}
-      </div>
+      <Button
+        type="button"
+        title="Copy"
+        wrapperClassName="w-1/3 lg:w-1/5 ml-auto mr-2 mt-4 text-center p-2 bg-white text-black rounded-md"
+        buttonClassName="w-full"
+        onClick={copyText}
+      />
     </div>
   );
 };

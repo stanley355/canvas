@@ -3,36 +3,39 @@ import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
 import dynamic from "next/dynamic";
+import classNames from "classnames";
 import Cookies from "js-cookie";
 import Button from "@/common/components/Button";
 import PremiumSourceTextArea from "./PremiumSourceTextArea";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
-import { PREMIUM_LANGUAGE_LIST } from "../lib/constant";
 import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
 import { handlePremiumPrompt } from "../lib/handlePremiumPrompt";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
+import { LANGUAGE_LIST } from "@/modules/translate/constant";
 
 const InsufficientBalanceModal = dynamic(
   () => import("./InsufficientBalanceModal")
 );
 
-interface ITranslateForm {
+export interface ITranslateForm {
+  imageText: string;
+  onReuploadClick: () => void;
   dispatchLoginForm: () => void;
   dispatchLangTranslate: (val: string) => void;
-  dispatchTokenUsed: (val: number) => void;
 }
 
 const PremiumTranslateForm = (props: ITranslateForm) => {
-  const { dispatchLangTranslate, dispatchTokenUsed, dispatchLoginForm } =
-    props;
+  const {
+    imageText,
+    onReuploadClick,
+    dispatchLangTranslate,
+    dispatchLoginForm,
+  } = props;
 
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [languageLabel, setLanguageLabel] = useState("");
-
-  const isDesktop = useDesktopScreen();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -43,11 +46,11 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
       return;
     }
 
-    const languageCode = e.target.target_lang.value;
+    const language = e.target.target_lang.value;
     const sourceText = e.target.source_text.value;
     const context = e.target.context.value;
 
-    if (!languageCode) {
+    if (!language) {
       toast.warning("Target Language Could Not be Empy");
       return;
     }
@@ -67,16 +70,14 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
 
     sendFirebaseEvent("premium_translate", {
       name: "premium_translate",
-      target_lang: languageLabel,
+      target_lang: language,
     });
 
-    const prompt = `Translate ${sourceText} to ${languageLabel} ${context ?? ""}`;
-    const { content, prompt_tokens, completion_tokens } = await handlePremiumPrompt(prompt);
+    const prompt = `Translate ${sourceText} to ${language} ${context ?? ""}`;
+    const { content, prompt_tokens, completion_tokens } =
+      await handlePremiumPrompt(prompt);
 
     if (content) {
-      if (!isDesktop) window.location.href = "#translate_result_textarea";
-      const totalToken = prompt_tokens + completion_tokens;
-      dispatchTokenUsed(totalToken);
       dispatchLangTranslate(content);
       setIsLoading(false);
 
@@ -97,21 +98,20 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-8 lg:mb-0">
+    <form onSubmit={handleSubmit} className="mb-2 lg:mb-0">
       {showModal && (
         <InsufficientBalanceModal onCloseClick={() => setShowModal(false)} />
       )}
       <label htmlFor="target_lang_select" className="w-full mb-4">
         <Select
-          className="text-black mb-4"
-          placeholder={isDesktop ? "Select Target Language" : "Select Language"}
+          className="text-black mb-2"
+          placeholder="Select Target Language"
           id="target_lang_select"
           name="target_lang"
           aria-label="target_lang_select"
           aria-labelledby="target_lang_select"
-          options={PREMIUM_LANGUAGE_LIST}
+          options={LANGUAGE_LIST}
           styles={reactSelectDarkStyle}
-          onChange={(opt: any) => setLanguageLabel(opt?.label)}
         />
       </label>
       <div>
@@ -119,26 +119,45 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
           <input
             id="context_input"
             name="context"
-            className="w-full rounded-md p-2 mb-4 bg-black text-white"
+            className="w-full rounded-md p-2 mb-2 bg-black text-white"
             placeholder="Context (what the text is about) "
           />
         </label>
-        <PremiumSourceTextArea />
-        <Button
-          type="submit"
-          disabled={isLoading}
-          wrapperClassName="w-full"
-          buttonClassName="w-full bg-black text-white py-2 text-md rounded-md font-semibold text-center hover:bg-gray-500"
-        >
-          {isLoading ? (
-            <div className="flex flex row items-center justify-center">
-              <span className="mr-2">Translating</span>
-              <FaSpinner className="animate-spin" />
-            </div>
-          ) : (
-            "Translate"
-          )}
-        </Button>
+        <div className="bg-black rounded">
+          <PremiumSourceTextArea sourceText={imageText} />
+          <div
+            className={classNames(
+              "px-2 pb-2 flex items-center",
+              imageText ? "justify-between" : "justify-end"
+            )}
+          >
+            {imageText && (
+              <Button
+                type="button"
+                title="Re-upload"
+                wrapperClassName="w-1/3 lg:w-1/5 p-1 lg:p-2 rounded bg-white text-black font-semibold"
+                buttonClassName="w-full"
+                onClick={onReuploadClick}
+              />
+            )}
+
+            <Button
+              type="submit"
+              disabled={isLoading}
+              wrapperClassName="w-1/3 lg:w-1/5 p-1 lg:p-2 rounded bg-white text-black font-semibold"
+              buttonClassName="w-full"
+            >
+              {isLoading ? (
+                <div className="flex flex row items-center justify-center">
+                  <span className="mr-2">Translating</span>
+                  <FaSpinner className="animate-spin" />
+                </div>
+              ) : (
+                "Translate"
+              )}
+            </Button>
+          </div>
+        </div>
       </div>
     </form>
   );

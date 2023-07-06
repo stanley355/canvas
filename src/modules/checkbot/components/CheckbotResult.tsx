@@ -18,35 +18,25 @@ const CheckboxResult = (props: ICheckbotResult) => {
   };
 
   return (
-    <div className="my-4 lg:mt-0 ">
+    <div className="bg-white rounded pb-1 h-fit">
       <label htmlFor="checkbot_result">
         <textarea
           name="checkbot_result"
           id="checkbot_result_textarea"
-          className="w-full rounded-md text-black bg-white border p-2"
+          className="w-full text-black bg-transparent p-2"
           cols={30}
-          rows={isDesktop ? 13 : 10}
+          rows={isDesktop ? 12 : 10}
           onChange={() => {}}
           value={checkbotVal ? checkbotVal : "Your result will show up here"}
         />
       </label>
-      <div className="grid grid-cols-2 gap-2 lg:grid-cols-1">
-        <Button
-          type="button"
-          title="Copy"
-          buttonClassName="w-full text-center p-2 bg-white text-black rounded-md hover:border hover:border-white hover:bg-black hover:text-white"
-          onClick={copyText}
-        />
-        {!isDesktop && (
-          <Button
-            type="link"
-            href="#title"
-            title="Go to Top"
-            wrapperClassName="flex items-center justify-center w-full"
-            buttonClassName="w-full text-center p-2 bg-white text-black rounded-md hover:border hover:border-white hover:bg-black hover:text-white"
-          />
-        )}
-      </div>
+      <Button
+        type="button"
+        title="Copy"
+        wrapperClassName="w-1/3 ml-auto mr-1 text-center p-2 bg-blue-900 text-white font-semibold rounded-md"
+        buttonClassName="w-full"
+        onClick={copyText}
+      />
     </div>
   );
 };

@@ -10,14 +10,22 @@ import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 import { handlePrompt } from "@/common/lib/handlePrompt";
+import classNames from "classnames";
 
 interface ITranslateForm {
+  imageText: string;
+  onReuploadClick: () => void;
   dispatchLoginForm: () => void;
   dispatchTranslateVal: (val: string) => void;
 }
 
 const TranslateForm = (props: ITranslateForm) => {
-  const { dispatchLoginForm, dispatchTranslateVal } = props;
+  const {
+    imageText,
+    onReuploadClick,
+    dispatchLoginForm,
+    dispatchTranslateVal,
+  } = props;
 
   const [isLoading, setIsLoading] = useState(false);
   const isDesktop = useDesktopScreen();
@@ -52,14 +60,18 @@ const TranslateForm = (props: ITranslateForm) => {
     });
 
     setIsLoading(true);
-    const prompt = `Translate "${sourceText}" to ${targetLang}. ${contextText ?? ""}`;
-    const { content, prompt_tokens, completion_tokens } = await handlePrompt(prompt);
+    const prompt = `Translate "${sourceText}" to ${targetLang}. ${
+      contextText ?? ""
+    }`;
+    const { content, prompt_tokens, completion_tokens } = await handlePrompt(
+      prompt
+    );
 
     if (content) {
       setIsLoading(false);
       dispatchTranslateVal(content);
       if (!isDesktop) window.location.href = "#translate_result_textarea";
-      
+
       const saveUserPromptPayload = {
         prompt_token: prompt_tokens,
         completion_token: completion_tokens,
@@ -77,11 +89,11 @@ const TranslateForm = (props: ITranslateForm) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-8">
+    <form onSubmit={handleSubmit} className="mb-2">
       <label htmlFor="target_lang_select" className="w-full">
         <Select
           className="text-black"
-          placeholder={isDesktop ? "Select Target Language" : "Select Language"}
+          placeholder="Select Target Language"
           id="target_lang_select"
           name="target_lang"
           aria-label="target_lang_select"
@@ -89,29 +101,45 @@ const TranslateForm = (props: ITranslateForm) => {
           options={LANGUAGE_LIST}
         />
       </label>
-      <div className="mt-4">
-        <input
-          name="context_text"
-          id="context_text_textarea"
-          className="w-full border rounded-md bg-transparent p-2 mb-4 text-black bg-white"
-          placeholder="Optional: Context (xyz refers to...) "
-        />
-        <SourceTextArea />
-        <Button
-          type="submit"
-          disabled={isLoading}
-          wrapperClassName="w-full lg:mx-auto"
-          buttonClassName="w-full bg-white text-black py-2 text-md rounded-md font-semibold text-center hover:border hover:border-white hover:bg-black hover:text-white"
-        >
-          {isLoading ? (
-            <div className="flex flex row items-center justify-center">
-              <span className="mr-2">Translating</span>
-              <FaSpinner className="animate-spin" />
-            </div>
-          ) : (
-            "Translate"
+      <input
+        name="context_text"
+        id="context_text_textarea"
+        className="w-full border rounded-md bg-transparent p-2 mt-3 text-black bg-white"
+        placeholder="Optional: Context (xyz refers to...) "
+      />
+      <div className="mt-3 bg-white rounded">
+        <SourceTextArea sourceText={imageText} />
+        <div
+          className={classNames(
+            "px-1 pb-1 flex items-center",
+            imageText ? "justify-between" : "justify-end"
           )}
-        </Button>
+        >
+          {imageText && (
+            <Button
+              type="button"
+              title="Re-upload"
+              wrapperClassName="w-1/3 lg:w-1/5 p-1 lg:p-2 rounded bg-blue-900 text-white font-semibold"
+              buttonClassName="w-full"
+              onClick={onReuploadClick}
+            />
+          )}
+          <Button
+            type="submit"
+            disabled={isLoading}
+            wrapperClassName="w-1/3 bg-blue-900 text-white p-2 ml-auto text-md rounded-md font-semibold text-center"
+            buttonClassName="w-full "
+          >
+            {isLoading ? (
+              <div className="flex flex row items-center justify-center">
+                <span className="mr-2">Translating</span>
+                <FaSpinner className="animate-spin" />
+              </div>
+            ) : (
+              "Translate"
+            )}
+          </Button>
+        </div>
       </div>
     </form>
   );

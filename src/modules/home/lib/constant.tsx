@@ -66,7 +66,9 @@ export const HOME_COPYWRITING = [
 
 export const HOME_SEO = {
   title: "Language AI - Translation and Grammar Check",
-  description: "Language AI: Free Instant Translation for 100+ Languages | Grammar Check, Spelling & Punctuation | Improve Writing with Language AI",
-  keywords: "language AI, translate, translation, machine translation, grammar check, free grammar check",
-  url: process.env.NEXT_PUBLIC_BASE_URL
+  description:
+    "Language AI: Free Instant Translation for 100+ Languages | Grammar Check, Spelling & Punctuation | Improve Writing with Language AI",
+  keywords:
+    "language AI, translate, translation, machine translation, grammar check, free grammar check",
+  url: process.env.NEXT_PUBLIC_BASE_URL,
 };
