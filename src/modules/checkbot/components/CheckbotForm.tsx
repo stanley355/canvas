@@ -21,8 +21,6 @@ const CheckBotForm = (props: ICheckBotForm) => {
   const [showPersonalInstruction, setShowPersonalInstruction] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const isDesktop = useDesktopScreen();
-
   const handleCheckbotOption = (option: any) => {
     const isPersonalInstruction = option.value === "personal_instruction";
     setShowPersonalInstruction(isPersonalInstruction);
@@ -61,16 +59,14 @@ const CheckBotForm = (props: ICheckBotForm) => {
       name: "checkbot",
       instruction: instruction,
     });
-    const prompt = `${personalInstruction ?? instruction} ${
-      personalInstruction ? ", text: " : ""
-    } ${sourceText}`;
+    const prompt = `${personalInstruction ?? instruction} ${personalInstruction ? ", text: " : ""
+      } ${sourceText}`;
     const { content, prompt_tokens, completion_tokens } = await handlePrompt(
       prompt
     );
     if (content) {
       setIsLoading(false);
       dispatchCheckbotVal(content);
-      if (!isDesktop) window.location.href = "#translate_result_textarea";
 
       const saveUserPromptPayload = {
         prompt_token: prompt_tokens,
@@ -89,7 +85,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-8">
+    <form onSubmit={handleSubmit} className="mb-4">
       <label htmlFor="checkbot_instruction_select">
         <Select
           placeholder="What can I help you with?"
@@ -110,22 +106,25 @@ const CheckBotForm = (props: ICheckBotForm) => {
           placeholder="What's your instruction?"
         />
       )}
-      <SourceTextArea />
-      <Button
-        type="submit"
-        disabled={isLoading}
-        wrapperClassName="w-full mt-4"
-        buttonClassName="w-full bg-white text-black py-2 mttext-md rounded-md font-semibold text-center hover:border hover:border-white hover:bg-black hover:text-white"
-      >
-        {isLoading ? (
-          <div className="flex flex row items-center justify-center">
-            <span className="mr-2">Processing</span>
-            <FaSpinner className="animate-spin" />
-          </div>
-        ) : (
-          "Check"
-        )}
-      </Button>
+      <div className="bg-white rounded pb-1">
+
+        <SourceTextArea />
+        <Button
+          type="submit"
+          disabled={isLoading}
+          wrapperClassName="w-1/3 bg-blue-900 ml-auto mr-1 text-white py-2 mttext-md rounded-md font-semibold text-center"
+          buttonClassName="w-full"
+        >
+          {isLoading ? (
+            <div className="flex flex row items-center justify-center">
+              <span className="mr-2">Processing</span>
+              <FaSpinner className="animate-spin" />
+            </div>
+          ) : (
+            "Check"
+          )}
+        </Button>
+      </div>
     </form>
   );
 };
