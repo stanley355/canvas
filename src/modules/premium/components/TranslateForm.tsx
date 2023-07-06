@@ -8,11 +8,11 @@ import Button from "@/common/components/Button";
 import PremiumSourceTextArea from "./PremiumSourceTextArea";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
-import { PREMIUM_LANGUAGE_LIST } from "../lib/constant";
 import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
 import { handlePremiumPrompt } from "../lib/handlePremiumPrompt";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
+import { LANGUAGE_LIST } from "@/modules/translate/constant";
 
 const InsufficientBalanceModal = dynamic(
   () => import("./InsufficientBalanceModal")
@@ -30,7 +30,6 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
 
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [languageLabel, setLanguageLabel] = useState("");
 
   const isDesktop = useDesktopScreen();
 
@@ -43,11 +42,11 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
       return;
     }
 
-    const languageCode = e.target.target_lang.value;
+    const language = e.target.target_lang.value;
     const sourceText = e.target.source_text.value;
     const context = e.target.context.value;
 
-    if (!languageCode) {
+    if (!language) {
       toast.warning("Target Language Could Not be Empy");
       return;
     }
@@ -67,10 +66,10 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
 
     sendFirebaseEvent("premium_translate", {
       name: "premium_translate",
-      target_lang: languageLabel,
+      target_lang: language,
     });
 
-    const prompt = `Translate ${sourceText} to ${languageLabel} ${context ?? ""}`;
+    const prompt = `Translate ${sourceText} to ${language} ${context ?? ""}`;
     const { content, prompt_tokens, completion_tokens } = await handlePremiumPrompt(prompt);
 
     if (content) {
@@ -109,9 +108,8 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
           name="target_lang"
           aria-label="target_lang_select"
           aria-labelledby="target_lang_select"
-          options={PREMIUM_LANGUAGE_LIST}
+          options={LANGUAGE_LIST}
           styles={reactSelectDarkStyle}
-          onChange={(opt: any) => setLanguageLabel(opt?.label)}
         />
       </label>
       <div>
