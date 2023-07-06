@@ -87,16 +87,6 @@ const PremiumImageTranslateForm = (props: ITranslateForm) => {
     return;
   };
 
-  const onImageUpload = (e: any) => {
-    e.preventDefault();
-    Tesseract.recognize(
-      e.target.files[0],
-      'eng',
-      { logger: m => console.log(m) }
-    ).then(({ data: { text } }) => {
-      console.log(text);
-    })
-  }
 
   return (
     <>
