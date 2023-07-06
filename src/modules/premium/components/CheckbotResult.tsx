@@ -24,7 +24,7 @@ const PremiumCheckbotResult = (props: ITranslateResult) => {
           name="checkbot_result"
           id="checkbot_result_textarea"
           className="w-full bg-transparent text-white p-2 "
-          onChange={() => { }} //remove warning
+          onChange={() => {}} //remove warning
           cols={30}
           rows={isDesktop ? 11 : 10}
           value={checkbotVal ? checkbotVal : "Your result will show up here"}

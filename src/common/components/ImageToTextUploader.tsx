@@ -34,7 +34,12 @@ const ImageToTextUploader = (props: IImageToTextUploader) => {
 
   return (
     <div>
-      <div className={classNames("font-semibold mb-2 px-1", style === "dark" ? "text-black" : "")}>
+      <div
+        className={classNames(
+          "font-semibold mb-2 px-1",
+          style === "dark" ? "text-black" : ""
+        )}
+      >
         * For better result, put the Language of the text in Image (automatic as
         English)
       </div>
@@ -45,7 +50,12 @@ const ImageToTextUploader = (props: IImageToTextUploader) => {
         className={classNames("mb-2", style === "white" ? "text-black" : "")}
         onChange={(opt: any) => setLang(opt.value)}
       />
-      <div className={classNames("rounded h-60 lg:h-64", style === "dark" ? "bg-black text-white" : "bg-white text-black")}>
+      <div
+        className={classNames(
+          "rounded h-60 lg:h-64",
+          style === "dark" ? "bg-black text-white" : "bg-white text-black"
+        )}
+      >
         {isLoading ? (
           <div className="flex flex-col items-center justify-center w-full h-full">
             <FaSpinner className="animate-spin text-4xl" />

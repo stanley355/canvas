@@ -59,8 +59,9 @@ const CheckBotForm = (props: ICheckBotForm) => {
       name: "checkbot",
       instruction: instruction,
     });
-    const prompt = `${personalInstruction ?? instruction} ${personalInstruction ? ", text: " : ""
-      } ${sourceText}`;
+    const prompt = `${personalInstruction ?? instruction} ${
+      personalInstruction ? ", text: " : ""
+    } ${sourceText}`;
     const { content, prompt_tokens, completion_tokens } = await handlePrompt(
       prompt
     );
@@ -107,7 +108,6 @@ const CheckBotForm = (props: ICheckBotForm) => {
         />
       )}
       <div className="bg-white rounded pb-1">
-
         <SourceTextArea />
         <Button
           type="submit"

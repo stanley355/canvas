@@ -34,7 +34,6 @@ const LangTranslate = () => {
       <MetaSEO seo={TRANSLATE_SEO} />
       <div className="lg:container mx-auto px-2 lg:px-0">
         <div className="flex items-center justify-between my-4">
-
           <h1
             className="text-xl lg:text-2xl flex items-center justify-center"
             id="title"
@@ -42,18 +41,22 @@ const LangTranslate = () => {
             <FaLanguage className="text-4xl mr-2" />
             <span>Translate</span>
           </h1>
-          <MediaSelect style="white" onChange={(opt) => setIsImageTranslate(opt.value === "image")} />
+          <MediaSelect
+            style="white"
+            onChange={(opt) => setIsImageTranslate(opt.value === "image")}
+          />
         </div>
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 mb-8">
-          {isImageTranslate ? <ImageToTextUploader style="white" dispatch={onImageTextDispatch} />
-            :
+          {isImageTranslate ? (
+            <ImageToTextUploader style="white" dispatch={onImageTextDispatch} />
+          ) : (
             <TranslateForm
               imageText={imageText}
               onReuploadClick={() => setIsImageTranslate(true)}
               dispatchLoginForm={() => setShowLogin(true)}
               dispatchTranslateVal={(val) => setTranslateVal(val)}
             />
-          }
+          )}
           <TranslateResult translateVal={translateVal} />
         </div>
         <TranslateComparison />

@@ -20,7 +20,12 @@ interface ITranslateForm {
 }
 
 const TranslateForm = (props: ITranslateForm) => {
-  const { imageText, onReuploadClick, dispatchLoginForm, dispatchTranslateVal } = props;
+  const {
+    imageText,
+    onReuploadClick,
+    dispatchLoginForm,
+    dispatchTranslateVal,
+  } = props;
 
   const [isLoading, setIsLoading] = useState(false);
   const isDesktop = useDesktopScreen();
@@ -55,8 +60,9 @@ const TranslateForm = (props: ITranslateForm) => {
     });
 
     setIsLoading(true);
-    const prompt = `Translate "${sourceText}" to ${targetLang}. ${contextText ?? ""
-      }`;
+    const prompt = `Translate "${sourceText}" to ${targetLang}. ${
+      contextText ?? ""
+    }`;
     const { content, prompt_tokens, completion_tokens } = await handlePrompt(
       prompt
     );
@@ -107,8 +113,8 @@ const TranslateForm = (props: ITranslateForm) => {
           className={classNames(
             "px-1 pb-1 flex items-center",
             imageText ? "justify-between" : "justify-end"
-          )} >
-
+          )}
+        >
           {imageText && (
             <Button
               type="button"

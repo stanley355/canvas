@@ -13,7 +13,12 @@ const MediaSelect = (props: IMediaSelect) => {
   const { onChange, style } = props;
 
   const Placeholder = () => (
-    <div className={classNames("flex items-center gap-2", style === "white" ? "text-black" : "")}>
+    <div
+      className={classNames(
+        "flex items-center gap-2",
+        style === "white" ? "text-black" : ""
+      )}
+    >
       <FaLanguage className="text-xl" />
       <span>Text Translate</span>
     </div>

@@ -32,13 +32,13 @@ const TranslateResult = (props: ITranslateResult) => {
           }
         />
       </label>
-        <Button
-          type="button"
-          title="Copy"
-          wrapperClassName="w-1/3 ml-auto mr-1 mt-1 text-center p-2 bg-blue-900 text-white rounded-md font-semibold"
-          buttonClassName="w-full"
-          onClick={copyText}
-        />
+      <Button
+        type="button"
+        title="Copy"
+        wrapperClassName="w-1/3 ml-auto mr-1 mt-1 text-center p-2 bg-blue-900 text-white rounded-md font-semibold"
+        buttonClassName="w-full"
+        onClick={copyText}
+      />
     </div>
   );
 };
