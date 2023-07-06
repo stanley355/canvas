@@ -97,13 +97,13 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-8 lg:mb-0">
+    <form onSubmit={handleSubmit} className="mb-2 lg:mb-0 relative">
       {showModal && (
         <InsufficientBalanceModal onCloseClick={() => setShowModal(false)} />
       )}
       <label htmlFor="target_lang_select" className="w-full mb-4">
         <Select
-          className="text-black mb-4"
+          className="text-black mb-2"
           placeholder={isDesktop ? "Select Target Language" : "Select Language"}
           id="target_lang_select"
           name="target_lang"
@@ -119,7 +119,7 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
           <input
             id="context_input"
             name="context"
-            className="w-full rounded-md p-2 mb-4 bg-black text-white"
+            className="w-full rounded-md p-2 mb-2 bg-black text-white"
             placeholder="Context (what the text is about) "
           />
         </label>
@@ -127,8 +127,8 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
         <Button
           type="submit"
           disabled={isLoading}
-          wrapperClassName="w-full"
-          buttonClassName="w-full bg-black text-white py-2 text-md rounded-md font-semibold text-center hover:bg-gray-500"
+          wrapperClassName="absolute right-2 bottom-2 lg:bottom-4 w-1/3 p-2 rounded bg-white text-black font-semibold"
+          buttonClassName="w-full"
         >
           {isLoading ? (
             <div className="flex flex row items-center justify-center">

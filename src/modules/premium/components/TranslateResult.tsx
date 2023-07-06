@@ -18,38 +18,27 @@ const PremiumTranslateResult = (props: ITranslateResult) => {
   };
 
   return (
-    <div className="my-4 lg:my-0">
-      <div className="bg-black w-fit p-2 rounded mb-2">LanguageAI Premium</div>
+    <div className="relative">
       <label htmlFor="translate_result">
         <textarea
           name="translate_result"
           id="translate_result_textarea"
           className="w-full rounded-md bg-black text-white p-2 border"
-          onChange={() => {}} //remove warning
+          onChange={() => { }} //remove warning
           cols={30}
-          rows={isDesktop ? 15 : 10}
+          rows={isDesktop ? 14: 10}
           value={
             translateVal ? translateVal : "Your translation will show up here"
           }
         />
       </label>
-      <div className="grid grid-cols-2 gap-2 lg:grid-cols-1">
-        <Button
-          type="button"
-          title="Copy"
-          buttonClassName="w-full text-center p-2 bg-black text-white rounded-md hover:bg-gray-500"
-          onClick={copyText}
-        />
-        {!isDesktop && (
-          <Button
-            type="link"
-            href="#title"
-            title="Go to Top"
-            wrapperClassName="flex items-center justify-center w-full"
-            buttonClassName="w-full text-center p-2 bg-black text-white rounded-md hover:bg-gray-500"
-          />
-        )}
-      </div>
+      <Button
+        type="button"
+        title="Copy"
+        wrapperClassName="absolute right-2 bottom-4 lg:bottom-5 w-1/3 p-2 rounded bg-white text-black font-semibold"
+        buttonClassName="w-full"
+        onClick={copyText}
+      />
     </div>
   );
 };

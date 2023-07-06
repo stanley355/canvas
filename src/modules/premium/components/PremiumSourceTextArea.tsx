@@ -29,7 +29,7 @@ const PremiumSourceTextArea = () => {
           name="source_text"
           id="source_textarea"
           cols={30}
-          rows={isDesktop ? 12 : 10}
+          rows={10}
           className="w-full rounded-md bg-black text-white focus:outline-none scrollbar-thin scrollbar-thumb-white scrollbar-thumb-rounded-full pr-2"
           value={textValue}
           onChange={(e: any) => setTextValue(e.target.value)}
