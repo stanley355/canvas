@@ -1,4 +1,4 @@
-import { FaCheckDouble, FaCross, FaTimes, FaCheck } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
 
 export const LANGUAGE_LIST = [
   {
@@ -6,8 +6,16 @@ export const LANGUAGE_LIST = [
     value: "",
   },
   {
+    label: "African",
+    value: "African",
+  },
+  {
     label: "Arabic",
     value: "Arabic",
+  },
+  {
+    label: "Bulgarian",
+    value: "Bulgarian",
   },
   {
     label: "Chinese (Simplified)",
@@ -18,12 +26,16 @@ export const LANGUAGE_LIST = [
     value: "Chinese (Traditional)",
   },
   {
+    label: "Dutch",
+    value: "Dutch",
+  },
+  {
     label: "English",
     value: "English",
   },
   {
-    label: "Tagalog",
-    value: "Tagalog",
+    label: "Finnish",
+    value: "Finnish",
   },
   {
     label: "French",
@@ -34,16 +46,16 @@ export const LANGUAGE_LIST = [
     value: "German",
   },
   {
+    label: "Greek",
+    value: "Greek",
+  },
+  {
+    label: "Hebrew",
+    value: "Hebrew",
+  },
+  {
     label: "Hindi",
     value: "Hindi",
-  },
-  {
-    label: "Japanese",
-    value: "Japanese",
-  },
-  {
-    label: "Javanese",
-    value: "Javanese",
   },
   {
     label: "Indonesian",
@@ -54,6 +66,10 @@ export const LANGUAGE_LIST = [
     value: "Italian",
   },
   {
+    label: "Japanese",
+    value: "Japanese",
+  },
+  {
     label: "Korean",
     value: "Korean",
   },
@@ -62,24 +78,68 @@ export const LANGUAGE_LIST = [
     value: "Malay",
   },
   {
+    label: "Norwegian",
+    value: "Norwegian",
+  },
+  {
+    label: "Persian",
+    value: "Persian",
+  },
+  {
+    label: "Polish",
+    value: "Polish",
+  },
+  {
     label: "Portuguese",
     value: "Portuguese",
+  },
+  {
+    label: "Romanian",
+    value: "Romanian",
   },
   {
     label: "Russian",
     value: "Russian",
   },
   {
+    label: "Serbian",
+    value: "Serbian",
+  },
+  {
     label: "Spanish",
     value: "Spanish",
+  },
+  {
+    label: "Swedish",
+    value: "Swedish",
+  },
+  {
+    label: "Tagalog",
+    value: "Tagalog",
+  },
+  {
+    label: "Tamil",
+    value: "Tamil",
   },
   {
     label: "Thai",
     value: "Thai",
   },
   {
+    label: "Turkish",
+    value: "Turkish",
+  },
+  {
+    label: "Ukrainian",
+    value: "Ukrainian",
+  },
+  {
     label: "Vietnamese",
     value: "Vietnamese",
+  },
+  {
+    label: "Welsh",
+    value: "Welsh",
   },
 ];
 
