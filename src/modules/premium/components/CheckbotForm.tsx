@@ -17,11 +17,10 @@ import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 interface IPremiumCheckBotForm {
   dispatchLoginForm: () => void;
   dispatchCheckbotVal: (val: string) => void;
-  dispatchTokenUsed: (token: number) => void;
 }
 
 const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
-  const { dispatchLoginForm, dispatchCheckbotVal, dispatchTokenUsed } = props;
+  const { dispatchLoginForm, dispatchCheckbotVal } = props;
 
   const isDesktop = useDesktopScreen();
   const [showPersonalInstruction, setShowPersonalInstruction] = useState(false);
@@ -88,7 +87,6 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     if (content) {
       if (!isDesktop) window.location.href = "#translate_result_textarea";
       const totalToken = prompt_tokens + completion_tokens;
-      dispatchTokenUsed(totalToken);
       dispatchCheckbotVal(content);
       setIsLoading(false);
 

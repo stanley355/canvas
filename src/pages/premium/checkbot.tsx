@@ -39,15 +39,9 @@ const CheckBot = () => {
             <PremiumCheckBotForm
               dispatchLoginForm={() => setShowLogin(true)}
               dispatchCheckbotVal={setCheckbotVal}
-              dispatchTokenUsed={setTokenUsed}
             />
             <PremiumCheckbotResult checkbotVal={checkbotVal} />
           </div>
-          {tokenUsed && (
-            <div className="text-lg text-black">
-              Token used: {tokenUsed} tokens
-            </div>
-          )}
           <div className="text-black mb-4">
             <div>How does Premium Checkbot Compared to the Original?</div>
             <ComparisonTable comparisons={CHECKBOT_COMPARISON} />
