@@ -44,9 +44,11 @@ const PremiumTranslate = () => {
             </h1>
             <MediaSelect onChange={(option) => setIsImageTranslate(option.value === "image")} />
           </div>
-          <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-2">
+          <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8">
             {isImageTranslate ?
-              <ImageToTextUploader dispatch={onImageTextDispatch} />
+              <div className="mb-2">
+                <ImageToTextUploader dispatch={onImageTextDispatch} />
+              </div>
               :
               <PremiumTranslateForm
                 imageText={imageText}

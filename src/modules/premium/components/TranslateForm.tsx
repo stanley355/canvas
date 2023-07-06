@@ -3,6 +3,7 @@ import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
 import dynamic from "next/dynamic";
+import classNames from "classnames";
 import Cookies from "js-cookie";
 import Button from "@/common/components/Button";
 import PremiumSourceTextArea from "./PremiumSourceTextArea";
@@ -20,7 +21,7 @@ const InsufficientBalanceModal = dynamic(
 
 export interface ITranslateForm {
   imageText: string;
-  onReuploadClick: () =>  void;
+  onReuploadClick: () => void;
   dispatchLoginForm: () => void;
   dispatchLangTranslate: (val: string) => void;
 }
@@ -73,7 +74,6 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
     const { content, prompt_tokens, completion_tokens } = await handlePremiumPrompt(prompt);
 
     if (content) {
-      if (!isDesktop) window.location.href = "#translate_result_textarea";
       dispatchLangTranslate(content);
       setIsLoading(false);
 
@@ -94,14 +94,14 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-2 lg:mb-0 relative">
+    <form onSubmit={handleSubmit} className="mb-2 lg:mb-0">
       {showModal && (
         <InsufficientBalanceModal onCloseClick={() => setShowModal(false)} />
       )}
       <label htmlFor="target_lang_select" className="w-full mb-4">
         <Select
           className="text-black mb-2"
-          placeholder={isDesktop ? "Select Target Language" : "Select Language"}
+          placeholder="Select Target Language"
           id="target_lang_select"
           name="target_lang"
           aria-label="target_lang_select"
@@ -119,31 +119,34 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
             placeholder="Context (what the text is about) "
           />
         </label>
-        <PremiumSourceTextArea sourceText={imageText} />
-        {imageText && <Button
-          type="button"
-          title="Re-upload"
-          wrapperClassName="absolute left-2 bottom-2 lg:bottom-4 w-1/3 lg:w-1/5 p-1 lg:p-2 rounded bg-white text-black font-semibold"
-          buttonClassName="w-full"
-          onClick={onReuploadClick}
-        />}
+        <div className="bg-black rounded">
+          <PremiumSourceTextArea sourceText={imageText} />
+          <div className={classNames("px-2 pb-2 flex items-center", imageText ? "justify-between" : "justify-end")}>
+            {imageText && <Button
+              type="button"
+              title="Re-upload"
+              wrapperClassName="w-1/3 lg:w-1/5 p-1 lg:p-2 rounded bg-white text-black font-semibold"
+              buttonClassName="w-full"
+              onClick={onReuploadClick}
+            />}
 
-
-        <Button
-          type="submit"
-          disabled={isLoading}
-          wrapperClassName="absolute right-2 bottom-2 lg:bottom-4 w-1/3 lg:w-1/5 p-1 lg:p-2 rounded bg-white text-black font-semibold"
-          buttonClassName="w-full"
-        >
-          {isLoading ? (
-            <div className="flex flex row items-center justify-center">
-              <span className="mr-2">Translating</span>
-              <FaSpinner className="animate-spin" />
-            </div>
-          ) : (
-            "Translate"
-          )}
-        </Button>
+            <Button
+              type="submit"
+              disabled={isLoading}
+              wrapperClassName="w-1/3 lg:w-1/5 p-1 lg:p-2 rounded bg-white text-black font-semibold"
+              buttonClassName="w-full"
+            >
+              {isLoading ? (
+                <div className="flex flex row items-center justify-center">
+                  <span className="mr-2">Translating</span>
+                  <FaSpinner className="animate-spin" />
+                </div>
+              ) : (
+                "Translate"
+              )}
+            </Button>
+          </div>
+        </div>
       </div>
     </form>
   );

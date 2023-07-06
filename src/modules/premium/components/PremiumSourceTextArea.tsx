@@ -17,7 +17,7 @@ const PremiumSourceTextArea = (props: IPremiumSourceTextArea) => {
   };
 
   return (
-    <div className="w-full border rounded-md bg-black p-2 mb-2 relative">
+    <div className="w-full rounded-md p-2 pb-0 relative">
       <Button
         type="button"
         id="clear_text_btn"
@@ -32,7 +32,7 @@ const PremiumSourceTextArea = (props: IPremiumSourceTextArea) => {
           name="source_text"
           id="source_textarea"
           cols={30}
-          rows={12}
+          rows={10}
           className="w-full rounded-md bg-black text-white focus:outline-none scrollbar-thin scrollbar-thumb-white scrollbar-thumb-rounded-full pr-2"
           value={textValue}
           onChange={(e: any) => setTextValue(e.target.value)}
