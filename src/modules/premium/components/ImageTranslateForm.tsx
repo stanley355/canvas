@@ -110,7 +110,7 @@ const PremiumImageTranslateForm = (props: ITranslateForm) => {
       <label htmlFor="target_lang_select" className="w-full mb-4">
         <Select
           className="text-black mb-2"
-          placeholder={isDesktop ? "Select Target Language" : "Select Language"}
+          placeholder="Select Target Language"
           id="target_lang_select"
           name="target_lang"
           aria-label="target_lang_select"
