@@ -10,12 +10,19 @@ interface IMediaSelect {
 const MediaSelect = (props: IMediaSelect) => {
   const { onChange } = props;
 
+  const Placeholder = () => (
+    <div className='flex items-center gap-2'>
+      <FaLanguage className='text-xl' />
+      <span>Text Translate</span>
+    </div>
+  );
+
   const MEDIA_OPTIONS = [
     {
-      label: <div className='flex items-center gap-2'>
-        <FaLanguage className='text-xl' />
-        <span>Text Translate</span>
-      </div>,
+      label:<div className='flex items-center gap-2'>
+          <FaLanguage className='text-xl' />
+          <span>Text Translate</span>
+        </div>,
       value: "text"
     },
     {
@@ -29,7 +36,7 @@ const MediaSelect = (props: IMediaSelect) => {
 
   return (
     <label htmlFor="media_type">
-      <Select name='media_type' placeholder="Text Translate" options={MEDIA_OPTIONS} styles={reactSelectDarkStyle} onChange={onChange} />
+      <Select name='media_type' placeholder={<Placeholder />} options={MEDIA_OPTIONS} styles={reactSelectDarkStyle} onChange={onChange} />
     </label>
   )
 };

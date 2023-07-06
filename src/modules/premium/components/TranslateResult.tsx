@@ -26,7 +26,7 @@ const PremiumTranslateResult = (props: ITranslateResult) => {
           className="w-full rounded-md bg-black text-white p-2 border"
           onChange={() => { }} //remove warning
           cols={30}
-          rows={isDesktop ? 14: 10}
+          rows={isDesktop ? 16: 10}
           value={
             translateVal ? translateVal : "Your translation will show up here"
           }
@@ -35,7 +35,7 @@ const PremiumTranslateResult = (props: ITranslateResult) => {
       <Button
         type="button"
         title="Copy"
-        wrapperClassName="absolute right-2 bottom-4 lg:bottom-5 w-1/3 p-2 rounded bg-white text-black font-semibold"
+        wrapperClassName="absolute right-2 bottom-4 lg:bottom-5 w-1/3 p-1 lg:p-2 rounded bg-white text-black font-semibold"
         buttonClassName="w-full"
         onClick={copyText}
       />

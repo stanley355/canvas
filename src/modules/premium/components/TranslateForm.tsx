@@ -19,14 +19,14 @@ const InsufficientBalanceModal = dynamic(
 );
 
 export interface ITranslateForm {
+  imageText: string;
+  onReuploadClick: () =>  void;
   dispatchLoginForm: () => void;
   dispatchLangTranslate: (val: string) => void;
-  dispatchTokenUsed: (val: number) => void;
 }
 
 const PremiumTranslateForm = (props: ITranslateForm) => {
-  const { dispatchLangTranslate, dispatchTokenUsed, dispatchLoginForm } =
-    props;
+  const { imageText, onReuploadClick, dispatchLangTranslate, dispatchLoginForm } = props;
 
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -74,8 +74,6 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
 
     if (content) {
       if (!isDesktop) window.location.href = "#translate_result_textarea";
-      const totalToken = prompt_tokens + completion_tokens;
-      dispatchTokenUsed(totalToken);
       dispatchLangTranslate(content);
       setIsLoading(false);
 
@@ -121,11 +119,20 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
             placeholder="Context (what the text is about) "
           />
         </label>
-        <PremiumSourceTextArea />
+        <PremiumSourceTextArea sourceText={imageText} />
+        {imageText && <Button
+          type="button"
+          title="Re-upload"
+          wrapperClassName="absolute left-2 bottom-2 lg:bottom-4 w-1/3 lg:w-1/5 p-1 lg:p-2 rounded bg-white text-black font-semibold"
+          buttonClassName="w-full"
+          onClick={onReuploadClick}
+        />}
+
+
         <Button
           type="submit"
           disabled={isLoading}
-          wrapperClassName="absolute right-2 bottom-2 lg:bottom-4 w-1/3 p-2 rounded bg-white text-black font-semibold"
+          wrapperClassName="absolute right-2 bottom-2 lg:bottom-4 w-1/3 lg:w-1/5 p-1 lg:p-2 rounded bg-white text-black font-semibold"
           buttonClassName="w-full"
         >
           {isLoading ? (

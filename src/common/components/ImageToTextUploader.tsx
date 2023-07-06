@@ -6,7 +6,12 @@ import { TESSERACT_LANGUAGE_LIST } from '@/modules/translate/constant';
 import { reactSelectDarkStyle } from '../lib/reactSelectDarkStyle';
 import { toast } from 'react-toastify';
 
-const ImageToTextUploader = () => {
+interface IImageToTextUploader {
+  dispatch: (val: string) => void;
+}
+
+const ImageToTextUploader = (props: IImageToTextUploader) => {
+  const { dispatch } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [lang, setLang] = useState("eng");
 
@@ -19,7 +24,7 @@ const ImageToTextUploader = () => {
       lang
     ).then(({ data }) => {
       setIsLoading(false);
-      console.log(data.text);
+      dispatch(data.text);
     }).catch(_ => {
       toast.error("Something went wrong, please try again.");
       setIsLoading(false);

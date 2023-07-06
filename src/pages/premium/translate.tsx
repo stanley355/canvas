@@ -4,22 +4,29 @@ import dynamic from "next/dynamic";
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
 import MediaSelect from "@/common/components/MediaSelect";
-import PremiumImageTranslateForm from "@/modules/premium/components/ImageTranslateForm";
 import PremiumTranslateForm from "@/modules/premium/components/TranslateForm";
 import PremiumTranslateResult from "@/modules/premium/components/TranslateResult";
 import ComparisonTable from "@/common/components/ComparisonTable";
 import FeedbackBox from "@/common/components/FeedbackBox";
 import { TRANSLATE_COMPARISON } from "@/modules/translate/constant";
 import { PREMIUM_TRANSLATE_SEO } from "@/modules/premium/lib/constant";
+import ImageToTextUploader from "@/common/components/ImageToTextUploader";
 
 const PremiumTranslate = () => {
+  const [isImageTranslate, setIsImageTranslate] = useState(false);
+  const [imageText, setImageText] = useState("");
   const [showLogin, setShowLogin] = useState(false);
   const [langTranslate, setLangTranslate] = useState("");
-  const [tokenUsed, setTokenUsed] = useState(0);
 
   const LoginModal = dynamic(
     () => import("../../modules/login/components/LoginModal")
   );
+
+  const onImageTextDispatch = (txt: string) => {
+    setImageText(txt);
+    setIsImageTranslate(false);
+    return;
+  }
 
   return (
     <Layout>
@@ -35,26 +42,21 @@ const PremiumTranslate = () => {
               <FaLanguage className="text-4xl mr-2" />
               <span>Translate+</span>
             </h1>
-            <MediaSelect onChange={(option) => console.log(option)} />
+            <MediaSelect onChange={(option) => setIsImageTranslate(option.value === "image")} />
           </div>
           <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-2">
-            {/* <PremiumTranslateForm
-              dispatchLoginForm={() => setShowLogin(true)}
-              dispatchLangTranslate={setLangTranslate}
-              dispatchTokenUsed={setTokenUsed}
-            /> */}
-            <PremiumImageTranslateForm
-              dispatchLoginForm={() => setShowLogin(true)}
-              dispatchLangTranslate={setLangTranslate}
-              dispatchTokenUsed={setTokenUsed}
-            />
+            {isImageTranslate ?
+              <ImageToTextUploader dispatch={onImageTextDispatch} />
+              :
+              <PremiumTranslateForm
+                imageText={imageText}
+                onReuploadClick={() => setIsImageTranslate(true)}
+                dispatchLoginForm={() => setShowLogin(true)}
+                dispatchLangTranslate={setLangTranslate}
+              />
+            }
             <PremiumTranslateResult translateVal={langTranslate} />
           </div>
-          {tokenUsed && (
-            <div className="text-lg text-black">
-              Token used: {tokenUsed} tokens
-            </div>
-          )}
           <div className="text-black mb-4">
             <div>How does Premium Checkbot Compared to the Original?</div>
             <ComparisonTable comparisons={TRANSLATE_COMPARISON} />
