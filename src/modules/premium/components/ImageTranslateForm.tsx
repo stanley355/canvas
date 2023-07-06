@@ -1,19 +1,15 @@
 import React, { useState } from "react";
-import Select from "react-select";
 import { toast } from "react-toastify";
-import { FaCloudUploadAlt } from "react-icons/fa";
 import dynamic from "next/dynamic";
 import Cookies from "js-cookie";
 import Tesseract from 'tesseract.js';
 import { ITranslateForm } from "./TranslateForm";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
-import { PREMIUM_LANGUAGE_LIST } from "../lib/constant";
-import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
 import { handlePremiumPrompt } from "../lib/handlePremiumPrompt";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
-import ImageUploader from "@/common/components/ImageUploader";
+import ImageToTextUploader from "@/common/components/ImageToTextUploader";
 
 const InsufficientBalanceModal = dynamic(
   () => import("./InsufficientBalanceModal")
@@ -94,7 +90,7 @@ const PremiumImageTranslateForm = (props: ITranslateForm) => {
   const onImageUpload = (e: any) => {
     e.preventDefault();
     Tesseract.recognize(
-      'https://tesseract.projectnaptha.com/img/eng_bw.png',
+      e.target.files[0],
       'eng',
       { logger: m => console.log(m) }
     ).then(({ data: { text } }) => {
@@ -104,7 +100,7 @@ const PremiumImageTranslateForm = (props: ITranslateForm) => {
 
   return (
     <>
-      <ImageUploader onChange={() => { }} />
+    <ImageToTextUploader />
       {/* <form onSubmit={handleSubmit} className="mb-2 lg:mb-0 relative">
         {showModal && (
           <InsufficientBalanceModal onCloseClick={() => setShowModal(false)} />

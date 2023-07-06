@@ -38,16 +38,16 @@ const PremiumTranslate = () => {
             <MediaSelect onChange={(option) => console.log(option)} />
           </div>
           <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-2">
-            <PremiumTranslateForm
-              dispatchLoginForm={() => setShowLogin(true)}
-              dispatchLangTranslate={setLangTranslate}
-              dispatchTokenUsed={setTokenUsed}
-            />
-            {/* <PremiumImageTranslateForm
+            {/* <PremiumTranslateForm
               dispatchLoginForm={() => setShowLogin(true)}
               dispatchLangTranslate={setLangTranslate}
               dispatchTokenUsed={setTokenUsed}
             /> */}
+            <PremiumImageTranslateForm
+              dispatchLoginForm={() => setShowLogin(true)}
+              dispatchLangTranslate={setLangTranslate}
+              dispatchTokenUsed={setTokenUsed}
+            />
             <PremiumTranslateResult translateVal={langTranslate} />
           </div>
           {tokenUsed && (

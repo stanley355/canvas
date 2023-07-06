@@ -191,4 +191,127 @@ export const TRANSLATE_COMPARISON = [
     original: "Always Free",
     premium: "Just Rp1 per words"
   },
-]
+];
+
+export const TESSERACT_LANGUAGE_LIST = [
+  {
+    label: "Automatic",
+    value: "eng",
+  },
+  {
+    label: "African",
+    value: "afr",
+  },
+  {
+    label: "Arabic",
+    value: "ara",
+  },
+  {
+    label: "Bulgarian",
+    value: "bul",
+  },
+  {
+    label: "Chinese (Simplified)",
+    value: "chi_sim",
+  },
+  {
+    label: "Chinese (Traditional)",
+    value: "chi_tra",
+  },
+  {
+    label: "English",
+    value: "eng",
+  },
+  {
+    label: "Finnish",
+    value: "fin",
+  },
+  {
+    label: "France",
+    value: "fra",
+  },
+  {
+    label: "German",
+    value: "frk",
+  },
+  {
+    label: "Hebrew",
+    value: "heb",
+  },
+  {
+    label: "Hindi",
+    value: "hin",
+  },
+  {
+    label: "Indonesian",
+    value: "ind",
+  },
+  {
+    label: "Italian",
+    value: "ita",
+  },
+  {
+    label: "Japanese",
+    value: "jpn",
+  },
+  {
+    label: "Korean",
+    value: "kor",
+  },
+  {
+    label: "Malay",
+    value: "msa",
+  },
+  {
+    label: "Polish",
+    value: "pol",
+  },
+  {
+    label: "Portuguese",
+    value: "por",
+  },
+  {
+    label: "Romanian",
+    value: "ron",
+  },
+  {
+    label: "Russian",
+    value: "rus",
+  },
+  {
+    label: "Serbian",
+    value: "srp",
+  },
+  {
+    label: "Spanish",
+    value: "spa",
+  },
+  {
+    label: "Swedish",
+    value: "swe",
+  },
+  {
+    label: "Tagalog",
+    value: "tgl",
+  },
+  {
+    label: "Tamil",
+    value: "tam",
+  },
+  {
+    label: "Thai",
+    value: "tha",
+  },
+  {
+    label: "Turkish",
+    value: "tur",
+  },
+  {
+    label: "Ukrainian",
+    value: "ukr",
+  },
+  {
+    label: "Vietnamese",
+    value: "vie",
+  },
+];
