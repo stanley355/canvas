@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaPlusCircle } from "react-icons/fa";
+import { FaPlusCircle, FaRobot } from "react-icons/fa";
 import dynamic from "next/dynamic";
 import Layout from "@/common/components/Layout";
 import MetaSEO from "@/common/components/MetaSEO";
@@ -26,16 +26,13 @@ const CheckBot = () => {
       <div className="bg-white">
         <div className="container mx-auto p-2 lg:px-2">
           <h1
-            className="bg-black py-1 text-3xl rounded flex flex-row items-center justify-center mt-2 lg:my-4 lg:w-1/3 lg:mx-auto"
+            className="text-black my-4 text-3xl rounded flex items-center justify-center font-semibold lg:w-1/3 lg:mx-auto"
             id="title"
           >
-            <FaPlusCircle className="text-3xl mr-2" />
-            <span>LanguageAI Premium</span>
+            <FaRobot className="text-3xl mr-2" />
+            <span>Checkbot+</span>
           </h1>
-          <h2 className="text-black mt-4 text-center text-lg mb-4 italic">
-            #Ultimate Writing Check for All Languages
-          </h2>
-          <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-2">
+          <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8">
             <PremiumCheckBotForm
               dispatchLoginForm={() => setShowLogin(true)}
               dispatchCheckbotVal={setCheckbotVal}
