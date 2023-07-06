@@ -12,7 +12,7 @@ const SourceTextArea = () => {
   };
 
   return (
-    <div className="w-full bg-transparent p-2 relative">
+    <div className="w-full bg-transparent p-2 pb-0 relative">
       <Button
         type="button"
         id="clear_text_btn"

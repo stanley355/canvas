@@ -23,7 +23,7 @@ const TranslateResult = (props: ITranslateResult) => {
         <textarea
           name="translate_result"
           id="translate_result_textarea"
-          className="w-full text-black p-2 bg-transparent"
+          className="w-full text-black p-2 pb-2 bg-transparent"
           cols={30}
           rows={isDesktop ? 14 : 10}
           onChange={() => {}}
@@ -35,7 +35,7 @@ const TranslateResult = (props: ITranslateResult) => {
         <Button
           type="button"
           title="Copy"
-          wrapperClassName="w-1/3 ml-auto mr-1 mt-2 text-center p-2 bg-blue-900 text-white rounded-md font-semibold"
+          wrapperClassName="w-1/3 ml-auto mr-1 mt-1 text-center p-2 bg-blue-900 text-white rounded-md font-semibold"
           buttonClassName="w-full"
           onClick={copyText}
         />
