@@ -52,7 +52,7 @@ const PremiumTranslate = () => {
           <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8">
             {isImageTranslate ? (
               <div className="mb-2">
-                <ImageToTextUploader dispatch={onImageTextDispatch} />
+                <ImageToTextUploader style="dark" dispatch={onImageTextDispatch} />
               </div>
             ) : (
               <PremiumTranslateForm

@@ -37,8 +37,6 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const isDesktop = useDesktopScreen();
-
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 

@@ -10,14 +10,17 @@ import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 import { handlePrompt } from "@/common/lib/handlePrompt";
+import classNames from "classnames";
 
 interface ITranslateForm {
+  imageText: string;
+  onReuploadClick: () => void;
   dispatchLoginForm: () => void;
   dispatchTranslateVal: (val: string) => void;
 }
 
 const TranslateForm = (props: ITranslateForm) => {
-  const { dispatchLoginForm, dispatchTranslateVal } = props;
+  const { imageText, onReuploadClick, dispatchLoginForm, dispatchTranslateVal } = props;
 
   const [isLoading, setIsLoading] = useState(false);
   const isDesktop = useDesktopScreen();
@@ -98,23 +101,39 @@ const TranslateForm = (props: ITranslateForm) => {
         className="w-full border rounded-md bg-transparent p-2 mt-3 text-black bg-white"
         placeholder="Optional: Context (xyz refers to...) "
       />
-      <div className="mt-3 bg-white rounded pb-1">
-        <SourceTextArea />
-        <Button
-          type="submit"
-          disabled={isLoading}
-          wrapperClassName="w-1/3 bg-blue-900 text-white p-2 ml-auto mr-1 text-md rounded-md font-semibold text-center"
-          buttonClassName="w-full "
-        >
-          {isLoading ? (
-            <div className="flex flex row items-center justify-center">
-              <span className="mr-2">Translating</span>
-              <FaSpinner className="animate-spin" />
-            </div>
-          ) : (
-            "Translate"
+      <div className="mt-3 bg-white rounded">
+        <SourceTextArea sourceText={imageText} />
+        <div
+          className={classNames(
+            "px-1 pb-1 flex items-center",
+            imageText ? "justify-between" : "justify-end"
+          )} >
+
+          {imageText && (
+            <Button
+              type="button"
+              title="Re-upload"
+              wrapperClassName="w-1/3 lg:w-1/5 p-1 lg:p-2 rounded bg-blue-900 text-white font-semibold"
+              buttonClassName="w-full"
+              onClick={onReuploadClick}
+            />
           )}
-        </Button>
+          <Button
+            type="submit"
+            disabled={isLoading}
+            wrapperClassName="w-1/3 bg-blue-900 text-white p-2 ml-auto text-md rounded-md font-semibold text-center"
+            buttonClassName="w-full "
+          >
+            {isLoading ? (
+              <div className="flex flex row items-center justify-center">
+                <span className="mr-2">Translating</span>
+                <FaSpinner className="animate-spin" />
+              </div>
+            ) : (
+              "Translate"
+            )}
+          </Button>
+        </div>
       </div>
     </form>
   );

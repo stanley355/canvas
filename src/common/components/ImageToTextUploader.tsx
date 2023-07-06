@@ -5,13 +5,15 @@ import Tesseract from "tesseract.js";
 import { TESSERACT_LANGUAGE_LIST } from "@/modules/translate/constant";
 import { reactSelectDarkStyle } from "../lib/reactSelectDarkStyle";
 import { toast } from "react-toastify";
+import classNames from "classnames";
 
 interface IImageToTextUploader {
+  style: "dark" | "white";
   dispatch: (val: string) => void;
 }
 
 const ImageToTextUploader = (props: IImageToTextUploader) => {
-  const { dispatch } = props;
+  const { dispatch, style } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [lang, setLang] = useState("eng");
 
@@ -32,18 +34,18 @@ const ImageToTextUploader = (props: IImageToTextUploader) => {
 
   return (
     <div>
-      <div className="text-black font-semibold mb-2 px-1">
+      <div className={classNames("font-semibold mb-2 px-1", style === "dark" ? "text-black" : "")}>
         * For better result, put the Language of the text in Image (automatic as
         English)
       </div>
       <Select
         placeholder="Select Image Language"
         options={TESSERACT_LANGUAGE_LIST}
-        styles={reactSelectDarkStyle}
-        className="mb-1"
+        styles={style === "dark" ? reactSelectDarkStyle : {}}
+        className={classNames("mb-2", style === "white" ? "text-black" : "")}
         onChange={(opt: any) => setLang(opt.value)}
       />
-      <div className="bg-black rounded h-60 lg:h-64">
+      <div className={classNames("rounded h-60 lg:h-64", style === "dark" ? "bg-black text-white" : "bg-white text-black")}>
         {isLoading ? (
           <div className="flex flex-col items-center justify-center w-full h-full">
             <FaSpinner className="animate-spin text-4xl" />
@@ -52,7 +54,7 @@ const ImageToTextUploader = (props: IImageToTextUploader) => {
         ) : (
           <label
             htmlFor="image_input"
-            className="text-white cursor-pointer w-full h-full flex flex-col items-center justify-center"
+            className="cursor-pointer w-full h-full flex flex-col items-center justify-center"
           >
             <input
               type="file"
