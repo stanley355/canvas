@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaPlusSquare } from "react-icons/fa";
+import { FaLanguage, FaPlusSquare } from "react-icons/fa";
 import dynamic from "next/dynamic";
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
@@ -26,15 +26,12 @@ const PremiumTranslate = () => {
       <div className="bg-white">
         <div className="container mx-auto p-2 lg:px-0">
           <h1
-            className="bg-black py-1 text-3xl rounded flex flex-row items-center justify-center mt-2 lg:my-4 lg:w-1/3 lg:mx-auto"
+            className="text-black text-3xl rounded flex items-center justify-center my-4 lg:w-1/3 lg:mx-auto"
             id="title"
           >
-            <FaPlusSquare className="text-3xl mr-2" />
-            <span>LanguageAI Premium</span>
+            <FaLanguage className="text-5xl mr-2" />
+            <span>Premium Translate</span>
           </h1>
-          <h2 className="text-black mt-4 text-center text-lg mb-4 italic">
-            #Translation updated with real time data
-          </h2>
           <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-2">
             <PremiumTranslateForm
               dispatchLoginForm={() => setShowLogin(true)}
