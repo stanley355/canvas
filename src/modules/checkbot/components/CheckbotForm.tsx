@@ -42,19 +42,18 @@ const CheckBotForm = (props: ICheckBotForm) => {
     const sourceText = e.target.source_text.value;
     if (!instruction) {
       toast.warning("You haven't chosen the instruction");
-      return; 
+      return;
     }
 
     if (!sourceText) {
       toast.warning("Text could not be empty");
-      return; 
+      return;
     }
-
 
     const personalInstruction = e.target?.personal_instruction?.value;
     if (instruction === "personal_instruction" && !personalInstruction) {
       toast.warning("You haven't filled the personal instruction");
-      return; 
+      return;
     }
 
     setIsLoading(true);
@@ -62,8 +61,12 @@ const CheckBotForm = (props: ICheckBotForm) => {
       name: "checkbot",
       instruction: instruction,
     });
-    const prompt = `${personalInstruction ?? instruction} ${personalInstruction ? ", text: " : ""} ${sourceText}`;
-    const { content, prompt_tokens, completion_tokens } = await handlePrompt(prompt);
+    const prompt = `${personalInstruction ?? instruction} ${
+      personalInstruction ? ", text: " : ""
+    } ${sourceText}`;
+    const { content, prompt_tokens, completion_tokens } = await handlePrompt(
+      prompt
+    );
     if (content) {
       setIsLoading(false);
       dispatchCheckbotVal(content);

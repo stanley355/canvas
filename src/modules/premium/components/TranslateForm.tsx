@@ -27,7 +27,12 @@ export interface ITranslateForm {
 }
 
 const PremiumTranslateForm = (props: ITranslateForm) => {
-  const { imageText, onReuploadClick, dispatchLangTranslate, dispatchLoginForm } = props;
+  const {
+    imageText,
+    onReuploadClick,
+    dispatchLangTranslate,
+    dispatchLoginForm,
+  } = props;
 
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -71,7 +76,8 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
     });
 
     const prompt = `Translate ${sourceText} to ${language} ${context ?? ""}`;
-    const { content, prompt_tokens, completion_tokens } = await handlePremiumPrompt(prompt);
+    const { content, prompt_tokens, completion_tokens } =
+      await handlePremiumPrompt(prompt);
 
     if (content) {
       dispatchLangTranslate(content);
@@ -121,14 +127,21 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
         </label>
         <div className="bg-black rounded">
           <PremiumSourceTextArea sourceText={imageText} />
-          <div className={classNames("px-2 pb-2 flex items-center", imageText ? "justify-between" : "justify-end")}>
-            {imageText && <Button
-              type="button"
-              title="Re-upload"
-              wrapperClassName="w-1/3 lg:w-1/5 p-1 lg:p-2 rounded bg-white text-black font-semibold"
-              buttonClassName="w-full"
-              onClick={onReuploadClick}
-            />}
+          <div
+            className={classNames(
+              "px-2 pb-2 flex items-center",
+              imageText ? "justify-between" : "justify-end"
+            )}
+          >
+            {imageText && (
+              <Button
+                type="button"
+                title="Re-upload"
+                wrapperClassName="w-1/3 lg:w-1/5 p-1 lg:p-2 rounded bg-white text-black font-semibold"
+                buttonClassName="w-full"
+                onClick={onReuploadClick}
+              />
+            )}
 
             <Button
               type="submit"

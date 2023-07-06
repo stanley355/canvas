@@ -14,7 +14,6 @@ import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 
-
 interface IPremiumCheckBotForm {
   dispatchLoginForm: () => void;
   dispatchCheckbotVal: (val: string) => void;
@@ -83,7 +82,8 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     const prompt = personalInstruction
       ? `${personalInstruction}, text: "${sourceText}"`
       : `${instruction} "${sourceText}"`;
-    const { content, prompt_tokens, completion_tokens } = await handlePremiumPrompt(prompt);
+    const { content, prompt_tokens, completion_tokens } =
+      await handlePremiumPrompt(prompt);
 
     if (content) {
       if (!isDesktop) window.location.href = "#translate_result_textarea";

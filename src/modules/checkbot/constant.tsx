@@ -72,41 +72,41 @@ export const CHECKBOT_COMPARISON = [
   {
     title: "All Language Check",
     original: <FaCheck className="mx-auto" />,
-    premium: <FaCheck className="mx-auto" />
+    premium: <FaCheck className="mx-auto" />,
   },
   {
     title: "Grammar & Spelling Check",
     original: <FaCheck className="mx-auto" />,
-    premium: <FaCheck className="mx-auto" />
+    premium: <FaCheck className="mx-auto" />,
   },
   {
     title: "Writing Improvement",
     original: <FaCheck className="mx-auto" />,
-    premium: <FaCheck className="mx-auto" />
+    premium: <FaCheck className="mx-auto" />,
   },
   {
     title: "AI Powered Check",
     original: <FaCheck className="mx-auto" />,
-    premium: <FaCheck className="mx-auto" />
+    premium: <FaCheck className="mx-auto" />,
   },
   {
     title: "Downtime",
     original: "Sometime",
-    premium: "Never"
+    premium: "Never",
   },
   {
     title: "Quality to Grammarly",
     original: "10x Better",
-    premium: "20x Better"
+    premium: "20x Better",
   },
   {
     title: "Words Limit",
     original: "4000 words",
-    premium: "8000 words"
+    premium: "8000 words",
   },
   {
     title: "Cost",
     original: "Always Free",
-    premium: "Just Rp1 per words"
+    premium: "Just Rp1 per words",
   },
-]
+];

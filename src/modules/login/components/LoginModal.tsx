@@ -21,9 +21,11 @@ const LoginModal = (props: ILoginModal) => {
         <div className="text-center text-lg font-semibold">
           Please Login To Continue & Save Your Work
         </div>
-        {isFree && <h3 className="text-center text-2xl mb-4 font-bold">
-          Don&apos;t worry, it&apos;s always free!
-        </h3>}
+        {isFree && (
+          <h3 className="text-center text-2xl mb-4 font-bold">
+            Don&apos;t worry, it&apos;s always free!
+          </h3>
+        )}
         <h4 className="text-center mb-2">Sign Up & Login in One Click</h4>
         <GoogleLoginBtn />
         <div className="my-4">or</div>

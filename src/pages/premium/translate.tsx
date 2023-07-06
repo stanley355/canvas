@@ -26,7 +26,7 @@ const PremiumTranslate = () => {
     setImageText(txt);
     setIsImageTranslate(false);
     return;
-  }
+  };
 
   return (
     <Layout>
@@ -42,21 +42,25 @@ const PremiumTranslate = () => {
               <FaLanguage className="text-4xl mr-2" />
               <span>Translate+</span>
             </h1>
-            <MediaSelect onChange={(option) => setIsImageTranslate(option.value === "image")} />
+            <MediaSelect
+              onChange={(option) =>
+                setIsImageTranslate(option.value === "image")
+              }
+            />
           </div>
           <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8">
-            {isImageTranslate ?
+            {isImageTranslate ? (
               <div className="mb-2">
                 <ImageToTextUploader dispatch={onImageTextDispatch} />
               </div>
-              :
+            ) : (
               <PremiumTranslateForm
                 imageText={imageText}
                 onReuploadClick={() => setIsImageTranslate(true)}
                 dispatchLoginForm={() => setShowLogin(true)}
                 dispatchLangTranslate={setLangTranslate}
               />
-            }
+            )}
             <PremiumTranslateResult translateVal={langTranslate} />
           </div>
           <div className="text-black mb-4">

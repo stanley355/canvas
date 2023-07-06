@@ -52,14 +52,18 @@ const TranslateForm = (props: ITranslateForm) => {
     });
 
     setIsLoading(true);
-    const prompt = `Translate "${sourceText}" to ${targetLang}. ${contextText ?? ""}`;
-    const { content, prompt_tokens, completion_tokens } = await handlePrompt(prompt);
+    const prompt = `Translate "${sourceText}" to ${targetLang}. ${
+      contextText ?? ""
+    }`;
+    const { content, prompt_tokens, completion_tokens } = await handlePrompt(
+      prompt
+    );
 
     if (content) {
       setIsLoading(false);
       dispatchTranslateVal(content);
       if (!isDesktop) window.location.href = "#translate_result_textarea";
-      
+
       const saveUserPromptPayload = {
         prompt_token: prompt_tokens,
         completion_token: completion_tokens,

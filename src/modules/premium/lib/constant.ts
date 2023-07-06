@@ -59,9 +59,11 @@ export const PREMIUM_CHECKBOT_OPTIONS = [
 
 export const PREMIUM_TRANSLATE_SEO = {
   title: "Language AI - English and other Language Translator",
-  description: "Unlock seamless translation across languages with Language AI's fast translation service. Effortlessly translate words, phrases, and web pages between English and over 100 languages. Join millions of individuals and teams benefiting from accurate translations instantly, and experience the power of Language AI today.",
-  keywords: "translate, translations, translation, translator, machine translation, online translation",
-  url: `${process.env.NEXT_PUBLIC_BASE_URL}/premium/translate`
+  description:
+    "Unlock seamless translation across languages with Language AI's fast translation service. Effortlessly translate words, phrases, and web pages between English and over 100 languages. Join millions of individuals and teams benefiting from accurate translations instantly, and experience the power of Language AI today.",
+  keywords:
+    "translate, translations, translation, translator, machine translation, online translation",
+  url: `${process.env.NEXT_PUBLIC_BASE_URL}/premium/translate`,
 };
 
 export const PREMIUM_CHECKBOT_SEO = {

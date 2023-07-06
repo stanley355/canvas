@@ -9,7 +9,6 @@ import LoginForm from "@/modules/login/components/LoginForm";
 import { HOME_SEO } from "@/modules/home/lib/constant";
 
 const Home = () => {
-
   return (
     <Layout>
       <MetaSEO seo={HOME_SEO} />
