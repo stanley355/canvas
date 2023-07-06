@@ -11,6 +11,7 @@ import FeedbackBox from "@/common/components/FeedbackBox";
 import { TRANSLATE_COMPARISON } from "@/modules/translate/constant";
 import { PREMIUM_TRANSLATE_SEO } from "@/modules/premium/lib/constant";
 import ImageToTextUploader from "@/common/components/ImageToTextUploader";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 const PremiumTranslate = () => {
   const [isImageTranslate, setIsImageTranslate] = useState(false);
@@ -23,6 +24,7 @@ const PremiumTranslate = () => {
   );
 
   const onImageTextDispatch = (txt: string) => {
+    sendFirebaseEvent("image_translate", {});
     setImageText(txt);
     setIsImageTranslate(false);
     return;

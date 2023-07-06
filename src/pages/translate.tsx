@@ -10,6 +10,7 @@ import FeedbackBox from "@/common/components/FeedbackBox";
 import { TRANSLATE_SEO } from "@/modules/translate/constant";
 import MediaSelect from "@/common/components/MediaSelect";
 import ImageToTextUploader from "@/common/components/ImageToTextUploader";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 const LangTranslate = () => {
   const [isImageTranslate, setIsImageTranslate] = useState(false);
@@ -22,6 +23,7 @@ const LangTranslate = () => {
   );
 
   const onImageTextDispatch = (txt: string) => {
+    sendFirebaseEvent("image_translate", {});
     setImageText(txt);
     setIsImageTranslate(false);
     return;
