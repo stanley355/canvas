@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import dynamic from "next/dynamic";
 import Cookies from "js-cookie";
+import Tesseract from 'tesseract.js';
 import { ITranslateForm } from "./TranslateForm";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
@@ -12,6 +13,7 @@ import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
 import { handlePremiumPrompt } from "../lib/handlePremiumPrompt";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
+import ImageUploader from "@/common/components/ImageUploader";
 
 const InsufficientBalanceModal = dynamic(
   () => import("./InsufficientBalanceModal")
@@ -89,48 +91,47 @@ const PremiumImageTranslateForm = (props: ITranslateForm) => {
     return;
   };
 
-  const ImageUploader = () => {
-    return (
-      <div className="bg-black rounded ">
-        <label htmlFor="image_input" className="text-white cursor-pointer w-full h-60 lg:h-64 flex flex-col items-center justify-center">
-          <input type="file" name="image_input" id="image_input" hidden size={60} accept="image/png, image/jpeg, image/jpg" />
-          <FaCloudUploadAlt className="text-5xl" />
-          <div className="font-semibold text-xl">Upload your Image</div>
-          <div className="font-semibold text-lg">(.png, .jpeg, .jpg)</div>
-        </label>
-      </div>
-    );
-  };
+  const onImageUpload = (e: any) => {
+    e.preventDefault();
+    Tesseract.recognize(
+      'https://tesseract.projectnaptha.com/img/eng_bw.png',
+      'eng',
+      { logger: m => console.log(m) }
+    ).then(({ data: { text } }) => {
+      console.log(text);
+    })
+  }
 
   return (
-    <form onSubmit={handleSubmit} className="mb-2 lg:mb-0 relative">
-      {showModal && (
-        <InsufficientBalanceModal onCloseClick={() => setShowModal(false)} />
-      )}
-      <label htmlFor="target_lang_select" className="w-full mb-4">
-        <Select
-          className="text-black mb-2"
-          placeholder="Select Target Language"
-          id="target_lang_select"
-          name="target_lang"
-          aria-label="target_lang_select"
-          aria-labelledby="target_lang_select"
-          options={PREMIUM_LANGUAGE_LIST}
-          styles={reactSelectDarkStyle}
-          onChange={(opt: any) => setLanguageLabel(opt?.label)}
-        />
-      </label>
-      <div>
-        <label htmlFor="context">
-          <input
-            id="context_input"
-            name="context"
-            className="w-full rounded-md p-2 mb-2 bg-black text-white"
-            placeholder="Context (what the text is about) "
+    <>
+      <ImageUploader onChange={() => { }} />
+      {/* <form onSubmit={handleSubmit} className="mb-2 lg:mb-0 relative">
+        {showModal && (
+          <InsufficientBalanceModal onCloseClick={() => setShowModal(false)} />
+        )}
+        <label htmlFor="target_lang_select" className="w-full mb-4">
+          <Select
+            className="text-black mb-2"
+            placeholder="Select Target Language"
+            id="target_lang_select"
+            name="target_lang"
+            aria-label="target_lang_select"
+            aria-labelledby="target_lang_select"
+            options={PREMIUM_LANGUAGE_LIST}
+            styles={reactSelectDarkStyle}
+            onChange={(opt: any) => setLanguageLabel(opt?.label)}
           />
         </label>
-        <ImageUploader />
-        {/* <Button
+        <div>
+          <label htmlFor="context">
+            <input
+              id="context_input"
+              name="context"
+              className="w-full rounded-md p-2 mb-2 bg-black text-white"
+              placeholder="Context (what the text is about) "
+            />
+          </label>
+          <Button
           type="submit"
           disabled={isLoading}
           wrapperClassName="absolute right-2 bottom-2 lg:bottom-4 w-1/3 p-2 rounded bg-white text-black font-semibold"
@@ -144,9 +145,10 @@ const PremiumImageTranslateForm = (props: ITranslateForm) => {
           ) : (
             "Translate"
           )}
-        </Button> */}
-      </div>
-    </form>
+        </Button>
+        </div>
+      </form> */}
+    </>
   );
 };
 
