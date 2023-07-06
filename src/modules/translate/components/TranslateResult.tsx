@@ -18,37 +18,27 @@ const TranslateResult = (props: ITranslateResult) => {
   };
 
   return (
-    <div className="my-4 lg:mt-0 ">
+    <div className="my-4 lg:mt-0 bg-white rounded pb-1">
       <label htmlFor="translate_result">
         <textarea
           name="translate_result"
           id="translate_result_textarea"
-          className="w-full rounded-md text-black p-2 bg-white border"
+          className="w-full text-black p-2 bg-transparent"
           cols={30}
-          rows={isDesktop ? 15 : 10}
+          rows={isDesktop ? 14 : 10}
           onChange={() => {}}
           value={
             translateVal ? translateVal : "Your translation will show up here"
           }
         />
       </label>
-      <div className="grid grid-cols-2 gap-2 lg:grid-cols-1">
         <Button
           type="button"
           title="Copy"
-          buttonClassName="w-full text-center p-2 bg-white text-black rounded-md hover:border hover:border-white hover:bg-black hover:text-white"
+          wrapperClassName="w-1/3 ml-auto mr-1 mt-2 text-center p-2 bg-blue-900 text-white rounded-md font-semibold"
+          buttonClassName="w-full"
           onClick={copyText}
         />
-        {!isDesktop && (
-          <Button
-            type="link"
-            href="#title"
-            title="Go to Top"
-            wrapperClassName="flex items-center justify-center w-full"
-            buttonClassName="w-full text-center p-2 bg-white text-black rounded-md hover:border hover:border-white hover:bg-black hover:text-white"
-          />
-        )}
-      </div>
     </div>
   );
 };

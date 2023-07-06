@@ -52,9 +52,8 @@ const TranslateForm = (props: ITranslateForm) => {
     });
 
     setIsLoading(true);
-    const prompt = `Translate "${sourceText}" to ${targetLang}. ${
-      contextText ?? ""
-    }`;
+    const prompt = `Translate "${sourceText}" to ${targetLang}. ${contextText ?? ""
+      }`;
     const { content, prompt_tokens, completion_tokens } = await handlePrompt(
       prompt
     );
@@ -81,7 +80,7 @@ const TranslateForm = (props: ITranslateForm) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-8">
+    <form onSubmit={handleSubmit} className="mb-2">
       <label htmlFor="target_lang_select" className="w-full">
         <Select
           className="text-black"
@@ -93,19 +92,19 @@ const TranslateForm = (props: ITranslateForm) => {
           options={LANGUAGE_LIST}
         />
       </label>
-      <div className="mt-4">
-        <input
-          name="context_text"
-          id="context_text_textarea"
-          className="w-full border rounded-md bg-transparent p-2 mb-4 text-black bg-white"
-          placeholder="Optional: Context (xyz refers to...) "
-        />
+      <input
+        name="context_text"
+        id="context_text_textarea"
+        className="w-full border rounded-md bg-transparent p-2 mt-3 text-black bg-white"
+        placeholder="Optional: Context (xyz refers to...) "
+      />
+      <div className="mt-3 bg-white rounded pb-1">
         <SourceTextArea />
         <Button
           type="submit"
           disabled={isLoading}
-          wrapperClassName="w-full lg:mx-auto"
-          buttonClassName="w-full bg-white text-black py-2 text-md rounded-md font-semibold text-center hover:border hover:border-white hover:bg-black hover:text-white"
+          wrapperClassName="w-1/3 bg-blue-900 text-white p-2 ml-auto mr-1 text-md rounded-md font-semibold text-center"
+          buttonClassName="w-full "
         >
           {isLoading ? (
             <div className="flex flex row items-center justify-center">

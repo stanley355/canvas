@@ -43,6 +43,7 @@ const PremiumTranslate = () => {
               <span>Translate+</span>
             </h1>
             <MediaSelect
+            style="dark"
               onChange={(option) =>
                 setIsImageTranslate(option.value === "image")
               }
