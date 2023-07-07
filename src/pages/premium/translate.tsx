@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { FaLanguage, FaPlusSquare } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+import { FaLanguage } from "react-icons/fa";
 import dynamic from "next/dynamic";
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
