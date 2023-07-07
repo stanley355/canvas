@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { FaLanguage } from "react-icons/fa";
 import MetaSEO from "@/common/components/MetaSEO";
@@ -11,8 +11,11 @@ import { TRANSLATE_SEO } from "@/modules/translate/constant";
 import MediaSelect from "@/common/components/MediaSelect";
 import ImageToTextUploader from "@/common/components/ImageToTextUploader";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import NewsModal from "@/common/components/NewsModal";
+import Cookies from "js-cookie";
 
 const LangTranslate = () => {
+  const [showNews, setShowNews] = useState(false);
   const [isImageTranslate, setIsImageTranslate] = useState(false);
   const [imageText, setImageText] = useState("");
   const [translateVal, setTranslateVal] = useState("");
@@ -29,9 +32,20 @@ const LangTranslate = () => {
     return;
   };
 
+  useEffect(() => {
+    const showCookie = Cookies.get("showNews");
+
+    if (!showCookie) {
+      setShowNews(true);
+      Cookies.set("showNews", "false", { expires: 1 });
+      return;
+    }
+  }, [showNews]);
+
   return (
     <Layout>
       <MetaSEO seo={TRANSLATE_SEO} />
+      {showNews && <NewsModal onCloseClick={() => setShowNews(false)} />}
       <div className="lg:container mx-auto px-2 lg:px-0">
         <div className="flex items-center justify-between my-4">
           <h1

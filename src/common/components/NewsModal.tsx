@@ -12,7 +12,7 @@ const NewsModal = (props: INewsModal) => {
 
   return (
     <div className="fixed top-0 left-0 w-full h-full z-10 bg-black bg-opacity-50">
-      <div className="mt-[40%] lg:mt-[20%] w-fit bg-white mx-auto p-2 rounded">
+      <div className="mt-[40%] lg:mt-[15%] w-fit bg-white mx-auto p-2 rounded">
         <div className="text-black text-center text-2xl mb-2 font-semibold"> NEW FEATURE! </div>
         <div className="flex items-center justify-between gap-2">
           <Image src="/images/news/text_toggle.png" alt="text translate" width={150} height={150} className="rounded" />
