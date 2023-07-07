@@ -7,7 +7,7 @@ import TranslateForm from "@/modules/translate/components/TranslateForm";
 import TranslateResult from "@/modules/translate/components/TranslateResult";
 import TranslateComparison from "@/modules/translate/components/TranslateComparison";
 import FeedbackBox from "@/common/components/FeedbackBox";
-import { TRANSLATE_SEO } from "@/modules/translate/constant";
+import { TRANSLATE_SEO } from "@/modules/translate/lib/constant";
 import MediaSelect from "@/common/components/MediaSelect";
 import ImageToTextUploader from "@/common/components/ImageToTextUploader";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";

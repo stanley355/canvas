@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import ComparisonTable from "@/common/components/ComparisonTable";
-import { TRANSLATE_COMPARISON } from "../constant";
+import { TRANSLATE_COMPARISON } from "../lib/constant";
 
 const TranslateComparison = () => {
   return (

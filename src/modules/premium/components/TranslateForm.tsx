@@ -13,7 +13,7 @@ import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
 import { handlePremiumPrompt } from "../lib/handlePremiumPrompt";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
-import { LANGUAGE_LIST } from "@/modules/translate/constant";
+import { LANGUAGE_LIST } from "@/modules/translate/lib/constant";
 
 const InsufficientBalanceModal = dynamic(
   () => import("./InsufficientBalanceModal")
