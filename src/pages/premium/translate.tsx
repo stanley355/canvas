@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaLanguage } from "react-icons/fa";
 import dynamic from "next/dynamic";
 import MetaSEO from "@/common/components/MetaSEO";

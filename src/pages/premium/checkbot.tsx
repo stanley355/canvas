@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaPlusCircle, FaRobot } from "react-icons/fa";
+import { FaRobot } from "react-icons/fa";
 import dynamic from "next/dynamic";
 import Layout from "@/common/components/Layout";
 import MetaSEO from "@/common/components/MetaSEO";
@@ -13,7 +13,6 @@ import FeedbackBox from "@/common/components/FeedbackBox";
 const CheckBot = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [checkbotVal, setCheckbotVal] = useState("");
-  const [tokenUsed, setTokenUsed] = useState(0);
 
   const LoginModal = dynamic(
     () => import("../../modules/login/components/LoginModal")
