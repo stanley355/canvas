@@ -22,11 +22,17 @@ const LoginModal = dynamic(
 
 const LangTranslate = () => {
   const [state, dispatch] = useReducer(translateReducer, TRANSLATE_STATES);
-  const { showNews, isImageTranslate, imageText, showLogin, translateCompletion } = state;
+  const {
+    showNews,
+    isImageTranslate,
+    imageText,
+    showLogin,
+    translateCompletion,
+  } = state;
 
   const updateState = (name: string, value: any) => {
     dispatch({ type: "UPDATE", name, value });
-  }
+  };
 
   const onImageTextDispatch = (txt: string) => {
     sendFirebaseEvent("image_translate", {});
@@ -48,7 +54,9 @@ const LangTranslate = () => {
   return (
     <Layout>
       <MetaSEO seo={TRANSLATE_SEO} />
-      {showNews && <NewsModal onCloseClick={() => updateState("showNews", false)} />}
+      {showNews && (
+        <NewsModal onCloseClick={() => updateState("showNews", false)} />
+      )}
       <div className="lg:container mx-auto px-2 lg:px-0">
         <div className="flex items-center justify-between my-4">
           <h1
@@ -60,7 +68,9 @@ const LangTranslate = () => {
           </h1>
           <MediaSelect
             style="white"
-            onChange={(opt) => updateState("isImageTranslate", opt.value === "image")}
+            onChange={(opt) =>
+              updateState("isImageTranslate", opt.value === "image")
+            }
           />
         </div>
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 mb-8">
@@ -69,9 +79,11 @@ const LangTranslate = () => {
           ) : (
             <TranslateForm
               imageText={imageText}
-              onReuploadClick={() => updateState("isImageTranslate", true) }
+              onReuploadClick={() => updateState("isImageTranslate", true)}
               dispatchLoginForm={() => updateState("showLogin", true)}
-              dispatchTranslateVal={(val) => updateState("translateCompletion", val)}
+              dispatchTranslateVal={(val) =>
+                updateState("translateCompletion", val)
+              }
             />
           )}
           <TranslateResult translateVal={translateCompletion} />

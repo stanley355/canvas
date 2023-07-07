@@ -4,4 +4,4 @@ export const TRANSLATE_STATES = {
   showLogin: false,
   translateCompletion: "",
   showNews: false,
-}
+};

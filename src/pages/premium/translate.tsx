@@ -22,12 +22,15 @@ const LoginModal = dynamic(
 );
 
 const PremiumTranslate = () => {
-  const [state, dispatch] = useReducer(premiumTranslateReducer, PREMIUM_TRANSLATE_STATES);
+  const [state, dispatch] = useReducer(
+    premiumTranslateReducer,
+    PREMIUM_TRANSLATE_STATES
+  );
   const { isImageTranslate, imageText, showLogin, translateCompletion } = state;
 
   const updateState = (name: string, value: any) => {
     dispatch({ type: "UPDATE", name, value });
-  }
+  };
 
   const onImageTextDispatch = (txt: string) => {
     sendFirebaseEvent("image_translate", {});
@@ -70,7 +73,9 @@ const PremiumTranslate = () => {
                 imageText={imageText}
                 onReuploadClick={() => updateState("isImageTranslate", true)}
                 dispatchLoginForm={() => updateState("showLogin", true)}
-                dispatchLangTranslate={(trans: string) => updateState("translateCompletion", trans)}
+                dispatchLangTranslate={(trans: string) =>
+                  updateState("translateCompletion", trans)
+                }
               />
             )}
             <PremiumTranslateResult translateVal={translateCompletion} />
