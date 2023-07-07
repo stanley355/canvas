@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaLanguage } from "react-icons/fa";
 import dynamic from "next/dynamic";
-import Cookies from "js-cookie";
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
 import MediaSelect from "@/common/components/MediaSelect";
@@ -13,10 +12,8 @@ import { TRANSLATE_COMPARISON } from "@/modules/translate/constant";
 import { PREMIUM_TRANSLATE_SEO } from "@/modules/premium/lib/constant";
 import ImageToTextUploader from "@/common/components/ImageToTextUploader";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import NewsModal from "@/common/components/NewsModal";
 
 const PremiumTranslate = () => {
-  const [showNews, setShowNews] = useState(false);
   const [isImageTranslate, setIsImageTranslate] = useState(false);
   const [imageText, setImageText] = useState("");
   const [showLogin, setShowLogin] = useState(false);
@@ -36,7 +33,6 @@ const PremiumTranslate = () => {
   return (
     <Layout>
       {showLogin && <LoginModal isFree={false} />}
-      {showNews && <NewsModal onCloseClick={() => setShowNews(false)} />}
       <MetaSEO seo={PREMIUM_TRANSLATE_SEO} />
       <div className="bg-white">
         <div className="container mx-auto p-2 lg:px-0">
