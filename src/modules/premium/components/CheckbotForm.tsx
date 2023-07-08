@@ -82,6 +82,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     const { content, prompt_tokens, completion_tokens } =
       await handlePremiumPrompt(prompt);
 
+    
     if (content) {
       dispatchCheckbotVal(content);
       setIsLoading(false);
