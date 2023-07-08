@@ -67,7 +67,6 @@ const LangTranslate = () => {
             <span>Translate</span>
           </h1>
           <MediaSelect
-            style="white"
             onChange={(opt) =>
               updateState("isImageTranslate", opt.value === "image")
             }
@@ -75,7 +74,7 @@ const LangTranslate = () => {
         </div>
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 mb-8">
           {isImageTranslate ? (
-            <ImageToTextUploader style="white" dispatch={onImageTextDispatch} />
+            <ImageToTextUploader dispatch={onImageTextDispatch} />
           ) : (
             <TranslateForm
               imageText={imageText}

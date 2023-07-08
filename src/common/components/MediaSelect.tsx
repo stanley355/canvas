@@ -5,20 +5,14 @@ import { FaImage, FaLanguage } from "react-icons/fa";
 import classNames from "classnames";
 
 interface IMediaSelect {
-  style: "dark" | "white";
   onChange: (option: any) => void;
 }
 
 const MediaSelect = (props: IMediaSelect) => {
-  const { onChange, style } = props;
+  const { onChange } = props;
 
   const Placeholder = () => (
-    <div
-      className={classNames(
-        "flex items-center gap-2",
-        style === "white" ? "text-black" : ""
-      )}
-    >
+    <div className="flex items-center gap-2 ">
       <FaLanguage className="text-xl" />
       <span>Text Translate</span>
     </div>
@@ -51,9 +45,17 @@ const MediaSelect = (props: IMediaSelect) => {
         name="media_type"
         placeholder={<Placeholder />}
         options={MEDIA_OPTIONS}
-        styles={style === "dark" ? reactSelectDarkStyle : {}}
-        className={style === "white" ? "text-black" : ""}
         onChange={onChange}
+        styles={{
+          control: (defaults: any) => ({
+            ...defaults,
+            border: "1px solid gray",
+          }),
+          placeholder: (defaults: any) => ({
+            ...defaults,
+            color: "black",
+          }),
+        }}
       />
     </label>
   );
