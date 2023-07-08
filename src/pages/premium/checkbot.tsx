@@ -9,6 +9,7 @@ import { PREMIUM_CHECKBOT_SEO } from "@/modules/premium/lib/constant";
 import ComparisonTable from "@/common/components/ComparisonTable";
 import { CHECKBOT_COMPARISON } from "@/modules/checkbot/constant";
 import FeedbackBox from "@/common/components/FeedbackBox";
+import CheckbotResultToggle from "@/modules/checkbot/components/CheckbotResultToggle";
 
 const CheckBot = () => {
   const [showLogin, setShowLogin] = useState(false);

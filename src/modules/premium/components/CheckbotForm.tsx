@@ -113,12 +113,12 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
           placeholder="Instruction"
           name="instruction"
           options={PREMIUM_CHECKBOT_OPTIONS}
-          className="w-full text-black mb-2"
+          className="w-full text-black mb-2 border-black"
           id="checkbot_instruction_select"
           aria-label="checkbot_instruction_select"
           aria-labelledby="checkbot_instruction_select"
           onChange={handleCheckbotOption}
-          styles={reactSelectDarkStyle}
+          // styles={reactSelectDarkStyle}
         />
       </label>
       {showPersonalInstruction && (

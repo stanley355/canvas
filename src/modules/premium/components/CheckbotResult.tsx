@@ -2,6 +2,7 @@ import React from "react";
 import { toast } from "react-toastify";
 import Button from "@/common/components/Button";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
+import CheckbotResultToggle from "@/modules/checkbot/components/CheckbotResultToggle";
 
 interface ITranslateResult {
   checkbotVal: string;
@@ -18,6 +19,8 @@ const PremiumCheckbotResult = (props: ITranslateResult) => {
   };
 
   return (
+    <div>
+      {/* <CheckbotResultToggle /> */}
     <div className="my-4 lg:my-0 bg-black pb-2 rounded">
       <label htmlFor="checkbot_result">
         <textarea
@@ -26,7 +29,7 @@ const PremiumCheckbotResult = (props: ITranslateResult) => {
           className="w-full bg-transparent text-white p-2 "
           onChange={() => {}} //remove warning
           cols={30}
-          rows={isDesktop ? 11 : 10}
+          rows={10}
           value={checkbotVal ? checkbotVal : "Your result will show up here"}
         />
       </label>
@@ -37,6 +40,7 @@ const PremiumCheckbotResult = (props: ITranslateResult) => {
         buttonClassName="w-full"
         onClick={copyText}
       />
+    </div>
     </div>
   );
 };
