@@ -29,7 +29,7 @@ const CheckBot = () => {
     <Layout>
       {showLogin && <LoginModal isFree={false} />}
       <MetaSEO seo={PREMIUM_CHECKBOT_SEO} />
-      <div className="bg-white">
+      <div className="bg-white" id="top">
         <div className="container mx-auto p-2 lg:px-2">
           <h1
             className="text-black my-4 text-3xl rounded flex items-center justify-center font-semibold lg:w-1/3 lg:mx-auto"
