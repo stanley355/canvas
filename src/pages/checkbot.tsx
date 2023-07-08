@@ -5,7 +5,7 @@ import Layout from "@/common/components/Layout";
 import CheckBotForm from "@/modules/checkbot/components/CheckbotForm";
 import CheckboxResult from "@/modules/checkbot/components/CheckbotResult";
 import MetaSEO from "@/common/components/MetaSEO";
-import { CHECKBOT_SEO } from "@/modules/checkbot/constant";
+import { CHECKBOT_SEO } from "@/modules/checkbot/lib/constant";
 import FeedbackBox from "@/common/components/FeedbackBox";
 import CheckbotComparison from "@/modules/checkbot/components/CheckbotComparison";
 

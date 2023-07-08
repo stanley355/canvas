@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import ComparisonTable from "@/common/components/ComparisonTable";
-import { CHECKBOT_COMPARISON } from "../constant";
+import { CHECKBOT_COMPARISON } from "../lib/constant";
 
 const CheckbotComparison = () => {
   return (

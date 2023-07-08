@@ -3,7 +3,7 @@ import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
-import { CHECKBOT_OPTIONS } from "../constant";
+import { CHECKBOT_OPTIONS } from "../lib/constant";
 import Button from "@/common/components/Button";
 import SourceTextArea from "@/common/components/SourceTextArea";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";

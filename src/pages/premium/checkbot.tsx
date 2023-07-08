@@ -6,7 +6,7 @@ import MetaSEO from "@/common/components/MetaSEO";
 import PremiumCheckBotForm from "@/modules/premium/components/CheckbotForm";
 import { PREMIUM_CHECKBOT_SEO } from "@/modules/premium/lib/constant";
 import ComparisonTable from "@/common/components/ComparisonTable";
-import { CHECKBOT_COMPARISON } from "@/modules/checkbot/constant";
+import { CHECKBOT_COMPARISON } from "@/modules/checkbot/lib/constant";
 import FeedbackBox from "@/common/components/FeedbackBox";
 import CheckbotResultToggle from "@/modules/checkbot/components/CheckbotResultToggle";
 import CheckboxResult from "@/modules/checkbot/components/CheckbotResult";
@@ -41,7 +41,6 @@ const CheckBot = () => {
               {/* {checkbotVal && <CheckbotResultToggle />} */}
               {/* <CheckbotResultToggle /> */}
               <CheckboxResult checkbotVal={checkbotVal} />
-              {/* <PremiumCheckbotResult checkbotVal={checkbotVal ? 10 : 12} /> */}
             </div>
           </div>
           <div className="text-black mb-4">
