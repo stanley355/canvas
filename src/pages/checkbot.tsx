@@ -27,7 +27,7 @@ const CheckBot = () => {
   return (
     <Layout>
       <MetaSEO seo={CHECKBOT_SEO} />
-      <div className="lg:container mx-auto px-2 lg:px-0" id="top">
+      <div className="lg:container mx-auto px-2 lg:px-0">
         <h1 className="flex flex-row items-center text-2xl lg:text-4xl justify-center my-4">
           <FaRobot className="text-3xl mr-2" />
           <span>AI Checkbot</span>

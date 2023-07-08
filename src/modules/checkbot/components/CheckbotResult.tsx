@@ -30,22 +30,13 @@ const CheckboxResult = (props: ICheckbotResult) => {
           value={checkbotVal ? checkbotVal : "Your result will show up here"}
         />
       </label>
-      <div className="flex justify-between lg:justify-end p-2">
-        {!isDesktop && <Button
-          type="link"
-          href="#top"
-          title="Go To Top"
-          wrapperClassName="w-1/3 text-center p-2 bg-blue-900 text-white font-semibold rounded-md"
-          buttonClassName="w-full"
-        />}
-        <Button
-          type="button"
-          title="Copy"
-          wrapperClassName="w-1/3 text-center p-2 bg-blue-900 text-white font-semibold rounded-md"
-          buttonClassName="w-full"
-          onClick={copyText}
-        />
-      </div>
+      <Button
+        type="button"
+        title="Copy"
+        wrapperClassName="w-1/3 text-center m-1 ml-auto p-2 bg-blue-900 text-white font-semibold rounded-md"
+        buttonClassName="w-full"
+        onClick={copyText}
+      />
     </div>
   );
 };
