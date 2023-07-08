@@ -40,7 +40,7 @@ const CheckBot = () => {
           </h1>
           <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-16" id="checkbot_form">
             <PremiumCheckBotForm updateState={updateState} />
-            <div >
+            <div>
               {checkbotCompletion && <CheckbotResultToggle
                 resultFormat={resultFormat}
                 updateState={updateState}
@@ -48,8 +48,7 @@ const CheckBot = () => {
               {!resultFormat && <CheckboxResult checkbotVal={checkbotCompletion} />}
               {resultFormat === "removed" &&  <div className="border border-gray-500 h-80 rounded-md p-2 overflow-y-scroll">{checkbotRemoved}</div> }
               {resultFormat === "added" &&  <div className="border border-gray-500 h-80 rounded-md p-2 overflow-y-scroll">{checkbotAdded}</div> }
-
-              {resultFormat && <div className="text-black">*Go To No Diff to copy</div> }
+              {resultFormat && <div className="text-black">*Go to No Diff to copy</div> }
             </div>
           </div>
           <div className="text-black mb-4">

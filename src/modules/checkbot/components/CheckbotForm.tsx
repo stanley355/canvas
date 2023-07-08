@@ -10,6 +10,7 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { handlePrompt } from "@/common/lib/handlePrompt";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
+import { diffChars } from "diff";
 
 interface ICheckBotForm {
   updateState: (name: string, val: any) => void;
@@ -17,6 +18,8 @@ interface ICheckBotForm {
 
 const CheckBotForm = (props: ICheckBotForm) => {
   const { updateState } = props;
+
+  const isDesktop = useDesktopScreen();
   const [showPersonalInstruction, setShowPersonalInstruction] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -58,15 +61,20 @@ const CheckBotForm = (props: ICheckBotForm) => {
       name: "checkbot",
       instruction: instruction,
     });
-    const prompt = `${personalInstruction ?? instruction} ${
-      personalInstruction ? ", text: " : ""
-    } ${sourceText}`;
-    const { content, prompt_tokens, completion_tokens } = await handlePrompt(
-      prompt
-    );
+    const prompt = `${personalInstruction ? personalInstruction : instruction} ${personalInstruction ? ", text: " : ""} ${sourceText}`;
+    const { content, prompt_tokens, completion_tokens } = await handlePrompt(prompt);
+
     if (content) {
-      setIsLoading(false);
       updateState("checkbotCompletion", content);
+
+      const diff = diffChars(sourceText, content);
+      const removedDiff = diff.filter(d => !d.added).map((d, i) => <span key={i} className={d.removed ? "text-red-500" : "text-black"}>{d.value}</span>);
+      const addedDiff = diff.filter(d => !d.removed).map((d, i) => <span key={i} className={d.added ? "text-green-700" : "text-black"}>{d.value}</span>);
+      updateState("checkbotRemoved", removedDiff);
+      updateState("checkbotAdded", addedDiff);
+
+      if (!isDesktop) window.location.href = "#checkbot_form";
+      setIsLoading(false);
 
       const saveUserPromptPayload = {
         prompt_token: prompt_tokens,
