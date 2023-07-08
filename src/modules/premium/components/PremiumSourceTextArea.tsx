@@ -10,7 +10,7 @@ interface IPremiumSourceTextArea {
 const PremiumSourceTextArea = (props: IPremiumSourceTextArea) => {
   const { sourceText } = props;
   const [textValue, setTextValue] = useState(
-    sourceText ?? "Put your text here"
+    sourceText ? sourceText : "Put your text here"
   );
 
   const handleClearClick = () => {

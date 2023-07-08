@@ -6,7 +6,6 @@ import { LANGUAGE_LIST } from "../lib/constant";
 import Button from "@/common/components/Button";
 import SourceTextArea from "../../../common/components/SourceTextArea";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 import { handlePrompt } from "@/common/lib/handlePrompt";
@@ -28,7 +27,6 @@ const TranslateForm = (props: ITranslateForm) => {
   } = props;
 
   const [isLoading, setIsLoading] = useState(false);
-  const isDesktop = useDesktopScreen();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -70,7 +68,6 @@ const TranslateForm = (props: ITranslateForm) => {
     if (content) {
       setIsLoading(false);
       dispatchTranslateVal(content);
-      if (!isDesktop) window.location.href = "#translate_result_textarea";
 
       const saveUserPromptPayload = {
         prompt_token: prompt_tokens,
