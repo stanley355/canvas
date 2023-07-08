@@ -4,7 +4,6 @@ import { FaCloudUploadAlt, FaSpinner } from "react-icons/fa";
 import Tesseract from "tesseract.js";
 import { TESSERACT_LANGUAGE_LIST } from "@/modules/translate/lib/constant";
 import { toast } from "react-toastify";
-import classNames from "classnames";
 
 interface IImageToTextUploader {
   dispatch: (val: string) => void;
