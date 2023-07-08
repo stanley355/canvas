@@ -18,15 +18,15 @@ const PremiumTranslateResult = (props: ITranslateResult) => {
   };
 
   return (
-    <div className="bg-black rounded pb-2">
+    <div className="rounded text-black border border-gray-500">
       <label htmlFor="translate_result">
         <textarea
           name="translate_result"
           id="translate_result_textarea"
-          className="w-full rounded-md bg-transparent text-white p-2"
+          className="w-full bg-transparent p-2"
           onChange={() => {}} //remove warning
           cols={30}
-          rows={isDesktop ? 13 : 10}
+          rows={isDesktop ? 14 : 10}
           value={
             translateVal ? translateVal : "Your translation will show up here"
           }
@@ -35,7 +35,7 @@ const PremiumTranslateResult = (props: ITranslateResult) => {
       <Button
         type="button"
         title="Copy"
-        wrapperClassName="ml-auto mr-2 mt-4 w-1/3 lg:w-1/5 p-1 lg:p-2 rounded bg-white text-black font-semibold"
+        wrapperClassName="w-1/3 text-center m-1 ml-auto p-2 bg-blue-900 text-white font-semibold rounded-md"
         buttonClassName="w-full"
         onClick={copyText}
       />

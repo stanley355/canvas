@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
-import { LANGUAGE_LIST } from "../constant";
+import { LANGUAGE_LIST } from "../lib/constant";
 import Button from "@/common/components/Button";
 import SourceTextArea from "../../../common/components/SourceTextArea";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";

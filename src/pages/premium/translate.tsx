@@ -1,32 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React, { useReducer } from "react";
 import { FaLanguage } from "react-icons/fa";
 import dynamic from "next/dynamic";
+
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
 import MediaSelect from "@/common/components/MediaSelect";
 import PremiumTranslateForm from "@/modules/premium/components/TranslateForm";
 import PremiumTranslateResult from "@/modules/premium/components/TranslateResult";
+import ImageToTextUploader from "@/common/components/ImageToTextUploader";
 import ComparisonTable from "@/common/components/ComparisonTable";
 import FeedbackBox from "@/common/components/FeedbackBox";
-import { TRANSLATE_COMPARISON } from "@/modules/translate/constant";
-import { PREMIUM_TRANSLATE_SEO } from "@/modules/premium/lib/constant";
-import ImageToTextUploader from "@/common/components/ImageToTextUploader";
+
+import { TRANSLATE_COMPARISON } from "@/modules/translate/lib/constant";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { PREMIUM_TRANSLATE_SEO } from "@/modules/premium/lib/constant";
+import { premiumTranslateReducer } from "@/modules/premium/lib/reducer";
+import { PREMIUM_TRANSLATE_STATES } from "@/modules/premium/lib/states";
+
+const LoginModal = dynamic(
+  () => import("../../modules/login/components/LoginModal")
+);
 
 const PremiumTranslate = () => {
-  const [isImageTranslate, setIsImageTranslate] = useState(false);
-  const [imageText, setImageText] = useState("");
-  const [showLogin, setShowLogin] = useState(false);
-  const [langTranslate, setLangTranslate] = useState("");
-
-  const LoginModal = dynamic(
-    () => import("../../modules/login/components/LoginModal")
+  const [state, dispatch] = useReducer(
+    premiumTranslateReducer,
+    PREMIUM_TRANSLATE_STATES
   );
+  const { isImageTranslate, imageText, showLogin, translateCompletion } = state;
+
+  const updateState = (name: string, value: any) => {
+    dispatch({ type: "UPDATE", name, value });
+  };
 
   const onImageTextDispatch = (txt: string) => {
     sendFirebaseEvent("image_translate", {});
-    setImageText(txt);
-    setIsImageTranslate(false);
+    updateState("imageText", txt);
+    updateState("isImageTranslate", false);
     return;
   };
 
@@ -45,29 +54,27 @@ const PremiumTranslate = () => {
               <span>Translate+</span>
             </h1>
             <MediaSelect
-              style="dark"
               onChange={(option) =>
-                setIsImageTranslate(option.value === "image")
+                updateState("isImageTranslate", option.value === "image")
               }
             />
           </div>
           <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8">
             {isImageTranslate ? (
               <div className="mb-2">
-                <ImageToTextUploader
-                  style="dark"
-                  dispatch={onImageTextDispatch}
-                />
+                <ImageToTextUploader dispatch={onImageTextDispatch} />
               </div>
             ) : (
               <PremiumTranslateForm
                 imageText={imageText}
-                onReuploadClick={() => setIsImageTranslate(true)}
-                dispatchLoginForm={() => setShowLogin(true)}
-                dispatchLangTranslate={setLangTranslate}
+                onReuploadClick={() => updateState("isImageTranslate", true)}
+                dispatchLoginForm={() => updateState("showLogin", true)}
+                dispatchLangTranslate={(trans: string) =>
+                  updateState("translateCompletion", trans)
+                }
               />
             )}
-            <PremiumTranslateResult translateVal={langTranslate} />
+            <PremiumTranslateResult translateVal={translateCompletion} />
           </div>
           <div className="text-black mb-4">
             <div>How does Premium Checkbot Compared to the Original?</div>
