@@ -12,9 +12,7 @@ const MediaSelect = (props: IMediaSelect) => {
   const { onChange } = props;
 
   const Placeholder = () => (
-    <div
-      className="flex items-center gap-2 "
-    >
+    <div className="flex items-center gap-2 ">
       <FaLanguage className="text-xl" />
       <span>Text Translate</span>
     </div>
@@ -51,12 +49,12 @@ const MediaSelect = (props: IMediaSelect) => {
         styles={{
           control: (defaults: any) => ({
             ...defaults,
-            border: "1px solid gray"
+            border: "1px solid gray",
           }),
           placeholder: (defaults: any) => ({
             ...defaults,
             color: "black",
-          })
+          }),
         }}
       />
     </label>

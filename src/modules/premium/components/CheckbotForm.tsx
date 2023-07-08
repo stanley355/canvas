@@ -83,14 +83,27 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     const prompt = personalInstruction
       ? `${personalInstruction}, text: "${sourceText}"`
       : `${instruction} "${sourceText}"`;
-    const { content, prompt_tokens, completion_tokens } = await handlePremiumPrompt(prompt);
+    const { content, prompt_tokens, completion_tokens } =
+      await handlePremiumPrompt(prompt);
 
     if (content) {
       updateState("checkbotCompletion", content);
 
       const diff = diffChars(sourceText, content);
-      const removedDiff = diff.filter(d => !d.added).map((d, i) => <span key={i} className={d.removed ? "text-red-500" : "text-black"}>{d.value}</span>);
-      const addedDiff = diff.filter(d => !d.removed).map((d, i) => <span key={i} className={d.added ? "text-green-700" : "text-black"}>{d.value}</span>);
+      const removedDiff = diff
+        .filter((d) => !d.added)
+        .map((d, i) => (
+          <span key={i} className={d.removed ? "text-red-500" : "text-black"}>
+            {d.value}
+          </span>
+        ));
+      const addedDiff = diff
+        .filter((d) => !d.removed)
+        .map((d, i) => (
+          <span key={i} className={d.added ? "text-green-700" : "text-black"}>
+            {d.value}
+          </span>
+        ));
       updateState("checkbotRemoved", removedDiff);
       updateState("checkbotAdded", addedDiff);
 
@@ -131,12 +144,12 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
           styles={{
             control: (defaults: any) => ({
               ...defaults,
-              border: "1px solid gray"
+              border: "1px solid gray",
             }),
             placeholder: (defaults: any) => ({
               ...defaults,
               color: "black",
-            })
+            }),
           }}
         />
       </label>

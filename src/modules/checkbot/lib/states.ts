@@ -4,4 +4,4 @@ export const CHECKBOT_STATES = {
   checkbotCompletion: "",
   checkbotRemoved: [],
   checkbotAdded: [],
-}
+};

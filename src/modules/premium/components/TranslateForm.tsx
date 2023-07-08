@@ -114,12 +114,12 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
           styles={{
             control: (defaults: any) => ({
               ...defaults,
-              border: "1px solid gray"
+              border: "1px solid gray",
             }),
             placeholder: (defaults: any) => ({
               ...defaults,
               color: "black",
-            })
+            }),
           }}
         />
       </label>
@@ -141,13 +141,13 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
             )}
           >
             {imageText && (
-            <Button
-              type="button"
-              title="Re-upload"
-              wrapperClassName="w-1/3 bg-blue-900 text-white py-2 rounded-md font-semibold text-center"
-              buttonClassName="w-full"
-              onClick={onReuploadClick}
-            />
+              <Button
+                type="button"
+                title="Re-upload"
+                wrapperClassName="w-1/3 bg-blue-900 text-white py-2 rounded-md font-semibold text-center"
+                buttonClassName="w-full"
+                onClick={onReuploadClick}
+              />
             )}
 
             <Button

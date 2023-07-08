@@ -26,7 +26,7 @@ const CheckboxResult = (props: ICheckbotResult) => {
           className="w-full text-black bg-transparent p-2"
           cols={30}
           rows={!checkbotVal ? 12 : 10}
-          onChange={() => { }}
+          onChange={() => {}}
           value={checkbotVal ? checkbotVal : "Your result will show up here"}
         />
       </label>

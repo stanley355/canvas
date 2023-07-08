@@ -24,7 +24,7 @@ const PremiumTranslateResult = (props: ITranslateResult) => {
           name="translate_result"
           id="translate_result_textarea"
           className="w-full bg-transparent p-2"
-          onChange={() => { }} //remove warning
+          onChange={() => {}} //remove warning
           cols={30}
           rows={isDesktop ? 14 : 10}
           value={
