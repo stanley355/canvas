@@ -12,6 +12,7 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
+import SourceTextArea from "@/common/components/SourceTextArea";
 
 interface IPremiumCheckBotForm {
   dispatchLoginForm: () => void;
@@ -82,7 +83,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     const { content, prompt_tokens, completion_tokens } =
       await handlePremiumPrompt(prompt);
 
-    
+
     if (content) {
       dispatchCheckbotVal(content);
       setIsLoading(false);
@@ -118,7 +119,16 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
           aria-label="checkbot_instruction_select"
           aria-labelledby="checkbot_instruction_select"
           onChange={handleCheckbotOption}
-          // styles={reactSelectDarkStyle}
+          styles={{
+            control: (defaults: any) => ({
+              ...defaults,
+              border: "1px solid gray"
+            }),
+            placeholder: (defaults: any) => ({
+              ...defaults,
+              color: "black",
+            })
+          }}
         />
       </label>
       {showPersonalInstruction && (
@@ -126,17 +136,17 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
           <input
             type="text"
             name="personal_instruction"
-            className="w-full mb-2 border p-2 rounded-md text-white bg-black"
+            className="w-full mb-2 border border-gray-500 p-2 rounded text-black"
             placeholder="What's your instruction?"
           />
         </label>
       )}
-      <div className="bg-black rounded pb-2">
-        <PremiumSourceTextArea />
+      <div className="bg-white border border-gray-500 rounded-md pb-2 relative">
+        <SourceTextArea />
         <Button
           type="submit"
           disabled={isLoading}
-          wrapperClassName="w-1/3 lg:w-1/5 ml-auto mr-2 bg-white text-black py-2 text-md rounded-md font-semibold text-center"
+          wrapperClassName="w-1/3 bg-blue-900 ml-auto mr-1 text-white py-2 rounded-md font-semibold text-center"
           buttonClassName="w-full"
         >
           {isLoading ? (
@@ -145,7 +155,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
               <FaSpinner className="animate-spin" />
             </div>
           ) : (
-            "Submit"
+            "Check"
           )}
         </Button>
       </div>
