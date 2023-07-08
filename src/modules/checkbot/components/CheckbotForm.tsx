@@ -12,12 +12,11 @@ import { handlePrompt } from "@/common/lib/handlePrompt";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 
 interface ICheckBotForm {
-  dispatchLoginForm: () => void;
-  dispatchCheckbotVal: (val: string) => void;
+  updateState: (name: string, val: any) => void;
 }
 
 const CheckBotForm = (props: ICheckBotForm) => {
-  const { dispatchLoginForm, dispatchCheckbotVal } = props;
+  const { updateState } = props;
   const [showPersonalInstruction, setShowPersonalInstruction] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -31,7 +30,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
 
     const freeTrial = hasFreeTrial();
     if (!freeTrial) {
-      dispatchLoginForm();
+      updateState("showLogin", true);
       sendFirebaseEvent("login_popup", {});
       return;
     }
@@ -67,7 +66,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
     );
     if (content) {
       setIsLoading(false);
-      dispatchCheckbotVal(content);
+      updateState("checkbotCompletion", content);
 
       const saveUserPromptPayload = {
         prompt_token: prompt_tokens,

@@ -32,10 +32,7 @@ const CheckBot = () => {
           <span>AI Checkbot</span>
         </h1>
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 mb-8">
-          <CheckBotForm
-            dispatchLoginForm={() => updateState("showLogin", true)}
-            dispatchCheckbotVal={(val: string) => updateState("checkbotCompletion", val)}
-          />
+          <CheckBotForm updateState={updateState} />
           <CheckboxResult checkbotVal={checkbotCompletion} />
         </div>
         <CheckbotComparison />
