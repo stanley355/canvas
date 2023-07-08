@@ -13,14 +13,17 @@ import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 import SourceTextArea from "@/common/components/SourceTextArea";
+import { diffChars } from "diff";
+import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
 interface IPremiumCheckBotForm {
-  dispatchLoginForm: () => void;
-  dispatchCheckbotVal: (val: string) => void;
+  updateState: (name: string, value: any) => void;
 }
 
 const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
-  const { dispatchLoginForm, dispatchCheckbotVal } = props;
+  const { updateState } = props;
+
+  const isDesktop = useDesktopScreen();
 
   const [showPersonalInstruction, setShowPersonalInstruction] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -40,7 +43,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
 
     const token = Cookies.get("token");
     if (!token) {
-      dispatchLoginForm();
+      updateState("showLogin", true);
       return;
     }
 
@@ -83,7 +86,15 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     const { content, prompt_tokens, completion_tokens } = await handlePremiumPrompt(prompt);
 
     if (content) {
-      dispatchCheckbotVal(content);
+      updateState("checkbotCompletion", content);
+
+      const diff = diffChars(sourceText, content);
+      const removedDiff = diff.filter(d => !d.added).map((d, i) => <span key={i} className={d.removed ? "text-red-500" : "text-black"}>{d.value}</span>);
+      const addedDiff = diff.filter(d => !d.removed).map((d, i) => <span key={i} className={d.added ? "text-green-700" : "text-black"}>{d.value}</span>);
+      updateState("checkbotRemoved", removedDiff);
+      updateState("checkbotAdded", addedDiff);
+
+      if (!isDesktop) window.location.href = "#checkbot_form";
       setIsLoading(false);
 
       const saveUserPromptPayload = {

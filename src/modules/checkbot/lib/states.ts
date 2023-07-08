@@ -1,4 +1,7 @@
 export const CHECKBOT_STATES = {
   showLogin: false,
-  checkbotCompletion: ""
+  resultFormat: "",
+  checkbotCompletion: "",
+  checkbotRemoved: [],
+  checkbotAdded: [],
 }
