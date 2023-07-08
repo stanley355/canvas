@@ -4,20 +4,20 @@ import dynamic from "next/dynamic";
 import Layout from "@/common/components/Layout";
 import MetaSEO from "@/common/components/MetaSEO";
 import PremiumCheckBotForm from "@/modules/premium/components/CheckbotForm";
-import PremiumCheckbotResult from "@/modules/premium/components/CheckbotResult";
 import { PREMIUM_CHECKBOT_SEO } from "@/modules/premium/lib/constant";
 import ComparisonTable from "@/common/components/ComparisonTable";
 import { CHECKBOT_COMPARISON } from "@/modules/checkbot/constant";
 import FeedbackBox from "@/common/components/FeedbackBox";
 import CheckbotResultToggle from "@/modules/checkbot/components/CheckbotResultToggle";
+import CheckboxResult from "@/modules/checkbot/components/CheckbotResult";
+
+const LoginModal = dynamic(
+  () => import("../../modules/login/components/LoginModal")
+);
 
 const CheckBot = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [checkbotVal, setCheckbotVal] = useState("");
-
-  const LoginModal = dynamic(
-    () => import("../../modules/login/components/LoginModal")
-  );
 
   return (
     <Layout>
@@ -37,7 +37,12 @@ const CheckBot = () => {
               dispatchLoginForm={() => setShowLogin(true)}
               dispatchCheckbotVal={setCheckbotVal}
             />
-            <PremiumCheckbotResult checkbotVal={checkbotVal} />
+            <div>
+              {/* {checkbotVal && <CheckbotResultToggle />} */}
+              {/* <CheckbotResultToggle /> */}
+              <CheckboxResult checkbotVal={checkbotVal} />
+              {/* <PremiumCheckbotResult checkbotVal={checkbotVal ? 10 : 12} /> */}
+            </div>
           </div>
           <div className="text-black mb-4">
             <div>How does Premium Checkbot Compared to the Original?</div>

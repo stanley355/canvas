@@ -1,6 +1,6 @@
 import Button from '@/common/components/Button';
 import React from 'react';
-import { FaDivide, FaPlus, FaTimes } from 'react-icons/fa';
+import { FaDivide, FaMinusCircle, FaPlus, FaTimes } from 'react-icons/fa';
 
 const CheckbotResultToggle = () => {
   return (
@@ -10,8 +10,8 @@ const CheckbotResultToggle = () => {
         Removed
       </Button>
       <Button type='button' wrapperClassName='w-full border border-gray-700 rounded text-gray-700 p-1 h-fit' buttonClassName='w-full flex items-center justify-center gap-1'>
-        <FaDivide />
-        All
+        <FaMinusCircle />
+        No Diff
       </Button>
       <Button type='button' wrapperClassName='w-full border border-green-500 rounded text-green-500 p-1 h-fit' buttonClassName='w-full flex items-center justify-center gap-1'>
         <FaPlus />

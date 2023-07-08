@@ -80,9 +80,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     const prompt = personalInstruction
       ? `${personalInstruction}, text: "${sourceText}"`
       : `${instruction} "${sourceText}"`;
-    const { content, prompt_tokens, completion_tokens } =
-      await handlePremiumPrompt(prompt);
-
+    const { content, prompt_tokens, completion_tokens } = await handlePremiumPrompt(prompt);
 
     if (content) {
       dispatchCheckbotVal(content);
@@ -105,7 +103,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-2 lg:mb-0">
+    <form onSubmit={handleSubmit} className="mb-4 lg:mb-0">
       {showModal && (
         <InsufficientBalanceModal onCloseClick={() => setShowModal(false)} />
       )}
