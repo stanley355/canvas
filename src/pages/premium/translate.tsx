@@ -54,7 +54,6 @@ const PremiumTranslate = () => {
               <span>Translate+</span>
             </h1>
             <MediaSelect
-              style="dark"
               onChange={(option) =>
                 updateState("isImageTranslate", option.value === "image")
               }
@@ -64,7 +63,6 @@ const PremiumTranslate = () => {
             {isImageTranslate ? (
               <div className="mb-2">
                 <ImageToTextUploader
-                  style="dark"
                   dispatch={onImageTextDispatch}
                 />
               </div>

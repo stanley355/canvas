@@ -111,7 +111,16 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
           aria-label="target_lang_select"
           aria-labelledby="target_lang_select"
           options={LANGUAGE_LIST}
-          styles={reactSelectDarkStyle}
+          styles={{
+            control: (defaults: any) => ({
+              ...defaults,
+              border: "1px solid gray"
+            }),
+            placeholder: (defaults: any) => ({
+              ...defaults,
+              color: "black",
+            })
+          }}
         />
       </label>
       <div>
@@ -119,11 +128,11 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
           <input
             id="context_input"
             name="context"
-            className="w-full rounded-md p-2 mb-2 bg-black text-white"
+            className="w-full rounded p-2 mb-2 bg-transparent text-black border border-gray-500"
             placeholder="Context (what the text is about) "
           />
         </label>
-        <div className="bg-black rounded">
+        <div className="rounded border border-gray-500">
           <PremiumSourceTextArea sourceText={imageText} />
           <div
             className={classNames(
@@ -132,19 +141,19 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
             )}
           >
             {imageText && (
-              <Button
-                type="button"
-                title="Re-upload"
-                wrapperClassName="w-1/3 lg:w-1/5 p-1 lg:p-2 rounded bg-white text-black font-semibold"
-                buttonClassName="w-full"
-                onClick={onReuploadClick}
-              />
+            <Button
+              type="button"
+              title="Re-upload"
+              wrapperClassName="w-1/3 bg-blue-900 text-white py-2 rounded-md font-semibold text-center"
+              buttonClassName="w-full"
+              onClick={onReuploadClick}
+            />
             )}
 
             <Button
               type="submit"
               disabled={isLoading}
-              wrapperClassName="w-1/3 lg:w-1/5 p-1 lg:p-2 rounded bg-white text-black font-semibold"
+              wrapperClassName="w-1/3 bg-blue-900 text-white py-2 rounded-md font-semibold text-center"
               buttonClassName="w-full"
             >
               {isLoading ? (
