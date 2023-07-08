@@ -35,7 +35,7 @@ const PremiumSourceTextArea = (props: IPremiumSourceTextArea) => {
           id="source_textarea"
           cols={30}
           rows={10}
-          className="w-full bg-black text-white focus:outline-none scrollbar-thin scrollbar-thumb-white scrollbar-thumb-rounded-full pr-2"
+          className="w-full bg-transparent text-black focus:outline-none scrollbar-thin scrollbar-thumb-white scrollbar-thumb-rounded-full pr-2"
           value={textValue}
           onChange={(e: any) => setTextValue(e.target.value)}
         />

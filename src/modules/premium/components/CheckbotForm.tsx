@@ -12,14 +12,18 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
+import SourceTextArea from "@/common/components/SourceTextArea";
+import { diffChars } from "diff";
+import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
 interface IPremiumCheckBotForm {
-  dispatchLoginForm: () => void;
-  dispatchCheckbotVal: (val: string) => void;
+  updateState: (name: string, value: any) => void;
 }
 
 const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
-  const { dispatchLoginForm, dispatchCheckbotVal } = props;
+  const { updateState } = props;
+
+  const isDesktop = useDesktopScreen();
 
   const [showPersonalInstruction, setShowPersonalInstruction] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -39,7 +43,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
 
     const token = Cookies.get("token");
     if (!token) {
-      dispatchLoginForm();
+      updateState("showLogin", true);
       return;
     }
 
@@ -83,7 +87,27 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
       await handlePremiumPrompt(prompt);
 
     if (content) {
-      dispatchCheckbotVal(content);
+      updateState("checkbotCompletion", content);
+
+      const diff = diffChars(sourceText, content);
+      const removedDiff = diff
+        .filter((d) => !d.added)
+        .map((d, i) => (
+          <span key={i} className={d.removed ? "text-red-500" : "text-black"}>
+            {d.value}
+          </span>
+        ));
+      const addedDiff = diff
+        .filter((d) => !d.removed)
+        .map((d, i) => (
+          <span key={i} className={d.added ? "text-green-700" : "text-black"}>
+            {d.value}
+          </span>
+        ));
+      updateState("checkbotRemoved", removedDiff);
+      updateState("checkbotAdded", addedDiff);
+
+      if (!isDesktop) window.location.href = "#checkbot_form";
       setIsLoading(false);
 
       const saveUserPromptPayload = {
@@ -103,7 +127,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-2 lg:mb-0">
+    <form onSubmit={handleSubmit} className="mb-4 lg:mb-0">
       {showModal && (
         <InsufficientBalanceModal onCloseClick={() => setShowModal(false)} />
       )}
@@ -112,12 +136,21 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
           placeholder="Instruction"
           name="instruction"
           options={PREMIUM_CHECKBOT_OPTIONS}
-          className="w-full text-black mb-2"
+          className="w-full text-black mb-2 border-black"
           id="checkbot_instruction_select"
           aria-label="checkbot_instruction_select"
           aria-labelledby="checkbot_instruction_select"
           onChange={handleCheckbotOption}
-          styles={reactSelectDarkStyle}
+          styles={{
+            control: (defaults: any) => ({
+              ...defaults,
+              border: "1px solid gray",
+            }),
+            placeholder: (defaults: any) => ({
+              ...defaults,
+              color: "black",
+            }),
+          }}
         />
       </label>
       {showPersonalInstruction && (
@@ -125,17 +158,17 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
           <input
             type="text"
             name="personal_instruction"
-            className="w-full mb-2 border p-2 rounded-md text-white bg-black"
+            className="w-full mb-2 border border-gray-500 p-2 rounded text-black"
             placeholder="What's your instruction?"
           />
         </label>
       )}
-      <div className="bg-black rounded pb-2">
-        <PremiumSourceTextArea />
+      <div className="bg-white border border-gray-500 rounded-md pb-2 relative">
+        <SourceTextArea />
         <Button
           type="submit"
           disabled={isLoading}
-          wrapperClassName="w-1/3 lg:w-1/5 ml-auto mr-2 bg-white text-black py-2 text-md rounded-md font-semibold text-center"
+          wrapperClassName="w-1/3 bg-blue-900 ml-auto mr-1 text-white py-2 rounded-md font-semibold text-center"
           buttonClassName="w-full"
         >
           {isLoading ? (
@@ -144,7 +177,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
               <FaSpinner className="animate-spin" />
             </div>
           ) : (
-            "Submit"
+            "Check"
           )}
         </Button>
       </div>

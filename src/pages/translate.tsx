@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import dynamic from "next/dynamic";
 import { FaLanguage } from "react-icons/fa";
 import MetaSEO from "@/common/components/MetaSEO";
@@ -7,28 +7,37 @@ import TranslateForm from "@/modules/translate/components/TranslateForm";
 import TranslateResult from "@/modules/translate/components/TranslateResult";
 import TranslateComparison from "@/modules/translate/components/TranslateComparison";
 import FeedbackBox from "@/common/components/FeedbackBox";
-import { TRANSLATE_SEO } from "@/modules/translate/constant";
+import { TRANSLATE_SEO } from "@/modules/translate/lib/constant";
 import MediaSelect from "@/common/components/MediaSelect";
 import ImageToTextUploader from "@/common/components/ImageToTextUploader";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import NewsModal from "@/common/components/NewsModal";
 import Cookies from "js-cookie";
+import { translateReducer } from "@/modules/translate/lib/reducer";
+import { TRANSLATE_STATES } from "@/modules/translate/lib/states";
+
+const LoginModal = dynamic(
+  () => import("../modules/login/components/LoginModal")
+);
 
 const LangTranslate = () => {
-  const [showNews, setShowNews] = useState(false);
-  const [isImageTranslate, setIsImageTranslate] = useState(false);
-  const [imageText, setImageText] = useState("");
-  const [translateVal, setTranslateVal] = useState("");
-  const [showLogin, setShowLogin] = useState(false);
+  const [state, dispatch] = useReducer(translateReducer, TRANSLATE_STATES);
+  const {
+    showNews,
+    isImageTranslate,
+    imageText,
+    showLogin,
+    translateCompletion,
+  } = state;
 
-  const LoginModal = dynamic(
-    () => import("../modules/login/components/LoginModal")
-  );
+  const updateState = (name: string, value: any) => {
+    dispatch({ type: "UPDATE", name, value });
+  };
 
   const onImageTextDispatch = (txt: string) => {
     sendFirebaseEvent("image_translate", {});
-    setImageText(txt);
-    setIsImageTranslate(false);
+    updateState("imageText", txt);
+    updateState("isImageTranslate", false);
     return;
   };
 
@@ -36,7 +45,7 @@ const LangTranslate = () => {
     const showCookie = Cookies.get("showNews");
 
     if (!showCookie) {
-      setShowNews(true);
+      updateState("showNews", true);
       Cookies.set("showNews", "false", { expires: 1 });
       return;
     }
@@ -45,7 +54,9 @@ const LangTranslate = () => {
   return (
     <Layout>
       <MetaSEO seo={TRANSLATE_SEO} />
-      {showNews && <NewsModal onCloseClick={() => setShowNews(false)} />}
+      {showNews && (
+        <NewsModal onCloseClick={() => updateState("showNews", false)} />
+      )}
       <div className="lg:container mx-auto px-2 lg:px-0">
         <div className="flex items-center justify-between my-4">
           <h1
@@ -56,22 +67,25 @@ const LangTranslate = () => {
             <span>Translate</span>
           </h1>
           <MediaSelect
-            style="white"
-            onChange={(opt) => setIsImageTranslate(opt.value === "image")}
+            onChange={(opt) =>
+              updateState("isImageTranslate", opt.value === "image")
+            }
           />
         </div>
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 mb-8">
           {isImageTranslate ? (
-            <ImageToTextUploader style="white" dispatch={onImageTextDispatch} />
+            <ImageToTextUploader dispatch={onImageTextDispatch} />
           ) : (
             <TranslateForm
               imageText={imageText}
-              onReuploadClick={() => setIsImageTranslate(true)}
-              dispatchLoginForm={() => setShowLogin(true)}
-              dispatchTranslateVal={(val) => setTranslateVal(val)}
+              onReuploadClick={() => updateState("isImageTranslate", true)}
+              dispatchLoginForm={() => updateState("showLogin", true)}
+              dispatchTranslateVal={(val) =>
+                updateState("translateCompletion", val)
+              }
             />
           )}
-          <TranslateResult translateVal={translateVal} />
+          <TranslateResult translateVal={translateCompletion} />
         </div>
         <TranslateComparison />
         <FeedbackBox />
