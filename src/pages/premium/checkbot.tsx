@@ -3,16 +3,16 @@ import { FaRobot } from "react-icons/fa";
 import dynamic from "next/dynamic";
 import Layout from "@/common/components/Layout";
 import MetaSEO from "@/common/components/MetaSEO";
-import PremiumCheckBotForm from "@/modules/premium/components/CheckbotForm";
 import { PREMIUM_CHECKBOT_SEO } from "@/modules/premium/lib/constant";
-import ComparisonTable from "@/common/components/ComparisonTable";
 import { CHECKBOT_COMPARISON } from "@/modules/checkbot/lib/constant";
+import PremiumCheckBotForm from "@/modules/premium/components/CheckbotForm";
+import ComparisonTable from "@/common/components/ComparisonTable";
 import FeedbackBox from "@/common/components/FeedbackBox";
 import CheckbotResultToggle from "@/modules/checkbot/components/CheckbotResultToggle";
 import CheckboxResult from "@/modules/checkbot/components/CheckbotResult";
+import HistoryBar from "@/common/components/HistoryBar";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
-import HistoryModal from "@/common/components/HistoryModal";
 
 const LoginModal = dynamic(
   () => import("../../modules/login/components/LoginModal")
@@ -75,8 +75,7 @@ const CheckBot = () => {
               )}
             </div>
           </div>
-
-          <HistoryModal />
+          <HistoryBar />
 
           <div className="text-black mb-4 mt-8">
             <div>How does Premium Checkbot Compared to the Original?</div>

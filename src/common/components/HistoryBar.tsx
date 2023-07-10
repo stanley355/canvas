@@ -3,7 +3,7 @@ import Button from './Button';
 import { FaClock, FaTimes } from 'react-icons/fa';
 
 
-const HistoryModal = () => {
+const HistoryBar = () => {
   return (
     <div className="fixed top-0 left-0 w-full h-full z-10 bg-black">
       <div className='flex items-center text-xl justify-between border-b p-4'>
@@ -19,4 +19,4 @@ const HistoryModal = () => {
   )
 };
 
-export default HistoryModal;
+export default HistoryBar;
