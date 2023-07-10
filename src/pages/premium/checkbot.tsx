@@ -12,6 +12,7 @@ import CheckbotResultToggle from "@/modules/checkbot/components/CheckbotResultTo
 import CheckboxResult from "@/modules/checkbot/components/CheckbotResult";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
+import HistoryModal from "@/common/components/HistoryModal";
 
 const LoginModal = dynamic(
   () => import("../../modules/login/components/LoginModal")
@@ -45,7 +46,7 @@ const CheckBot = () => {
             <span>Checkbot+</span>
           </h1>
           <div
-            className="lg:grid lg:grid-cols-2 lg:gap-4 mb-16"
+            className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8"
             id="checkbot_form"
           >
             <PremiumCheckBotForm updateState={updateState} />
@@ -74,7 +75,10 @@ const CheckBot = () => {
               )}
             </div>
           </div>
-          <div className="text-black mb-4">
+
+          <HistoryModal />
+
+          <div className="text-black mb-4 mt-8">
             <div>How does Premium Checkbot Compared to the Original?</div>
             <ComparisonTable comparisons={CHECKBOT_COMPARISON} />
           </div>
