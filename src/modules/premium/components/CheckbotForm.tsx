@@ -143,15 +143,15 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
       {showModal && (
         <InsufficientBalanceModal onCloseClick={() => setShowModal(false)} />
       )}
-      <label htmlFor="instruction">
+      <label htmlFor="instruction_select">
         <Select
           placeholder="Instruction"
           name="instruction"
           options={PREMIUM_CHECKBOT_OPTIONS}
           className="w-full text-black mb-2 border-black"
-          id="checkbot_instruction_select"
-          aria-label="checkbot_instruction_select"
-          aria-labelledby="checkbot_instruction_select"
+          id="instruction_select"
+          aria-label="instruction_select"
+          aria-labelledby="instruction_select"
           onChange={handleCheckbotOption}
           styles={{
             control: (defaults: any) => ({
