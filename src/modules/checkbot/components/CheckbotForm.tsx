@@ -1,23 +1,29 @@
 import React, { useState } from "react";
 import Select from "react-select";
+import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
-import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
-import { CHECKBOT_OPTIONS } from "../lib/constant";
+import { decode } from "jsonwebtoken";
+import { diffChars } from "diff";
+
 import Button from "@/common/components/Button";
 import SourceTextArea from "@/common/components/SourceTextArea";
+
+import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
+import { CHECKBOT_OPTIONS } from "../lib/constant";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { handlePrompt } from "@/common/lib/handlePrompt";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
-import { diffChars } from "diff";
+import { saveHistory } from "@/common/lib/saveHistory";
 
 interface ICheckBotForm {
+  sourceText: string;
   updateState: (name: string, val: any) => void;
 }
 
 const CheckBotForm = (props: ICheckBotForm) => {
-  const { updateState } = props;
+  const { sourceText, updateState } = props;
 
   const isDesktop = useDesktopScreen();
   const [showPersonalInstruction, setShowPersonalInstruction] = useState(false);
@@ -99,8 +105,19 @@ const CheckBotForm = (props: ICheckBotForm) => {
         prompt_text: prompt,
         completion_text: content,
       };
-
       await saveUserPrompt(saveUserPromptPayload);
+
+      const token: any = Cookies.get("token");
+      const user: any = decode(token);
+      const historyPayload = {
+        time: new Date(),
+        instruction: personalInstruction ? personalInstruction : instruction,
+        originalText: sourceText,
+        completionText: content,
+        type: "checkbot"
+      };
+      await saveHistory(user.id, historyPayload);
+
       return;
     }
 
@@ -132,7 +149,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
         />
       )}
       <div className="bg-white rounded pb-1">
-        <SourceTextArea />
+        <SourceTextArea sourceText={sourceText} />
         <Button
           type="submit"
           disabled={isLoading}
