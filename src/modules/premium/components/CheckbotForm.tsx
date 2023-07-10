@@ -15,6 +15,8 @@ import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 import SourceTextArea from "@/common/components/SourceTextArea";
 import { diffChars } from "diff";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
+import { saveHistory } from "@/common/lib/saveHistory";
+import { decode } from "jsonwebtoken";
 
 interface IPremiumCheckBotForm {
   updateState: (name: string, value: any) => void;
@@ -118,6 +120,17 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
       };
 
       await saveUserPremiumPrompt(saveUserPromptPayload);
+
+      // const user: any = decode(token);
+      // const historyPayload = {
+      //   time: new Date(),
+      //   instruction: personalInstruction ? personalInstruction : instruction,
+      //   originalText: sourceText,
+      //   completionText: content,
+      //   type: "checkbot"
+      // };
+      // await saveHistory(user.id, historyPayload);
+
       return;
     }
 
@@ -126,6 +139,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     return "";
   };
 
+  saveHistory();
   return (
     <form onSubmit={handleSubmit} className="mb-4 lg:mb-0">
       {showModal && (

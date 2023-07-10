@@ -10,6 +10,7 @@ const HistoryModal = () => {
         <FaClock />
         <span>Show History</span>
       </Button>
+
     </div>
   )
 };
