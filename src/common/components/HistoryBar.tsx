@@ -63,6 +63,7 @@ const HistoryBar = (props: IHistoryBar) => {
             )
             .map((history: any, index: number) => (
               <div
+                key={index}
                 className="p-4 border-b flex items-center justify-between cursor-pointer hover:bg-white hover:text-black"
                 onClick={() => onHistoryClick(history)}
               >
