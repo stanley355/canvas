@@ -15,13 +15,16 @@ import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 import SourceTextArea from "@/common/components/SourceTextArea";
 import { diffChars } from "diff";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
+import { saveHistory } from "@/common/lib/saveHistory";
+import { decode } from "jsonwebtoken";
 
 interface IPremiumCheckBotForm {
+  sourceText: string;
   updateState: (name: string, value: any) => void;
 }
 
 const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
-  const { updateState } = props;
+  const { sourceText, updateState } = props;
 
   const isDesktop = useDesktopScreen();
 
@@ -82,7 +85,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
 
     const prompt = personalInstruction
       ? `${personalInstruction}, text: "${sourceText}"`
-      : `${instruction} "${sourceText}"`;
+      : `${instruction}: "${sourceText}"`;
     const { content, prompt_tokens, completion_tokens } =
       await handlePremiumPrompt(prompt);
 
@@ -116,8 +119,18 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
         prompt_text: prompt,
         completion_text: content,
       };
-
       await saveUserPremiumPrompt(saveUserPromptPayload);
+
+      const user: any = decode(token);
+      const historyPayload = {
+        time: new Date(),
+        instruction: personalInstruction ? personalInstruction : instruction,
+        originalText: sourceText,
+        completionText: content,
+        type: "checkbot",
+      };
+      await saveHistory(user.id, historyPayload);
+
       return;
     }
 
@@ -131,15 +144,15 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
       {showModal && (
         <InsufficientBalanceModal onCloseClick={() => setShowModal(false)} />
       )}
-      <label htmlFor="instruction">
+      <label htmlFor="instruction_select">
         <Select
           placeholder="Instruction"
           name="instruction"
           options={PREMIUM_CHECKBOT_OPTIONS}
           className="w-full text-black mb-2 border-black"
-          id="checkbot_instruction_select"
-          aria-label="checkbot_instruction_select"
-          aria-labelledby="checkbot_instruction_select"
+          id="instruction_select"
+          aria-label="instruction_select"
+          aria-labelledby="instruction_select"
           onChange={handleCheckbotOption}
           styles={{
             control: (defaults: any) => ({
@@ -164,7 +177,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
         </label>
       )}
       <div className="bg-white border border-gray-500 rounded-md pb-2 relative">
-        <SourceTextArea />
+        <SourceTextArea sourceText={sourceText} />
         <Button
           type="submit"
           disabled={isLoading}

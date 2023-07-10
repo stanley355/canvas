@@ -39,6 +39,23 @@
   --card-border-rgb: 200, 200, 200;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: whitesmoke;
+  border: 1px solid black;
+  border-radius: 1rem;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
