@@ -19,11 +19,12 @@ import { saveHistory } from "@/common/lib/saveHistory";
 import { decode } from "jsonwebtoken";
 
 interface IPremiumCheckBotForm {
+  sourceText: string;
   updateState: (name: string, value: any) => void;
 }
 
 const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
-  const { updateState } = props;
+  const { sourceText, updateState } = props;
 
   const isDesktop = useDesktopScreen();
 
@@ -176,7 +177,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
         </label>
       )}
       <div className="bg-white border border-gray-500 rounded-md pb-2 relative">
-        <SourceTextArea />
+        <SourceTextArea sourceText={sourceText}/>
         <Button
           type="submit"
           disabled={isLoading}

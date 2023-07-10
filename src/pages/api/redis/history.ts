@@ -16,8 +16,7 @@ const redisHistory = async (req: NextApiRequest, res: NextApiResponse) => {
       : [body.history];
 
     client.set(body.userID, JSON.stringify(newHistory), { EX: 60 * 60 * 12 }); //12 hours
-    // TODO: Check why can't we dc this thing
-    // await client.disconnect();
+    await client.disconnect();
   }
 
   res.json(oldHistory);
