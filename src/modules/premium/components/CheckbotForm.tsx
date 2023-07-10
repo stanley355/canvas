@@ -118,18 +118,17 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
         prompt_text: prompt,
         completion_text: content,
       };
-
       await saveUserPremiumPrompt(saveUserPromptPayload);
 
-      // const user: any = decode(token);
-      // const historyPayload = {
-      //   time: new Date(),
-      //   instruction: personalInstruction ? personalInstruction : instruction,
-      //   originalText: sourceText,
-      //   completionText: content,
-      //   type: "checkbot"
-      // };
-      // await saveHistory(user.id, historyPayload);
+      const user: any = decode(token);
+      const historyPayload = {
+        time: new Date(),
+        instruction: personalInstruction ? personalInstruction : instruction,
+        originalText: sourceText,
+        completionText: content,
+        type: "checkbot"
+      };
+      await saveHistory(user.id, historyPayload);
 
       return;
     }
@@ -139,7 +138,6 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     return "";
   };
 
-  saveHistory();
   return (
     <form onSubmit={handleSubmit} className="mb-4 lg:mb-0">
       {showModal && (
