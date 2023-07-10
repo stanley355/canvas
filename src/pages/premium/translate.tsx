@@ -26,8 +26,18 @@ const LoginModal = dynamic(
 
 const PremiumTranslate = () => {
   const queryClient = new QueryClient();
-  const [state, dispatch] = useReducer(premiumTranslateReducer, PREMIUM_TRANSLATE_STATES);
-  const { originalText, showHistory, isImageTranslate, imageText, showLogin, translateCompletion } = state;
+  const [state, dispatch] = useReducer(
+    premiumTranslateReducer,
+    PREMIUM_TRANSLATE_STATES
+  );
+  const {
+    originalText,
+    showHistory,
+    isImageTranslate,
+    imageText,
+    showLogin,
+    translateCompletion,
+  } = state;
 
   const updateState = (name: string, value: any) => {
     dispatch({ type: "UPDATE", name, value });
@@ -94,13 +104,15 @@ const PremiumTranslate = () => {
             <FaClock />
             <span>Show History</span>
           </Button>
-          {showHistory && <QueryClientProvider client={queryClient}>
-            <HistoryBar
-              pageType="translate"
-              onHistoryClick={handleHistoryClick}
-              onCloseClick={() => updateState("showHistory", false)}
-            />
-          </QueryClientProvider>}
+          {showHistory && (
+            <QueryClientProvider client={queryClient}>
+              <HistoryBar
+                pageType="translate"
+                onHistoryClick={handleHistoryClick}
+                onCloseClick={() => updateState("showHistory", false)}
+              />
+            </QueryClientProvider>
+          )}
 
           <div className="text-black mb-4">
             <div>How does Premium Checkbot Compared to the Original?</div>

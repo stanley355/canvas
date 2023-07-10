@@ -82,14 +82,14 @@ const TranslateForm = (props: ITranslateForm) => {
       };
       await saveUserPrompt(saveUserPromptPayload);
 
-      const token:any = Cookies.get("token");
+      const token: any = Cookies.get("token");
       const user: any = decode(token);
       const historyPayload = {
         time: new Date(),
         instruction: `Translate to ${targetLang}`,
         originalText: sourceText,
         completionText: content,
-        type: "translate"
+        type: "translate",
       };
       await saveHistory(user.id, historyPayload);
 

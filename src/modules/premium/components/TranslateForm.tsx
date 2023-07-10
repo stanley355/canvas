@@ -99,7 +99,7 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
         instruction: `Translate to ${language}`,
         originalText: sourceText,
         completionText: content,
-        type: "translate"
+        type: "translate",
       };
       await saveHistory(user.id, historyPayload);
 

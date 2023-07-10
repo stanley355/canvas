@@ -127,7 +127,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
         instruction: personalInstruction ? personalInstruction : instruction,
         originalText: sourceText,
         completionText: content,
-        type: "checkbot"
+        type: "checkbot",
       };
       await saveHistory(user.id, historyPayload);
 
@@ -177,7 +177,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
         </label>
       )}
       <div className="bg-white border border-gray-500 rounded-md pb-2 relative">
-        <SourceTextArea sourceText={sourceText}/>
+        <SourceTextArea sourceText={sourceText} />
         <Button
           type="submit"
           disabled={isLoading}

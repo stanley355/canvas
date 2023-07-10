@@ -63,24 +63,31 @@ const CheckBot = () => {
             className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8"
             id="checkbot_form"
           >
-            <PremiumCheckBotForm sourceText={originalText} updateState={updateState} />
+            <PremiumCheckBotForm
+              sourceText={originalText}
+              updateState={updateState}
+            />
             <div>
-              {checkbotCompletion && checkbotAdded.length > 0 && checkbotRemoved.length > 0 && (
-                <CheckbotResultToggle
-                  resultFormat={resultFormat}
-                  updateState={updateState}
-                />
-              )}
-              {!resultFormat && (
-                <CheckboxResult checkbotVal={checkbotCompletion} />
-              )}
-              {resultFormat === "removed" && (
-                <div className="border border-gray-heckbotCompletion && (
+              {checkbotCompletion &&
+                checkbotAdded.length > 0 &&
+                checkbotRemoved.length > 0 && (
                   <CheckbotResultToggle
                     resultFormat={resultFormat}
                     updateState={updateState}
                   />
-                )}500 h-80 rounded-md p-2 overflow-y-scroll">
+                )}
+              {!resultFormat && (
+                <CheckboxResult checkbotVal={checkbotCompletion} />
+              )}
+              {resultFormat === "removed" && (
+                <div
+                  className="border border-gray-heckbotCompletion && (
+                  <CheckbotResultToggle
+                    resultFormat={resultFormat}
+                    updateState={updateState}
+                  />
+                )}500 h-80 rounded-md p-2 overflow-y-scroll"
+                >
                   {checkbotRemoved}
                 </div>
               )}
@@ -103,13 +110,15 @@ const CheckBot = () => {
             <FaClock />
             <span>Show History</span>
           </Button>
-          {showHistory && <QueryClientProvider client={queryClient}>
-            <HistoryBar
-              pageType="checkbot"
-              onHistoryClick={handleHistoryClick}
-              onCloseClick={() => updateState("showHistory", false)}
-            />
-          </QueryClientProvider>}
+          {showHistory && (
+            <QueryClientProvider client={queryClient}>
+              <HistoryBar
+                pageType="checkbot"
+                onHistoryClick={handleHistoryClick}
+                onCloseClick={() => updateState("showHistory", false)}
+              />
+            </QueryClientProvider>
+          )}
 
           <div className="text-black mb-4 mt-8">
             <div>How does Premium Checkbot Compared to the Original?</div>

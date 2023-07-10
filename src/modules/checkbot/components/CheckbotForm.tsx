@@ -114,7 +114,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
         instruction: personalInstruction ? personalInstruction : instruction,
         originalText: sourceText,
         completionText: content,
-        type: "checkbot"
+        type: "checkbot",
       };
       await saveHistory(user.id, historyPayload);
 

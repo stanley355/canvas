@@ -97,13 +97,15 @@ const LangTranslate = () => {
           <FaClock />
           <span>Show History</span>
         </Button>
-        {showHistory && <QueryClientProvider client={queryClient}>
-          <HistoryBar
-            pageType="translate"
-            onHistoryClick={handleHistoryClick}
-            onCloseClick={() => updateState("showHistory", false)}
-          />
-        </QueryClientProvider>}
+        {showHistory && (
+          <QueryClientProvider client={queryClient}>
+            <HistoryBar
+              pageType="translate"
+              onHistoryClick={handleHistoryClick}
+              onCloseClick={() => updateState("showHistory", false)}
+            />
+          </QueryClientProvider>
+        )}
 
         <TranslateComparison />
         <FeedbackBox />

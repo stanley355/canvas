@@ -57,12 +57,14 @@ const CheckBot = () => {
         >
           <CheckBotForm sourceText={originalText} updateState={updateState} />
           <div>
-            {checkbotCompletion && checkbotRemoved.length > 0 && checkbotAdded.length > 0 && (
-              <CheckbotResultToggle
-                resultFormat={resultFormat}
-                updateState={updateState}
-              />
-            )}
+            {checkbotCompletion &&
+              checkbotRemoved.length > 0 &&
+              checkbotAdded.length > 0 && (
+                <CheckbotResultToggle
+                  resultFormat={resultFormat}
+                  updateState={updateState}
+                />
+              )}
             {!resultFormat && (
               <CheckboxResult checkbotVal={checkbotCompletion} />
             )}
@@ -90,13 +92,15 @@ const CheckBot = () => {
           <FaClock />
           <span>Show History</span>
         </Button>
-        {showHistory && <QueryClientProvider client={queryClient}>
-          <HistoryBar
-            pageType="checkbot"
-            onHistoryClick={handleHistoryClick}
-            onCloseClick={() => updateState("showHistory", false)}
-          />
-        </QueryClientProvider>}
+        {showHistory && (
+          <QueryClientProvider client={queryClient}>
+            <HistoryBar
+              pageType="checkbot"
+              onHistoryClick={handleHistoryClick}
+              onCloseClick={() => updateState("showHistory", false)}
+            />
+          </QueryClientProvider>
+        )}
         <CheckbotComparison />
         <FeedbackBox />
       </div>
