@@ -21,7 +21,11 @@ const HistoryBar = (props: IHistoryBar) => {
       if (token) {
         const user: any = decode(token);
         const history = await findHistory(user.id);
-        return JSON.parse(history);
+        if (history) {
+          const historyArr = JSON.parse(history);
+          return historyArr.filter((history: any) => history.type === pageType);
+        };
+        return []
       }
 
       return null;
@@ -39,10 +43,9 @@ const HistoryBar = (props: IHistoryBar) => {
           <FaTimes />
         </Button>
       </div>
-      {!data && <div className='text-white text-center p-2'>No Recent History</div>}
+      {!data?.length && <div className='text-white text-center p-2'>No Recent {pageType} History</div>}
       {data?.length > 0 && <div>
         {data
-          .filter((history: any) => history.type === pageType)
           .sort((a: any, b: any) => new Date(b.time).getTime() - new Date(a.time).getTime())
           .map((history: any, index: number) =>
             <div className='p-4 border-b flex items-center justify-between cursor-pointer hover:bg-white hover:text-black' onClick={() => onHistoryClick(history)}>

@@ -98,7 +98,7 @@ const CheckBot = () => {
             type="button"
             wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer"
             buttonClassName="w-full flex items-center gap-2 h-full"
-            onClick={() => updateState("showHistory", true)}
+            onClick={() => updateState("showHistory", !showHistory)}
           >
             <FaClock />
             <span>Show History</span>
