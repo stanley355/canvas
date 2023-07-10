@@ -1,16 +1,20 @@
 import React from 'react';
 import Button from './Button';
-import { FaClock } from 'react-icons/fa';
+import { FaClock, FaTimes } from 'react-icons/fa';
 
 
 const HistoryModal = () => {
   return (
-    <div>
-      <Button type='button' wrapperClassName='w-fit mx-auto rounded-md p-2 bg-blue-900 text-white' buttonClassName='w-full flex items-center justify-center gap-2' >
-        <FaClock />
-        <span>Show History</span>
-      </Button>
-
+    <div className="fixed top-0 left-0 w-full h-full z-10 bg-black">
+      <div className='flex items-center text-xl justify-between border-b p-4'>
+        <div className='flex items-center gap-2 font-semibold'>
+          <FaClock />
+          <span>My History</span>
+        </div>
+        <Button type='button' wrapperClassName='text-2xl' buttonClassName='w-full flex items-center' >
+          <FaTimes />
+        </Button>
+      </div>
     </div>
   )
 };
