@@ -73,7 +73,7 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
       target_lang: language,
     });
 
-    const prompt = `Translate ${sourceText} to ${language} ${context ?? ""}`;
+    const prompt = `Translate "${sourceText}" to ${language} ${context ?? ""}`;
     const { content, prompt_tokens, completion_tokens } =
       await handlePremiumPrompt(prompt);
 
