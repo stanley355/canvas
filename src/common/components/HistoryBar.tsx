@@ -57,7 +57,7 @@ const HistoryBar = (props: IHistoryBar) => {
             </div>
           )}
       </div>}
-      <div className='text-center mt-2'>*History will be cleared after 12 hours</div>
+      <div className='text-center mt-2'>*History will be cleared after 6 hours</div>
     </div>
   )
 };

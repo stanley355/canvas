@@ -1,7 +1,6 @@
 import React from "react";
 import { toast } from "react-toastify";
 import Button from "@/common/components/Button";
-import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
 interface ICheckbotResult {
   checkbotVal: string;
@@ -9,8 +8,6 @@ interface ICheckbotResult {
 
 const CheckboxResult = (props: ICheckbotResult) => {
   const { checkbotVal } = props;
-
-  const isDesktop = useDesktopScreen();
 
   const copyText = () => {
     window.navigator.clipboard.writeText(checkbotVal);
@@ -25,7 +22,7 @@ const CheckboxResult = (props: ICheckbotResult) => {
           id="checkbot_result_textarea"
           className="w-full text-black bg-transparent p-2"
           cols={30}
-          rows={!checkbotVal ? 12 : 10}
+          rows={11}
           onChange={() => {}}
           value={checkbotVal ? checkbotVal : "Your result will show up here"}
         />

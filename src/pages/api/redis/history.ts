@@ -15,7 +15,7 @@ const redisHistory = async (req: NextApiRequest, res: NextApiResponse) => {
       ? [...JSON.parse(oldHistory), body.history]
       : [body.history];
 
-    client.set(body.userID, JSON.stringify(newHistory), { EX: 60 * 60 * 12 }); //12 hours
+    client.set(body.userID, JSON.stringify(newHistory), { EX: 60 * 60 * 6 }); //6 hours
     await client.disconnect();
   }
 
