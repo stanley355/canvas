@@ -82,7 +82,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
 
     const prompt = personalInstruction
       ? `${personalInstruction}, text: "${sourceText}"`
-      : `${instruction} "${sourceText}"`;
+      : `${instruction}: "${sourceText}"`;
     const { content, prompt_tokens, completion_tokens } =
       await handlePremiumPrompt(prompt);
 

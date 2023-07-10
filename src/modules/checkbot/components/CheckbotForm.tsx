@@ -61,9 +61,10 @@ const CheckBotForm = (props: ICheckBotForm) => {
       name: "checkbot",
       instruction: instruction,
     });
-    const prompt = `${
-      personalInstruction ? personalInstruction : instruction
-    } ${personalInstruction ? ", text: " : ""} ${sourceText}`;
+
+    const prompt = personalInstruction
+      ? `${personalInstruction}, text: "${sourceText}"`
+      : `${instruction}: "${sourceText}"`;
     const { content, prompt_tokens, completion_tokens } = await handlePrompt(
       prompt
     );
