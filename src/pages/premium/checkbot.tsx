@@ -1,16 +1,19 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer } from "react";
 import { FaRobot } from "react-icons/fa";
 import dynamic from "next/dynamic";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 import Layout from "@/common/components/Layout";
 import MetaSEO from "@/common/components/MetaSEO";
-import { PREMIUM_CHECKBOT_SEO } from "@/modules/premium/lib/constant";
-import { CHECKBOT_COMPARISON } from "@/modules/checkbot/lib/constant";
-import PremiumCheckBotForm from "@/modules/premium/components/CheckbotForm";
 import ComparisonTable from "@/common/components/ComparisonTable";
 import FeedbackBox from "@/common/components/FeedbackBox";
 import CheckbotResultToggle from "@/modules/checkbot/components/CheckbotResultToggle";
 import CheckboxResult from "@/modules/checkbot/components/CheckbotResult";
 import HistoryBar from "@/common/components/HistoryBar";
+import PremiumCheckBotForm from "@/modules/premium/components/CheckbotForm";
+
+import { PREMIUM_CHECKBOT_SEO } from "@/modules/premium/lib/constant";
+import { CHECKBOT_COMPARISON } from "@/modules/checkbot/lib/constant";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
 
@@ -19,6 +22,8 @@ const LoginModal = dynamic(
 );
 
 const CheckBot = () => {
+  const queryClient = new QueryClient();
+
   const [states, dispatch] = useReducer(checkbotReducer, CHECKBOT_STATES);
   const {
     showLogin,
@@ -75,7 +80,9 @@ const CheckBot = () => {
               )}
             </div>
           </div>
-          <HistoryBar />
+          <QueryClientProvider client={queryClient}>
+            <HistoryBar />
+          </QueryClientProvider>
 
           <div className="text-black mb-4 mt-8">
             <div>How does Premium Checkbot Compared to the Original?</div>
