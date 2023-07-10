@@ -81,7 +81,7 @@ const CheckBot = () => {
             </div>
           </div>
           <QueryClientProvider client={queryClient}>
-            <HistoryBar />
+            <HistoryBar onHistoryClick={(history) => console.log(history)} />
           </QueryClientProvider>
 
           <div className="text-black mb-4 mt-8">

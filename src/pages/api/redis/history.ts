@@ -12,7 +12,7 @@ const redisHistory = async (req: NextApiRequest, res: NextApiResponse) => {
   const oldHistory = await client.get(query.userID ? query.userID : body.userID);
   if (req.method === "POST") {
     const newHistory = oldHistory
-      ? [JSON.parse(oldHistory), body.history]
+      ? [...JSON.parse(oldHistory), body.history]
       : [body.history];
 
     client.set(body.userID, JSON.stringify(newHistory), { EX: 60 * 60 * 12 }); //12 hours
