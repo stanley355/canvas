@@ -1,32 +1,39 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useReducer } from "react";
 import dynamic from "next/dynamic";
-import { FaLanguage } from "react-icons/fa";
+import { FaClock, FaLanguage } from "react-icons/fa";
+import Cookies from "js-cookie";
+
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
 import TranslateForm from "@/modules/translate/components/TranslateForm";
 import TranslateResult from "@/modules/translate/components/TranslateResult";
 import TranslateComparison from "@/modules/translate/components/TranslateComparison";
 import FeedbackBox from "@/common/components/FeedbackBox";
-import { TRANSLATE_SEO } from "@/modules/translate/lib/constant";
 import MediaSelect from "@/common/components/MediaSelect";
 import ImageToTextUploader from "@/common/components/ImageToTextUploader";
+
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import NewsModal from "@/common/components/NewsModal";
-import Cookies from "js-cookie";
 import { translateReducer } from "@/modules/translate/lib/reducer";
 import { TRANSLATE_STATES } from "@/modules/translate/lib/states";
+import { TRANSLATE_SEO } from "@/modules/translate/lib/constant";
+import Button from "@/common/components/Button";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import HistoryBar from "@/common/components/HistoryBar";
 
 const LoginModal = dynamic(
   () => import("../modules/login/components/LoginModal")
 );
 
 const LangTranslate = () => {
+  const queryClient = new QueryClient();
+
   const [state, dispatch] = useReducer(translateReducer, TRANSLATE_STATES);
   const {
-    showNews,
     isImageTranslate,
     imageText,
     showLogin,
+    showHistory,
+    originalText,
     translateCompletion,
   } = state;
 
@@ -41,22 +48,15 @@ const LangTranslate = () => {
     return;
   };
 
-  useEffect(() => {
-    const showCookie = Cookies.get("showNews");
-
-    if (!showCookie) {
-      updateState("showNews", true);
-      Cookies.set("showNews", "false", { expires: 1 });
-      return;
-    }
-  }, [showNews]);
+  const handleHistoryClick = (history: any) => {
+    updateState("originalText", history.originalText);
+    updateState("translateCompletion", history.completionText);
+    updateState("showHistory", false);
+  };
 
   return (
     <Layout>
       <MetaSEO seo={TRANSLATE_SEO} />
-      {showNews && (
-        <NewsModal onCloseClick={() => updateState("showNews", false)} />
-      )}
       <div className="lg:container mx-auto px-2 lg:px-0">
         <div className="flex items-center justify-between my-4">
           <h1
@@ -77,6 +77,7 @@ const LangTranslate = () => {
             <ImageToTextUploader dispatch={onImageTextDispatch} />
           ) : (
             <TranslateForm
+              sourceText={originalText}
               imageText={imageText}
               onReuploadClick={() => updateState("isImageTranslate", true)}
               dispatchLoginForm={() => updateState("showLogin", true)}
@@ -87,6 +88,23 @@ const LangTranslate = () => {
           )}
           <TranslateResult translateVal={translateCompletion} />
         </div>
+        <Button
+          type="button"
+          wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer mb-8"
+          buttonClassName="w-full flex items-center gap-2 h-full"
+          onClick={() => updateState("showHistory", !showHistory)}
+        >
+          <FaClock />
+          <span>Show History</span>
+        </Button>
+        {showHistory && <QueryClientProvider client={queryClient}>
+          <HistoryBar
+            pageType="translate"
+            onHistoryClick={handleHistoryClick}
+            onCloseClick={() => updateState("showHistory", false)}
+          />
+        </QueryClientProvider>}
+
         <TranslateComparison />
         <FeedbackBox />
       </div>

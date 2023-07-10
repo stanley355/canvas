@@ -10,8 +10,12 @@ import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 import { handlePrompt } from "@/common/lib/handlePrompt";
 import classNames from "classnames";
+import Cookies from "js-cookie";
+import { decode } from "jsonwebtoken";
+import { saveHistory } from "@/common/lib/saveHistory";
 
 interface ITranslateForm {
+  sourceText: string;
   imageText: string;
   onReuploadClick: () => void;
   dispatchLoginForm: () => void;
@@ -20,6 +24,7 @@ interface ITranslateForm {
 
 const TranslateForm = (props: ITranslateForm) => {
   const {
+    sourceText,
     imageText,
     onReuploadClick,
     dispatchLoginForm,
@@ -75,8 +80,19 @@ const TranslateForm = (props: ITranslateForm) => {
         prompt_text: prompt,
         completion_text: content,
       };
-
       await saveUserPrompt(saveUserPromptPayload);
+
+      const token:any = Cookies.get("token");
+      const user: any = decode(token);
+      const historyPayload = {
+        time: new Date(),
+        instruction: `Translate to ${targetLang}`,
+        originalText: sourceText,
+        completionText: content,
+        type: "translate"
+      };
+      await saveHistory(user.id, historyPayload);
+
       return;
     }
 
@@ -105,7 +121,7 @@ const TranslateForm = (props: ITranslateForm) => {
         placeholder="Optional: Context (xyz refers to...) "
       />
       <div className="mt-3 bg-white rounded">
-        <SourceTextArea sourceText={imageText} />
+        <SourceTextArea sourceText={imageText || sourceText} />
         <div
           className={classNames(
             "px-1 pb-1 flex items-center",
