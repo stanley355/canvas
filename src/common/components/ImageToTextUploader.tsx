@@ -4,13 +4,15 @@ import { FaCloudUploadAlt, FaSpinner } from "react-icons/fa";
 import Tesseract from "tesseract.js";
 import { TESSERACT_LANGUAGE_LIST } from "@/modules/translate/lib/constant";
 import { toast } from "react-toastify";
+import classNames from "classnames";
 
 interface IImageToTextUploader {
+  titleColor: "black" | "white";
   dispatch: (val: string) => void;
 }
 
 const ImageToTextUploader = (props: IImageToTextUploader) => {
-  const { dispatch } = props;
+  const { titleColor, dispatch } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [lang, setLang] = useState("eng");
 
@@ -31,14 +33,14 @@ const ImageToTextUploader = (props: IImageToTextUploader) => {
 
   return (
     <div>
-      <div className="font-semibold mb-2 px-1 text-black">
+      <div className={classNames("font-semibold mb-2 px-1", `text-${titleColor}`)}>
         * For better result, put the Language of the text in Image (automatic as
         English)
       </div>
       <Select
         placeholder="Select Image Language"
         options={TESSERACT_LANGUAGE_LIST}
-        className="mb-2"
+        className="mb-2 text-black"
         onChange={(opt: any) => setLang(opt.value)}
         styles={{
           control: (defaults: any) => ({
