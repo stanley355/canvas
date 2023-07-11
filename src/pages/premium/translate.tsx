@@ -1,13 +1,15 @@
 import React, { useReducer } from "react";
-import { FaLanguage } from "react-icons/fa";
+import { FaClock, FaLanguage } from "react-icons/fa";
 import dynamic from "next/dynamic";
 
 import MetaSEO from "@/common/components/MetaSEO";
+import Button from "@/common/components/Button";
 import Layout from "@/common/components/Layout";
 import MediaSelect from "@/common/components/MediaSelect";
 import PremiumTranslateForm from "@/modules/premium/components/TranslateForm";
 import PremiumTranslateResult from "@/modules/premium/components/TranslateResult";
 import ImageToTextUploader from "@/common/components/ImageToTextUploader";
+import HistoryBar from "@/common/components/HistoryBar";
 import ComparisonTable from "@/common/components/ComparisonTable";
 import FeedbackBox from "@/common/components/FeedbackBox";
 
@@ -16,17 +18,26 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { PREMIUM_TRANSLATE_SEO } from "@/modules/premium/lib/constant";
 import { premiumTranslateReducer } from "@/modules/premium/lib/reducer";
 import { PREMIUM_TRANSLATE_STATES } from "@/modules/premium/lib/states";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const LoginModal = dynamic(
   () => import("../../modules/login/components/LoginModal")
 );
 
 const PremiumTranslate = () => {
+  const queryClient = new QueryClient();
   const [state, dispatch] = useReducer(
     premiumTranslateReducer,
     PREMIUM_TRANSLATE_STATES
   );
-  const { isImageTranslate, imageText, showLogin, translateCompletion } = state;
+  const {
+    originalText,
+    showHistory,
+    isImageTranslate,
+    imageText,
+    showLogin,
+    translateCompletion,
+  } = state;
 
   const updateState = (name: string, value: any) => {
     dispatch({ type: "UPDATE", name, value });
@@ -37,6 +48,12 @@ const PremiumTranslate = () => {
     updateState("imageText", txt);
     updateState("isImageTranslate", false);
     return;
+  };
+
+  const handleHistoryClick = (history: any) => {
+    updateState("originalText", history.originalText);
+    updateState("translateCompletion", history.completionText);
+    updateState("showHistory", false);
   };
 
   return (
@@ -62,10 +79,11 @@ const PremiumTranslate = () => {
           <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8">
             {isImageTranslate ? (
               <div className="mb-2">
-                <ImageToTextUploader dispatch={onImageTextDispatch} />
+                <ImageToTextUploader titleColor="black" dispatch={onImageTextDispatch} />
               </div>
             ) : (
               <PremiumTranslateForm
+                originalText={originalText}
                 imageText={imageText}
                 onReuploadClick={() => updateState("isImageTranslate", true)}
                 dispatchLoginForm={() => updateState("showLogin", true)}
@@ -76,6 +94,26 @@ const PremiumTranslate = () => {
             )}
             <PremiumTranslateResult translateVal={translateCompletion} />
           </div>
+
+          <Button
+            type="button"
+            wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer mb-8"
+            buttonClassName="w-full flex items-center gap-2 h-full"
+            onClick={() => updateState("showHistory", !showHistory)}
+          >
+            <FaClock />
+            <span>Show History</span>
+          </Button>
+          {showHistory && (
+            <QueryClientProvider client={queryClient}>
+              <HistoryBar
+                pageType="translate"
+                onHistoryClick={handleHistoryClick}
+                onCloseClick={() => updateState("showHistory", false)}
+              />
+            </QueryClientProvider>
+          )}
+
           <div className="text-black mb-4">
             <div>How does Premium Checkbot Compared to the Original?</div>
             <ComparisonTable comparisons={TRANSLATE_COMPARISON} />

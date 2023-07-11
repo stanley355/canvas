@@ -1,18 +1,20 @@
 import React, { useState } from "react";
+import dynamic from "next/dynamic";
 import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
-import dynamic from "next/dynamic";
 import classNames from "classnames";
 import Cookies from "js-cookie";
+import { decode } from "jsonwebtoken";
+
 import Button from "@/common/components/Button";
 import PremiumSourceTextArea from "./PremiumSourceTextArea";
+
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
-import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
 import { handlePremiumPrompt } from "../lib/handlePremiumPrompt";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
+import { saveHistory } from "@/common/lib/saveHistory";
 import { LANGUAGE_LIST } from "@/modules/translate/lib/constant";
 
 const InsufficientBalanceModal = dynamic(
@@ -20,6 +22,7 @@ const InsufficientBalanceModal = dynamic(
 );
 
 export interface ITranslateForm {
+  originalText: string;
   imageText: string;
   onReuploadClick: () => void;
   dispatchLoginForm: () => void;
@@ -28,6 +31,7 @@ export interface ITranslateForm {
 
 const PremiumTranslateForm = (props: ITranslateForm) => {
   const {
+    originalText,
     imageText,
     onReuploadClick,
     dispatchLangTranslate,
@@ -89,6 +93,16 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
       };
       await saveUserPremiumPrompt(saveUserPromptPayload);
 
+      const user: any = decode(token);
+      const historyPayload = {
+        time: new Date(),
+        instruction: `Translate to ${language}`,
+        originalText: sourceText,
+        completionText: content,
+        type: "translate",
+      };
+      await saveHistory(user.id, historyPayload);
+
       return;
     }
 
@@ -133,7 +147,7 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
           />
         </label>
         <div className="rounded border border-gray-500">
-          <PremiumSourceTextArea sourceText={imageText} />
+          <PremiumSourceTextArea sourceText={imageText || originalText} />
           <div
             className={classNames(
               "px-2 pb-2 flex items-center",

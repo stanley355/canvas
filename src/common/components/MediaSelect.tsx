@@ -43,6 +43,7 @@ const MediaSelect = (props: IMediaSelect) => {
     <label htmlFor="media_type">
       <Select
         name="media_type"
+        className="text-black"
         placeholder={<Placeholder />}
         options={MEDIA_OPTIONS}
         onChange={onChange}

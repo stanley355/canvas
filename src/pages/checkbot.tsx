@@ -1,6 +1,6 @@
 import React, { useReducer, useState } from "react";
 import dynamic from "next/dynamic";
-import { FaRobot } from "react-icons/fa";
+import { FaClock, FaRobot } from "react-icons/fa";
 import Layout from "@/common/components/Layout";
 import CheckBotForm from "@/modules/checkbot/components/CheckbotForm";
 import CheckboxResult from "@/modules/checkbot/components/CheckbotResult";
@@ -11,15 +11,22 @@ import CheckbotComparison from "@/modules/checkbot/components/CheckbotComparison
 import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import CheckbotResultToggle from "@/modules/checkbot/components/CheckbotResultToggle";
+import Button from "@/common/components/Button";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import HistoryBar from "@/common/components/HistoryBar";
 
 const LoginModal = dynamic(
   () => import("../modules/login/components/LoginModal")
 );
 
 const CheckBot = () => {
+  const queryClient = new QueryClient();
+
   const [states, dispatch] = useReducer(checkbotReducer, CHECKBOT_STATES);
   const {
     showLogin,
+    showHistory,
+    originalText,
     resultFormat,
     checkbotCompletion,
     checkbotRemoved,
@@ -28,6 +35,12 @@ const CheckBot = () => {
 
   const updateState = (name: string, value: any) => {
     dispatch({ type: "UPDATE", name, value });
+  };
+
+  const handleHistoryClick = (history: any) => {
+    updateState("originalText", history.originalText);
+    updateState("checkbotCompletion", history.completionText);
+    updateState("showHistory", false);
   };
 
   return (
@@ -42,14 +55,16 @@ const CheckBot = () => {
           className="lg:grid lg:grid-cols-2 lg:gap-8 mb-8"
           id="checkbot_form"
         >
-          <CheckBotForm updateState={updateState} />
+          <CheckBotForm sourceText={originalText} updateState={updateState} />
           <div>
-            {checkbotCompletion && (
-              <CheckbotResultToggle
-                resultFormat={resultFormat}
-                updateState={updateState}
-              />
-            )}
+            {checkbotCompletion &&
+              checkbotRemoved.length > 0 &&
+              checkbotAdded.length > 0 && (
+                <CheckbotResultToggle
+                  resultFormat={resultFormat}
+                  updateState={updateState}
+                />
+              )}
             {!resultFormat && (
               <CheckboxResult checkbotVal={checkbotCompletion} />
             )}
@@ -68,6 +83,24 @@ const CheckBot = () => {
             )}
           </div>
         </div>
+        <Button
+          type="button"
+          wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer"
+          buttonClassName="w-full flex items-center gap-2 h-full"
+          onClick={() => updateState("showHistory", !showHistory)}
+        >
+          <FaClock />
+          <span>Show History</span>
+        </Button>
+        {showHistory && (
+          <QueryClientProvider client={queryClient}>
+            <HistoryBar
+              pageType="checkbot"
+              onHistoryClick={handleHistoryClick}
+              onCloseClick={() => updateState("showHistory", false)}
+            />
+          </QueryClientProvider>
+        )}
         <CheckbotComparison />
         <FeedbackBox />
       </div>

@@ -1,26 +1,35 @@
-import React, { useReducer, useState } from "react";
-import { FaRobot } from "react-icons/fa";
+import React, { useReducer } from "react";
+import { FaClock, FaRobot } from "react-icons/fa";
 import dynamic from "next/dynamic";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 import Layout from "@/common/components/Layout";
 import MetaSEO from "@/common/components/MetaSEO";
-import PremiumCheckBotForm from "@/modules/premium/components/CheckbotForm";
-import { PREMIUM_CHECKBOT_SEO } from "@/modules/premium/lib/constant";
 import ComparisonTable from "@/common/components/ComparisonTable";
-import { CHECKBOT_COMPARISON } from "@/modules/checkbot/lib/constant";
 import FeedbackBox from "@/common/components/FeedbackBox";
 import CheckbotResultToggle from "@/modules/checkbot/components/CheckbotResultToggle";
 import CheckboxResult from "@/modules/checkbot/components/CheckbotResult";
+import HistoryBar from "@/common/components/HistoryBar";
+import PremiumCheckBotForm from "@/modules/premium/components/CheckbotForm";
+
+import { PREMIUM_CHECKBOT_SEO } from "@/modules/premium/lib/constant";
+import { CHECKBOT_COMPARISON } from "@/modules/checkbot/lib/constant";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
+import Button from "@/common/components/Button";
 
 const LoginModal = dynamic(
   () => import("../../modules/login/components/LoginModal")
 );
 
 const CheckBot = () => {
+  const queryClient = new QueryClient();
+
   const [states, dispatch] = useReducer(checkbotReducer, CHECKBOT_STATES);
   const {
     showLogin,
+    showHistory,
+    originalText,
     resultFormat,
     checkbotCompletion,
     checkbotRemoved,
@@ -29,6 +38,12 @@ const CheckBot = () => {
 
   const updateState = (name: string, value: any) => {
     dispatch({ type: "UPDATE", name, value });
+  };
+
+  const handleHistoryClick = (history: any) => {
+    updateState("originalText", history.originalText);
+    updateState("checkbotCompletion", history.completionText);
+    updateState("showHistory", false);
   };
 
   return (
@@ -45,22 +60,34 @@ const CheckBot = () => {
             <span>Checkbot+</span>
           </h1>
           <div
-            className="lg:grid lg:grid-cols-2 lg:gap-4 mb-16"
+            className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8"
             id="checkbot_form"
           >
-            <PremiumCheckBotForm updateState={updateState} />
+            <PremiumCheckBotForm
+              sourceText={originalText}
+              updateState={updateState}
+            />
             <div>
-              {checkbotCompletion && (
-                <CheckbotResultToggle
-                  resultFormat={resultFormat}
-                  updateState={updateState}
-                />
-              )}
+              {checkbotCompletion &&
+                checkbotAdded.length > 0 &&
+                checkbotRemoved.length > 0 && (
+                  <CheckbotResultToggle
+                    resultFormat={resultFormat}
+                    updateState={updateState}
+                  />
+                )}
               {!resultFormat && (
                 <CheckboxResult checkbotVal={checkbotCompletion} />
               )}
               {resultFormat === "removed" && (
-                <div className="border border-gray-500 h-80 rounded-md p-2 overflow-y-scroll">
+                <div
+                  className="border border-gray-heckbotCompletion && (
+                  <CheckbotResultToggle
+                    resultFormat={resultFormat}
+                    updateState={updateState}
+                  />
+                )}500 h-80 rounded-md p-2 overflow-y-scroll"
+                >
                   {checkbotRemoved}
                 </div>
               )}
@@ -74,7 +101,26 @@ const CheckBot = () => {
               )}
             </div>
           </div>
-          <div className="text-black mb-4">
+          <Button
+            type="button"
+            wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer"
+            buttonClassName="w-full flex items-center gap-2 h-full"
+            onClick={() => updateState("showHistory", !showHistory)}
+          >
+            <FaClock />
+            <span>Show History</span>
+          </Button>
+          {showHistory && (
+            <QueryClientProvider client={queryClient}>
+              <HistoryBar
+                pageType="checkbot"
+                onHistoryClick={handleHistoryClick}
+                onCloseClick={() => updateState("showHistory", false)}
+              />
+            </QueryClientProvider>
+          )}
+
+          <div className="text-black mb-4 mt-8">
             <div>How does Premium Checkbot Compared to the Original?</div>
             <ComparisonTable comparisons={CHECKBOT_COMPARISON} />
           </div>

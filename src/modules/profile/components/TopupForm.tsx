@@ -54,7 +54,6 @@ const TopupForm = (props: ITopupForm) => {
         vaInfo.bank_name = vaBank;
         vaInfo.amount = amount;
         dispatchVAinfo(vaInfo);
-        console.log(vaInfo);
         setHasSubmit(false);
         return;
       }
