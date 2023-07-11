@@ -25,7 +25,7 @@ const LoginModal = dynamic(
 );
 
 const PremiumTranslate = () => {
-  const queryClient = new QueryClient();
+  // const queryClient = new QueryClient();
   const [state, dispatch] = useReducer(
     premiumTranslateReducer,
     PREMIUM_TRANSLATE_STATES
@@ -95,7 +95,7 @@ const PremiumTranslate = () => {
             <PremiumTranslateResult translateVal={translateCompletion} />
           </div>
 
-          <Button
+          {/* <Button
             type="button"
             wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer mb-8"
             buttonClassName="w-full flex items-center gap-2 h-full"
@@ -112,7 +112,7 @@ const PremiumTranslate = () => {
                 onCloseClick={() => updateState("showHistory", false)}
               />
             </QueryClientProvider>
-          )}
+          )} */}
 
           <div className="text-black mb-4">
             <div>How does Premium Checkbot Compared to the Original?</div>

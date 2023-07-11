@@ -25,7 +25,7 @@ const LoginModal = dynamic(
 );
 
 const LangTranslate = () => {
-  const queryClient = new QueryClient();
+  // const queryClient = new QueryClient();
 
   const [state, dispatch] = useReducer(translateReducer, TRANSLATE_STATES);
   const {
@@ -88,7 +88,7 @@ const LangTranslate = () => {
           )}
           <TranslateResult translateVal={translateCompletion} />
         </div>
-        <Button
+        {/* <Button
           type="button"
           wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer mb-8"
           buttonClassName="w-full flex items-center gap-2 h-full"
@@ -105,7 +105,7 @@ const LangTranslate = () => {
               onCloseClick={() => updateState("showHistory", false)}
             />
           </QueryClientProvider>
-        )}
+        )} */}
 
         <TranslateComparison />
         <FeedbackBox />

@@ -20,7 +20,7 @@ const LoginModal = dynamic(
 );
 
 const CheckBot = () => {
-  const queryClient = new QueryClient();
+  // const queryClient = new QueryClient();
 
   const [states, dispatch] = useReducer(checkbotReducer, CHECKBOT_STATES);
   const {
@@ -83,7 +83,7 @@ const CheckBot = () => {
             )}
           </div>
         </div>
-        <Button
+        {/* <Button
           type="button"
           wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer"
           buttonClassName="w-full flex items-center gap-2 h-full"
@@ -100,7 +100,7 @@ const CheckBot = () => {
               onCloseClick={() => updateState("showHistory", false)}
             />
           </QueryClientProvider>
-        )}
+        )} */}
         <CheckbotComparison />
         <FeedbackBox />
       </div>
