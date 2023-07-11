@@ -81,12 +81,7 @@ const CheckBot = () => {
               )}
               {resultFormat === "removed" && (
                 <div
-                  className="border border-gray-heckbotCompletion && (
-                  <CheckbotResultToggle
-                    resultFormat={resultFormat}
-                    updateState={updateState}
-                  />
-                )}500 h-80 rounded-md p-2 overflow-y-scroll"
+                  className="border border-gray-500 h-80 rounded-md p-2 overflow-y-scroll"
                 >
                   {checkbotRemoved}
                 </div>
