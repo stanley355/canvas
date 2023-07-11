@@ -22,12 +22,17 @@ const LoginModal = dynamic(
   () => import("../../modules/login/components/LoginModal")
 );
 
+const InsufficientBalanceModal = dynamic(
+  () => import("../../modules/premium/components/InsufficientBalanceModal")
+);
+
 const CheckBot = () => {
   const queryClient = new QueryClient();
 
   const [states, dispatch] = useReducer(checkbotReducer, CHECKBOT_STATES);
   const {
     showLogin,
+    showBalanceModal,
     showHistory,
     originalText,
     resultFormat,
@@ -49,6 +54,7 @@ const CheckBot = () => {
   return (
     <Layout>
       {showLogin && <LoginModal isFree={false} />}
+      {showBalanceModal && <InsufficientBalanceModal onCloseClick={() => updateState("showBalanceModal", false)} />  }
       <MetaSEO seo={PREMIUM_CHECKBOT_SEO} />
       <div className="bg-white">
         <div className="container mx-auto p-2 lg:px-2">

@@ -1,22 +1,22 @@
 import React, { useState } from "react";
-import dynamic from "next/dynamic";
 import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
-import Cookies from "js-cookie";
-import Button from "@/common/components/Button";
-import PremiumSourceTextArea from "./PremiumSourceTextArea";
-import { handlePremiumPrompt } from "../lib/handlePremiumPrompt";
-import { PREMIUM_CHECKBOT_OPTIONS } from "../lib/constant";
-import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import { reactSelectDarkStyle } from "@/common/lib/reactSelectDarkStyle";
-import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
-import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
-import SourceTextArea from "@/common/components/SourceTextArea";
 import { diffChars } from "diff";
-import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
-import { saveHistory } from "@/common/lib/saveHistory";
 import { decode } from "jsonwebtoken";
+import Cookies from "js-cookie";
+
+import Button from "@/common/components/Button";
+import SourceTextArea from "@/common/components/SourceTextArea";
+
+import { CHECKBOT_OPTIONS } from "@/modules/checkbot/lib/constant";
+import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
+import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
+import { handlePremiumPrompt } from "../lib/handlePremiumPrompt";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
+import { saveHistory } from "@/common/lib/saveHistory";
+import { createRemovedAndAddedDiff } from "@/modules/checkbot/lib/createRemovedAndAddedDiff";
 
 interface IPremiumCheckBotForm {
   sourceText: string;
@@ -27,14 +27,8 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
   const { sourceText, updateState } = props;
 
   const isDesktop = useDesktopScreen();
-
   const [showPersonalInstruction, setShowPersonalInstruction] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-
-  const InsufficientBalanceModal = dynamic(
-    () => import("./InsufficientBalanceModal")
-  );
 
   const handleCheckbotOption = (option: any) => {
     const isPersonalInstruction = option.value === "personal_instruction";
@@ -47,6 +41,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     const token = Cookies.get("token");
     if (!token) {
       updateState("showLogin", true);
+      sendFirebaseEvent("login_popup", {});
       return;
     }
 
@@ -54,7 +49,6 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     const instruction = target.instruction.value;
     const personalInstruction = target?.personal_instruction?.value;
     const sourceText = target.source_text.value;
-
     if (!instruction) {
       toast.warning("Please choose the instruction");
       return;
@@ -73,7 +67,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     setIsLoading(true);
     const hasBalance = await checkUserCurrentBalance();
     if (!hasBalance) {
-      setShowModal(true);
+      updateState("showBalanceModal", true);
       setIsLoading(false);
       return;
     }
@@ -92,21 +86,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     if (content) {
       updateState("checkbotCompletion", content);
 
-      const diff = diffChars(sourceText, content);
-      const removedDiff = diff
-        .filter((d) => !d.added)
-        .map((d, i) => (
-          <span key={i} className={d.removed ? "text-red-500" : "text-black"}>
-            {d.value}
-          </span>
-        ));
-      const addedDiff = diff
-        .filter((d) => !d.removed)
-        .map((d, i) => (
-          <span key={i} className={d.added ? "text-green-700" : "text-black"}>
-            {d.value}
-          </span>
-        ));
+      const { removedDiff, addedDiff } = createRemovedAndAddedDiff(sourceText, content);
       updateState("checkbotRemoved", removedDiff);
       updateState("checkbotAdded", addedDiff);
 
@@ -130,25 +110,21 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
         type: "checkbot",
       };
       await saveHistory(user.id, historyPayload);
-
       return;
     }
 
     toast.error("Something went wrong, please try again");
     setIsLoading(false);
-    return "";
+    return;
   };
 
   return (
     <form onSubmit={handleSubmit} className="mb-4 lg:mb-0">
-      {showModal && (
-        <InsufficientBalanceModal onCloseClick={() => setShowModal(false)} />
-      )}
       <label htmlFor="instruction_select">
         <Select
-          placeholder="Instruction"
+          placeholder="What can I help you with?"
           name="instruction"
-          options={PREMIUM_CHECKBOT_OPTIONS}
+          options={CHECKBOT_OPTIONS}
           className="w-full text-black mb-2 border-black"
           id="instruction_select"
           aria-label="instruction_select"
@@ -171,12 +147,12 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
           <input
             type="text"
             name="personal_instruction"
-            className="w-full mb-2 border border-gray-500 p-2 rounded text-black"
+            className="w-full mb-2 p-2 border border-gray-500 rounded-md text-black"
             placeholder="What's your instruction?"
           />
         </label>
       )}
-      <div className="bg-white border border-gray-500 rounded-md pb-2 relative">
+      <div className="bg-white border border-gray-500 rounded pb-1">
         <SourceTextArea sourceText={sourceText} />
         <Button
           type="submit"

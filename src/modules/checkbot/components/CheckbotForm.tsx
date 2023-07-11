@@ -9,13 +9,14 @@ import { diffChars } from "diff";
 import Button from "@/common/components/Button";
 import SourceTextArea from "@/common/components/SourceTextArea";
 
-import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { CHECKBOT_OPTIONS } from "../lib/constant";
+import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { handlePrompt } from "@/common/lib/handlePrompt";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 import { saveHistory } from "@/common/lib/saveHistory";
+import { createRemovedAndAddedDiff } from "../lib/createRemovedAndAddedDiff";
 
 interface ICheckBotForm {
   sourceText: string;
@@ -44,10 +45,17 @@ const CheckBotForm = (props: ICheckBotForm) => {
       return;
     }
 
-    const instruction = e.target.instruction.value;
-    const sourceText = e.target.source_text.value;
+    const target = e.target as any;
+    const instruction = target.instruction.value;
+    const personalInstruction = target?.personal_instruction?.value;
+    const sourceText = target.source_text.value;
     if (!instruction) {
-      toast.warning("You haven't chosen the instruction");
+      toast.warning("Please choose the instruction");
+      return;
+    }
+
+    if (instruction === "personal_instruction" && !personalInstruction) {
+      toast.warning("Personal Instruction could not be empty");
       return;
     }
 
@@ -56,11 +64,6 @@ const CheckBotForm = (props: ICheckBotForm) => {
       return;
     }
 
-    const personalInstruction = e.target?.personal_instruction?.value;
-    if (instruction === "personal_instruction" && !personalInstruction) {
-      toast.warning("You haven't filled the personal instruction");
-      return;
-    }
 
     setIsLoading(true);
     sendFirebaseEvent("checkbot", {
@@ -71,28 +74,13 @@ const CheckBotForm = (props: ICheckBotForm) => {
     const prompt = personalInstruction
       ? `${personalInstruction}, text: "${sourceText}"`
       : `${instruction}: "${sourceText}"`;
-    const { content, prompt_tokens, completion_tokens } = await handlePrompt(
-      prompt
-    );
+    const { content, prompt_tokens, completion_tokens } =
+      await handlePrompt(prompt);
 
     if (content) {
       updateState("checkbotCompletion", content);
 
-      const diff = diffChars(sourceText, content);
-      const removedDiff = diff
-        .filter((d) => !d.added)
-        .map((d, i) => (
-          <span key={i} className={d.removed ? "text-red-500" : "text-black"}>
-            {d.value}
-          </span>
-        ));
-      const addedDiff = diff
-        .filter((d) => !d.removed)
-        .map((d, i) => (
-          <span key={i} className={d.added ? "text-green-700" : "text-black"}>
-            {d.value}
-          </span>
-        ));
+      const { removedDiff, addedDiff } = createRemovedAndAddedDiff(sourceText, content);
       updateState("checkbotRemoved", removedDiff);
       updateState("checkbotAdded", addedDiff);
 
@@ -117,7 +105,6 @@ const CheckBotForm = (props: ICheckBotForm) => {
         type: "checkbot",
       };
       await saveHistory(user.id, historyPayload);
-
       return;
     }
 
@@ -128,23 +115,33 @@ const CheckBotForm = (props: ICheckBotForm) => {
 
   return (
     <form onSubmit={handleSubmit} className="mb-4">
-      <label htmlFor="checkbot_instruction_select">
+      <label htmlFor="instruction_select">
         <Select
           placeholder="What can I help you with?"
           name="instruction"
           options={CHECKBOT_OPTIONS}
           className="w-full text-black mb-2"
-          id="checkbot_instruction_select"
-          aria-label="checkbot_instruction_select"
-          aria-labelledby="checkbot_instruction_select"
+          id="instruction_select"
+          aria-label="instruction_select"
+          aria-labelledby="instruction_select"
           onChange={handleCheckbotOption}
+          styles={{
+            control: (defaults: any) => ({
+              ...defaults,
+              border: "1px solid gray",
+            }),
+            placeholder: (defaults: any) => ({
+              ...defaults,
+              color: "black",
+            }),
+          }}
         />
       </label>
       {showPersonalInstruction && (
         <input
           type="text"
           name="personal_instruction"
-          className="w-full mb-2 border p-2 rounded-sm text-black bg-white"
+          className="w-full mb-2 p-2 rounded-sm text-black bg-white"
           placeholder="What's your instruction?"
         />
       )}

@@ -34,7 +34,7 @@ const HistoryBar = (props: IHistoryBar) => {
   });
 
   return (
-    <div className="fixed top-0 left-0 w-full lg:w-1/4 h-full z-10 bg-black">
+    <div className="fixed top-0 left-0 w-full lg:w-1/4 h-full z-10 bg-black overflow-y-scroll">
       <div className="flex items-center text-xl justify-between border-b p-4 lg:p-2">
         <div className="flex items-center gap-2 font-semibold">
           <FaClock />
@@ -49,6 +49,7 @@ const HistoryBar = (props: IHistoryBar) => {
           <FaTimes />
         </Button>
       </div>
+
       {!data?.length && (
         <div className="text-white text-center p-2">
           No Recent {pageType} History
