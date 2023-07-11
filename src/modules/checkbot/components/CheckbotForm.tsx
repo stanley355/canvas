@@ -133,7 +133,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
           placeholder="What can I help you with?"
           name="instruction"
           options={CHECKBOT_OPTIONS}
-          className="w-full text-black mb-4"
+          className="w-full text-black mb-2"
           id="checkbot_instruction_select"
           aria-label="checkbot_instruction_select"
           aria-labelledby="checkbot_instruction_select"

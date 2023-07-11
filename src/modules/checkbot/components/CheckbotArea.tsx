@@ -25,7 +25,7 @@ const CheckbotArea = (props: ICheckbotArea) => {
   } = states;
 
   return (
-    <div className="lg:grid lg:grid-cols-2 lg:gap-8 mb-8">
+    <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8">
       <CheckBotForm sourceText={originalText} updateState={updateState} />
       <div>
         {checkbotCompletion &&
@@ -39,18 +39,14 @@ const CheckbotArea = (props: ICheckbotArea) => {
         {!resultFormat && (
           <CheckboxResult checkbotVal={checkbotCompletion} />
         )}
-        {resultFormat === "removed" && (
-          <div className="border border-gray-500 h-80 rounded-md p-2 overflow-y-scroll bg-white">
-            {checkbotRemoved}
-          </div>
-        )}
-        {resultFormat === "added" && (
-          <div className="border border-gray-500 h-80 rounded-md p-2 overflow-y-scroll bg-white">
-            {checkbotAdded}
-          </div>
-        )}
         {resultFormat && (
-          <div className="text-white">*Go to No Diff to copy</div>
+          <>
+            <div className="border border-gray-500 h-80 rounded-md p-2 overflow-auto bg-white">
+              {resultFormat === "removed" && checkbotRemoved}
+              {resultFormat === "added" && checkbotAdded}
+            </div>
+            <div className="text-white">*Go to No Diff to copy</div>
+          </>
         )}
       </div>
     </div>
