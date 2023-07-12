@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Button from "./Button";
 import { useQuery } from "@tanstack/react-query";
 import { FaArrowRight, FaClock, FaTimes } from "react-icons/fa";
 import Cookies from "js-cookie";
 import { decode } from "jsonwebtoken";
-import { findHistory } from "../lib/findHistory";
 
 interface IHistoryBar {
   pageType: "translate" | "checkbot";
@@ -15,23 +14,15 @@ interface IHistoryBar {
 const HistoryBar = (props: IHistoryBar) => {
   const { pageType, onCloseClick, onHistoryClick } = props;
 
-  const { data } = useQuery({
-    queryKey: ["history"],
-    queryFn: async () => {
-      const token = Cookies.get("token");
-      if (token) {
-        const user: any = decode(token);
-        const history = await findHistory(user.id);
-        if (history) {
-          const historyArr = JSON.parse(history);
-          return historyArr.filter((history: any) => history.type === pageType);
-        }
-        return [];
-      }
+  const historyData = useMemo(() => {
+    const history = sessionStorage.getItem("history");
+    if (history) {
+      const historyArr = JSON.parse(history);
+      return historyArr.filter((history: any) => history.type === pageType);
+    }
 
-      return null;
-    },
-  });
+    return [];
+  }, [pageType]);
 
   return (
     <div className="fixed top-0 left-0 w-full lg:w-1/4 h-full z-10 bg-black overflow-y-scroll">
@@ -50,14 +41,14 @@ const HistoryBar = (props: IHistoryBar) => {
         </Button>
       </div>
 
-      {!data?.length && (
+      {!historyData?.length && (
         <div className="text-white text-center p-2">
           No Recent {pageType} History
         </div>
       )}
-      {data?.length > 0 && (
+      {historyData?.length > 0 && (
         <div>
-          {data
+          {historyData
             .sort(
               (a: any, b: any) =>
                 new Date(b.time).getTime() - new Date(a.time).getTime()
@@ -85,7 +76,7 @@ const HistoryBar = (props: IHistoryBar) => {
         </div>
       )}
       <div className="text-center mt-2">
-        *History will be cleared after 6 hours
+        *History will be cleared after browser is closed
       </div>
     </div>
   );

@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
 import classNames from "classnames";
 import Cookies from "js-cookie";
-import { decode } from "jsonwebtoken";
 
 import Button from "@/common/components/Button";
 import PremiumSourceTextArea from "./PremiumSourceTextArea";
@@ -15,6 +14,7 @@ import { handlePremiumPrompt } from "../lib/handlePremiumPrompt";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
 import { LANGUAGE_LIST } from "@/modules/translate/lib/constant";
+import { saveHistory } from "@/common/lib/saveHistory";
 
 const InsufficientBalanceModal = dynamic(
   () => import("./InsufficientBalanceModal")
@@ -91,6 +91,15 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
         completion_text: content,
       };
       await saveUserPremiumPrompt(saveUserPromptPayload);
+
+      const historyPayload = {
+        time: new Date(),
+        instruction: `Translate to ${language}`,
+        originalText: sourceText,
+        completionText: content,
+        type: "translate",
+      };
+      saveHistory(historyPayload);
       return;
     }
 

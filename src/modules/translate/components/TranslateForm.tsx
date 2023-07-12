@@ -3,8 +3,6 @@ import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
 import classNames from "classnames";
-import Cookies from "js-cookie";
-import { decode } from "jsonwebtoken";
 
 import Button from "@/common/components/Button";
 import SourceTextArea from "../../../common/components/SourceTextArea";
@@ -14,6 +12,7 @@ import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 import { handlePrompt } from "@/common/lib/handlePrompt";
 import { LANGUAGE_LIST } from "../lib/constant";
+import { saveHistory } from "@/common/lib/saveHistory";
 
 interface ITranslateForm {
   sourceText: string;
@@ -64,9 +63,8 @@ const TranslateForm = (props: ITranslateForm) => {
     });
 
     setIsLoading(true);
-    const prompt = `Translate "${sourceText}" to ${targetLang}. ${
-      contextText ?? ""
-    }`;
+    const prompt = `Translate "${sourceText}" to ${targetLang}. ${contextText ?? ""
+      }`;
     const { content, prompt_tokens, completion_tokens } = await handlePrompt(
       prompt
     );
@@ -82,6 +80,15 @@ const TranslateForm = (props: ITranslateForm) => {
         completion_text: content,
       };
       await saveUserPrompt(saveUserPromptPayload);
+
+      const historyPayload = {
+        time: new Date(),
+        instruction: `Translate to ${targetLang}`,
+        originalText: sourceText,
+        completionText: content,
+        type: "translate",
+      };
+      await saveHistory(historyPayload);
       return;
     }
 

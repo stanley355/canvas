@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
-import { diffChars } from "diff";
-import { decode } from "jsonwebtoken";
 import Cookies from "js-cookie";
 
 import Button from "@/common/components/Button";
@@ -16,6 +14,7 @@ import { handlePremiumPrompt } from "../lib/handlePremiumPrompt";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
 import { createRemovedAndAddedDiff } from "@/modules/checkbot/lib/createRemovedAndAddedDiff";
+import { saveHistory } from "@/common/lib/saveHistory";
 
 interface IPremiumCheckBotForm {
   sourceText: string;
@@ -99,6 +98,15 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
         completion_text: content,
       };
       await saveUserPremiumPrompt(saveUserPromptPayload);
+
+      const historyPayload = {
+        time: new Date(),
+        instruction: personalInstruction ? personalInstruction : instruction,
+        originalText: sourceText,
+        completionText: content,
+        type: "checkbot",
+      };
+      saveHistory(historyPayload);
       return;
     }
 

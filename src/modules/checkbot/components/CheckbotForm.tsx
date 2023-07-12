@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
-import { decode } from "jsonwebtoken";
-import { diffChars } from "diff";
 
 import Button from "@/common/components/Button";
 import SourceTextArea from "@/common/components/SourceTextArea";
@@ -16,6 +13,7 @@ import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { handlePrompt } from "@/common/lib/handlePrompt";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 import { createRemovedAndAddedDiff } from "../lib/createRemovedAndAddedDiff";
+import { saveHistory } from "@/common/lib/saveHistory";
 
 interface ICheckBotForm {
   sourceText: string;
@@ -92,6 +90,15 @@ const CheckBotForm = (props: ICheckBotForm) => {
         completion_text: content,
       };
       await saveUserPrompt(saveUserPromptPayload);
+
+      const historyPayload = {
+        time: new Date(),
+        instruction: personalInstruction ? personalInstruction : instruction,
+        originalText: sourceText,
+        completionText: content,
+        type: "checkbot",
+      };
+      saveHistory(historyPayload);
       return;
     }
 
