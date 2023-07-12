@@ -15,7 +15,6 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { handlePrompt } from "@/common/lib/handlePrompt";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
-import { saveHistory } from "@/common/lib/saveHistory";
 import { createRemovedAndAddedDiff } from "../lib/createRemovedAndAddedDiff";
 
 interface ICheckBotForm {
@@ -63,7 +62,6 @@ const CheckBotForm = (props: ICheckBotForm) => {
       toast.warning("Text could not be empty");
       return;
     }
-
 
     setIsLoading(true);
     sendFirebaseEvent("checkbot", {

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-interface IRedisHistoryValue {
+interface IHistoryValue {
   time: any;
   instruction: string;
   originalText: string;
@@ -9,20 +9,17 @@ interface IRedisHistoryValue {
 }
 
 export const saveHistory = async (
-  userID: string,
-  history: IRedisHistoryValue
+  history: IHistoryValue
 ) => {
-  const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/redis/history/`;
-  const saveHistoryPayload = {
-    userID,
-    history,
-  };
-  const axiosConfig = {
-    method: "POST",
-    url: URL,
-    data: saveHistoryPayload,
-  };
+  const oldHistory =  sessionStorage.getItem("history");
 
-  const { data } = await axios(axiosConfig);
-  return data;
+  if (!oldHistory) {
+    const newHistory = [history];
+    sessionStorage.setItem("history", JSON.stringify(newHistory));
+    return;
+  } 
+
+  const historyArr = JSON.parse(oldHistory);
+  const newHistory = [...historyArr, history];
+  sessionStorage.setItem("history", JSON.stringify(newHistory));
 };

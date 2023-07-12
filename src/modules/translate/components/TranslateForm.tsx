@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
-import { LANGUAGE_LIST } from "../lib/constant";
+import classNames from "classnames";
+import Cookies from "js-cookie";
+import { decode } from "jsonwebtoken";
+
 import Button from "@/common/components/Button";
 import SourceTextArea from "../../../common/components/SourceTextArea";
+
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 import { handlePrompt } from "@/common/lib/handlePrompt";
-import classNames from "classnames";
-import Cookies from "js-cookie";
-import { decode } from "jsonwebtoken";
-import { saveHistory } from "@/common/lib/saveHistory";
+import { LANGUAGE_LIST } from "../lib/constant";
 
 interface ITranslateForm {
   sourceText: string;

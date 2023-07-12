@@ -15,7 +15,6 @@ import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 import { handlePremiumPrompt } from "../lib/handlePremiumPrompt";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
-import { saveHistory } from "@/common/lib/saveHistory";
 import { createRemovedAndAddedDiff } from "@/modules/checkbot/lib/createRemovedAndAddedDiff";
 
 interface IPremiumCheckBotForm {
