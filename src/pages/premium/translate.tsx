@@ -88,7 +88,7 @@ const PremiumTranslate = () => {
                 imageText={imageText}
                 onReuploadClick={() => updateState("isImageTranslate", true)}
                 dispatchLoginForm={() => updateState("showLogin", true)}
-                dispatchLangTranslate={(trans: string) =>
+                dispatchTranslateVal={(trans: string) =>
                   updateState("translateCompletion", trans)
                 }
               />

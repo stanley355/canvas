@@ -77,7 +77,7 @@ const LangTranslate = () => {
             />
           ) : (
             <TranslateForm
-              sourceText={originalText}
+              originalText={originalText}
               imageText={imageText}
               onReuploadClick={() => updateState("isImageTranslate", true)}
               dispatchLoginForm={() => updateState("showLogin", true)}
