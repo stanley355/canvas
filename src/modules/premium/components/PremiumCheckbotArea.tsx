@@ -1,20 +1,10 @@
 import React from 'react';
-import CheckBotForm from './CheckbotForm';
-import CheckbotResultToggle from './CheckbotResultToggle';
-import CheckboxResult from './CheckbotResult';
+import { ICheckbotArea } from '@/modules/checkbot/components/CheckbotArea';
+import PremiumCheckBotForm from './CheckbotForm';
+import CheckbotResultToggle from '@/modules/checkbot/components/CheckbotResultToggle';
+import CheckboxResult from '@/modules/checkbot/components/CheckbotResult'; 
 
-export interface ICheckbotArea {
-  states: {
-    originalText: string,
-    resultFormat: string,
-    checkbotCompletion: string,
-    checkbotRemoved: Array<any>,
-    checkbotAdded: Array<any>,
-  };
-  updateState: (name: string, val: any) => void;
-}
-
-const CheckbotArea = (props: ICheckbotArea) => {
+const PremiumCheckbotArea = (props: ICheckbotArea) => {
   const { states, updateState } = props;
   const {
     originalText,
@@ -26,7 +16,7 @@ const CheckbotArea = (props: ICheckbotArea) => {
 
   return (
     <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8">
-      <CheckBotForm sourceText={originalText} updateState={updateState} />
+      <PremiumCheckBotForm sourceText={originalText} updateState={updateState} />
       <div>
         {checkbotCompletion &&
           checkbotRemoved.length > 0 &&
@@ -53,4 +43,4 @@ const CheckbotArea = (props: ICheckbotArea) => {
   )
 };
 
-export default CheckbotArea;
+export default PremiumCheckbotArea;

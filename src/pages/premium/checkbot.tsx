@@ -16,6 +16,7 @@ import { PREMIUM_CHECKBOT_SEO } from "@/modules/premium/lib/constant";
 import { CHECKBOT_COMPARISON } from "@/modules/checkbot/lib/constant";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
+import PremiumCheckbotArea from "@/modules/premium/components/PremiumCheckbotArea";
 // import Button from "@/common/components/Button";
 
 const LoginModal = dynamic(
@@ -65,43 +66,7 @@ const CheckBot = () => {
             <FaRobot className="text-3xl mr-2" />
             <span>Checkbot+</span>
           </h1>
-          <div
-            className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8"
-            id="checkbot_form"
-          >
-            <PremiumCheckBotForm
-              sourceText={originalText}
-              updateState={updateState}
-            />
-            <div>
-              {checkbotCompletion &&
-                checkbotAdded.length > 0 &&
-                checkbotRemoved.length > 0 && (
-                  <CheckbotResultToggle
-                    resultFormat={resultFormat}
-                    updateState={updateState}
-                  />
-                )}
-              {!resultFormat && (
-                <CheckboxResult checkbotVal={checkbotCompletion} />
-              )}
-              {resultFormat === "removed" && (
-                <div
-                  className="border border-gray-500 h-80 rounded-md p-2 overflow-y-scroll"
-                >
-                  {checkbotRemoved}
-                </div>
-              )}
-              {resultFormat === "added" && (
-                <div className="border border-gray-500 h-80 rounded-md p-2 overflow-y-scroll">
-                  {checkbotAdded}
-                </div>
-              )}
-              {resultFormat && (
-                <div className="text-black">*Go to No Diff to copy</div>
-              )}
-            </div>
-          </div>
+          <PremiumCheckbotArea states={states} updateState={updateState} />
           {/* <Button
             type="button"
             wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer"
