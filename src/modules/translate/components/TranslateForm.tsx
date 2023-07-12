@@ -2,20 +2,20 @@ import React, { useState } from "react";
 import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
-import { LANGUAGE_LIST } from "../lib/constant";
+import classNames from "classnames";
+
 import Button from "@/common/components/Button";
 import SourceTextArea from "../../../common/components/SourceTextArea";
+
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 import { handlePrompt } from "@/common/lib/handlePrompt";
-import classNames from "classnames";
-import Cookies from "js-cookie";
-import { decode } from "jsonwebtoken";
+import { LANGUAGE_LIST } from "../lib/constant";
 import { saveHistory } from "@/common/lib/saveHistory";
 
-interface ITranslateForm {
-  sourceText: string;
+export interface ITranslateForm {
+  originalText: string;
   imageText: string;
   onReuploadClick: () => void;
   dispatchLoginForm: () => void;
@@ -24,7 +24,7 @@ interface ITranslateForm {
 
 const TranslateForm = (props: ITranslateForm) => {
   const {
-    sourceText,
+    originalText,
     imageText,
     onReuploadClick,
     dispatchLoginForm,
@@ -43,12 +43,13 @@ const TranslateForm = (props: ITranslateForm) => {
       return;
     }
 
-    const targetLang = e.target.target_lang.value;
-    const sourceText = e.target.source_text.value;
-    const contextText = e.target.context_text.value;
+    const target = e.target as any;
+    const targetLang = target.target_lang.value;
+    const sourceText = target.source_text.value;
+    const contextText = target.context_text.value;
 
     if (!targetLang) {
-      toast.warning("Target Language Could Not be Empy");
+      toast.warning("Target Language Could Not be Empty");
       return "";
     }
 
@@ -71,8 +72,8 @@ const TranslateForm = (props: ITranslateForm) => {
     );
 
     if (content) {
-      setIsLoading(false);
       dispatchTranslateVal(content);
+      setIsLoading(false);
 
       const saveUserPromptPayload = {
         prompt_token: prompt_tokens,
@@ -81,6 +82,15 @@ const TranslateForm = (props: ITranslateForm) => {
         completion_text: content,
       };
       await saveUserPrompt(saveUserPromptPayload);
+
+      const historyPayload = {
+        time: new Date(),
+        instruction: `Translate to ${targetLang}`,
+        originalText: sourceText,
+        completionText: content,
+        type: "translate",
+      };
+      await saveHistory(historyPayload);
       return;
     }
 
@@ -109,7 +119,7 @@ const TranslateForm = (props: ITranslateForm) => {
         placeholder="Optional: Context (xyz refers to...) "
       />
       <div className="mt-3 bg-white rounded">
-        <SourceTextArea sourceText={imageText || sourceText} />
+        <SourceTextArea sourceText={imageText || originalText} />
         <div
           className={classNames(
             "px-1 pb-1 flex items-center",

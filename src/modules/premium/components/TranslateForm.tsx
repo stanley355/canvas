@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
 import classNames from "classnames";
 import Cookies from "js-cookie";
-import { decode } from "jsonwebtoken";
 
 import Button from "@/common/components/Button";
 import PremiumSourceTextArea from "./PremiumSourceTextArea";
@@ -14,28 +13,21 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { handlePremiumPrompt } from "../lib/handlePremiumPrompt";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
-import { saveHistory } from "@/common/lib/saveHistory";
 import { LANGUAGE_LIST } from "@/modules/translate/lib/constant";
+import { saveHistory } from "@/common/lib/saveHistory";
+import { ITranslateForm } from "@/modules/translate/components/TranslateForm";
 
 const InsufficientBalanceModal = dynamic(
   () => import("./InsufficientBalanceModal")
 );
-
-export interface ITranslateForm {
-  originalText: string;
-  imageText: string;
-  onReuploadClick: () => void;
-  dispatchLoginForm: () => void;
-  dispatchLangTranslate: (val: string) => void;
-}
 
 const PremiumTranslateForm = (props: ITranslateForm) => {
   const {
     originalText,
     imageText,
     onReuploadClick,
-    dispatchLangTranslate,
     dispatchLoginForm,
+    dispatchTranslateVal,
   } = props;
 
   const [showModal, setShowModal] = useState(false);
@@ -47,15 +39,17 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
     const token = Cookies.get("token");
     if (!token) {
       dispatchLoginForm();
+      sendFirebaseEvent("login_popup", {});
       return;
     }
 
-    const language = e.target.target_lang.value;
-    const sourceText = e.target.source_text.value;
-    const context = e.target.context.value;
+    const target = e.target as any;
+    const language = target.target_lang.value;
+    const sourceText = target.source_text.value;
+    const context = target.context.value;
 
     if (!language) {
-      toast.warning("Target Language Could Not be Empy");
+      toast.warning("Target Language Could Not be Empty");
       return;
     }
 
@@ -77,12 +71,12 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
       target_lang: language,
     });
 
-    const prompt = `Translate "${sourceText}" to ${language} ${context ?? ""}`;
+    const prompt = `Translate "${sourceText}" to ${language}. ${context ?? ""}`;
     const { content, prompt_tokens, completion_tokens } =
       await handlePremiumPrompt(prompt);
 
     if (content) {
-      dispatchLangTranslate(content);
+      dispatchTranslateVal(content);
       setIsLoading(false);
 
       const saveUserPromptPayload = {
@@ -92,6 +86,15 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
         completion_text: content,
       };
       await saveUserPremiumPrompt(saveUserPromptPayload);
+
+      const historyPayload = {
+        time: new Date(),
+        instruction: `Translate to ${language}`,
+        originalText: sourceText,
+        completionText: content,
+        type: "translate",
+      };
+      saveHistory(historyPayload);
       return;
     }
 
@@ -152,7 +155,6 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
                 onClick={onReuploadClick}
               />
             )}
-
             <Button
               type="submit"
               disabled={isLoading}

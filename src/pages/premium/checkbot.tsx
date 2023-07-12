@@ -1,40 +1,31 @@
 import React, { useReducer } from "react";
 import { FaClock, FaRobot } from "react-icons/fa";
 import dynamic from "next/dynamic";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import Layout from "@/common/components/Layout";
 import MetaSEO from "@/common/components/MetaSEO";
+import Button from "@/common/components/Button";
+import PremiumCheckbotArea from "@/modules/premium/components/PremiumCheckbotArea";
 import ComparisonTable from "@/common/components/ComparisonTable";
 import FeedbackBox from "@/common/components/FeedbackBox";
-import CheckbotResultToggle from "@/modules/checkbot/components/CheckbotResultToggle";
-import CheckboxResult from "@/modules/checkbot/components/CheckbotResult";
-// import HistoryBar from "@/common/components/HistoryBar";
-import PremiumCheckBotForm from "@/modules/premium/components/CheckbotForm";
+import HistoryBar from "@/common/components/HistoryBar";
 
 import { PREMIUM_CHECKBOT_SEO } from "@/modules/premium/lib/constant";
 import { CHECKBOT_COMPARISON } from "@/modules/checkbot/lib/constant";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
-// import Button from "@/common/components/Button";
 
 const LoginModal = dynamic(
   () => import("../../modules/login/components/LoginModal")
 );
 
-const CheckBot = () => {
-  // const queryClient = new QueryClient();
+const InsufficientBalanceModal = dynamic(
+  () => import("../../modules/premium/components/InsufficientBalanceModal")
+);
 
+const CheckBot = () => {
   const [states, dispatch] = useReducer(checkbotReducer, CHECKBOT_STATES);
-  const {
-    showLogin,
-    showHistory,
-    originalText,
-    resultFormat,
-    checkbotCompletion,
-    checkbotRemoved,
-    checkbotAdded,
-  } = states;
+  const { showLogin, showBalanceModal, showHistory } = states;
 
   const updateState = (name: string, value: any) => {
     dispatch({ type: "UPDATE", name, value });
@@ -49,6 +40,11 @@ const CheckBot = () => {
   return (
     <Layout>
       {showLogin && <LoginModal isFree={false} />}
+      {showBalanceModal && (
+        <InsufficientBalanceModal
+          onCloseClick={() => updateState("showBalanceModal", false)}
+        />
+      )}
       <MetaSEO seo={PREMIUM_CHECKBOT_SEO} />
       <div className="bg-white">
         <div className="container mx-auto p-2 lg:px-2">
@@ -59,49 +55,8 @@ const CheckBot = () => {
             <FaRobot className="text-3xl mr-2" />
             <span>Checkbot+</span>
           </h1>
-          <div
-            className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8"
-            id="checkbot_form"
-          >
-            <PremiumCheckBotForm
-              sourceText={originalText}
-              updateState={updateState}
-            />
-            <div>
-              {checkbotCompletion &&
-                checkbotAdded.length > 0 &&
-                checkbotRemoved.length > 0 && (
-                  <CheckbotResultToggle
-                    resultFormat={resultFormat}
-                    updateState={updateState}
-                  />
-                )}
-              {!resultFormat && (
-                <CheckboxResult checkbotVal={checkbotCompletion} />
-              )}
-              {resultFormat === "removed" && (
-                <div
-                  className="border border-gray-heckbotCompletion && (
-                  <CheckbotResultToggle
-                    resultFormat={resultFormat}
-                    updateState={updateState}
-                  />
-                )}500 h-80 rounded-md p-2 overflow-y-scroll"
-                >
-                  {checkbotRemoved}
-                </div>
-              )}
-              {resultFormat === "added" && (
-                <div className="border border-gray-500 h-80 rounded-md p-2 overflow-y-scroll">
-                  {checkbotAdded}
-                </div>
-              )}
-              {resultFormat && (
-                <div className="text-black">*Go to No Diff to copy</div>
-              )}
-            </div>
-          </div>
-          {/* <Button
+          <PremiumCheckbotArea states={states} updateState={updateState} />
+          <Button
             type="button"
             wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer"
             buttonClassName="w-full flex items-center gap-2 h-full"
@@ -111,14 +66,12 @@ const CheckBot = () => {
             <span>Show History</span>
           </Button>
           {showHistory && (
-            <QueryClientProvider client={queryClient}>
-              <HistoryBar
-                pageType="checkbot"
-                onHistoryClick={handleHistoryClick}
-                onCloseClick={() => updateState("showHistory", false)}
-              />
-            </QueryClientProvider>
-          )} */}
+            <HistoryBar
+              pageType="checkbot"
+              onHistoryClick={handleHistoryClick}
+              onCloseClick={() => updateState("showHistory", false)}
+            />
+          )}
 
           <div className="text-black mb-4 mt-8">
             <div>How does Premium Checkbot Compared to the Original?</div>
