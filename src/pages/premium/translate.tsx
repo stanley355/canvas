@@ -9,7 +9,7 @@ import MediaSelect from "@/common/components/MediaSelect";
 import PremiumTranslateForm from "@/modules/premium/components/TranslateForm";
 import PremiumTranslateResult from "@/modules/premium/components/TranslateResult";
 import ImageToTextUploader from "@/common/components/ImageToTextUploader";
-import HistoryBar from "@/common/components/HistoryBar";
+// import HistoryBar from "@/common/components/HistoryBar";
 import ComparisonTable from "@/common/components/ComparisonTable";
 import FeedbackBox from "@/common/components/FeedbackBox";
 
@@ -18,7 +18,7 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { PREMIUM_TRANSLATE_SEO } from "@/modules/premium/lib/constant";
 import { premiumTranslateReducer } from "@/modules/premium/lib/reducer";
 import { PREMIUM_TRANSLATE_STATES } from "@/modules/premium/lib/states";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+// import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const LoginModal = dynamic(
   () => import("../../modules/login/components/LoginModal")

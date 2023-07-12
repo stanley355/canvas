@@ -11,9 +11,9 @@ import CheckbotComparison from "@/modules/checkbot/components/CheckbotComparison
 import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import CheckbotResultToggle from "@/modules/checkbot/components/CheckbotResultToggle";
-import Button from "@/common/components/Button";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import HistoryBar from "@/common/components/HistoryBar";
+// import Button from "@/common/components/Button";
+// import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+// import HistoryBar from "@/common/components/HistoryBar";
 
 const LoginModal = dynamic(
   () => import("../modules/login/components/LoginModal")

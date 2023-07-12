@@ -9,14 +9,14 @@ import ComparisonTable from "@/common/components/ComparisonTable";
 import FeedbackBox from "@/common/components/FeedbackBox";
 import CheckbotResultToggle from "@/modules/checkbot/components/CheckbotResultToggle";
 import CheckboxResult from "@/modules/checkbot/components/CheckbotResult";
-import HistoryBar from "@/common/components/HistoryBar";
+// import HistoryBar from "@/common/components/HistoryBar";
 import PremiumCheckBotForm from "@/modules/premium/components/CheckbotForm";
 
 import { PREMIUM_CHECKBOT_SEO } from "@/modules/premium/lib/constant";
 import { CHECKBOT_COMPARISON } from "@/modules/checkbot/lib/constant";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
-import Button from "@/common/components/Button";
+// import Button from "@/common/components/Button";
 
 const LoginModal = dynamic(
   () => import("../../modules/login/components/LoginModal")
