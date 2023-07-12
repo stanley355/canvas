@@ -70,13 +70,17 @@ const CheckBotForm = (props: ICheckBotForm) => {
     const prompt = personalInstruction
       ? `${personalInstruction}, text: "${sourceText}"`
       : `${instruction}: "${sourceText}"`;
-    const { content, prompt_tokens, completion_tokens } =
-      await handlePrompt(prompt);
+    const { content, prompt_tokens, completion_tokens } = await handlePrompt(
+      prompt
+    );
 
     if (content) {
       updateState("checkbotCompletion", content);
 
-      const { removedDiff, addedDiff } = createRemovedAndAddedDiff(sourceText, content);
+      const { removedDiff, addedDiff } = createRemovedAndAddedDiff(
+        sourceText,
+        content
+      );
       updateState("checkbotRemoved", removedDiff);
       updateState("checkbotAdded", addedDiff);
 

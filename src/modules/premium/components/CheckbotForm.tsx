@@ -84,7 +84,10 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     if (content) {
       updateState("checkbotCompletion", content);
 
-      const { removedDiff, addedDiff } = createRemovedAndAddedDiff(sourceText, content);
+      const { removedDiff, addedDiff } = createRemovedAndAddedDiff(
+        sourceText,
+        content
+      );
       updateState("checkbotRemoved", removedDiff);
       updateState("checkbotAdded", addedDiff);
 

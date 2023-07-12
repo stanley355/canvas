@@ -71,7 +71,10 @@ const LangTranslate = () => {
         </div>
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 mb-8">
           {isImageTranslate ? (
-            <ImageToTextUploader titleColor="white" dispatch={onImageTextDispatch} />
+            <ImageToTextUploader
+              titleColor="white"
+              dispatch={onImageTextDispatch}
+            />
           ) : (
             <TranslateForm
               sourceText={originalText}

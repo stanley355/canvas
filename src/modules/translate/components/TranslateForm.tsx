@@ -63,8 +63,9 @@ const TranslateForm = (props: ITranslateForm) => {
     });
 
     setIsLoading(true);
-    const prompt = `Translate "${sourceText}" to ${targetLang}. ${contextText ?? ""
-      }`;
+    const prompt = `Translate "${sourceText}" to ${targetLang}. ${
+      contextText ?? ""
+    }`;
     const { content, prompt_tokens, completion_tokens } = await handlePrompt(
       prompt
     );

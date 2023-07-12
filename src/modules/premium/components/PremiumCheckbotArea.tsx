@@ -1,8 +1,8 @@
-import React from 'react';
-import { ICheckbotArea } from '@/modules/checkbot/components/CheckbotArea';
-import PremiumCheckBotForm from './CheckbotForm';
-import CheckbotResultToggle from '@/modules/checkbot/components/CheckbotResultToggle';
-import CheckboxResult from '@/modules/checkbot/components/CheckbotResult'; 
+import React from "react";
+import { ICheckbotArea } from "@/modules/checkbot/components/CheckbotArea";
+import PremiumCheckBotForm from "./CheckbotForm";
+import CheckbotResultToggle from "@/modules/checkbot/components/CheckbotResultToggle";
+import CheckboxResult from "@/modules/checkbot/components/CheckbotResult";
 
 const PremiumCheckbotArea = (props: ICheckbotArea) => {
   const { states, updateState } = props;
@@ -16,7 +16,10 @@ const PremiumCheckbotArea = (props: ICheckbotArea) => {
 
   return (
     <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8">
-      <PremiumCheckBotForm sourceText={originalText} updateState={updateState} />
+      <PremiumCheckBotForm
+        sourceText={originalText}
+        updateState={updateState}
+      />
       <div>
         {checkbotCompletion &&
           checkbotRemoved.length > 0 &&
@@ -26,9 +29,7 @@ const PremiumCheckbotArea = (props: ICheckbotArea) => {
               updateState={updateState}
             />
           )}
-        {!resultFormat && (
-          <CheckboxResult checkbotVal={checkbotCompletion} />
-        )}
+        {!resultFormat && <CheckboxResult checkbotVal={checkbotCompletion} />}
         {resultFormat && (
           <>
             <div className="border border-gray-500 h-80 rounded-md p-2 overflow-auto bg-white">
@@ -40,7 +41,7 @@ const PremiumCheckbotArea = (props: ICheckbotArea) => {
         )}
       </div>
     </div>
-  )
+  );
 };
 
 export default PremiumCheckbotArea;
