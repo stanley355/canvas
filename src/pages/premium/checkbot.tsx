@@ -9,14 +9,14 @@ import ComparisonTable from "@/common/components/ComparisonTable";
 import FeedbackBox from "@/common/components/FeedbackBox";
 import CheckbotResultToggle from "@/modules/checkbot/components/CheckbotResultToggle";
 import CheckboxResult from "@/modules/checkbot/components/CheckbotResult";
-import HistoryBar from "@/common/components/HistoryBar";
+// import HistoryBar from "@/common/components/HistoryBar";
 import PremiumCheckBotForm from "@/modules/premium/components/CheckbotForm";
 
 import { PREMIUM_CHECKBOT_SEO } from "@/modules/premium/lib/constant";
 import { CHECKBOT_COMPARISON } from "@/modules/checkbot/lib/constant";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
-import Button from "@/common/components/Button";
+// import Button from "@/common/components/Button";
 
 const LoginModal = dynamic(
   () => import("../../modules/login/components/LoginModal")
@@ -27,7 +27,7 @@ const InsufficientBalanceModal = dynamic(
 );
 
 const CheckBot = () => {
-  const queryClient = new QueryClient();
+  // const queryClient = new QueryClient();
 
   const [states, dispatch] = useReducer(checkbotReducer, CHECKBOT_STATES);
   const {
@@ -102,7 +102,7 @@ const CheckBot = () => {
               )}
             </div>
           </div>
-          <Button
+          {/* <Button
             type="button"
             wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer"
             buttonClassName="w-full flex items-center gap-2 h-full"
@@ -119,7 +119,7 @@ const CheckBot = () => {
                 onCloseClick={() => updateState("showHistory", false)}
               />
             </QueryClientProvider>
-          )}
+          )} */}
 
           <div className="text-black mb-4 mt-8">
             <div>How does Premium Checkbot Compared to the Original?</div>

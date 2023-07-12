@@ -9,7 +9,7 @@ import MediaSelect from "@/common/components/MediaSelect";
 import PremiumTranslateForm from "@/modules/premium/components/TranslateForm";
 import PremiumTranslateResult from "@/modules/premium/components/TranslateResult";
 import ImageToTextUploader from "@/common/components/ImageToTextUploader";
-import HistoryBar from "@/common/components/HistoryBar";
+// import HistoryBar from "@/common/components/HistoryBar";
 import ComparisonTable from "@/common/components/ComparisonTable";
 import FeedbackBox from "@/common/components/FeedbackBox";
 
@@ -18,14 +18,14 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { PREMIUM_TRANSLATE_SEO } from "@/modules/premium/lib/constant";
 import { premiumTranslateReducer } from "@/modules/premium/lib/reducer";
 import { PREMIUM_TRANSLATE_STATES } from "@/modules/premium/lib/states";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+// import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const LoginModal = dynamic(
   () => import("../../modules/login/components/LoginModal")
 );
 
 const PremiumTranslate = () => {
-  const queryClient = new QueryClient();
+  // const queryClient = new QueryClient();
   const [state, dispatch] = useReducer(
     premiumTranslateReducer,
     PREMIUM_TRANSLATE_STATES
@@ -95,7 +95,7 @@ const PremiumTranslate = () => {
             <PremiumTranslateResult translateVal={translateCompletion} />
           </div>
 
-          <Button
+          {/* <Button
             type="button"
             wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer mb-8"
             buttonClassName="w-full flex items-center gap-2 h-full"
@@ -112,7 +112,7 @@ const PremiumTranslate = () => {
                 onCloseClick={() => updateState("showHistory", false)}
               />
             </QueryClientProvider>
-          )}
+          )} */}
 
           <div className="text-black mb-4">
             <div>How does Premium Checkbot Compared to the Original?</div>

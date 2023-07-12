@@ -16,16 +16,16 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { translateReducer } from "@/modules/translate/lib/reducer";
 import { TRANSLATE_STATES } from "@/modules/translate/lib/states";
 import { TRANSLATE_SEO } from "@/modules/translate/lib/constant";
-import Button from "@/common/components/Button";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import HistoryBar from "@/common/components/HistoryBar";
+// import Button from "@/common/components/Button";
+// import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+// import HistoryBar from "@/common/components/HistoryBar";
 
 const LoginModal = dynamic(
   () => import("../modules/login/components/LoginModal")
 );
 
 const LangTranslate = () => {
-  const queryClient = new QueryClient();
+  // const queryClient = new QueryClient();
 
   const [state, dispatch] = useReducer(translateReducer, TRANSLATE_STATES);
   const {
@@ -88,7 +88,7 @@ const LangTranslate = () => {
           )}
           <TranslateResult translateVal={translateCompletion} />
         </div>
-        <Button
+        {/* <Button
           type="button"
           wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer mb-8"
           buttonClassName="w-full flex items-center gap-2 h-full"
@@ -105,7 +105,7 @@ const LangTranslate = () => {
               onCloseClick={() => updateState("showHistory", false)}
             />
           </QueryClientProvider>
-        )}
+        )} */}
 
         <TranslateComparison />
         <FeedbackBox />
