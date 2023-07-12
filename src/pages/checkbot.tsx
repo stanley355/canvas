@@ -1,7 +1,6 @@
 import React, { useReducer } from "react";
 import dynamic from "next/dynamic";
 import { FaClock, FaRobot } from "react-icons/fa";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import Button from "@/common/components/Button";
 import Layout from "@/common/components/Layout";
@@ -14,18 +13,12 @@ import CheckbotComparison from "@/modules/checkbot/components/CheckbotComparison
 import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { CHECKBOT_SEO } from "@/modules/checkbot/lib/constant";
-import CheckbotResultToggle from "@/modules/checkbot/components/CheckbotResultToggle";
-// import Button from "@/common/components/Button";
-// import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-// import HistoryBar from "@/common/components/HistoryBar";
 
 const LoginModal = dynamic(
   () => import("../modules/login/components/LoginModal")
 );
 
 const CheckBot = () => {
-  // const queryClient = new QueryClient();
-
   const [states, dispatch] = useReducer(checkbotReducer, CHECKBOT_STATES);
   const { showLogin, showHistory } = states;
 
@@ -48,7 +41,7 @@ const CheckBot = () => {
           <span>AI Checkbot</span>
         </h1>
         <CheckbotArea states={states} updateState={updateState} />
-        {/* <Button
+        <Button
           type="button"
           wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer"
           buttonClassName="w-full flex items-center gap-2 h-full"
@@ -58,14 +51,12 @@ const CheckBot = () => {
           <span>Show History</span>
         </Button>
         {showHistory && (
-          <QueryClientProvider client={queryClient}>
-            <HistoryBar
-              pageType="checkbot"
-              onHistoryClick={handleHistoryClick}
-              onCloseClick={() => updateState("showHistory", false)}
-            />
-          </QueryClientProvider>
-        )} */}
+          <HistoryBar
+            pageType="checkbot"
+            onHistoryClick={handleHistoryClick}
+            onCloseClick={() => updateState("showHistory", false)}
+          />
+        )}
         <CheckbotComparison />
         <FeedbackBox />
       </div>
