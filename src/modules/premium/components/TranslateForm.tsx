@@ -92,17 +92,6 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
         completion_text: content,
       };
       await saveUserPremiumPrompt(saveUserPromptPayload);
-
-      const user: any = decode(token);
-      const historyPayload = {
-        time: new Date(),
-        instruction: `Translate to ${language}`,
-        originalText: sourceText,
-        completionText: content,
-        type: "translate",
-      };
-      await saveHistory(user.id, historyPayload);
-
       return;
     }
 

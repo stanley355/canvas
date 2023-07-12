@@ -106,18 +106,6 @@ const CheckBotForm = (props: ICheckBotForm) => {
         completion_text: content,
       };
       await saveUserPrompt(saveUserPromptPayload);
-
-      const token: any = Cookies.get("token");
-      const user: any = decode(token);
-      const historyPayload = {
-        time: new Date(),
-        instruction: personalInstruction ? personalInstruction : instruction,
-        originalText: sourceText,
-        completionText: content,
-        type: "checkbot",
-      };
-      await saveHistory(user.id, historyPayload);
-
       return;
     }
 
