@@ -100,16 +100,6 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
         completion_text: content,
       };
       await saveUserPremiumPrompt(saveUserPromptPayload);
-
-      const user: any = decode(token);
-      const historyPayload = {
-        time: new Date(),
-        instruction: personalInstruction ? personalInstruction : instruction,
-        originalText: sourceText,
-        completionText: content,
-        type: "checkbot",
-      };
-      await saveHistory(user.id, historyPayload);
       return;
     }
 
