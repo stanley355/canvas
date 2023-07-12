@@ -1,42 +1,79 @@
 import React from "react";
+import Router from "next/router";
 import { FaCheck } from "react-icons/fa";
 import Button from "@/common/components/Button";
-import { HOME_COPYWRITING } from "../lib/constant";
+import { CHECKBOT_COPYWRITING, TRANSLATE_COPYWRITING } from "../lib/constant";
 
 const HomeServices = () => {
   return (
-    <div className="py-8">
-      <div className="font-semibold text-4xl text-center">Our Services</div>
-      <div className="font-semibold text-2xl text-center mt-2 mb-8">
-        Translate and Check Not just English, but All Languages
-      </div>
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-        {HOME_COPYWRITING.map((copy: any) => (
-          <div
-            key={copy.title}
-            className="flex flex-col items-center px-2 mb-8"
-          >
-            <div className="text-7xl mb-4">{copy.icon}</div>
-            <div className="text-3xl font-semibold">{copy.title}</div>
-            <ul className="text-lg mt-2">
-              {copy.features.map((feature: string) => (
-                <li
-                  className="flex items-center gap-2 py-2"
-                  key={`${copy.title}_${feature}`}
-                >
-                  <FaCheck />
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-            <Button
-              type="link"
-              href={copy.link}
-              title={copy.ctaText}
-              wrapperClassName="bg-white p-2 text-black w-4/5 lg:w-full text-center font-semibold rounded mt-4"
-            />
+    <div className="py-4">
+      <div className='hidden lg:block text-4xl text-center my-8 font-bold mb-16'>Choose your Services</div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div>
+          <div className="text-center text-4xl font-semibold mb-8 underline">Translation Services</div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 px-2">
+            {TRANSLATE_COPYWRITING.map((copy: any) =>
+              <div
+                key={copy.title}
+                className="flex flex-col items-center p-2 mb-8 bg-white text-black rounded-md"
+              >
+                <div className="text-7xl mb-4">{copy.icon}</div>
+                <div className="text-3xl font-semibold">{copy.title}</div>
+                <ul className="text-lg mt-2">
+                  {copy.features.map((feature: string) => (
+                    <li
+                      className="flex items-center gap-2 py-2"
+                      key={`${copy.title}_${feature}`}
+                    >
+                      <FaCheck />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Button
+                  type="button"
+                  title={copy.ctaText}
+                  wrapperClassName="bg-blue-900 p-2 text-white w-4/5 lg:w-full text-center font-semibold rounded mt-2"
+                  buttonClassName="w-full h-full"
+                  onClick={() => Router.push(copy.link) }
+                />
+              </div>
+            )}
           </div>
-        ))}
+        </div>
+
+        <div>
+          <div className="text-center text-4xl font-bold mb-8 underline">Checkbot Services</div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 px-2">
+            {CHECKBOT_COPYWRITING.map((copy: any) =>
+              <div
+                key={copy.title}
+                className="flex flex-col items-center p-2 mb-8 bg-white text-black rounded-md"
+              >
+                <div className="text-7xl mb-4">{copy.icon}</div>
+                <div className="text-3xl font-semibold">{copy.title}</div>
+                <ul className="text-lg mt-2">
+                  {copy.features.map((feature: string) => (
+                    <li
+                      className="flex items-center gap-2 py-2"
+                      key={`${copy.title}_${feature}`}
+                    >
+                      <FaCheck />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Button
+                  type="button"
+                  title={copy.ctaText}
+                  wrapperClassName="bg-blue-900 p-2 text-white w-4/5 lg:w-full text-center font-semibold rounded mt-2"
+                  buttonClassName="w-full h-full"
+                  onClick={() => Router.push(copy.link) }
+                />
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

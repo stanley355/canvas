@@ -4,6 +4,7 @@ import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
 export const handleGoogleLogin = async (token: any) => {
   sendFirebaseEvent("login", {});
@@ -23,13 +24,14 @@ export const handleGoogleLogin = async (token: any) => {
   };
 
   const { data } = await axios(axiosConfig);
-  if (data && data.token) {
+  if (data?.token) {
     sendFirebaseEvent("google_login", {});
     Cookies.set("token", data.token);
 
+    const isDesktop = useDesktopScreen();
     const path = Router.asPath;
     if (path === "/register" || path === "/login") {
-      window.location.href = "/";
+      window.location.href =  isDesktop ? "/services/" : "/";
       return;
     }
 
@@ -37,7 +39,7 @@ export const handleGoogleLogin = async (token: any) => {
     return;
   }
 
-  if (data && data.error) {
+  if (data?.error) {
     toast.error(data.message);
     return "";
   }

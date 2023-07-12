@@ -14,6 +14,7 @@ const Home = () => {
       <MetaSEO seo={HOME_SEO} />
       <HomeHero />
       <div className="container mx-auto">
+
         <HomeServices />
         <HomeFeaturedIn />
         <HomeStatistic />
