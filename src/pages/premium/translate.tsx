@@ -18,14 +18,12 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { PREMIUM_TRANSLATE_SEO } from "@/modules/premium/lib/constant";
 import { premiumTranslateReducer } from "@/modules/premium/lib/reducer";
 import { PREMIUM_TRANSLATE_STATES } from "@/modules/premium/lib/states";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const LoginModal = dynamic(
   () => import("../../modules/login/components/LoginModal")
 );
 
 const PremiumTranslate = () => {
-  const queryClient = new QueryClient();
   const [state, dispatch] = useReducer(
     premiumTranslateReducer,
     PREMIUM_TRANSLATE_STATES
@@ -79,7 +77,10 @@ const PremiumTranslate = () => {
           <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8">
             {isImageTranslate ? (
               <div className="mb-2">
-                <ImageToTextUploader titleColor="black" dispatch={onImageTextDispatch} />
+                <ImageToTextUploader
+                  titleColor="black"
+                  dispatch={onImageTextDispatch}
+                />
               </div>
             ) : (
               <PremiumTranslateForm
@@ -87,7 +88,7 @@ const PremiumTranslate = () => {
                 imageText={imageText}
                 onReuploadClick={() => updateState("isImageTranslate", true)}
                 dispatchLoginForm={() => updateState("showLogin", true)}
-                dispatchLangTranslate={(trans: string) =>
+                dispatchTranslateVal={(trans: string) =>
                   updateState("translateCompletion", trans)
                 }
               />
@@ -105,13 +106,11 @@ const PremiumTranslate = () => {
             <span>Show History</span>
           </Button>
           {showHistory && (
-            <QueryClientProvider client={queryClient}>
-              <HistoryBar
-                pageType="translate"
-                onHistoryClick={handleHistoryClick}
-                onCloseClick={() => updateState("showHistory", false)}
-              />
-            </QueryClientProvider>
+            <HistoryBar
+              pageType="translate"
+              onHistoryClick={handleHistoryClick}
+              onCloseClick={() => updateState("showHistory", false)}
+            />
           )}
 
           <div className="text-black mb-4">
