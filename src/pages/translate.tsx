@@ -5,6 +5,8 @@ import Cookies from "js-cookie";
 
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
+import Button from "@/common/components/Button";
+import HistoryBar from "@/common/components/HistoryBar";
 import TranslateForm from "@/modules/translate/components/TranslateForm";
 import TranslateResult from "@/modules/translate/components/TranslateResult";
 import TranslateComparison from "@/modules/translate/components/TranslateComparison";
@@ -16,17 +18,12 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { translateReducer } from "@/modules/translate/lib/reducer";
 import { TRANSLATE_STATES } from "@/modules/translate/lib/states";
 import { TRANSLATE_SEO } from "@/modules/translate/lib/constant";
-import Button from "@/common/components/Button";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import HistoryBar from "@/common/components/HistoryBar";
 
 const LoginModal = dynamic(
   () => import("../modules/login/components/LoginModal")
 );
 
 const LangTranslate = () => {
-  const queryClient = new QueryClient();
-
   const [state, dispatch] = useReducer(translateReducer, TRANSLATE_STATES);
   const {
     isImageTranslate,
@@ -74,10 +71,13 @@ const LangTranslate = () => {
         </div>
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 mb-8">
           {isImageTranslate ? (
-            <ImageToTextUploader titleColor="white" dispatch={onImageTextDispatch} />
+            <ImageToTextUploader
+              titleColor="white"
+              dispatch={onImageTextDispatch}
+            />
           ) : (
             <TranslateForm
-              sourceText={originalText}
+              originalText={originalText}
               imageText={imageText}
               onReuploadClick={() => updateState("isImageTranslate", true)}
               dispatchLoginForm={() => updateState("showLogin", true)}
@@ -98,13 +98,11 @@ const LangTranslate = () => {
           <span>Show History</span>
         </Button>
         {showHistory && (
-          <QueryClientProvider client={queryClient}>
-            <HistoryBar
-              pageType="translate"
-              onHistoryClick={handleHistoryClick}
-              onCloseClick={() => updateState("showHistory", false)}
-            />
-          </QueryClientProvider>
+          <HistoryBar
+            pageType="translate"
+            onHistoryClick={handleHistoryClick}
+            onCloseClick={() => updateState("showHistory", false)}
+          />
         )}
 
         <TranslateComparison />
