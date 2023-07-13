@@ -7,9 +7,11 @@ import Button from "@/common/components/Button";
 import MetaSEO from "@/common/components/MetaSEO";
 import ProfileBalance from "@/modules/profile/components/ProfileBalance";
 import { fetchUserData } from "@/modules/profile/lib/fetchUserData";
+import ReferralPromo from "@/common/components/ReferralPromo";
 
 interface IProfile {
   user: {
+    id: string
     fullname: string;
     email: string;
     balance: number;
@@ -36,6 +38,10 @@ const Profile = (props: IProfile) => {
     <Layout>
       <MetaSEO seo={seo} />
       <div className="container mx-auto p-4 h-screen">
+        <div className="border p-2 mb-4 rounded lg:flex lg:gap-2 lg:w-fit">
+          <div>Referral ID:</div>
+          <div className="text-blue-200">{user.id}</div>
+        </div>
         <div className="text-2xl">{user.fullname}</div>
         <div>{user.email}</div>
 
@@ -44,7 +50,7 @@ const Profile = (props: IProfile) => {
           type="button"
           onClick={onLogoutClick}
           title="logout"
-          wrapperClassName="mt-8 border border-white w-16 py-1 rounded text-center "
+          wrapperClassName="my-8 border border-white w-16 py-1 rounded text-center "
           buttonClassName="w-full hover:underline"
         />
       </div>

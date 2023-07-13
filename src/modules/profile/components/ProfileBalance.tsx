@@ -10,7 +10,7 @@ const ProfileBalance = (props: IProfileBalance) => {
   const { balance } = props;
 
   return (
-    <div className="mt-8 lg:w-1/3">
+    <div className="mt-2 lg:w-1/3">
       {balance < 2500 && (
         <div className="font-semibold text-lg">
           Oops you are running out of balance!

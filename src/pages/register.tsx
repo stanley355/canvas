@@ -3,6 +3,7 @@ import Layout from "@/common/components/Layout";
 import RegisterForm from "@/modules/login/components/RegisterForm";
 import Cookies from "js-cookie";
 import MetaSEO from "@/common/components/MetaSEO";
+import ReferralPromo from "@/common/components/ReferralPromo";
 
 const Register = () => {
   const seo = {
@@ -23,8 +24,9 @@ const Register = () => {
   return (
     <Layout>
       <MetaSEO seo={seo} />
-      <div className="container mx-auto h-screen p-4">
+      <div className="container mx-auto p-4">
         <RegisterForm />
+        <ReferralPromo />
       </div>
     </Layout>
   );

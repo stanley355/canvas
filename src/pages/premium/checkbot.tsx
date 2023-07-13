@@ -15,6 +15,7 @@ import { CHECKBOT_COMPARISON } from "@/modules/checkbot/lib/constant";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import ReferralPromo from "@/common/components/ReferralPromo";
 
 const LoginModal = dynamic(
   () => import("../../modules/login/components/LoginModal")
@@ -59,7 +60,7 @@ const CheckBot = () => {
           <PremiumCheckbotArea states={states} updateState={updateState} />
           <Button
             type="button"
-            wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer"
+            wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer mb-8"
             buttonClassName="w-full flex items-center gap-2 h-full"
             onClick={() => {
               sendFirebaseEvent("show_history", {});
@@ -76,7 +77,7 @@ const CheckBot = () => {
               onCloseClick={() => updateState("showHistory", false)}
             />
           )}
-
+          <ReferralPromo />
           <div className="text-black mb-4 mt-8">
             <div>How does Premium Checkbot Compared to the Original?</div>
             <ComparisonTable comparisons={CHECKBOT_COMPARISON} />

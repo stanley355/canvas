@@ -7,6 +7,7 @@ import HomeFeaturedIn from "@/modules/home/components/HomeFeaturedIn";
 import HomeStatistic from "@/modules/home/components/HomeStatistic";
 import LoginForm from "@/modules/login/components/LoginForm";
 import { HOME_SEO } from "@/modules/home/lib/constant";
+import ReferralPromo from "@/common/components/ReferralPromo";
 
 const Home = () => {
   return (
@@ -15,6 +16,13 @@ const Home = () => {
       <HomeHero />
       <div className="container mx-auto">
         <HomeServices />
+      </div>
+      <div className="bg-white">
+        <div className="container mx-auto px-2">
+          <ReferralPromo />
+        </div>
+      </div>
+      <div className="container mx-auto">
         <HomeFeaturedIn />
         <HomeStatistic />
         <div className="py-4">

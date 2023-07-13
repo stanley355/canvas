@@ -3,6 +3,7 @@ import Layout from "@/common/components/Layout";
 import LoginForm from "@/modules/login/components/LoginForm";
 import MetaSEO from "@/common/components/MetaSEO";
 import Cookies from "js-cookie";
+import ReferralPromo from "@/common/components/ReferralPromo";
 
 const LoginPage = () => {
   const seo = {
@@ -23,8 +24,9 @@ const LoginPage = () => {
   return (
     <Layout>
       <MetaSEO seo={seo} />
-      <div className="container mx-auto h-screen">
+      <div className="container mx-auto">
         <LoginForm />
+        <ReferralPromo />
       </div>
     </Layout>
   );
