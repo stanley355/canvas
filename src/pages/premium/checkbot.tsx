@@ -14,6 +14,7 @@ import { PREMIUM_CHECKBOT_SEO } from "@/modules/premium/lib/constant";
 import { CHECKBOT_COMPARISON } from "@/modules/checkbot/lib/constant";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 const LoginModal = dynamic(
   () => import("../../modules/login/components/LoginModal")
@@ -60,7 +61,10 @@ const CheckBot = () => {
             type="button"
             wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer"
             buttonClassName="w-full flex items-center gap-2 h-full"
-            onClick={() => updateState("showHistory", !showHistory)}
+            onClick={() => {
+              sendFirebaseEvent("show_history", {});
+              updateState("showHistory", !showHistory)
+            }}
           >
             <FaClock />
             <span>Show History</span>

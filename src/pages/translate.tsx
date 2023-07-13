@@ -1,7 +1,6 @@
 import React, { useReducer } from "react";
 import dynamic from "next/dynamic";
 import { FaClock, FaLanguage } from "react-icons/fa";
-import Cookies from "js-cookie";
 
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
@@ -92,7 +91,10 @@ const LangTranslate = () => {
           type="button"
           wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer mb-8"
           buttonClassName="w-full flex items-center gap-2 h-full"
-          onClick={() => updateState("showHistory", !showHistory)}
+          onClick={() => {
+            sendFirebaseEvent("show_history", {});
+            updateState("showHistory", !showHistory)
+          }}
         >
           <FaClock />
           <span>Show History</span>
