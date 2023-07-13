@@ -6,7 +6,7 @@ import { CHECKBOT_COPYWRITING, TRANSLATE_COPYWRITING } from "../lib/constant";
 
 const HomeServices = () => {
   return (
-    <div className="py-4">
+    <div className="py-4" id="homeServices">
       <div className='hidden lg:block text-4xl text-center my-8 font-bold mb-16'>Choose your Services</div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div>

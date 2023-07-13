@@ -4,7 +4,6 @@ import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 
 export const handleGoogleLogin = async (token: any) => {
   sendFirebaseEvent("login", {});
@@ -28,10 +27,9 @@ export const handleGoogleLogin = async (token: any) => {
     sendFirebaseEvent("google_login", {});
     Cookies.set("token", data.token);
 
-    const isDesktop = useDesktopScreen();
     const path = Router.asPath;
     if (path === "/register" || path === "/login") {
-      window.location.href =  isDesktop ? "/services/" : "/";
+      window.location.href = "/#homeServices";
       return;
     }
 

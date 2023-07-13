@@ -7,7 +7,7 @@ import Button from "@/common/components/Button";
 import Layout from "@/common/components/Layout";
 import MediaSelect from "@/common/components/MediaSelect";
 import PremiumTranslateForm from "@/modules/premium/components/TranslateForm";
-import PremiumTranslateResult from "@/modules/premium/components/TranslateResult";
+import TranslateResult from "@/modules/translate/components/TranslateResult";
 import ImageToTextUploader from "@/common/components/ImageToTextUploader";
 import HistoryBar from "@/common/components/HistoryBar";
 import ComparisonTable from "@/common/components/ComparisonTable";
@@ -92,7 +92,7 @@ const PremiumTranslate = () => {
                 }
               />
             )}
-            <PremiumTranslateResult translateVal={translateCompletion} />
+            <TranslateResult translateVal={translateCompletion} />
           </div>
 
           <Button
