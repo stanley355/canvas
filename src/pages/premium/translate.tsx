@@ -7,7 +7,7 @@ import Button from "@/common/components/Button";
 import Layout from "@/common/components/Layout";
 import MediaSelect from "@/common/components/MediaSelect";
 import PremiumTranslateForm from "@/modules/premium/components/TranslateForm";
-import PremiumTranslateResult from "@/modules/premium/components/TranslateResult";
+import TranslateResult from "@/modules/translate/components/TranslateResult";
 import ImageToTextUploader from "@/common/components/ImageToTextUploader";
 import HistoryBar from "@/common/components/HistoryBar";
 import ComparisonTable from "@/common/components/ComparisonTable";
@@ -93,14 +93,17 @@ const PremiumTranslate = () => {
                 }
               />
             )}
-            <PremiumTranslateResult translateVal={translateCompletion} />
+            <TranslateResult translateVal={translateCompletion} />
           </div>
 
           <Button
             type="button"
             wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer mb-8"
             buttonClassName="w-full flex items-center gap-2 h-full"
-            onClick={() => updateState("showHistory", !showHistory)}
+            onClick={() => {
+              sendFirebaseEvent("show_history", {});
+              updateState("showHistory", !showHistory)
+            }}
           >
             <FaClock />
             <span>Show History</span>

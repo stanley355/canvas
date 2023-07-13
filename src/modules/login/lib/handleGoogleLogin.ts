@@ -23,13 +23,13 @@ export const handleGoogleLogin = async (token: any) => {
   };
 
   const { data } = await axios(axiosConfig);
-  if (data && data.token) {
+  if (data?.token) {
     sendFirebaseEvent("google_login", {});
     Cookies.set("token", data.token);
 
     const path = Router.asPath;
     if (path === "/register" || path === "/login") {
-      window.location.href = "/";
+      window.location.href = "/#homeServices";
       return;
     }
 
@@ -37,7 +37,7 @@ export const handleGoogleLogin = async (token: any) => {
     return;
   }
 
-  if (data && data.error) {
+  if (data?.error) {
     toast.error(data.message);
     return "";
   }
