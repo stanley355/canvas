@@ -7,6 +7,7 @@ import Button from './Button';
 import { toast } from 'react-toastify';
 import { createReferral } from '../lib/createReferral';
 import Router from 'next/router';
+import { sendFirebaseEvent } from '../lib/firebase/sendFirebaseEvent';
 
 const LoginModal = dynamic(() => import("../../modules/login/components/LoginModal"));
 
@@ -34,6 +35,7 @@ const ReferralPromo = () => {
     }
 
     setIsLoading(true);
+    sendFirebaseEvent("referral", {});
     const referral = await createReferral(friendID);
     if (referral?.error) {
       setError(referral.message);
