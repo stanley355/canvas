@@ -18,6 +18,7 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { PREMIUM_TRANSLATE_SEO } from "@/modules/premium/lib/constant";
 import { premiumTranslateReducer } from "@/modules/premium/lib/reducer";
 import { PREMIUM_TRANSLATE_STATES } from "@/modules/premium/lib/states";
+import ReferralPromo from "@/common/components/ReferralPromo";
 
 const LoginModal = dynamic(
   () => import("../../modules/login/components/LoginModal")
@@ -115,7 +116,7 @@ const PremiumTranslate = () => {
               onCloseClick={() => updateState("showHistory", false)}
             />
           )}
-
+          <ReferralPromo />
           <div className="text-black mb-4">
             <div>How does Premium Checkbot Compared to the Original?</div>
             <ComparisonTable comparisons={TRANSLATE_COMPARISON} />

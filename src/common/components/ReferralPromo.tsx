@@ -52,9 +52,9 @@ const ReferralPromo = () => {
   }
 
   return (
-    <div className='bg-white w-full text-black lg:flex lg:gap-4 '>
+    <div className='bg-white w-full text-black rounded lg:flex lg:gap-4 mb-4'>
       {showLogin && <LoginModal isFree={false} />}
-      <div className='py-4 lg:w-2/5'>
+      <div className='p-4 lg:w-2/5'>
         <div className='text-3xl text-center font-semibold mb-4'>
           <div>Refer A Friend</div>
           <div>Get Premium</div>

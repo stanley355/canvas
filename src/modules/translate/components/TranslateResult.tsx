@@ -18,7 +18,7 @@ const TranslateResult = (props: ITranslateResult) => {
   };
 
   return (
-    <div className="my-4 lg:mt-0 bg-white rounded pb-1">
+    <div className="my-4 lg:mt-0 bg-white border border-gray-500 rounded pb-1">
       <label htmlFor="translate_result">
         <textarea
           name="translate_result"

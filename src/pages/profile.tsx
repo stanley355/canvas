@@ -7,6 +7,7 @@ import Button from "@/common/components/Button";
 import MetaSEO from "@/common/components/MetaSEO";
 import ProfileBalance from "@/modules/profile/components/ProfileBalance";
 import { fetchUserData } from "@/modules/profile/lib/fetchUserData";
+import ReferralPromo from "@/common/components/ReferralPromo";
 
 interface IProfile {
   user: {
@@ -49,7 +50,7 @@ const Profile = (props: IProfile) => {
           type="button"
           onClick={onLogoutClick}
           title="logout"
-          wrapperClassName="mt-8 border border-white w-16 py-1 rounded text-center "
+          wrapperClassName="my-8 border border-white w-16 py-1 rounded text-center "
           buttonClassName="w-full hover:underline"
         />
       </div>

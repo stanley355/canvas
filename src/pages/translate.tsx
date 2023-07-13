@@ -17,6 +17,7 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { translateReducer } from "@/modules/translate/lib/reducer";
 import { TRANSLATE_STATES } from "@/modules/translate/lib/states";
 import { TRANSLATE_SEO } from "@/modules/translate/lib/constant";
+import ReferralPromo from "@/common/components/ReferralPromo";
 
 const LoginModal = dynamic(
   () => import("../modules/login/components/LoginModal")
@@ -106,7 +107,7 @@ const LangTranslate = () => {
             onCloseClick={() => updateState("showHistory", false)}
           />
         )}
-
+        <ReferralPromo />
         <TranslateComparison />
         <FeedbackBox />
       </div>
