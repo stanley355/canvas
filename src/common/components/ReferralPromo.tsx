@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import { createReferral } from '../lib/createReferral';
 import Router from 'next/router';
 import { sendFirebaseEvent } from '../lib/firebase/sendFirebaseEvent';
+import { SiTaichilang } from 'react-icons/si';
 
 const LoginModal = dynamic(() => import("../../modules/login/components/LoginModal"));
 
@@ -57,6 +58,10 @@ const ReferralPromo = () => {
     <div className='bg-white w-full text-black rounded lg:flex lg:gap-4 mb-4'>
       {showLogin && <LoginModal isFree={false} />}
       <div className='p-4 lg:w-2/5'>
+        <div className='flex items-center gap-2 justify-center text-2xl mb-2'>
+          <SiTaichilang />
+          <span>LanguageAI</span>
+        </div>
         <div className='text-3xl text-center font-semibold mb-4'>
           <div>Refer A Friend</div>
           <div>Get Premium</div>
