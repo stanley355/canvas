@@ -7,7 +7,8 @@ import { CHECKBOT_COPYWRITING, TRANSLATE_COPYWRITING } from "../lib/constant";
 const HomeServices = () => {
   return (
     <div className="py-4" id="homeServices">
-      <div className='hidden lg:block text-4xl text-center my-8 font-bold mb-16'>Choose your Services</div>
+      <div className='hidden lg:block text-4xl text-center mt-8 mb-2 font-bold '>Choose your Services</div>
+      <div className="text-center text-xl mb-8 px-2">Translate and Fix Writing not just English but All Languages</div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div>
           <div className="text-center text-4xl font-semibold mb-8 underline">Translation Services</div>
