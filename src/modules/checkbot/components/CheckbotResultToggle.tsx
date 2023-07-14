@@ -2,6 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import Button from "@/common/components/Button";
 import { FaMinusCircle, FaPlus, FaTimes } from "react-icons/fa";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 interface ICheckbotResultToggle {
   resultFormat: string;
@@ -22,7 +23,7 @@ const CheckbotResultToggle = (props: ICheckbotResultToggle) => {
             : "text-red-500 bg-white"
         )}
         buttonClassName="w-full flex items-center justify-center gap-1"
-        onClick={() => updateState("resultFormat", "removed")}
+        onClick={() => { sendFirebaseEvent("checkbot_removed_format", {}); updateState("resultFormat", "removed"); }}
       >
         <FaTimes />
         Removed
@@ -48,7 +49,7 @@ const CheckbotResultToggle = (props: ICheckbotResultToggle) => {
             : "text-green-500 bg-white"
         )}
         buttonClassName="w-full flex items-center justify-center gap-1"
-        onClick={() => updateState("resultFormat", "added")}
+        onClick={() => { sendFirebaseEvent("checkbot_added_format", {}); updateState("resultFormat", "added") }}
       >
         <FaPlus />
         Added
