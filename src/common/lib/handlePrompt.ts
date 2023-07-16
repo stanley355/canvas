@@ -3,7 +3,7 @@ import axios from "axios";
 export const handlePrompt = async (prompt: string) => {
   const reqData = { content: prompt };
 
-  const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/ai/chat-premium/`;
+  const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/ai/chat-completion/`;
   const { data } = await axios.post(URL, reqData);
 
   if (data?.choices?.length > 0) {
