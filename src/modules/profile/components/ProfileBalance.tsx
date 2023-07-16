@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Button from "@/common/components/Button";
+import Router from "next/router";
 
 interface IProfileBalance {
   balance: number;
@@ -33,18 +34,18 @@ const ProfileBalance = (props: IProfileBalance) => {
       </div>
       <div className="grid grid-cols-2 gap-4 my-4">
         <Button
-          type="link"
-          href="/premium/"
+          type="button"
           title="Premium"
+          onClick={() => Router.push("/premium/checkbot/")}
           wrapperClassName="border border-white p-2 bg-white text-black text-center rounded font-semibold hover:bg-transparent hover:text-white"
-          buttonClassName="w-full"
+          buttonClassName="w-full h-full"
         />
         <Button
-          type="link"
-          href="/topup/"
+          type="button"
           title="Topup"
+          onClick={() => Router.push("/topup/")}
           wrapperClassName="border border-white p-2 bg-white text-black text-center rounded font-semibold hover:bg-transparent hover:text-white"
-          buttonClassName="w-full"
+          buttonClassName="w-full h-full"
         />
       </div>
     </div>

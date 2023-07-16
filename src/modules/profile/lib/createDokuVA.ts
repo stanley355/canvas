@@ -34,8 +34,9 @@ export const createDokuVA = async (payload: ICreateDokuVA) => {
   };
 
   if (isBNI) {
+    const topupIDArr = payload.topupID.split("-");
     dokuPayload.main.virtual_account_info.merchant_unique_reference =
-      payload.topupID;
+      topupIDArr[0] + "-" + topupIDArr[1];
   }
 
   const axiosConfig = {
