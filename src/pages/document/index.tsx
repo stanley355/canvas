@@ -6,8 +6,9 @@ import jwtDecode from 'jwt-decode';
 import Button from '@/common/components/Button';
 import Layout from '@/common/components/Layout';
 import NewDocForm from '@/modules/document/component/NewDocForm';
-import { findDocument } from '@/modules/document/lib/findDocument';
 import DocumentList from '@/modules/document/component/DocumentList';
+import { findDocument } from '@/modules/document/lib/findDocument';
+import { useDesktopScreen } from '@/common/hooks/useDesktopScreen';
 
 interface IDocument {
   documents: Array<any>
@@ -15,6 +16,7 @@ interface IDocument {
 
 const Document = (props: IDocument) => {
   const { documents } = props;
+  const isDesktop = useDesktopScreen();
   const [showAddDoc, setShowAddDoc] = useState(false);
 
   return (
@@ -39,7 +41,6 @@ const Document = (props: IDocument) => {
             <DocumentList documents={documents} /> :
             <div className='mt-8 text-center'>*{showAddDoc ? "Click Close Form to close" : "Click Add New to add new Document"}</div>
           }
-
         </div>
       </div>
     </Layout>

@@ -29,7 +29,7 @@ const DocumentList = (props: IDocumentList) => {
             <span className='text-xl font-semibold'>{doc.name}</span>
             <span>{handleDateFormat(doc.created_at)}</span>
           </Button>
-          <div className='flex items-center gap-4 px-2'>
+          <div className='invisible lg:visible flex items-center gap-4 px-2'>
             <RenameDocBtn docID={doc.id} />
             <Button type='button' wrapperClassName='text-red-500'>
               <FaTrash />
