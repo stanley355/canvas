@@ -39,14 +39,14 @@ const ProfileBalance = (props: IProfileBalance) => {
           type="button"
           title="Premium"
           onClick={() => Router.push("/premium/checkbot/")}
-          wrapperClassName="border border-white p-2 bg-white text-black text-center rounded font-semibold"
+          wrapperClassName="border border-white p-2 bg-blue-900 text-white text-center rounded-md font-semibold"
           buttonClassName="w-full h-full"
         />
         <Button
           type="button"
           title="Topup"
           onClick={() => Router.push("/topup/")}
-          wrapperClassName="border border-white p-2 bg-white text-black text-center rounded font-semibold"
+          wrapperClassName="border border-white p-2 bg-blue-900 text-white text-center rounded-md font-semibold"
           buttonClassName="w-full h-full"
         />
       </div>
