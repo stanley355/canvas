@@ -1,23 +1,14 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 import Button from '@/common/components/Button';
+import { createDocument } from '../lib/createDocument';
+import Cookies from 'js-cookie';
+import jwtDecode from 'jwt-decode';
 
 const NewDocForm = () => {
   const [showError, setShowError] = useState(false);
 
-
-  const docTypeOptions = [
-    {
-      label: "Translate a document",
-      value: "translate"
-    },
-    {
-      label: "Check document's writing",
-      value: "checkbot"
-    },
-  ]
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const target = e.target as any;
@@ -29,11 +20,22 @@ const NewDocForm = () => {
       return;
     }
 
+    const token: any = Cookies.get("token");
+    const user:any = jwtDecode(token);
+    const createDocPayload = {
+      user_id: user.id,
+      name,
+      doc_type: "translate" // TODO: Add checkbot type later
+    };
+
+    const doc = await createDocument(createDocPayload)
+
+    console.log(doc);
   }
 
   return (
     <div className='p-2 border rounded border-gray-500 lg:w-1/3 lg:mx-auto'>
-      <div className='text-center text-xl mb-4 font-semibold'>New Document</div>
+      <div className='text-center text-xl mb-4 font-semibold'>New Translate Document</div>
       <form onSubmit={handleSubmit} >
         <div className='mb-4'>
           <label htmlFor="name_input"> <span className='text-red-500'>*</span> Document Name: </label>
