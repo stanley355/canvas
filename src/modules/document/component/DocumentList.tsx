@@ -3,6 +3,7 @@ import { useDesktopScreen } from '@/common/hooks/useDesktopScreen';
 import Router from 'next/router';
 import React from 'react';
 import { FaLanguage, FaPen, FaTrash } from 'react-icons/fa';
+import RenameDocBtn from './RenameDocBtn';
 
 interface IDocumentList {
   documents: Array<any>
@@ -22,16 +23,14 @@ const DocumentList = (props: IDocumentList) => {
       {documents.map((doc: any) =>
         <div key={doc.id} className='border-b border-gray-500 flex items-center justify-between hover:bg-blue-500 hover:text-white hover:border-white'>
           <Button type='button' key={doc.id} wrapperClassName='w-full p-2' buttonClassName='flex items-center gap-4 w-full h-full'
-          onClick={() => Router.push(`/document/${doc.doc_type}/${doc.id}`)}
+            onClick={() => Router.push(`/document/${doc.doc_type}/${doc.id}`)}
           >
             <FaLanguage className='text-xl text-blue-900' />
             <span className='text-xl font-semibold'>{doc.name}</span>
             <span>{handleDateFormat(doc.created_at)}</span>
           </Button>
           <div className='flex items-center gap-4 px-2'>
-            <Button type='button' wrapperClassName='text-blue-900' buttonClassName='w-full hover:underline'>
-              <FaPen />
-            </Button>
+            <RenameDocBtn docID={doc.id} />
             <Button type='button' wrapperClassName='text-red-500'>
               <FaTrash />
             </Button>

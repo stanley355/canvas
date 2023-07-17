@@ -17,7 +17,6 @@ const Document = (props: IDocument) => {
   const { documents } = props;
   const [showAddDoc, setShowAddDoc] = useState(false);
 
-
   return (
     <Layout>
       <div className='container mx-auto bg-white text-black p-4 h-screen overflow-y-scroll'>
@@ -36,7 +35,7 @@ const Document = (props: IDocument) => {
 
         <div className='py-4'>
           {showAddDoc && <NewDocForm />}
-          {documents.length > 0 ?
+          {documents?.length > 0 ?
             <DocumentList documents={documents} /> :
             <div className='mt-8 text-center'>*{showAddDoc ? "Click Close Form to close" : "Click Add New to add new Document"}</div>
           }
