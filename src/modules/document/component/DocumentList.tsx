@@ -20,7 +20,7 @@ const DocumentList = (props: IDocumentList) => {
   }
 
   return (
-    <div className='border-t border-gray-500'>
+    <div className='border-t border-gray-500 mt-4'>
       {documents.map((doc: any) =>
         <div key={doc.id} className='border-b border-gray-500 flex items-center justify-between hover:bg-blue-500 hover:text-white hover:border-white'>
           <Button type='button' key={doc.id} wrapperClassName='w-full p-2' buttonClassName='flex items-center gap-4 w-full h-full'

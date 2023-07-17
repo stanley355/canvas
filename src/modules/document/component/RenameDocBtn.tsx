@@ -27,15 +27,13 @@ const RenameDocBtn = (props: IRenameDocBtn) => {
     }
 
     setIsLoading(true);
-    const token: any = Cookies.get("token");
-    const user: any = jwtDecode(token);
     const payload = {
       id: docID,
       name
     };
 
     const doc = await updateDocumentName(payload);
-    if (doc.id) {
+    if (doc?.id) {
       toast.success("Document Name updated!");
       setTimeout(() => window.location.reload(), 1000);
       setIsLoading(false);

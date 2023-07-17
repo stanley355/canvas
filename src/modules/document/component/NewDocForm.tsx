@@ -34,7 +34,7 @@ const NewDocForm = () => {
     };
 
     const doc = await createDocument(createDocPayload);
-    if (doc.id) {
+    if (doc?.id) {
       setIsLoading(false);
       Router.push(`/document/translate/${doc.id}`);
       return;
