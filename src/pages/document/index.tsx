@@ -1,8 +1,11 @@
+import React from 'react';
+import { FaPlusCircle } from 'react-icons/fa';
+import { GetServerSideProps, GetServerSidePropsContext } from 'next';
+import jwtDecode from 'jwt-decode';
+
 import Button from '@/common/components/Button';
 import Layout from '@/common/components/Layout';
 import NewDocForm from '@/modules/document/component/NewDocForm';
-import React from 'react';
-import { FaPlusCircle } from 'react-icons/fa';
 
 const Document = () => {
   return (
@@ -26,3 +29,21 @@ const Document = () => {
 };
 
 export default Document;
+export const getServerSideProps: GetServerSideProps = async (
+  ctx: GetServerSidePropsContext
+) => {
+  const token = ctx.req.cookies.token;
+
+  if (!token) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/login/",
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};
