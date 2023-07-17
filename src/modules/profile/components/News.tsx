@@ -1,15 +1,34 @@
 import Accordion from '@/common/components/Accordion';
 import ComparisonTable from '@/common/components/ComparisonTable';
+import ReferralPromo from '@/common/components/ReferralPromo';
 import { CHECKBOT_COMPARISON } from '@/modules/checkbot/lib/constant';
 import { TRANSLATE_COMPARISON } from '@/modules/translate/lib/constant';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { FaCameraRetro, FaLanguage, FaRobot } from 'react-icons/fa';
+import { FaCameraRetro, FaClock, FaLanguage, FaMoneyBill, FaRobot } from 'react-icons/fa';
 
 const ProfileNews = () => {
 
   const NEWS_LIST = [
+    {
+      title: <div className='flex items-center gap-2'>
+        <FaMoneyBill className='text-xl text-green-500' />
+        <span>NEW in July! Premium for free!</span>
+      </div>,
+      children: <ReferralPromo />
+    },
+    {
+      title: <div className='flex items-center gap-2'>
+        <FaClock className='text-xl text-blue-500' />
+        <span>NEW in July! History is Made!</span>
+      </div>,
+      children: <div>
+        <div>You can now see your previous history on <Link href="/translate" className='text-blue-500 underline'>Translate</Link> and <Link href="/checkbot" className='text-blue-500 underline'>Checkbot</Link> Pages.</div>
+        <div>The HOW? Simply click the button below on the pages</div>
+        <Image src="/images/news/show_history_cta.png" alt='Image to Text' width={400} height={400} className='w-full h-auto rounded' />
+      </div>
+    },
     {
       title: <div className='flex items-center gap-2'>
         <FaCameraRetro className='text-xl' />
