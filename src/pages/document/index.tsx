@@ -7,6 +7,7 @@ import Button from '@/common/components/Button';
 import Layout from '@/common/components/Layout';
 import NewDocForm from '@/modules/document/component/NewDocForm';
 import { findDocument } from '@/modules/document/lib/findDocument';
+import DocumentList from '@/modules/document/component/DocumentList';
 
 interface IDocument {
   documents: Array<any>
@@ -35,8 +36,10 @@ const Document = (props: IDocument) => {
 
         <div className='py-4'>
           {showAddDoc && <NewDocForm />}
-          <div className='mt-8 text-center'>*{showAddDoc ? "Click Close Form to close" : "Click Add New to add new Document"}</div>
-          
+          {documents.length > 0 ?
+            <DocumentList documents={documents} /> :
+            <div className='mt-8 text-center'>*{showAddDoc ? "Click Close Form to close" : "Click Add New to add new Document"}</div>
+          }
 
         </div>
       </div>
