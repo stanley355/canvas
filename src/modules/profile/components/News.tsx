@@ -67,7 +67,7 @@ const ProfileNews = () => {
         <div>
           <div className="mb-2">
             You can now Translate a text from Image directly in Our Platform
-            Here's how:
+            Here&apos;s how:
           </div>
           <div className="mb-2">
             <div>
@@ -129,7 +129,7 @@ const ProfileNews = () => {
       ),
       children: (
         <div>
-          <div>Premium Checkbot is Now Available, what's the difference?</div>
+          <div>Premium Checkbot is Now Available, what&apos;s the difference?</div>
           <ComparisonTable comparisons={CHECKBOT_COMPARISON} />
           <div className="mt-2">
             Access Premium Checkbot{" "}
@@ -150,7 +150,7 @@ const ProfileNews = () => {
       children: (
         <div>
           <div>
-            Premium Translation is Now Available, what's the difference?
+            Premium Translation is Now Available, what&apos;s the difference?
           </div>
           <ComparisonTable comparisons={TRANSLATE_COMPARISON} />
           <div className="mt-2">
@@ -168,7 +168,9 @@ const ProfileNews = () => {
     <div className="bg-white text-black w-full p-2">
       <div className="text-xl font-bold mb-4">NEW Features, FOR YOU!</div>
       {NEWS_LIST.map((news: any, index: number) => (
-        <Accordion key={index} title={news.title} children={news.children} />
+        <Accordion key={index} title={news.title} >
+          {news.children}
+        </Accordion>
       ))}
     </div>
   );
