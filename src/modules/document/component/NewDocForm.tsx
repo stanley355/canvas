@@ -22,15 +22,13 @@ const NewDocForm = () => {
 
     const target = e.target as any;
     const name = target.name.value;
-    const docType = target.doc_type.value;
 
     setShowError(false);
-    if (!name || !docType) {
+    if (!name) {
       setShowError(true);
       return;
     }
 
-    console.log(target.doc_type.value);
   }
 
   return (
@@ -42,11 +40,8 @@ const NewDocForm = () => {
           <input type="text" id='name_input' name='name' className='border rounded p-2 w-full' placeholder='Doc xyz' />
         </div>
 
-        <div className='mb-4'>
-          <label htmlFor="doc_type_select"> <span className='text-red-500'>*</span> Document Type</label>
-          <Select placeholder="What this document is for?" id='doc_type_select' name='doc_type' options={docTypeOptions} />
-        </div>
-        {showError && <div className='text-red-500'>*All Field is Required</div>}
+        {/* TODO: Add document type select  */}
+        {showError && <div className='text-red-500'>*Document Name is Required</div>}
         <Button type='submit' title='submit' wrapperClassName='w-full bg-blue-900 text-white p-2 rounded font-semibold' buttonClassName='w-full h-full' />
       </form>
     </div>
