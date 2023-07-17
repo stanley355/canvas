@@ -8,6 +8,7 @@ import MetaSEO from "@/common/components/MetaSEO";
 import ProfileBalance from "@/modules/profile/components/ProfileBalance";
 import { fetchUserData } from "@/modules/profile/lib/fetchUserData";
 import ReferralPromo from "@/common/components/ReferralPromo";
+import ProfileNews from "@/modules/profile/components/News";
 
 interface IProfile {
   user: {
@@ -37,22 +38,25 @@ const Profile = (props: IProfile) => {
   return (
     <Layout>
       <MetaSEO seo={seo} />
-      <div className="container mx-auto p-4 h-screen">
-        <div className="border p-2 mb-4 rounded lg:flex lg:gap-2 lg:w-fit">
-          <div>Referral ID:</div>
-          <div className="text-blue-200">{user.id}</div>
-        </div>
-        <div className="text-2xl">{user.fullname}</div>
-        <div>{user.email}</div>
+      <div className="container mx-auto min-h-screen lg:flex">
+        <div className="p-4 lg:w-fit">
+          <div className="border p-2 mb-4 rounded lg:flex lg:gap-2 lg:w-fit">
+            <div>Referral ID:</div>
+            <div className="text-blue-200">{user.id}</div>
+          </div>
+          <div className="text-2xl">{user.fullname}</div>
+          <div>{user.email}</div>
 
-        <ProfileBalance balance={user.balance} />
-        <Button
-          type="button"
-          onClick={onLogoutClick}
-          title="logout"
-          wrapperClassName="my-8 border border-white w-16 py-1 rounded text-center "
-          buttonClassName="w-full hover:underline"
-        />
+          <ProfileBalance balance={user.balance} />
+          <Button
+            type="button"
+            onClick={onLogoutClick}
+            title="logout"
+            wrapperClassName="my-8 border border-white w-16 py-1 rounded text-center "
+            buttonClassName="w-full hover:underline"
+          />
+        </div>
+        <ProfileNews />
       </div>
     </Layout>
   );
