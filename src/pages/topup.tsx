@@ -16,8 +16,8 @@ const Topup = (props: ITopup) => {
 
   return (
     <Layout>
-      <div className="container mx-auto p-4 h-screen">
-        <div className="lg:w-1/3 lg:mx-auto">
+      <div className="container mx-auto h-screen">
+        <div className="lg:w-1/3 lg:mx-auto bg-white text-black h-full p-4">
           <h1 className="text-center text-2xl font-bold my-4">Topup</h1>
 
           {user.balance < 2500 && (
@@ -25,7 +25,7 @@ const Topup = (props: ITopup) => {
               Oops you are running out of balance!
             </div>
           )}
-          <div className="border p-2 my-2">
+          <div className="border p-2 my-2 rounded border-gray-500">
             Current Balance: Rp {user.balance}
           </div>
           {vaInfo?.bank_name ? (

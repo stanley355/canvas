@@ -8,6 +8,7 @@ import HomeStatistic from "@/modules/home/components/HomeStatistic";
 import LoginForm from "@/modules/login/components/LoginForm";
 import { HOME_SEO } from "@/modules/home/lib/constant";
 import ReferralPromo from "@/common/components/ReferralPromo";
+import ProfileNews from "@/modules/profile/components/News";
 
 const Home = () => {
   return (
@@ -27,6 +28,11 @@ const Home = () => {
         <HomeStatistic />
         <div className="py-4">
           <LoginForm />
+        </div>
+      </div>
+      <div className="bg-white">
+        <div className="container mx-auto px-2">
+          <ProfileNews />
         </div>
       </div>
     </Layout>

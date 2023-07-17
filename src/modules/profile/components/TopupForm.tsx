@@ -81,14 +81,14 @@ const TopupForm = (props: ITopupForm) => {
             name="amount"
             id="amount_input"
             placeholder="Rp ..."
-            className="text-black p-2 w-full rounded"
+            className="text-black p-2 w-full rounded border border-gray-500"
             disabled={hasSubmit}
           />
         </div>
         <Select
           options={DOKU_VA_LIST}
           placeholder="Payment Method (Virtual Account)"
-          className="text-black"
+          className="text-black border border-gray-500 rounded"
           name="payment_method"
           isDisabled={hasSubmit}
           onChange={(option) => {
@@ -97,8 +97,8 @@ const TopupForm = (props: ITopupForm) => {
         />
         <Button
           type="submit"
-          wrapperClassName="w-full text-center mt-4 p-2 bg-white text-black font-semibold rounded"
-          buttonClassName="w-full"
+          wrapperClassName="w-full text-center mt-4 p-2 bg-blue-900 text-white font-semibold rounded"
+          buttonClassName="w-full h-full"
           disabled={hasSubmit}
         >
           {hasSubmit ? <FaSpinner className="mx-auto animate-spin" /> : "Topup"}
