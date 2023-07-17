@@ -1,9 +1,10 @@
-import Button from '@/common/components/Button';
-import { useDesktopScreen } from '@/common/hooks/useDesktopScreen';
-import Router from 'next/router';
 import React from 'react';
-import { FaLanguage, FaPen, FaTrash } from 'react-icons/fa';
+import Router from 'next/router';
+import { FaLanguage } from 'react-icons/fa';
+import Button from '@/common/components/Button';
 import RenameDocBtn from './RenameDocBtn';
+import DeleteDocBtn from './DeleteDocBtn';
+import { useDesktopScreen } from '@/common/hooks/useDesktopScreen';
 
 interface IDocumentList {
   documents: Array<any>
@@ -31,9 +32,7 @@ const DocumentList = (props: IDocumentList) => {
           </Button>
           <div className='invisible lg:visible flex items-center gap-4 px-2'>
             <RenameDocBtn docID={doc.id} />
-            <Button type='button' wrapperClassName='text-red-500'>
-              <FaTrash />
-            </Button>
+            <DeleteDocBtn docID={doc.id} name={doc.name} />
           </div>
         </div>
       )}
