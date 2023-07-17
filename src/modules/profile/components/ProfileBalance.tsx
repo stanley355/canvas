@@ -17,7 +17,9 @@ const ProfileBalance = (props: IProfileBalance) => {
           Oops you are running out of balance!
         </div>
       )}
-      <div className="border border-gray-500 rounded p-2 my-2">Rp {balance}</div>
+      <div className="border border-gray-500 rounded p-2 my-2">
+        Rp {balance}
+      </div>
       <div className="my-2">
         *Topup more balance so you can access our Premium Translation and
         Checkbot <b>(10x better Translation & Correction) </b>

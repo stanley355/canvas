@@ -74,4 +74,4 @@ export const CHECKBOT_COPYWRITING = [
       "8000 words max",
     ],
   },
-]
+];

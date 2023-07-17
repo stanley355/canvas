@@ -12,7 +12,7 @@ import ProfileNews from "@/modules/profile/components/News";
 
 interface IProfile {
   user: {
-    id: string
+    id: string;
     fullname: string;
     email: string;
     balance: number;
