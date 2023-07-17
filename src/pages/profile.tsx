@@ -52,7 +52,7 @@ const Profile = (props: IProfile) => {
             type="button"
             onClick={onLogoutClick}
             title="logout"
-            wrapperClassName="my-8 border border-white w-16 py-1 rounded text-center "
+            wrapperClassName="mt-8 my-4 border border-white w-16 py-1 rounded text-center "
             buttonClassName="w-full hover:underline"
           />
         </div>
