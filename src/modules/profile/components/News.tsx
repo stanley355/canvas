@@ -14,14 +14,14 @@ const ProfileNews = () => {
     {
       title: <div className='flex items-center gap-2'>
         <FaMoneyBill className='text-xl text-green-500' />
-        <span>NEW in July! Premium for free!</span>
+        <span>NEW! Premium for free!</span>
       </div>,
       children: <ReferralPromo />
     },
     {
       title: <div className='flex items-center gap-2'>
         <FaClock className='text-xl text-blue-500' />
-        <span>NEW in July! History is Made!</span>
+        <span>NEW! History is Made!</span>
       </div>,
       children: <div>
         <div>You can now see your previous history on <Link href="/translate" className='text-blue-500 underline'>Translate</Link> and <Link href="/checkbot" className='text-blue-500 underline'>Checkbot</Link> Pages.</div>
@@ -32,7 +32,7 @@ const ProfileNews = () => {
     {
       title: <div className='flex items-center gap-2'>
         <FaCameraRetro className='text-xl' />
-        <span>NEW in July! Image To Text Translate</span>
+        <span>Image To Text Translate</span>
       </div>,
       children: <div>
         <div className='mb-2'>You can now Translate a text from Image directly in Our Platform Here's how:</div>
@@ -57,7 +57,7 @@ const ProfileNews = () => {
     {
       title: <div className='flex items-center gap-2'>
         <FaRobot className='text-xl' />
-        <span>NEW in June! Premium Checkbot</span>
+        <span>Premium Checkbot</span>
       </div>,
       children: <div>
         <div>Premium Checkbot is Now Available, what's the difference?</div>
@@ -68,7 +68,7 @@ const ProfileNews = () => {
     {
       title: <div className='flex items-center gap-2'>
         <FaLanguage className='text-xl' />
-        <span>NEW in June! Premium Translation</span>
+        <span>Premium Translation</span>
       </div>,
       children: <div>
         <div>Premium Translation is Now Available, what's the difference?</div>
@@ -81,7 +81,7 @@ const ProfileNews = () => {
 
   return (
     <div className='bg-white text-black w-full p-2'>
-      <div className='text-xl font-bold mb-4'>News</div>
+      <div className='text-xl font-bold mb-4'>NEW Features, FOR YOU!</div>
       {
         NEWS_LIST.map((news: any, index: number) => <Accordion key={index} title={news.title} children={news.children} />)
       }
