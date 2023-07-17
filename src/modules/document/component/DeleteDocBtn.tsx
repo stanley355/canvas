@@ -38,7 +38,7 @@ const DeleteDocBtn = (props: IDeleteDocBtn) => {
 
       {showModal && <div className='fixed top-0 left-0 bg-white bg-opacity-40 w-full h-full z-5'>
         <div className='w-[400px] mt-40 mx-auto bg-white shadow shadow-black p-4 rounded text-xl'>
-          <div className='mb-4 text-black text-center font-semibold'>Are you sure you want to delete document "{name}"?</div>
+          <div className='mb-4 text-black text-center font-semibold'>Are you sure you want to delete document &quot;{name}&quot;?</div>
           <div className='grid grid-cols-2 gap-4'>
             <Button
               type="submit"
