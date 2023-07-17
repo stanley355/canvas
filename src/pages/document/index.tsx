@@ -3,12 +3,13 @@ import { FaPlusCircle, FaTimesCircle } from 'react-icons/fa';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import jwtDecode from 'jwt-decode';
 
+import MetaSEO from '@/common/components/MetaSEO';
 import Button from '@/common/components/Button';
 import Layout from '@/common/components/Layout';
 import NewDocForm from '@/modules/document/component/NewDocForm';
 import DocumentList from '@/modules/document/component/DocumentList';
 import { findDocument } from '@/modules/document/lib/findDocument';
-import { useDesktopScreen } from '@/common/hooks/useDesktopScreen';
+import { HOME_SEO } from '@/modules/home/lib/constant';
 
 interface IDocument {
   documents: Array<any>
@@ -16,11 +17,11 @@ interface IDocument {
 
 const Document = (props: IDocument) => {
   const { documents } = props;
-  const isDesktop = useDesktopScreen();
   const [showAddDoc, setShowAddDoc] = useState(false);
 
   return (
     <Layout>
+      <MetaSEO seo={HOME_SEO} />
       <div className='container mx-auto bg-white text-black p-4 h-screen overflow-y-scroll'>
         <div className='flex items-center justify-between'>
           <h1 className='text-xl font-bold'>My Documents</h1>
