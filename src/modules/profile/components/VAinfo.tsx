@@ -15,14 +15,14 @@ const VAinfo = ({ info }: IVAInfo) => (
     </div>
     <div className="text-center text-xl  mt-8 font-semibold">
       <div>Virtual Account Number: </div>
-      <div className="lg:ml-2 italic underline text-blue-300">
+      <div className="lg:ml-2 italic underline text-blue-500">
         {info.virtual_account_number}
       </div>
     </div>
-    <div className="my-2 mb-8 text-center font-semibold">
+    <div className="my-2 mb-4 text-center font-semibold">
       a.n Language - Stanley Winata
     </div>
-    <div className="border border-white p-2 rounded flex flex-row mb-8 justify-center">
+    <div className="border border-gray-500 p-2 rounded flex flex-row mb-8 justify-center">
       <div className="mr-2">Pay Before:</div>
       <Countdown date={new Date(info?.expired_date_utc ?? info.expired_date)} />
     </div>

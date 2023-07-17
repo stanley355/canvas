@@ -17,7 +17,7 @@ const ProfileBalance = (props: IProfileBalance) => {
           Oops you are running out of balance!
         </div>
       )}
-      <div className="border p-2 my-2">Rp {balance}</div>
+      <div className="border border-gray-500 rounded p-2 my-2">Rp {balance}</div>
       <div className="my-2">
         *Topup more balance so you can access our Premium Translation and
         Checkbot <b>(10x better Translation & Correction) </b>
@@ -26,7 +26,7 @@ const ProfileBalance = (props: IProfileBalance) => {
         **You can start Premium with <strong>Rp1000</strong>, we only charge{" "}
         <b>Rp1</b> per
         <Link
-          className="mx-2 underline text-blue-300"
+          className="mx-2 underline text-blue-500"
           href="https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them"
         >
           word/token
@@ -37,14 +37,14 @@ const ProfileBalance = (props: IProfileBalance) => {
           type="button"
           title="Premium"
           onClick={() => Router.push("/premium/checkbot/")}
-          wrapperClassName="border border-white p-2 bg-white text-black text-center rounded font-semibold hover:bg-transparent hover:text-white"
+          wrapperClassName="border border-white p-2 bg-blue-900 text-white text-center rounded font-semibold hover:bg-transparent hover:text-white"
           buttonClassName="w-full h-full"
         />
         <Button
           type="button"
           title="Topup"
           onClick={() => Router.push("/topup/")}
-          wrapperClassName="border border-white p-2 bg-white text-black text-center rounded font-semibold hover:bg-transparent hover:text-white"
+          wrapperClassName="border border-white p-2 bg-blue-900 text-white text-center rounded font-semibold hover:bg-transparent hover:text-white"
           buttonClassName="w-full h-full"
         />
       </div>
