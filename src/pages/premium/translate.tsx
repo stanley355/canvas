@@ -103,7 +103,7 @@ const PremiumTranslate = () => {
             buttonClassName="w-full flex items-center gap-2 h-full"
             onClick={() => {
               sendFirebaseEvent("show_history", {});
-              updateState("showHistory", !showHistory)
+              updateState("showHistory", !showHistory);
             }}
           >
             <FaClock />

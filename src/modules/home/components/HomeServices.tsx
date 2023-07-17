@@ -7,13 +7,19 @@ import { CHECKBOT_COPYWRITING, TRANSLATE_COPYWRITING } from "../lib/constant";
 const HomeServices = () => {
   return (
     <div className="py-4" id="homeServices">
-      <div className='hidden lg:block text-4xl text-center mt-8 mb-2 font-bold '>Choose your Services</div>
-      <div className="text-center text-xl mb-8 px-2">Translate and Fix Writing not just English but All Languages</div>
+      <div className="hidden lg:block text-4xl text-center mt-8 mb-2 font-bold ">
+        Choose your Services
+      </div>
+      <div className="text-center text-xl mb-8 px-2">
+        Translate and Fix Writing not just English but All Languages
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div>
-          <div className="text-center text-4xl font-semibold mb-8 underline">Translation Services</div>
+          <div className="text-center text-4xl font-semibold mb-8 underline">
+            Translation Services
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 px-2">
-            {TRANSLATE_COPYWRITING.map((copy: any) =>
+            {TRANSLATE_COPYWRITING.map((copy: any) => (
               <div
                 key={copy.title}
                 className="flex flex-col items-center p-2 mb-8 bg-white text-black rounded-md"
@@ -36,17 +42,19 @@ const HomeServices = () => {
                   title={copy.ctaText}
                   wrapperClassName="bg-blue-900 p-2 text-white w-4/5 lg:w-full text-center font-semibold rounded mt-2"
                   buttonClassName="w-full h-full"
-                  onClick={() => Router.push(copy.link) }
+                  onClick={() => Router.push(copy.link)}
                 />
               </div>
-            )}
+            ))}
           </div>
         </div>
 
         <div>
-          <div className="text-center text-4xl font-bold mb-8 underline">Checkbot Services</div>
+          <div className="text-center text-4xl font-bold mb-8 underline">
+            Checkbot Services
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 px-2">
-            {CHECKBOT_COPYWRITING.map((copy: any) =>
+            {CHECKBOT_COPYWRITING.map((copy: any) => (
               <div
                 key={copy.title}
                 className="flex flex-col items-center p-2 mb-8 bg-white text-black rounded-md"
@@ -69,10 +77,10 @@ const HomeServices = () => {
                   title={copy.ctaText}
                   wrapperClassName="bg-blue-900 p-2 text-white w-4/5 lg:w-full text-center font-semibold rounded mt-2"
                   buttonClassName="w-full h-full"
-                  onClick={() => Router.push(copy.link) }
+                  onClick={() => Router.push(copy.link)}
                 />
               </div>
-            )}
+            ))}
           </div>
         </div>
       </div>
