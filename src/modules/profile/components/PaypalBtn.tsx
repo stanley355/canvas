@@ -10,8 +10,7 @@ const PaypalBtn = () => {
   ];
   
   const initialOptions = {
-    "clientId": "Ad2Xzoz00TbuCd_bxp2MoZnvyshh7aS-y9TKPvwjdGwg1UL-hqdfcDY8iJ0OPdeqJPcc5mVRQqfV4LWg",
-    // "client-id": "<test>",
+    "clientId": String(process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID),
     "enable-funding": "paylater,venmo",
   }
 
