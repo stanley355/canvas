@@ -1,5 +1,6 @@
 import React from 'react';
 import { PayPalScriptProvider, PayPalButtons, FUNDING } from "@paypal/react-paypal-js";
+import { toast } from 'react-toastify';
 
 const PaypalBtn = () => {
   const FUNDING_SOURCES = [
@@ -8,7 +9,7 @@ const PaypalBtn = () => {
     FUNDING.VENMO,
     FUNDING.CARD
   ];
-  
+
   const initialOptions = {
     "clientId": String(process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID),
     "enable-funding": "paylater,venmo",
@@ -16,39 +17,30 @@ const PaypalBtn = () => {
 
   return (
     <div className="">
-        <PayPalScriptProvider options={initialOptions}>
+      <PayPalScriptProvider options={initialOptions}>
         {
-          FUNDING_SOURCES.map(fundingSource=>{
-            return(
+          FUNDING_SOURCES.map(fundingSource => {
+            return (
               <PayPalButtons
                 fundingSource={fundingSource}
                 key={fundingSource}
-                
                 style={{
                   layout: 'vertical',
                   shape: 'rect',
-                  // color: (fundingSource==paypal.FUNDING.PAYLATER) ? 'gold' : '',
                 }}
-
                 createOrder={async (data, actions) => {
-                  console.log("Create order:", data);
-                  console.log("Create order action:", actions);
-                  return "222afoaaofnoane";
-                  // try {
-                  //   const response = await fetch("http://localhost:9597/orders", {
-                  //     method: "POST"
-                  //   });
-                
-                  //   const details = await response.json();
-                  //   return details.id;
-                  // } catch (error) {
-                  //   console.error(error);
-                  //   // Handle the error or display an appropriate error message to the user
-                  // }
-                }}
+                  try {
+                    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/paypal/orders/`, {
+                      method: "POST"
+                    });
 
-                
-              
+                    const details = await response.json();
+                    return details.id;
+                  } catch (error) {
+                    toast.error("Fail to Access Paypal, please try again");
+                    return;
+                  }
+                }}
                 onApprove={async (data, actions) => {
                   console.log("Approve data:", data);
                   console.log("Approve action:", actions);
@@ -56,7 +48,7 @@ const PaypalBtn = () => {
                   //   const response = await fetch(`http://localhost:9597/orders/${data.orderID}/capture`, {
                   //     method: "POST"
                   //   });             
-                  
+
                   //   const details = await response.json();
                   //   // Three cases to handle:
                   //   //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
@@ -66,7 +58,7 @@ const PaypalBtn = () => {
                   //   // This example reads a v2/checkout/orders capture response, propagated from the server
                   //   // You could use a different API or structure for your 'orderData'
                   //   const errorDetail = Array.isArray(details.details) && details.details[0];
-                  
+
                   //   if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED') {
                   //     return actions.restart();
                   //     // https://developer.paypal.com/docs/checkout/integration-features/funding-failure/
@@ -78,7 +70,7 @@ const PaypalBtn = () => {
                   //     msg += details.debug_id ? ' (' + details.debug_id + ')' : '';
                   //     alert(msg);
                   //   }
-                    
+
                   //   // Successful capture! For demo purposes:
                   //   console.log('Capture result', details, JSON.stringify(details, null, 2));
                   //   const transaction = details.purchase_units[0].payments.captures[0];
@@ -88,10 +80,10 @@ const PaypalBtn = () => {
                   //   // Handle the error or display an appropriate error message to the user
                   // }
                 }}
-            />)
+              />)
           })
         }
-        </PayPalScriptProvider>
+      </PayPalScriptProvider>
     </div>
   );
 };
