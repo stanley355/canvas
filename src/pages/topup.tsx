@@ -5,6 +5,7 @@ import Layout from "@/common/components/Layout";
 import TopupForm from "@/modules/profile/components/TopupForm";
 import VAinfo from "@/modules/profile/components/VAinfo";
 import { fetchUserData } from "@/modules/profile/lib/fetchUserData";
+import PaypalBtn from "@/modules/profile/components/PaypalBtn";
 
 interface ITopup {
   user: any;
@@ -28,6 +29,8 @@ const Topup = (props: ITopup) => {
           <div className="border p-2 my-2 rounded border-gray-500">
             Current Balance: Rp {user.balance}
           </div>
+
+          <PaypalBtn />
           {/* {vaInfo?.bank_name ? (
             <VAinfo info={vaInfo} />
           ) : (
