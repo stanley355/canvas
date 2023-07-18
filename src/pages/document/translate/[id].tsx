@@ -26,7 +26,7 @@ const DocumentTranslate = (props: IDocumentTranslate) => {
     <Layout>
       <MetaSEO seo={TRANSLATE_SEO} />
       <div className='bg-white container mx-auto min-h-screen py-8 px-4'>
-        <div className='flex items-center justify-between text-black'>
+        <div className='flex items-center justify-between text-black border-b pb-2'>
           <span className='font-semibold text-xl'>{document?.name}</span>
           <div className='flex items-center gap-4'>
             <RenameDocBtn docID={document?.id} />
