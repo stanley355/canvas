@@ -47,7 +47,7 @@ const RenameDocBtn = (props: IRenameDocBtn) => {
 
   return (
     <div className='relative'>
-      <Button type='button' wrapperClassName='text-blue-900 px-1 rounded hover:bg-white' buttonClassName='w-full' onClick={() => setOpenForm(!openForm)}>
+      <Button type='button' wrapperClassName='px-1 rounded hover:bg-white' buttonClassName='w-full' onClick={() => setOpenForm(!openForm)}>
         {openForm ? <FaTimes />:  <FaPen />}
       </Button>
       {openForm && <form onSubmit={handleSubmit} className='absolute -top-4 left-[-360px] border border-black p-1 rounded flex items-center gap-2 w-fit bg-blue-900'>

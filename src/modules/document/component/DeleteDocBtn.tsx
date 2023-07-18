@@ -32,7 +32,7 @@ const DeleteDocBtn = (props: IDeleteDocBtn) => {
 
   return (
     <div>
-      <Button type='button' wrapperClassName='text-red-500 px-1 rounded hover:bg-white' buttonClassName='w-full h-full' onClick={() => setShowModal(true)}>
+      <Button type='button' wrapperClassName='px-1 rounded hover:bg-white' buttonClassName='w-full h-full' onClick={() => setShowModal(true)}>
         <FaTrash />
       </Button>
 
