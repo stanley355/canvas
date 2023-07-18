@@ -3,29 +3,19 @@ import { generatePaypalAccessToken } from "@/modules/profile/lib/generatePaypalA
 
 const { NEXT_PUBLIC_PAYPAL_URL, PAYPAL_SECRET } = process.env;
 
-const paypalOrdersAPI = async (req: NextApiRequest, res: NextApiResponse) => {
+const paypalCaptureAPI = async (req: NextApiRequest, res: NextApiResponse) => {
+  const { body } = req;
   const accessToken = await generatePaypalAccessToken(String(PAYPAL_SECRET));
-  const url = `${NEXT_PUBLIC_PAYPAL_URL}/v2/checkout/orders`;
-  const payload = {
-    intent: "CAPTURE",
-    purchase_units: [
-      {
-        amount: {
-          currency_code: "USD",
-          value: "0.02",
-        },
-      },
-    ],
-  };
+  const url = `${NEXT_PUBLIC_PAYPAL_URL}/v2/checkout/orders/${body.orderId}/capture`;
 
+  console.log(444, body);
   try {
     const response = await fetch(url, {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`,
       },
-      method: "POST",
-      body: JSON.stringify(payload),
     });
 
     const paypalRes = await response.json();
@@ -36,4 +26,4 @@ const paypalOrdersAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default paypalOrdersAPI;
+export default paypalCaptureAPI;
