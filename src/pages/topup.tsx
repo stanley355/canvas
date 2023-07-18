@@ -28,11 +28,11 @@ const Topup = (props: ITopup) => {
           <div className="border p-2 my-2 rounded border-gray-500">
             Current Balance: Rp {user.balance}
           </div>
-          {vaInfo?.bank_name ? (
+          {/* {vaInfo?.bank_name ? (
             <VAinfo info={vaInfo} />
           ) : (
             <TopupForm user={user} dispatchVAinfo={setVaInfo} />
-          )}
+          )} */}
         </div>
       </div>
     </Layout>

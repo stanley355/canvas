@@ -112,7 +112,7 @@ const TopupForm = (props: ITopupForm) => {
         * You can even start Premium with <strong>Rp1000</strong>, we only
         charge <b>Rp1</b> per
         <Link
-          className="mx-2 underline text-blue-300"
+          className="mx-2 underline text-blue-900"
           href="https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them"
         >
           word/token
