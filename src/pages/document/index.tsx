@@ -8,7 +8,7 @@ import Button from '@/common/components/Button';
 import Layout from '@/common/components/Layout';
 import NewDocForm from '@/modules/document/component/NewDocForm';
 import DocumentList from '@/modules/document/component/DocumentList';
-import { findDocument } from '@/modules/document/lib/findDocument';
+import { findUserDocument } from '@/modules/document/lib/findUserDocument';
 import { HOME_SEO } from '@/modules/home/lib/constant';
 
 interface IDocument {
@@ -64,7 +64,7 @@ export const getServerSideProps: GetServerSideProps = async (
   }
 
   const user: any = jwtDecode(token);
-  const documents = await findDocument(user.id);
+  const documents = await findUserDocument(user.id);
 
   return {
     props: {
