@@ -26,13 +26,13 @@ const ProfileNews = () => {
       ),
       children: (
         <div>
-          <div>You came for another countries? Don't worry!</div>
+          <div>You came for another countries? Don&apos;t worry!</div>
           <div>
             We are accepting Paypal transaction now, 1 USD will be converted to
             Rp14.000 and 1SGD will be converted to Rp11.000.
           </div>
           <div>
-            You didn't come from America or Singapore? We are also accepting
+            You didn&apos;t come from America or Singapore? We are also accepting
             Debit/Credit Card Transaction as well!
           </div>
           <div>
