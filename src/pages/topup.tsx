@@ -12,13 +12,13 @@ import { fetchUserData } from "@/modules/profile/lib/fetchUserData";
 
 interface ITopup {
   user: any;
+  paypalCredentials: any;
 }
 
 const Topup = (props: ITopup) => {
-  const { user } = props;
+  const { user, paypalCredentials } = props;
   const [vaInfo, setVaInfo] = useState<any>({});
   const [showTopupForm, setShowTopupForm] = useState(false);
-
 
   return (
     <Layout>
@@ -26,7 +26,6 @@ const Topup = (props: ITopup) => {
       <div className="container mx-auto">
         <div className="lg:w-1/3 lg:mx-auto bg-white text-black min-h-screen p-4">
           <h1 className="text-center text-2xl font-bold my-4">Topup</h1>
-
           {user.balance < 2500 && (
             <div className="font-semibold text-lg text-red-500">
               *Oops you are running out of balance!
@@ -35,7 +34,7 @@ const Topup = (props: ITopup) => {
           <div className="border p-2 my-2 rounded border-gray-500">
             Current Balance: Rp {user.balance}
           </div>
-          {!showTopupForm && !vaInfo.bank_name && <TopupOptions onBankTrfClick={() => setShowTopupForm(true)} />}
+          {!showTopupForm && !vaInfo.bank_name && <TopupOptions paypalCredentials={paypalCredentials} onPaypalClick={() => {}} onBankTrfClick={() => setShowTopupForm(true)} />}
           {showTopupForm &&
             <TopupForm
               user={user}
@@ -70,10 +69,16 @@ export const getServerSideProps: GetServerSideProps = async (
 
   const decodedToken: any = jwtDecode(token);
   const user = await fetchUserData(decodedToken.email);
+  const { PAYPAL_URL, PAYPAL_CLIENT_ID, PAYPAL_SECRET } = process.env;
 
   return {
     props: {
       user,
+      paypalCredentials: {
+        PAYPAL_URL,
+        PAYPAL_CLIENT_ID,
+        PAYPAL_SECRET
+      }
     },
   };
 };

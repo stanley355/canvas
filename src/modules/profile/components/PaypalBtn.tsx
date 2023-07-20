@@ -2,17 +2,39 @@ import React from 'react';
 import { PayPalScriptProvider, PayPalButtons, FUNDING } from "@paypal/react-paypal-js";
 import { toast } from 'react-toastify';
 
-const PaypalBtn = () => {
-  const FUNDING_SOURCES = [
-    FUNDING.PAYPAL,
-    FUNDING.PAYLATER,
-    FUNDING.VENMO,
-    FUNDING.CARD
-  ];
+interface IPaypalBtn {
+  type: "paypal" | "card",
+  paypalCredentials: any;
+}
+
+const PaypalBtn = (props: IPaypalBtn) => {
+  const { type, paypalCredentials } = props;
+  const { PAYPAL_URL, PAYPAL_CLIENT_ID, PAYPAL_SECRET } = paypalCredentials;
+
+  const FUNDING_SOURCES = type === "paypal" ? [FUNDING.PAYPAL] : [FUNDING.CARD];
 
   const initialOptions = {
-    "clientId": String(process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID),
+    "clientId": String(PAYPAL_CLIENT_ID),
     "enable-funding": "paylater,venmo",
+  };
+
+  const createOrder = async (data: any, actions: any) => {
+  
+
+    return actions.order.create({
+      intent: "CAPTURE",
+      purchase_units: [
+        {
+          description: "Sunflower",
+          amount: {
+            currency_code: "USD",
+            value: 20,
+          },
+        },
+      ],
+    }).then((orderID: string) => {
+      return orderID;
+    });
   };
 
   return (
@@ -28,25 +50,12 @@ const PaypalBtn = () => {
                   layout: 'vertical',
                   shape: 'rect',
                 }}
-                createOrder={async (data, actions) => {
-                  try {
-                    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/paypal/orders/`, {
-                      method: "POST"
-                    });
-
-                    const details = await response.json();
-                    console.log("details: ", details);
-                    return details.id;
-                  } catch (error) {
-                    toast.error("Fail to Access Paypal, please try again");
-                    return;
-                  }
-                }}
+                createOrder={createOrder}
                 onApprove={async (data, actions) => {
                   return actions.order?.capture().then((det) => {
                     console.log("det", det);
-                    const {payer} = det;
-                    console.log("payerL ",payer);
+                    const { payer } = det;
+                    console.log("payerL ", payer);
                   })
                 }}
               />)

@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { generatePaypalAccessToken } from "@/modules/profile/lib/generatePaypalAccessToken";
 
-const { NEXT_PUBLIC_PAYPAL_URL, PAYPAL_SECRET } = process.env;
+const { PAYPAL_URL, PAYPAL_SECRET } = process.env;
 
 const paypalCaptureAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   const { body } = req;
   const accessToken = await generatePaypalAccessToken(String(PAYPAL_SECRET));
-  const url = `${NEXT_PUBLIC_PAYPAL_URL}/v2/checkout/orders/${body.orderId}/capture`;
+  const url = `${PAYPAL_URL}/v2/checkout/orders/${body.orderId}/capture`;
 
   console.log(444, body);
   try {
