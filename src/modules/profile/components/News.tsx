@@ -24,12 +24,26 @@ const ProfileNews = () => {
           <span>NEW! Topup with Paypal</span>
         </div>
       ),
-      children: <div>
-        <div>You came for another countries? Don't worry!</div>
-        <div>We are accepting Paypal transaction now, 1 USD will be converted to Rp14.000 and 1SGD will be converted to Rp11.000.</div>
-        <div>You didn't come from America or Singapore? We are also accepting Debit/Credit Card Transaction as well!</div>
-        <div>What are you waiting for? <Link href="/topup/" className="text-blue-900 underline">Topup</Link> and Get <strong>Premium Now!</strong> </div>
-      </div>,
+      children: (
+        <div>
+          <div>You came for another countries? Don't worry!</div>
+          <div>
+            We are accepting Paypal transaction now, 1 USD will be converted to
+            Rp14.000 and 1SGD will be converted to Rp11.000.
+          </div>
+          <div>
+            You didn't come from America or Singapore? We are also accepting
+            Debit/Credit Card Transaction as well!
+          </div>
+          <div>
+            What are you waiting for?{" "}
+            <Link href="/topup/" className="text-blue-900 underline">
+              Topup
+            </Link>{" "}
+            and Get <strong>Premium Now!</strong>{" "}
+          </div>
+        </div>
+      ),
     },
     {
       title: (
@@ -144,7 +158,9 @@ const ProfileNews = () => {
       ),
       children: (
         <div>
-          <div>Premium Checkbot is Now Available, what&apos;s the difference?</div>
+          <div>
+            Premium Checkbot is Now Available, what&apos;s the difference?
+          </div>
           <ComparisonTable comparisons={CHECKBOT_COMPARISON} />
           <div className="mt-2">
             Access Premium Checkbot{" "}
@@ -183,7 +199,7 @@ const ProfileNews = () => {
     <div className="bg-white text-black w-full p-2">
       <div className="text-xl font-bold mb-4">NEW Features, FOR YOU!</div>
       {NEWS_LIST.map((news: any, index: number) => (
-        <Accordion key={index} title={news.title} >
+        <Accordion key={index} title={news.title}>
           {news.children}
         </Accordion>
       ))}

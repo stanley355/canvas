@@ -125,7 +125,12 @@ const TopupForm = (props: ITopupForm) => {
         delay.
       </div>
 
-      <Button type="button" wrapperClassName="w-fit border px-2 py-1 border-gray-500 rounded mt-2" buttonClassName="w-full h-full flex items-center gap-2" onClick={onBackClick} >
+      <Button
+        type="button"
+        wrapperClassName="w-fit border px-2 py-1 border-gray-500 rounded mt-2"
+        buttonClassName="w-full h-full flex items-center gap-2"
+        onClick={onBackClick}
+      >
         <FaChevronCircleLeft />
         <span>Back</span>
       </Button>
