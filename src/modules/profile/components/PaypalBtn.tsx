@@ -13,7 +13,7 @@ const PaypalBtn = () => {
   const initialOptions = {
     "clientId": String(process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID),
     "enable-funding": "paylater,venmo",
-  }
+  };
 
   return (
     <div className="">
@@ -22,8 +22,8 @@ const PaypalBtn = () => {
           FUNDING_SOURCES.map(fundingSource => {
             return (
               <PayPalButtons
-                fundingSource={fundingSource}
                 key={fundingSource}
+                fundingSource={fundingSource}
                 style={{
                   layout: 'vertical',
                   shape: 'rect',
@@ -35,6 +35,7 @@ const PaypalBtn = () => {
                     });
 
                     const details = await response.json();
+                    console.log("details: ", details);
                     return details.id;
                   } catch (error) {
                     toast.error("Fail to Access Paypal, please try again");
@@ -42,6 +43,13 @@ const PaypalBtn = () => {
                   }
                 }}
                 onApprove={async (data, actions) => {
+                  return actions.order?.capture().then((det) => {
+                    console.log("det", det);
+                    const {payer} = det;
+                    console.log("payerL ",payer);
+                  })
+
+                  console.log("approve data", data);
                   try {
                     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/paypal/capture/`, {
                       method: "POST",
