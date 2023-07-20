@@ -17,10 +17,7 @@ const Accordion = (props: IAccordion) => {
     <div className="border border-gray-500 rounded mb-4">
       <Button
         type="button"
-        wrapperClassName={classNames(
-          "border border-gray-500 p-1 px-2 rounded",
-          show ? "bg-black text-white" : ""
-        )}
+        wrapperClassName="border border-gray-500 p-1 px-2 rounded"
         buttonClassName="w-full flex items-center justify-between"
         onClick={() => setShow(!show)}
       >
