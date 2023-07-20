@@ -34,7 +34,7 @@ const Topup = (props: ITopup) => {
           <div className="border p-2 my-2 rounded border-gray-500">
             Current Balance: Rp {user.balance}
           </div>
-          {!showTopupForm && !vaInfo.bank_name && <TopupOptions paypalCredentials={paypalCredentials} onPaypalClick={() => {}} onBankTrfClick={() => setShowTopupForm(true)} />}
+          {!showTopupForm && !vaInfo.bank_name && <TopupOptions onPaypalClick={() => {}} onBankTrfClick={() => setShowTopupForm(true)} />}
           {showTopupForm &&
             <TopupForm
               user={user}

@@ -19,8 +19,6 @@ const PaypalBtn = (props: IPaypalBtn) => {
   };
 
   const createOrder = async (data: any, actions: any) => {
-  
-
     return actions.order.create({
       intent: "CAPTURE",
       purchase_units: [

@@ -2,16 +2,15 @@ import React from 'react';
 import { BsBank } from 'react-icons/bs';
 import Button from '@/common/components/Button';
 import PaypalBtn from './PaypalBtn';
-import { FaPaypal } from 'react-icons/fa';
+import { FaRegCreditCard, FaPaypal } from 'react-icons/fa';
 
 interface ITopupOptions {
-  paypalCredentials: any;
   onBankTrfClick: () => void;
   onPaypalClick: () => void;
 }
 
 const TopupOptions = (props: ITopupOptions) => {
-  const { paypalCredentials, onBankTrfClick, onPaypalClick } = props;
+  const { onBankTrfClick, onPaypalClick } = props;
   return (
     <>
       <div className="text-center text-lg font-semibold my-4">Topup using</div>
@@ -31,7 +30,14 @@ const TopupOptions = (props: ITopupOptions) => {
         <FaPaypal className='text-xl'/>
         <span>PayPal (Other Countries)</span>
       </Button>
-      <PaypalBtn type='card' paypalCredentials={paypalCredentials} />
+      <Button
+        type="button"
+        wrapperClassName="w-full bg-gray-700 text-white p-3 mb-2 rounded"
+        buttonClassName="w-full h-full gap-2 flex items-center justify-center"
+        onClick={onPaypalClick}>
+        <FaRegCreditCard className='text-xl'/>
+        <span>Credit or Debit Card</span>
+      </Button>
     </>
   )
 };
