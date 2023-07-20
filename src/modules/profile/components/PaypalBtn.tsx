@@ -3,12 +3,14 @@ import { PayPalScriptProvider, PayPalButtons, FUNDING } from "@paypal/react-payp
 import { toast } from 'react-toastify';
 
 interface IPaypalBtn {
-  type: "paypal" | "card",
+  type: string,
   paypalCredentials: any;
+  currency: string;
+  amount: number;
 }
 
 const PaypalBtn = (props: IPaypalBtn) => {
-  const { type, paypalCredentials } = props;
+  const { type, paypalCredentials, currency, amount } = props;
   const { PAYPAL_URL, PAYPAL_CLIENT_ID, PAYPAL_SECRET } = paypalCredentials;
 
   const FUNDING_SOURCES = type === "paypal" ? [FUNDING.PAYPAL] : [FUNDING.CARD];
@@ -18,21 +20,29 @@ const PaypalBtn = (props: IPaypalBtn) => {
     "enable-funding": "paylater,venmo",
   };
 
-  const createOrder = async (data: any, actions: any) => {
+  const createOrder = (data: any, actions: any) => {
     return actions.order.create({
       intent: "CAPTURE",
       purchase_units: [
         {
-          description: "Sunflower",
+          description: "LanguageAI Topup",
           amount: {
-            currency_code: "USD",
-            value: 20,
+            currency_code: currency,
+            value: 0.01,
           },
         },
       ],
     }).then((orderID: string) => {
       return orderID;
     });
+  };
+
+  const onApprove = (data: any, actions: any) => {
+    return actions.order?.capture().then((det: any) => {
+      console.log("det", det);
+      const { payer } = det;
+      console.log("payerL ", payer);
+    })
   };
 
   return (
@@ -49,13 +59,8 @@ const PaypalBtn = (props: IPaypalBtn) => {
                   shape: 'rect',
                 }}
                 createOrder={createOrder}
-                onApprove={async (data, actions) => {
-                  return actions.order?.capture().then((det) => {
-                    console.log("det", det);
-                    const { payer } = det;
-                    console.log("payerL ", payer);
-                  })
-                }}
+                onApprove={onApprove}
+                onError={(error) => toast.error("Fail to process your payment, please try again")}
               />)
           })
         }

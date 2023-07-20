@@ -1,24 +1,20 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import { FaChevronCircleLeft, FaSpinner } from "react-icons/fa";
-import { toast } from "react-toastify";
-import Link from "next/link";
-import { createTopup } from "../lib/createTopup";
-import { DOKU_VA_LIST } from "../lib/constant";
+import { FaChevronCircleLeft } from "react-icons/fa";
+
 import Button from "@/common/components/Button";
-import { createDokuVA } from "../lib/createDokuVA";
-import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import PaypalBtn from "./PaypalBtn";
 
 interface IPaypalForm {
-  type: "paypal" | "card";
+  type: string;
   paypalCredentials: any;
   onBackClick: () => void;
 }
 
 const PaypalForm = (props: IPaypalForm) => {
   const { type, paypalCredentials, onBackClick } = props;
-  const [hasSubmit, setHasSubmit] = useState(false);
+  const [currency, setCurrency] = useState("");
+  const [amount, setAmount] = useState(1);
 
   return (
     <div className="mt-8">
@@ -37,8 +33,8 @@ const PaypalForm = (props: IPaypalForm) => {
           placeholder="Currency (Default: USD)"
           className="text-black border border-gray-500 rounded mb-4"
           name="payment_method"
-          isDisabled={hasSubmit}
-          onChange={(option) => {
+          onChange={(option: any) => {
+            setCurrency(option.value);
           }}
         />
         <div className="mb-4">
@@ -49,12 +45,17 @@ const PaypalForm = (props: IPaypalForm) => {
               id="amount_input"
               placeholder="Topup Amount (Default $1.00)"
               className="text-black p-2 w-full rounded border border-gray-500"
-              disabled={hasSubmit}
+              onChange={(e: any) => setAmount(e.target.value)}
             />
           </label>
         </div>
-        <div>*Click this {type} button to continue</div>
-        <PaypalBtn type={type} paypalCredentials={paypalCredentials} />
+        {amount >= 1 && <div>*Click this {type} button to continue</div>}
+        {amount >= 1 ? <PaypalBtn
+          type={type}
+          currency={currency}
+          amount={amount}
+          paypalCredentials={paypalCredentials}
+        /> : <Button type="button" title="Minimum topup amount is $1.00" wrapperClassName="w-full bg-red-500 p-2 text-white font-semibold rounded text-center" />}
       </form>
 
       <Button type="button" wrapperClassName="w-fit border px-2 py-1 border-gray-500 rounded mt-2" buttonClassName="w-full h-full flex items-center gap-2" onClick={onBackClick} >

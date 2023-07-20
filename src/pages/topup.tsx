@@ -40,7 +40,7 @@ const Topup = (props: ITopup) => {
             onPaypalClick={(type: string) => { setShowTopupForm(false); setPaypalType(type); }}
             onBankTrfClick={() => { setPaypalType(""); setShowTopupForm(true) }}
           />
-          {paypalType && <PaypalForm type="paypal" paypalCredentials={paypalCredentials} onBackClick={() => { setPaypalType("") }} />}
+          {paypalType && <PaypalForm type={paypalType} paypalCredentials={paypalCredentials} onBackClick={() => { setPaypalType("") }} />}
           {showTopupForm &&
             <TopupForm
               user={user}
