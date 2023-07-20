@@ -49,13 +49,13 @@ const PaypalForm = (props: IPaypalForm) => {
             />
           </label>
         </div>
-        {amount >= 1 && <div>*Click this {type} button to continue</div>}
-        {amount >= 1 ? <PaypalBtn
+        {(currency && amount >= 1) && <div>*Click this {type} button to continue</div>}
+        {currency && amount >= 1 ? <PaypalBtn
           type={type}
           currency={currency}
           amount={amount}
           paypalCredentials={paypalCredentials}
-        /> : <Button type="button" title="Minimum topup amount is $1.00" wrapperClassName="w-full bg-red-500 p-2 text-white font-semibold rounded text-center" />}
+        /> : <Button type="button" title={amount >= 1 ? "Please fill all information to continue" : "Minimum topup amount is $1.00"} wrapperClassName="w-full bg-red-500 p-2 text-white font-semibold rounded text-center" />}
       </form>
 
       <Button type="button" wrapperClassName="w-fit border px-2 py-1 border-gray-500 rounded mt-2" buttonClassName="w-full h-full flex items-center gap-2" onClick={onBackClick} >

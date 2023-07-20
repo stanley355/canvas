@@ -27,7 +27,7 @@ const Topup = (props: ITopup) => {
       <MetaSEO seo={HOME_SEO} />
       <div className="container mx-auto">
         <div className="lg:w-1/3 lg:mx-auto bg-white text-black min-h-screen p-4">
-          <h1 className="text-center text-2xl font-bold my-4">Topup</h1>
+          <h1 className="text-center text-2xl font-bold my-4">LanguageAI Topup</h1>
           {user.balance < 2500 && (
             <div className="font-semibold text-lg text-red-500">
               *Oops you are running out of balance!

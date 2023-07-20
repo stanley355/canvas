@@ -1,6 +1,9 @@
 import React from 'react';
 import { PayPalScriptProvider, PayPalButtons, FUNDING } from "@paypal/react-paypal-js";
 import { toast } from 'react-toastify';
+import { createTopup } from '../lib/createTopup';
+import Cookies from 'js-cookie';
+import jwtDecode from 'jwt-decode';
 
 interface IPaypalBtn {
   type: string,
@@ -18,6 +21,7 @@ const PaypalBtn = (props: IPaypalBtn) => {
   const initialOptions = {
     "clientId": String(PAYPAL_CLIENT_ID),
     "enable-funding": "paylater,venmo",
+    "currency": currency
   };
 
   const createOrder = (data: any, actions: any) => {
@@ -27,13 +31,22 @@ const PaypalBtn = (props: IPaypalBtn) => {
         {
           description: "LanguageAI Topup",
           amount: {
+            value: amount,
             currency_code: currency,
-            value: 0.01,
           },
         },
       ],
-    }).then((orderID: string) => {
-      return orderID;
+    }).then(async (orderID: string) => {
+      const token: any = Cookies.get("token");
+      const user: any = jwtDecode(token);
+      const topup = await createTopup(user.id, amount * (currency === "USD" ? 14000 : 11000));
+
+      if (topup.id) {
+        return orderID;
+      }
+
+      toast.error("Fail to process your payment, please try again");
+      return null;
     });
   };
 
