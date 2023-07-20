@@ -6,6 +6,8 @@ import Layout from "@/common/components/Layout";
 import TopupForm from "@/modules/profile/components/TopupForm";
 import VAinfo from "@/modules/profile/components/VAinfo";
 import TopupOptions from "@/modules/profile/components/TopupOptions";
+import MetaSEO from "@/common/components/MetaSEO";
+import { HOME_SEO } from "@/modules/home/lib/constant";
 import { fetchUserData } from "@/modules/profile/lib/fetchUserData";
 
 interface ITopup {
@@ -20,8 +22,9 @@ const Topup = (props: ITopup) => {
 
   return (
     <Layout>
-      <div className="container mx-auto h-screen">
-        <div className="lg:w-1/3 lg:mx-auto bg-white text-black h-full p-4">
+      <MetaSEO seo={HOME_SEO} />
+      <div className="container mx-auto">
+        <div className="lg:w-1/3 lg:mx-auto bg-white text-black min-h-screen p-4">
           <h1 className="text-center text-2xl font-bold my-4">Topup</h1>
 
           {user.balance < 2500 && (
