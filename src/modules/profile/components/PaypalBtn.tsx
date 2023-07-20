@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PayPalScriptProvider, PayPalButtons, FUNDING } from "@paypal/react-paypal-js";
 import { toast } from 'react-toastify';
 import { createTopup } from '../lib/createTopup';
 import Cookies from 'js-cookie';
 import jwtDecode from 'jwt-decode';
+import { verifyPaypalTopup } from '../lib/verifyPaypalTopup';
+import Router from 'next/router';
 
 interface IPaypalBtn {
   type: string,
@@ -15,6 +17,7 @@ interface IPaypalBtn {
 const PaypalBtn = (props: IPaypalBtn) => {
   const { type, paypalCredentials, currency, amount } = props;
   const { PAYPAL_URL, PAYPAL_CLIENT_ID, PAYPAL_SECRET } = paypalCredentials;
+  const [topupID, setTopupID] = useState("");
 
   const FUNDING_SOURCES = type === "paypal" ? [FUNDING.PAYPAL] : [FUNDING.CARD];
 
@@ -42,6 +45,7 @@ const PaypalBtn = (props: IPaypalBtn) => {
       const topup = await createTopup(user.id, amount * (currency === "USD" ? 14000 : 11000));
 
       if (topup.id) {
+        setTopupID(topup.id);
         return orderID;
       }
 
@@ -51,10 +55,16 @@ const PaypalBtn = (props: IPaypalBtn) => {
   };
 
   const onApprove = (data: any, actions: any) => {
-    return actions.order?.capture().then((det: any) => {
-      console.log("det", det);
-      const { payer } = det;
-      console.log("payerL ", payer);
+    return actions.order?.capture().then(async (det: any) => {
+      const topup = await verifyPaypalTopup(topupID);
+
+      if (topup?.id) {
+        toast.success("Topup Success, redirecting to Profile Page");
+        setTimeout(() => Router.push("/profile/"), 1000);
+        return;
+      }
+      toast.error("Fail to update your balance, please contact support");
+      return;
     })
   };
 
