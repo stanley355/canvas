@@ -9,6 +9,7 @@ import TopupOptions from "@/modules/profile/components/TopupOptions";
 import MetaSEO from "@/common/components/MetaSEO";
 import { HOME_SEO } from "@/modules/home/lib/constant";
 import { fetchUserData } from "@/modules/profile/lib/fetchUserData";
+import PaypalForm from "@/modules/profile/components/PaypalForm";
 
 interface ITopup {
   user: any;
@@ -19,6 +20,7 @@ const Topup = (props: ITopup) => {
   const { user, paypalCredentials } = props;
   const [vaInfo, setVaInfo] = useState<any>({});
   const [showTopupForm, setShowTopupForm] = useState(false);
+  const [paypalType, setPaypalType] = useState("");
 
   return (
     <Layout>
@@ -34,7 +36,11 @@ const Topup = (props: ITopup) => {
           <div className="border p-2 my-2 rounded border-gray-500">
             Current Balance: Rp {user.balance}
           </div>
-          {!showTopupForm && !vaInfo.bank_name && <TopupOptions onPaypalClick={() => {}} onBankTrfClick={() => setShowTopupForm(true)} />}
+          <TopupOptions
+            onPaypalClick={(type: string) => { setShowTopupForm(false); setPaypalType(type); }}
+            onBankTrfClick={() => { setPaypalType(""); setShowTopupForm(true) }}
+          />
+          {paypalType && <PaypalForm type="paypal" paypalCredentials={paypalCredentials} onBackClick={() => { setPaypalType("") }} />}
           {showTopupForm &&
             <TopupForm
               user={user}
