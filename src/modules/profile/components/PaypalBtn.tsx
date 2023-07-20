@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 import jwtDecode from 'jwt-decode';
 import { verifyPaypalTopup } from '../lib/verifyPaypalTopup';
 import Router from 'next/router';
+import { sendFirebaseEvent } from '@/common/lib/firebase/sendFirebaseEvent';
 
 interface IPaypalBtn {
   type: string,
@@ -16,7 +17,7 @@ interface IPaypalBtn {
 
 const PaypalBtn = (props: IPaypalBtn) => {
   const { type, paypalCredentials, currency, amount } = props;
-  const { PAYPAL_URL, PAYPAL_CLIENT_ID, PAYPAL_SECRET } = paypalCredentials;
+  const { PAYPAL_CLIENT_ID } = paypalCredentials;
 
   const FUNDING_SOURCES = type === "paypal" ? [FUNDING.PAYPAL] : [FUNDING.CARD];
 
@@ -77,7 +78,10 @@ const PaypalBtn = (props: IPaypalBtn) => {
                 }}
                 createOrder={createOrder}
                 onApprove={onApprove}
-                onError={(error) => toast.error("Fail to process your payment, please try again")}
+                onError={(error) => {
+                  sendFirebaseEvent("topup_paypal_error", {});
+                  toast.error("Fail to process your payment, please try again");
+                }}
               />)
           })
         }

@@ -11,11 +11,26 @@ import {
   FaClock,
   FaLanguage,
   FaMoneyBill,
+  FaPaypal,
   FaRobot,
 } from "react-icons/fa";
 
 const ProfileNews = () => {
   const NEWS_LIST = [
+    {
+      title: (
+        <div className="flex items-center gap-2">
+          <FaPaypal className="text-xl text-blue-900" />
+          <span>NEW! Topup with Paypal</span>
+        </div>
+      ),
+      children: <div>
+        <div>You came for another countries? Don't worry!</div>
+        <div>We are accepting Paypal transaction now, 1 USD will be converted to Rp14.000 and 1SGD will be converted to Rp11.000.</div>
+        <div>You didn't come from America or Singapore? We are also accepting Debit/Credit Card Transaction as well!</div>
+        <div>What are you waiting for? <Link href="/topup/" className="text-blue-900 underline">Topup</Link> and Get <strong>Premium Now!</strong> </div>
+      </div>,
+    },
     {
       title: (
         <div className="flex items-center gap-2">
@@ -29,7 +44,7 @@ const ProfileNews = () => {
       title: (
         <div className="flex items-center gap-2">
           <FaClock className="text-xl text-blue-500" />
-          <span>NEW! History is Made!</span>
+          <span>History is Made!</span>
         </div>
       ),
       children: (

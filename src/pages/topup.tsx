@@ -75,15 +75,13 @@ export const getServerSideProps: GetServerSideProps = async (
 
   const decodedToken: any = jwtDecode(token);
   const user = await fetchUserData(decodedToken.email);
-  const { PAYPAL_URL, PAYPAL_CLIENT_ID, PAYPAL_SECRET } = process.env;
+  const { PAYPAL_CLIENT_ID } = process.env;
 
   return {
     props: {
       user,
       paypalCredentials: {
-        PAYPAL_URL,
         PAYPAL_CLIENT_ID,
-        PAYPAL_SECRET
       }
     },
   };
