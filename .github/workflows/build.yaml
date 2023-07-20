@@ -50,6 +50,7 @@ jobs:
             DOKU_URL=${{ secrets.DOKU_URL }}
             DOKU_CLIENT_ID=${{ secrets.DOKU_CLIENT_ID }}
             DOKU_SECRET_KEY=${{ secrets.DOKU_SECRET_KEY }}
+            PAYPAL_CLIENT_ID=${{ secrets.PAYPAL_CLIENT_ID }}
 
       - name: Build staging Docker image
         if: github.ref == 'refs/heads/develop'
@@ -76,3 +77,4 @@ jobs:
             DOKU_URL=${{ secrets.DOKU_URL }}
             DOKU_CLIENT_ID=${{ secrets.DOKU_CLIENT_ID }}
             DOKU_SECRET_KEY=${{ secrets.DOKU_SECRET_KEY }}
+            PAYPAL_CLIENT_ID=${{ secrets.PAYPAL_CLIENT_ID }}
