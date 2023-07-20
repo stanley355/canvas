@@ -17,7 +17,6 @@ interface IPaypalBtn {
 const PaypalBtn = (props: IPaypalBtn) => {
   const { type, paypalCredentials, currency, amount } = props;
   const { PAYPAL_URL, PAYPAL_CLIENT_ID, PAYPAL_SECRET } = paypalCredentials;
-  const [topupID, setTopupID] = useState("");
 
   const FUNDING_SOURCES = type === "paypal" ? [FUNDING.PAYPAL] : [FUNDING.CARD];
 
@@ -27,11 +26,16 @@ const PaypalBtn = (props: IPaypalBtn) => {
     "currency": currency
   };
 
-  const createOrder = (data: any, actions: any) => {
+  const createOrder = async (data: any, actions: any) => {
+    const token: any = Cookies.get("token");
+    const user: any = jwtDecode(token);
+    const topup = await createTopup(user.id, amount * (currency === "USD" ? 14000 : 11000));
+
     return actions.order.create({
       intent: "CAPTURE",
       purchase_units: [
         {
+          reference_id: topup.id,
           description: "LanguageAI Topup",
           amount: {
             value: amount,
@@ -39,25 +43,15 @@ const PaypalBtn = (props: IPaypalBtn) => {
           },
         },
       ],
-    }).then(async (orderID: string) => {
-      const token: any = Cookies.get("token");
-      const user: any = jwtDecode(token);
-      const topup = await createTopup(user.id, amount * (currency === "USD" ? 14000 : 11000));
-
-      if (topup.id) {
-        setTopupID(topup.id);
-        return orderID;
-      }
-
-      toast.error("Fail to process your payment, please try again");
-      return null;
+    }).then((orderID: string) => {
+      return orderID;
     });
   };
 
   const onApprove = (data: any, actions: any) => {
     return actions.order?.capture().then(async (det: any) => {
-      const topup = await verifyPaypalTopup(topupID);
-
+      const referenceID = det?.purchase_units[0].reference_id;
+      const topup = await verifyPaypalTopup(referenceID);
       if (topup?.id) {
         toast.success("Topup Success, redirecting to Profile Page");
         setTimeout(() => Router.push("/profile/"), 1000);

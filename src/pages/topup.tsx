@@ -37,10 +37,10 @@ const Topup = (props: ITopup) => {
             Current Balance: Rp {user.balance}
           </div>
           <TopupOptions
-            onPaypalClick={(type: string) => { setShowTopupForm(false); setPaypalType(type); }}
-            onBankTrfClick={() => { setPaypalType(""); setShowTopupForm(true) }}
+            onPaypalClick={(type: string) => { setShowTopupForm(false); setVaInfo({}); setPaypalType(type); }}
+            onBankTrfClick={() => { setPaypalType(""); setVaInfo({}); setShowTopupForm(true) }}
           />
-          {paypalType && <PaypalForm type={paypalType} paypalCredentials={paypalCredentials} onBackClick={() => { setPaypalType("") }} />}
+          {paypalType && <PaypalForm type={paypalType} paypalCredentials={paypalCredentials} onBackClick={() => { setPaypalType(""); }} />}
           {showTopupForm &&
             <TopupForm
               user={user}
