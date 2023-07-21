@@ -15,6 +15,7 @@ import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { CHECKBOT_SEO } from "@/modules/checkbot/lib/constant";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import ReferralPromo from "@/common/components/ReferralPromo";
+import PaypalBanner from "@/common/components/PaypalBanner";
 
 const LoginModal = dynamic(
   () => import("../modules/login/components/LoginModal")
@@ -55,6 +56,7 @@ const CheckBot = () => {
           <FaClock />
           <span>Show History</span>
         </Button>
+        <PaypalBanner />
         <ReferralPromo />
         {showHistory && (
           <HistoryBar

@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import { FaSpinner } from "react-icons/fa";
+import { FaChevronCircleLeft, FaSpinner } from "react-icons/fa";
 import { toast } from "react-toastify";
 import Link from "next/link";
+
+import Button from "@/common/components/Button";
 import { createTopup } from "../lib/createTopup";
 import { DOKU_VA_LIST } from "../lib/constant";
-import Button from "@/common/components/Button";
 import { createDokuVA } from "../lib/createDokuVA";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 interface ITopupForm {
   user: any;
+  onBackClick: () => void;
   dispatchVAinfo: (info: any) => void;
 }
 
 const TopupForm = (props: ITopupForm) => {
-  const { user, dispatchVAinfo } = props;
+  const { user, onBackClick, dispatchVAinfo } = props;
   const [vaBank, setVaBank] = useState("");
   const [hasSubmit, setHasSubmit] = useState(false);
 
@@ -112,7 +114,7 @@ const TopupForm = (props: ITopupForm) => {
         * You can even start Premium with <strong>Rp1000</strong>, we only
         charge <b>Rp1</b> per
         <Link
-          className="mx-2 underline text-blue-300"
+          className="mx-2 underline text-blue-900"
           href="https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them"
         >
           word/token
@@ -122,6 +124,16 @@ const TopupForm = (props: ITopupForm) => {
         * After Topup: If Balance is not updated, please wait for 5 minutes
         delay.
       </div>
+
+      <Button
+        type="button"
+        wrapperClassName="w-fit border px-2 py-1 border-gray-500 rounded mt-2"
+        buttonClassName="w-full h-full flex items-center gap-2"
+        onClick={onBackClick}
+      >
+        <FaChevronCircleLeft />
+        <span>Back</span>
+      </Button>
     </div>
   );
 };

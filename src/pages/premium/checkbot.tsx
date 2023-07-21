@@ -16,6 +16,7 @@ import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import ReferralPromo from "@/common/components/ReferralPromo";
+import PaypalBanner from "@/common/components/PaypalBanner";
 
 const LoginModal = dynamic(
   () => import("../../modules/login/components/LoginModal")
@@ -77,6 +78,8 @@ const CheckBot = () => {
               onCloseClick={() => updateState("showHistory", false)}
             />
           )}
+
+          <PaypalBanner />
           <ReferralPromo />
           <div className="text-black mb-4 mt-8">
             <div>How does Premium Checkbot Compared to the Original?</div>
