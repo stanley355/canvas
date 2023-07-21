@@ -80,9 +80,10 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
       setIsLoading(false);
 
       const saveUserPromptPayload = {
+        instruction: `Translate to ${language}`,
         prompt_token: prompt_tokens,
         completion_token: completion_tokens,
-        prompt_text: prompt,
+        prompt_text: sourceText,
         completion_text: content,
       };
       await saveUserPremiumPrompt(saveUserPromptPayload);

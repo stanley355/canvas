@@ -3,10 +3,12 @@ import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
 
 export interface ISaveUserPrompt {
+  instruction: string;
   prompt_token: number;
   completion_token: number;
   prompt_text: string;
   completion_text: string;
+  document_id?: string;
 }
 
 export const saveUserPrompt = async (payload: ISaveUserPrompt) => {
@@ -26,5 +28,6 @@ export const saveUserPrompt = async (payload: ISaveUserPrompt) => {
   };
 
   const { data } = await axios(axiosConfig);
+  console.log(data);
   return data;
 };

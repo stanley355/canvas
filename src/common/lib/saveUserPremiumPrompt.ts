@@ -3,10 +3,12 @@ import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
 
 export interface ISaveUserPremiumPrompt {
+  instruction: string;
   prompt_token: number;
   completion_token: number;
   prompt_text: string;
   completion_text: string;
+  document_id?: string;
 }
 
 export const saveUserPremiumPrompt = async (
