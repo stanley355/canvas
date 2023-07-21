@@ -8,7 +8,7 @@ const openaiCompletionAPI = async (
   const URL = `${process.env.OPENAI_URL}v1/chat/completions`;
 
   const axiosConfig = {
-    method: req.method,
+    method: "POST",
     url: URL,
     headers: {
       Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
@@ -24,9 +24,16 @@ const openaiCompletionAPI = async (
     const { data } = await axios(axiosConfig);
     response = data;
   } catch (err: any) {
-    response = {
-      error: err.response.data ?? err.message,
-    };
+    axiosConfig.data.model = "gpt-3.5-turbo-16k";
+
+    try {
+      const { data } = await axios(axiosConfig);
+      response = data;
+    } catch (error) {
+      response = {
+        error: err.response.data ? err.response.data : err.message,
+      };
+    }
   }
 
   res.setHeader("Content-Type", "application/json");
