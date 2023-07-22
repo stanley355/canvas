@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 
 import Layout from '@/common/components/Layout';
 import MetaSEO from '@/common/components/MetaSEO';
-import { useDesktopScreen } from '@/common/hooks/useDesktopScreen';
-import { TRANSLATE_SEO } from '@/modules/translate/lib/constant';
 import UseBiggerScreen from '@/common/components/UseBiggerScreen';
-import { findDocument } from '@/modules/document/lib/findDocument';
 import RenameDocBtn from '@/modules/document/component/RenameDocBtn';
 import DeleteDocBtn from '@/modules/document/component/DeleteDocBtn';
 import TranslateDocTable from '@/modules/document/component/TranslateDocTable';
+import { useDesktopScreen } from '@/common/hooks/useDesktopScreen';
+import { findDocument } from '@/modules/document/lib/findDocument';
+import { TRANSLATE_SEO } from '@/modules/translate/lib/constant';
+import { docTranslateReducer } from '@/modules/document/lib/reducer';
+import { DOC_TRANSLATE_STATES } from '@/modules/document/lib/states';
 
 interface IDocumentTranslate {
   document: any;
@@ -18,6 +20,11 @@ interface IDocumentTranslate {
 const DocumentTranslate = (props: IDocumentTranslate) => {
   const { document } = props;
   const isDesktop = useDesktopScreen();
+  const [states, dispatch] = useReducer(docTranslateReducer, DOC_TRANSLATE_STATES);
+
+  const updateState = (name: string, value: any) => {
+    dispatch({ type: "UPDATE", name, value });
+  };
 
   if (!isDesktop) {
     return <UseBiggerScreen />
@@ -35,7 +42,7 @@ const DocumentTranslate = (props: IDocumentTranslate) => {
           </div>
         </div>
 
-        <TranslateDocTable />
+        <TranslateDocTable prompts={states.prompts} />
       </div>
     </Layout>
   )

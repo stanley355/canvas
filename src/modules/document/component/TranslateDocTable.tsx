@@ -2,7 +2,12 @@ import Button from '@/common/components/Button';
 import React from 'react';
 import { FaPencilAlt, FaPlus, FaTrash } from 'react-icons/fa';
 
-const TranslateDocTable = () => {
+interface ITranslateDocTable {
+  prompts: any;
+}
+
+const TranslateDocTable = (props: ITranslateDocTable) => {
+  const { prompts } = props;
 
   return (
     <div>
@@ -16,8 +21,8 @@ const TranslateDocTable = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className='w-[4%] border border-gray-500 text-center'>1</td>
+          {prompts.map((prompt: any, index: number) => <tr key={index}>
+            <td className='w-[4%] border border-gray-500 text-center'>{index + 1}</td>
             <td className='w-[43%] border border-gray-500 p-2'> Click Edit to Change</td>
             <td className='w-[43%] border border-gray-500 p-2'>Click Edit to Change</td>
             <td className='w-[10%] border border-gray-500 p-2'>
@@ -34,7 +39,7 @@ const TranslateDocTable = () => {
                 <span>Add Row</span>
               </Button>
             </td>
-          </tr>
+          </tr>)}
         </tbody>
       </table>
     </div>
