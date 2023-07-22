@@ -25,7 +25,7 @@ const premiumCompletionAPI = async (
     response = data;
   } catch (err: any) {
     response = {
-      error: err.response.data ?? err.message,
+      error: err.response.data ? err.response.data : err.message,
     };
   }
 
