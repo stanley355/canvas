@@ -24,10 +24,12 @@ export const saveUserPrompt = async (payload: ISaveUserPrompt) => {
   const axiosConfig = {
     method: "POST",
     url: URL,
+    headers: {
+      path: "/",
+    },
     data: savePromptPayload,
   };
 
   const { data } = await axios(axiosConfig);
-  console.log(data);
   return data;
 };

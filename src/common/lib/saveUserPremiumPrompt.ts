@@ -18,7 +18,7 @@ export const saveUserPremiumPrompt = async (
   if (!token) return;
 
   const decodedToken: any = jwtDecode(token);
-  const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/prompts/premium/`;
+  const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/prompts/`;
   const savePromptPayload = {
     user_id: decodedToken.id,
     ...payload,
@@ -26,6 +26,9 @@ export const saveUserPremiumPrompt = async (
   const axiosConfig = {
     method: "POST",
     url: URL,
+    headers: {
+      path: "/premium/",
+    },
     data: savePromptPayload,
   };
 
