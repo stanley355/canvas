@@ -9,6 +9,7 @@ import UseBiggerScreen from '@/common/components/UseBiggerScreen';
 import { findDocument } from '@/modules/document/lib/findDocument';
 import RenameDocBtn from '@/modules/document/component/RenameDocBtn';
 import DeleteDocBtn from '@/modules/document/component/DeleteDocBtn';
+import TranslateDocTable from '@/modules/document/component/TranslateDocTable';
 
 interface IDocumentTranslate {
   document: any;
@@ -33,6 +34,8 @@ const DocumentTranslate = (props: IDocumentTranslate) => {
             <DeleteDocBtn docID={document?.id} name={document?.name} />
           </div>
         </div>
+
+        <TranslateDocTable />
       </div>
     </Layout>
   )
