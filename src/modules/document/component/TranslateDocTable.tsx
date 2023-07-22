@@ -5,10 +5,11 @@ import { FaPencilAlt, FaPlus, FaTrash } from 'react-icons/fa';
 
 interface ITranslateDocTable {
   prompts: any;
+  dispatch: (reducerObj: any) => void;
 }
 
 const TranslateDocTable = (props: ITranslateDocTable) => {
-  const { prompts } = props;
+  const { prompts, dispatch } = props;
 
   return (
     <div>
@@ -35,7 +36,12 @@ const TranslateDocTable = (props: ITranslateDocTable) => {
                 <FaTrash />
                 <span>Delete</span>
               </Button>
-              <Button type='button' wrapperClassName='bg-white text-black border border-gray-500 rounded p-1' buttonClassName='w-full h-full flex items-center gap-2 justify-center' >
+              <Button
+                type='button'
+                wrapperClassName='bg-white text-black border border-gray-500 rounded p-1'
+                buttonClassName='w-full h-full flex items-center gap-2 justify-center'
+                onClick={() => dispatch({ type: "ADD_ROW", index: index + 1, doc_id: prompt.document_id })}
+              >
                 <FaPlus />
                 <span>Add Row</span>
               </Button>

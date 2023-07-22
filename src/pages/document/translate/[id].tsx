@@ -36,20 +36,20 @@ const DocumentTranslate = (props: IDocumentTranslate) => {
   };
 
   useEffect(() => {
-    if (!states.prompts.length) {
-      if (!prompts?.length) {
-        updateState("prompts", [{
-          id: 0,
-          document_id: document?.id,
-          prompt_text: "Click Edit to change",
-          completion_text: "Click Edit to change",
-        }])
-      } else {
-        updateState("prompts", prompts);
-      }
+    if (prompts?.length > 0) {
+      updateState("prompts", prompts);
+    }
+
+    if (!prompts?.length) {
+      const defaultPrompt = {
+        id: 0,
+        document_id: document?.id,
+        prompt_text: "Click Edit to change",
+        completion_text: "Click Edit to change",
+      };
+      updateState("prompts", [defaultPrompt]);
     }
   }, [document]);
-
 
   if (!isDesktop) {
     return <UseBiggerScreen />
@@ -67,7 +67,7 @@ const DocumentTranslate = (props: IDocumentTranslate) => {
           </div>
         </div>
 
-        <TranslateDocTable prompts={states.prompts} />
+        <TranslateDocTable prompts={states.prompts} dispatch={dispatch} />
       </div>
     </Layout>
   )
