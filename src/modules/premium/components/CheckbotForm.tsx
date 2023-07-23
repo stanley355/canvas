@@ -15,6 +15,7 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
 import { createRemovedAndAddedDiff } from "@/modules/checkbot/lib/createRemovedAndAddedDiff";
 import { saveHistory } from "@/common/lib/saveHistory";
+import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 
 interface IPremiumCheckBotForm {
   sourceText: string;
@@ -63,8 +64,9 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     }
 
     setIsLoading(true);
+    const freeTrial = hasFreeTrial();
     const hasBalance = await checkUserCurrentBalance();
-    if (!hasBalance) {
+    if (!freeTrial && !hasBalance) {
       updateState("showBalanceModal", true);
       setIsLoading(false);
       return;
