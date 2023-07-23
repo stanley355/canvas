@@ -12,7 +12,7 @@ const TranslateDocTable = (props: ITranslateDocTable) => {
   const { prompts, dispatch } = props;
 
   return (
-    <div>
+    <div className='px-4 overflow-y-scroll max-h-[93%]'>
       <table className='text-black w-full'>
         <thead >
           <tr>

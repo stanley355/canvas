@@ -13,6 +13,7 @@ import { TRANSLATE_SEO } from '@/modules/translate/lib/constant';
 import { docTranslateReducer } from '@/modules/document/lib/reducer';
 import { DOC_TRANSLATE_STATES } from '@/modules/document/lib/states';
 import { findDocumentPrompts } from '@/modules/document/lib/findDocumentPrompts';
+import TranslateRowEditor from '@/modules/document/component/TranslateRowEditor';
 
 export interface IPrompt {
   id: number,
@@ -58,8 +59,8 @@ const DocumentTranslate = (props: IDocumentTranslate) => {
   return (
     <Layout>
       <MetaSEO seo={TRANSLATE_SEO} />
-      <div className='bg-white container mx-auto min-h-screen py-8 px-4'>
-        <div className='flex items-center justify-between text-black border-b pb-2'>
+      <div className='bg-white container mx-auto h-screen relative'>
+        <div className='flex items-center justify-between text-black border-b border-gray-500 p-4'>
           <span className='font-semibold text-xl'>{document?.name}</span>
           <div className='flex items-center gap-4'>
             <RenameDocBtn docID={document?.id} />
@@ -68,6 +69,7 @@ const DocumentTranslate = (props: IDocumentTranslate) => {
         </div>
 
         <TranslateDocTable prompts={states.prompts} dispatch={dispatch} />
+        {/* <TranslateRowEditor index={0} /> */}
       </div>
     </Layout>
   )
