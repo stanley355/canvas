@@ -1,7 +1,9 @@
+import React from "react";
+import { toast } from "react-toastify";
+import { FaCopy, FaPencilAlt, FaPlus, FaTrash } from "react-icons/fa";
+
 import Button from "@/common/components/Button";
 import { IPrompt } from "@/pages/document/translate/[id]";
-import React from "react";
-import { FaPencilAlt, FaPlus, FaTrash } from "react-icons/fa";
 
 interface ITranslateDocTable {
   prompts: any;
@@ -34,10 +36,10 @@ const TranslateDocTable = (props: ITranslateDocTable) => {
               <td className="w-[40%] border border-gray-500 p-2">
                 {prompt.completion_text}
               </td>
-              <td className="w-[15%] border border-gray-500 p-2">
+              <td className="w-auto border border-gray-500 p-2 grid grid-cols-2 gap-2">
                 <Button
                   type="button"
-                  wrapperClassName="bg-blue-900 text-white rounded p-1 mb-2"
+                  wrapperClassName="bg-blue-900 text-white rounded p-1 mb-2 w-full"
                   buttonClassName="w-full h-full flex items-center gap-2 justify-center"
                   onClick={() =>
                     dispatch({ type: "EDIT_ROW", index: index, prompt: prompt })
@@ -48,7 +50,7 @@ const TranslateDocTable = (props: ITranslateDocTable) => {
                 </Button>
                 <Button
                   type="button"
-                  wrapperClassName="bg-red-500 text-white rounded p-1 mb-2"
+                  wrapperClassName="bg-red-500 text-white rounded p-1 mb-2 w-full"
                   buttonClassName="w-full h-full flex items-center gap-2 justify-center"
                   onClick={() => dispatch({ type: "DELETE_ROW", index: index })}
                 >
@@ -68,14 +70,26 @@ const TranslateDocTable = (props: ITranslateDocTable) => {
                   }
                 >
                   <FaPlus />
-                  <span>Add Row</span>
+                  <span>Row</span>
+                </Button>
+                <Button
+                  type="button"
+                  wrapperClassName="bg-white text-blue-900 border border-blue-900 rounded p-1"
+                  buttonClassName="w-full h-full flex items-center gap-2 justify-center"
+                  onClick={() => {
+                    window.navigator.clipboard.writeText(prompt.completion_text);
+                    toast.info("Text Copied to Clipboard");
+                  }}
+                >
+                  <FaCopy />
+                  <span>Copy</span>
                 </Button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-    </div>
+    </div >
   );
 };
 

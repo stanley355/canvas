@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
-import { FaLanguage, FaRegSave, FaTimesCircle, FaTrash } from "react-icons/fa";
-import { IPrompt } from "@/pages/document/translate/[id]";
+import { toast } from "react-toastify";
+import { FaBuffer, FaCopy, FaLanguage, FaRegSave, FaSpinner, FaTimesCircle, FaTrash } from "react-icons/fa";
+
 import Button from "@/common/components/Button";
+import { IPrompt } from "@/pages/document/translate/[id]";
+import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 
 interface ITranslateRowEditor {
   index: number;
@@ -13,6 +16,10 @@ interface ITranslateRowEditor {
 
 const TranslateRowEditor = (props: ITranslateRowEditor) => {
   const { index, prompt, dispatch, updateState } = props;
+  const [isLoading, setIsLoading] = useState(false);
+  const [targetLang, setTargetLang] = useState("");
+  const [promptText, setPromptText] = useState(prompt.prompt_text);
+  const [completionText, setCompletionText] = useState(prompt.completion_text);
 
   const onCloseClick = () => {
     updateState("targetRowIndex", 0);
@@ -24,6 +31,35 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
     onCloseClick();
   };
 
+  const onSaveClick = async () => {
+    setIsLoading(true);
+    // if (!prompt.id) {
+    const saveUserPromptPayload = {
+      instruction: `Translate to ${targetLang}`,
+      prompt_token: promptText.split(" ").length,
+      completion_token: completionText.split(" ").length,
+      prompt_text: promptText,
+      completion_text: completionText,
+      document_id: prompt.document_id
+    };
+
+    const res = await saveUserPrompt(saveUserPromptPayload);
+    if (res.id) {
+      setIsLoading(false);
+      toast.success("Success saving row translation");
+      return;
+    }
+    setIsLoading(false);
+    toast.error("Fail to save, please try again");
+    return;
+    // }
+  }
+
+  useEffect(() => {
+    setPromptText(prompt.prompt_text);
+    setCompletionText(prompt.completion_text);
+  }, [prompt]);
+
   return (
     <div className="w-full h-2/5 border-t border-gray-500 absolute bottom-0 left-0 px-4 py-2 text-black bg-blue-900 z-5 rounded-t-lg">
       <Button
@@ -31,8 +67,10 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
         wrapperClassName="ml-[98%] p-2"
         buttonClassName="w-full h-full"
         onClick={onCloseClick}
+        disabled={isLoading}
       >
-        <FaTimesCircle className="text-3xl text-white" />
+        {isLoading ? <FaSpinner className="text-3xl text-white animate-spin" /> :
+          <FaTimesCircle className="text-3xl text-white" />}
       </Button>
       <div className="bg-white h-[85%]">
         <div className="flex items-center font-semibold">
@@ -60,8 +98,9 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
             <textarea
               name="source_text"
               id="source_text"
-              value={prompt.prompt_text}
+              value={promptText}
               className="p-2 w-full h-full resize-none"
+              onChange={(e) => setPromptText(e.target.value)}
             />
           </label>
           <label
@@ -71,20 +110,22 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
             <textarea
               name="translate_text"
               id="translate_text"
-              value={prompt.completion_text}
+              value={completionText}
               className="p-2 w-full h-full resize-none"
+              onChange={(e) => setCompletionText(e.target.value)}
             />
           </label>
           <div className="w-[15%] p-2 border border-gray-500 h-full">
             <Select
-              placeholder="Select Translate Language"
+              placeholder="Translate Language"
               className="border border-gray-500 mb-2"
+              onChange={(option: any) => setTargetLang(option.value)}
             />
             <Button
               type="button"
               wrapperClassName="bg-white text-blue-900 border border-blue-900 rounded p-1 mb-2"
               buttonClassName="w-full h-full flex items-center gap-2 justify-center"
-              // onClick={onDeleteClick}
+            // onClick={onDeleteClick}
             >
               <FaLanguage className="text-2xl" />
               <span>Translate</span>
@@ -93,7 +134,7 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
               type="button"
               wrapperClassName="bg-blue-900 text-white rounded p-1 mb-2"
               buttonClassName="w-full h-full flex items-center gap-2 justify-center"
-              // onClick={onDeleteClick}
+              onClick={onSaveClick}
             >
               <FaRegSave />
               <span>Save</span>
@@ -106,6 +147,18 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
             >
               <FaTrash />
               <span>Delete</span>
+            </Button>
+            <Button
+              type="button"
+              wrapperClassName="bg-white text-black border border-black rounded p-1"
+              buttonClassName="w-full h-full flex items-center gap-2 justify-center"
+              onClick={() => {
+                window.navigator.clipboard.writeText(prompt.completion_text);
+                toast.info("Text Copied to Clipboard");
+              }}
+            >
+              <FaCopy />
+              <span>Copy</span>
             </Button>
           </div>
         </div>

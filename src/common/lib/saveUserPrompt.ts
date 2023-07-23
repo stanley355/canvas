@@ -30,6 +30,10 @@ export const saveUserPrompt = async (payload: ISaveUserPrompt) => {
     data: savePromptPayload,
   };
 
-  const { data } = await axios(axiosConfig);
-  return data;
+  try {
+    const { data } = await axios(axiosConfig);
+    return data;
+  } catch (error) {
+    return error;
+  }
 };
