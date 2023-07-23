@@ -32,8 +32,8 @@ const ProfileNews = () => {
             Rp14.000 and 1SGD will be converted to Rp11.000.
           </div>
           <div>
-            You didn&apos;t come from America or Singapore? We are also accepting
-            Debit/Credit Card Transaction as well!
+            You didn&apos;t come from America or Singapore? We are also
+            accepting Debit/Credit Card Transaction as well!
           </div>
           <div>
             What are you waiting for?{" "}
