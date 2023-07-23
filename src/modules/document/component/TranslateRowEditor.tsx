@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import { toast } from "react-toastify";
-import { FaBuffer, FaCopy, FaLanguage, FaRegSave, FaSpinner, FaTimesCircle, FaTrash } from "react-icons/fa";
+import { FaCopy, FaLanguage, FaRegSave, FaSpinner, FaTimesCircle, FaTrash } from "react-icons/fa";
 
 import Button from "@/common/components/Button";
 import { IPrompt } from "@/pages/document/translate/[id]";
@@ -9,6 +9,7 @@ import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 import { updatePrompt } from "@/common/lib/updatePrompt";
 import { DOC_TRANSLATE_LANGUAGES } from "../lib/constant";
 import { translateDocumentRow } from "../lib/translateDocumentRow";
+import { deleteDocumentRow } from "../lib/deleteDocumentRow";
 
 interface ITranslateRowEditor {
   index: number;
@@ -43,7 +44,18 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
     return;
   }
 
-  const onDeleteClick = () => {
+  const onDeleteClick = async () => {
+    setIsLoading(true);
+    if (prompt.id) {
+      const deletedPrompt = await deleteDocumentRow(prompt.id);
+      if (!deletedPrompt.id) {
+        setIsLoading(false);
+        toast.error("Fail to delete, please try again");
+        return;
+      }
+    }
+
+    setIsLoading(false);
     dispatch({ type: "DELETE_ROW", index: index - 1 });
     onCloseClick();
   };

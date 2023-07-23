@@ -4,6 +4,7 @@ import { FaCopy, FaPencilAlt, FaPlus, FaTrash } from "react-icons/fa";
 
 import Button from "@/common/components/Button";
 import { IPrompt } from "@/pages/document/translate/[id]";
+import { deleteDocumentRow } from "../lib/deleteDocumentRow";
 
 interface ITranslateDocTable {
   prompts: any;
@@ -12,6 +13,18 @@ interface ITranslateDocTable {
 
 const TranslateDocTable = (props: ITranslateDocTable) => {
   const { prompts, dispatch } = props;
+
+  const onDeleteClick = async (rowIndex: number, promptID: number) => {
+    if (promptID) {
+      const deletedPrompt = await deleteDocumentRow(promptID);
+      if (!deletedPrompt.id) {
+        toast.error("Fail to delete, please try again");
+        return;
+      }
+    }
+
+    dispatch({ type: "DELETE_ROW", index: rowIndex});
+  };
 
   return (
     <div className="px-4 overflow-y-scroll max-h-[93%]">
@@ -52,7 +65,7 @@ const TranslateDocTable = (props: ITranslateDocTable) => {
                   type="button"
                   wrapperClassName="bg-red-500 text-white rounded p-1 mb-2 w-full"
                   buttonClassName="w-full h-full flex items-center gap-2 justify-center"
-                  onClick={() => dispatch({ type: "DELETE_ROW", index: index })}
+                  onClick={() => onDeleteClick(index, prompt.id)}
                 >
                   <FaTrash />
                   <span>Delete</span>
