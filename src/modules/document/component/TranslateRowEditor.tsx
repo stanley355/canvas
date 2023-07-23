@@ -6,6 +6,7 @@ import { FaBuffer, FaCopy, FaLanguage, FaRegSave, FaSpinner, FaTimesCircle, FaTr
 import Button from "@/common/components/Button";
 import { IPrompt } from "@/pages/document/translate/[id]";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
+import { updatePrompt } from "@/common/lib/updatePrompt";
 
 interface ITranslateRowEditor {
   index: number;
@@ -33,19 +34,33 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
 
   const onSaveClick = async () => {
     setIsLoading(true);
-    // if (!prompt.id) {
-    const saveUserPromptPayload = {
-      instruction: `Translate to ${targetLang}`,
-      prompt_token: promptText.split(" ").length,
-      completion_token: completionText.split(" ").length,
-      prompt_text: promptText,
-      completion_text: completionText,
-      document_id: prompt.document_id
-    };
+    let promptRes;
+    if (!prompt.id) {
+      const saveUserPromptPayload = {
+        instruction: `Translate to ${targetLang}`,
+        prompt_token: promptText.split(" ").length,
+        completion_token: completionText.split(" ").length,
+        prompt_text: promptText,
+        completion_text: completionText,
+        document_id: prompt.document_id
+      };
 
-    const res = await saveUserPrompt(saveUserPromptPayload);
-    if (res.id) {
-      dispatch({type: "UPDATE_ROW", index: index - 1, prompt: res})
+      promptRes = await saveUserPrompt(saveUserPromptPayload);
+    } else {
+      const updatePromptPayload = {
+        prompt_id: prompt.id,
+        instruction: `Translate to ${targetLang}`,
+        prompt_token: promptText.split(" ").length,
+        completion_token: completionText.split(" ").length,
+        prompt_text: promptText,
+        completion_text: completionText,
+      };
+
+      promptRes = await updatePrompt(updatePromptPayload);
+    }
+
+    if (promptRes.id) {
+      dispatch({ type: "UPDATE_ROW", index: index - 1, prompt: promptRes })
       setIsLoading(false);
       toast.success("Success saving row translation");
       return;
@@ -53,7 +68,7 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
     setIsLoading(false);
     toast.error("Fail to save, please try again");
     return;
-    // }
+
   }
 
   useEffect(() => {
