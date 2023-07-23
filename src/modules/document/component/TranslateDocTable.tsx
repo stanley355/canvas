@@ -23,7 +23,7 @@ const TranslateDocTable = (props: ITranslateDocTable) => {
       }
     }
 
-    dispatch({ type: "DELETE_ROW", index: rowIndex});
+    dispatch({ type: "DELETE_ROW", index: rowIndex });
   };
 
   return (
@@ -90,7 +90,9 @@ const TranslateDocTable = (props: ITranslateDocTable) => {
                   wrapperClassName="bg-white text-blue-900 border border-blue-900 rounded p-1"
                   buttonClassName="w-full h-full flex items-center gap-2 justify-center"
                   onClick={() => {
-                    window.navigator.clipboard.writeText(prompt.completion_text);
+                    window.navigator.clipboard.writeText(
+                      prompt.completion_text
+                    );
                     toast.info("Text Copied to Clipboard");
                   }}
                 >
@@ -102,7 +104,7 @@ const TranslateDocTable = (props: ITranslateDocTable) => {
           ))}
         </tbody>
       </table>
-    </div >
+    </div>
   );
 };
 

@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import { toast } from "react-toastify";
-import { FaCopy, FaLanguage, FaRegSave, FaSpinner, FaTimesCircle, FaTrash } from "react-icons/fa";
+import {
+  FaCopy,
+  FaLanguage,
+  FaRegSave,
+  FaSpinner,
+  FaTimesCircle,
+  FaTrash,
+} from "react-icons/fa";
 
 import Button from "@/common/components/Button";
 import { IPrompt } from "@/pages/document/translate/[id]";
@@ -30,7 +37,7 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
     updateState("targetRowPrompt", {});
   };
 
-  const onTranslateClick =async () => {
+  const onTranslateClick = async () => {
     setIsLoading(true);
     const translation = await translateDocumentRow(promptText, targetLang);
     if (translation?.text) {
@@ -42,7 +49,7 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
     setIsLoading(false);
     toast.error("Fail to translate, please try again");
     return;
-  }
+  };
 
   const onDeleteClick = async () => {
     setIsLoading(true);
@@ -70,7 +77,7 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
         completion_token: completionText.split(" ").length,
         prompt_text: promptText,
         completion_text: completionText,
-        document_id: prompt.document_id
+        document_id: prompt.document_id,
       };
 
       promptRes = await saveUserPrompt(saveUserPromptPayload);
@@ -88,7 +95,7 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
     }
 
     if (promptRes.id) {
-      dispatch({ type: "UPDATE_ROW", index: index - 1, prompt: promptRes })
+      dispatch({ type: "UPDATE_ROW", index: index - 1, prompt: promptRes });
       setIsLoading(false);
       toast.success("Success saving row translation");
       return;
@@ -96,7 +103,7 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
     setIsLoading(false);
     toast.error("Fail to save, please try again");
     return;
-  }
+  };
 
   useEffect(() => {
     setPromptText(prompt.prompt_text);
@@ -112,8 +119,11 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
         onClick={onCloseClick}
         disabled={isLoading}
       >
-        {isLoading ? <FaSpinner className="text-3xl text-white animate-spin" /> :
-          <FaTimesCircle className="text-3xl text-white" />}
+        {isLoading ? (
+          <FaSpinner className="text-3xl text-white animate-spin" />
+        ) : (
+          <FaTimesCircle className="text-3xl text-white" />
+        )}
       </Button>
       <div className="bg-white h-[85%]">
         <div className="flex items-center font-semibold">
