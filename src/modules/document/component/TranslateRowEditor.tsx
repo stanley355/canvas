@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
-import { FaTimesCircle, FaTrash } from 'react-icons/fa';
+import { FaLanguage, FaRegSave, FaTimesCircle, FaTrash } from 'react-icons/fa';
 import { IPrompt } from '@/pages/document/translate/[id]';
 import Button from '@/common/components/Button';
 
@@ -45,9 +45,25 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
             <textarea name="translate_text" id="translate_text" value={prompt.completion_text} className='p-2 w-full h-full resize-none' />
           </label>
           <div className='w-[15%] p-2 border border-gray-500 h-full'>
-            <Select placeholder="Select Translate Language" className='border border-gray-500' />
-            <Button type='button' title='Translate' />
-            <Button type='button' title='Save' />
+            <Select placeholder="Select Translate Language" className='border border-gray-500 mb-2' />
+            <Button
+              type='button'
+              wrapperClassName='bg-white text-blue-900 border border-blue-900 rounded p-1 mb-2'
+              buttonClassName='w-full h-full flex items-center gap-2 justify-center'
+              // onClick={onDeleteClick}
+            >
+              <FaLanguage className='text-2xl'/>
+              <span>Translate</span>
+            </Button>
+            <Button
+              type='button'
+              wrapperClassName='bg-blue-900 text-white rounded p-1 mb-2'
+              buttonClassName='w-full h-full flex items-center gap-2 justify-center'
+              // onClick={onDeleteClick}
+            >
+              <FaRegSave />
+              <span>Save</span>
+            </Button>
             <Button
               type='button'
               wrapperClassName='bg-red-500 text-white rounded p-1 mb-2'
