@@ -28,7 +28,12 @@ const TranslateDocTable = (props: ITranslateDocTable) => {
             <td className='w-[40%] border border-gray-500 p-2'>{prompt.prompt_text}</td>
             <td className='w-[40%] border border-gray-500 p-2'>{prompt.completion_text}</td>
             <td className='w-[15%] border border-gray-500 p-2'>
-              <Button type='button' wrapperClassName='bg-blue-900 text-white rounded p-1 mb-2' buttonClassName='w-full h-full flex items-center gap-2 justify-center' >
+              <Button
+                type='button'
+                wrapperClassName='bg-blue-900 text-white rounded p-1 mb-2'
+                buttonClassName='w-full h-full flex items-center gap-2 justify-center'
+                onClick={() => dispatch({ type: "EDIT_ROW", index: index, prompt: prompt})}
+              >
                 <FaPencilAlt />
                 <span>Edit</span>
               </Button>

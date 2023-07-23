@@ -1,3 +1,5 @@
 export const DOC_TRANSLATE_STATES = {
-  prompts: []
+  prompts: [],
+  targetRowIndex: 0,
+  targetRowPrompt: {}
 };

@@ -21,6 +21,11 @@ export const docTranslateReducer = (state: any, action: any) => {
         return newStates;
       }
       toast.error("A document should have at least 1 row!");
+      return;
+    case "EDIT_ROW":
+      newStates.targetRowIndex = action.index + 1;
+      newStates.targetRowPrompt = action.prompt;
+      return newStates;
     default:
       return state;
   }

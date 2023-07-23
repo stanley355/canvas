@@ -5,15 +5,21 @@ import { FaCross, FaTimesCircle } from 'react-icons/fa';
 
 interface ITranslateRowEditor {
   index: number;
-  // prompt: IPrompt
+  prompt: IPrompt;
+  updateState: (name: string, val: any) => void;
 }
 
 const TranslateRowEditor = (props: ITranslateRowEditor) => {
-  const { index } = props;
+  const { index, prompt, updateState } = props;
+
+  const onCloseClick = () => {
+    updateState("targetRowIndex", 0);
+    updateState("targetRowPrompt", {});
+  }
 
   return (
     <div className='w-full h-2/5 border-t border-gray-500 absolute bottom-0 left-0 px-4 py-2 text-black bg-blue-900 z-5 rounded-t-lg'>
-      <Button type='button' wrapperClassName='ml-[98%] p-2' buttonClassName='w-full h-full'>
+      <Button type='button' wrapperClassName='ml-[98%] p-2' buttonClassName='w-full h-full' onClick={onCloseClick}>
         <FaTimesCircle className='text-3xl text-white' />
       </Button>
       <div className='bg-white h-[85%]'>
@@ -24,14 +30,14 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
           <div className='w-[15%] border border-gray-500 p-2 text-center'>Actions</div>
         </div>
         <div className='flex items-center h-[86%]'>
-          <div className='w-[5%] border border-gray-500 h-full text-center'>3</div>
-          <label htmlFor="" className='w-[40%] border border-gray-500 h-full'>
-            <textarea name="" id="" value={"wek"} className='p-4 w-full h-full' />
+          <div className='w-[5%] border border-gray-500 h-full text-center'>{index}</div>
+          <label htmlFor="source_text" className='w-[40%] border border-gray-500 h-full'>
+            <textarea name="source_text" id="source_text" value={prompt.prompt_text}  className='p-2 w-full h-full resize-none' />
           </label>
-          <label htmlFor="" className='w-[40%] border border-gray-500 h-full'>
-            <textarea name="" id="" value={"wow"}  className='p-4 w-full h-full'/>
+          <label htmlFor="translate_text" className='w-[40%] border border-gray-500 h-full'>
+            <textarea name="translate_text" id="translate_text" value={prompt.completion_text}  className='p-2 w-full h-full resize-none'/>
           </label>
-          <div className='w-[15%] p-4 border border-gray-500 h-full'>test</div>
+          <div className='w-[15%] p-2 border border-gray-500 h-full'>test</div>
         </div>
       </div>
     </div>
