@@ -7,6 +7,7 @@ import Button from "@/common/components/Button";
 import { IPrompt } from "@/pages/document/translate/[id]";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 import { updatePrompt } from "@/common/lib/updatePrompt";
+import { DOC_TRANSLATE_LANGUAGES } from "../lib/constant";
 
 interface ITranslateRowEditor {
   index: number;
@@ -136,6 +137,7 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
               placeholder="Translate Language"
               className="border border-gray-500 mb-2"
               onChange={(option: any) => setTargetLang(option.value)}
+              options={DOC_TRANSLATE_LANGUAGES}
             />
             <Button
               type="button"
