@@ -20,7 +20,7 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
   }
 
   const onDeleteClick = () => {
-    dispatch({ type: "DELETE_ROW", index: index });
+    dispatch({ type: "DELETE_ROW", index: index - 1 });
     onCloseClick();
   }
 
