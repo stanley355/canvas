@@ -3,6 +3,7 @@ import Button from "@/common/components/Button";
 import { FaSpinner, FaTrash } from "react-icons/fa";
 import { deleteDocument } from "../lib/deleteDocument";
 import { toast } from "react-toastify";
+import Router from "next/router";
 
 interface IDeleteDocBtn {
   docID: string;
@@ -19,9 +20,14 @@ const DeleteDocBtn = (props: IDeleteDocBtn) => {
     const doc = await deleteDocument(docID);
 
     if (doc?.id) {
-      toast.success(`Document "${name}" deleted`);
-      setTimeout(() => window.location.reload(), 1000);
       setIsLoading(false);
+      toast.success(`Document "${name}" deleted`);
+      if (Router.asPath === "/document") {
+        setTimeout(() => window.location.reload(), 1000);
+        return;
+      }
+
+      setTimeout(() => Router.push("/document"), 1000);
       return;
     }
 
@@ -34,7 +40,7 @@ const DeleteDocBtn = (props: IDeleteDocBtn) => {
     <div>
       <Button
         type="button"
-        wrapperClassName="px-1 rounded hover:bg-white"
+        wrapperClassName="px-1 rounded hover:text-white hover:bg-red-500"
         buttonClassName="w-full h-full"
         onClick={() => setShowModal(true)}
       >

@@ -49,7 +49,7 @@ const RenameDocBtn = (props: IRenameDocBtn) => {
     <div className="relative">
       <Button
         type="button"
-        wrapperClassName="px-1 rounded hover:bg-white"
+        wrapperClassName="px-1 rounded hover:text-white hover:bg-blue-900"
         buttonClassName="w-full"
         onClick={() => setOpenForm(!openForm)}
       >
