@@ -36,8 +36,6 @@ const DocumentTranslate = (props: IDocumentTranslate) => {
     dispatch({ type: "UPDATE", name, value });
   };
 
-  console.log(states);
-
   useEffect(() => {
     if (prompts?.length > 0) {
       updateState("prompts", prompts);
@@ -71,7 +69,12 @@ const DocumentTranslate = (props: IDocumentTranslate) => {
         </div>
 
         <TranslateDocTable prompts={states.prompts} dispatch={dispatch} />
-        {states.targetRowIndex && states.targetRowPrompt?.prompt_text && <TranslateRowEditor index={states.targetRowIndex} prompt={states.targetRowPrompt} updateState={updateState} />}
+        {states.targetRowIndex && states.targetRowPrompt?.prompt_text && <TranslateRowEditor
+          index={states.targetRowIndex}
+          prompt={states.targetRowPrompt}
+          dispatch={dispatch}
+          updateState={updateState}
+        />}
       </div>
     </Layout>
   )
