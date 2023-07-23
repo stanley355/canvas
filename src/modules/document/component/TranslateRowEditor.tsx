@@ -8,6 +8,7 @@ import { IPrompt } from "@/pages/document/translate/[id]";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 import { updatePrompt } from "@/common/lib/updatePrompt";
 import { DOC_TRANSLATE_LANGUAGES } from "../lib/constant";
+import { translateDocumentRow } from "../lib/translateDocumentRow";
 
 interface ITranslateRowEditor {
   index: number;
@@ -27,6 +28,20 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
     updateState("targetRowIndex", 0);
     updateState("targetRowPrompt", {});
   };
+
+  const onTranslateClick =async () => {
+    setIsLoading(true);
+    const translation = await translateDocumentRow(promptText, targetLang);
+    if (translation?.text) {
+      setIsLoading(false);
+      setCompletionText(translation.text);
+      return;
+    }
+
+    setIsLoading(false);
+    toast.error("Fail to translate, please try again");
+    return;
+  }
 
   const onDeleteClick = () => {
     dispatch({ type: "DELETE_ROW", index: index - 1 });
@@ -69,7 +84,6 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
     setIsLoading(false);
     toast.error("Fail to save, please try again");
     return;
-
   }
 
   useEffect(() => {
@@ -143,7 +157,7 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
               type="button"
               wrapperClassName="bg-white text-blue-900 border border-blue-900 rounded p-1 mb-2"
               buttonClassName="w-full h-full flex items-center gap-2 justify-center"
-            // onClick={onDeleteClick}
+              onClick={onTranslateClick}
             >
               <FaLanguage className="text-2xl" />
               <span>Translate</span>
