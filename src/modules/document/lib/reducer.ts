@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 export const docTranslateReducer = (state: any, action: any) => {
   const newStates = structuredClone(state);
   switch (action.type) {
@@ -13,6 +15,12 @@ export const docTranslateReducer = (state: any, action: any) => {
       };
       newStates["prompts"].splice(action.index, 0, defaultPrompt);
       return newStates;
+    case "DELETE_ROW":
+      if (newStates.prompts.length > 1) {
+        newStates["prompts"].splice(action.index, 1);
+        return newStates;
+      }
+      toast.error("A document should have at least 1 row!");
     default:
       return state;
   }

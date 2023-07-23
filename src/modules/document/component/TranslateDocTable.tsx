@@ -32,7 +32,12 @@ const TranslateDocTable = (props: ITranslateDocTable) => {
                 <FaPencilAlt />
                 <span>Edit</span>
               </Button>
-              <Button type='button' wrapperClassName='bg-red-500 text-white rounded p-1 mb-2' buttonClassName='w-full h-full flex items-center gap-2 justify-center' >
+              <Button
+                type='button'
+                wrapperClassName='bg-red-500 text-white rounded p-1 mb-2'
+                buttonClassName='w-full h-full flex items-center gap-2 justify-center'
+                onClick={() => dispatch({ type: "DELETE_ROW", index: index })}
+              >
                 <FaTrash />
                 <span>Delete</span>
               </Button>
