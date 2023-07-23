@@ -45,6 +45,7 @@ const TranslateRowEditor = (props: ITranslateRowEditor) => {
 
     const res = await saveUserPrompt(saveUserPromptPayload);
     if (res.id) {
+      dispatch({type: "UPDATE_ROW", index: index - 1, prompt: res})
       setIsLoading(false);
       toast.success("Success saving row translation");
       return;

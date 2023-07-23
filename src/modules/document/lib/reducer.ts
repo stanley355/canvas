@@ -16,7 +16,6 @@ export const docTranslateReducer = (state: any, action: any) => {
       newStates["prompts"].splice(action.index, 0, defaultPrompt);
       return newStates;
     case "DELETE_ROW":
-      console.log(action.index);
       if (newStates.prompts.length > 1) {
         newStates["prompts"].splice(action.index, 1);
         return newStates;
@@ -25,6 +24,9 @@ export const docTranslateReducer = (state: any, action: any) => {
     case "EDIT_ROW":
       newStates.targetRowIndex = action.index + 1;
       newStates.targetRowPrompt = action.prompt;
+      return newStates;
+    case "UPDATE_ROW":
+      newStates["prompts"].splice(action.index, 1, action.prompt);
       return newStates;
     default:
       return state;
