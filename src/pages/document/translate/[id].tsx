@@ -69,7 +69,7 @@ const DocumentTranslate = (props: IDocumentTranslate) => {
         </div>
 
         <TranslateDocTable prompts={states.prompts} dispatch={dispatch} />
-        {/* <TranslateRowEditor index={0} /> */}
+        <TranslateRowEditor index={0} />
       </div>
     </Layout>
   )
