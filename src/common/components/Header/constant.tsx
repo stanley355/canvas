@@ -7,17 +7,17 @@ import {
 
 export const HEADER_MENU = [
   {
-    title: "Document Translate",
+    title: "DocTrans",
     url: "/document/",
     icon: <FaDochub />,
   },
   {
-    title: "Premium Checkbot",
+    title: "AI Checkbot+",
     url: "/premium/checkbot/",
     icon: <FaRobot />,
   },
   {
-    title: "Premium Translate",
+    title: "AI Translate+",
     url: "/premium/translate/",
     icon: <FaLanguage />,
   },
