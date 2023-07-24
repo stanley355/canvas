@@ -1,14 +1,17 @@
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+
 import Accordion from "@/common/components/Accordion";
 import ComparisonTable from "@/common/components/ComparisonTable";
 import ReferralPromo from "@/common/components/ReferralPromo";
 import { CHECKBOT_COMPARISON } from "@/modules/checkbot/lib/constant";
 import { TRANSLATE_COMPARISON } from "@/modules/translate/lib/constant";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+
 import {
   FaCameraRetro,
   FaClock,
+  FaDochub,
   FaLanguage,
   FaMoneyBill,
   FaPaypal,
@@ -17,6 +20,34 @@ import {
 
 const ProfileNews = () => {
   const NEWS_LIST = [
+    {
+      title: (
+        <div className="flex items-center gap-2">
+          <FaDochub className="text-xl text-black" />
+          <span>NEW! Document Translate</span>
+        </div>
+      ),
+      children: (
+        <div>
+          <div className="mx-[25%] text-4xl mb-4">
+            <FaDochub />
+          </div>
+          <div>Tired of translating per paragraph? Or missing your old works?</div>
+          <div>
+            We have the answer to it with
+            <Link href="/document/" className="text-blue-900 underline ml-2">
+              Document Translate
+            </Link>.
+          </div>
+          <div>
+            Translate and Save your document with ease with our
+            <Link href="/document/" className="text-blue-900 underline ml-2">
+              Document Translate
+            </Link>
+          </div>
+        </div>
+      ),
+    },
     {
       title: (
         <div className="flex items-center gap-2">
@@ -32,8 +63,8 @@ const ProfileNews = () => {
             Rp14.000 and 1SGD will be converted to Rp11.000.
           </div>
           <div>
-            You didn&apos;t come from America or Singapore? We are also accepting
-            Debit/Credit Card Transaction as well!
+            You didn&apos;t come from America or Singapore? We are also
+            accepting Debit/Credit Card Transaction as well!
           </div>
           <div>
             What are you waiting for?{" "}

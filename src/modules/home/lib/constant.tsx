@@ -1,5 +1,5 @@
 import React from "react";
-import { FaLanguage, FaRobot, FaPlusCircle } from "react-icons/fa";
+import { FaLanguage, FaRobot, FaPlusCircle, FaFile, FaDochub } from "react-icons/fa";
 
 export const HOME_SEO = {
   title: "Language AI - Translation and Grammar Check",
@@ -39,6 +39,21 @@ export const TRANSLATE_COPYWRITING = [
       "Contextual and Accurate Translation",
       "Rp1 per word/token",
       "8000 words max translation",
+    ],
+  },
+  {
+    icon: <FaDochub/>,
+    title: "Doc Translate",
+    link: "/document/",
+    ctaText: "Translate Docs",
+    features: [
+      "Translate words, texts, and phrases",
+      "Translate English and All Languages",
+      "Machine Translation",
+      "Online Translation",
+      "Contextual and Accurate Translation",
+      "Free Translation",
+      "Unlimited words translation",
     ],
   },
 ];

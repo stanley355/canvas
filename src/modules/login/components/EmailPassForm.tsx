@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Router from "next/router";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
 import Cookies from "js-cookie";
@@ -39,7 +40,14 @@ const EmailPassForm = () => {
       sendFirebaseEvent("login_email_password", {});
       setHasSubmit(false);
       Cookies.set("token", user.token);
-      window.location.href = "/";
+
+      const path = Router.asPath;
+      if (path === "/register" || path === "/login") {
+        window.location.href = "/#homeServices";
+        return;
+      }
+
+      window.location.href = path;
       return;
     }
 

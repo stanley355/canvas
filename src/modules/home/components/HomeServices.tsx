@@ -18,7 +18,7 @@ const HomeServices = () => {
           <div className="text-center text-4xl font-semibold mb-8 underline">
             Translation Services
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 px-2">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 px-2">
             {TRANSLATE_COPYWRITING.map((copy: any) => (
               <div
                 key={copy.title}
