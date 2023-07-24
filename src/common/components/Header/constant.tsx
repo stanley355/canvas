@@ -1,11 +1,16 @@
 import {
+  FaDochub,
   FaLanguage,
-  FaPlusCircle,
   FaRobot,
   FaUserCircle,
 } from "react-icons/fa";
 
 export const HEADER_MENU = [
+  {
+    title: "Document Translate",
+    url: "/document/",
+    icon: <FaDochub />,
+  },
   {
     title: "Premium Checkbot",
     url: "/premium/checkbot/",

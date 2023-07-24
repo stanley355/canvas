@@ -2,32 +2,24 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
 
-export interface ISaveUserPrompt {
+export interface IUpdatePrompt {
+  prompt_id: number;
   instruction: string;
   prompt_token: number;
   completion_token: number;
   prompt_text: string;
   completion_text: string;
-  document_id?: string;
 }
 
-export const saveUserPrompt = async (payload: ISaveUserPrompt) => {
-  const token = Cookies.get("token");
-  if (!token) return;
-
-  const decodedToken: any = jwtDecode(token);
+export const updatePrompt = async (payload: IUpdatePrompt) => {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/prompts/`;
-  const savePromptPayload = {
-    user_id: decodedToken.id,
-    ...payload,
-  };
   const axiosConfig = {
-    method: "POST",
+    method: "PUT",
     url: URL,
     headers: {
       path: "/",
     },
-    data: savePromptPayload,
+    data: payload,
   };
 
   try {
