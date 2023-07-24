@@ -1,3 +1,4 @@
+import addFirestore from "@/common/lib/firebase/addFirestore";
 import axios from "axios";
 
 export const translateDocumentRow = async (
@@ -18,6 +19,7 @@ export const translateDocumentRow = async (
     const { data } = await axios(axiosConfig);
     return data;
   } catch (error) {
+    addFirestore({ collectionID: "translate_doc_row_error", data: error });
     return error;
   }
 };
