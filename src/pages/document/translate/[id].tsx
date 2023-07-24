@@ -4,6 +4,7 @@ import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import Layout from "@/common/components/Layout";
 import MetaSEO from "@/common/components/MetaSEO";
 import UseBiggerScreen from "@/common/components/UseBiggerScreen";
+import Button from "@/common/components/Button";
 import RenameDocBtn from "@/modules/document/component/RenameDocBtn";
 import DeleteDocBtn from "@/modules/document/component/DeleteDocBtn";
 import TranslateDocTable from "@/modules/document/component/TranslateDocTable";
@@ -14,6 +15,8 @@ import { docTranslateReducer } from "@/modules/document/lib/reducer";
 import { DOC_TRANSLATE_STATES } from "@/modules/document/lib/states";
 import { findDocumentPrompts } from "@/modules/document/lib/findDocumentPrompts";
 import TranslateRowEditor from "@/modules/document/component/TranslateRowEditor";
+import { FaArrowLeft } from "react-icons/fa";
+import Router from "next/router";
 
 export interface IPrompt {
   id: number;
@@ -64,7 +67,16 @@ const DocumentTranslate = (props: IDocumentTranslate) => {
       <MetaSEO seo={TRANSLATE_SEO} />
       <div className="bg-white container mx-auto h-screen relative">
         <div className="flex items-center justify-between text-black border-b border-gray-500 p-4">
-          <span className="font-semibold text-xl">{document?.name}</span>
+          <Button
+            type="button"
+            wrapperClassName=" p-1 hover:border-b hover:border-gray-500"
+            buttonClassName="w-full h-full flex items-center gap-2"
+            onClick={() => Router.push("/document/")}
+          >
+            <FaArrowLeft />
+            <span>Back</span>
+          </Button>
+          <span className="font-semibold text-3xl">{document?.name}</span>
           <div className="flex items-center gap-4">
             <RenameDocBtn docID={document?.id} />
             <DeleteDocBtn docID={document?.id} name={document?.name} />

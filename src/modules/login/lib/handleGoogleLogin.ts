@@ -33,7 +33,7 @@ export const handleGoogleLogin = async (token: any) => {
       return;
     }
 
-    window.location.reload();
+    window.location.href = path;
     return;
   }
 
