@@ -1,3 +1,5 @@
+import addFirestore from "@/common/lib/firebase/addFirestore";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import axios from "axios";
 
 export interface ICreateDocument {
@@ -17,6 +19,12 @@ export const createDocument = async (payload: ICreateDocument) => {
     data: payload,
   };
 
-  const { data } = await axios(axiosConfig);
-  return data;
+  try {
+    const { data } = await axios(axiosConfig);
+    sendFirebaseEvent("document_create", {});
+    return data;
+  } catch (error) {
+    addFirestore({ collectionID: "document_create_error", data: error });
+    return error;
+  }
 };
