@@ -19,25 +19,20 @@ const openaiCompletionAPI = async (
     },
   };
 
-  let response;
   try {
     const { data } = await axios(axiosConfig);
-    response = data;
+    res.setHeader("Content-Type", "application/json");
+    res.json(data);
   } catch (err: any) {
     axiosConfig.data.model = "gpt-3.5-turbo-16k";
 
     try {
       const { data } = await axios(axiosConfig);
-      response = data;
+      res.setHeader("Content-Type", "application/json");
+      res.json(data);
     } catch (error) {
-      response = {
-        error: err.response.data ? err.response.data : err.message,
-      };
+      res.status(500).send(err);
     }
   }
-
-  res.setHeader("Content-Type", "application/json");
-  res.json(response);
 };
-
 export default openaiCompletionAPI;

@@ -8,7 +8,7 @@ export const hasFreeTrial = () => {
     return true;
   }
 
-  if (trial_count && Number(trial_count) === 3) {
+  if (trial_count && Number(trial_count) === 5) {
     return false;
   }
 
