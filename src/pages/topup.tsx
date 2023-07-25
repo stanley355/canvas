@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
-import jwtDecode from "jwt-decode";
+import { decode } from "jsonwebtoken";
 
 import Layout from "@/common/components/Layout";
 import TopupForm from "@/modules/profile/components/TopupForm";
@@ -91,7 +91,7 @@ export const getServerSideProps: GetServerSideProps = async (
     };
   }
 
-  const decodedToken: any = jwtDecode(token);
+  const decodedToken: any = decode(token);
   const user = await fetchUserData(decodedToken.email);
   const { PAYPAL_CLIENT_ID } = process.env;
 

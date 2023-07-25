@@ -83,7 +83,7 @@ const RenameDocBtn = (props: IRenameDocBtn) => {
             buttonClassName="w-full h-full hover:underline"
           >
             {isLoading ? (
-              <div className="flex flex row items-center justify-center">
+              <div className="flex flex-row items-center justify-center">
                 <FaSpinner className="animate-spin" />
               </div>
             ) : (

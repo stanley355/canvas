@@ -1,13 +1,13 @@
 import Router from "next/router";
 import axios from "axios";
-import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
+import { decode } from "jsonwebtoken";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 export const handleGoogleLogin = async (token: any) => {
   sendFirebaseEvent("login", {});
-  const decodedToken: any = jwtDecode(String(token.credential));
+  const decodedToken: any = decode(String(token.credential));
 
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/users/`;
   const axiosConfig = {

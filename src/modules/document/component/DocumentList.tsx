@@ -38,7 +38,7 @@ const DocumentList = (props: IDocumentList) => {
             <span>{handleDateFormat(doc.created_at)}</span>
           </Button>
           <div className="invisible lg:visible flex items-center gap-4 px-2">
-            <RenameDocBtn docID={doc.id}/>
+            <RenameDocBtn docID={doc.id} />
             <DeleteDocBtn docID={doc.id} name={doc.name} />
           </div>
         </div>

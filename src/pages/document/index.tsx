@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaPlusCircle, FaTimesCircle } from "react-icons/fa";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
-import jwtDecode from "jwt-decode";
+import { decode } from "jsonwebtoken";
 
 import MetaSEO from "@/common/components/MetaSEO";
 import Button from "@/common/components/Button";
@@ -69,7 +69,7 @@ export const getServerSideProps: GetServerSideProps = async (
     };
   }
 
-  const user: any = jwtDecode(token);
+  const user: any = decode(token);
   const documents = await findUserDocument(user.id);
 
   return {
