@@ -82,7 +82,10 @@ const DocumentTranslate = (props: IDocumentTranslate) => {
           </Button>
           <span className="font-semibold text-3xl">{states.docName}</span>
           <div className="flex items-center gap-4">
-            <RenameDocBtn docID={document?.id} onChangeName={(name) => updateState("docName", name)} />
+            <RenameDocBtn
+              docID={document?.id}
+              onChangeName={(name) => updateState("docName", name)}
+            />
             <DeleteDocBtn docID={document?.id} name={document?.name} />
           </div>
         </div>

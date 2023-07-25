@@ -21,8 +21,8 @@ const InsufficientBalanceModal = (props: IInsufficientBalanceModal) => {
           Oops you don&apos;t have enough quota for Premium
         </div>
         <div className="text-center text-lg italic">
-          *Topup and Start Premium with only <strong>Rp1000</strong> or  <strong>$1 SGD</strong>, we only charge
-          Rp1 per
+          *Topup and Start Premium with only <strong>Rp1000</strong> or{" "}
+          <strong>$1 SGD</strong>, we only charge Rp1 per
           <Link
             className="mx-2 underline text-blue-300"
             href="https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them"

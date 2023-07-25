@@ -44,8 +44,6 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
       return;
     }
 
-
-
     const target = e.target as any;
     const language = target.target_lang.value;
     const sourceText = target.source_text.value;

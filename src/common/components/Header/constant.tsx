@@ -1,9 +1,4 @@
-import {
-  FaDochub,
-  FaLanguage,
-  FaRobot,
-  FaUserCircle,
-} from "react-icons/fa";
+import { FaDochub, FaLanguage, FaRobot, FaUserCircle } from "react-icons/fa";
 
 export const HEADER_MENU = [
   {
