@@ -76,7 +76,7 @@ const NewDocForm = () => {
           buttonClassName="w-full h-full"
         >
           {isLoading ? (
-            <div className="flex flex row items-center justify-center">
+            <div className="flex flex-row items-center justify-center">
               <span className="mr-2">Creating</span>
               <FaSpinner className="animate-spin" />
             </div>
