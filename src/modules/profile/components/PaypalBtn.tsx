@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
+import Router from "next/router";
 import {
   PayPalScriptProvider,
   PayPalButtons,
   FUNDING,
 } from "@paypal/react-paypal-js";
 import { toast } from "react-toastify";
-import { createTopup } from "../lib/createTopup";
 import Cookies from "js-cookie";
-import jwtDecode from "jwt-decode";
+import { decode } from "jsonwebtoken";
+
+import { createTopup } from "../lib/createTopup";
 import { verifyPaypalTopup } from "../lib/verifyPaypalTopup";
-import Router from "next/router";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 interface IPaypalBtn {
@@ -33,7 +34,7 @@ const PaypalBtn = (props: IPaypalBtn) => {
 
   const createOrder = async (data: any, actions: any) => {
     const token: any = Cookies.get("token");
-    const user: any = jwtDecode(token);
+    const user: any = decode(token);
     const topup = await createTopup(
       user.id,
       amount * (currency === "USD" ? 14000 : 11000)

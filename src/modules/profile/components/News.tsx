@@ -32,12 +32,15 @@ const ProfileNews = () => {
           <div className="mx-[25%] text-4xl mb-4">
             <FaDochub />
           </div>
-          <div>Tired of translating per paragraph? Or missing your old works?</div>
+          <div>
+            Tired of translating per paragraph? Or missing your old works?
+          </div>
           <div>
             We have the answer to it with
             <Link href="/document/" className="text-blue-900 underline ml-2">
               Document Translate
-            </Link>.
+            </Link>
+            .
           </div>
           <div>
             Translate and Save your document with ease with our

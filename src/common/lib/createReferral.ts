@@ -1,10 +1,10 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import jwtDecode from "jwt-decode";
+import { decode } from "jsonwebtoken";
 
 export const createReferral = async (friendID: string) => {
   const token: any = Cookies.get("token");
-  const user: any = jwtDecode(token);
+  const user: any = decode(token);
 
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/referral/`;
   const referralPayload = {

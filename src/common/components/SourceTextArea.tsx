@@ -29,7 +29,7 @@ const SourceTextArea = (props: ISourceTextArea) => {
       >
         <FaTimes className="text-3xl" />
       </Button>
-      <label htmlFor="source_text">
+      <label htmlFor="source_textarea">
         <textarea
           name="source_text"
           id="source_textarea"

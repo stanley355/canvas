@@ -6,7 +6,6 @@ import Cookies from "js-cookie";
 import Button from "./Button";
 import { toast } from "react-toastify";
 import { createReferral } from "../lib/createReferral";
-import Router from "next/router";
 import { sendFirebaseEvent } from "../lib/firebase/sendFirebaseEvent";
 import { SiTaichilang } from "react-icons/si";
 
@@ -86,6 +85,8 @@ const ReferralPromo = () => {
               className="rounded-md border p-2 border-gray-500 mb-2 w-full"
               name="referral"
               id="referral_input"
+              aria-label="referral_input"
+              aria-labelledby="referral_input"
             />
           </label>
           <Button
@@ -95,7 +96,7 @@ const ReferralPromo = () => {
             buttonClassName="w-full h-full"
           >
             {isLoading ? (
-              <div className="flex flex row items-center justify-center">
+              <div className="flex flex-row items-center justify-center">
                 <span className="mr-2">Processing</span>
                 <FaSpinner className="animate-spin" />
               </div>

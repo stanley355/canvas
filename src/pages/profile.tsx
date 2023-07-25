@@ -1,13 +1,13 @@
 import React from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import Cookies from "js-cookie";
-import jwtDecode from "jwt-decode";
+import { decode } from "jsonwebtoken";
+
 import Layout from "@/common/components/Layout";
 import Button from "@/common/components/Button";
 import MetaSEO from "@/common/components/MetaSEO";
 import ProfileBalance from "@/modules/profile/components/ProfileBalance";
 import { fetchUserData } from "@/modules/profile/lib/fetchUserData";
-import ReferralPromo from "@/common/components/ReferralPromo";
 import ProfileNews from "@/modules/profile/components/News";
 
 interface IProfile {
@@ -77,7 +77,7 @@ export const getServerSideProps: GetServerSideProps = async (
     };
   }
 
-  const decodedToken: any = jwtDecode(token);
+  const decodedToken: any = decode(token);
   const user = await fetchUserData(decodedToken.email);
 
   return {

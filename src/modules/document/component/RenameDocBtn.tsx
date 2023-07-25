@@ -1,17 +1,17 @@
 import React, { useState } from "react";
+import Router from "next/router";
 import { FaPen, FaSpinner, FaTimes } from "react-icons/fa";
 import Button from "@/common/components/Button";
 import { toast } from "react-toastify";
 import { updateDocumentName } from "../lib/updateDocumentName";
-import Cookies from "js-cookie";
-import jwtDecode from "jwt-decode";
 
 interface IRenameDocBtn {
   docID: string;
+  onChangeName?: (name: string) => void;
 }
 
 const RenameDocBtn = (props: IRenameDocBtn) => {
-  const { docID } = props;
+  const { docID, onChangeName } = props;
   const [openForm, setOpenForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -34,9 +34,16 @@ const RenameDocBtn = (props: IRenameDocBtn) => {
 
     const doc = await updateDocumentName(payload);
     if (doc?.id) {
-      toast.success("Document Name updated!");
-      setTimeout(() => window.location.reload(), 1000);
       setIsLoading(false);
+      toast.success("Document Name updated!");
+
+      const path = Router.asPath;
+      if (path === "/document") {
+        setTimeout(() => window.location.reload(), 1000);
+        return;
+      }
+
+      onChangeName && onChangeName(doc.name);
       return;
     }
 
@@ -63,7 +70,7 @@ const RenameDocBtn = (props: IRenameDocBtn) => {
           <label htmlFor="name_input">
             <input
               type="text"
-              placeholder="New Doc Name"
+              placeholder="Rename Document"
               id="name_input"
               name="name"
               className="p-2 rounded text-black"
@@ -76,7 +83,7 @@ const RenameDocBtn = (props: IRenameDocBtn) => {
             buttonClassName="w-full h-full hover:underline"
           >
             {isLoading ? (
-              <div className="flex flex row items-center justify-center">
+              <div className="flex flex-row items-center justify-center">
                 <FaSpinner className="animate-spin" />
               </div>
             ) : (

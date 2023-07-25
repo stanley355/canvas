@@ -1,9 +1,6 @@
 import React, { useMemo } from "react";
 import Button from "./Button";
-import { useQuery } from "@tanstack/react-query";
 import { FaArrowRight, FaClock, FaTimes } from "react-icons/fa";
-import Cookies from "js-cookie";
-import { decode } from "jsonwebtoken";
 
 interface IHistoryBar {
   pageType: "translate" | "checkbot";

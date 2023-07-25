@@ -1,6 +1,4 @@
 import axios from "axios";
-import Cookies from "js-cookie";
-import jwtDecode from "jwt-decode";
 
 export interface IUpdatePrompt {
   prompt_id: number;

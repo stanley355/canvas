@@ -1,12 +1,12 @@
 import React, { useState } from "react";
+import Router from "next/router";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
-import Router from "next/router";
 import Cookies from "js-cookie";
-import jwtDecode from "jwt-decode";
 
 import Button from "@/common/components/Button";
 import { createDocument } from "../lib/createDocument";
+import { decode } from "jsonwebtoken";
 
 const NewDocForm = () => {
   const [showError, setShowError] = useState(false);
@@ -26,7 +26,7 @@ const NewDocForm = () => {
 
     setIsLoading(true);
     const token: any = Cookies.get("token");
-    const user: any = jwtDecode(token);
+    const user: any = decode(token);
     const createDocPayload = {
       user_id: user.id,
       name,
@@ -76,7 +76,7 @@ const NewDocForm = () => {
           buttonClassName="w-full h-full"
         >
           {isLoading ? (
-            <div className="flex flex row items-center justify-center">
+            <div className="flex flex-row items-center justify-center">
               <span className="mr-2">Creating</span>
               <FaSpinner className="animate-spin" />
             </div>

@@ -1,5 +1,11 @@
 import React from "react";
-import { FaLanguage, FaRobot, FaPlusCircle, FaFile, FaDochub } from "react-icons/fa";
+import {
+  FaLanguage,
+  FaRobot,
+  FaPlusCircle,
+  FaFile,
+  FaDochub,
+} from "react-icons/fa";
 
 export const HOME_SEO = {
   title: "Language AI - Translation and Grammar Check",
@@ -42,7 +48,7 @@ export const TRANSLATE_COPYWRITING = [
     ],
   },
   {
-    icon: <FaDochub/>,
+    icon: <FaDochub />,
     title: "Doc Translate",
     link: "/document/",
     ctaText: "Translate Docs",
