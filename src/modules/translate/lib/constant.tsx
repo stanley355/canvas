@@ -144,9 +144,9 @@ export const LANGUAGE_LIST = [
 ];
 
 export const TRANSLATE_SEO = {
-  title: "Language AI - English and other Language Translator",
+  title: "Effortless Language Translation with AI: English and All Languages in the World",
   description:
-    "Unlock seamless translation across languages with Language AI's free and fast translation service. Effortlessly translate words, phrases, and web pages between English and over 100 languages. Join millions of individuals and teams benefiting from accurate translations instantly, and experience the power of Language AI today.",
+    "Get accurate and reliable translations with our online translation service. Our advanced machine translation technology ensures fast, high-quality results. Whether you need professional document translations or quick language assistance, we have you covered. Experience seamless communication across languages with our top-notch translation services.",
   keywords:
     "translate, translations, translation, translator, machine translation, online translation",
   url: `${process.env.NEXT_PUBLIC_BASE_URL}/translate`,

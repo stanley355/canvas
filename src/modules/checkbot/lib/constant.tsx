@@ -60,11 +60,11 @@ export const CHECKBOT_OPTIONS = [
 ];
 
 export const CHECKBOT_SEO = {
-  title: "Language AI Checkbot - Free Grammar Check",
+  title: "Improve Your Writing with Language AI Checkbot - Free Grammar Check",
   description:
     "Enhance Your Writing with Language AI  Grammar Checker | Fix Grammar, Spelling, and Punctuation Errors Instantly.",
   keywords:
-    "check grammar, spelling, punctuation, improve text, AI grammar checker, free grammar check, fix grammar, free online grammar check, improve writing, English checker tool, online grammar fixer",
+    "Improve your writing with the best AI grammar checker and free online grammar check tool. Fix grammar, spelling, punctuation errors, and enhance your text effortlessly. Elevate your writing skills and ensure flawless content with our powerful AI-driven grammar checker. Try it now for free!",
   url: `${process.env.NEXT_PUBLIC_BASE_URL}/checkbot`,
 };
 
