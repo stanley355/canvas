@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getArticleData = async (slug: string) => {
+export const getMediaPageData = async (slug: string) => {
   const query = `
     {
       article(filter: {slug: {eq: "${slug}"}}) {
@@ -18,6 +18,16 @@ export const getArticleData = async (slug: string) => {
           url
         }
         content(markdown: true)
+      }
+      allArticles(orderBy: _publishedAt_DESC, first: "5") {
+        id
+        title
+        slug
+        _publishedAt
+        heroImg {
+          alt
+          url
+        }
       }
     }
   `;
