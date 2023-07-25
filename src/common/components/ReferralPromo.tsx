@@ -86,6 +86,8 @@ const ReferralPromo = () => {
               className="rounded-md border p-2 border-gray-500 mb-2 w-full"
               name="referral"
               id="referral_input"
+              aria-label="referral_input"
+              aria-labelledby="referral_input"
             />
           </label>
           <Button
