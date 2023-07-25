@@ -1,6 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import jwtDecode from "jwt-decode";
+import { decode } from "jsonwebtoken";
 
 export interface ISaveUserPremiumPrompt {
   instruction: string;
@@ -17,7 +17,7 @@ export const saveUserPremiumPrompt = async (
   const token = Cookies.get("token");
   if (!token) return;
 
-  const decodedToken: any = jwtDecode(token);
+  const decodedToken: any = decode(token);
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/prompts/`;
   const savePromptPayload = {
     user_id: decodedToken.id,
