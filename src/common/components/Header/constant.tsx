@@ -1,6 +1,11 @@
-import { FaDochub, FaLanguage, FaRobot, FaUserCircle } from "react-icons/fa";
+import { FaDochub, FaLanguage, FaNewspaper, FaRobot, FaUserCircle } from "react-icons/fa";
 
 export const HEADER_MENU = [
+  {
+    title: "NewsLetter",
+    url: "/media/",
+    icon: <FaNewspaper />,
+  },
   {
     title: "DocTrans",
     url: "/document/",
