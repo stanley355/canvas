@@ -6,6 +6,7 @@ import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import Layout from '@/common/components/Layout';
 import { getMediaPageData } from '@/modules/media/lib/getMediaPageData';
 import MediaSplashScren from '@/modules/media/components/SplashScreen';
+import MetaSEO from '@/common/components/MetaSEO';
 
 interface IMediaSlug {
   article: any;
@@ -22,6 +23,12 @@ const MediaSlug = (props: IMediaSlug) => {
 
   return (
     <Layout>
+      <MetaSEO seo={{
+        title: article?.metaTags?.title,
+        description: article?.metaTags?.description,
+        keywords: article?.keywords,
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/media/${article.slug}`,
+      }} />
       <div className='container bg-white mx-auto p-4 text-black min-h-screen lg:grid lg:grid-cols-3 lg:gap-4'>
         <div className='lg:col-span-2'>
           <div className='lg:flex lg:items-center lg:flex-row-reverse lg:justify-between'>
