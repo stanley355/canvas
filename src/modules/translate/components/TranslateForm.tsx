@@ -143,7 +143,7 @@ const TranslateForm = (props: ITranslateForm) => {
             buttonClassName="w-full "
           >
             {isLoading ? (
-              <div className="flex flex row items-center justify-center">
+              <div className="flex flex-row items-center justify-center">
                 <span className="mr-2">Translating</span>
                 <FaSpinner className="animate-spin" />
               </div>
