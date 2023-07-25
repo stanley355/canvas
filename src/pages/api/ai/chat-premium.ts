@@ -19,18 +19,21 @@ const premiumCompletionAPI = async (
     },
   };
 
-  let response;
   try {
     const { data } = await axios(axiosConfig);
-    response = data;
+    res.setHeader("Content-Type", "application/json");
+    res.json(data);
   } catch (err: any) {
-    response = {
-      error: err.response.data ? err.response.data : err.message,
-    };
-  }
+    axiosConfig.data.model = "gpt-3.5-turbo";
 
-  res.setHeader("Content-Type", "application/json");
-  res.json(response);
+    try {
+      const { data } = await axios(axiosConfig);
+      res.setHeader("Content-Type", "application/json");
+      res.json(data);
+    } catch (error) {
+      res.status(500).send(err);
+    }
+  }
 };
 
 export default premiumCompletionAPI;
