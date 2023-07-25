@@ -1,5 +1,5 @@
 import React from "react";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import Link from "next/link";
 import { SiTaichilang } from "react-icons/si";
 
@@ -53,13 +53,12 @@ const MediaSlug = (props: IMediaHome) => {
 };
 
 export default MediaSlug;
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps= async () => {
   const { data } = await getMediaHomeData();
 
   return {
     props: {
       articles: data?.allArticles ? data.allArticles : null,
     },
-    revalidate: 60 * 60, // one hour
   };
 };
