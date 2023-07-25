@@ -43,6 +43,10 @@ const DocumentTranslate = (props: IDocumentTranslate) => {
   };
 
   useEffect(() => {
+    if (document?.name) {
+      updateState("docName", document.name);
+    }
+
     if (prompts?.length > 0) {
       updateState("prompts", prompts);
     }
@@ -76,9 +80,9 @@ const DocumentTranslate = (props: IDocumentTranslate) => {
             <FaArrowLeft />
             <span>Back</span>
           </Button>
-          <span className="font-semibold text-3xl">{document?.name}</span>
+          <span className="font-semibold text-3xl">{states.docName}</span>
           <div className="flex items-center gap-4">
-            <RenameDocBtn docID={document?.id} />
+            <RenameDocBtn docID={document?.id} onChangeName={(name) => updateState("docName", name)} />
             <DeleteDocBtn docID={document?.id} name={document?.name} />
           </div>
         </div>
