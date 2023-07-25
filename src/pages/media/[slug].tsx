@@ -25,7 +25,7 @@ const MediaSlug = (props: IMediaSlug) => {
       <div className='container bg-white mx-auto p-4 text-black min-h-screen lg:grid lg:grid-cols-3 lg:gap-4'>
         <div className='lg:col-span-2'>
           <div className='lg:flex lg:items-center lg:flex-row-reverse lg:justify-between'>
-            <div>{article?.__publishedAt && new Date(article?._publishedAt).toLocaleDateString()}</div>
+            <div>{article?._publishedAt && new Date(article?._publishedAt).toLocaleDateString()}</div>
             <div className='font-semibold text-lg lg:text-xl text-center my-4'>{article?.title}</div>
           </div>
           <div>
@@ -35,12 +35,15 @@ const MediaSlug = (props: IMediaSlug) => {
         </div>
         <div>
           <div className='font-semibold text-lg lg:text-xl text-center my-4'>Trending</div>
-          {sideArticles.length > 0 && sideArticles.map((article: any) => <Link href={`/media/${article.slug}/`} key={article.id}>
+          {sideArticles.length > 0 && sideArticles.map((article: any) => <div key={article.id}>
             <div>
               <img src={article?.heroImg?.url} alt={article?.heroImg?.alt} loading='lazy' className='rounded-md w-full h-auto' />
             </div>
-            <div className='font-semibold text-blue-900 text-xl underline pt-2 pb-6'>{article.title}</div>
-          </Link>)}
+            <Link href={`/media/${article.slug}/`}>
+              <div className='font-semibold text-blue-900 text-xl underline pt-2'>{article.title}</div>
+            </Link>
+            <div className='pb-6'>{article?._publishedAt && new Date(article?._publishedAt).toLocaleString()}</div>
+          </div>)}
         </div>
       </div>
     </Layout>
@@ -59,6 +62,7 @@ export const getStaticProps: GetStaticProps = async (
       article: data?.article ? data.article : null,
       sideArticles: data?.allArticles ? data.allArticles : null,
     },
+    revalidate: 60 * 60, // one hour
   };
 };
 
