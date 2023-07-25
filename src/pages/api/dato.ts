@@ -12,11 +12,10 @@ const datoCmsApi = async (req: NextApiRequest, res: NextApiResponse) => {
     data: JSON.stringify(req.body),
   };
 
-  let response;
   try {
     const { data } = await axios(axiosConfig);
     res.setHeader("Content-Type", "application/json");
-    res.json(response);
+    res.json(data);
   } catch (err: any) {
     res.status(500).send({ error: err });
   }
