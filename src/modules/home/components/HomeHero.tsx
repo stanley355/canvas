@@ -39,7 +39,11 @@ const HomeHero = () => (
               {des}
             </li>)}
           </ul>
-          <Button type="link" href={menu.url} title="Get Started" wrapperClassName="mx-auto w-fit p-1 border-white shadow shadow-gray-500 rounded mt-2 hover:bg-gradient-to-r hover:from-indigo-500" />
+          <Button 
+          type="link" 
+          href={menu.url} 
+          title="Get Started" 
+          wrapperClassName="mx-auto w-fit p-1 border-white shadow shadow-gray-500 rounded mt-2 hover:bg-gradient-to-r hover:from-indigo-500" />
         </div>
       )}
     </div>
