@@ -8,7 +8,7 @@ export const HEADER_MENU = [
     desc:
       [
         "Translate All Languages",
-        "10x Better than Google Translate",
+        "Keep Translations in Documents",
         "100% Free",
       ]
   },
@@ -18,9 +18,9 @@ export const HEADER_MENU = [
     icon: <FaNewspaper />,
     desc:
       [
-        "Translate All Languages",
-        "10x Better than Google Translate",
-        "100% Free",
+        "AI News Around The World",
+        "Updated Everyday",
+        "News in All Languages",
       ]
   },
   {

@@ -5,7 +5,7 @@ import { HEADER_MENU } from "@/common/components/Header/constant";
 import Button from "@/common/components/Button";
 
 const HomeHero = () => (
-  <div className={classNames("bg-gradient-to-b from-black via-blue-900 to-white h-screen p-4")}>
+  <div className={classNames("bg-gradient-to-b from-black via-blue-900 to-white lg:h-screen p-4")}>
     <h1 className="text-center text-4xl mb-4 lg:m-8 lg:text-6xl">LanguageAI</h1>
     <div className="text-2xl text-center">
       AI Translation and Text Analysis for All Languages

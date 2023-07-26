@@ -48,7 +48,8 @@ const Header = () => {
         wrapperClassName="text-md active:underline lg:hidden"
       />
       {(showModal || isDesktop) && (
-        <div className="bg-black absolute lg:static lg:flex lg:gap-2 top-16 left-0 text-lg lg:text-xl w-full lg:w-fit h-screen lg:h-fit px-2 lg:px-0">
+        <div className="bg-gradient-to-b from-black via-blue-900 to-white lg:bg-gradient-to-b lg:from-black
+         absolute lg:static lg:flex lg:gap-2 top-16 left-0 text-lg lg:text-xl w-full lg:w-fit h-screen lg:h-fit px-2 lg:px-0">
           {HEADER_MENU.filter((menu) =>
             token ? menu.title !== "Login" : menu.title !== "Profile"
           ).map((menu, i) => (
