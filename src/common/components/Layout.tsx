@@ -13,7 +13,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <>
       <Header />
       <main
-        className={classNames("h-min-screen pt-16 lg:pt-0", inter.className)}
+        className={classNames("h-min-screen pt-16 lg:pt-12", inter.className)}
       >
         {children}
       </main>

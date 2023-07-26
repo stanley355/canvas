@@ -2,24 +2,14 @@ import { FaDochub, FaLanguage, FaNewspaper, FaRobot, FaUserCircle } from "react-
 
 export const HEADER_MENU = [
   {
-    title: "NewsLetter",
-    url: "/media/",
-    icon: <FaNewspaper />,
-  },
-  {
     title: "DocTrans",
     url: "/document/",
     icon: <FaDochub />,
   },
   {
-    title: "AI Checkbot+",
-    url: "/premium/checkbot/",
-    icon: <FaRobot />,
-  },
-  {
-    title: "AI Translate+",
-    url: "/premium/translate/",
-    icon: <FaLanguage />,
+    title: "NewsLetter",
+    url: "/media/",
+    icon: <FaNewspaper />,
   },
   {
     title: "AI Checkbot",
@@ -27,8 +17,18 @@ export const HEADER_MENU = [
     icon: <FaRobot />,
   },
   {
+    title: "AI Checkbot+",
+    url: "/premium/checkbot/",
+    icon: <FaRobot />,
+  },
+  {
     title: "AI Translate",
     url: "/translate/",
+    icon: <FaLanguage />,
+  },
+  {
+    title: "AI Translate+",
+    url: "/premium/translate/",
     icon: <FaLanguage />,
   },
   {
