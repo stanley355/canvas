@@ -19,11 +19,11 @@ const Home = () => {
       <HomeHero />
       <HomeCopywriting />
       <div className="bg-white">
-        <div className="container mx-auto ">
+        <div className="container mx-auto pb-4">
           <ReferralPromo />
         </div>
       </div>
-      <div className="container mx-auto h-fit py-20">
+      <div className="lg:py-16 bg-gradient-to-b from-white via-blue-500 to-black">
 
       <LoginForm />
       </div>
