@@ -29,7 +29,7 @@ export const handleGoogleLogin = async (token: any) => {
 
     const path = Router.asPath;
     if (path === "/register" || path === "/login") {
-      window.location.href = "/#homeServices";
+      window.location.href = "/";
       return;
     }
 

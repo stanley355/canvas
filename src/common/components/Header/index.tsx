@@ -4,6 +4,7 @@ import { FaAngleRight } from "react-icons/fa";
 import { SiTaichilang } from "react-icons/si";
 import cookie from "js-cookie";
 import classNames from "classnames";
+
 import { HEADER_MENU } from "./constant";
 import Button from "../Button";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
@@ -27,7 +28,7 @@ const Header = () => {
   return (
     <nav
       className={classNames(
-        "bg-black w-full p-4 lg:py-2 flex flex-row items-center justify-between fixed lg:relative z-10",
+        "bg-black w-full p-4 lg:py-2 flex flex-row items-center justify-between fixed z-10",
         inter.className
       )}
     >
@@ -43,12 +44,11 @@ const Header = () => {
       <Button
         type="button"
         title={showModal ? "Close" : "Menu"}
-        ariaLabel="header_menu_btn"
         onClick={() => setShowModal(!showModal)}
         wrapperClassName="text-md active:underline lg:hidden"
       />
       {(showModal || isDesktop) && (
-        <div className="bg-black absolute lg:static lg:flex lg:gap-4 top-16 left-0 text-lg lg:text-xl w-full lg:w-fit h-screen lg:h-fit px-2 lg:px-0">
+        <div className="bg-gradient-to-b from-black via-blue-900 to-white lg:bg-gradient-to-b lg:from-black absolute lg:static lg:flex lg:gap-2 top-16 left-0 text-lg lg:text-xl w-full lg:w-fit h-screen lg:h-fit px-2 lg:px-0">
           {HEADER_MENU.filter((menu) =>
             token ? menu.title !== "Login" : menu.title !== "Profile"
           ).map((menu, i) => (
@@ -56,14 +56,16 @@ const Header = () => {
               type="link"
               key={menu.url}
               href={menu.url}
-              buttonClassName="flex items-center gap-2"
+              buttonClassName="flex items-center gap-2 w-full h-full"
               wrapperClassName={classNames(
-                "border-b lg:border-b-0 p-2 lg:p-0 hover:border-b",
+                "border-b lg:border-b-0 p-2 lg:bg-white lg:text-black lg:rounded-full group lg:hover:bg-blue-900 lg:hover:text-white lg:bg-gradient-to-r lg:from-blue-500",
                 i === 0 ? "border-t lg:border-t-0" : ""
               )}
             >
-              {menu.icon}
-              <span>{menu.title}</span>
+              <span>{menu.icon}</span>
+              <span className=" lg:text-sm lg:font-semibold lg:group-hover:block">
+                {menu.title}
+              </span>
               <FaAngleRight className="ml-auto lg:hidden" />
             </Button>
           ))}

@@ -56,17 +56,17 @@ const ReferralPromo = () => {
   };
 
   return (
-    <div className="bg-white w-full text-black rounded lg:flex lg:gap-4 mb-4">
+    <div className="bg-white w-full text-black rounded lg:flex lg:justify-between mb-4">
       {showLogin && <LoginModal isFree={false} />}
       <div className="p-4 lg:w-2/5">
-        <div className="flex items-center gap-2 justify-center text-2xl mb-2">
+        <div className="flex lg:hidden items-center gap-2 justify-center text-2xl mb-2">
           <SiTaichilang />
           <span>LanguageAI</span>
         </div>
-        <div className="text-3xl text-center font-semibold mb-4">
+        <div className="text-3xl lg:text-5xl text-center lg:text-left font-semibold mb-4">
           <div>Refer A Friend</div>
           <div>Get Premium</div>
-          <div className="text-xl font-normal mt-2">
+          <div className="text-lg font-normal mt-2">
             Get <strong>Rp5000</strong> premium quota for every friend you
             invited (*your friend will get it too!)
           </div>
@@ -108,18 +108,18 @@ const ReferralPromo = () => {
 
         <Button
           type="link"
-          href="/profile"
+          href="/profile/"
           title="See my referral ID"
-          wrapperClassName="underline text-blue-500"
+          wrapperClassName="underline text-blue-900"
         />
       </div>
-      <div className="hidden lg:block lg:w-3/4">
+      <div className="hidden lg:block lg:w-1/2">
         <Image
           src="/images/referral_hero.jpg"
           alt="LanguageAI Referral"
           width={400}
           height={400}
-          className="w-full h-full"
+          className="w-full h-full rounded-md"
         />
       </div>
     </div>

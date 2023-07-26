@@ -53,7 +53,7 @@ const MediaSlug = (props: IMediaHome) => {
 };
 
 export default MediaSlug;
-export const getServerSideProps: GetServerSideProps= async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const { data } = await getMediaHomeData();
 
   return {
