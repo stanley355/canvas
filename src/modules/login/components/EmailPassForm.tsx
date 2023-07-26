@@ -43,7 +43,7 @@ const EmailPassForm = () => {
 
       const path = Router.asPath;
       if (path === "/register" || path === "/login") {
-        window.location.href = "/#homeServices";
+        window.location.href = "/";
         return;
       }
 
