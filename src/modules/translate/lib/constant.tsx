@@ -144,7 +144,8 @@ export const LANGUAGE_LIST = [
 ];
 
 export const TRANSLATE_SEO = {
-  title: "Effortless Language Translation with AI: English and All Languages in the World",
+  title:
+    "Effortless Language Translation with AI: English and All Languages in the World",
   description:
     "Get accurate and reliable translations with our online translation service. Our advanced machine translation technology ensures fast, high-quality results. Whether you need professional document translations or quick language assistance, we have you covered. Experience seamless communication across languages with our top-notch translation services.",
   keywords:

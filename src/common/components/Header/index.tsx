@@ -29,7 +29,7 @@ const Header = () => {
     <nav
       className={classNames(
         "bg-black w-full p-4 lg:py-2 flex flex-row items-center justify-between fixed z-10",
-        inter.className,
+        inter.className
       )}
     >
       <Button
@@ -59,11 +59,13 @@ const Header = () => {
               buttonClassName="flex items-center gap-2 w-full h-full"
               wrapperClassName={classNames(
                 "border-b lg:border-b-0 p-2 lg:bg-white lg:text-black lg:rounded-full group lg:hover:bg-blue-900 lg:hover:text-white lg:bg-gradient-to-r lg:from-blue-500",
-                i === 0 ? "border-t lg:border-t-0" : "",
+                i === 0 ? "border-t lg:border-t-0" : ""
               )}
             >
               <span>{menu.icon}</span>
-              <span className=" lg:text-sm lg:font-semibold lg:group-hover:block">{menu.title}</span>
+              <span className=" lg:text-sm lg:font-semibold lg:group-hover:block">
+                {menu.title}
+              </span>
               <FaAngleRight className="ml-auto lg:hidden" />
             </Button>
           ))}

@@ -8,7 +8,8 @@ import {
 } from "react-icons/fa";
 
 export const HOME_SEO = {
-  title: "Language AI: Translate, Translation, and Grammar Check | Free Grammar Check",
+  title:
+    "Language AI: Translate, Translation, and Grammar Check | Free Grammar Check",
   description:
     "Unlock the power of Language AI for flawless translations, grammar checks, and punctuation assistance. Our free grammar check tool ensures error-free content while our machine translation feature helps you break language barriers. Enhance your writing with accurate translations and impeccable grammar - all in one place. Try it now!",
   keywords:
