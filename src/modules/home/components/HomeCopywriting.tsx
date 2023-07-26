@@ -46,7 +46,7 @@ const HomeCopywriting = () => {
   );
 
   return (
-    <div className="bg-white">
+    <div className="bg-white pb-16">
       <div className="container mx-auto h-screen p-4 text-black lg:grid lg:grid-cols-2 lg:gap-4">
         <div className="mb-4">
           <div className=" font-semibold text-4xl lg:text-6xl mb-4">
@@ -68,7 +68,7 @@ const HomeCopywriting = () => {
         />
         {!isDesktop && <FirstCTAGroup />}
       </div>
-      <div className="container mx-auto h-screen lg:h-fit p-4 text-black lg:flex  gap-4">
+      <div className="container mx-auto h-fit p-4 text-black lg:flex  gap-4">
         <div className="mb-4 lg:order-last">
           <div className=" font-semibold text-4xl lg:text-6xl mb-4">
             Unlock limitless opportunities

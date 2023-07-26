@@ -71,10 +71,20 @@ export const HEADER_MENU = [
     title: "Profile",
     url: "/profile/",
     icon: <FaUserCircle />,
+    desc: [
+      "AI News Around The World",
+      "Updated Everyday",
+      "News in All Languages",
+    ],
   },
   {
     title: "Login",
     url: "/login/",
     icon: <FaUserCircle />,
+    desc: [
+      "AI News Around The World",
+      "Updated Everyday",
+      "News in All Languages",
+    ],
   },
 ];
