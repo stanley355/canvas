@@ -121,16 +121,15 @@ const PremiumTranslate = () => {
       </div>
       <div className="bg-white">
         <div className="container mx-auto p-2 lg:px-0">
-
-        <PaypalBanner />
-        <ReferralPromo />
-        <div className="text-black mb-4">
-          <div>How does Premium Checkbot Compared to the Original?</div>
-          <ComparisonTable comparisons={TRANSLATE_COMPARISON} />
-        </div>
-        <div className="bg-black py-4 rounded">
-          <FeedbackBox />
-        </div>
+          <PaypalBanner />
+          <ReferralPromo />
+          <div className="text-black mt-8">
+            <div>How does Premium Checkbot Compared to the Original?</div>
+            <ComparisonTable comparisons={TRANSLATE_COMPARISON} />
+          </div>
+          <div className="bg-black py-4 rounded">
+            <FeedbackBox />
+          </div>
         </div>
       </div>
     </Layout >

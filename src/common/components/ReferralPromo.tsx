@@ -58,7 +58,7 @@ const ReferralPromo = () => {
   return (
     <div className="bg-white w-full text-black rounded lg:flex lg:justify-between mb-4">
       {showLogin && <LoginModal isFree={false} />}
-      <div className="p-4 lg:w-2/5">
+      <div className="p-4 shadow-lg shadow-slate-400 rounded-lg lg:shadow-none lg:w-2/5">
         <div className="flex lg:hidden items-center gap-2 justify-center text-2xl mb-2">
           <SiTaichilang />
           <span>LanguageAI</span>
