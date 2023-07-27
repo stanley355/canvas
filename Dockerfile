@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:18-alpine as builder
 
 # Pass the environment variables to the build command
 ARG NEXT_PUBLIC_BASE_URL
@@ -37,20 +37,23 @@ ENV NEXT_PUBLIC_OPENAI_API_KEY=$NEXT_PUBLIC_OPENAI_API_KEY
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json (if exists)
 COPY package*.json ./
-
-# Install project dependencies
 RUN yarn
-
-# Copy the entire project directory to the container
 COPY . .
-
-# Build the Next.js app for production
 RUN yarn build
 
-# Expose the desired port (default is 3000 for Next.js)
+
+FROM node:18-alpine as runner
+
+WORKDIR /app
+
+COPY --from=builder /app/package.json .
+COPY --from=builder /app/yarn.lock .
+COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/.static
+
 EXPOSE 3000
 
-# Start the Next.js app
 CMD ["yarn", "start"]
