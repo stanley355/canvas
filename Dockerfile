@@ -56,4 +56,4 @@ COPY --from=builder /app/.next/static ./.next/.static
 
 EXPOSE 3000
 
-CMD ["yarn", "start"]
+CMD ["node", "server.js"]
