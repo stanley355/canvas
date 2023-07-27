@@ -3,11 +3,15 @@ import axios from "axios";
 export const getMediaHomeData = async () => {
   const query = `
     {
-      allArticles(orderBy: _publishedAt_DESC, first: "40") {
+      allArticles(orderBy: _publishedAt_DESC, first: "100") {
         id
         title
         slug
         _publishedAt
+        metaTags {
+          title
+          description
+        }
         heroImg {
           alt
           url
