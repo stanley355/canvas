@@ -49,7 +49,7 @@ const CheckBot = () => {
         />
       )}
       <MetaSEO seo={PREMIUM_CHECKBOT_SEO} />
-      <div className="bg-white">
+      <div className="bg-gradient-to-b from-white via-slate-400 to-white pb-6">
         <div className="container mx-auto p-2 lg:px-2">
           <h1
             className="text-black my-4 text-3xl rounded flex items-center justify-center font-semibold lg:w-1/3 lg:mx-auto"
@@ -78,7 +78,10 @@ const CheckBot = () => {
               onCloseClick={() => updateState("showHistory", false)}
             />
           )}
-
+        </div>
+      </div>
+      <div className="bg-white pb-4">
+        <div className="container mx-auto p-2 lg:px-2">
           <PaypalBanner />
           <ReferralPromo />
           <div className="text-black mb-4 mt-8">

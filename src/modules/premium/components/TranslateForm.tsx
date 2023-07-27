@@ -137,11 +137,11 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
           <input
             id="context_input"
             name="context"
-            className="w-full rounded p-2 mb-2 bg-transparent text-black border border-gray-500"
+            className="w-full rounded p-2 mb-2 bg-white text-black border border-gray-500"
             placeholder="Context (what the text is about) "
           />
         </label>
-        <div className="rounded border border-gray-500">
+        <div className="rounded border border-gray-500 bg-white">
           <PremiumSourceTextArea sourceText={imageText || originalText} />
           <div
             className={classNames(
@@ -165,7 +165,7 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
               buttonClassName="w-full"
             >
               {isLoading ? (
-                <div className="flex flex row items-center justify-center">
+                <div className="flex flex-row items-center justify-center">
                   <span className="mr-2">Translating</span>
                   <FaSpinner className="animate-spin" />
                 </div>
