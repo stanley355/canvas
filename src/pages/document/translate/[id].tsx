@@ -69,6 +69,7 @@ const DocumentTranslate = (props: IDocumentTranslate) => {
   return (
     <Layout>
       <MetaSEO seo={TRANSLATE_SEO} />
+      <div className="bg-gradient-to-br from-white via-blue-300 to-white">
       <div className="bg-white container mx-auto h-screen relative">
         <div className="flex items-center justify-between text-black border-b border-gray-500 p-4">
           <Button
@@ -99,6 +100,7 @@ const DocumentTranslate = (props: IDocumentTranslate) => {
             updateState={updateState}
           />
         )}
+        </div>
       </div>
     </Layout>
   );

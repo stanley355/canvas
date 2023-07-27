@@ -22,32 +22,34 @@ const Document = (props: IDocument) => {
   return (
     <Layout>
       <MetaSEO seo={HOME_SEO} />
-      <div className="container mx-auto bg-white text-black p-4 h-screen overflow-y-scroll">
-        <div className="flex items-center justify-between">
-          <h1 className="text-xl font-bold">My Documents</h1>
-          <Button
-            type="button"
-            wrapperClassName="w-fit bg-blue-900 text-white p-2 font-semibold rounded"
-            buttonClassName="w-full h-full flex items-center gap-2"
-            onClick={() => setShowAddDoc(!showAddDoc)}
-          >
-            {showAddDoc ? <FaTimesCircle /> : <FaPlusCircle />}
-            <span>{showAddDoc ? "Close Form" : "Add New"}</span>
-          </Button>
-        </div>
+      <div className="bg-gradient-to-br from-white via-blue-300 to-white">
+        <div className="container mx-auto bg-gradient-to-br from-white via-blue-300 to-white text-black p-4 h-screen">
+          <div className="flex items-center justify-between">
+            <h1 className="text-xl font-bold">My Documents</h1>
+            <Button
+              type="button"
+              wrapperClassName="w-fit bg-blue-900 text-white p-2 font-semibold rounded"
+              buttonClassName="w-full h-full flex items-center gap-2"
+              onClick={() => setShowAddDoc(!showAddDoc)}
+            >
+              {showAddDoc ? <FaTimesCircle /> : <FaPlusCircle />}
+              <span>{showAddDoc ? "Close Form" : "Add New"}</span>
+            </Button>
+          </div>
 
-        <div className="py-4">
-          {showAddDoc && <NewDocForm />}
-          {documents?.length > 0 ? (
-            <DocumentList documents={documents} />
-          ) : (
-            <div className="mt-8 text-center">
-              *
-              {showAddDoc
-                ? "Click Close Form to close"
-                : "Click Add New to add new Document"}
-            </div>
-          )}
+          <div className="py-4">
+            {showAddDoc && <NewDocForm />}
+            {documents?.length > 0 ? (
+              <DocumentList documents={documents} />
+            ) : (
+              <div className="mt-8 text-center">
+                *
+                {showAddDoc
+                  ? "Click Close Form to close"
+                  : "Click Add New to add new Document"}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </Layout>

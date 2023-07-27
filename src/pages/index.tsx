@@ -24,8 +24,7 @@ const Home = () => {
         </div>
       </div>
       <div className="lg:py-16 bg-gradient-to-b from-white via-blue-500 to-black">
-
-      <LoginForm />
+        <LoginForm />
       </div>
     </Layout>
   );

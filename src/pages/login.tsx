@@ -24,9 +24,10 @@ const LoginPage = () => {
   return (
     <Layout>
       <MetaSEO seo={seo} />
-      <div className="container mx-auto">
-        <LoginForm />
-        <ReferralPromo />
+      <div className="bg-gradient-to-b from-black via-blue-900 to-white pb-4">
+        <div className="container py-4 h-screen mx-auto">
+          <LoginForm />
+        </div>
       </div>
     </Layout>
   );

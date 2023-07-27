@@ -38,6 +38,7 @@ const Profile = (props: IProfile) => {
   return (
     <Layout>
       <MetaSEO seo={seo} />
+      <div className="bg-gradient-to-br from-white via-blue-300 to-white">
       <div className="container mx-auto min-h-screen lg:flex">
         <div className="p-4 lg:w-fit text-black border-b bg-white">
           <div className="border border-gray-500 p-2 mb-4 rounded lg:flex lg:gap-2 lg:w-fit">
@@ -57,6 +58,7 @@ const Profile = (props: IProfile) => {
           />
         </div>
         <ProfileNews />
+      </div>
       </div>
     </Layout>
   );

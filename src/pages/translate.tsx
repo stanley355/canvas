@@ -55,63 +55,69 @@ const LangTranslate = () => {
   return (
     <Layout>
       <MetaSEO seo={TRANSLATE_SEO} />
-      <div className="lg:container mx-auto px-2 lg:px-0">
-        <div className="flex items-center justify-between my-4">
-          <h1
-            className="text-xl lg:text-2xl flex items-center justify-center"
-            id="title"
-          >
-            <FaLanguage className="text-4xl mr-2" />
-            <span>Translate</span>
-          </h1>
-          <MediaSelect
-            onChange={(opt) =>
-              updateState("isImageTranslate", opt.value === "image")
-            }
-          />
-        </div>
-        <div className="lg:grid lg:grid-cols-2 lg:gap-8 mb-8">
-          {isImageTranslate ? (
-            <ImageToTextUploader
-              titleColor="white"
-              dispatch={onImageTextDispatch}
-            />
-          ) : (
-            <TranslateForm
-              originalText={originalText}
-              imageText={imageText}
-              onReuploadClick={() => updateState("isImageTranslate", true)}
-              dispatchLoginForm={() => updateState("showLogin", true)}
-              dispatchTranslateVal={(val) =>
-                updateState("translateCompletion", val)
+      <div className="bg-gradient-to-b from-black via-blue-900 to-white pb-4">
+        <div className="lg:container mx-auto px-2 lg:px-0">
+          <div className="flex items-center justify-between my-4">
+            <h1
+              className="text-xl lg:text-2xl flex items-center justify-center"
+              id="title"
+            >
+              <FaLanguage className="text-4xl mr-2" />
+              <span>Translate</span>
+            </h1>
+            <MediaSelect
+              onChange={(opt) =>
+                updateState("isImageTranslate", opt.value === "image")
               }
             />
+          </div>
+          <div className="lg:grid lg:grid-cols-2 lg:gap-8 mb-8">
+            {isImageTranslate ? (
+              <ImageToTextUploader
+                titleColor="white"
+                dispatch={onImageTextDispatch}
+              />
+            ) : (
+              <TranslateForm
+                originalText={originalText}
+                imageText={imageText}
+                onReuploadClick={() => updateState("isImageTranslate", true)}
+                dispatchLoginForm={() => updateState("showLogin", true)}
+                dispatchTranslateVal={(val) =>
+                  updateState("translateCompletion", val)
+                }
+              />
+            )}
+            <TranslateResult translateVal={translateCompletion} />
+          </div>
+          <Button
+            type="button"
+            wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer mb-8"
+            buttonClassName="w-full flex items-center gap-2 h-full"
+            onClick={() => {
+              sendFirebaseEvent("show_history", {});
+              updateState("showHistory", !showHistory);
+            }}
+          >
+            <FaClock />
+            <span>Show History</span>
+          </Button>
+          {showHistory && (
+            <HistoryBar
+              pageType="translate"
+              onHistoryClick={handleHistoryClick}
+              onCloseClick={() => updateState("showHistory", false)}
+            />
           )}
-          <TranslateResult translateVal={translateCompletion} />
         </div>
-        <Button
-          type="button"
-          wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer mb-8"
-          buttonClassName="w-full flex items-center gap-2 h-full"
-          onClick={() => {
-            sendFirebaseEvent("show_history", {});
-            updateState("showHistory", !showHistory);
-          }}
-        >
-          <FaClock />
-          <span>Show History</span>
-        </Button>
-        {showHistory && (
-          <HistoryBar
-            pageType="translate"
-            onHistoryClick={handleHistoryClick}
-            onCloseClick={() => updateState("showHistory", false)}
-          />
-        )}
-        <PaypalBanner />
-        <ReferralPromo />
-        <TranslateComparison />
-        <FeedbackBox />
+      </div>
+      <div className="bg-gradient-to-b from-white via-blue-900 to-black">
+        <div className="lg:container mx-auto px-2 lg:px-0">
+          <PaypalBanner />
+          <ReferralPromo />
+          <TranslateComparison />
+          <FeedbackBox />
+        </div>
       </div>
       {showLogin && <LoginModal isFree />}
     </Layout>
