@@ -38,26 +38,26 @@ const CheckBot = () => {
   return (
     <Layout>
       <MetaSEO seo={CHECKBOT_SEO} />
-      <div className="lg:container mx-auto px-2 lg:px-0">
-        <h1 className="flex flex-row items-center text-2xl lg:text-4xl justify-center my-4">
-          <FaRobot className="text-3xl mr-2" />
-          <span>AI Checkbot</span>
-        </h1>
-        <CheckbotArea states={states} updateState={updateState} />
-        <Button
-          type="button"
-          wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer mb-8"
-          buttonClassName="w-full flex items-center gap-2 h-full"
-          onClick={() => {
-            sendFirebaseEvent("show_history", {});
-            updateState("showHistory", !showHistory);
-          }}
-        >
-          <FaClock />
-          <span>Show History</span>
-        </Button>
-        <PaypalBanner />
-        <ReferralPromo />
+      <div className="bg-gradient-to-b from-black via-blue-900 to-white pb-4">
+        <div className="lg:container mx-auto px-2 lg:px-0">
+          <h1 className="flex flex-row items-center text-2xl lg:text-4xl justify-center my-4">
+            <FaRobot className="text-3xl mr-2" />
+            <span>AI Checkbot</span>
+          </h1>
+          <CheckbotArea states={states} updateState={updateState} />
+          <Button
+            type="button"
+            wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer mb-8"
+            buttonClassName="w-full flex items-center gap-2 h-full"
+            onClick={() => {
+              sendFirebaseEvent("show_history", {});
+              updateState("showHistory", !showHistory);
+            }}
+          >
+            <FaClock />
+            <span>Show History</span>
+          </Button>
+        </div>
         {showHistory && (
           <HistoryBar
             pageType="checkbot"
@@ -65,8 +65,15 @@ const CheckBot = () => {
             onCloseClick={() => updateState("showHistory", false)}
           />
         )}
-        <CheckbotComparison />
-        <FeedbackBox />
+      </div>
+      <div className="bg-gradient-to-b from-white via-blue-900 to-black">
+        <div className="lg:container mx-auto px-2 lg:px-0">
+          <PaypalBanner />
+          <ReferralPromo />
+
+          <CheckbotComparison />
+          <FeedbackBox />
+        </div>
       </div>
       {showLogin && <LoginModal isFree />}
     </Layout>
