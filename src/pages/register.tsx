@@ -24,9 +24,10 @@ const Register = () => {
   return (
     <Layout>
       <MetaSEO seo={seo} />
-      <div className="container mx-auto p-4">
-        <RegisterForm />
-        <ReferralPromo />
+      <div className="bg-gradient-to-b from-black via-blue-900 to-white pb-4">
+        <div className="container mx-auto p-4 h-screen">
+          <RegisterForm />
+        </div>
       </div>
     </Layout>
   );

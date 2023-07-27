@@ -6,7 +6,7 @@ import EmailPassForm from "./EmailPassForm";
 
 const LoginForm = () => {
   return (
-    <div className="flex flex-col items-center justify-center p-4 w-full lg:w-1/4 m-auto bg-black rounded-md">
+    <div className="flex flex-col items-center justify-center p-4 w-full lg:w-1/3 m-auto mb-4 bg-transparent rounded-md">
       <h1 className="flex flex-row items-center justify-center text-2xl mb-2">
         <SiTaichilang />
         <span className="ml-2">Login</span>
