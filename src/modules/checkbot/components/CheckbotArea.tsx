@@ -39,7 +39,7 @@ const CheckbotArea = (props: ICheckbotArea) => {
         {!resultFormat && <CheckboxResult checkbotVal={checkbotCompletion} />}
         {resultFormat && (
           <>
-            <div className="border border-gray-500 h-80 rounded-md p-2 overflow-auto bg-white">
+            <div className="border border-gray-500 h-80 rounded-md p-2 overflow-y-auto bg-white">
               {resultFormat === "removed" && checkbotRemoved}
               {resultFormat === "added" && checkbotAdded}
             </div>
