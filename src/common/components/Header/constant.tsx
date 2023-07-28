@@ -13,8 +13,8 @@ export const HEADER_MENU = [
     url: "/gpt4indo/",
     icon: <SiOpenai />,
     desc: [
-      "Translate All Languages",
-      "Keep Translations in Documents",
+      "GPT4 in Indonesian",
+      "Ask Anything",
       "100% Free",
     ],
   },
@@ -28,16 +28,7 @@ export const HEADER_MENU = [
       "100% Free",
     ],
   },
-  {
-    title: "NewsLetter",
-    url: "/media/",
-    icon: <FaNewspaper />,
-    desc: [
-      "AI News Around The World",
-      "Updated Everyday",
-      "News in All Languages",
-    ],
-  },
+
   {
     title: "AI Checkbot",
     url: "/checkbot/",
@@ -76,6 +67,16 @@ export const HEADER_MENU = [
       "Translate All Languages",
       "20x Better than Google Translate",
       "Rp1 per word",
+    ],
+  },
+  {
+    title: "NewsLetter",
+    url: "/media/",
+    icon: <FaNewspaper />,
+    desc: [
+      "AI News Around The World",
+      "Updated Everyday",
+      "News in All Languages",
     ],
   },
   {

@@ -7,7 +7,7 @@ import Button from "@/common/components/Button";
 const HomeHero = () => (
   <div
     className={classNames(
-      "bg-gradient-to-b from-black via-blue-900 to-white lg:h-screen p-4"
+      "bg-gradient-to-b from-black via-blue-900 to-white lg:h-screen p-4 pb-8"
     )}
   >
     <h1 className="text-center text-4xl mb-4 lg:m-8 lg:text-6xl">LanguageAI</h1>
@@ -15,7 +15,7 @@ const HomeHero = () => (
       AI Translation and Text Analysis for All Languages
     </div>
     <div className="mt-12 lg:hidden">
-      {HEADER_MENU.slice(0, 6).map((menu, i: number) => (
+      {HEADER_MENU.slice(0, 7).map((menu, i: number) => (
         <Button
           type="link"
           href={menu.url}
@@ -32,10 +32,10 @@ const HomeHero = () => (
       ))}
     </div>
     <div className="mt-12 hidden w-1/2 mx-auto lg:grid grid-cols-2 gap-4">
-      {HEADER_MENU.slice(0, 6).map((menu) => (
+      {HEADER_MENU.slice(0, 7).map((menu, index) => (
         <div
           key={menu.title}
-          className="bg-white rounded-md text-black p-2 group"
+          className={classNames("bg-white rounded-md text-black p-2 group", index === 6 ? "hidden" : "")}
         >
           <div className="text-2xl flex items-center gap-2 mb-2">
             <span className="text-3xl">{menu.icon}</span>
