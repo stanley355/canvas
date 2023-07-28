@@ -15,7 +15,7 @@ const GoogleLoginBtn = () => {
         shape="rectangular"
         size="large"
         text="signin_with"
-        width="350"
+        width={350}
       />
     </GoogleOAuthProvider>
   );
