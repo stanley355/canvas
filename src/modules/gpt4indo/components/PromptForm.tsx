@@ -11,6 +11,7 @@ interface IPromptForm {
 
 const PromptForm = (props: IPromptForm) => {
   const { dispatchPrompt, dispatchCompletion } = props;
+  const [promptVal, setPromptVal] = useState("Masukkan Instruksi Anda");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -25,6 +26,7 @@ const PromptForm = (props: IPromptForm) => {
 
     dispatchPrompt(prompt);
     setIsLoading(true);
+    setPromptVal("");
     const { content } = await handlePrompt(prompt)
     if (content) {
       dispatchCompletion(prompt, content);
@@ -43,7 +45,11 @@ const PromptForm = (props: IPromptForm) => {
     <form className='bg-gray-700 absolute left-0 bottom-0 w-full p-2 pb-4 text-black' onSubmit={handleSubmit}>
       <div className='w-full lg:w-2/3 rounded-md bg-white flex items-center lg:mx-auto'>
         <label htmlFor="prompt_text" className='rounded-t rounded-lg w-[90%] lg:w-[95%]'>
-          <textarea name="prompt" id="prompt_text" placeholder='Masukkan Instruksi Anda' className='w-full rounded p-1 bg-transparent outline-none resize-none overflow-y-auto' />
+          <textarea name="prompt" id="prompt_text"
+            value={promptVal}
+            className='w-full rounded p-1 bg-transparent outline-none resize-none overflow-y-auto'
+            onChange={(e) => setPromptVal(e.target.value)}
+          />
         </label>
         <Button type='submit' wrapperClassName='w-[10%] lg:w-[5%]' buttonClassName='w-full h-full' disabled={isLoading}>
           {isLoading ? <FaSpinner className='mx-auto text-2xl animate-spin' /> :
