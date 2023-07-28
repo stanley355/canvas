@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { SiOpenai } from 'react-icons/si';
-import { FaCopy, FaSpinner, FaUserCircle } from 'react-icons/fa';
+import { SiOpenai, SiTaichilang } from 'react-icons/si';
+import { FaCopy, FaHome, FaSpinner, FaUserCircle } from 'react-icons/fa';
 
 import PromptForm from '@/modules/gpt4indo/components/PromptForm';
 import SystemIntro from '@/modules/gpt4indo/components/SystemIntro';
@@ -37,8 +37,14 @@ const GPT4Indo = () => {
     <div className='grid grid-cols-1 lg:grid-cols-5'>
       <GPT4IndoSidebar />
       <div className='h-screen bg-white: lg:col-span-4 relative'>
-        <div className='text-center bg-black p-2 text-white lg:hidden'>
-          GPT4Indo
+        <div className='bg-black p-2 text-white lg:hidden flex items-center justify-between'>
+          <Button type='link' href='/' buttonClassName='w-full h-full flex items-center gap-2'>
+            <SiTaichilang />
+            <span>Language AI</span>
+          </Button>
+          <div>
+            GPT4Indo
+          </div>
         </div>
         <div className='h-[95%]'>
           <div className='h-[91%] lg:h-[96%] overflow-y-auto bg-gray-700'>
