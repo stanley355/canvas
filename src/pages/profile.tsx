@@ -39,26 +39,26 @@ const Profile = (props: IProfile) => {
     <Layout>
       <MetaSEO seo={seo} />
       <div className="bg-gradient-to-br from-white via-blue-300 to-white">
-      <div className="container mx-auto min-h-screen lg:flex">
-        <div className="p-4 lg:w-fit text-black border-b bg-white">
-          <div className="border border-gray-500 p-2 mb-4 rounded lg:flex lg:gap-2 lg:w-fit">
-            <div>Referral ID:</div>
-            <div className="text-blue-500">{user.id}</div>
-          </div>
-          <div className="text-2xl">{user.fullname}</div>
-          <div>{user.email}</div>
+        <div className="container mx-auto min-h-screen lg:flex">
+          <div className="p-4 lg:w-fit text-black border-b bg-white">
+            <div className="border border-gray-500 p-2 mb-4 rounded lg:flex lg:gap-2 lg:w-fit">
+              <div>Referral ID:</div>
+              <div className="text-blue-500">{user.id}</div>
+            </div>
+            <div className="text-2xl">{user.fullname}</div>
+            <div>{user.email}</div>
 
-          <ProfileBalance balance={user.balance} />
-          <Button
-            type="button"
-            onClick={onLogoutClick}
-            title="logout"
-            wrapperClassName="mt-8 border border-gray-500 w-16 py-1 rounded text-center "
-            buttonClassName="w-full hover:underline"
-          />
+            <ProfileBalance balance={user.balance} />
+            <Button
+              type="button"
+              onClick={onLogoutClick}
+              title="logout"
+              wrapperClassName="mt-8 border border-gray-500 w-16 py-1 rounded text-center "
+              buttonClassName="w-full hover:underline"
+            />
+          </div>
+          <ProfileNews />
         </div>
-        <ProfileNews />
-      </div>
       </div>
     </Layout>
   );

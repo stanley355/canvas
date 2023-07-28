@@ -132,7 +132,7 @@ const PremiumTranslate = () => {
           </div>
         </div>
       </div>
-    </Layout >
+    </Layout>
   );
 };
 

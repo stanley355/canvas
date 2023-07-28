@@ -21,7 +21,6 @@ const MediaSlug = (props: IMediaHome) => {
     <Layout>
       <MetaSEO seo={HOME_SEO} />
       <div className="bg-gradient-to-br from-white via-blue-300 to-white">
-
         <div className="container bg-transparent mx-auto p-4 text-black min-h-screen">
           <div className="font-semibold text-2xl text-center my-4 flex items-center gap-2 justify-center">
             <SiTaichilang />
@@ -30,7 +29,10 @@ const MediaSlug = (props: IMediaHome) => {
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-8">
             {articles.length > 0 &&
               articles.slice(0, 4).map((article: any) => (
-                <div key={article.id} className="h-80 border rounded-lg bg-gradient-to-b from-white via-blue-100 to-white shadow-lg shadow-slate-400">
+                <div
+                  key={article.id}
+                  className="h-80 border rounded-lg bg-gradient-to-b from-white via-blue-100 to-white shadow-lg shadow-slate-400"
+                >
                   <div>
                     <img
                       src={article?.heroImg?.url}

@@ -27,7 +27,7 @@ const TranslateDocTable = (props: ITranslateDocTable) => {
   };
 
   return (
-    <div className="px-4 overflow-y-scroll max-h-[93%]">
+    <div className="px-4 overflow-y-auto max-h-[93%]">
       <table className="text-black w-full">
         <thead>
           <tr>

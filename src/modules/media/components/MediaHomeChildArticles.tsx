@@ -1,11 +1,14 @@
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 
 const MediaHomeChildArticles = ({ articles }: { articles: Array<any> }) => (
   <div className="lg:col-span-2">
     {articles.length > 0 &&
       articles.slice(4, Math.floor(articles.length / 2)).map((article: any) => (
-        <div key={article.id} className="flex flex-row border mb-8 rounded-lg bg-gradient-to-b from-white via-blue-100 to-white shadow-lg shadow-slate-400">
+        <div
+          key={article.id}
+          className="flex flex-row border mb-8 rounded-lg bg-gradient-to-b from-white via-blue-100 to-white shadow-lg shadow-slate-400"
+        >
           <div className="w-1/2 lg:w-full">
             <img
               src={article?.heroImg?.url}
@@ -22,7 +25,7 @@ const MediaHomeChildArticles = ({ articles }: { articles: Array<any> }) => (
                 {article.title}
               </div>
             </Link>
-            <div >
+            <div>
               {article?._publishedAt &&
                 new Date(article?._publishedAt).toLocaleString()}
             </div>

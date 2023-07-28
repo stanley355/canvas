@@ -5,8 +5,15 @@ import {
   FaRobot,
   FaUserCircle,
 } from "react-icons/fa";
+import { SiOpenai } from "react-icons/si";
 
 export const HEADER_MENU = [
+  {
+    title: "GPT4Indo",
+    url: "/gpt4indo/",
+    icon: <SiOpenai />,
+    desc: ["GPT4 in Indonesian", "Ask Anything", "100% Free"],
+  },
   {
     title: "DocTrans",
     url: "/document/",
@@ -17,16 +24,7 @@ export const HEADER_MENU = [
       "100% Free",
     ],
   },
-  {
-    title: "NewsLetter",
-    url: "/media/",
-    icon: <FaNewspaper />,
-    desc: [
-      "AI News Around The World",
-      "Updated Everyday",
-      "News in All Languages",
-    ],
-  },
+
   {
     title: "AI Checkbot",
     url: "/checkbot/",
@@ -65,6 +63,16 @@ export const HEADER_MENU = [
       "Translate All Languages",
       "20x Better than Google Translate",
       "Rp1 per word",
+    ],
+  },
+  {
+    title: "NewsLetter",
+    url: "/media/",
+    icon: <FaNewspaper />,
+    desc: [
+      "AI News Around The World",
+      "Updated Everyday",
+      "News in All Languages",
     ],
   },
   {
