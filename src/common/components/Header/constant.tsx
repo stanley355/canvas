@@ -5,8 +5,19 @@ import {
   FaRobot,
   FaUserCircle,
 } from "react-icons/fa";
+import { SiOpenai } from "react-icons/si";
 
 export const HEADER_MENU = [
+  {
+    title: "GPT4Indo",
+    url: "/gpt4indo/",
+    icon: <SiOpenai />,
+    desc: [
+      "Translate All Languages",
+      "Keep Translations in Documents",
+      "100% Free",
+    ],
+  },
   {
     title: "DocTrans",
     url: "/document/",

@@ -3,6 +3,7 @@ import { FaChevronCircleRight, FaSpinner } from 'react-icons/fa';
 import Button from '@/common/components/Button';
 import { toast } from 'react-toastify';
 import { handlePrompt } from '@/common/lib/handlePrompt';
+import { saveUserPrompt } from '@/common/lib/saveUserPrompt';
 
 interface IPromptForm {
   dispatchPrompt: (prompt: string) => void;
@@ -27,10 +28,19 @@ const PromptForm = (props: IPromptForm) => {
     dispatchPrompt(prompt);
     setIsLoading(true);
     setPromptVal("");
-    const { content } = await handlePrompt(prompt)
+    const { content, prompt_tokens, completion_tokens } = await handlePrompt(prompt)
     if (content) {
       dispatchCompletion(prompt, content);
       setIsLoading(false);
+
+      const saveUserPromptPayload = {
+        instruction: "GPT4Indo",
+        prompt_token: prompt_tokens,
+        completion_token: completion_tokens,
+        prompt_text: prompt,
+        completion_text: content,
+      };
+      await saveUserPrompt(saveUserPromptPayload);
       return;
     }
 

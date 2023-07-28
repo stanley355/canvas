@@ -3,7 +3,6 @@ import {
   FaLanguage,
   FaRobot,
   FaPlusCircle,
-  FaFile,
   FaDochub,
 } from "react-icons/fa";
 

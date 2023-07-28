@@ -1,4 +1,5 @@
 import { HEADER_MENU } from '@/common/components/Header/constant';
+import classNames from 'classnames';
 import Link from 'next/link';
 import React from 'react';
 import { SiOpenai } from 'react-icons/si';
@@ -15,14 +16,12 @@ const GPT4IndoSidebar = () => {
 
       <div className='mt-16'>
         <div className='text-center mb-2'>Explore Other Stuffs</div>
-        <div className='flex items-center justify-center p-2 gap-2 bg-white text-black cursor-pointer'>
-          <span>
-            <SiOpenai />
-          </span>
-          <span>GPT4Indo</span>
-        </div>
-        {HEADER_MENU.slice(0, 6).map((menu) =>
-          <Link key={menu.title} href={menu.url} className='flex items-center justify-center p-2 gap-2 w-full h-full hover:bg-white hover:text-black'>
+        {HEADER_MENU.slice(0, 7).map((menu, i) =>
+          <Link key={menu.title} href={menu.url}
+            className={
+              classNames('flex items-center justify-center p-2 gap-2 w-full h-full hover:bg-white hover:text-black',
+                i === 0 ? "bg-white text-black" : "")
+            }>
             <span>{menu.icon}</span>
             <span>{menu.title}</span>
           </Link>)}

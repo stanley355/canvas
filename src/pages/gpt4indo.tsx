@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { SiOpenai, SiTaichilang } from 'react-icons/si';
-import { FaCopy, FaHome, FaSpinner, FaUserCircle } from 'react-icons/fa';
+import { FaCopy, FaSpinner, FaUserCircle } from 'react-icons/fa';
 
 import PromptForm from '@/modules/gpt4indo/components/PromptForm';
 import SystemIntro from '@/modules/gpt4indo/components/SystemIntro';
 import Button from '@/common/components/Button';
 import GPT4IndoSidebar from '@/modules/gpt4indo/components/GPT4IndoSidebar';
+import MetaSEO from '@/common/components/MetaSEO';
+import { GPT4INDO_SEO } from '@/modules/gpt4indo/lib/constant';
 
 interface IChat {
   prompt: string;
@@ -35,6 +37,7 @@ const GPT4Indo = () => {
 
   return (
     <div className='grid grid-cols-1 lg:grid-cols-5'>
+      <MetaSEO seo={GPT4INDO_SEO} />
       <GPT4IndoSidebar />
       <div className='h-screen bg-white: lg:col-span-4 relative'>
         <div className='bg-black p-2 text-white lg:hidden flex items-center justify-between'>
