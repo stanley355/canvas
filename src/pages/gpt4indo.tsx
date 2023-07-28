@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { SiOpenai } from 'react-icons/si';
+import { FaCopy, FaSpinner, FaUserCircle } from 'react-icons/fa';
+
 import PromptForm from '@/modules/gpt4indo/components/PromptForm';
 import SystemIntro from '@/modules/gpt4indo/components/SystemIntro';
-import { FaSpinner, FaUserCircle } from 'react-icons/fa';
+import Button from '@/common/components/Button';
 
 interface IChat {
   prompt: string;
@@ -18,13 +20,17 @@ const GPT4Indo = () => {
     setChats(newChats);
   }
 
-  // console.log(chats);
   const handleNewCompletion = (prompt: string, completion: string) => {
     let newChats: any = structuredClone(chats);
     newChats.push({ prompt, completion });
     setChats(newChats);
     return;
   }
+
+  const copyText = (text: string) => {
+    window.navigator.clipboard.writeText(text);
+    alert("Text Copied to Clipboard");
+  };
 
   return (
     <div className='grid grid-cols-1 lg:grid-cols-5'>
@@ -51,6 +57,20 @@ const GPT4Indo = () => {
                     <div className='text-xl'><SiOpenai /></div>
                     <div>{chat.completion ? chat.completion : <FaSpinner className='animate-spin' />}</div>
                   </div>
+                  {chat.completion &&
+                    <div className='lg:w-2/3 mx-auto mt-4'>
+                      <Button
+                        type='button'
+                        onClick={() => copyText(chat.completion)}
+                        wrapperClassName='ml-[80%] lg:ml-[90%] border border-white p-1 rounded hover:bg-white hover:text-black'
+                        buttonClassName='w-full h-full flex items-center justify-center gap-1'
+                      >
+                        <span>
+                          <FaCopy />
+                        </span>
+                        <span>Copy</span>
+                      </Button>
+                    </div>}
                 </div>
               </div>
             )}
@@ -62,6 +82,7 @@ const GPT4Indo = () => {
         </div>
       </div>
     </div>
+
   )
 };
 
