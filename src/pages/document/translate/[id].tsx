@@ -70,36 +70,36 @@ const DocumentTranslate = (props: IDocumentTranslate) => {
     <Layout>
       <MetaSEO seo={TRANSLATE_SEO} />
       <div className="bg-gradient-to-br from-white via-blue-300 to-white">
-      <div className="bg-white container mx-auto h-screen relative">
-        <div className="flex items-center justify-between text-black border-b border-gray-500 p-4">
-          <Button
-            type="button"
-            wrapperClassName=" p-1 hover:border-b hover:border-gray-500"
-            buttonClassName="w-full h-full flex items-center gap-2"
-            onClick={() => Router.push("/document/")}
-          >
-            <FaArrowLeft />
-            <span>Back</span>
-          </Button>
-          <span className="font-semibold text-3xl">{states.docName}</span>
-          <div className="flex items-center gap-4">
-            <RenameDocBtn
-              docID={document?.id}
-              onChangeName={(name) => updateState("docName", name)}
-            />
-            <DeleteDocBtn docID={document?.id} name={document?.name} />
+        <div className="bg-white container mx-auto h-screen relative">
+          <div className="flex items-center justify-between text-black border-b border-gray-500 p-4">
+            <Button
+              type="button"
+              wrapperClassName=" p-1 hover:border-b hover:border-gray-500"
+              buttonClassName="w-full h-full flex items-center gap-2"
+              onClick={() => Router.push("/document/")}
+            >
+              <FaArrowLeft />
+              <span>Back</span>
+            </Button>
+            <span className="font-semibold text-3xl">{states.docName}</span>
+            <div className="flex items-center gap-4">
+              <RenameDocBtn
+                docID={document?.id}
+                onChangeName={(name) => updateState("docName", name)}
+              />
+              <DeleteDocBtn docID={document?.id} name={document?.name} />
+            </div>
           </div>
-        </div>
 
-        <TranslateDocTable prompts={states.prompts} dispatch={dispatch} />
-        {states.targetRowIndex && states.targetRowPrompt?.prompt_text && (
-          <TranslateRowEditor
-            index={states.targetRowIndex}
-            prompt={states.targetRowPrompt}
-            dispatch={dispatch}
-            updateState={updateState}
-          />
-        )}
+          <TranslateDocTable prompts={states.prompts} dispatch={dispatch} />
+          {states.targetRowIndex && states.targetRowPrompt?.prompt_text && (
+            <TranslateRowEditor
+              index={states.targetRowIndex}
+              prompt={states.targetRowPrompt}
+              dispatch={dispatch}
+              updateState={updateState}
+            />
+          )}
         </div>
       </div>
     </Layout>

@@ -12,11 +12,7 @@ export const HEADER_MENU = [
     title: "GPT4Indo",
     url: "/gpt4indo/",
     icon: <SiOpenai />,
-    desc: [
-      "GPT4 in Indonesian",
-      "Ask Anything",
-      "100% Free",
-    ],
+    desc: ["GPT4 in Indonesian", "Ask Anything", "100% Free"],
   },
   {
     title: "DocTrans",

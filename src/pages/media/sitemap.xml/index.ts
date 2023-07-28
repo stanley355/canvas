@@ -2,10 +2,10 @@ import { getMediaSitemapData } from "@/modules/media/lib/getMediaSitemapData";
 import { GetServerSideProps } from "next";
 import { getServerSideSitemapLegacy } from "next-sitemap";
 
-export const getServerSideProps: GetServerSideProps = async (ctx:any) => {
+export const getServerSideProps: GetServerSideProps = async (ctx: any) => {
   const { data } = await getMediaSitemapData();
 
-  const mediaFields: Array<any> = data.allArticles.map((article:any) => {
+  const mediaFields: Array<any> = data.allArticles.map((article: any) => {
     return {
       title: article.title,
       loc: `${process.env.NEXT_PUBLIC_BASE_URL}/media/${article.slug}`,
@@ -16,5 +16,5 @@ export const getServerSideProps: GetServerSideProps = async (ctx:any) => {
   return await getServerSideSitemapLegacy(ctx, mediaFields);
 };
 
-const MediaSitemap = () => { };
+const MediaSitemap = () => {};
 export default MediaSitemap;

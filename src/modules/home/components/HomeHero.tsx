@@ -35,7 +35,10 @@ const HomeHero = () => (
       {HEADER_MENU.slice(0, 7).map((menu, index) => (
         <div
           key={menu.title}
-          className={classNames("bg-white rounded-md text-black p-2 group", index === 6 ? "hidden" : "")}
+          className={classNames(
+            "bg-white rounded-md text-black p-2 group",
+            index === 6 ? "hidden" : ""
+          )}
         >
           <div className="text-2xl flex items-center gap-2 mb-2">
             <span className="text-3xl">{menu.icon}</span>

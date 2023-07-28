@@ -33,9 +33,7 @@ const ProfileNews = () => {
           <div className="mx-[25%] text-4xl mb-4">
             <SiOpenai />
           </div>
-          <div>
-            Are you bored with GPT 3?
-          </div>
+          <div>Are you bored with GPT 3?</div>
           <div>
             We have the answer to it with
             <Link href="/gpt4indo/" className="text-blue-900 underline ml-2">

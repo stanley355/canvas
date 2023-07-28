@@ -10,7 +10,6 @@ import ReferralPromo from "@/common/components/ReferralPromo";
 import LoginForm from "@/modules/login/components/LoginForm";
 
 const Home = () => {
-
   const SOLUTIONS = [HEADER_MENU[0], HEADER_MENU[3], HEADER_MENU[5]];
 
   return (

@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  FaLanguage,
-  FaRobot,
-  FaPlusCircle,
-  FaDochub,
-} from "react-icons/fa";
+import { FaLanguage, FaRobot, FaPlusCircle, FaDochub } from "react-icons/fa";
 
 export const HOME_SEO = {
   title:
