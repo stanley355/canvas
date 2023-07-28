@@ -17,9 +17,41 @@ import {
   FaPaypal,
   FaRobot,
 } from "react-icons/fa";
+import { SiOpenai } from "react-icons/si";
 
 const ProfileNews = () => {
   const NEWS_LIST = [
+    {
+      title: (
+        <div className="flex items-center gap-2">
+          <SiOpenai className="text-xl text-black" />
+          <span>NEW! GPT4Indo</span>
+        </div>
+      ),
+      children: (
+        <div>
+          <div className="mx-[25%] text-4xl mb-4">
+            <SiOpenai />
+          </div>
+          <div>
+            Are you bored with GPT 3?
+          </div>
+          <div>
+            We have the answer to it with
+            <Link href="/gpt4indo/" className="text-blue-900 underline ml-2">
+              GPT4Indo
+            </Link>
+            .
+          </div>
+          <div>
+            Access the power of GPT-4 with our
+            <Link href="/document/" className="text-blue-900 underline ml-2">
+              GPT4Indo
+            </Link>
+          </div>
+        </div>
+      ),
+    },
     {
       title: (
         <div className="flex items-center gap-2">
