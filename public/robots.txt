@@ -3,8 +3,6 @@ User-agent: *
 Disallow: /topup
 Disallow: /profile
 
-Allow: /ads.txt
-
 # Host
 Host: https://languageai.world
 
