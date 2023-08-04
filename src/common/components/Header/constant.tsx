@@ -1,7 +1,6 @@
 import {
   FaDochub,
   FaLanguage,
-  FaNewspaper,
   FaRobot,
   FaUserCircle,
 } from "react-icons/fa";
@@ -63,16 +62,6 @@ export const HEADER_MENU = [
       "Translate All Languages",
       "20x Better than Google Translate",
       "Rp1 per word",
-    ],
-  },
-  {
-    title: "NewsLetter",
-    url: "/media/",
-    icon: <FaNewspaper />,
-    desc: [
-      "AI News Around The World",
-      "Updated Everyday",
-      "News in All Languages",
     ],
   },
   {
