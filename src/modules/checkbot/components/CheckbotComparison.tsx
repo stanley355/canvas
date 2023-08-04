@@ -8,7 +8,7 @@ const CheckbotComparison = () => {
     <div className="my-8 mb-16">
       <div className="font-semibold text-lg mb-2">
         Wanna Have Better Checkbot Result? Support us with{" "}
-        <Link href="/premium/checkbot/" className="underline text-blue-200">
+        <Link href="/premium/checkbot/" className="underline text-blue-900">
           Premium Checkbot
         </Link>
         :{" "}

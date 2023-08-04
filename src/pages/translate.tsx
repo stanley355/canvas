@@ -17,8 +17,6 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { translateReducer } from "@/modules/translate/lib/reducer";
 import { TRANSLATE_STATES } from "@/modules/translate/lib/states";
 import { TRANSLATE_SEO } from "@/modules/translate/lib/constant";
-import ReferralPromo from "@/common/components/ReferralPromo";
-import PaypalBanner from "@/common/components/PaypalBanner";
 
 const LoginModal = dynamic(
   () => import("../modules/login/components/LoginModal")
@@ -111,11 +109,8 @@ const LangTranslate = () => {
           )}
         </div>
       </div>
-      <div className="bg-gradient-to-b from-white via-blue-900 to-black">
+      <div className="bg-gradient-to-b from-white via-blue-900 to-black pt-4">
         <div className="lg:container mx-auto px-2 lg:px-0">
-          <PaypalBanner />
-          <ReferralPromo />
-          <TranslateComparison />
           <FeedbackBox />
         </div>
       </div>

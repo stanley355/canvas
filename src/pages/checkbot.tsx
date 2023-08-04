@@ -14,8 +14,6 @@ import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { CHECKBOT_SEO } from "@/modules/checkbot/lib/constant";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import ReferralPromo from "@/common/components/ReferralPromo";
-import PaypalBanner from "@/common/components/PaypalBanner";
 
 const LoginModal = dynamic(
   () => import("../modules/login/components/LoginModal")
@@ -66,12 +64,8 @@ const CheckBot = () => {
           />
         )}
       </div>
-      <div className="bg-gradient-to-b from-white via-blue-900 to-black">
+      <div className="bg-gradient-to-b from-white via-blue-900 to-black pt-4">
         <div className="lg:container mx-auto px-2 lg:px-0">
-          <PaypalBanner />
-          <ReferralPromo />
-
-          <CheckbotComparison />
           <FeedbackBox />
         </div>
       </div>

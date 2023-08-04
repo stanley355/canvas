@@ -2,7 +2,6 @@ import { HEADER_MENU } from "@/common/components/Header/constant";
 import classNames from "classnames";
 import Link from "next/link";
 import React from "react";
-import { SiOpenai } from "react-icons/si";
 
 const GPT4IndoSidebar = () => {
   return (

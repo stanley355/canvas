@@ -3,7 +3,6 @@ import Layout from "@/common/components/Layout";
 import LoginForm from "@/modules/login/components/LoginForm";
 import MetaSEO from "@/common/components/MetaSEO";
 import Cookies from "js-cookie";
-import ReferralPromo from "@/common/components/ReferralPromo";
 
 const LoginPage = () => {
   const seo = {
