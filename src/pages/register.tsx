@@ -3,7 +3,6 @@ import Layout from "@/common/components/Layout";
 import RegisterForm from "@/modules/login/components/RegisterForm";
 import Cookies from "js-cookie";
 import MetaSEO from "@/common/components/MetaSEO";
-import ReferralPromo from "@/common/components/ReferralPromo";
 
 const Register = () => {
   const seo = {
