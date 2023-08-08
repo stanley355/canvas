@@ -3,12 +3,12 @@ import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
 import classNames from "classnames";
+import Cookies from "js-cookie";
 
 import Button from "@/common/components/Button";
 import SourceTextArea from "../../../common/components/SourceTextArea";
 
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 import { handlePrompt } from "@/common/lib/handlePrompt";
 import { LANGUAGE_LIST } from "../lib/constant";
@@ -36,8 +36,8 @@ const TranslateForm = (props: ITranslateForm) => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    const freeTrial = hasFreeTrial();
-    if (!freeTrial) {
+    const token = Cookies.get("token");
+    if (!token) {
       dispatchLoginForm();
       sendFirebaseEvent("login_popup", {});
       return;
