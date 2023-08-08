@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { FaChevronCircleRight, FaSpinner } from "react-icons/fa";
-import Button from "@/common/components/Button";
 import { toast } from "react-toastify";
+import Cookies from "js-cookie";
+
+import Button from "@/common/components/Button";
 import { handlePrompt } from "@/common/lib/handlePrompt";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import LoginModal from "@/modules/login/components/LoginModal";
 
 interface IPromptForm {
   dispatchPrompt: (prompt: string) => void;
@@ -14,12 +18,20 @@ const PromptForm = (props: IPromptForm) => {
   const { dispatchPrompt, dispatchCompletion } = props;
   const [promptVal, setPromptVal] = useState("Masukkan Instruksi Anda");
   const [isLoading, setIsLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const token = Cookies.get("token");
+    if (!token) {
+      setShowModal(true);
+      sendFirebaseEvent("login_popup", {});
+      return;
+    }
+
     const target = e.target as any;
     const prompt = target.prompt.value;
-
     if (!prompt) {
       toast.warning("Instruksi Anda belum diisi!");
       return;
@@ -56,6 +68,7 @@ const PromptForm = (props: IPromptForm) => {
       className="bg-gray-700 absolute left-0 bottom-0 w-full p-2 pb-4 text-black"
       onSubmit={handleSubmit}
     >
+      {showModal && <LoginModal isFree /> }
       <div className="w-full lg:w-2/3 rounded-md bg-white flex items-center lg:mx-auto">
         <label
           htmlFor="prompt_text"
