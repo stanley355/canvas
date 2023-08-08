@@ -1,29 +1,10 @@
 import {
-  FaDochub,
   FaLanguage,
   FaRobot,
   FaUserCircle,
 } from "react-icons/fa";
-import { SiOpenai } from "react-icons/si";
 
 export const HEADER_MENU = [
-  {
-    title: "GPT4Indo",
-    url: "/gpt4indo/",
-    icon: <SiOpenai />,
-    desc: ["GPT4 in Indonesian", "Ask Anything", "100% Free"],
-  },
-  {
-    title: "DocTrans",
-    url: "/document/",
-    icon: <FaDochub />,
-    desc: [
-      "Translate All Languages",
-      "Keep Translations in Documents",
-      "100% Free",
-    ],
-  },
-
   {
     title: "AI Checkbot",
     url: "/checkbot/",
