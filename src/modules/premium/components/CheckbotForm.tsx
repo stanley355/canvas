@@ -15,7 +15,6 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
 import { createRemovedAndAddedDiff } from "@/modules/checkbot/lib/createRemovedAndAddedDiff";
 import { saveHistory } from "@/common/lib/saveHistory";
-import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 
 interface IPremiumCheckBotForm {
   sourceText: string;
@@ -64,9 +63,8 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     }
 
     setIsLoading(true);
-    const freeTrial = hasFreeTrial();
     const hasBalance = await checkUserCurrentBalance();
-    if (!freeTrial && !hasBalance) {
+    if (!hasBalance) {
       updateState("showBalanceModal", true);
       setIsLoading(false);
       return;
@@ -164,7 +162,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
           buttonClassName="w-full"
         >
           {isLoading ? (
-            <div className="flex flex row items-center justify-center">
+            <div className="flex items-center justify-center">
               <span className="mr-2">Processing</span>
               <FaSpinner className="animate-spin" />
             </div>

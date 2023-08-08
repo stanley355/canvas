@@ -16,7 +16,6 @@ import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
 import { LANGUAGE_LIST } from "@/modules/translate/lib/constant";
 import { saveHistory } from "@/common/lib/saveHistory";
 import { ITranslateForm } from "@/modules/translate/components/TranslateForm";
-import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 
 const InsufficientBalanceModal = dynamic(
   () => import("./InsufficientBalanceModal")
@@ -60,9 +59,8 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
     }
 
     setIsLoading(true);
-    const freeTrial = hasFreeTrial();
     const hasBalance = await checkUserCurrentBalance();
-    if (!freeTrial && !hasBalance) {
+    if (!hasBalance) {
       setShowModal(true);
       setIsLoading(false);
       return;

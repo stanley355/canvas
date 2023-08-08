@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
+import Cookies from "js-cookie";
 
 import Button from "@/common/components/Button";
 import SourceTextArea from "@/common/components/SourceTextArea";
@@ -9,7 +10,6 @@ import SourceTextArea from "@/common/components/SourceTextArea";
 import { CHECKBOT_OPTIONS } from "../lib/constant";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import { hasFreeTrial } from "@/common/lib/hasFreeTrial";
 import { handlePrompt } from "@/common/lib/handlePrompt";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 import { createRemovedAndAddedDiff } from "../lib/createRemovedAndAddedDiff";
@@ -35,8 +35,8 @@ const CheckBotForm = (props: ICheckBotForm) => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    const freeTrial = hasFreeTrial();
-    if (!freeTrial) {
+    const token = Cookies.get("token");
+    if (!token) {
       updateState("showLogin", true);
       sendFirebaseEvent("login_popup", {});
       return;
