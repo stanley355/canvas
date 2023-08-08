@@ -15,7 +15,7 @@ const HomeHero = () => (
       AI Translation and Text Analysis for All Languages
     </div>
     <div className="mt-12 lg:hidden">
-      {HEADER_MENU.slice(0, 6).map((menu:any, i: number) => (
+      {HEADER_MENU.slice(0, 4).map((menu:any, i: number) => (
         <Button
           type="link"
           href={menu.url}
@@ -32,7 +32,7 @@ const HomeHero = () => (
       ))}
     </div>
     <div className="mt-12 hidden w-1/2 mx-auto lg:grid grid-cols-2 gap-4">
-      {HEADER_MENU.slice(0, 6).map((menu:any) => (
+      {HEADER_MENU.slice(0, 4).map((menu:any) => (
         <div
           key={menu.title}
           className="bg-white rounded-md text-black p-2 group"
