@@ -8,6 +8,7 @@ import classNames from "classnames";
 import { HEADER_MENU } from "./constant";
 import Button from "../Button";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,11 +36,11 @@ const Header = () => {
       <Button
         type="link"
         href="/"
-        wrapperClassName="text-2xl font-semibold cursor-pointer"
+        wrapperClassName="text-2xl cursor-pointer"
         buttonClassName="flex items-center w-full"
       >
-        <SiTaichilang className="mr-2" />
-        <span>LanguageAI</span>
+        <span>Language</span>
+        <Image src="/images/languageai_white.png" alt="Language AI" width={30} height={30} />
       </Button>
       <Button
         type="button"
