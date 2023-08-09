@@ -9,18 +9,15 @@ import TopupOptions from "@/modules/profile/components/TopupOptions";
 import MetaSEO from "@/common/components/MetaSEO";
 import { HOME_SEO } from "@/modules/home/lib/constant";
 import { fetchUserData } from "@/modules/profile/lib/fetchUserData";
-import PaypalForm from "@/modules/profile/components/PaypalForm";
 
 interface ITopup {
   user: any;
-  paypalCredentials: any;
 }
 
 const Topup = (props: ITopup) => {
-  const { user, paypalCredentials } = props;
+  const { user } = props;
   const [vaInfo, setVaInfo] = useState<any>({});
   const [showTopupForm, setShowTopupForm] = useState(false);
-  const [paypalType, setPaypalType] = useState("");
 
   return (
     <Layout>
@@ -43,23 +40,12 @@ const Topup = (props: ITopup) => {
               onPaypalClick={(type: string) => {
                 setShowTopupForm(false);
                 setVaInfo({});
-                setPaypalType(type);
               }}
               onBankTrfClick={() => {
-                setPaypalType("");
                 setVaInfo({});
                 setShowTopupForm(true);
               }}
             />
-            {paypalType && (
-              <PaypalForm
-                type={paypalType}
-                paypalCredentials={paypalCredentials}
-                onBackClick={() => {
-                  setPaypalType("");
-                }}
-              />
-            )}
             {showTopupForm && (
               <TopupForm
                 user={user}
@@ -95,14 +81,10 @@ export const getServerSideProps: GetServerSideProps = async (
 
   const decodedToken: any = decode(token);
   const user = await fetchUserData(decodedToken.email);
-  const { PAYPAL_CLIENT_ID } = process.env;
 
   return {
     props: {
       user,
-      paypalCredentials: {
-        PAYPAL_CLIENT_ID,
-      },
     },
   };
 };
