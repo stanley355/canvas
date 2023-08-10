@@ -24,7 +24,7 @@ const LoginPage = () => {
     <Layout>
       <MetaSEO seo={seo} />
       <div className="bg-gradient-to-b from-black via-blue-900 to-white pb-4">
-        <div className="container py-4 h-screen mx-auto">
+        <div className="container py-4 lg:pt-12 h-screen mx-auto">
           <LoginForm />
         </div>
       </div>
