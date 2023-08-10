@@ -40,7 +40,7 @@ const CheckBot = () => {
 
   return (
     <Layout>
-      {showLogin && <LoginModal isFree={false} />}
+      {showLogin && <LoginModal />}
       {showBalanceModal && (
         <InsufficientBalanceModal
           onCloseClick={() => updateState("showBalanceModal", false)}

@@ -56,7 +56,7 @@ const PremiumTranslate = () => {
 
   return (
     <Layout>
-      {showLogin && <LoginModal isFree={false} />}
+      {showLogin && <LoginModal />}
       <MetaSEO seo={PREMIUM_TRANSLATE_SEO} />
       <div className="bg-gradient-to-b from-white via-slate-400 to-white pb-6">
         <div className="container mx-auto p-2 lg:px-0">

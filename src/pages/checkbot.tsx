@@ -8,7 +8,6 @@ import MetaSEO from "@/common/components/MetaSEO";
 import HistoryBar from "@/common/components/HistoryBar";
 import FeedbackBox from "@/common/components/FeedbackBox";
 import CheckbotArea from "@/modules/checkbot/components/CheckbotArea";
-import CheckbotComparison from "@/modules/checkbot/components/CheckbotComparison";
 
 import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
@@ -69,7 +68,7 @@ const CheckBot = () => {
           <FeedbackBox />
         </div>
       </div>
-      {showLogin && <LoginModal isFree />}
+      {showLogin && <LoginModal />}
     </Layout>
   );
 };
