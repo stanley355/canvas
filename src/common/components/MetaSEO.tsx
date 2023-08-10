@@ -8,7 +8,7 @@ interface IMetaSEO {
 const MetaSEO = ({ seo }: IMetaSEO) => {
   return (
     <Head>
-      <link rel="icon" type="image/png" href="/images/langai_icon.png" />
+      <link rel="icon" type="image/png" href="/images/languageai_white.png" />
       <title>{seo?.title}</title>
       <meta name="description" content={seo?.description} />
       <meta name="keywords" content={seo?.keywords} />

@@ -8,6 +8,8 @@ import Button from "@/common/components/Button";
 import MetaSEO from "@/common/components/MetaSEO";
 import ProfileBalance from "@/modules/profile/components/ProfileBalance";
 import { fetchUserData } from "@/modules/profile/lib/fetchUserData";
+import { HOME_SEO } from "@/modules/home/lib/constant";
+import { FaHandPointUp, FaSignOutAlt, FaSkating } from "react-icons/fa";
 
 interface IProfile {
   user: {
@@ -21,42 +23,39 @@ interface IProfile {
 const Profile = (props: IProfile) => {
   const { user } = props;
 
-  const seo = {
-    title:
-      "LanguageAI - 10x Better Writing Check and Translation for All Languages",
-    description:
-      "Discover LanguageAI's Checkbot and Translation products that provide 10x better grammar and translation accuracy than Grammarly and Google Translate. Our AI-powered technology can check your writing and correct grammar and spelling errors in any language. Translate any language in the world with LanguageAI, and provide context to get accurate and nuanced translations. Experience LanguageAI, the best language tool for writers and communicators worldwide.",
-    url: process.env.NEXT_PUBLIC_BASE_URL,
-  };
-
   const onLogoutClick = () => {
     Cookies.remove("token");
     window.location.href = "/";
   };
 
+  const PlanBox = () => (
+    <div className="flex items-center justify-between border border-gray-500 rounded p-2 my-4 lg:my-0 lg:w-2/3 lg:items-start">
+      <div>
+        <div className="font-semibold">My Plan:</div>
+        <div>*Freemium Plan</div>
+      </div>
+      <Button
+        type="link"
+        href="/plans/"
+        wrapperClassName="bg-blue-900 p-2 text-white rounded"
+        buttonClassName="w-full h-full flex items-center gap-2"
+      >
+        <FaSkating />
+        <span>Upgrade</span>
+      </Button>
+    </div>
+  )
+
   return (
     <Layout>
-      <MetaSEO seo={seo} />
-      <div className="bg-gradient-to-br from-white via-blue-300 to-white">
-        <div className="container mx-auto min-h-screen text-black bg-white p-4">
+      <MetaSEO seo={HOME_SEO} />
+      <div className="bg-white">
+        <div className="container mx-auto min-h-screen text-black bg-white p-4 lg:border-l lg:border-r lg:flex">
           <div className="lg:w-1/3">
-
-            <div className="border border-gray-500 p-2 mb-4 rounded lg:flex lg:gap-2 lg:w-fit">
-              <div>Referral ID:</div>
-              <div className="text-blue-500">{user.id}</div>
-            </div>
             <div className="text-2xl">{user.fullname}</div>
             <div>{user.email}</div>
-
-            <ProfileBalance balance={user.balance} />
-            <Button
-              type="button"
-              onClick={onLogoutClick}
-              title="logout"
-              wrapperClassName="mt-8 border border-gray-500 w-16 py-1 rounded text-center "
-              buttonClassName="w-full hover:underline"
-            />
           </div>
+          <PlanBox />
         </div>
       </div>
     </Layout>
@@ -79,11 +78,10 @@ export const getServerSideProps: GetServerSideProps = async (
   }
 
   const decodedToken: any = decode(token);
-  const user = await fetchUserData(decodedToken.email);
 
   return {
     props: {
-      user,
+      user: decodedToken,
     },
   };
 };
