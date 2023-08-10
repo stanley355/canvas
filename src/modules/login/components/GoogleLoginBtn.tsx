@@ -5,7 +5,9 @@ import { handleGoogleLogin } from "../lib/handleGoogleLogin";
 
 const GoogleLoginBtn = () => {
   return (
-    <GoogleOAuthProvider clientId={String(process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID)}>
+    <GoogleOAuthProvider
+      clientId={String(process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID)}
+    >
       <GoogleLogin
         onSuccess={handleGoogleLogin}
         onError={() => toast.error("Something went wrong, please try again")}

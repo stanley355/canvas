@@ -40,7 +40,12 @@ const Header = () => {
         buttonClassName="flex items-center w-full"
       >
         <span>Language</span>
-        <Image src="/images/languageai_white.png" alt="Language AI" width={30} height={30} />
+        <Image
+          src="/images/languageai_white.png"
+          alt="Language AI"
+          width={30}
+          height={30}
+        />
       </Button>
       <Button
         type="button"

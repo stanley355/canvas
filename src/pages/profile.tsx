@@ -2,14 +2,13 @@ import React from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import Cookies from "js-cookie";
 import { decode } from "jsonwebtoken";
+import { FaSkating } from "react-icons/fa";
 
 import Layout from "@/common/components/Layout";
 import Button from "@/common/components/Button";
 import MetaSEO from "@/common/components/MetaSEO";
-import ProfileBalance from "@/modules/profile/components/ProfileBalance";
-import { fetchUserData } from "@/modules/profile/lib/fetchUserData";
 import { HOME_SEO } from "@/modules/home/lib/constant";
-import { FaHandPointUp, FaSignOutAlt, FaSkating } from "react-icons/fa";
+import LogoutBtn from "@/modules/profile/components/LogoutBtn";
 
 interface IProfile {
   user: {
@@ -44,7 +43,7 @@ const Profile = (props: IProfile) => {
         <span>Upgrade</span>
       </Button>
     </div>
-  )
+  );
 
   return (
     <Layout>
@@ -54,8 +53,23 @@ const Profile = (props: IProfile) => {
           <div className="lg:w-1/3">
             <div className="text-2xl">{user.fullname}</div>
             <div>{user.email}</div>
+            <Button
+              type="button"
+              title="logout"
+              onClick={onLogoutClick}
+              wrapperClassName="p-1 w-fit border border-gray-500 rounded hidden lg:block mt-2"
+              buttonClassName="w-full h-full hover:underline"
+            />
           </div>
           <PlanBox />
+
+          <Button
+            type="button"
+            title="logout"
+            onClick={onLogoutClick}
+            wrapperClassName="p-1 w-fit border border-gray-500 rounded lg:hidden"
+            buttonClassName="w-full h-full"
+          />
         </div>
       </div>
     </Layout>
