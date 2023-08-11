@@ -8,21 +8,15 @@ import Layout from "@/common/components/Layout";
 import Button from "@/common/components/Button";
 import MetaSEO from "@/common/components/MetaSEO";
 import { HOME_SEO } from "@/modules/home/lib/constant";
-import LogoutBtn from "@/modules/profile/components/LogoutBtn";
-import { fetchActiveSubscription } from "@/modules/profile/lib/fetchActiveSubscription";
 import { fetchUserData } from "@/common/lib/fetchUserData";
+import PlanBox from "@/modules/profile/components/PlanBox";
 
 interface IProfile {
   user: any;
-  subscription: any;
 }
 
 const Profile = (props: IProfile) => {
-  const { user, subscription } = props;
-  
-  useEffect(() => {
-    Cookies.set("subscription", JSON.stringify(subscription));
-  }, [subscription])
+  const { user } = props;
 
   const onLogoutClick = () => {
     Cookies.remove("token");
@@ -30,23 +24,6 @@ const Profile = (props: IProfile) => {
     window.location.href = "/";
   };
 
-  const PlanBox = () => (
-    <div className="flex items-center justify-between border border-gray-500 rounded p-2 my-4 lg:my-0 lg:w-2/3 lg:items-start">
-      <div>
-        <div className="font-semibold">My Plan:</div>
-        <div>*Freemium Plan</div>
-      </div>
-      <Button
-        type="link"
-        href="/plans/"
-        wrapperClassName="bg-blue-900 p-2 text-white rounded"
-        buttonClassName="w-full h-full flex items-center gap-2"
-      >
-        <FaSkating />
-        <span>Upgrade</span>
-      </Button>
-    </div>
-  );
 
   return (
     <Layout>
@@ -64,8 +41,7 @@ const Profile = (props: IProfile) => {
               buttonClassName="w-full h-full hover:underline"
             />
           </div>
-          <PlanBox />
-
+          <PlanBox user={user} />
           <Button
             type="button"
             title="logout"
@@ -94,13 +70,12 @@ export const getServerSideProps: GetServerSideProps = async (
     };
   }
 
-  const user: any = decode(token);
-  const plansData: Array<any> = await Promise.allSettled([await fetchUserData(user.email), await fetchActiveSubscription(user.id)]);
+  const decodedToken: any = decode(token);
+  const user = await fetchUserData(decodedToken.email);
 
   return {
     props: {
-      user: plansData[0]?.value,
-      subscription: plansData[1]?.value
+      user,
     },
   };
 };
