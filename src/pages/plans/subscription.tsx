@@ -7,6 +7,8 @@ import { formatSubscriptionMonth } from '@/modules/plans/lib/formatSubscriptionM
 import { formatSubscriptionEndDate, formatSubscriptionStartDate } from '@/modules/plans/lib/formatSubscriptionDate';
 import SubscriptionVAForm from '@/modules/plans/components/SubscriptionVAForm';
 import VAinfo from '@/modules/plans/components/VAinfo';
+import MetaSEO from '@/common/components/MetaSEO';
+import { HOME_SEO } from '@/modules/home/lib/constant';
 
 const Subscription = (props: any) => {
   const { duration } = props;
@@ -14,6 +16,7 @@ const Subscription = (props: any) => {
 
   return (
     <Layout>
+      <MetaSEO seo={HOME_SEO} />
       <div className="bg-gradient-to-br from-white via-blue-300 to-white">
         <div className='w-full lg:w-[450px] mx-auto min-h-screen bg-white text-black p-4'>
           <h1 className='mt-4 mb-2 text-center text-3xl flex mx-auto w-fit'>Language <Image src="/images/languageai.png" alt="LanguageAI" width={30} height={30} className='mr-2' />  Subscription</h1>
