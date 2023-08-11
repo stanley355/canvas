@@ -5,6 +5,7 @@ import Layout from '@/common/components/Layout';
 import { calcSubscriptionCost } from '@/modules/plans/lib/calcSubscriptionCost';
 import { formatSubscriptionMonth } from '@/modules/plans/lib/formatSubscriptionMonth';
 import { formatSubscriptionEndDate, formatSubscriptionStartDate } from '@/modules/plans/lib/formatSubscriptionDate';
+import SubscriptionVAForm from '@/modules/plans/components/SubscriptionVAForm';
 
 const Subscription = (props: any) => {
   const { duration } = props;
@@ -22,6 +23,7 @@ const Subscription = (props: any) => {
             <div>Start Date: {formatSubscriptionStartDate()}</div>
             <div>End Date: {formatSubscriptionEndDate(duration)}</div>
           </div>
+          <SubscriptionVAForm duration={duration} amount={calcSubscriptionCost(duration)} dispatchVAinfo={(info) => {}} />
         </div>
       </div>
     </Layout>

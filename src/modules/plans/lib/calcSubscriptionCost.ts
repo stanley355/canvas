@@ -8,5 +8,7 @@ export const calcSubscriptionCost = (duration: string) => {
       return 150000
     case "Yearly":
       return 299000
+    default:
+      return 25000;
   }
 }
