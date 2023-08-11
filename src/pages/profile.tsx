@@ -49,7 +49,7 @@ const Profile = (props: IProfile) => {
     <Layout>
       <MetaSEO seo={HOME_SEO} />
       <div className="bg-gradient-to-br from-white via-blue-300 to-white">
-        <div className="container mx-auto min-h-screen text-black bg-white p-4 lg:border-l lg:border-r lg:flex">
+        <div className="container mx-auto min-h-screen text-black bg-white p-4 lg:flex">
           <div className="lg:w-1/3">
             <div className="text-2xl">{user.fullname}</div>
             <div>{user.email}</div>
