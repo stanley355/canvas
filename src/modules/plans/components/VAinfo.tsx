@@ -11,7 +11,7 @@ const VAinfo = ({ info }: IVAInfo) => (
       Payment via: <span className="italic font-semibold">{info.bank_name} VA</span>
     </div>
     <div className="mt-2">
-      Topup Amount: <span className="text-green-700 font-semibold italic">Rp{info.amount}</span>{" "}
+      Amount: <span className="text-green-700 font-semibold italic">Rp{info.amount}</span>{" "}
     </div>
     <div className="text-center text-xl  mt-8 font-semibold">
       <div>Virtual Account Number: </div>
