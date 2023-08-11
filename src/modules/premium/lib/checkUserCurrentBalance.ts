@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { fetchUserData } from "@/modules/profile/lib/fetchUserData";
+import { fetchUserData } from "@/common/lib/fetchUserData";
 import { decode } from "jsonwebtoken";
 
 export const checkUserCurrentBalance = async () => {
