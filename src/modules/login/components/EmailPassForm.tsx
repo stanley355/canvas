@@ -6,6 +6,8 @@ import Cookies from "js-cookie";
 import Button from "@/common/components/Button";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { loginUser } from "../lib/loginUser";
+import { decode } from "jsonwebtoken";
+import { fetchActiveSubscription } from "@/modules/profile/lib/fetchActiveSubscription";
 
 const EmailPassForm = () => {
   const [hasSubmit, setHasSubmit] = useState(false);
@@ -37,9 +39,13 @@ const EmailPassForm = () => {
     }
 
     if (user?.token) {
-      setHasSubmit(false);
       sendFirebaseEvent("login_email_password", {});
+      const decodedToken:any = decode(user?.token);
+      const activeSubscription = await fetchActiveSubscription(decodedToken.id);
+
+      setHasSubmit(false);
       Cookies.set("token", user.token);
+      Cookies.set("subscription", JSON.stringify(activeSubscription));
 
       const path = Router.asPath;
       if (path === "/register" || path === "/login") {

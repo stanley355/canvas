@@ -26,6 +26,7 @@ const Profile = (props: IProfile) => {
 
   const onLogoutClick = () => {
     Cookies.remove("token");
+    Cookies.remove("subscription");
     window.location.href = "/";
   };
 
