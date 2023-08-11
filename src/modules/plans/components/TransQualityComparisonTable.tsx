@@ -7,7 +7,7 @@ const TransQualityComparisonTable = () => {
 
   return (
     <div className='mt-12 overflow-x-auto'>
-      <div className='text-3xl'>How about the Quality Difference?</div>
+      <div className='text-3xl'>Freemium vs Premium</div>
       <div className='mb-4'>Here we can see that although Non-premium also provides Good Translation but Premium can provide better translation</div>
       <table className={styles.premium__quality__table}>
         <thead>

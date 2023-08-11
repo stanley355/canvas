@@ -11,21 +11,21 @@ export const PLANS_OPTIONS = [
     desc: "Good for testing or short term solution",
     price: "Rp25,000",
     unit: "per month, annual term",
-    url: "/plans/topup/"
+    url: "/plans/subscription?duration=Monthly"
   },
   {
     title: "Quarterly",
     desc: "For students working on their thesis or paperworks",
     price: "Rp70,000",
     unit: "per three months, annual term",
-    url: "/plans/topup/"
+    url: "/plans/subscription?duration=Quarterly"
   },
   {
     title: "Half yearly",
     desc: "Your long term solution to translation and writing check",
     price: "Rp150,000",
     unit: "per six months, annual term",
-    url: "/plans/topup/"
+    url: "/plans/subscription?duration=HalfYearly"
   }
 ];
 
