@@ -5,7 +5,7 @@ export const calcSubscriptionCost = (duration: string) => {
     case "Quarterly":
       return 70000
     case "HalfYearly":
-      return 150.000
+      return 150000
     case "Yearly":
       return 299000
   }
