@@ -5,11 +5,10 @@ import { FaCheck, FaTimes } from 'react-icons/fa';
 
 import Layout from '@/common/components/Layout';
 import { PLANS_OPTIONS } from '@/modules/plans/lib/constant';
-import styles from './plan.module.scss';
+import PlanComparisonTable from '@/modules/plans/components/PlanComparisonTable';
+import TransQualityComparisonTable from '@/modules/plans/components/TransQualityComparisonTable';
 
 const Plans = () => {
-
-
 
   return (
     <Layout>
@@ -27,76 +26,14 @@ const Plans = () => {
                 <div className='text-center text-lg'>{plan.unit}</div>
                 <div className='flex flex-col items-center mt-8'>
                   <Link href={plan.url} className="border border-gray-500 rounded-[2rem] bg-[#feff69] text-lg font-semibold p-4">Get started</Link>
-                  <Link href="#more" className='mt-4 underline'>Learn More</Link>
+                  <Link href="#comparison" className='mt-4 underline'>Learn More</Link>
                 </div>
               </div>
             </div>)}
           </div>
+          <PlanComparisonTable />
 
-          <div>
-            <div className='text-3xl mb-4'>What&apos;s included in all Premium Plans?</div>
-            <table className={styles.plan__table}>
-              <thead>
-                <tr>
-                  <th >Features</th>
-                  <th>Non-premium</th>
-                  <th>Premium</th>
-                </tr>
-              </thead>
-              <tbody className=''>
-                <tr>
-                  <td>Language Translate</td>
-                  <td><FaCheck /> </td>
-                  <td><FaCheck /> </td>
-                </tr>
-                <tr>
-                  <td>Grammar, Spelling, and Punctuation</td>
-                  <td><FaCheck /> </td>
-                  <td><FaCheck /> </td>
-                </tr>
-                <tr>
-                  <td>Security</td>
-                  <td><FaCheck /> </td>
-                  <td><FaCheck /> </td>
-                </tr>
-                <tr>
-                  <td>Doctrans Access (Soon)</td>
-                  <td><FaCheck /> </td>
-                  <td><FaCheck /> </td>
-                </tr>
-                <tr>
-                  <td>LanguageGPT Access (Soon)</td>
-                  <td><FaTimes /> </td>
-                  <td><FaCheck /> </td>
-                </tr>
-                <tr>
-                  <td>Language Update</td>
-                  <td>Six Month </td>
-                  <td>Every Month </td>
-                </tr>
-                <tr>
-                  <td>Quality</td>
-                  <td>Normal</td>
-                  <td>High</td>
-                </tr>
-                <tr>
-                  <td>Consistency in Translation</td>
-                  <td>Normal</td>
-                  <td>High</td>
-                </tr>
-                <tr>
-                  <td>Consistency in Checkbot</td>
-                  <td>Normal</td>
-                  <td>High</td>
-                </tr>
-                <tr>
-                  <td>Word Limit</td>
-                  <td>4k</td>
-                  <td>8k</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <TransQualityComparisonTable />
         </div>
       </div>
     </Layout>
