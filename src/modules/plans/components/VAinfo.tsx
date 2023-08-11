@@ -8,10 +8,10 @@ interface IVAInfo {
 const VAinfo = ({ info }: IVAInfo) => (
   <div className="mt-4 text-lg">
     <div>
-      Payment via: <i>{info.bank_name} VA</i>
+      Payment via: <span className="italic font-semibold">{info.bank_name} VA</span>
     </div>
     <div className="mt-2">
-      Amount: <i>Rp{info.amount}</i>{" "}
+      Topup Amount: <span className="text-green-700 font-semibold italic">Rp{info.amount}</span>{" "}
     </div>
     <div className="text-center text-xl  mt-8 font-semibold">
       <div>Virtual Account Number: </div>
@@ -24,11 +24,14 @@ const VAinfo = ({ info }: IVAInfo) => (
     </div>
     <div className="border border-gray-500 p-2 rounded flex flex-row mb-8 justify-center">
       <div className="mr-2">Pay Before:</div>
+      <span className="font-semibold">
+
       <Countdown date={new Date(info?.expired_date_utc ?? info.expired_date)} />
+      </span>
     </div>
     <div className="font-semibold">Notes:</div>
     <div className="mb-4">
-      1. Before payment: <b>Don&apos;t </b> refresh or close this page
+      1. Before payment: <b>Don&apos;t  refresh </b> or close this page
     </div>
     <div className="mb-4">
       2. During payment: <b>Transfer the exact amount </b> e.g. transfer

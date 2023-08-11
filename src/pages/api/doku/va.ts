@@ -1,6 +1,6 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
-import { generateDokuSignature } from "@/modules/profile/lib/generateDokuSignature";
+import { generateDokuSignature } from "@/modules/plans/lib/generateDokuSignature";
 
 const dokuCheckoutAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   const URL = String(process.env.DOKU_URL);

@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
-import { FaCheck, FaTimes } from 'react-icons/fa';
 
 import Layout from '@/common/components/Layout';
 import { PLANS_OPTIONS } from '@/modules/plans/lib/constant';

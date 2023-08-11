@@ -46,4 +46,36 @@ export const TRANS_QUALITY_COMPARISON = [
     nonPremium: "Majapahit, juga dikenal sebagai Wilwatikta, adalah sebuah kerajaan Hindu-Buddha thalassocratic Jawa di Asia Tenggara yang berbasis di pulau Jawa (di Indonesia modern). Kerajaan ini ada dari tahun 1293 hingga sekitar tahun 1527 dan mencapai puncak kejayaannya selama era Hayam Wuruk, yang pemerintahannya dari tahun 1350 hingga 1389 ditandai dengan penaklukan yang meluas di seluruh Asia Tenggara. Prestasinya juga dikreditkan kepada perdana menterinya, Gajah Mada. Menurut Nagarakretagama (Desawarñana) yang ditulis pada tahun 1365, Majapahit adalah sebuah kerajaan dengan 98 wilayah tributary, membentang dari Sumatra hingga New Guinea; terdiri dari Indonesia, Singapura, Malaysia, Brunei, Thailand selatan, Timor Leste, Filipina barat daya (terutama Kepulauan Sulu) meskipun lingkup pengaruh Majapahit masih menjadi subjek perdebatan di antara sejarawan. Sifat hubungan dan pengaruh Majapahit terhadap vasal luar negerinya, serta statusnya sebagai kerajaan masih memicu diskusi.",
     premium: "Majapahit, juga dikenal sebagai Wilwatikta, adalah kerajaan thalassocratic Hindu-Buddha Jawa di Asia Tenggara yang berbasis di pulau Jawa (di Indonesia masa kini). Kerajaan ini eksis dari tahun 1293 hingga sekitar tahun 1527 dan mencapai puncak kejayaannya pada masa pemerintahan Hayam Wuruk, yang berkuasa dari tahun 1350 hingga 1389 dan ditandai dengan penaklukan yang meluas ke seluruh Asia Tenggara. Prestasinya juga dikaitkan dengan perdana menterinya, Gajah Mada. Menurut Nagarakretagama (Desawarñana) yang ditulis pada tahun 1365, Majapahit adalah sebuah kerajaan dengan 98 kerajaan bawahan, yang membentang dari Sumatra hingga Papua Nugini; meliputi wilayah-wilayah Indonesia, Singapura, Malaysia, Brunei, selatan Thailand, Timor Leste, Filipina barat daya (khususnya Kepulauan Sulu), meskipun cakupan pengaruh Majapahit masih menjadi bahan perdebatan di kalangan sejarawan. Hubungan Majapahit dengan kerajaan bawahan di luar negeri, serta statusnya sebagai kerajaan masih menjadi pembahasan yang menarik."
   }
-]
+];
+
+export const DOKU_VA_LIST = [
+  {
+    label: "BCA via DOKU",
+    value: "/doku-virtual-account/v2/payment-code",
+  },
+  {
+    label: "BSI (Bank Syariah Indonesia)",
+    value: "/bsm-virtual-account/v2/payment-code",
+  },
+  {
+    label: "Bank Mandiri",
+    value: "/mandiri-virtual-account/v2/payment-code",
+  },
+
+  {
+    label: "Bank BRI",
+    value: "/bri-virtual-account/v2/payment-code",
+  },
+  {
+    label: "Bank BNI",
+    value: "/bni-virtual-account/v2/payment-code",
+  },
+  {
+    label: "Bank CIMB",
+    value: "/cimb-virtual-account/v2/payment-code",
+  },
+  {
+    label: "ATM Bersama",
+    value: "/doku-virtual-account/v2/payment-code",
+  },
+];
