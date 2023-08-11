@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import Cookies from "js-cookie";
 import { decode } from "jsonwebtoken";
@@ -9,18 +9,20 @@ import Button from "@/common/components/Button";
 import MetaSEO from "@/common/components/MetaSEO";
 import { HOME_SEO } from "@/modules/home/lib/constant";
 import LogoutBtn from "@/modules/profile/components/LogoutBtn";
+import { fetchActiveSubscription } from "@/modules/profile/lib/fetchActiveSubscription";
+import { fetchUserData } from "@/common/lib/fetchUserData";
 
 interface IProfile {
-  user: {
-    id: string;
-    fullname: string;
-    email: string;
-    balance: number;
-  };
+  user: any;
+  subscription: any;
 }
 
 const Profile = (props: IProfile) => {
-  const { user } = props;
+  const { user, subscription } = props;
+  
+  useEffect(() => {
+    Cookies.set("subscription", JSON.stringify(subscription));
+  }, [subscription])
 
   const onLogoutClick = () => {
     Cookies.remove("token");
@@ -91,11 +93,13 @@ export const getServerSideProps: GetServerSideProps = async (
     };
   }
 
-  const decodedToken: any = decode(token);
+  const user: any = decode(token);
+  const plansData: Array<any> = await Promise.allSettled([await fetchUserData(user.email), await fetchActiveSubscription(user.id)]);
 
   return {
     props: {
-      user: decodedToken,
+      user: plansData[0]?.value,
+      subscription: plansData[1]?.value
     },
   };
 };
