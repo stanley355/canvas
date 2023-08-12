@@ -26,7 +26,7 @@ export const handleGoogleLogin = async (token: any) => {
   const { data } = await axios(axiosConfig);
   if (data?.token) {
     sendFirebaseEvent("google_login", {});
-    const user:any = decode(data?.token);
+    const user: any = decode(data?.token);
     const userSubscriptions = await fetchActiveSubscription(user.id);
 
     Cookies.set("token", data.token);

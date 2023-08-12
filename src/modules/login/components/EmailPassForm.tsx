@@ -40,7 +40,7 @@ const EmailPassForm = () => {
 
     if (user?.token) {
       sendFirebaseEvent("login_email_password", {});
-      const decodedToken:any = decode(user?.token);
+      const decodedToken: any = decode(user?.token);
       const activeSubscription = await fetchActiveSubscription(decodedToken.id);
 
       setHasSubmit(false);

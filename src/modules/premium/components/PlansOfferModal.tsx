@@ -13,12 +13,22 @@ const PlansOfferModal = (props: IPlansOfferModal) => {
   return (
     <div className="fixed top-0 left-0 w-full h-full z-10 bg-white bg-opacity-70">
       <div className="border border-blue-900 bg-gradient-to-b from-white via-slate-300 to-white bg-blue-500 rounded-md p-4 py-8 text-black mt-28 w-full lg:w-[400px] lg:mx-auto relative">
-        <Button type="button" onClick={onCloseClick} wrapperClassName="absolute top-2 right-2 text-2xl " buttonClassName="w-full h-full">
+        <Button
+          type="button"
+          onClick={onCloseClick}
+          wrapperClassName="absolute top-2 right-2 text-2xl "
+          buttonClassName="w-full h-full"
+        >
           <FaTimesCircle />
         </Button>
         <h1 className="flex items-center justify-center text-2xl">
           <span>Language</span>
-          <Image src="/images/languageai.png" alt="LanguageAI" width={30} height={30} />
+          <Image
+            src="/images/languageai.png"
+            alt="LanguageAI"
+            width={30}
+            height={30}
+          />
         </h1>
         <div className="text-3xl text-center font-semibold mt-4 mb-2">
           Exclusive Offer
@@ -27,7 +37,8 @@ const PlansOfferModal = (props: IPlansOfferModal) => {
           Level up your Game
         </div>
         <div className="text-center text-lg italic">
-          *Let&apos;s make it  <b>Easy</b>  by Upgrading your Plans to <b>Premium</b>
+          *Let&apos;s make it <b>Easy</b> by Upgrading your Plans to{" "}
+          <b>Premium</b>
         </div>
         <Button
           type="link"

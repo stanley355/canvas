@@ -21,9 +21,7 @@ import { fetchActiveSubscription } from "@/modules/profile/lib/fetchActiveSubscr
 import { isSubscriptionExpired } from "@/modules/profile/lib/isSubscriptionExpired";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 
-const NoPlansModal = dynamic(
-  () => import("./NoPlansModal")
-);
+const NoPlansModal = dynamic(() => import("./NoPlansModal"));
 
 const PremiumTranslateForm = (props: ITranslateForm) => {
   const {
@@ -65,7 +63,9 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
     setIsLoading(true);
     const user: any = decode(token);
     const subscription = await fetchActiveSubscription(user.id);
-    const subscriptionExpired = subscription?.id ? isSubscriptionExpired(subscription.end_at) : true;
+    const subscriptionExpired = subscription?.id
+      ? isSubscriptionExpired(subscription.end_at)
+      : true;
     if (subscriptionExpired) {
       const hasBalance = await checkUserCurrentBalance();
       if (!hasBalance) {

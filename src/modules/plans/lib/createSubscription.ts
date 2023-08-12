@@ -1,6 +1,10 @@
 import axios from "axios";
 
-export const createSubscription = async (user_id: string, topup_amount: number, durationType: string) => {
+export const createSubscription = async (
+  user_id: string,
+  topup_amount: number,
+  durationType: string
+) => {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/topups/`;
   const axiosConfig = {
     method: "POST",
@@ -11,7 +15,7 @@ export const createSubscription = async (user_id: string, topup_amount: number, 
     data: {
       user_id,
       topup_amount,
-      subscription_duration_type: durationType
+      subscription_duration_type: durationType,
     },
   };
 

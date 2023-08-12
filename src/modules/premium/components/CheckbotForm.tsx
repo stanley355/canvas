@@ -69,7 +69,9 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
     setIsLoading(true);
     const user: any = decode(token);
     const subscription = await fetchActiveSubscription(user.id);
-    const subscriptionExpired = subscription?.id ? isSubscriptionExpired(subscription.end_at) : true;
+    const subscriptionExpired = subscription?.id
+      ? isSubscriptionExpired(subscription.end_at)
+      : true;
     if (subscriptionExpired) {
       const hasBalance = await checkUserCurrentBalance();
       if (!hasBalance) {
@@ -120,7 +122,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
       if (subscriptionExpired) {
         await saveUserPremiumPrompt(saveUserPromptPayload);
       } else {
-        await saveUserPrompt(saveUserPromptPayload)
+        await saveUserPrompt(saveUserPromptPayload);
       }
 
       return;

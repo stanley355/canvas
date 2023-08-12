@@ -25,7 +25,6 @@ const Profile = (props: IProfile) => {
     window.location.href = "/";
   };
 
-
   return (
     <Layout>
       <MetaSEO seo={HOME_SEO} />
@@ -78,7 +77,7 @@ export const getServerSideProps: GetServerSideProps = async (
   return {
     props: {
       user,
-      subscription
+      subscription,
     },
   };
 };

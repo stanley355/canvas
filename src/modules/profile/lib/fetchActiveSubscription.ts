@@ -13,7 +13,7 @@ export const fetchActiveSubscription = async (userID: string) => {
   try {
     const { data } = await axios(axiosConfig);
     return data;
-  } catch (error:any) {
+  } catch (error: any) {
     return error?.response.data ? error.response.data : null;
   }
 };

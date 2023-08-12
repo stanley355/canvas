@@ -3,4 +3,4 @@ export const isSubscriptionExpired = (date: string) => {
   const todayDate = new Date();
 
   return expiryDate < todayDate;
-}
+};

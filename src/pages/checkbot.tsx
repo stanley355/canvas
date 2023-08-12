@@ -15,12 +15,13 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import Cookies from "js-cookie";
 import NonPremiumPlansOffer from "@/modules/premium/components/NonPremiumPlansOffer";
 
-
 const LoginModal = dynamic(
   () => import("../modules/login/components/LoginModal")
 );
 
-const PlansOfferModal = dynamic(() => import("../modules/premium/components/PlansOfferModal"));
+const PlansOfferModal = dynamic(
+  () => import("../modules/premium/components/PlansOfferModal")
+);
 
 const CheckBot = () => {
   const [states, dispatch] = useReducer(checkbotReducer, CHECKBOT_STATES);
@@ -36,7 +37,7 @@ const CheckBot = () => {
 
     return () => {
       Cookies.set("offer", "true", { expires: 1 });
-    }
+    };
   }, [showOffer]);
 
   const updateState = (name: string, value: any) => {
@@ -53,7 +54,9 @@ const CheckBot = () => {
     <Layout>
       <MetaSEO seo={CHECKBOT_SEO} />
       {showLogin && <LoginModal />}
-      {showOffer && <PlansOfferModal onCloseClick={() => updateState("showOffer", false)} />}
+      {showOffer && (
+        <PlansOfferModal onCloseClick={() => updateState("showOffer", false)} />
+      )}
       <div className="bg-gradient-to-b from-black via-blue-900 to-white pb-4">
         <div className="lg:container mx-auto px-2 lg:px-0">
           <h1 className="flex flex-row items-center text-2xl lg:text-4xl justify-center my-4">

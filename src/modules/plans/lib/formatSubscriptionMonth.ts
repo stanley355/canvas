@@ -13,6 +13,6 @@ export const formatSubscriptionMonth = (duration: string) => {
     case "Yearly":
       return "12 Months";
     default:
-      return "1 Month"
+      return "1 Month";
   }
 };

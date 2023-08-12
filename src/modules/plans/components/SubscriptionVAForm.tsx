@@ -70,9 +70,7 @@ const SubscriptionVAForm = (props: ISubscriptionVAForm) => {
 
   return (
     <div className="mt-8">
-      <div className="font-semibold mb-2 text-xl">
-        Topup Via
-      </div>
+      <div className="font-semibold mb-2 text-xl">Topup Via</div>
       <form onSubmit={handleSubmit} className="w-full mb-4">
         <Select
           options={DOKU_VA_LIST}
