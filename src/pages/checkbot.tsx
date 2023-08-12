@@ -14,6 +14,7 @@ import { CHECKBOT_SEO } from "@/modules/checkbot/lib/constant";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import Cookies from "js-cookie";
 import NonPremiumPlansOffer from "@/modules/premium/components/NonPremiumPlansOffer";
+import { showOfferModal } from "@/common/lib/showOfferModal";
 
 const LoginModal = dynamic(
   () => import("../modules/login/components/LoginModal")
@@ -28,16 +29,12 @@ const CheckBot = () => {
   const { showLogin, showOffer, showHistory } = states;
 
   useEffect(() => {
-    const token = Cookies.get("token");
-    if (token) {
+    const showOfferMod = showOfferModal();
+    if (showOfferMod) {
       const offer = Cookies.get("offer");
       if (!offer) updateState("showOffer", true);
       Cookies.set("offer", "true", { expires: 1 });
     }
-
-    return () => {
-      Cookies.set("offer", "true", { expires: 1 });
-    };
   }, [showOffer]);
 
   const updateState = (name: string, value: any) => {
