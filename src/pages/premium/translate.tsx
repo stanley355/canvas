@@ -10,10 +10,7 @@ import PremiumTranslateForm from "@/modules/premium/components/TranslateForm";
 import TranslateResult from "@/modules/translate/components/TranslateResult";
 import ImageToTextUploader from "@/common/components/ImageToTextUploader";
 import HistoryBar from "@/common/components/HistoryBar";
-import ComparisonTable from "@/common/components/ComparisonTable";
-import FeedbackBox from "@/common/components/FeedbackBox";
 
-import { TRANSLATE_COMPARISON } from "@/modules/translate/lib/constant";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { PREMIUM_TRANSLATE_SEO } from "@/modules/premium/lib/constant";
 import { premiumTranslateReducer } from "@/modules/premium/lib/reducer";

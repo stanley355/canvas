@@ -6,12 +6,9 @@ import Layout from "@/common/components/Layout";
 import MetaSEO from "@/common/components/MetaSEO";
 import Button from "@/common/components/Button";
 import PremiumCheckbotArea from "@/modules/premium/components/PremiumCheckbotArea";
-import ComparisonTable from "@/common/components/ComparisonTable";
-import FeedbackBox from "@/common/components/FeedbackBox";
 import HistoryBar from "@/common/components/HistoryBar";
 
 import { PREMIUM_CHECKBOT_SEO } from "@/modules/premium/lib/constant";
-import { CHECKBOT_COMPARISON } from "@/modules/checkbot/lib/constant";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";

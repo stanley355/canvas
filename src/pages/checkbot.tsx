@@ -6,7 +6,6 @@ import Button from "@/common/components/Button";
 import Layout from "@/common/components/Layout";
 import MetaSEO from "@/common/components/MetaSEO";
 import HistoryBar from "@/common/components/HistoryBar";
-import FeedbackBox from "@/common/components/FeedbackBox";
 import CheckbotArea from "@/modules/checkbot/components/CheckbotArea";
 
 import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
