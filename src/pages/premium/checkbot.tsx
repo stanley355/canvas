@@ -20,8 +20,8 @@ const LoginModal = dynamic(
   () => import("../../modules/login/components/LoginModal")
 );
 
-const InsufficientBalanceModal = dynamic(
-  () => import("../../modules/premium/components/InsufficientBalanceModal")
+const NoPlansModal = dynamic(
+  () => import("../../modules/premium/components/NoPlansModal")
 );
 
 const CheckBot = () => {
@@ -41,11 +41,7 @@ const CheckBot = () => {
   return (
     <Layout>
       {showLogin && <LoginModal />}
-      {showBalanceModal && (
-        <InsufficientBalanceModal
-          onCloseClick={() => updateState("showBalanceModal", false)}
-        />
-      )}
+      {showBalanceModal && <NoPlansModal />}
       <MetaSEO seo={PREMIUM_CHECKBOT_SEO} />
       <div className="bg-gradient-to-b from-white via-slate-400 to-white pb-6">
         <div className="container mx-auto p-2 lg:px-2">
