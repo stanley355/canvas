@@ -20,7 +20,7 @@ const HomeHero = () => (
         height={50}
       />
     </h1>
-    <div className="text-2xl text-center">Language made Eazy</div>
+    <div className="text-2xl text-center">Language made Easy</div>
     <div className="mt-12 lg:hidden">
       {HEADER_MENU.slice(0, 4).map((menu: any, i: number) => (
         <Button

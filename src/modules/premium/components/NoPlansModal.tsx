@@ -16,7 +16,7 @@ const NoPlansModal = () => {
           You are levelling up your game
         </div>
         <div className="text-center text-lg italic">
-          *Let&apos;s make it  <b>Eazier</b>  by Upgrading your Plans for Premium Access
+          *Let&apos;s make it  <b>Easy</b>  by Upgrading your Plans for Premium Access
         </div>
         <Button
           type="link"
