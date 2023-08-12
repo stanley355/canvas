@@ -19,6 +19,7 @@ import { saveHistory } from "@/common/lib/saveHistory";
 import { ITranslateForm } from "@/modules/translate/components/TranslateForm";
 import { fetchActiveSubscription } from "@/modules/profile/lib/fetchActiveSubscription";
 import { isSubscriptionExpired } from "@/modules/profile/lib/isSubscriptionExpired";
+import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 
 const NoPlansModal = dynamic(
   () => import("./NoPlansModal")
@@ -40,7 +41,6 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
     e.preventDefault();
 
     const token: any = Cookies.get("token");
-    const user: any = decode(token);
     if (!token) {
       dispatchLoginForm();
       sendFirebaseEvent("login_popup", {});
@@ -63,6 +63,7 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
     }
 
     setIsLoading(true);
+    const user: any = decode(token);
     const subscription = await fetchActiveSubscription(user.id);
     const subscriptionExpired = subscription?.id ? isSubscriptionExpired(subscription.end_at) : true;
     if (subscriptionExpired) {
@@ -95,15 +96,17 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
       dispatchTranslateVal(content);
       setIsLoading(false);
 
+      const saveUserPromptPayload = {
+        instruction: `Translate to ${language}`,
+        prompt_token: prompt_tokens,
+        completion_token: completion_tokens,
+        prompt_text: sourceText,
+        completion_text: content,
+      };
       if (subscriptionExpired) {
-        const saveUserPromptPayload = {
-          instruction: `Translate to ${language}`,
-          prompt_token: prompt_tokens,
-          completion_token: completion_tokens,
-          prompt_text: sourceText,
-          completion_text: content,
-        };
         await saveUserPremiumPrompt(saveUserPromptPayload);
+      } else {
+        await saveUserPrompt(saveUserPromptPayload);
       }
 
       return;
