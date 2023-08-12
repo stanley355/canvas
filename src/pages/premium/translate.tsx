@@ -68,11 +68,7 @@ const PremiumTranslate = () => {
               <FaLanguage className="text-4xl mr-2" />
               <span>Translate+</span>
             </h1>
-            <MediaSelect
-              onChange={(option) =>
-                updateState("isImageTranslate", option.value === "image")
-              }
-            />
+            <MediaSelect onChange={(option) => updateState("isImageTranslate", option.value === "image")} />
           </div>
           <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8">
             {isImageTranslate ? (
