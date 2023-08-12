@@ -2,7 +2,6 @@ import React, { useReducer, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { FaClock, FaLanguage } from "react-icons/fa";
 import Cookies from "js-cookie";
-import { decode } from "jsonwebtoken";
 
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
@@ -18,6 +17,7 @@ import { translateReducer } from "@/modules/translate/lib/reducer";
 import { TRANSLATE_STATES } from "@/modules/translate/lib/states";
 import { TRANSLATE_SEO } from "@/modules/translate/lib/constant";
 import NonPremiumPlansOffer from "@/modules/premium/components/NonPremiumPlansOffer";
+import { showOfferModal } from "@/common/lib/showOfferModal";
 
 const LoginModal = dynamic(
   () => import("../modules/login/components/LoginModal")
@@ -40,22 +40,12 @@ const LangTranslate = () => {
   } = state;
 
   useEffect(() => {
-    const token = Cookies.get("token");
-    if (token) {
-      const subscriptionCookie = Cookies.get("subscription");
-      const subscription = subscriptionCookie ? JSON.parse(subscriptionCookie) : null;
-      const user: any = decode(token);
-
-      if (!subscription.id && !user.balance) {
-        const offer = Cookies.get("offer");
-        if (!offer) updateState("showOffer", true);
-        Cookies.set("offer", "true", { expires: 1 });
-      }
-    }
-
-    return () => {
+    const showOfferMod = showOfferModal();
+    if (showOfferMod) {
+      const offer = Cookies.get("offer");
+      if (!offer) updateState("showOffer", true);
       Cookies.set("offer", "true", { expires: 1 });
-    };
+    }
   }, [showOffer]);
 
   const updateState = (name: string, value: any) => {

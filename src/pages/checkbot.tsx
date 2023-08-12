@@ -1,7 +1,6 @@
 import React, { useEffect, useReducer } from "react";
 import dynamic from "next/dynamic";
 import { FaClock, FaRobot } from "react-icons/fa";
-import { decode } from "jsonwebtoken";
 
 import Button from "@/common/components/Button";
 import Layout from "@/common/components/Layout";
@@ -15,6 +14,7 @@ import { CHECKBOT_SEO } from "@/modules/checkbot/lib/constant";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import Cookies from "js-cookie";
 import NonPremiumPlansOffer from "@/modules/premium/components/NonPremiumPlansOffer";
+import { showOfferModal } from "@/common/lib/showOfferModal";
 
 const LoginModal = dynamic(
   () => import("../modules/login/components/LoginModal")
@@ -29,22 +29,12 @@ const CheckBot = () => {
   const { showLogin, showOffer, showHistory } = states;
 
   useEffect(() => {
-    const token = Cookies.get("token");
-    if (token) {
-      const subscriptionCookie = Cookies.get("subscription");
-      const subscription = subscriptionCookie ? JSON.parse(subscriptionCookie) : null;
-      const user: any = decode(token);
-
-      if (!subscription.id && !user.balance) {
-        const offer = Cookies.get("offer");
-        if (!offer) updateState("showOffer", true);
-        Cookies.set("offer", "true", { expires: 1 });
-      }
-    }
-
-    return () => {
+    const showOfferMod = showOfferModal();
+    if (showOfferMod) {
+      const offer = Cookies.get("offer");
+      if (!offer) updateState("showOffer", true);
       Cookies.set("offer", "true", { expires: 1 });
-    };
+    }
   }, [showOffer]);
 
   const updateState = (name: string, value: any) => {
