@@ -14,7 +14,7 @@ const premiumCompletionAPI = async (
       Authorization: `Bearer ${process.env.OPENAI_API_KEY_PREMIUM}`,
     },
     data: {
-      model: "gpt-3.5-turbo-16k-0613",
+      model: "gpt-4",
       messages: [{ role: "system", content: req.body.content }],
     },
   };
@@ -24,7 +24,7 @@ const premiumCompletionAPI = async (
     res.setHeader("Content-Type", "application/json");
     res.json(data);
   } catch (err: any) {
-    axiosConfig.data.model = "gpt-3.5-turbo-16k";
+    axiosConfig.data.model = "gpt-4-0613";
 
     try {
       const { data } = await axios(axiosConfig);
