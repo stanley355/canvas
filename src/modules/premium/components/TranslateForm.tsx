@@ -171,12 +171,12 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
               <Button
                 type="submit"
                 disabled={isLoading}
-                wrapperClassName="w-1/3 bg-blue-900 text-white py-2 rounded-md font-semibold text-center"
+                wrapperClassName={classNames("bg-blue-900 text-white p-2 rounded-md font-semibold text-center", isLoading ? "w-fit" : "w-1/3")}
                 buttonClassName="w-full"
               >
                 {isLoading ? (
                   <div className="flex flex-row items-center justify-center">
-                    <span className="mr-2">Translating</span>
+                    <span className="mr-2">Please wait a moment</span>
                     <FaSpinner className="animate-spin" />
                   </div>
                 ) : (

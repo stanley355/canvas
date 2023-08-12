@@ -3,6 +3,7 @@ import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa";
 import Cookies from "js-cookie";
+import classNames from "classnames";
 
 import Button from "@/common/components/Button";
 import SourceTextArea from "@/common/components/SourceTextArea";
@@ -172,7 +173,7 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
         <Button
           type="submit"
           disabled={isLoading}
-          wrapperClassName="w-1/3 bg-blue-900 ml-auto mr-1 text-white py-2 rounded-md font-semibold text-center"
+          wrapperClassName={classNames("bg-blue-900 text-white p-2 rounded-md font-semibold text-center", isLoading ? "w-fit" : "w-1/3")}
           buttonClassName="w-full"
         >
           {isLoading ? (
