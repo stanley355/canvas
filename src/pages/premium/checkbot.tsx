@@ -15,6 +15,7 @@ import { CHECKBOT_COMPARISON } from "@/modules/checkbot/lib/constant";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { PlansSection } from "../plans";
 
 const LoginModal = dynamic(
   () => import("../../modules/login/components/LoginModal")
@@ -74,16 +75,8 @@ const CheckBot = () => {
           )}
         </div>
       </div>
-      <div className="bg-white pb-4">
-        <div className="container mx-auto p-2 lg:px-2">
-          <div className="text-black mb-4 mt-8">
-            <div>How does Premium Checkbot Compared to the Original?</div>
-            <ComparisonTable comparisons={CHECKBOT_COMPARISON} />
-          </div>
-          <div className="bg-black py-4 rounded">
-            <FeedbackBox />
-          </div>
-        </div>
+      <div className="bg-white">
+        <PlansSection />
       </div>
     </Layout>
   );

@@ -1,35 +1,26 @@
 import React from 'react';
 import Link from 'next/link';
-
-import Layout from '@/common/components/Layout';
+import Image from 'next/image';
+import PlanOptions from '@/modules/plans/components/PlanOptions';
 import PlanComparisonTable from '@/modules/plans/components/PlanComparisonTable';
 import TransQualityComparisonTable from '@/modules/plans/components/TransQualityComparisonTable';
-import MetaSEO from '@/common/components/MetaSEO';
-import { HOME_SEO } from '@/modules/home/lib/constant';
-import PlanOptions from '@/modules/plans/components/PlanOptions';
 
-export const PlansSection = () => (
-  <div className='container mx-auto bg-white text-black p-4 lg:p-8' id='start'>
+const NonPremiumPlansOffer = () =>(
+  <div className="bg-white">
+  <h1 className="text-black text-center text-4xl flex font-semibold w-fit mx-auto">Love our <Image src="/images/languageai.png" alt="LanguageAI" width={35} height={35} /> ?</h1>
+  <div className="text-black text-center text-xl">Make it Easy with Premium</div>
+  <div className='container mx-auto bg-white text-black p-4 ' id='start'>
+    <TransQualityComparisonTable />
+    <br />
     <PlanOptions />
     <PlanComparisonTable />
-    <TransQualityComparisonTable />
     <div className='my-8 flex flex-col items-center'>
       <div className='text-3xl font-semibold'>Satisfied with Our AI?</div>
       <div className='text-lg mb-8'>What are you waiting for?</div>
       <Link href="/plans/" className="border border-gray-500 rounded-[2rem] bg-[#feff69] text-lg font-semibold p-4">Get started</Link>
     </div>
   </div>
+</div>
 );
 
-const Plans = () => {
-  return (
-    <Layout>
-      <MetaSEO seo={HOME_SEO} />
-      <div className="bg-gradient-to-br from-white via-blue-300 to-white">
-        <PlansSection />
-      </div>
-    </Layout>
-  )
-};
-
-export default Plans;
+export default NonPremiumPlansOffer;

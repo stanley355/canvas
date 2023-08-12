@@ -18,6 +18,7 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { PREMIUM_TRANSLATE_SEO } from "@/modules/premium/lib/constant";
 import { premiumTranslateReducer } from "@/modules/premium/lib/reducer";
 import { PREMIUM_TRANSLATE_STATES } from "@/modules/premium/lib/states";
+import { PlansSection } from "../plans";
 
 const LoginModal = dynamic(
   () => import("../../modules/login/components/LoginModal")
@@ -114,15 +115,8 @@ const PremiumTranslate = () => {
         </div>
       </div>
       <div className="bg-white">
-        <div className="container mx-auto p-2 lg:px-0">
-          <div className="text-black mt-8">
-            <div>How does Premium Checkbot Compared to the Original?</div>
-            <ComparisonTable comparisons={TRANSLATE_COMPARISON} />
-          </div>
-          <div className="bg-black py-4 rounded">
-            <FeedbackBox />
-          </div>
-        </div>
+
+      <PlansSection />
       </div>
     </Layout>
   );

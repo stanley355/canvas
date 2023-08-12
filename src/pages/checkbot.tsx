@@ -14,6 +14,7 @@ import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { CHECKBOT_SEO } from "@/modules/checkbot/lib/constant";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import Cookies from "js-cookie";
+import NonPremiumPlansOffer from "@/modules/premium/components/NonPremiumPlansOffer";
 
 
 const LoginModal = dynamic(
@@ -82,11 +83,7 @@ const CheckBot = () => {
           />
         )}
       </div>
-      <div className="bg-gradient-to-b from-white via-blue-900 to-black pt-4">
-        <div className="lg:container mx-auto px-2 lg:px-0">
-          <FeedbackBox />
-        </div>
-      </div>
+      <NonPremiumPlansOffer />
     </Layout>
   );
 };
