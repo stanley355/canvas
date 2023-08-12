@@ -1,7 +1,7 @@
 import { diffChars } from "diff";
 import React from "react";
 
-export const createRemovedAndAddedDiff = (
+export const createPremiumDiff = (
   sourceText: string,
   completionText: string
 ) => {
@@ -12,9 +12,7 @@ export const createRemovedAndAddedDiff = (
     .map((d, i) => (
       <span
         key={i}
-        className={
-          d.removed ? "text-red-500 underline font-semibold" : "text-black"
-        }
+        className={d.removed ? "underline font-semibold" : "text-black"}
       >
         {d.value}
       </span>
@@ -25,7 +23,7 @@ export const createRemovedAndAddedDiff = (
       <span
         key={i}
         className={
-          d.added ? "text-green-600 underline font-semibold" : "text-black"
+          d.added ? "underline font-semibold text-green-600" : "text-black"
         }
       >
         {d.value}

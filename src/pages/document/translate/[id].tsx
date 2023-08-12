@@ -60,7 +60,7 @@ const DocumentTranslate = (props: IDocumentTranslate) => {
       };
       updateState("prompts", [defaultPrompt]);
     }
-  }, [document]);
+  }, [document, prompts]);
 
   if (!isDesktop) {
     return <UseBiggerScreen />;

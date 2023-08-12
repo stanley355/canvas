@@ -6,22 +6,20 @@ import Layout from "@/common/components/Layout";
 import MetaSEO from "@/common/components/MetaSEO";
 import Button from "@/common/components/Button";
 import PremiumCheckbotArea from "@/modules/premium/components/PremiumCheckbotArea";
-import ComparisonTable from "@/common/components/ComparisonTable";
-import FeedbackBox from "@/common/components/FeedbackBox";
 import HistoryBar from "@/common/components/HistoryBar";
 
 import { PREMIUM_CHECKBOT_SEO } from "@/modules/premium/lib/constant";
-import { CHECKBOT_COMPARISON } from "@/modules/checkbot/lib/constant";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { PlansSection } from "../plans";
 
 const LoginModal = dynamic(
   () => import("../../modules/login/components/LoginModal")
 );
 
-const InsufficientBalanceModal = dynamic(
-  () => import("../../modules/premium/components/InsufficientBalanceModal")
+const NoPlansModal = dynamic(
+  () => import("../../modules/premium/components/NoPlansModal")
 );
 
 const CheckBot = () => {
@@ -40,12 +38,8 @@ const CheckBot = () => {
 
   return (
     <Layout>
-      {showLogin && <LoginModal isFree={false} />}
-      {showBalanceModal && (
-        <InsufficientBalanceModal
-          onCloseClick={() => updateState("showBalanceModal", false)}
-        />
-      )}
+      {showLogin && <LoginModal />}
+      {showBalanceModal && <NoPlansModal />}
       <MetaSEO seo={PREMIUM_CHECKBOT_SEO} />
       <div className="bg-gradient-to-b from-white via-slate-400 to-white pb-6">
         <div className="container mx-auto p-2 lg:px-2">
@@ -78,16 +72,8 @@ const CheckBot = () => {
           )}
         </div>
       </div>
-      <div className="bg-white pb-4">
-        <div className="container mx-auto p-2 lg:px-2">
-          <div className="text-black mb-4 mt-8">
-            <div>How does Premium Checkbot Compared to the Original?</div>
-            <ComparisonTable comparisons={CHECKBOT_COMPARISON} />
-          </div>
-          <div className="bg-black py-4 rounded">
-            <FeedbackBox />
-          </div>
-        </div>
+      <div className="bg-white">
+        <PlansSection />
       </div>
     </Layout>
   );

@@ -1,23 +1,25 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import { FaChevronCircleLeft, FaSpinner } from "react-icons/fa";
+import { FaSpinner } from "react-icons/fa";
 import { toast } from "react-toastify";
-import Link from "next/link";
+import Cookies from "js-cookie";
+import { decode } from "jsonwebtoken";
 
 import Button from "@/common/components/Button";
 import { createTopup } from "../lib/createTopup";
 import { DOKU_VA_LIST } from "../lib/constant";
 import { createDokuVA } from "../lib/createDokuVA";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { createSubscription } from "../lib/createSubscription";
 
-interface ITopupForm {
-  user: any;
-  onBackClick: () => void;
+interface ISubscriptionVAForm {
+  duration: string;
+  amount: number;
   dispatchVAinfo: (info: any) => void;
 }
 
-const TopupForm = (props: ITopupForm) => {
-  const { user, onBackClick, dispatchVAinfo } = props;
+const SubscriptionVAForm = (props: ISubscriptionVAForm) => {
+  const { duration, amount, dispatchVAinfo } = props;
   const [vaBank, setVaBank] = useState("");
   const [hasSubmit, setHasSubmit] = useState(false);
 
@@ -26,22 +28,18 @@ const TopupForm = (props: ITopupForm) => {
     setHasSubmit(true);
 
     const target = e.target as any;
-    const amount = target.amount.value;
     const paymentMethod = target.payment_method.value;
-    if (!amount || !paymentMethod) {
+    if (!paymentMethod) {
       setHasSubmit(false);
-      toast.error("Topup amount and bank is required!");
+      toast.error("Payment method is required!");
       return;
     }
 
-    if (amount < 10000) {
-      setHasSubmit(false);
-      toast.error("Minimum topup amount is Rp10.000!");
-      return;
-    }
+    const token: any = Cookies.get("token");
+    const user: any = decode(token);
 
-    sendFirebaseEvent("topup_va", {});
-    const topup = await createTopup(user.id, Number(amount));
+    sendFirebaseEvent("subscription_va", {});
+    const topup = await createSubscription(user.id, Number(amount), duration);
     if (topup?.id) {
       const dokuVAPayload = {
         dokuPath: paymentMethod,
@@ -72,21 +70,8 @@ const TopupForm = (props: ITopupForm) => {
 
   return (
     <div className="mt-8">
-      <div className="font-semibold mb-2 text-xl">
-        How much would you like to topup?
-      </div>
+      <div className="font-semibold mb-2 text-xl">Topup Via</div>
       <form onSubmit={handleSubmit} className="w-full mb-4">
-        <div className="mb-4">
-          <label htmlFor="amount"></label>
-          <input
-            type="number"
-            name="amount"
-            id="amount_input"
-            placeholder="Rp ..."
-            className="text-black p-2 w-full rounded border border-gray-500"
-            disabled={hasSubmit}
-          />
-        </div>
         <Select
           options={DOKU_VA_LIST}
           placeholder="Payment Method (Virtual Account)"
@@ -106,36 +91,12 @@ const TopupForm = (props: ITopupForm) => {
           {hasSubmit ? <FaSpinner className="mx-auto animate-spin" /> : "Topup"}
         </Button>
       </form>
-      <div className="my-2">
-        * Topup more balance so you can access our Premium Translation and
-        Checkbot <b>(10x better Translation & Correction) </b>
-      </div>
-      <div className="mb-2">
-        * You can even start Premium with <strong>Rp1000</strong>, we only
-        charge <b>Rp1</b> per
-        <Link
-          className="mx-2 underline text-blue-900"
-          href="https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them"
-        >
-          word/token
-        </Link>
-      </div>
       <div>
         * After Topup: If Balance is not updated, please wait for 5 minutes
         delay.
       </div>
-
-      <Button
-        type="button"
-        wrapperClassName="w-fit border px-2 py-1 border-gray-500 rounded mt-2"
-        buttonClassName="w-full h-full flex items-center gap-2"
-        onClick={onBackClick}
-      >
-        <FaChevronCircleLeft />
-        <span>Back</span>
-      </Button>
     </div>
   );
 };
 
-export default TopupForm;
+export default SubscriptionVAForm;

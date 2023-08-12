@@ -153,49 +153,6 @@ export const TRANSLATE_SEO = {
   url: `${process.env.NEXT_PUBLIC_BASE_URL}/translate`,
 };
 
-export const TRANSLATE_COMPARISON = [
-  {
-    title: "Translate All Languages",
-    original: <FaCheck className="mx-auto" />,
-    premium: <FaCheck className="mx-auto" />,
-  },
-  {
-    title: "Machine Translation",
-    original: <FaCheck className="mx-auto" />,
-    premium: <FaCheck className="mx-auto" />,
-  },
-  {
-    title: "Accurate Translation",
-    original: <FaCheck className="mx-auto" />,
-    premium: <FaCheck className="mx-auto" />,
-  },
-  {
-    title: "Language Update",
-    original: "Quarterly",
-    premium: "Weekly",
-  },
-  {
-    title: "Downtime",
-    original: "Sometime",
-    premium: "Never",
-  },
-  {
-    title: "Quality to Google Translate",
-    original: "5x Better",
-    premium: "10x Better",
-  },
-  {
-    title: "Words Limit",
-    original: "4000 words",
-    premium: "8000 words",
-  },
-  {
-    title: "Cost",
-    original: "Always Free",
-    premium: "Just Rp1 per words",
-  },
-];
-
 export const TESSERACT_LANGUAGE_LIST = [
   {
     label: "Automatic",

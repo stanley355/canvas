@@ -13,11 +13,14 @@ const HomeHero = () => (
   >
     <h1 className="text-center flex items-center justify-center text-4xl">
       <span>Language</span>
-      <Image src="/images/languageai_white.png" alt="Language AI" width={50} height={50} />
+      <Image
+        src="/images/languageai_white.png"
+        alt="Language AI"
+        width={50}
+        height={50}
+      />
     </h1>
-    <div className="text-2xl text-center">
-      Language made Eazy
-    </div>
+    <div className="text-2xl text-center">Language made Easy</div>
     <div className="mt-12 lg:hidden">
       {HEADER_MENU.slice(0, 4).map((menu: any, i: number) => (
         <Button

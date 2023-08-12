@@ -1,15 +1,21 @@
 import axios from "axios";
 
-export const verifyPaypalTopup = async (topup_id: string) => {
+export const createSubscription = async (
+  user_id: string,
+  topup_amount: number,
+  durationType: string
+) => {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/topups/`;
   const axiosConfig = {
     method: "POST",
     url: URL,
     headers: {
-      path: "/paypal/paid/",
+      path: "/subscriptions/",
     },
     data: {
-      topup_id,
+      user_id,
+      topup_amount,
+      subscription_duration_type: durationType,
     },
   };
 

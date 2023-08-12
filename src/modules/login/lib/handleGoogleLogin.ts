@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import { decode } from "jsonwebtoken";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { fetchActiveSubscription } from "@/modules/profile/lib/fetchActiveSubscription";
 
 export const handleGoogleLogin = async (token: any) => {
   sendFirebaseEvent("login", {});
@@ -25,7 +26,11 @@ export const handleGoogleLogin = async (token: any) => {
   const { data } = await axios(axiosConfig);
   if (data?.token) {
     sendFirebaseEvent("google_login", {});
+    const user: any = decode(data?.token);
+    const userSubscriptions = await fetchActiveSubscription(user.id);
+
     Cookies.set("token", data.token);
+    Cookies.set("subscription", JSON.stringify(userSubscriptions));
 
     const path = Router.asPath;
     if (path === "/register" || path === "/login") {
@@ -33,7 +38,7 @@ export const handleGoogleLogin = async (token: any) => {
       return;
     }
 
-    window.location.href = path;
+    window.location.reload();
     return;
   }
 

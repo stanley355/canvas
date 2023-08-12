@@ -1,6 +1,8 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { FaClock, FaLanguage } from "react-icons/fa";
+import Cookies from "js-cookie";
 
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
@@ -8,8 +10,6 @@ import Button from "@/common/components/Button";
 import HistoryBar from "@/common/components/HistoryBar";
 import TranslateForm from "@/modules/translate/components/TranslateForm";
 import TranslateResult from "@/modules/translate/components/TranslateResult";
-import TranslateComparison from "@/modules/translate/components/TranslateComparison";
-import FeedbackBox from "@/common/components/FeedbackBox";
 import MediaSelect from "@/common/components/MediaSelect";
 import ImageToTextUploader from "@/common/components/ImageToTextUploader";
 
@@ -17,9 +17,18 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { translateReducer } from "@/modules/translate/lib/reducer";
 import { TRANSLATE_STATES } from "@/modules/translate/lib/states";
 import { TRANSLATE_SEO } from "@/modules/translate/lib/constant";
+import { PlansSection } from "./plans";
+import TransQualityComparisonTable from "@/modules/plans/components/TransQualityComparisonTable";
+import PlanOptions from "@/modules/plans/components/PlanOptions";
+import PlanComparisonTable from "@/modules/plans/components/PlanComparisonTable";
+import NonPremiumPlansOffer from "@/modules/premium/components/NonPremiumPlansOffer";
 
 const LoginModal = dynamic(
   () => import("../modules/login/components/LoginModal")
+);
+
+const PlansOfferModal = dynamic(
+  () => import("../modules/premium/components/PlansOfferModal")
 );
 
 const LangTranslate = () => {
@@ -28,10 +37,24 @@ const LangTranslate = () => {
     isImageTranslate,
     imageText,
     showLogin,
+    showOffer,
     showHistory,
     originalText,
     translateCompletion,
   } = state;
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (token) {
+      const offer = Cookies.get("offer");
+      if (!offer) updateState("showOffer", true);
+      Cookies.set("offer", "true", { expires: 1 });
+    }
+
+    return () => {
+      Cookies.set("offer", "true", { expires: 1 });
+    };
+  }, [showOffer]);
 
   const updateState = (name: string, value: any) => {
     dispatch({ type: "UPDATE", name, value });
@@ -53,6 +76,10 @@ const LangTranslate = () => {
   return (
     <Layout>
       <MetaSEO seo={TRANSLATE_SEO} />
+      {showLogin && <LoginModal />}
+      {showOffer && (
+        <PlansOfferModal onCloseClick={() => updateState("showOffer", false)} />
+      )}
       <div className="bg-gradient-to-b from-black via-blue-900 to-white pb-4">
         <div className="lg:container mx-auto px-2 lg:px-0">
           <div className="flex items-center justify-between my-4">
@@ -109,12 +136,7 @@ const LangTranslate = () => {
           )}
         </div>
       </div>
-      <div className="bg-gradient-to-b from-white via-blue-900 to-black pt-4">
-        <div className="lg:container mx-auto px-2 lg:px-0">
-          <FeedbackBox />
-        </div>
-      </div>
-      {showLogin && <LoginModal isFree />}
+      <NonPremiumPlansOffer />
     </Layout>
   );
 };
