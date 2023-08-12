@@ -1,7 +1,7 @@
 export const formatSubscriptionStartDate = () => {
   const date = new Date();
   date.setDate(date.getDate());
-  return new Intl.DateTimeFormat("id-ID", { dateStyle: "full" }).format(date);
+  return new Intl.DateTimeFormat("en-GB", { dateStyle: "full" }).format(date);
 };
 
 export const formatSubscriptionEndDate = (duration: string) => {
@@ -21,5 +21,5 @@ export const formatSubscriptionEndDate = (duration: string) => {
   };
   const date = new Date();
   date.setDate(date.getDate() + endDay());
-  return new Intl.DateTimeFormat("id-ID", { dateStyle: "full" }).format(date);
+  return new Intl.DateTimeFormat("en-GB", { dateStyle: "full" }).format(date);
 };
