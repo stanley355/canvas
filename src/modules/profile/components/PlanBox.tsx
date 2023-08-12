@@ -1,16 +1,14 @@
 import React from 'react';
 import { FaSkating } from 'react-icons/fa';
 import Button from '@/common/components/Button';
-import Cookies from 'js-cookie';
 
 interface IPlanBox {
   user: any;
+  subscription: any;
 }
 
 const PlanBox = (props: IPlanBox) => {
-  const { user } = props;
-  const subscriptionToken = Cookies.get("subscription");
-  const subscription = JSON.parse(String(subscriptionToken));
+  const { user, subscription } = props;
 
   return (
     <div className='border border-gray-500 rounded p-2 my-4 lg:my-0 lg:w-2/3 '>
@@ -31,6 +29,7 @@ const PlanBox = (props: IPlanBox) => {
       </div>
       
       <div className='flex flex-col items-center my-8 lg:text-xl w-fit shadow-lg p-4 mx-auto rounded'>
+        <FaSkating className='text-3xl' />
         <div className='text-xl  lg:text-3xl font-semibold'>Pay As You Go</div>
         <div>Only Pay for what you need</div>
         <div className='italic text-green-700 font-semibold text-lg lg:text-2xl mt-2'>Rp {user.balance}</div>

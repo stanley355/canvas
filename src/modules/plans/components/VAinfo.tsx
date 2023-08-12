@@ -26,7 +26,7 @@ const VAinfo = ({ info }: IVAInfo) => (
       <div className="mr-2">Pay Before:</div>
       <span className="font-semibold">
 
-      <Countdown date={new Date(info?.expired_date_utc ?? info.expired_date)} />
+        <Countdown date={new Date(info?.expired_date_utc ?? info.expired_date)} />
       </span>
     </div>
     <div className="font-semibold">Notes:</div>
@@ -38,8 +38,8 @@ const VAinfo = ({ info }: IVAInfo) => (
       Rp11.000 if your topup is Rp11.000
     </div>
     <div>
-      3. After payment: Refresh the page to see updated balance, there might be{" "}
-      <i>a 5 minutes delay</i>
+      3. After payment: <b> Go to Profile Page</b> to see updated balance,
+      there might be a 5 minutes delay
     </div>
   </div>
 );

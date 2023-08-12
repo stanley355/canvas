@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import Cookies from "js-cookie";
 import { decode } from "jsonwebtoken";
-import { FaSkating } from "react-icons/fa";
 
 import Layout from "@/common/components/Layout";
 import Button from "@/common/components/Button";
@@ -10,13 +9,15 @@ import MetaSEO from "@/common/components/MetaSEO";
 import { HOME_SEO } from "@/modules/home/lib/constant";
 import { fetchUserData } from "@/common/lib/fetchUserData";
 import PlanBox from "@/modules/profile/components/PlanBox";
+import { fetchActiveSubscription } from "@/modules/profile/lib/fetchActiveSubscription";
 
 interface IProfile {
   user: any;
+  subscription: any;
 }
 
 const Profile = (props: IProfile) => {
-  const { user } = props;
+  const { user, subscription } = props;
 
   const onLogoutClick = () => {
     Cookies.remove("token");
@@ -41,7 +42,7 @@ const Profile = (props: IProfile) => {
               buttonClassName="w-full h-full hover:underline"
             />
           </div>
-          <PlanBox user={user} />
+          <PlanBox user={user} subscription={subscription} />
           <Button
             type="button"
             title="logout"
@@ -72,10 +73,12 @@ export const getServerSideProps: GetServerSideProps = async (
 
   const decodedToken: any = decode(token);
   const user = await fetchUserData(decodedToken.email);
+  const subscription = await fetchActiveSubscription(decodedToken.id);
 
   return {
     props: {
       user,
+      subscription
     },
   };
 };
