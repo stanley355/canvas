@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer } from "react";
 import dynamic from "next/dynamic";
 import { FaClock, FaRobot } from "react-icons/fa";
+import { decode } from "jsonwebtoken";
 
 import Button from "@/common/components/Button";
 import Layout from "@/common/components/Layout";
@@ -30,9 +31,15 @@ const CheckBot = () => {
   useEffect(() => {
     const token = Cookies.get("token");
     if (token) {
-      const offer = Cookies.get("offer");
-      if (!offer) updateState("showOffer", true);
-      Cookies.set("offer", "true", { expires: 1 });
+      const subscriptionCookie = Cookies.get("subscription");
+      const subscription = subscriptionCookie ? JSON.parse(subscriptionCookie) : null;
+      const user: any = decode(token);
+
+      if (!subscription.id && !user.balance) {
+        const offer = Cookies.get("offer");
+        if (!offer) updateState("showOffer", true);
+        Cookies.set("offer", "true", { expires: 1 });
+      }
     }
 
     return () => {

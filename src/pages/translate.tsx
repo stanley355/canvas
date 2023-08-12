@@ -1,8 +1,8 @@
 import React, { useReducer, useEffect } from "react";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import { FaClock, FaLanguage } from "react-icons/fa";
 import Cookies from "js-cookie";
+import { decode } from "jsonwebtoken";
 
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
@@ -17,10 +17,6 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { translateReducer } from "@/modules/translate/lib/reducer";
 import { TRANSLATE_STATES } from "@/modules/translate/lib/states";
 import { TRANSLATE_SEO } from "@/modules/translate/lib/constant";
-import { PlansSection } from "./plans";
-import TransQualityComparisonTable from "@/modules/plans/components/TransQualityComparisonTable";
-import PlanOptions from "@/modules/plans/components/PlanOptions";
-import PlanComparisonTable from "@/modules/plans/components/PlanComparisonTable";
 import NonPremiumPlansOffer from "@/modules/premium/components/NonPremiumPlansOffer";
 
 const LoginModal = dynamic(
@@ -46,9 +42,15 @@ const LangTranslate = () => {
   useEffect(() => {
     const token = Cookies.get("token");
     if (token) {
-      const offer = Cookies.get("offer");
-      if (!offer) updateState("showOffer", true);
-      Cookies.set("offer", "true", { expires: 1 });
+      const subscriptionCookie = Cookies.get("subscription");
+      const subscription = subscriptionCookie ? JSON.parse(subscriptionCookie) : null;
+      const user: any = decode(token);
+
+      if (!subscription.id && !user.balance) {
+        const offer = Cookies.get("offer");
+        if (!offer) updateState("showOffer", true);
+        Cookies.set("offer", "true", { expires: 1 });
+      }
     }
 
     return () => {
