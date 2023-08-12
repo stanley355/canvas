@@ -40,7 +40,6 @@ const SubscriptionVAForm = (props: ISubscriptionVAForm) => {
 
     sendFirebaseEvent("subscription_va", {});
     const topup = await createSubscription(user.id, Number(amount), duration);
-    console.log(111, topup);
     if (topup?.id) {
       const dokuVAPayload = {
         dokuPath: paymentMethod,
@@ -50,7 +49,6 @@ const SubscriptionVAForm = (props: ISubscriptionVAForm) => {
       };
 
       const dokuVA = await createDokuVA(dokuVAPayload);
-      console.log(222, dokuVA);
       if (dokuVA?.virtual_account_info?.virtual_account_number) {
         const vaInfo = dokuVA.virtual_account_info;
         vaInfo.bank_name = vaBank;
