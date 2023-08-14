@@ -3,11 +3,11 @@ import { FaLanguage, FaRobot, FaPlusCircle, FaDochub } from "react-icons/fa";
 
 export const HOME_SEO = {
   title:
-    "Language AI: Translate, Translation, and Grammar Check | Free Grammar Check",
+    "Language AI: High Quality Translation and Grammar Check ",
   description:
-    "Unlock the power of Language AI for flawless translations, grammar checks, and punctuation assistance. Our free grammar check tool ensures error-free content while our machine translation feature helps you break language barriers. Enhance your writing with accurate translations and impeccable grammar - all in one place. Try it now!",
+    "Unlock the power of Language AI for High Quality translations, grammar, and spelling check assistance. Our free grammar check tool ensures error-free content while our machine translation feature helps you break language barriers. Enhance your writing with accurate translations and impeccable grammar - all in one place. Try it now!",
   keywords:
-    "Language AI, translate, translation, machine translation, grammar check, free grammar check",
+    "Language AI, translate, translation, machine translation, grammar check, free grammar check, high quality",
   url: process.env.NEXT_PUBLIC_BASE_URL,
 };
 
