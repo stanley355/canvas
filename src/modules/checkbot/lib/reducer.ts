@@ -1,4 +1,4 @@
-export const languageGPTReducer = (state: any, action: any) => {
+export const checkbotReducer = (state: any, action: any) => {
   switch (action.type) {
     case "UPDATE":
       const newStates = {
