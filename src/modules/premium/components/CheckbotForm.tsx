@@ -173,7 +173,10 @@ const PremiumCheckBotForm = (props: IPremiumCheckBotForm) => {
         <Button
           type="submit"
           disabled={isLoading}
-          wrapperClassName={classNames("bg-blue-900 text-white p-2 rounded-md font-semibold text-center ml-auto mr-1", isLoading ? "w-fit" : "w-1/3")}
+          wrapperClassName={classNames(
+            "bg-blue-900 text-white p-2 rounded-md font-semibold text-center ml-auto mr-1",
+            isLoading ? "w-fit" : "w-1/3"
+          )}
           buttonClassName="w-full"
         >
           {isLoading ? (

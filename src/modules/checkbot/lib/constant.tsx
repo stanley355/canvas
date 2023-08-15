@@ -60,9 +60,11 @@ export const CHECKBOT_OPTIONS = [
 ];
 
 export const CHECKBOT_SEO = {
-  title: "LanguageAI Checkbot: The AI-powered grammar checker that helps you write better, faster.",
+  title:
+    "LanguageAI Checkbot: The AI-powered grammar checker that helps you write better, faster.",
   description:
     "LanguageAI Checkbot is a free online grammar checker that uses AI technology to identify and correct grammar, spelling, and punctuation errors in your text. It also helps you find the best words to use in your writing, and to improve the clarity and structure of your sentences. With Language AI Checkbot, you can be sure that your writing is error-free and clear, every time.",
-  keywords: "grammar checker, free grammar checker, AI grammar checker, grammar check online, grammar and spelling checker  ",
+  keywords:
+    "grammar checker, free grammar checker, AI grammar checker, grammar check online, grammar and spelling checker  ",
   url: `${process.env.NEXT_PUBLIC_BASE_URL}/checkbot`,
 };

@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer } from "react";
 import dynamic from "next/dynamic";
 import { FaClock, FaRobot } from "react-icons/fa";
+import Cookies from "js-cookie";
 
 import Button from "@/common/components/Button";
 import Layout from "@/common/components/Layout";
@@ -12,7 +13,6 @@ import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { CHECKBOT_SEO } from "@/modules/checkbot/lib/constant";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import Cookies from "js-cookie";
 import NonPremiumPlansOffer from "@/modules/premium/components/NonPremiumPlansOffer";
 import { showOfferModal } from "@/common/lib/showOfferModal";
 

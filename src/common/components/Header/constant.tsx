@@ -5,7 +5,14 @@ export const HEADER_MENU = [
   {
     title: "LanguageGPT",
     url: "/languagegpt/",
-    icon: <Image src="/images/languageai.png" alt='Language AI' width={20} height={20} />,
+    icon: (
+      <Image
+        src="/images/languageai.png"
+        alt="Language AI"
+        width={20}
+        height={20}
+      />
+    ),
     desc: [
       "Correct Grammar in All Languages",
       "10x Better than Grammarly",

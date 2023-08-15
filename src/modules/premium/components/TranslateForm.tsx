@@ -171,7 +171,10 @@ const PremiumTranslateForm = (props: ITranslateForm) => {
               <Button
                 type="submit"
                 disabled={isLoading}
-                wrapperClassName={classNames("bg-blue-900 text-white p-2 rounded-md font-semibold text-center", isLoading ? "w-fit" : "w-1/3")}
+                wrapperClassName={classNames(
+                  "bg-blue-900 text-white p-2 rounded-md font-semibold text-center",
+                  isLoading ? "w-fit" : "w-1/3"
+                )}
                 buttonClassName="w-full"
               >
                 {isLoading ? (
