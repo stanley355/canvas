@@ -38,7 +38,7 @@ const PlansOfferModal = (props: IPlansOfferModal) => {
         </div>
         <div className="text-center text-lg italic">
           *Let&apos;s make it <b>Easy</b> by Upgrading your Plans to{" "}
-          <b>Premium</b>
+          <b>Premium</b> only <b>Rp1.000</b>!
         </div>
         <Button
           type="link"

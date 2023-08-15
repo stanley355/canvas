@@ -1,6 +1,17 @@
 import { FaLanguage, FaRobot, FaUserCircle } from "react-icons/fa";
+import Image from "next/image";
 
 export const HEADER_MENU = [
+  {
+    title: "LanguageGPT",
+    url: "/languagegpt/",
+    icon: <Image src="/images/languageai.png" alt='Language AI' width={20} height={20} />,
+    desc: [
+      "Correct Grammar in All Languages",
+      "10x Better than Grammarly",
+      "100% Free",
+    ],
+  },
   {
     title: "AI Checkbot",
     url: "/checkbot/",

@@ -20,7 +20,7 @@ interface IPromptForm {
 
 const PromptForm = (props: IPromptForm) => {
   const { promptAndCompletionList, updateState } = props;
-  const [promptValue, setPromptValue] = useState("Translate 'Bagaimana harimu?' to English");
+  const [promptValue, setPromptValue] = useState("Translate 'Apa kabar' in German, English, and Japanese");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -85,7 +85,7 @@ const PromptForm = (props: IPromptForm) => {
 
   return (
     <div className='absolute top-[83vh] lg:top-[85vh] left-0 w-full'>
-      <form onClick={handleSubmit} className='flex items-center bg-black rounded  w-full  lg:w-2/3 lg:mx-auto border border-white'>
+      <form onSubmit={handleSubmit} className='flex items-center bg-black rounded  w-full  lg:w-2/3 lg:mx-auto border border-white'>
         <label htmlFor="prompt" className='p-2 w-5/6'>
           <textarea
             name='userPrompt'

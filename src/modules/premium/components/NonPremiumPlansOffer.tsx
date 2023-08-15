@@ -32,7 +32,7 @@ const NonPremiumPlansOffer = () => (
           href="/plans/"
           className="border border-gray-500 rounded-[2rem] bg-[#feff69] text-lg font-semibold p-4"
         >
-          Get started
+          Get started with <b>Rp.1000</b>!
         </Link>
       </div>
     </div>

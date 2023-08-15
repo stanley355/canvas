@@ -10,7 +10,7 @@ interface ICompletionBox {
 
 const CompletionBox = (props: ICompletionBox) => {
   const { promptAndCompletionList } = props;
-  
+
   return (
     <div className='h-[83vh] lg:h-[84vh] p-2 lg:w-2/3 lg:mx-auto overflow-y-auto border-b'>
       <div className='flex gap-4 border-b border-gray-500 pb-2 '>
@@ -24,15 +24,15 @@ const CompletionBox = (props: ICompletionBox) => {
             <li>Fix Grammar & Spelling in any Languages</li>
             <li>Analyse your writing </li>
             <li>Provide feedback for your writing</li>
-            <li>Provide GPT-4 Functionality</li>
+            <li>Provide <b>GPT-4</b> Functionality</li>
           </ul>
         </span>
       </div>
       {promptAndCompletionList.map((list: any, index: number) =>
         <div className='flex gap-4 border-b border-gray-500 p-2 ' key={index}>
           <span>
-            {list.role === "system" ? 
-            <Image src="/images/languageai.png" alt='Language AI' width={30} height={30} /> :
+            {list.role === "system" ?
+              <Image src="/images/languageai.png" alt='Language AI' width={30} height={30} /> :
               <FaUser className='text-lg' />
             }
           </span>
