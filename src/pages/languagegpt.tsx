@@ -7,6 +7,15 @@ import { LANGUAGE_GPT_STATES } from '@/modules/languagegpt/lib/states';
 import React, { useReducer } from 'react';
 import MetaSEO from '@/common/components/MetaSEO';
 import { HOME_SEO } from '@/modules/home/lib/constant';
+import dynamic from 'next/dynamic';
+
+const LoginModal = dynamic(
+  () => import("../modules/login/components/LoginModal")
+);
+
+const NoPlansModal = dynamic(
+  () => import("../modules/premium/components/NoPlansModal")
+);
 
 const LanguageGPT = () => {
   const [state, dispatch] = useReducer(languageGPTReducer, LANGUAGE_GPT_STATES);
@@ -19,6 +28,8 @@ const LanguageGPT = () => {
   return (
     <Layout>
       <MetaSEO seo={HOME_SEO} />
+      {showLogin && <LoginModal />}
+      {showBalanceModal && <NoPlansModal />}
       <div className='container mx-auto h-[92vh] lg:h-[93vh] bg-white relative text-black'>
         <CompletionBox promptAndCompletionList={promptAndCompletionList} />
         <PromptForm promptAndCompletionList={promptAndCompletionList} updateState={updateState} />

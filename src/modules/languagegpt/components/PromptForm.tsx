@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import { FaAngleDoubleRight, FaSpinner } from 'react-icons/fa';
+import { toast } from 'react-toastify';
+import { decode } from 'jsonwebtoken';
+import Cookies from 'js-cookie';
 
 import Button from '@/common/components/Button';
 import { sendFirebaseEvent } from '@/common/lib/firebase/sendFirebaseEvent';
 import { handlePremiumPrompt } from '@/modules/premium/lib/handlePremiumPrompt';
-import { toast } from 'react-toastify';
+import { fetchActiveSubscription } from '@/modules/profile/lib/fetchActiveSubscription';
+import { isSubscriptionExpired } from '@/modules/profile/lib/isSubscriptionExpired';
+import { checkUserCurrentBalance } from '@/modules/premium/lib/checkUserCurrentBalance';
+import { saveUserPremiumPrompt } from '@/common/lib/saveUserPremiumPrompt';
+import { saveUserPrompt } from '@/common/lib/saveUserPrompt';
 
 interface IPromptForm {
   promptAndCompletionList: Array<any>;
@@ -20,12 +27,47 @@ const PromptForm = (props: IPromptForm) => {
     e.preventDefault();
 
     if (!promptValue) return;
-    sendFirebaseEvent("languagegpt", { prompt });
+
+    const token = Cookies.get("token");
+    if (!token) {
+      updateState("showLogin", true);
+      sendFirebaseEvent("login_popup", {});
+      return;
+    }
 
     setIsLoading(true);
+    const user: any = decode(token);
+    const subscription = await fetchActiveSubscription(user.id);
+    const subscriptionExpired = subscription?.id
+      ? isSubscriptionExpired(subscription.end_at)
+      : true;
+    if (subscriptionExpired) {
+      const hasBalance = await checkUserCurrentBalance();
+      if (!hasBalance) {
+        updateState("showBalanceModal", true);
+        setIsLoading(false);
+        return;
+      }
+    }
+
+    sendFirebaseEvent("languagegpt", { prompt });
     const { content, prompt_tokens, completion_tokens } = await handlePremiumPrompt(promptValue);
-    setIsLoading(false);
     if (content) {
+      const saveUserPromptPayload = {
+        instruction: "LanguageGPT",
+        prompt_token: prompt_tokens,
+        completion_token: completion_tokens,
+        prompt_text: promptValue,
+        completion_text: content,
+      };
+
+      if (subscriptionExpired) {
+        await saveUserPremiumPrompt(saveUserPromptPayload);
+      } else {
+        await saveUserPrompt(saveUserPromptPayload);
+      }
+
+      setIsLoading(false);
       setPromptValue("");
       updateState("promptAndCompletionList",
         [
@@ -34,13 +76,9 @@ const PromptForm = (props: IPromptForm) => {
           { role: "system", prompt: content }
         ]
       );
-
       return;
-
-
     }
 
-    
     toast.error("Server error, please try again");
     return;
   }
