@@ -144,8 +144,7 @@ export const LANGUAGE_LIST = [
 ];
 
 export const TRANSLATE_SEO = {
-  title:
-    "LanguageAI Translate: High Quality AI Translation",
+  title: "LanguageAI Translate: High Quality AI Translation",
   description:
     "LanguageAI Translate: A multilingual translation service that allows you to translate words, phrases, and entire documents between over 100 languages. Accurate and reliable, Language AI Translate is a helpful tool for communication across different languages.",
   keywords:

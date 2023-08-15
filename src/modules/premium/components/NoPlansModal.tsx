@@ -21,8 +21,9 @@ const NoPlansModal = () => {
         </div>
         <div className="text-center text-lg italic">
           *Let&apos;s make it <b>Easy</b> by Upgrading your Plans for Premium
-          Access
+          Access with only <b>Rp1.000</b>!
         </div>
+
         <Button
           type="link"
           href="/plans/"
