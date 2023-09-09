@@ -13,12 +13,18 @@ import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 import { handlePrompt } from "@/common/lib/handlePrompt";
 import { LANGUAGE_LIST } from "../lib/constant";
 import { saveHistory } from "@/common/lib/saveHistory";
+import { decode } from "jsonwebtoken";
+import { fetchActiveSubscription } from "@/modules/profile/lib/fetchActiveSubscription";
+import { isSubscriptionExpired } from "@/modules/profile/lib/isSubscriptionExpired";
+import { checkUserCurrentBalance } from "@/modules/premium/lib/checkUserCurrentBalance";
+import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
 
 export interface ITranslateForm {
   originalText: string;
   imageText: string;
   onReuploadClick: () => void;
   dispatchLoginForm: () => void;
+  dispatchPaidAcessModal: () => void;
   dispatchTranslateVal: (val: string) => void;
 }
 
@@ -28,6 +34,7 @@ const TranslateForm = (props: ITranslateForm) => {
     imageText,
     onReuploadClick,
     dispatchLoginForm,
+    dispatchPaidAcessModal,
     dispatchTranslateVal,
   } = props;
 
@@ -58,20 +65,42 @@ const TranslateForm = (props: ITranslateForm) => {
       return "";
     }
 
+    setIsLoading(true);
+    const user: any = decode(token);
+    const subscription = await fetchActiveSubscription(user.id);
+    const subscriptionExpired = subscription?.id
+      ? isSubscriptionExpired(subscription.end_at)
+      : true;
+    if (subscriptionExpired) {
+      const hasBalance = await checkUserCurrentBalance();
+      if (!hasBalance) {
+        dispatchPaidAcessModal();
+        setIsLoading(false);
+        return;
+      }
+    }
+
     sendFirebaseEvent("translate", {
       name: "translate",
       target_lange: targetLang,
     });
 
-    setIsLoading(true);
-    const prompt = `Translate "${sourceText}" to ${targetLang}. ${
-      contextText ?? ""
-    }`;
+    const prompt = `Translate "${sourceText}" to ${targetLang}. ${contextText ?? ""
+      }`;
     const { content, prompt_tokens, completion_tokens } = await handlePrompt(
       prompt
     );
 
+
     if (content) {
+      const historyPayload = {
+        time: new Date(),
+        instruction: `Translate to ${targetLang}`,
+        originalText: sourceText,
+        completionText: content,
+        type: "translate",
+      };
+      saveHistory(historyPayload);
       dispatchTranslateVal(content);
       setIsLoading(false);
 
@@ -82,16 +111,13 @@ const TranslateForm = (props: ITranslateForm) => {
         prompt_text: sourceText,
         completion_text: content,
       };
-      await saveUserPrompt(saveUserPromptPayload);
 
-      const historyPayload = {
-        time: new Date(),
-        instruction: `Translate to ${targetLang}`,
-        originalText: sourceText,
-        completionText: content,
-        type: "translate",
-      };
-      await saveHistory(historyPayload);
+      if (subscriptionExpired) {
+        await saveUserPremiumPrompt(saveUserPromptPayload);
+      } else {
+        await saveUserPrompt(saveUserPromptPayload);
+      }
+
       return;
     }
 

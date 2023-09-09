@@ -1,7 +1,6 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer } from "react";
 import dynamic from "next/dynamic";
 import { FaClock, FaLanguage } from "react-icons/fa";
-import Cookies from "js-cookie";
 
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
@@ -16,13 +15,12 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { translateReducer } from "@/modules/translate/lib/reducer";
 import { TRANSLATE_STATES } from "@/modules/translate/lib/states";
 import { TRANSLATE_SEO } from "@/modules/translate/lib/constant";
-import { showOfferModal } from "@/common/lib/showOfferModal";
 
 const LoginModal = dynamic(
   () => import("../modules/login/components/LoginModal")
 );
 
-const PlansOfferModal = dynamic(
+const PaidAccessModal = dynamic(
   () => import("../common/components/PaidAccessModal")
 );
 
@@ -32,20 +30,11 @@ const LangTranslate = () => {
     isImageTranslate,
     imageText,
     showLogin,
-    showOffer,
+    showPaidAccessModal,
     showHistory,
     originalText,
     translateCompletion,
   } = state;
-
-  useEffect(() => {
-    const showOfferMod = showOfferModal();
-    if (showOfferMod) {
-      const offer = Cookies.get("offer");
-      if (!offer) updateState("showOffer", true);
-      Cookies.set("offer", "true", { expires: 1 });
-    }
-  }, [showOffer]);
 
   const updateState = (name: string, value: any) => {
     dispatch({ type: "UPDATE", name, value });
@@ -67,11 +56,7 @@ const LangTranslate = () => {
   return (
     <Layout>
       <MetaSEO seo={TRANSLATE_SEO} />
-      {showLogin && <LoginModal />}
-      {showOffer && (
-        <PlansOfferModal onCloseClick={() => updateState("showOffer", false)} />
-      )}
-      <div className="bg-gradient-to-b from-black via-blue-900 to-white pb-4">
+      <div className="bg-gradient-to-b from-black via-blue-900 to-white pb-4 h-screen">
         <div className="lg:container mx-auto px-2 lg:px-0">
           <div className="flex items-center justify-between my-4">
             <h1
@@ -99,6 +84,7 @@ const LangTranslate = () => {
                 imageText={imageText}
                 onReuploadClick={() => updateState("isImageTranslate", true)}
                 dispatchLoginForm={() => updateState("showLogin", true)}
+                dispatchPaidAcessModal={() => updateState("showPaidAccessModal", true)}
                 dispatchTranslateVal={(val) =>
                   updateState("translateCompletion", val)
                 }
@@ -108,7 +94,7 @@ const LangTranslate = () => {
           </div>
           <Button
             type="button"
-            wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer mb-8"
+            wrapperClassName="p-2 w-fit bg-transparent rounded-md mx-auto cursor-pointer mb-8 border border-white"
             buttonClassName="w-full flex items-center gap-2 h-full"
             onClick={() => {
               sendFirebaseEvent("show_history", {});
@@ -118,15 +104,19 @@ const LangTranslate = () => {
             <FaClock />
             <span>Show History</span>
           </Button>
-          {showHistory && (
-            <HistoryBar
-              pageType="translate"
-              onHistoryClick={handleHistoryClick}
-              onCloseClick={() => updateState("showHistory", false)}
-            />
-          )}
+
         </div>
+
       </div>
+      {showLogin && <LoginModal />}
+      {showPaidAccessModal && <PaidAccessModal onCloseClick={() => updateState("showPaidAccessModal", false)} />}
+      {showHistory && (
+        <HistoryBar
+          pageType="translate"
+          onHistoryClick={handleHistoryClick}
+          onCloseClick={() => updateState("showHistory", false)}
+        />
+      )}
     </Layout>
   );
 };
