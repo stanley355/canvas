@@ -1,7 +1,6 @@
-import React, { useEffect, useReducer } from "react";
-import dynamic from "next/dynamic";
+import React, { useReducer } from "react";
 import { FaClock, FaRobot } from "react-icons/fa";
-import Cookies from "js-cookie";
+import dynamic from "next/dynamic";
 
 import Button from "@/common/components/Button";
 import Layout from "@/common/components/Layout";
@@ -13,29 +12,16 @@ import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { CHECKBOT_SEO } from "@/modules/checkbot/lib/constant";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import NonPremiumPlansOffer from "@/modules/premium/components/NonPremiumPlansOffer";
-import { showOfferModal } from "@/common/lib/showOfferModal";
+import PlansOfferModal from "@/common/components/PlansOfferModal";
+
 
 const LoginModal = dynamic(
   () => import("../modules/login/components/LoginModal")
 );
 
-const PlansOfferModal = dynamic(
-  () => import("../modules/premium/components/PlansOfferModal")
-);
-
 const CheckBot = () => {
   const [states, dispatch] = useReducer(checkbotReducer, CHECKBOT_STATES);
   const { showLogin, showOffer, showHistory } = states;
-
-  useEffect(() => {
-    const showOfferMod = showOfferModal();
-    if (showOfferMod) {
-      const offer = Cookies.get("offer");
-      if (!offer) updateState("showOffer", true);
-      Cookies.set("offer", "true", { expires: 1 });
-    }
-  }, [showOffer]);
 
   const updateState = (name: string, value: any) => {
     dispatch({ type: "UPDATE", name, value });
@@ -50,11 +36,7 @@ const CheckBot = () => {
   return (
     <Layout>
       <MetaSEO seo={CHECKBOT_SEO} />
-      {showLogin && <LoginModal />}
-      {showOffer && (
-        <PlansOfferModal onCloseClick={() => updateState("showOffer", false)} />
-      )}
-      <div className="bg-gradient-to-b from-black via-blue-900 to-white pb-4">
+      <div className="bg-gradient-to-b from-black via-blue-900 to-white h-screen">
         <div className="lg:container mx-auto px-2 lg:px-0">
           <h1 className="flex flex-row items-center text-2xl lg:text-4xl justify-center my-4">
             <FaRobot className="text-3xl mr-2" />
@@ -63,7 +45,7 @@ const CheckBot = () => {
           <CheckbotArea states={states} updateState={updateState} />
           <Button
             type="button"
-            wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer mb-8"
+            wrapperClassName="p-2 w-fit bg-blue-900 border border-white rounded-md mx-auto cursor-pointer mb-8"
             buttonClassName="w-full flex items-center gap-2 h-full"
             onClick={() => {
               sendFirebaseEvent("show_history", {});
@@ -74,15 +56,16 @@ const CheckBot = () => {
             <span>Show History</span>
           </Button>
         </div>
-        {showHistory && (
-          <HistoryBar
-            pageType="checkbot"
-            onHistoryClick={handleHistoryClick}
-            onCloseClick={() => updateState("showHistory", false)}
-          />
-        )}
       </div>
-      <NonPremiumPlansOffer />
+      <PlansOfferModal onCloseClick={()=> {}} />
+      {showLogin && <LoginModal />}
+      {showHistory && (
+        <HistoryBar
+          pageType="checkbot"
+          onHistoryClick={handleHistoryClick}
+          onCloseClick={() => updateState("showHistory", false)}
+        />
+      )}
     </Layout>
   );
 };

@@ -15,10 +15,6 @@ const LoginModal = dynamic(
   () => import("../modules/login/components/LoginModal")
 );
 
-const NoPlansModal = dynamic(
-  () => import("../modules/premium/components/NoPlansModal")
-);
-
 const LanguageGPT = (props: any) => {
   const { queryPromptAndCompletionList } = props;
   const [state, dispatch] = useReducer(languageGPTReducer, LANGUAGE_GPT_STATES);
@@ -38,7 +34,6 @@ const LanguageGPT = (props: any) => {
     <Layout>
       <MetaSEO seo={HOME_SEO} />
       {showLogin && <LoginModal />}
-      {showBalanceModal && <NoPlansModal />}
       <div className="container mx-auto h-[92vh] lg:h-[93vh] bg-white relative text-black">
         <CompletionBox promptAndCompletionList={promptAndCompletionList} />
         <PromptForm

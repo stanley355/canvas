@@ -14,6 +14,11 @@ import { handlePrompt } from "@/common/lib/handlePrompt";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 import { createRemovedAndAddedDiff } from "../lib/createRemovedAndAddedDiff";
 import { saveHistory } from "@/common/lib/saveHistory";
+import { decode } from "jsonwebtoken";
+import { fetchActiveSubscription } from "@/modules/profile/lib/fetchActiveSubscription";
+import { isSubscriptionExpired } from "@/modules/profile/lib/isSubscriptionExpired";
+import { checkUserCurrentBalance } from "@/modules/premium/lib/checkUserCurrentBalance";
+import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
 
 interface ICheckBotForm {
   sourceText: string;
@@ -22,7 +27,6 @@ interface ICheckBotForm {
 
 const CheckBotForm = (props: ICheckBotForm) => {
   const { sourceText, updateState } = props;
-
   const isDesktop = useDesktopScreen();
   const [showPersonalInstruction, setShowPersonalInstruction] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,7 +34,9 @@ const CheckBotForm = (props: ICheckBotForm) => {
   const handleCheckbotOption = (option: any) => {
     const isPersonalInstruction = option.value === "personal_instruction";
     setShowPersonalInstruction(isPersonalInstruction);
+    return;
   };
+
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -62,6 +68,24 @@ const CheckBotForm = (props: ICheckBotForm) => {
     }
 
     setIsLoading(true);
+    const user: any = decode(token);
+    const subscription = await fetchActiveSubscription(user.id);
+    const subscriptionExpired = subscription?.id
+      ? isSubscriptionExpired(subscription.end_at)
+      : true;
+
+      console.log(subscriptionExpired);
+    if (subscriptionExpired) {
+      const hasBalance = await checkUserCurrentBalance();
+      console.log(hasBalance);
+      if (!hasBalance) {
+        // TODO: Create modal showing user has no balance
+        // updateState("showBalanceModal", true);
+        setIsLoading(false);
+        return;
+      }
+    }
+
     sendFirebaseEvent("checkbot", {
       name: "checkbot",
       instruction: instruction,
@@ -75,27 +99,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
     );
 
     if (content) {
-      updateState("checkbotCompletion", content);
-
-      const { removedDiff, addedDiff } = createRemovedAndAddedDiff(
-        sourceText,
-        content
-      );
-      updateState("checkbotRemoved", removedDiff);
-      updateState("checkbotAdded", addedDiff);
-
-      if (!isDesktop) window.location.href = "#checkbot_form";
-      setIsLoading(false);
-
-      const saveUserPromptPayload = {
-        instruction: personalInstruction ? personalInstruction : instruction,
-        prompt_token: prompt_tokens,
-        completion_token: completion_tokens,
-        prompt_text: sourceText,
-        completion_text: content,
-      };
-      await saveUserPrompt(saveUserPromptPayload);
-
+      
       const historyPayload = {
         time: new Date(),
         instruction: personalInstruction ? personalInstruction : instruction,
@@ -104,6 +108,32 @@ const CheckBotForm = (props: ICheckBotForm) => {
         type: "checkbot",
       };
       saveHistory(historyPayload);
+
+      const { removedDiff, addedDiff } = createRemovedAndAddedDiff(
+        sourceText,
+        content
+      );
+      updateState("checkbotRemoved", removedDiff);
+      updateState("checkbotAdded", addedDiff);
+      updateState("checkbotCompletion", content);
+      setIsLoading(false);
+      if (!isDesktop) window.location.href = "#checkbot_form";
+
+      const saveUserPromptPayload = {
+        instruction: personalInstruction ? personalInstruction : instruction,
+        prompt_token: prompt_tokens,
+        completion_token: completion_tokens,
+        prompt_text: sourceText,
+        completion_text: content,
+      };
+
+
+      if (subscriptionExpired) {
+        await saveUserPremiumPrompt(saveUserPromptPayload);
+      } else {
+        await saveUserPrompt(saveUserPromptPayload);
+      }
+
       return;
     }
 

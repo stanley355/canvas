@@ -24,7 +24,7 @@ const LoginModal = dynamic(
 );
 
 const PlansOfferModal = dynamic(
-  () => import("../modules/premium/components/PlansOfferModal")
+  () => import("../common/components/PlansOfferModal")
 );
 
 const LangTranslate = () => {

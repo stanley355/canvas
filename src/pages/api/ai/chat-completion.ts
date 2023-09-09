@@ -14,7 +14,7 @@ const openaiCompletionAPI = async (
       Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
     },
     data: {
-      model: "gpt-4",
+      model: "gpt-3.5-turbo-16k",
       messages: [{ role: "user", content: req.body.content }],
     },
   };
@@ -24,21 +24,14 @@ const openaiCompletionAPI = async (
     res.setHeader("Content-Type", "application/json");
     res.json(data);
   } catch (err: any) {
-    axiosConfig.data.model = "gpt-4-0613";
+    axiosConfig.data.model = "gpt-3.5-turbo-16k-0613";
 
     try {
       const { data } = await axios(axiosConfig);
       res.setHeader("Content-Type", "application/json");
       res.json(data);
     } catch (error) {
-      axiosConfig.data.model = "gpt-3.5-turbo";
-      try {
-        const { data } = await axios(axiosConfig);
-        res.setHeader("Content-Type", "application/json");
-        res.json(data);
-      } catch (error) {
-        res.status(500).send(err);
-      }
+      res.status(500).send(err);
     }
   }
 };
