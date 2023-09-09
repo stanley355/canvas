@@ -12,16 +12,18 @@ import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { CHECKBOT_SEO } from "@/modules/checkbot/lib/constant";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import PlansOfferModal from "@/common/components/PlansOfferModal";
-
 
 const LoginModal = dynamic(
   () => import("../modules/login/components/LoginModal")
 );
 
+const PaidAccessModal = dynamic(() =>
+  import("../common/components/PaidAccessModal")
+);
+
 const CheckBot = () => {
   const [states, dispatch] = useReducer(checkbotReducer, CHECKBOT_STATES);
-  const { showLogin, showOffer, showHistory } = states;
+  const { showLogin, showPaidAccessModal, showHistory } = states;
 
   const updateState = (name: string, value: any) => {
     dispatch({ type: "UPDATE", name, value });
@@ -57,7 +59,7 @@ const CheckBot = () => {
           </Button>
         </div>
       </div>
-      <PlansOfferModal onCloseClick={()=> {}} />
+      {showPaidAccessModal && <PaidAccessModal onCloseClick={() => updateState("showPaidAccessModal", false)} />}
       {showLogin && <LoginModal />}
       {showHistory && (
         <HistoryBar

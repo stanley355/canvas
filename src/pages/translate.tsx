@@ -16,7 +16,6 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { translateReducer } from "@/modules/translate/lib/reducer";
 import { TRANSLATE_STATES } from "@/modules/translate/lib/states";
 import { TRANSLATE_SEO } from "@/modules/translate/lib/constant";
-import NonPremiumPlansOffer from "@/modules/premium/components/NonPremiumPlansOffer";
 import { showOfferModal } from "@/common/lib/showOfferModal";
 
 const LoginModal = dynamic(
@@ -24,7 +23,7 @@ const LoginModal = dynamic(
 );
 
 const PlansOfferModal = dynamic(
-  () => import("../common/components/PlansOfferModal")
+  () => import("../common/components/PaidAccessModal")
 );
 
 const LangTranslate = () => {
@@ -128,7 +127,6 @@ const LangTranslate = () => {
           )}
         </div>
       </div>
-      <NonPremiumPlansOffer />
     </Layout>
   );
 };

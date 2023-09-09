@@ -74,13 +74,10 @@ const CheckBotForm = (props: ICheckBotForm) => {
       ? isSubscriptionExpired(subscription.end_at)
       : true;
 
-      console.log(subscriptionExpired);
     if (subscriptionExpired) {
       const hasBalance = await checkUserCurrentBalance();
-      console.log(hasBalance);
       if (!hasBalance) {
-        // TODO: Create modal showing user has no balance
-        // updateState("showBalanceModal", true);
+        updateState("showPaidAccessModal", true);
         setIsLoading(false);
         return;
       }
@@ -99,7 +96,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
     );
 
     if (content) {
-      
+
       const historyPayload = {
         time: new Date(),
         instruction: personalInstruction ? personalInstruction : instruction,

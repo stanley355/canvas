@@ -3,11 +3,11 @@ import Image from "next/image";
 import Button from "@/common/components/Button";
 import { FaSkating, FaTimes, FaTimesCircle } from "react-icons/fa";
 
-interface IPlansOfferModal {
+interface IPaidAccessModal {
   onCloseClick: () => void;
 }
 
-const PlansOfferModal = (props: IPlansOfferModal) => {
+const PaidAccessModal = (props: IPaidAccessModal) => {
   const { onCloseClick } = props;
 
   return (
@@ -21,7 +21,7 @@ const PlansOfferModal = (props: IPlansOfferModal) => {
         >
           <FaTimesCircle />
         </Button>
-        <h1 className="flex items-center justify-center text-2xl">
+        <div className="flex items-center justify-center text-2xl">
           <span>Language</span>
           <Image
             src="/images/languageai.png"
@@ -29,16 +29,12 @@ const PlansOfferModal = (props: IPlansOfferModal) => {
             width={30}
             height={30}
           />
-        </h1>
-        <div className="text-3xl text-center font-semibold mt-4 mb-2">
-          Exclusive Offer
         </div>
-        <div className="text-2xl text-center font-semibold mb-4">
-          Level up your Game
+        <div className="text-3xl text-center font-semibold mt-4 mb-2">
+          You need to upgrade to access this feature
         </div>
         <div className="text-center text-lg italic">
-          *Let&apos;s make it <b>Easy</b> by Upgrading your Plans to{" "}
-          <b>Premium</b> only <b>Rp1.000</b>!
+          *Let&apos;s make it <b>Easy</b> by Upgrading with only <b>Rp1.000</b>!
         </div>
         <Button
           type="link"
@@ -49,16 +45,9 @@ const PlansOfferModal = (props: IPlansOfferModal) => {
           <span>Let&apos;s Go</span>
           <FaSkating />
         </Button>
-        <Button
-          type="link"
-          href="/plans/"
-          title="What can Premium Offer?"
-          wrapperClassName="cursor-pointer font-bold w-full text-center p-2 rounded mt-4 bg-transparent text-black underline"
-          buttonClassName="w-full h-full flex items-center justify-center gap-2"
-        />
       </div>
     </div>
   );
 };
 
-export default PlansOfferModal;
+export default PaidAccessModal;

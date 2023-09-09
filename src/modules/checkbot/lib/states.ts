@@ -1,6 +1,6 @@
 export const CHECKBOT_STATES = {
   showLogin: false,
-  showOffer: false,
+  showPaidAccessModal: false,
   showHistory: false,
   originalText: "",
   resultFormat: "",
