@@ -16,7 +16,7 @@ import { saveHistory } from "@/common/lib/saveHistory";
 import { decode } from "jsonwebtoken";
 import { fetchActiveSubscription } from "@/modules/profile/lib/fetchActiveSubscription";
 import { isSubscriptionExpired } from "@/modules/profile/lib/isSubscriptionExpired";
-import { checkUserCurrentBalance } from "@/modules/premium/lib/checkUserCurrentBalance";
+import { checkUserCurrentBalance } from "@/modules/profile/lib/checkUserCurrentBalance";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
 
 export interface ITranslateForm {
