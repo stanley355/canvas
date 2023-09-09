@@ -14,7 +14,7 @@ const openaiCompletionAPI = async (
       Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
     },
     data: {
-      model: "gpt-3.5-turbo-0301",
+      model: "gpt-4",
       messages: [{ role: "user", content: req.body.content }],
     },
   };
@@ -24,7 +24,7 @@ const openaiCompletionAPI = async (
     res.setHeader("Content-Type", "application/json");
     res.json(data);
   } catch (err: any) {
-    axiosConfig.data.model = "gpt-3.5-turbo-0613";
+    axiosConfig.data.model = "gpt-4-0613";
 
     try {
       const { data } = await axios(axiosConfig);
