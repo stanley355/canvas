@@ -31,9 +31,6 @@ const PlanOptions = () => (
               >
                 Get started
               </Link>
-              <Link href="#comparison" className="mt-4 underline">
-                Learn More
-              </Link>
             </div>
           </div>
         </div>

@@ -6,17 +6,16 @@ import { createPremiumDiff } from "../lib/createPremiumDiff";
 const TransQualityComparisonTable = () => {
   return (
     <div className="mt-12 overflow-x-auto">
-      <div className="text-3xl">Freemium vs Premium</div>
+      <div className="text-3xl">Quality Measurement</div>
       <div className="mb-4">
-        Here we can see that although Non-premium also provides Good Translation
-        but Premium can provide better translation
+        Here we can see the comparison of our translation quality from time to time
       </div>
       <table className={styles.premium__quality__table}>
         <thead>
           <tr>
             <th>Original Text</th>
-            <th>Non Premium</th>
-            <th>Premium</th>
+            <th>2022</th>
+            <th>2023</th>
           </tr>
         </thead>
         <tbody>
