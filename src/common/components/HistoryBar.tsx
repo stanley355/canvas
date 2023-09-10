@@ -22,9 +22,9 @@ const HistoryBar = (props: IHistoryBar) => {
   }, [pageType]);
 
   return (
-    <div className="fixed top-0 left-0 w-full lg:w-1/4 h-full z-10 bg-black overflow-y-auto bg-gradient-to-b from-black via-blue-700 to-blue-500">
+    <div className="fixed top-0 left-0 w-full lg:w-1/4 h-full z-10 bg-white border-r border-black overflow-y-auto">
       <div className="flex items-center text-xl justify-between border-b p-4 lg:p-2">
-        <div className="flex items-center gap-2 font-semibold">
+        <div className="flex items-center gap-2 font-semibold ">
           <FaClock />
           <span>My History</span>
         </div>
@@ -53,11 +53,11 @@ const HistoryBar = (props: IHistoryBar) => {
             .map((history: any, index: number) => (
               <div
                 key={index}
-                className="p-4 border-b flex items-center justify-between cursor-pointer hover:bg-white hover:text-black"
+                className="p-4 border-b flex items-center justify-between cursor-pointer hover:bg-blue-600 hover:text-white"
                 onClick={() => onHistoryClick(history)}
               >
                 <div>
-                  <div className="p-1 rounded bg-white text-black w-fit mb-2">
+                  <div className="p-1 rounded bg-black text-white w-fit mb-2">
                     {new Date(history.time).toLocaleTimeString()}
                   </div>
                   <div className="underline">{history.instruction}</div>
@@ -72,7 +72,7 @@ const HistoryBar = (props: IHistoryBar) => {
             ))}
         </div>
       )}
-      <div className="text-center mt-2">
+      <div className="text-center mt-2 text-white">
         *History will be cleared after browser is closed
       </div>
     </div>

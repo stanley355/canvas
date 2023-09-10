@@ -171,7 +171,7 @@ const CheckBotForm = (props: ICheckBotForm) => {
           placeholder="What's your instruction?"
         />
       )}
-      <div className="bg-white rounded pb-1">
+      <div className="border border-black rounded pb-1">
         <SourceTextArea sourceText={sourceText} />
         <Button
           type="submit"

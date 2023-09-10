@@ -43,7 +43,7 @@ const CheckbotArea = (props: ICheckbotArea) => {
               {resultFormat === "removed" && checkbotRemoved}
               {resultFormat === "added" && checkbotAdded}
             </div>
-            <div className="text-white">*Go to No Diff to copy</div>
+            <div>*Go to No Diff to copy</div>
           </>
         )}
       </div>

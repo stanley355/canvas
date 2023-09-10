@@ -36,7 +36,7 @@ const Header = () => {
       <Button
         type="link"
         href="/"
-        wrapperClassName="text-2xl cursor-pointer"
+        wrapperClassName="text-2xl cursor-pointer text-white"
         buttonClassName="flex items-center w-full"
       >
         <span>Language</span>

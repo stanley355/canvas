@@ -12,6 +12,7 @@ import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
 import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
 import { CHECKBOT_SEO } from "@/modules/checkbot/lib/constant";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import PlanOptions from "@/modules/plans/components/PlanOptions";
 
 const LoginModal = dynamic(
   () => import("../modules/login/components/LoginModal")
@@ -38,26 +39,25 @@ const CheckBot = () => {
   return (
     <Layout>
       <MetaSEO seo={CHECKBOT_SEO} />
-      <div className="bg-gradient-to-b from-black via-blue-900 to-white h-screen">
-        <div className="lg:container mx-auto px-2 lg:px-0">
-          <h1 className="flex flex-row items-center text-2xl lg:text-4xl justify-center my-4">
-            <FaRobot className="text-3xl mr-2" />
-            <span>AI Checkbot</span>
-          </h1>
-          <CheckbotArea states={states} updateState={updateState} />
-          <Button
-            type="button"
-            wrapperClassName="p-2 w-fit bg-blue-900 border border-white rounded-md mx-auto cursor-pointer mb-8"
-            buttonClassName="w-full flex items-center gap-2 h-full"
-            onClick={() => {
-              sendFirebaseEvent("show_history", {});
-              updateState("showHistory", !showHistory);
-            }}
-          >
-            <FaClock />
-            <span>Show History</span>
-          </Button>
-        </div>
+      <div className="lg:container mx-auto px-2 lg:px-0">
+        <h1 className="flex flex-row items-center text-2xl lg:text-4xl justify-center my-4">
+          <FaRobot className="text-3xl mr-2" />
+          <span>AI Checkbot</span>
+        </h1>
+        <CheckbotArea states={states} updateState={updateState} />
+        <Button
+          type="button"
+          wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer mb-8 text-white"
+          buttonClassName="w-full flex items-center gap-2 h-full"
+          onClick={() => {
+            sendFirebaseEvent("show_history", {});
+            updateState("showHistory", !showHistory);
+          }}
+        >
+          <FaClock />
+          <span>Show History</span>
+        </Button>
+        <PlanOptions />
       </div>
       {showPaidAccessModal && <PaidAccessModal onCloseClick={() => updateState("showPaidAccessModal", false)} />}
       {showLogin && <LoginModal />}

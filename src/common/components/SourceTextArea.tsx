@@ -19,12 +19,12 @@ const SourceTextArea = (props: ISourceTextArea) => {
   };
 
   return (
-    <div className="w-full bg-transparent p-2 pb-0 relative">
+    <div className="w-full p-2 pb-0 relative ">
       <Button
         type="button"
         id="clear_text_btn"
         ariaLabel="clear_text_btn"
-        wrapperClassName="absolute top-1 right-1 bg-black border-l border-b flex items-center p-1 rounded-md"
+        wrapperClassName="absolute top-1 right-1 bg-blue-900 text-white flex items-center p-1 rounded-md"
         onClick={handleClearClick}
       >
         <FaTimes className="text-3xl" />
@@ -35,7 +35,7 @@ const SourceTextArea = (props: ISourceTextArea) => {
           id="source_textarea"
           cols={30}
           rows={10}
-          className="w-full rounded-md bg-white text-black focus:outline-none scrollbar-thin scrollbar-thumb-white scrollbar-thumb-rounded-full pr-2"
+          className="w-full text-black focus:outline-none scrollbar-thin scrollbar-thumb-white scrollbar-thumb-rounded-full pr-2"
           value={textValue}
           onChange={(e: any) => setTextValue(e.target.value)}
         />
