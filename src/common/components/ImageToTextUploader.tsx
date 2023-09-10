@@ -34,7 +34,7 @@ const ImageToTextUploader = (props: IImageToTextUploader) => {
   return (
     <div>
       <div
-        className={classNames("font-semibold mb-2 px-1", `text-${titleColor}`)}
+        className="font-semibold mb-2 px-1"
       >
         * For better result, put the Language of the text in Image (automatic as
         English)

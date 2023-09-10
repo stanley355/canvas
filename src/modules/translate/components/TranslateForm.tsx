@@ -130,7 +130,7 @@ const TranslateForm = (props: ITranslateForm) => {
     <form onSubmit={handleSubmit} className="mb-2">
       <label htmlFor="target_lang_select" className="w-full">
         <Select
-          className="text-black"
+          className="text-black border border-black rounded-md"
           placeholder="Select Target Language"
           id="target_lang_select"
           name="target_lang"
@@ -142,10 +142,10 @@ const TranslateForm = (props: ITranslateForm) => {
       <input
         name="context_text"
         id="context_text_textarea"
-        className="w-full border rounded-md bg-transparent p-2 mt-3 text-black bg-white"
+        className="w-full border border-black rounded-md p-2 mt-3 text-black "
         placeholder="Optional: Context (xyz refers to...) "
       />
-      <div className="mt-3 bg-white rounded">
+      <div className="mt-3 border border-black rounded">
         <SourceTextArea sourceText={imageText || originalText} />
         <div
           className={classNames(

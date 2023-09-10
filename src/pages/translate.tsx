@@ -15,6 +15,7 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { translateReducer } from "@/modules/translate/lib/reducer";
 import { TRANSLATE_STATES } from "@/modules/translate/lib/states";
 import { TRANSLATE_SEO } from "@/modules/translate/lib/constant";
+import PlanOptions from "@/modules/plans/components/PlanOptions";
 
 const LoginModal = dynamic(
   () => import("../modules/login/components/LoginModal")
@@ -56,58 +57,56 @@ const LangTranslate = () => {
   return (
     <Layout>
       <MetaSEO seo={TRANSLATE_SEO} />
-      <div className="bg-gradient-to-b from-black via-blue-900 to-white pb-4 h-screen">
-        <div className="lg:container mx-auto px-2 lg:px-0">
-          <div className="flex items-center justify-between my-4">
-            <h1
-              className="text-xl lg:text-2xl flex items-center justify-center"
-              id="title"
-            >
-              <FaLanguage className="text-4xl mr-2" />
-              <span>Translate</span>
-            </h1>
-            <MediaSelect
-              onChange={(opt) =>
-                updateState("isImageTranslate", opt.value === "image")
+      <div className="lg:container mx-auto px-2 lg:px-0">
+        <div className="flex items-center justify-between my-4">
+          <h1
+            className="text-xl lg:text-2xl flex items-center justify-center"
+            id="title"
+          >
+            <FaLanguage className="text-4xl mr-2" />
+            <span>Translate</span>
+          </h1>
+          <MediaSelect
+            onChange={(opt) =>
+              updateState("isImageTranslate", opt.value === "image")
+            }
+          />
+        </div>
+        <div className="lg:grid lg:grid-cols-2 lg:gap-8 mb-8">
+          {isImageTranslate ? (
+            <ImageToTextUploader
+              titleColor="white"
+              dispatch={onImageTextDispatch}
+            />
+          ) : (
+            <TranslateForm
+              originalText={originalText}
+              imageText={imageText}
+              onReuploadClick={() => updateState("isImageTranslate", true)}
+              dispatchLoginForm={() => updateState("showLogin", true)}
+              dispatchPaidAcessModal={() => updateState("showPaidAccessModal", true)}
+              dispatchTranslateVal={(val) =>
+                updateState("translateCompletion", val)
               }
             />
-          </div>
-          <div className="lg:grid lg:grid-cols-2 lg:gap-8 mb-8">
-            {isImageTranslate ? (
-              <ImageToTextUploader
-                titleColor="white"
-                dispatch={onImageTextDispatch}
-              />
-            ) : (
-              <TranslateForm
-                originalText={originalText}
-                imageText={imageText}
-                onReuploadClick={() => updateState("isImageTranslate", true)}
-                dispatchLoginForm={() => updateState("showLogin", true)}
-                dispatchPaidAcessModal={() => updateState("showPaidAccessModal", true)}
-                dispatchTranslateVal={(val) =>
-                  updateState("translateCompletion", val)
-                }
-              />
-            )}
-            <TranslateResult translateVal={translateCompletion} />
-          </div>
-          <Button
-            type="button"
-            wrapperClassName="p-2 w-fit bg-transparent rounded-md mx-auto cursor-pointer mb-8 border border-white"
-            buttonClassName="w-full flex items-center gap-2 h-full"
-            onClick={() => {
-              sendFirebaseEvent("show_history", {});
-              updateState("showHistory", !showHistory);
-            }}
-          >
-            <FaClock />
-            <span>Show History</span>
-          </Button>
-
+          )}
+          <TranslateResult translateVal={translateCompletion} />
         </div>
-
+        <Button
+          type="button"
+          wrapperClassName="p-2 w-fit bg-blue-900 text-white rounded-md mx-auto cursor-pointer mb-8"
+          buttonClassName="w-full flex items-center gap-2 h-full"
+          onClick={() => {
+            sendFirebaseEvent("show_history", {});
+            updateState("showHistory", !showHistory);
+          }}
+        >
+          <FaClock />
+          <span>Show History</span>
+        </Button>
+        <PlanOptions />
       </div>
+
       {showLogin && <LoginModal />}
       {showPaidAccessModal && <PaidAccessModal onCloseClick={() => updateState("showPaidAccessModal", false)} />}
       {showHistory && (
