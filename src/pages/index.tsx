@@ -12,7 +12,7 @@ const Home = () => {
     <Layout>
       <MetaSEO seo={HOME_SEO} />
       <div className="h-screen bg-gradient-to-b from-black via-blue-900 to-white">
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto p-4 mt-4">
           <h1 className="text-center flex items-center justify-center text-4xl mb-4">
             <span>Language</span>
             <Image
