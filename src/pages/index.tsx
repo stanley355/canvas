@@ -6,23 +6,24 @@ import { FaLanguage, FaRobot } from "react-icons/fa";
 import { HOME_SEO } from "@/modules/home/lib/constant";
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
+import { PlansSection } from "./plans";
 
 const Home = () => {
   return (
     <Layout>
       <MetaSEO seo={HOME_SEO} />
-      <div className="h-screen bg-gradient-to-b from-black via-blue-900 to-white">
-        <div className="container mx-auto p-4 mt-4">
-          <h1 className="text-center flex items-center justify-center text-4xl mb-4">
+      <div className="bg-gradient-to-br from-white via-blue-300 to-white">
+        <div className="container mx-auto p-4 mb-8">
+          <h1 className="text-center flex items-center justify-center text-4xl mb-4 text-black mt-8">
             <span>Language</span>
             <Image
-              src="/images/languageai_white.png"
+              src="/images/languageai.png"
               alt="Language AI"
               width={50}
               height={50}
             />
           </h1>
-          <div className="text-2xl text-center mb-8">
+          <div className="text-2xl text-center mb-16 text-black">
             High Quality Translation and Grammar Check
           </div>
 
@@ -38,7 +39,7 @@ const Home = () => {
               </div>
               <Link
                 href="/translate"
-                className="w-full block bg-gradient-to-r from-blue-500 to-white rounded-md p-2 text-center font-bold lg:text-lg"
+                className="w-full block bg-blue-500 text-white rounded-md p-2 text-center font-bold lg:text-lg"
               >
                 Translate
               </Link>
@@ -49,18 +50,19 @@ const Home = () => {
                 <div>AI Checkbot</div>
               </div>
               <div className="text-center mb-8 lg:text-lg">
-                Correct grammar, spelling, and wording errors
-                in over 100 languages
+                Correct grammar, spelling, and wording errors in over 100
+                languages
               </div>
               <Link
                 href="/checkbot"
-                className="w-full block bg-gradient-to-r from-blue-500 to-white rounded-md p-2 text-center font-bold lg:text-lg"
+                className="w-full block bg-blue-500 text-white rounded-md p-2 text-center font-bold lg:text-lg"
               >
                 Check
               </Link>
             </div>
           </div>
         </div>
+        <PlansSection />
       </div>
     </Layout>
   );
