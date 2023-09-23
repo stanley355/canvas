@@ -8,13 +8,13 @@ import classNames from "classnames";
 import Button from "@/common/components/Button";
 import SourceTextArea from "@/common/components/SourceTextArea";
 
-import { CHECKBOT_OPTIONS } from "@/modules/checkbot/lib/constant";
+import { CHECKBOT_OPTIONS } from "../lib/constant";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 import { handlePremiumPrompt } from "../lib/handlePremiumPrompt";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
-import { createRemovedAndAddedDiff } from "@/modules/checkbot/lib/createRemovedAndAddedDiff";
+import { createRemovedAndAddedDiff } from "@/modules/premium/lib/createRemovedAndAddedDiff";
 import { saveHistory } from "@/common/lib/saveHistory";
 import { fetchActiveSubscription } from "@/modules/profile/lib/fetchActiveSubscription";
 import { decode } from "jsonwebtoken";

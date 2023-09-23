@@ -1,8 +1,20 @@
 import React from "react";
-import { ICheckbotArea } from "@/modules/checkbot/components/CheckbotArea";
+
 import PremiumCheckBotForm from "./CheckbotForm";
-import CheckbotResultToggle from "@/modules/checkbot/components/CheckbotResultToggle";
-import CheckboxResult from "@/modules/checkbot/components/CheckbotResult";
+import CheckboxResult from "./CheckbotResult";
+import CheckbotResultToggle from "./CheckbotResultToggle";
+
+export interface ICheckbotArea {
+  states: {
+    originalText: string;
+    resultFormat: string;
+    checkbotCompletion: string;
+    checkbotRemoved: Array<any>;
+    checkbotAdded: Array<any>;
+  };
+  updateState: (name: string, val: any) => void;
+}
+
 
 const PremiumCheckbotArea = (props: ICheckbotArea) => {
   const { states, updateState } = props;

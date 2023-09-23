@@ -1,52 +1,39 @@
-import React, { useReducer, useEffect } from "react";
-import dynamic from "next/dynamic";
+import React, { useReducer } from "react";
 import { FaClock, FaLanguage } from "react-icons/fa";
-import Cookies from "js-cookie";
+import dynamic from "next/dynamic";
 
 import MetaSEO from "@/common/components/MetaSEO";
-import Layout from "@/common/components/Layout";
 import Button from "@/common/components/Button";
-import HistoryBar from "@/common/components/HistoryBar";
-import TranslateForm from "@/modules/translate/components/TranslateForm";
-import TranslateResult from "@/modules/translate/components/TranslateResult";
+import Layout from "@/common/components/Layout";
 import MediaSelect from "@/common/components/MediaSelect";
+import PremiumTranslateForm from "@/modules/premium/components/TranslateForm";
+import TranslateResult from "@/modules/premium/components/TranslateResult";
 import ImageToTextUploader from "@/common/components/ImageToTextUploader";
+import HistoryBar from "@/common/components/HistoryBar";
 
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import { translateReducer } from "@/modules/translate/lib/reducer";
-import { TRANSLATE_STATES } from "@/modules/translate/lib/states";
-import { TRANSLATE_SEO } from "@/modules/translate/lib/constant";
-import NonPremiumPlansOffer from "@/modules/premium/components/NonPremiumPlansOffer";
-import { showOfferModal } from "@/common/lib/showOfferModal";
+import { PREMIUM_TRANSLATE_SEO } from "@/modules/premium/lib/constant";
+import { premiumTranslateReducer } from "@/modules/premium/lib/reducer";
+import { PREMIUM_TRANSLATE_STATES } from "@/modules/premium/lib/states";
+import { PlansSection } from "./plans";
 
 const LoginModal = dynamic(
-  () => import("../modules/login/components/LoginModal")
+  () => import("@/modules/login/components/LoginModal")
 );
 
-const PlansOfferModal = dynamic(
-  () => import("../modules/premium/components/PlansOfferModal")
-);
-
-const LangTranslate = () => {
-  const [state, dispatch] = useReducer(translateReducer, TRANSLATE_STATES);
+const PremiumTranslate = () => {
+  const [state, dispatch] = useReducer(
+    premiumTranslateReducer,
+    PREMIUM_TRANSLATE_STATES
+  );
   const {
+    originalText,
+    showHistory,
     isImageTranslate,
     imageText,
     showLogin,
-    showOffer,
-    showHistory,
-    originalText,
     translateCompletion,
   } = state;
-
-  useEffect(() => {
-    const showOfferMod = showOfferModal();
-    if (showOfferMod) {
-      const offer = Cookies.get("offer");
-      if (!offer) updateState("showOffer", true);
-      Cookies.set("offer", "true", { expires: 1 });
-    }
-  }, [showOffer]);
 
   const updateState = (name: string, value: any) => {
     dispatch({ type: "UPDATE", name, value });
@@ -67,46 +54,46 @@ const LangTranslate = () => {
 
   return (
     <Layout>
-      <MetaSEO seo={TRANSLATE_SEO} />
       {showLogin && <LoginModal />}
-      {showOffer && (
-        <PlansOfferModal onCloseClick={() => updateState("showOffer", false)} />
-      )}
-      <div className="bg-gradient-to-b from-black via-blue-900 to-white pb-4">
-        <div className="lg:container mx-auto px-2 lg:px-0">
-          <div className="flex items-center justify-between my-4">
+      <MetaSEO seo={PREMIUM_TRANSLATE_SEO} />
+      <div className="bg-gradient-to-b from-white via-slate-400 to-white pb-6">
+        <div className="container mx-auto p-2 lg:px-0">
+          <div className="flex items-center gap-4 justify-between text-black">
             <h1
-              className="text-xl lg:text-2xl flex items-center justify-center"
+              className="text-2xl font-semibold rounded flex items-center justify-center my-4"
               id="title"
             >
               <FaLanguage className="text-4xl mr-2" />
-              <span>Translate</span>
+              <span>Translate+</span>
             </h1>
             <MediaSelect
-              onChange={(opt) =>
-                updateState("isImageTranslate", opt.value === "image")
+              onChange={(option) =>
+                updateState("isImageTranslate", option.value === "image")
               }
             />
           </div>
-          <div className="lg:grid lg:grid-cols-2 lg:gap-8 mb-8">
+          <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8">
             {isImageTranslate ? (
-              <ImageToTextUploader
-                titleColor="white"
-                dispatch={onImageTextDispatch}
-              />
+              <div className="mb-2">
+                <ImageToTextUploader
+                  titleColor="black"
+                  dispatch={onImageTextDispatch}
+                />
+              </div>
             ) : (
-              <TranslateForm
+              <PremiumTranslateForm
                 originalText={originalText}
                 imageText={imageText}
                 onReuploadClick={() => updateState("isImageTranslate", true)}
                 dispatchLoginForm={() => updateState("showLogin", true)}
-                dispatchTranslateVal={(val) =>
-                  updateState("translateCompletion", val)
+                dispatchTranslateVal={(trans: string) =>
+                  updateState("translateCompletion", trans)
                 }
               />
             )}
             <TranslateResult translateVal={translateCompletion} />
           </div>
+
           <Button
             type="button"
             wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer mb-8"
@@ -128,9 +115,11 @@ const LangTranslate = () => {
           )}
         </div>
       </div>
-      <NonPremiumPlansOffer />
+      <div className="bg-white">
+        <PlansSection />
+      </div>
     </Layout>
   );
 };
 
-export default LangTranslate;
+export default PremiumTranslate;
