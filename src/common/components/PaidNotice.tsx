@@ -32,7 +32,7 @@ const PaidNotice = (props: IPaidNotice) => {
             </div>
 
             <div className="mb-4">
-              <div className="font-bold">1. We can't lower our Quality</div>
+              <div className="font-bold">1. We can&apos;t lower our Quality</div>
               <div>
                 Penelitian kami akan hasil terjemahan Non Premium vs Premium
                 menunjukkan
@@ -46,7 +46,7 @@ const PaidNotice = (props: IPaidNotice) => {
                 </strong>{" "}
                 dan terdapat beberapa
                 <strong>
-                  kualitas Checkbot yang mirip antara Non Premium dan Premium
+                  kualitas yang tidak berbeda antara Non Premium dan Premium
                 </strong>
                 . Hal tersebut adalah suatu yang kami ingin hindari, sebab
                 pengguna seharusnya mendapat
