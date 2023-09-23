@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import PlanOptions from "@/modules/plans/components/PlanOptions";
-import PlanComparisonTable from "@/modules/plans/components/PlanComparisonTable";
 import TransQualityComparisonTable from "@/modules/plans/components/TransQualityComparisonTable";
 
 const NonPremiumPlansOffer = () => (
@@ -24,7 +23,6 @@ const NonPremiumPlansOffer = () => (
       <TransQualityComparisonTable />
       <br />
       <PlanOptions />
-      <PlanComparisonTable />
       <div className="my-8 flex flex-col items-center">
         <div className="text-3xl font-semibold">Satisfied with Our AI?</div>
         <div className="text-lg mb-8">What are you waiting for?</div>
