@@ -48,7 +48,7 @@ const CheckBot = () => {
             id="title"
           >
             <FaRobot className="text-3xl mr-2" />
-            <span>Checkbot+</span>
+            <span>AI Checkbot</span>
           </h1>
           <PremiumCheckbotArea states={states} updateState={updateState} />
           <Button

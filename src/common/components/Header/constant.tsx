@@ -12,16 +12,6 @@ export const HEADER_MENU = [
     ],
   },
   {
-    title: "AI Checkbot+",
-    url: "/premium/checkbot/",
-    icon: <FaRobot />,
-    desc: [
-      "Correct Grammar in All Languages",
-      "20x Better than Grammarly",
-      "Rp1 per word",
-    ],
-  },
-  {
     title: "AI Translate",
     url: "/translate/",
     icon: <FaLanguage />,
@@ -29,16 +19,6 @@ export const HEADER_MENU = [
       "Translate All Languages",
       "10x Better than Google Translate",
       "100% Free",
-    ],
-  },
-  {
-    title: "AI Translate+",
-    url: "/premium/translate/",
-    icon: <FaLanguage />,
-    desc: [
-      "Translate All Languages",
-      "20x Better than Google Translate",
-      "Rp1 per word",
     ],
   },
   {

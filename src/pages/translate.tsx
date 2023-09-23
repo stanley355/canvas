@@ -64,7 +64,7 @@ const PremiumTranslate = () => {
               id="title"
             >
               <FaLanguage className="text-4xl mr-2" />
-              <span>Translate+</span>
+              <span>AI Translate</span>
             </h1>
             <MediaSelect
               onChange={(option) =>
