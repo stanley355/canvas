@@ -11,7 +11,7 @@ const PaidNotice = (props: IPaidNotice) => {
   return (
     <div>
       <div className="fixed top-0 left-0 w-full h-full z-10 bg-white bg-opacity-80">
-        <div className="border border-black bg-white rounded-lg p-4 mt-24 mx-auto lg:w-[500px] text-black h-[600px] overflow-y-scroll">
+        <div className="border border-black bg-white rounded-lg p-4 mt-24 mx-auto lg:w-[500px] text-black h-[75%] overflow-y-scroll">
           <h1 className="flex flex-row items-center justify-center text-2xl font-bold">
             <span>Language</span>
             <Image
