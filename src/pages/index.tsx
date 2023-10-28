@@ -7,7 +7,6 @@ import { HOME_SEO } from "@/modules/home/lib/constant";
 import MetaSEO from "@/common/components/MetaSEO";
 import Layout from "@/common/components/Layout";
 import { PlansSection } from "./plans";
-import PaidNotice from "@/common/components/PaidNotice";
 
 const Home = () => {
   return (
