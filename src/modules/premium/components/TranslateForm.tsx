@@ -14,12 +14,19 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { handlePremiumPrompt } from "../lib/handlePremiumPrompt";
 import { checkUserCurrentBalance } from "../lib/checkUserCurrentBalance";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
-import { LANGUAGE_LIST } from "@/modules/translate/lib/constant";
+import { LANGUAGE_LIST } from "../lib/constant";
 import { saveHistory } from "@/common/lib/saveHistory";
-import { ITranslateForm } from "@/modules/translate/components/TranslateForm";
 import { fetchActiveSubscription } from "@/modules/profile/lib/fetchActiveSubscription";
 import { isSubscriptionExpired } from "@/modules/profile/lib/isSubscriptionExpired";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
+
+export interface ITranslateForm {
+  originalText: string;
+  imageText: string;
+  onReuploadClick: () => void;
+  dispatchLoginForm: () => void;
+  dispatchTranslateVal: (val: string) => void;
+}
 
 const NoPlansModal = dynamic(() => import("./NoPlansModal"));
 

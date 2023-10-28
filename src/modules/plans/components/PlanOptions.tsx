@@ -7,8 +7,7 @@ const PlanOptions = () => (
   <div>
     <h1 className="text-3xl mb-4 lg:text-5xl">Pricing for All Stages</h1>
     <h2 className="lg:text-lg">
-      All plans include access to Premium package: Translate+, Checkbot+, and
-      LanguageGPT (Coming soon).
+      All plans include access to AI Translate and AI Checkbot.
     </h2>
     <div className="my-8 px-4 lg:px-0 lg:grid lg:grid-cols-4 lg:gap-4">
       {PLANS_OPTIONS.map((plan: any, index: number) => (

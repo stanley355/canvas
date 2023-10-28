@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Inter } from "next/font/google";
 import { FaAngleRight } from "react-icons/fa";
-import { SiTaichilang } from "react-icons/si";
 import cookie from "js-cookie";
 import classNames from "classnames";
 
@@ -64,7 +63,7 @@ const Header = () => {
               href={menu.url}
               buttonClassName="flex items-center gap-2 w-full h-full"
               wrapperClassName={classNames(
-                "group lg:border-b",
+                "group border-b",
                 i === 0 ? "border-t lg:border-t-0" : ""
               )}
             >

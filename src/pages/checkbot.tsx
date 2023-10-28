@@ -1,41 +1,30 @@
-import React, { useEffect, useReducer } from "react";
-import dynamic from "next/dynamic";
+import React, { useReducer } from "react";
 import { FaClock, FaRobot } from "react-icons/fa";
-import Cookies from "js-cookie";
+import dynamic from "next/dynamic";
 
-import Button from "@/common/components/Button";
 import Layout from "@/common/components/Layout";
 import MetaSEO from "@/common/components/MetaSEO";
+import Button from "@/common/components/Button";
+import PremiumCheckbotArea from "@/modules/premium/components/PremiumCheckbotArea";
 import HistoryBar from "@/common/components/HistoryBar";
-import CheckbotArea from "@/modules/checkbot/components/CheckbotArea";
 
-import { checkbotReducer } from "@/modules/checkbot/lib/reducer";
-import { CHECKBOT_STATES } from "@/modules/checkbot/lib/states";
-import { CHECKBOT_SEO } from "@/modules/checkbot/lib/constant";
+import { PREMIUM_CHECKBOT_SEO } from "@/modules/premium/lib/constant";
+import { CHECKBOT_STATES } from "@/modules/premium/lib/states";
+import { checkbotReducer } from "@/modules/premium/lib/reducer";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import NonPremiumPlansOffer from "@/modules/premium/components/NonPremiumPlansOffer";
-import { showOfferModal } from "@/common/lib/showOfferModal";
+import { PlansSection } from "./plans";
 
 const LoginModal = dynamic(
-  () => import("../modules/login/components/LoginModal")
+  () => import("@/modules/login/components/LoginModal")
 );
 
-const PlansOfferModal = dynamic(
-  () => import("../modules/premium/components/PlansOfferModal")
+const NoPlansModal = dynamic(
+  () => import("@/modules/premium/components/NoPlansModal")
 );
 
 const CheckBot = () => {
   const [states, dispatch] = useReducer(checkbotReducer, CHECKBOT_STATES);
-  const { showLogin, showOffer, showHistory } = states;
-
-  useEffect(() => {
-    const showOfferMod = showOfferModal();
-    if (showOfferMod) {
-      const offer = Cookies.get("offer");
-      if (!offer) updateState("showOffer", true);
-      Cookies.set("offer", "true", { expires: 1 });
-    }
-  }, [showOffer]);
+  const { showLogin, showBalanceModal, showHistory } = states;
 
   const updateState = (name: string, value: any) => {
     dispatch({ type: "UPDATE", name, value });
@@ -49,18 +38,19 @@ const CheckBot = () => {
 
   return (
     <Layout>
-      <MetaSEO seo={CHECKBOT_SEO} />
       {showLogin && <LoginModal />}
-      {showOffer && (
-        <PlansOfferModal onCloseClick={() => updateState("showOffer", false)} />
-      )}
-      <div className="bg-gradient-to-b from-black via-blue-900 to-white pb-4">
-        <div className="lg:container mx-auto px-2 lg:px-0">
-          <h1 className="flex flex-row items-center text-2xl lg:text-4xl justify-center my-4">
+      {showBalanceModal && <NoPlansModal />}
+      <MetaSEO seo={PREMIUM_CHECKBOT_SEO} />
+      <div className="bg-gradient-to-b from-white via-slate-400 to-white pb-6">
+        <div className="container mx-auto p-2 lg:px-2">
+          <h1
+            className="text-black my-4 text-3xl rounded flex items-center justify-center font-semibold lg:w-1/3 lg:mx-auto"
+            id="title"
+          >
             <FaRobot className="text-3xl mr-2" />
             <span>AI Checkbot</span>
           </h1>
-          <CheckbotArea states={states} updateState={updateState} />
+          <PremiumCheckbotArea states={states} updateState={updateState} />
           <Button
             type="button"
             wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer mb-8"
@@ -73,16 +63,18 @@ const CheckBot = () => {
             <FaClock />
             <span>Show History</span>
           </Button>
+          {showHistory && (
+            <HistoryBar
+              pageType="checkbot"
+              onHistoryClick={handleHistoryClick}
+              onCloseClick={() => updateState("showHistory", false)}
+            />
+          )}
         </div>
-        {showHistory && (
-          <HistoryBar
-            pageType="checkbot"
-            onHistoryClick={handleHistoryClick}
-            onCloseClick={() => updateState("showHistory", false)}
-          />
-        )}
       </div>
-      <NonPremiumPlansOffer />
+      <div className="bg-white">
+        <PlansSection />
+      </div>
     </Layout>
   );
 };
