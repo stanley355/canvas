@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Select, { SingleValue } from "react-select";
 import { useTranslate } from "../lib/useTranslate";
 import TranslateTypePlaceholder from "./TranslateTypePlaceholder";
@@ -11,6 +11,17 @@ interface IDropdownOption {
 
 const TranslateTypeDropdown = () => {
   const { dispatch } = useTranslate();
+
+  const dropdownStyling = {
+    control: (defaults: any) => ({
+      ...defaults,
+      border: "1px solid gray",
+    }),
+    placeholder: (defaults: any) => ({
+      ...defaults,
+      color: "black",
+    }),
+  };
 
   return (
     <label htmlFor="translate_type">
@@ -26,16 +37,7 @@ const TranslateTypeDropdown = () => {
             value: option?.value === "image",
           })
         }
-        styles={{
-          control: (defaults: any) => ({
-            ...defaults,
-            border: "1px solid gray",
-          }),
-          placeholder: (defaults: any) => ({
-            ...defaults,
-            color: "black",
-          }),
-        }}
+        styles={dropdownStyling}
       />
     </label>
   );
