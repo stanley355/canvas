@@ -18,6 +18,7 @@ import { PlansSection } from "./plans";
 import TranslateProvider from "@/modules/translate/components/TranslateProvider";
 import TranslateTypeDropdown from "@/modules/translate/components/TranslateTypeDropdown";
 import TranslateHeader from "@/modules/translate/components/TranslateHeader";
+import TranslateLanguageDropdown from "@/modules/translate/components/TranslateLanguageDropdown";
 
 const LoginModal = dynamic(
   () => import("@/modules/login/components/LoginModal")
@@ -62,8 +63,12 @@ const PremiumTranslate = () => {
         <div className="bg-gradient-to-b from-white via-slate-400 to-white">
           <div className="container mx-auto">
             <TranslateHeader />
+            <div className="px-2">
+
+              <TranslateLanguageDropdown />
+            </div>
             <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8">
-              {isImageTranslate ? (
+              {/* {isImageTranslate ? (
                 <div className="mb-2">
                   <ImageToTextUploader
                     titleColor="black"
@@ -81,7 +86,7 @@ const PremiumTranslate = () => {
                   }
                 />
               )}
-              <TranslateResult translateVal={translateCompletion} />
+              <TranslateResult translateVal={translateCompletion} /> */}
             </div>
 
             <Button

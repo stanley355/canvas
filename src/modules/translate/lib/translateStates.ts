@@ -5,4 +5,8 @@ export const TRANSLATE_STATES = {
   imageText: "",
   translatePrompt: "",
   translateCompletion: "",
+  translateLanguage: {
+    label: "",
+    value: ""
+  }
 };
