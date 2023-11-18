@@ -2,7 +2,6 @@ import React, { useReducer } from "react";
 import { FaClock, FaRobot } from "react-icons/fa";
 import dynamic from "next/dynamic";
 
-import Layout from "@/common/components/Layout";
 import MetaSEO from "@/common/components/MetaSEO";
 import Button from "@/common/components/Button";
 import PremiumCheckbotArea from "@/modules/premium/components/PremiumCheckbotArea";
@@ -37,7 +36,7 @@ const CheckBot = () => {
   };
 
   return (
-    <Layout>
+    <div>
       {showLogin && <LoginModal />}
       {showBalanceModal && <NoPlansModal />}
       <MetaSEO seo={PREMIUM_CHECKBOT_SEO} />
@@ -75,7 +74,7 @@ const CheckBot = () => {
       <div className="bg-white">
         <PlansSection />
       </div>
-    </Layout>
+    </div>
   );
 };
 

@@ -3,7 +3,6 @@ import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import Cookies from "js-cookie";
 import { decode } from "jsonwebtoken";
 
-import Layout from "@/common/components/Layout";
 import Button from "@/common/components/Button";
 import MetaSEO from "@/common/components/MetaSEO";
 import { HOME_SEO } from "@/modules/home/lib/constant";
@@ -26,7 +25,7 @@ const Profile = (props: IProfile) => {
   };
 
   return (
-    <Layout>
+    <div>
       <MetaSEO seo={HOME_SEO} />
       <div className="bg-gradient-to-br from-white via-blue-300 to-white">
         <div className="container mx-auto min-h-screen text-black bg-white p-4 lg:flex">
@@ -51,7 +50,7 @@ const Profile = (props: IProfile) => {
           />
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 

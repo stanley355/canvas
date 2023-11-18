@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Layout from "@/common/components/Layout";
 import RegisterForm from "@/modules/login/components/RegisterForm";
 import Cookies from "js-cookie";
 import MetaSEO from "@/common/components/MetaSEO";
@@ -21,14 +20,14 @@ const Register = () => {
   }, []);
 
   return (
-    <Layout>
+    <div>
       <MetaSEO seo={seo} />
       <div className="bg-gradient-to-b from-black via-blue-900 to-white pb-4">
         <div className="container mx-auto p-4 h-screen">
           <RegisterForm />
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 

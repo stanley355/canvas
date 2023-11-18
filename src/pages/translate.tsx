@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 
 import MetaSEO from "@/common/components/MetaSEO";
 import Button from "@/common/components/Button";
-import Layout from "@/common/components/Layout";
 import MediaSelect from "@/common/components/MediaSelect";
 import PremiumTranslateForm from "@/modules/premium/components/TranslateForm";
 import TranslateResult from "@/modules/premium/components/TranslateResult";
@@ -53,7 +52,7 @@ const PremiumTranslate = () => {
   };
 
   return (
-    <Layout>
+    <div>
       {showLogin && <LoginModal />}
       <MetaSEO seo={PREMIUM_TRANSLATE_SEO} />
       <div className="bg-gradient-to-b from-white via-slate-400 to-white pb-6">
@@ -118,7 +117,7 @@ const PremiumTranslate = () => {
       <div className="bg-white">
         <PlansSection />
       </div>
-    </Layout>
+    </div>
   );
 };
 
