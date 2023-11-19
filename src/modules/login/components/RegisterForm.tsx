@@ -55,7 +55,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center mb-8 lg:w-1/3 lg:mx-auto">
+    <div className="flex flex-col items-center justify-center mb-8 lg:w-1/3 lg:mx-auto text-white">
       <h1 className="flex flex-row items-center mb-2">
         <SiTaichilang className="text-3xl" />
         <span className="ml-2 text-2xl ">Registration</span>

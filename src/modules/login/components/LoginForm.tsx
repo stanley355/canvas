@@ -6,7 +6,7 @@ import EmailPassForm from "./EmailPassForm";
 
 const LoginForm = () => {
   return (
-    <div className="shadow-lg shadow-white p-4 pb-8 w-full lg:w-[400px] m-auto bg-transparent rounded-md">
+    <div className="shadow-lg shadow-white p-4 pb-8 w-full lg:w-[400px] m-auto bg-transparent rounded-md text-white">
       <div className="flex items-center justify-between mb-8">
         <span className="text-3xl font-bold">Login</span>
         <Link href="/register/" className="underline hover:text-blue-300">
