@@ -3,11 +3,11 @@ export const TRANSLATE_STATES = {
   showHistory: false,
   isImageTranslate: false,
   imageText: "",
-  translatePrompt: "",
-  translateCompletion: "",
   translateLanguage: {
     label: "",
     value: ""
   },
-  translateContext: ""
+  translateContext: "",
+  translateText: "",
+  translateCompletion: "",
 };
