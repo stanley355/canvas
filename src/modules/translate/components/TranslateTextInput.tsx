@@ -2,6 +2,8 @@ import React from "react";
 import Button from "@/common/components/Button";
 import { FaX } from "react-icons/fa6";
 import { useTranslate } from "../lib/useTranslate";
+import TranslateSubmitBtn from "./TranslateSubmitBtn";
+import TranslateClearBtn from "./TranslateClearBtn";
 
 const TranslateTextInput = () => {
   const { translateStates, dispatch } = useTranslate();
@@ -9,21 +11,7 @@ const TranslateTextInput = () => {
 
   return (
     <div className="w-full relative">
-      <Button
-        type="button"
-        id="clear_text_btn"
-        ariaLabel="clear_text_btn"
-        wrapperClassName="absolute top-1 right-1 bg-black border-l border-b flex items-center p-1 rounded-md"
-        onClick={() => {
-          dispatch({
-            type: "SET",
-            name: "translateText",
-            value: "",
-          });
-        }}
-      >
-        <FaX className="text-2xl" />
-      </Button>
+      <TranslateClearBtn />
       <label htmlFor="translate_text">
         <textarea
           name="translate_text"
@@ -41,6 +29,7 @@ const TranslateTextInput = () => {
           }
         />
       </label>
+      <TranslateSubmitBtn />
     </div>
   );
 };
