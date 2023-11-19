@@ -13,6 +13,7 @@ import { handlePremiumPrompt } from "@/modules/premium/lib/handlePremiumPrompt";
 import { saveHistory } from "@/common/lib/saveHistory";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
+import { fetchUserSubscription } from "@/common/lib/api/subscriptions/fetchUserSubscription";
 
 const TranslateSubmitBtn = () => {
   const { translateStates, dispatch } = useTranslate();
@@ -44,62 +45,64 @@ const TranslateSubmitBtn = () => {
 
     setIsLoading(true);
     const user: any = decode(token);
-    const subscription = await fetchActiveSubscription(user.id);
-    const subscriptionExpired = subscription?.id
-      ? isSubscriptionExpired(subscription.end_at)
-      : true;
-    if (subscriptionExpired) {
-      const hasBalance = await checkUserCurrentBalance();
-      if (!hasBalance) {
-        dispatch({ type: "SET", name: "showNoPlansModal", value: true });
-        setIsLoading(false);
-        return;
-      }
-    }
+    const subscription = await fetchUserSubscription(user.id);
+    console.log(subscription);
+    
+    // const subscriptionExpired = subscription?.id
+    //   ? isSubscriptionExpired(subscription.end_at)
+    //   : true;
+    // if (subscriptionExpired) {
+    //   const hasBalance = await checkUserCurrentBalance();
+    //   if (!hasBalance) {
+    //     dispatch({ type: "SET", name: "showNoPlansModal", value: true });
+    //     setIsLoading(false);
+    //     return;
+    //   }
+    // }
 
-    sendFirebaseEvent("translate", {
-      name: "translate",
-      translate_language: translateLanguage?.value,
-    });
+    // sendFirebaseEvent("translate", {
+    //   name: "translate",
+    //   translate_language: translateLanguage?.value,
+    // });
 
-    const prompt = `Translate "${translateText}" to ${
-      translateLanguage?.value
-    }. ${translateContext ?? ""}.`;
-    const chatCompletionRes = await handlePremiumPrompt(prompt);
-    const { content, prompt_tokens, completion_tokens } = chatCompletionRes;
+    // const prompt = `Translate "${translateText}" to ${
+    //   translateLanguage?.value
+    // }. ${translateContext ?? ""}.`;
+    // const chatCompletionRes = await handlePremiumPrompt(prompt);
+    // const { content, prompt_tokens, completion_tokens } = chatCompletionRes;
 
-    if (content) {
-      setIsLoading(false);
-      dispatch({
-        type: "SET",
-        name: "translateCompletion",
-        value: content,
-      });
+    // if (content) {
+    //   setIsLoading(false);
+    //   dispatch({
+    //     type: "SET",
+    //     name: "translateCompletion",
+    //     value: content,
+    //   });
 
-      const historyPayload = {
-        time: new Date(),
-        instruction: `Translate to ${translateLanguage}`,
-        originalText: translateText,
-        completionText: content,
-        type: "translate",
-      };
-      saveHistory(historyPayload);
+    //   const historyPayload = {
+    //     time: new Date(),
+    //     instruction: `Translate to ${translateLanguage}`,
+    //     originalText: translateText,
+    //     completionText: content,
+    //     type: "translate",
+    //   };
+    //   saveHistory(historyPayload);
 
-      const saveUserPromptPayload = {
-        instruction: `Translate to ${translateLanguage}`,
-        prompt_token: prompt_tokens,
-        completion_token: completion_tokens,
-        prompt_text: translateText,
-        completion_text: content,
-      };
-      if (subscriptionExpired) {
-        await saveUserPremiumPrompt(saveUserPromptPayload); // reduce user balance
-      } else {
-        await saveUserPrompt(saveUserPromptPayload); //not reduce user balance
-      }
+    //   const saveUserPromptPayload = {
+    //     instruction: `Translate to ${translateLanguage}`,
+    //     prompt_token: prompt_tokens,
+    //     completion_token: completion_tokens,
+    //     prompt_text: translateText,
+    //     completion_text: content,
+    //   };
+    //   if (subscriptionExpired) {
+    //     await saveUserPremiumPrompt(saveUserPromptPayload); // reduce user balance
+    //   } else {
+    //     await saveUserPrompt(saveUserPromptPayload); //not reduce user balance
+    //   }
 
-      return;
-    }
+    //   return;
+    // }
 
     toast.error("Something went wrong, please try again");
     setIsLoading(false);
