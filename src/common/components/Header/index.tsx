@@ -28,7 +28,7 @@ const Header = () => {
   return (
     <nav
       className={classNames(
-        "bg-black w-full p-4 lg:py-2 flex flex-row items-center justify-between fixed z-10",
+        "bg-blue-900 w-full p-4 lg:py-2 flex flex-row items-center justify-between fixed z-10",
         inter.className
       )}
     >
@@ -38,7 +38,7 @@ const Header = () => {
         wrapperClassName="text-2xl cursor-pointer"
         buttonClassName="flex items-center w-full"
       >
-        <span>Language</span>
+        <span className="text-white">Language</span>
         <Image
           src="/images/languageai_white.png"
           alt="Language AI"
@@ -50,10 +50,10 @@ const Header = () => {
         type="button"
         title={showModal ? "Close" : "Menu"}
         onClick={() => setShowModal(!showModal)}
-        wrapperClassName="text-md active:underline lg:hidden"
+        wrapperClassName="text-md active:underline lg:hidden text-white"
       />
       {(showModal || isDesktop) && (
-        <div className="bg-gradient-to-b from-black via-blue-900 to-white lg:via-black lg:to-black absolute lg:static lg:flex lg:gap-4 top-16 left-0 text-lg lg:text-2xl w-full lg:w-fit h-screen lg:h-fit px-2 lg:px-0">
+        <div className="bg-white lg:bg-transparent text-blue-900 lg:text-white absolute lg:static lg:flex lg:gap-4 top-16 left-0 text-lg lg:text-2xl w-full lg:w-fit h-screen lg:h-fit px-2 lg:px-0">
           {HEADER_MENU.filter((menu) =>
             token ? menu.title !== "Login" : menu.title !== "Profile"
           ).map((menu, i) => (
@@ -61,10 +61,10 @@ const Header = () => {
               type="link"
               key={menu.url}
               href={menu.url}
-              buttonClassName="flex items-center gap-2 w-full h-full"
+              buttonClassName="flex items-center gap-2 w-full h-full py-2 lg:pb-1"
               wrapperClassName={classNames(
-                "group border-b",
-                i === 0 ? "border-t lg:border-t-0" : ""
+                "group border-b border-blue-900 lg:border-white",
+                i === 0 ? "border-t-0" : ""
               )}
             >
               <span>{menu.icon}</span>

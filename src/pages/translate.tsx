@@ -96,7 +96,7 @@ const PremiumTranslate = () => {
 
           <Button
             type="button"
-            wrapperClassName="p-2 w-fit bg-blue-900 rounded-md mx-auto cursor-pointer mb-8"
+            wrapperClassName="p-2 w-fit bg-blue-900 text-white rounded-md mx-auto cursor-pointer mb-8"
             buttonClassName="w-full flex items-center gap-2 h-full"
             onClick={() => {
               sendFirebaseEvent("show_history", {});

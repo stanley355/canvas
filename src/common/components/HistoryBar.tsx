@@ -22,7 +22,7 @@ const HistoryBar = (props: IHistoryBar) => {
   }, [pageType]);
 
   return (
-    <div className="fixed top-0 left-0 w-full lg:w-1/4 h-full z-10 bg-black overflow-y-auto bg-gradient-to-b from-black via-blue-700 to-blue-500">
+    <div className="fixed top-0 left-0 w-full lg:w-1/4 h-full z-10 bg-black overflow-y-auto bg-gradient-to-b from-black via-blue-700 to-blue-500 text-white">
       <div className="flex items-center text-xl justify-between border-b p-4 lg:p-2">
         <div className="flex items-center gap-2 font-semibold">
           <FaClock />
