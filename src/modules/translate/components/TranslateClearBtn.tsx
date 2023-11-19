@@ -10,7 +10,7 @@ const TranslateClearBtn = () => {
       type="button"
       id="clear_text_btn"
       ariaLabel="clear_text_btn"
-      wrapperClassName="absolute top-1 right-1 bg-black border-l border-b flex items-center p-1 rounded-md"
+      wrapperClassName="absolute top-1 right-1 bg-blue-900 text-white border-l border-b flex items-center p-1 rounded-md"
       onClick={() => {
         dispatch({
           type: "SET",

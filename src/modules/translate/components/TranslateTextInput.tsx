@@ -19,6 +19,7 @@ const TranslateTextInput = () => {
           cols={30}
           rows={10}
           className="w-full h-full bg-white resize-none p-2 rounded border border-black text-black focus:outline-none "
+          placeholder="Put your text here"
           value={translateText}
           onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
             dispatch({

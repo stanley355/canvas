@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { FaSpinner } from "react-icons/fa6";
 import classNames from "classnames";
 import Cookies from "js-cookie";
 import { decode } from "jsonwebtoken";
@@ -109,23 +110,19 @@ const TranslateSubmitBtn = () => {
     <div className="w-1/2 absolute right-1 bottom-3">
       <Button
         type="submit"
-        // disabled={isLoading}
-        wrapperClassName={classNames(
-          "bg-blue-900 text-white rounded-md font-semibold text-center w-1/2 ml-auto"
-          //   isLoading ? "w-fit" : "w-1/3"
-        )}
+        disabled={isLoading}
+        wrapperClassName="bg-blue-900 text-white rounded-md font-semibold text-center w-1/2 ml-auto"
         buttonClassName="w-full h-full p-2"
         onClick={handleSubmit}
       >
-        {/* {isLoading ? (
-                  <div className="flex flex-row items-center justify-center">
-                    <span className="mr-2">Please wait a moment</span>
-                    <FaSpinner className="animate-spin" />
-                  </div>
-                ) : (
-                  "Translate"
-                )} */}
-        Translate
+        {isLoading ? (
+          <div className="flex flex-row items-center justify-center">
+            <span className="mr-2">Please wait a moment</span>
+            <FaSpinner className="animate-spin" />
+          </div>
+        ) : (
+          "Translate"
+        )}
       </Button>
     </div>
   );
