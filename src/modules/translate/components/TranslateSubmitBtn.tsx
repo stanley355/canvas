@@ -14,6 +14,8 @@ import { saveHistory } from "@/common/lib/saveHistory";
 import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
 import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
 import { fetchUserSubscription } from "@/common/lib/api/subscriptions/fetchUserSubscription";
+import { subtle } from "crypto";
+import { checkSubscriptionExpiry } from "@/common/lib/api/subscriptions/checkSubscriptionExpiry";
 
 const TranslateSubmitBtn = () => {
   const { translateStates, dispatch } = useTranslate();
@@ -46,11 +48,18 @@ const TranslateSubmitBtn = () => {
     setIsLoading(true);
     const user: any = decode(token);
     const subscription = await fetchUserSubscription(user.id);
+
+    if (subscription?.id) {
+      const isSubscriptionExpired = checkSubscriptionExpiry(subscription?.end_at);
+      console.log(isSubscriptionExpired);
+
+      if (isSubscriptionExpired) {
+
+      }
+      
+    }
     console.log(subscription);
-    
-    // const subscriptionExpired = subscription?.id
-    //   ? isSubscriptionExpired(subscription.end_at)
-    //   : true;
+
     // if (subscriptionExpired) {
     //   const hasBalance = await checkUserCurrentBalance();
     //   if (!hasBalance) {

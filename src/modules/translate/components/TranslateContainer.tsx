@@ -1,12 +1,17 @@
-import React from "react";
+import dynamic from "next/dynamic";
 import TranslateHeader from "./TranslateHeader";
 import TranslateLanguageDropdown from "./TranslateLanguageDropdown";
 import TranslateContextInput from "./TranslateContextInput";
 import TranslateTextInput from "./TranslateTextInput";
 import TranslateResultBox from "./TranslateResultBox";
+import { useTranslate } from "../lib/useTranslate";
+
+const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
 
 const TranslateContainer = () => {
-    // TODO: Add showLogin, showHistory and show no plan
+  const { translateStates } = useTranslate();
+  const { showLoginModal } = translateStates;
+  // TODO: showHistory and show no plan
   return (
     <div className="container mx-auto">
       <TranslateHeader />
@@ -18,6 +23,7 @@ const TranslateContainer = () => {
         </div>
         <TranslateResultBox />
       </div>
+      {showLoginModal && <LoginModal />}
     </div>
   );
 };
