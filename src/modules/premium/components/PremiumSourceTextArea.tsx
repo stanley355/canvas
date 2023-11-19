@@ -24,7 +24,7 @@ const PremiumSourceTextArea = (props: IPremiumSourceTextArea) => {
         type="button"
         id="clear_text_btn"
         ariaLabel="clear_text_btn"
-        wrapperClassName="absolute top-1 right-1 bg-black border-l border-b flex items-center p-1 rounded-md"
+        wrapperClassName="bg-blue-900 text-white absolute top-1 right-1 bg-black border-l border-b flex items-center p-1 rounded-md"
         onClick={handleClearClick}
       >
         <FaTimes className="text-3xl" />
