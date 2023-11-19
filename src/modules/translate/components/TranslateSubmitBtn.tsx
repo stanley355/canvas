@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa6";
-import classNames from "classnames";
 import Cookies from "js-cookie";
 import { decode } from "jsonwebtoken";
 import Button from "@/common/components/Button";
@@ -66,8 +65,8 @@ const TranslateSubmitBtn = () => {
     const prompt = `Translate "${translateText}" to ${
       translateLanguage?.value
     }. ${translateContext ?? ""}.`;
-    const { content, prompt_tokens, completion_tokens } =
-      await handlePremiumPrompt(prompt);
+    const chatCompletionRes = await handlePremiumPrompt(prompt);
+    const { content, prompt_tokens, completion_tokens } = chatCompletionRes;
 
     if (content) {
       setIsLoading(false);
@@ -117,7 +116,7 @@ const TranslateSubmitBtn = () => {
       >
         {isLoading ? (
           <div className="flex flex-row items-center justify-center">
-            <span className="mr-2">Please wait a moment</span>
+            <span className="mr-2">Processing</span>
             <FaSpinner className="animate-spin" />
           </div>
         ) : (

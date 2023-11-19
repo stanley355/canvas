@@ -6,6 +6,7 @@ import TranslateTextInput from "./TranslateTextInput";
 import TranslateResultBox from "./TranslateResultBox";
 
 const TranslateContainer = () => {
+    // TODO: Add showLogin, showHistory and show no plan
   return (
     <div className="container mx-auto">
       <TranslateHeader />

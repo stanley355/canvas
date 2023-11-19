@@ -23,7 +23,7 @@ const TranslateResultBox = () => {
           id="translate_result_textarea"
           className="w-full text-black p-2 pb-2 bg-transparent"
           cols={30}
-          rows={isDesktop ? 14 : 10}
+          rows={isDesktop ? 12 : 10}
           placeholder="Your translation will show up here"
           onChange={() => {}}
           value={translateCompletion}
