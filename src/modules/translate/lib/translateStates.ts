@@ -8,5 +8,6 @@ export const TRANSLATE_STATES = {
   translateLanguage: {
     label: "",
     value: ""
-  }
+  },
+  translateContext: ""
 };

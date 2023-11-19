@@ -19,6 +19,7 @@ import TranslateProvider from "@/modules/translate/components/TranslateProvider"
 import TranslateTypeDropdown from "@/modules/translate/components/TranslateTypeDropdown";
 import TranslateHeader from "@/modules/translate/components/TranslateHeader";
 import TranslateLanguageDropdown from "@/modules/translate/components/TranslateLanguageDropdown";
+import TranslateContextInput from "@/modules/translate/components/TranslateContextInput";
 
 const LoginModal = dynamic(
   () => import("@/modules/login/components/LoginModal")
@@ -66,6 +67,7 @@ const PremiumTranslate = () => {
             <div className="px-2">
 
               <TranslateLanguageDropdown />
+              <TranslateContextInput />
             </div>
             <div className="lg:grid lg:grid-cols-2 lg:gap-4 mb-8">
               {/* {isImageTranslate ? (
