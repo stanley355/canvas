@@ -6,16 +6,7 @@ import { decode } from "jsonwebtoken";
 import Button from "@/common/components/Button";
 import { useTranslate } from "../lib/useTranslate";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import { fetchActiveSubscription } from "@/modules/profile/lib/fetchActiveSubscription";
-import { isSubscriptionExpired } from "@/modules/profile/lib/isSubscriptionExpired";
-import { checkUserCurrentBalance } from "@/modules/premium/lib/checkUserCurrentBalance";
-import { handlePremiumPrompt } from "@/modules/premium/lib/handlePremiumPrompt";
-import { saveHistory } from "@/common/lib/saveHistory";
-import { saveUserPremiumPrompt } from "@/common/lib/saveUserPremiumPrompt";
-import { saveUserPrompt } from "@/common/lib/saveUserPrompt";
-import { fetchUserSubscription } from "@/common/lib/api/subscriptions/fetchUserSubscription";
-import { subtle } from "crypto";
-import { checkSubscriptionExpiry } from "@/common/lib/api/subscriptions/checkSubscriptionExpiry";
+import { checkUserHasOngoingPlan } from "@/common/lib/checkUserHasOngoingPlan";
 
 const TranslateSubmitBtn = () => {
   const { translateStates, dispatch } = useTranslate();
@@ -47,18 +38,12 @@ const TranslateSubmitBtn = () => {
 
     setIsLoading(true);
     const user: any = decode(token);
-    const subscription = await fetchUserSubscription(user.id);
-
-    if (subscription?.id) {
-      const isSubscriptionExpired = checkSubscriptionExpiry(subscription?.end_at);
-      console.log(isSubscriptionExpired);
-
-      if (isSubscriptionExpired) {
-
-      }
-      
+    const userHasOngoingPlan = await checkUserHasOngoingPlan(user);
+    if (!userHasOngoingPlan) {
+      dispatch({ type: "SET", name: "showNoPlansModal", value: true });
+      setIsLoading(false);
+      return;
     }
-    console.log(subscription);
 
     // if (subscriptionExpired) {
     //   const hasBalance = await checkUserCurrentBalance();

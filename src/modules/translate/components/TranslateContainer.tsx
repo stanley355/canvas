@@ -5,12 +5,13 @@ import TranslateContextInput from "./TranslateContextInput";
 import TranslateTextInput from "./TranslateTextInput";
 import TranslateResultBox from "./TranslateResultBox";
 import { useTranslate } from "../lib/useTranslate";
+import NoPlansModal from "@/modules/premium/components/NoPlansModal";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
 
 const TranslateContainer = () => {
   const { translateStates } = useTranslate();
-  const { showLoginModal } = translateStates;
+  const { showLoginModal, showNoPlansModal } = translateStates;
   // TODO: showHistory and show no plan
   return (
     <div className="container mx-auto">
@@ -24,6 +25,7 @@ const TranslateContainer = () => {
         <TranslateResultBox />
       </div>
       {showLoginModal && <LoginModal />}
+      {showNoPlansModal && <NoPlansModal />}
     </div>
   );
 };
