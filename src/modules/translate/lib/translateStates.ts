@@ -1,6 +1,7 @@
 export const TRANSLATE_STATES = {
-  showLogin: false,
-  showHistory: false,
+  showLoginModal: false,
+  showHistoryBar: false,
+  showNoPlansModal: false,
   isImageTranslate: false,
   imageText: "",
   translateLanguage: {
