@@ -1,7 +1,8 @@
+import { axiosErrorHandler } from "@/common/lib/api/axiosErrorHandler";
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const openaiCompletionAPI = async (
+const openaiChatCompletionAPI = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
@@ -19,27 +20,29 @@ const openaiCompletionAPI = async (
     },
   };
 
+  // first try catch
   try {
     const { data } = await axios(axiosConfig);
-    res.setHeader("Content-Type", "application/json");
-    res.json(data);
+    res.send(data);
   } catch (err: any) {
-    axiosConfig.data.model = "gpt-3.5-turbo-16k-0613";
-
+    // second try catch
+    axiosConfig.data.model = "gpt-3.5-turbo-1106";
     try {
       const { data } = await axios(axiosConfig);
-      res.setHeader("Content-Type", "application/json");
-      res.json(data);
+      res.send(data);
     } catch (error) {
+
+      // third try catch
       axiosConfig.data.model = "gpt-3.5-turbo";
       try {
         const { data } = await axios(axiosConfig);
-        res.setHeader("Content-Type", "application/json");
-        res.json(data);
+        res.send(data);
       } catch (error) {
-        res.status(500).send(err);
+        const errorRes = await axiosErrorHandler(URL, err);
+        res.send(errorRes);
       }
+
     }
   }
 };
-export default openaiCompletionAPI;
+export default openaiChatCompletionAPI;

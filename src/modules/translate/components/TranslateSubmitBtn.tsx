@@ -7,6 +7,8 @@ import Button from "@/common/components/Button";
 import { useTranslate } from "../lib/useTranslate";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { checkUserHasOngoingPlan } from "@/common/lib/checkUserHasOngoingPlan";
+import { fetchAIChatCompletion } from "@/common/lib/api/ai/fetchAIChatCompletion";
+import { IChatCompletionRes } from "@/common/lib/api/ai/aiAPIInterfaces";
 
 const TranslateSubmitBtn = () => {
   const { translateStates, dispatch } = useTranslate();
@@ -45,19 +47,28 @@ const TranslateSubmitBtn = () => {
       return;
     }
 
-    // if (subscriptionExpired) {
-    //   const hasBalance = await checkUserCurrentBalance();
-    //   if (!hasBalance) {
-    //     dispatch({ type: "SET", name: "showNoPlansModal", value: true });
-    //     setIsLoading(false);
-    //     return;
-    //   }
-    // }
+    sendFirebaseEvent("translate", {
+      name: "translate",
+      translate_language: translateLanguage?.value,
+    });
 
-    // sendFirebaseEvent("translate", {
-    //   name: "translate",
-    //   translate_language: translateLanguage?.value,
-    // });
+    const prompt = `Translate "${translateText}" to ${
+      translateLanguage?.value
+    }. ${translateContext ?? ""}.`;
+    const chatCompletionRes: IChatCompletionRes = await fetchAIChatCompletion(
+      prompt
+    );
+
+    if (chatCompletionRes?.id) {
+      setIsLoading(false);
+      dispatch({
+        type: "SET",
+        name: "translateCompletion",
+        value: chatCompletionRes?.choices[0]?.message?.content,
+      });
+
+      return;
+    }
 
     // const prompt = `Translate "${translateText}" to ${
     //   translateLanguage?.value
