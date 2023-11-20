@@ -9,6 +9,7 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { checkUserHasOngoingPlan } from "@/common/lib/checkUserHasOngoingPlan";
 import { fetchAIChatCompletion } from "@/common/lib/api/ai/fetchAIChatCompletion";
 import { IChatCompletionRes } from "@/common/lib/api/ai/aiAPIInterfaces";
+import { saveTranslateHistory } from "../lib/saveTranslateHistory";
 
 const TranslateSubmitBtn = () => {
   const { translateStates, dispatch } = useTranslate();
@@ -60,13 +61,15 @@ const TranslateSubmitBtn = () => {
     );
 
     if (chatCompletionRes?.id) {
+      const chatCompletionContent = chatCompletionRes?.choices[0]?.message?.content;
       setIsLoading(false);
       dispatch({
         type: "SET",
         name: "translateCompletion",
-        value: chatCompletionRes?.choices[0]?.message?.content,
+        value: chatCompletionContent,
       });
 
+      saveTranslateHistory(translateStates, chatCompletionContent);
       return;
     }
 
