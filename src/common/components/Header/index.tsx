@@ -61,6 +61,7 @@ const Header = () => {
               type="link"
               key={menu.url}
               href={menu.url}
+              onClick={() => setShowModal(false)}
               buttonClassName="flex items-center gap-2 w-full h-full py-2 lg:pb-1"
               wrapperClassName={classNames(
                 "group border-b border-blue-900 lg:border-white",
