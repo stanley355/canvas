@@ -5,9 +5,11 @@ import TranslateContextInput from "./TranslateContextInput";
 import TranslateTextInput from "./TranslateTextInput";
 import TranslateResultBox from "./TranslateResultBox";
 import { useTranslate } from "../lib/useTranslate";
-import NoPlansModal from "@/modules/premium/components/NoPlansModal";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
+const NoPlansModal = dynamic(
+  () => import("../../premium/components/NoPlansModal")
+);
 
 const TranslateContainer = () => {
   const { translateStates } = useTranslate();
