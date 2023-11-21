@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { FaSpinner } from "react-icons/fa6";
-import Cookies from "js-cookie";
 import { decode } from "jsonwebtoken";
+import Cookies from "js-cookie";
+
 import Button from "@/common/components/Button";
 import { useTranslate } from "../lib/useTranslate";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
@@ -10,6 +11,8 @@ import { checkUserHasOngoingPlan } from "@/common/lib/checkUserHasOngoingPlan";
 import { fetchAIChatCompletion } from "@/common/lib/api/ai/fetchAIChatCompletion";
 import { IChatCompletionRes } from "@/common/lib/api/ai/aiAPIInterfaces";
 import { saveTranslateHistory } from "../lib/saveTranslateHistory";
+import { fetchUserPrompts } from "@/common/lib/api/prompts/fetchUserPrompts";
+import { fetchUserPremiumPrompts } from "@/common/lib/api/prompts/fetchUserPremiumPrompts";
 
 const TranslateSubmitBtn = () => {
   const { translateStates, dispatch } = useTranslate();
@@ -42,7 +45,7 @@ const TranslateSubmitBtn = () => {
     setIsLoading(true);
     const user: any = decode(token);
     const userHasOngoingPlan = await checkUserHasOngoingPlan(user);
-    if (!userHasOngoingPlan) {
+    if (!userHasOngoingPlan.hasOngoingPlan) {
       dispatch({ type: "SET", name: "showNoPlansModal", value: true });
       setIsLoading(false);
       return;
@@ -61,56 +64,33 @@ const TranslateSubmitBtn = () => {
     );
 
     if (chatCompletionRes?.id) {
-      const chatCompletionContent = chatCompletionRes?.choices[0]?.message?.content;
       setIsLoading(false);
+
+      const chatCompletionContent =
+        chatCompletionRes?.choices[0]?.message?.content;
       dispatch({
         type: "SET",
         name: "translateCompletion",
         value: chatCompletionContent,
       });
 
+      const fetchUserPromptsPayload = {
+        instruction: `Translate to ${translateLanguage}`,
+        prompt_token: chatCompletionRes.usage.prompt_tokens,
+        completion_token: chatCompletionRes.usage.completion_tokens,
+        prompt_text: translateText,
+        completion_text: chatCompletionContent,
+      };
+
       saveTranslateHistory(translateStates, chatCompletionContent);
+      if (userHasOngoingPlan.isSubscription) {
+        await fetchUserPrompts(user, fetchUserPromptsPayload);
+      } else {
+        await fetchUserPremiumPrompts(user, fetchUserPromptsPayload);
+      }
+
       return;
     }
-
-    // const prompt = `Translate "${translateText}" to ${
-    //   translateLanguage?.value
-    // }. ${translateContext ?? ""}.`;
-    // const chatCompletionRes = await handlePremiumPrompt(prompt);
-    // const { content, prompt_tokens, completion_tokens } = chatCompletionRes;
-
-    // if (content) {
-    //   setIsLoading(false);
-    //   dispatch({
-    //     type: "SET",
-    //     name: "translateCompletion",
-    //     value: content,
-    //   });
-
-    //   const historyPayload = {
-    //     time: new Date(),
-    //     instruction: `Translate to ${translateLanguage}`,
-    //     originalText: translateText,
-    //     completionText: content,
-    //     type: "translate",
-    //   };
-    //   saveHistory(historyPayload);
-
-    //   const saveUserPromptPayload = {
-    //     instruction: `Translate to ${translateLanguage}`,
-    //     prompt_token: prompt_tokens,
-    //     completion_token: completion_tokens,
-    //     prompt_text: translateText,
-    //     completion_text: content,
-    //   };
-    //   if (subscriptionExpired) {
-    //     await saveUserPremiumPrompt(saveUserPromptPayload); // reduce user balance
-    //   } else {
-    //     await saveUserPrompt(saveUserPromptPayload); //not reduce user balance
-    //   }
-
-    //   return;
-    // }
 
     toast.error("Something went wrong, please try again");
     setIsLoading(false);

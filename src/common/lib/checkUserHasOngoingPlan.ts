@@ -4,7 +4,14 @@ import { fetchUserSubscription } from "./api/subscriptions/fetchUserSubscription
 import { fetchUserByEmail } from "./api/users/fetchUserByEmail";
 import { IUser } from "./api/users/userInterfaces";
 
-export const checkUserHasOngoingPlan = async (user: IUser) => {
+interface ICheckUserHasOngoingPlanOutput {
+  isSubscription: boolean;
+  hasOngoingPlan: boolean;
+}
+
+export const checkUserHasOngoingPlan = async (
+  user: IUser
+): Promise<ICheckUserHasOngoingPlanOutput> => {
   const subscription = await fetchUserSubscription(user.id);
 
   if (subscription?.id) {
@@ -12,11 +19,20 @@ export const checkUserHasOngoingPlan = async (user: IUser) => {
 
     if (isSubscriptionExpired) {
       const userData = await fetchUserByEmail(user?.email);
-      return userData?.balance > 0;
+      return {
+        isSubscription: false,
+        hasOngoingPlan: userData?.balance > 0,
+      };
     }
 
-    return true;
+    return {
+      isSubscription: true,
+      hasOngoingPlan: true,
+    };
   }
 
-  return false;
+  return {
+    isSubscription: false,
+    hasOngoingPlan: false,
+  };
 };
