@@ -1,6 +1,7 @@
 import React from "react";
 import { useCheckbot } from "../lib/useCheckbot";
 import CheckbotClearBtn from "./CheckbotClearBtn";
+import CheckbotSubmitBtn from "./CheckbotSubmitBtn";
 
 const CheckbotTextInput = () => {
   const { checkbotStates, dispatch } = useCheckbot();
@@ -18,16 +19,16 @@ const CheckbotTextInput = () => {
           className="w-full h-full bg-white resize-none p-2 rounded border border-black text-black focus:outline-none "
           placeholder="Put your text here"
           value={checkbotText}
-          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>{
             dispatch({
               type: "SET",
-              name: "translateText",
+              name: "checkbotText",
               value: e.target.value,
-            })
+            })}
           }
         />
       </label>
-      {/* <TranslateSubmitBtn /> */}
+      <CheckbotSubmitBtn />
     </div>
   );
 };

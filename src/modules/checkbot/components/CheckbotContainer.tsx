@@ -1,14 +1,21 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import CheckbotHeader from "./CheckbotHeader";
 import CheckbotInstructionDropdown from "./CheckbotInstructionDropdown";
-import { useCheckbot } from "../lib/useCheckbot";
 import CheckbotPersonalInstructionInput from "./CheckbotPersonalInstructionInput";
 import CheckbotTextInput from "./CheckbotTextInput";
+import { useCheckbot } from "../lib/useCheckbot";
+
+const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
+const NoPlansModal = dynamic(
+  () => import("../../premium/components/NoPlansModal")
+);
 
 const CheckbotContainer = () => {
   const { checkbotStates } = useCheckbot();
-  const { isPersonalInstruction } = checkbotStates;
+  const { isPersonalInstruction, showLoginModal, showNoPlansModal } = checkbotStates;
 
+  // TODO: showHistory and show no plan
   return (
     <div className="container mx-auto">
       <CheckbotHeader />
@@ -19,6 +26,8 @@ const CheckbotContainer = () => {
           <CheckbotTextInput />
         </div>
       </div>
+      {showLoginModal && <LoginModal />}
+      {showNoPlansModal && <NoPlansModal />}
     </div>
   );
 };
