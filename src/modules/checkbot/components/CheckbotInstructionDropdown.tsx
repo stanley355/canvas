@@ -1,7 +1,26 @@
-import Select from "react-select";
+import Select, { SingleValue } from "react-select";
 import { CHECKBOT_INSTRUCTION_OPTIONS } from "../lib/checkbotInstructionOptions";
+import { useCheckbot } from "../lib/useCheckbot";
 
 const CheckbotInstructionDropdown = () => {
+  const { dispatch } = useCheckbot();
+
+  const handleChange = (
+    option: SingleValue<{ label: string; value: string }>
+  ) => {
+    dispatch({
+      type: "SET",
+      name: "isPersonalInstruction",
+      value: option?.value === "personal_instruction",
+    });
+
+    dispatch({
+      type: "SET",
+      name: "checkbotInstruction",
+      value: option?.value,
+    });
+  };
+
   const styles = {
     control: (defaults: any) => ({
       ...defaults,
@@ -12,6 +31,7 @@ const CheckbotInstructionDropdown = () => {
       color: "black",
     }),
   };
+
   return (
     <label htmlFor="checkbot_instruction_select">
       <Select
@@ -22,7 +42,7 @@ const CheckbotInstructionDropdown = () => {
         id="checkbot_instruction_select"
         aria-label="checkbot_instruction_select"
         aria-labelledby="checkbot_instruction_select"
-        onChange={(option) => console.log(option)}
+        onChange={handleChange}
         styles={styles}
       />
     </label>

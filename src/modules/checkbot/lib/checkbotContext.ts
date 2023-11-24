@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { CHECKBOT_STATES } from "@/modules/premium/lib/states";
+import { CHECKBOT_STATES } from "./checkbotStates";
 
 export interface ICheckbotDispatchPayload {
   type: string;
