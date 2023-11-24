@@ -1,10 +1,6 @@
 import React from "react";
-import Button from "@/common/components/Button";
-import { FaX } from "react-icons/fa6";
 import { useCheckbot } from "../lib/useCheckbot";
-// import { useTranslate } from "../lib/useTranslate";
-// import TranslateSubmitBtn from "./TranslateSubmitBtn";
-// import TranslateClearBtn from "./TranslateClearBtn";
+import CheckbotClearBtn from "./CheckbotClearBtn";
 
 const CheckbotTextInput = () => {
   const { checkbotStates, dispatch } = useCheckbot();
@@ -12,7 +8,7 @@ const CheckbotTextInput = () => {
 
   return (
     <div className="w-full relative">
-      {/* <TranslateClearBtn /> */}
+      <CheckbotClearBtn />
       <label htmlFor="checkbot_text">
         <textarea
           name="checkbot_text"
