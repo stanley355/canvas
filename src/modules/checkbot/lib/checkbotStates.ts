@@ -4,7 +4,8 @@ export const CHECKBOT_STATES= {
   showNoPlansModal: false,
   checkbotInstruction: "",
   isPersonalInstruction: false,
-  checkbotPersonalInstruction: ""
+  checkbotPersonalInstruction: "",
+  checkbotText: ""
 //   translateLanguage: {
 //     label: "",
 //     value: ""
