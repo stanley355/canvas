@@ -7,7 +7,7 @@ const CheckBot = () => {
   return (
     <CheckbotProvider>
       <MetaSEO seo={PREMIUM_CHECKBOT_SEO} />
-      <div className="bg-gradient-to-b from-white via-slate-400 to-white">
+      <div className="bg-gradient-to-b from-white via-slate-100 to-white">
         <CheckbotContainer />
       </div>
     </CheckbotProvider>

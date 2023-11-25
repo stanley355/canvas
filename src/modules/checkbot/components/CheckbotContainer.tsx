@@ -4,11 +4,12 @@ import CheckbotHeader from "./CheckbotHeader";
 import CheckbotInstructionDropdown from "./CheckbotInstructionDropdown";
 import CheckbotPersonalInstructionInput from "./CheckbotPersonalInstructionInput";
 import CheckbotTextInput from "./CheckbotTextInput";
-import { useCheckbot } from "../lib/useCheckbot";
 import CheckbotResultBox from "./CheckbotResultBox";
 import CheckbotResultToggleBtn from "./CheckbotResultToggleBtn";
-import { CheckbotResultFormatEnum } from "../lib/checkbotStates";
 import CheckbotRemovedAndAddedBox from "./CheckbotRemovedAndAddedBox";
+import PlanOptions from "@/modules/plans/components/PlanOptions";
+import { useCheckbot } from "../lib/useCheckbot";
+import { CheckbotResultFormatEnum } from "../lib/checkbotStates";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
 const NoPlansModal = dynamic(
@@ -43,6 +44,7 @@ const CheckbotContainer = () => {
           )}
         </div>
       </div>
+      <PlanOptions />
       {showLoginModal && <LoginModal />}
       {showNoPlansModal && <NoPlansModal />}
     </div>
