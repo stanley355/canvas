@@ -5,12 +5,6 @@ export const CHECKBOT_STATES= {
   checkbotInstruction: "",
   isPersonalInstruction: false,
   checkbotPersonalInstruction: "",
-  checkbotText: ""
-//   translateLanguage: {
-//     label: "",
-//     value: ""
-//   },
-//   translateContext: "",
-//   translateText: "",
-//   translateCompletion: "",
+  checkbotText: "",
+  checkbotCompletion: ""
 };

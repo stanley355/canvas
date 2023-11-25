@@ -60,46 +60,49 @@ const CheckbotSubmitBtn = () => {
       return;
     }
 
-    // sendFirebaseEvent("translate", {
-    //   name: "translate",
-    //   translate_language: translateLanguage?.value,
-    // });
+    sendFirebaseEvent("checkbot", {
+      name: "checkbot",
+      instruction: checkbotInstruction,
+    });
 
-    // const prompt = `Translate "${translateText}" to ${
-    //   translateLanguage?.value
-    // }. ${translateContext ?? ""}.`;
-    // const chatCompletionRes: IChatCompletionRes = await fetchAIChatCompletion(
-    //   prompt
-    // );
+    const prompt = checkbotPersonalInstruction
+      ? `${checkbotPersonalInstruction}, text: "${checkbotText}"`
+      : `${checkbotInstruction}: "${checkbotText}"`;
 
-    // if (chatCompletionRes?.id) {
-    //   setIsLoading(false);
+    const chatCompletionRes: IChatCompletionRes = await fetchAIChatCompletion(
+      prompt
+    );
 
-    //   const chatCompletionContent =
-    //     chatCompletionRes?.choices[0]?.message?.content;
-    //   dispatch({
-    //     type: "SET",
-    //     name: "translateCompletion",
-    //     value: chatCompletionContent,
-    //   });
+    console.log(chatCompletionRes);
 
-    //   const fetchUserPromptsPayload = {
-    //     instruction: `Translate to ${translateLanguage}`,
-    //     prompt_token: chatCompletionRes.usage.prompt_tokens,
-    //     completion_token: chatCompletionRes.usage.completion_tokens,
-    //     prompt_text: translateText,
-    //     completion_text: chatCompletionContent,
-    //   };
+    if (chatCompletionRes?.id) {
+      setIsLoading(false);
 
-    //   saveTranslateHistory(translateStates, chatCompletionContent);
-    //   if (userHasOngoingPlan.isSubscription) {
-    //     await fetchUserPrompts(user, fetchUserPromptsPayload);
-    //   } else {
-    //     await fetchUserPremiumPrompts(user, fetchUserPromptsPayload);
-    //   }
+      const chatCompletionContent =
+        chatCompletionRes?.choices[0]?.message?.content;
+      dispatch({
+        type: "SET",
+        name: "checkbotCompletion",
+        value: chatCompletionContent,
+      });
 
-    //   return;
-    // }
+      // const fetchUserPromptsPayload = {
+      //   instruction: `Translate to ${translateLanguage}`,
+      //   prompt_token: chatCompletionRes.usage.prompt_tokens,
+      //   completion_token: chatCompletionRes.usage.completion_tokens,
+      //   prompt_text: translateText,
+      //   completion_text: chatCompletionContent,
+      // };
+
+      // saveTranslateHistory(translateStates, chatCompletionContent);
+      // if (userHasOngoingPlan.isSubscription) {
+      //   await fetchUserPrompts(user, fetchUserPromptsPayload);
+      // } else {
+      //   await fetchUserPremiumPrompts(user, fetchUserPromptsPayload);
+      // }
+
+      return;
+    }
 
     toast.error("Something went wrong, please try again");
     setIsLoading(false);

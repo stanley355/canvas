@@ -5,6 +5,7 @@ import CheckbotInstructionDropdown from "./CheckbotInstructionDropdown";
 import CheckbotPersonalInstructionInput from "./CheckbotPersonalInstructionInput";
 import CheckbotTextInput from "./CheckbotTextInput";
 import { useCheckbot } from "../lib/useCheckbot";
+import CheckbotResultBox from "./CheckbotResultBox";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
 const NoPlansModal = dynamic(
@@ -25,6 +26,7 @@ const CheckbotContainer = () => {
           {isPersonalInstruction && <CheckbotPersonalInstructionInput />}
           <CheckbotTextInput />
         </div>
+        <CheckbotResultBox />
       </div>
       {showLoginModal && <LoginModal />}
       {showNoPlansModal && <NoPlansModal />}
