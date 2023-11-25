@@ -13,6 +13,8 @@ import { IChatCompletionRes } from "@/common/lib/api/ai/aiAPIInterfaces";
 // import { saveTranslateHistory } from "../lib/saveTranslateHistory";
 import { fetchUserPrompts } from "@/common/lib/api/prompts/fetchUserPrompts";
 import { fetchUserPremiumPrompts } from "@/common/lib/api/prompts/fetchUserPremiumPrompts";
+import { createRemovedAndAddedDiff } from "@/common/lib/createRemovedAndAddedDiff";
+import { saveCheckbotHistory } from "../lib/saveCheckbotHistory";
 
 const CheckbotSubmitBtn = () => {
   const { checkbotStates, dispatch } = useCheckbot();
@@ -73,8 +75,6 @@ const CheckbotSubmitBtn = () => {
       prompt
     );
 
-    console.log(chatCompletionRes);
-
     if (chatCompletionRes?.id) {
       setIsLoading(false);
 
@@ -86,20 +86,35 @@ const CheckbotSubmitBtn = () => {
         value: chatCompletionContent,
       });
 
-      // const fetchUserPromptsPayload = {
-      //   instruction: `Translate to ${translateLanguage}`,
-      //   prompt_token: chatCompletionRes.usage.prompt_tokens,
-      //   completion_token: chatCompletionRes.usage.completion_tokens,
-      //   prompt_text: translateText,
-      //   completion_text: chatCompletionContent,
-      // };
+      const { removedDiff, addedDiff } = createRemovedAndAddedDiff(
+        checkbotText,
+        chatCompletionContent
+      );
+      dispatch({
+        type: "SET",
+        name: "checkbotCompletionAddedd",
+        value: addedDiff,
+      });
+      dispatch({
+        type: "SET",
+        name: "checkbotCompletionRemoved",
+        value: removedDiff,
+      });
 
-      // saveTranslateHistory(translateStates, chatCompletionContent);
-      // if (userHasOngoingPlan.isSubscription) {
-      //   await fetchUserPrompts(user, fetchUserPromptsPayload);
-      // } else {
-      //   await fetchUserPremiumPrompts(user, fetchUserPromptsPayload);
-      // }
+      const fetchUserPromptsPayload = {
+        instruction: checkbotInstruction,
+        prompt_token: chatCompletionRes.usage.prompt_tokens,
+        completion_token: chatCompletionRes.usage.completion_tokens,
+        prompt_text: checkbotText,
+        completion_text: chatCompletionContent,
+      };
+
+      saveCheckbotHistory(checkbotStates, chatCompletionContent);
+      if (userHasOngoingPlan.isSubscription) {
+        await fetchUserPrompts(user, fetchUserPromptsPayload);
+      } else {
+        await fetchUserPremiumPrompts(user, fetchUserPromptsPayload);
+      }
 
       return;
     }
