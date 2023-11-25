@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import RegisterForm from "@/modules/login/components/RegisterForm";
 import Cookies from "js-cookie";
 import MetaSEO from "@/common/components/MetaSEO";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import RegisterHeader from "@/modules/login/components/RegisterHeader";
 
 const Register = () => {
   const seo = {
@@ -12,18 +14,12 @@ const Register = () => {
     url: process.env.NEXT_PUBLIC_BASE_URL,
   };
 
-  useEffect(() => {
-    const cookieToken = Cookies.get("token");
-    if (cookieToken) {
-      window.location.href = "/profile/";
-    }
-  }, []);
-
   return (
     <div>
       <MetaSEO seo={seo} />
-      <div className="bg-gradient-to-b from-black via-blue-900 to-white pb-4">
-        <div className="container mx-auto p-4 h-screen">
+      <div className="h-screen bg-gradient-to-br from-white via-slate-100 to-white">
+        <div className="container mx-auto p-4 lg:px-0">
+          <RegisterHeader />
           <RegisterForm />
         </div>
       </div>
@@ -32,3 +28,21 @@ const Register = () => {
 };
 
 export default Register;
+export const getServerSideProps: GetServerSideProps = async (
+  ctx: GetServerSidePropsContext
+) => {
+  const token = ctx.req.cookies.token;
+
+  if (token) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/profile/",
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};
