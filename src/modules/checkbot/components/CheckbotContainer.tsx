@@ -6,6 +6,7 @@ import CheckbotPersonalInstructionInput from "./CheckbotPersonalInstructionInput
 import CheckbotTextInput from "./CheckbotTextInput";
 import { useCheckbot } from "../lib/useCheckbot";
 import CheckbotResultBox from "./CheckbotResultBox";
+import CheckbotResultToggleBtn from "./CheckbotResultToggleBtn";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
 const NoPlansModal = dynamic(
@@ -14,7 +15,8 @@ const NoPlansModal = dynamic(
 
 const CheckbotContainer = () => {
   const { checkbotStates } = useCheckbot();
-  const { isPersonalInstruction, showLoginModal, showNoPlansModal } = checkbotStates;
+  const { isPersonalInstruction, showLoginModal, showNoPlansModal } =
+    checkbotStates;
 
   // TODO: showHistory and show no plan
   return (
@@ -26,7 +28,10 @@ const CheckbotContainer = () => {
           {isPersonalInstruction && <CheckbotPersonalInstructionInput />}
           <CheckbotTextInput />
         </div>
-        <CheckbotResultBox />
+        <div>
+          <CheckbotResultToggleBtn />
+          <CheckbotResultBox />
+        </div>
       </div>
       {showLoginModal && <LoginModal />}
       {showNoPlansModal && <NoPlansModal />}

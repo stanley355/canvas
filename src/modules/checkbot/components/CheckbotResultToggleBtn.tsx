@@ -1,16 +1,15 @@
 import React from "react";
 import classNames from "classnames";
+import { FaCircleMinus, FaPlus, FaX } from "react-icons/fa6";
+
 import Button from "@/common/components/Button";
-import { FaMinusCircle, FaPlus, FaTimes } from "react-icons/fa";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { CheckbotResultFormatEnum } from "../lib/checkbotStates";
+import { useCheckbot } from "../lib/useCheckbot";
 
-interface ICheckbotResultToggle {
-  resultFormat: string;
-  updateState: (name: string, value: any) => void;
-}
-
-const CheckbotResultToggle = (props: ICheckbotResultToggle) => {
-  const { resultFormat, updateState } = props;
+const CheckbotResultToggleBtn = () => {
+  const { checkbotStates, dispatch } = useCheckbot();
+  const { checkbotResultFormat } = checkbotStates;
 
   return (
     <div className="grid grid-cols-3 gap-2 mb-2">
@@ -18,43 +17,59 @@ const CheckbotResultToggle = (props: ICheckbotResultToggle) => {
         type="button"
         wrapperClassName={classNames(
           "w-full border border-red-500 rounded p-1 h-fit",
-          resultFormat === "removed"
+          checkbotResultFormat === CheckbotResultFormatEnum.Removed
             ? "bg-red-500 text-white"
             : "text-red-500 bg-white"
         )}
         buttonClassName="w-full flex items-center justify-center gap-1"
         onClick={() => {
           sendFirebaseEvent("checkbot_removed_format", {});
-          updateState("resultFormat", "removed");
+          dispatch({
+            type: "SET",
+            name: "checkbotResultFormat",
+            value: CheckbotResultFormatEnum.Removed,
+          });
         }}
       >
-        <FaTimes />
+        <FaX className="text-sm" />
         Removed
       </Button>
       <Button
         type="button"
         wrapperClassName={classNames(
           "w-full border border-gray-500 rounded p-1 h-fit",
-          !resultFormat ? "bg-black text-white" : "text-black bg-white"
+          checkbotResultFormat === CheckbotResultFormatEnum.NoDiff
+            ? "bg-black text-white"
+            : "text-black bg-white"
         )}
         buttonClassName="w-full flex items-center justify-center gap-1"
-        onClick={() => updateState("resultFormat", "")}
+        onClick={() =>
+          dispatch({
+            type: "SET",
+            name: "checkbotResultFormat",
+            value: CheckbotResultFormatEnum.NoDiff,
+          })
+        }
       >
-        <FaMinusCircle />
+        <FaCircleMinus />
         No Diff
       </Button>
       <Button
         type="button"
         wrapperClassName={classNames(
           "w-full border border-green-500 rounded p-1 h-fit",
-          resultFormat === "added"
+          checkbotResultFormat === CheckbotResultFormatEnum.Added
             ? "bg-green-500 text-white"
             : "text-green-500 bg-white"
         )}
         buttonClassName="w-full flex items-center justify-center gap-1"
         onClick={() => {
           sendFirebaseEvent("checkbot_added_format", {});
-          updateState("resultFormat", "added");
+          dispatch({
+            type: "SET",
+            name: "checkbotResultFormat",
+            value: CheckbotResultFormatEnum.Added,
+          });
         }}
       >
         <FaPlus />
@@ -64,4 +79,4 @@ const CheckbotResultToggle = (props: ICheckbotResultToggle) => {
   );
 };
 
-export default CheckbotResultToggle;
+export default CheckbotResultToggleBtn;

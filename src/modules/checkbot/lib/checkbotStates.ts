@@ -1,16 +1,22 @@
-export interface ICheckbotStates {
-  showLoginModal: boolean
-  showHistoryBar: boolean
-  showNoPlansModal: boolean
-  checkbotInstruction: string
-  isPersonalInstruction: boolean
-  checkbotPersonalInstruction: string
-  checkbotText: string
-  checkbotCompletion: string
-  checkbotCompletionAdded: React.JSX.Element[]
-  checkbotCompletionRemoved: React.JSX.Element[]
+export enum CheckbotResultFormatEnum {
+  NoDiff,
+  Added,
+  Removed,
 }
 
+export interface ICheckbotStates {
+  showLoginModal: boolean;
+  showHistoryBar: boolean;
+  showNoPlansModal: boolean;
+  checkbotInstruction: string;
+  isPersonalInstruction: boolean;
+  checkbotPersonalInstruction: string;
+  checkbotText: string;
+  checkbotCompletion: string;
+  checkbotCompletionAdded: React.JSX.Element[];
+  checkbotCompletionRemoved: React.JSX.Element[];
+  checkbotResultFormat: CheckbotResultFormatEnum;
+}
 
 export const CHECKBOT_STATES: ICheckbotStates = {
   showLoginModal: false,
@@ -23,4 +29,5 @@ export const CHECKBOT_STATES: ICheckbotStates = {
   checkbotCompletion: "",
   checkbotCompletionAdded: [],
   checkbotCompletionRemoved: [],
+  checkbotResultFormat: CheckbotResultFormatEnum.NoDiff,
 };
