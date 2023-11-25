@@ -25,22 +25,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   }, [token]);
 
   return (
-    <>
-      {showPaidNotice && (
-        <PaidNotice
-          onClick={() => {
-            Cookies.set("paid_notice", "shown", { expires: 2 });
-            setShowPaidNotice(false);
-            return;
-          }}
-        />
-      )}
+    <div className={inter.className}>
       <Header />
-      <main
-        className={classNames("h-min-screen pt-16 lg:pt-12", inter.className)}
-      >
-        {children}
-      </main>
+      <main className="h-min-screen pt-16 lg:pt-12">{children}</main>
       <Footer />
       <ToastContainer
         position="top-center"
@@ -50,7 +37,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         pauseOnHover
         theme="light"
       />
-    </>
+    </div>
   );
 };
 

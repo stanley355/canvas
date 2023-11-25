@@ -26,12 +26,12 @@ export const PlansSection = () => (
 
 const Plans = () => {
   return (
-    <Layout>
+    <div>
       <MetaSEO seo={HOME_SEO} />
       <div className="bg-gradient-to-br from-white via-blue-300 to-white">
         <PlansSection />
       </div>
-    </Layout>
+    </div>
   );
 };
 

@@ -5,14 +5,13 @@ import { FaLanguage, FaRobot } from "react-icons/fa";
 
 import { HOME_SEO } from "@/modules/home/lib/constant";
 import MetaSEO from "@/common/components/MetaSEO";
-import Layout from "@/common/components/Layout";
 import { PlansSection } from "./plans";
 
 const Home = () => {
   return (
-    <Layout>
+    <div>
       <MetaSEO seo={HOME_SEO} />
-      <div className="bg-gradient-to-br from-white via-blue-300 to-white">
+      <div className="bg-gradient-to-br from-white via-blue-100 to-white">
         <div className="container mx-auto p-4 mb-8">
           <h1 className="text-center flex items-center justify-center text-4xl mb-4 text-black mt-8">
             <span>Language</span>
@@ -64,7 +63,7 @@ const Home = () => {
         </div>
         <PlansSection />
       </div>
-    </Layout>
+    </div>
   );
 };
 

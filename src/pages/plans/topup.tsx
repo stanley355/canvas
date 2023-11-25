@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Layout from "@/common/components/Layout";
 import MetaSEO from "@/common/components/MetaSEO";
 import { HOME_SEO } from "@/modules/home/lib/constant";
 import TopupForm from "@/modules/plans/components/TopupForm";
@@ -11,7 +10,7 @@ const PlansTopup = ({ user }: any) => {
   const [vaInfo, setVaInfo] = useState<any>({});
 
   return (
-    <Layout>
+    <div>
       <MetaSEO seo={HOME_SEO} />
       <div className="bg-gradient-to-br from-white via-blue-300 to-white">
         <div className="w-full lg:w-[450px] mx-auto min-h-screen bg-white text-black p-4">
@@ -31,7 +30,7 @@ const PlansTopup = ({ user }: any) => {
           {vaInfo?.bank_name && <VAinfo info={vaInfo} />}
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 

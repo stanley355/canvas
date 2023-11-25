@@ -2,40 +2,37 @@ import React from "react";
 import { toast } from "react-toastify";
 import Button from "@/common/components/Button";
 import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
+import { useTranslate } from "../lib/useTranslate";
 
-interface ITranslateResult {
-  translateVal: string;
-}
-
-const TranslateResult = (props: ITranslateResult) => {
-  const { translateVal } = props;
+const TranslateResultBox = () => {
+  const { translateStates } = useTranslate();
+  const { translateCompletion } = translateStates;
 
   const isDesktop = useDesktopScreen();
 
   const copyText = () => {
-    window.navigator.clipboard.writeText(translateVal);
+    window.navigator.clipboard.writeText(translateCompletion);
     toast.info("Text Copied to Clipboard");
   };
 
   return (
-    <div className="my-4 lg:mt-0 bg-white border border-gray-500 rounded pb-1">
+    <div className="w-full relative">
       <label htmlFor="translate_result_textarea">
         <textarea
           name="translate_result"
           id="translate_result_textarea"
-          className="w-full text-black p-2 pb-2 bg-transparent"
+          className="w-full text-black p-2 bg-white border border-black rounded-md focus:outline-none"
           cols={30}
-          rows={isDesktop ? 14 : 10}
+          rows={14}
+          placeholder="Your translation will show up here"
           onChange={() => {}}
-          value={
-            translateVal ? translateVal : "Your translation will show up here"
-          }
+          value={translateCompletion}
         />
       </label>
       <Button
         type="button"
         title="Copy"
-        wrapperClassName="w-1/3 ml-auto mr-1 mt-1 text-center p-2 bg-blue-900 text-white rounded-md font-semibold"
+        wrapperClassName="w-1/2 lg:w-1/4 absolute bottom-3 right-1 text-center p-2 bg-blue-900 text-white rounded-md font-semibold"
         buttonClassName="w-full"
         onClick={copyText}
       />
@@ -43,4 +40,4 @@ const TranslateResult = (props: ITranslateResult) => {
   );
 };
 
-export default TranslateResult;
+export default TranslateResultBox;

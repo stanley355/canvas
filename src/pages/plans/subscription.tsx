@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import Image from "next/image";
-import Layout from "@/common/components/Layout";
 import { calcSubscriptionCost } from "@/modules/plans/lib/calcSubscriptionCost";
 import { formatSubscriptionMonth } from "@/modules/plans/lib/formatSubscriptionMonth";
 import {
@@ -18,7 +17,7 @@ const Subscription = (props: any) => {
   const [vaInfo, setVaInfo] = useState<any>({});
 
   return (
-    <Layout>
+    <div>
       <MetaSEO seo={HOME_SEO} />
       <div className="bg-gradient-to-br from-white via-blue-300 to-white">
         <div className="w-full lg:w-[450px] mx-auto min-h-screen bg-white text-black p-4">
@@ -66,7 +65,7 @@ const Subscription = (props: any) => {
           {vaInfo?.bank_name && <VAinfo info={vaInfo} />}
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 

@@ -1,7 +1,8 @@
+import { axiosErrorHandler } from "@/common/lib/api/axiosErrorHandler";
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const authorPromptAPI = async (req: NextApiRequest, res: NextApiResponse) => {
+const authorPromptsAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   let URL = `${process.env.AUTHOR_URL}v1/prompts`;
 
   if (req.headers && req.headers.path) {
@@ -15,11 +16,11 @@ const authorPromptAPI = async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     const { data } = await axios(axiosConfig);
-    res.setHeader("Content-Type", "application/json");
-    res.json(data);
+    res.send(data);
   } catch (err: any) {
-    res.status(err.response.status).send(err.response.data);
+    const errorRes = axiosErrorHandler(URL, err);
+    return errorRes;
   }
 };
 
-export default authorPromptAPI;
+export default authorPromptsAPI;
