@@ -16,12 +16,12 @@ const CheckbotResultToggleBtn = () => {
       <Button
         type="button"
         wrapperClassName={classNames(
-          "w-full border border-red-500 rounded p-1 h-fit",
+          "w-full border border-red-500 rounded h-fit",
           checkbotResultFormat === CheckbotResultFormatEnum.Removed
             ? "bg-red-500 text-white"
             : "text-red-500 bg-white"
         )}
-        buttonClassName="w-full flex items-center justify-center gap-1"
+        buttonClassName="w-full flex items-center justify-center gap-1 p-1.5"
         onClick={() => {
           sendFirebaseEvent("checkbot_removed_format", {});
           dispatch({
@@ -37,12 +37,12 @@ const CheckbotResultToggleBtn = () => {
       <Button
         type="button"
         wrapperClassName={classNames(
-          "w-full border border-gray-500 rounded p-1 h-fit",
+          "w-full border border-gray-500 rounded h-fit",
           checkbotResultFormat === CheckbotResultFormatEnum.NoDiff
             ? "bg-black text-white"
             : "text-black bg-white"
         )}
-        buttonClassName="w-full flex items-center justify-center gap-1"
+        buttonClassName="w-full flex items-center justify-center gap-1 p-1.5"
         onClick={() =>
           dispatch({
             type: "SET",
@@ -57,12 +57,12 @@ const CheckbotResultToggleBtn = () => {
       <Button
         type="button"
         wrapperClassName={classNames(
-          "w-full border border-green-500 rounded p-1 h-fit",
+          "w-full border border-green-500 rounded h-fit",
           checkbotResultFormat === CheckbotResultFormatEnum.Added
             ? "bg-green-500 text-white"
             : "text-green-500 bg-white"
         )}
-        buttonClassName="w-full flex items-center justify-center gap-1"
+        buttonClassName="w-full flex items-center justify-center gap-1 p-1.5"
         onClick={() => {
           sendFirebaseEvent("checkbot_added_format", {});
           dispatch({
