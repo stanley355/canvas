@@ -92,7 +92,7 @@ const CheckbotSubmitBtn = () => {
       );
       dispatch({
         type: "SET",
-        name: "checkbotCompletionAddedd",
+        name: "checkbotCompletionAdded",
         value: addedDiff,
       });
       dispatch({

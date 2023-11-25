@@ -7,6 +7,8 @@ import CheckbotTextInput from "./CheckbotTextInput";
 import { useCheckbot } from "../lib/useCheckbot";
 import CheckbotResultBox from "./CheckbotResultBox";
 import CheckbotResultToggleBtn from "./CheckbotResultToggleBtn";
+import { CheckbotResultFormatEnum } from "../lib/checkbotStates";
+import CheckbotRemovedAndAddedBox from "./CheckbotRemovedAndAddedBox";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
 const NoPlansModal = dynamic(
@@ -15,8 +17,12 @@ const NoPlansModal = dynamic(
 
 const CheckbotContainer = () => {
   const { checkbotStates } = useCheckbot();
-  const { isPersonalInstruction, showLoginModal, showNoPlansModal } =
-    checkbotStates;
+  const {
+    isPersonalInstruction,
+    showLoginModal,
+    showNoPlansModal,
+    checkbotResultFormat,
+  } = checkbotStates;
 
   // TODO: showHistory and show no plan
   return (
@@ -30,7 +36,11 @@ const CheckbotContainer = () => {
         </div>
         <div>
           <CheckbotResultToggleBtn />
-          <CheckbotResultBox />
+          {checkbotResultFormat === CheckbotResultFormatEnum.NoDiff ? (
+            <CheckbotResultBox />
+          ) : (
+            <CheckbotRemovedAndAddedBox />
+          )}
         </div>
       </div>
       {showLoginModal && <LoginModal />}

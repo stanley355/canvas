@@ -13,8 +13,8 @@ export interface ICheckbotStates {
   checkbotPersonalInstruction: string;
   checkbotText: string;
   checkbotCompletion: string;
-  checkbotCompletionAdded: React.JSX.Element[];
-  checkbotCompletionRemoved: React.JSX.Element[];
+  checkbotCompletionAdded: any[];
+  checkbotCompletionRemoved: any[];
   checkbotResultFormat: CheckbotResultFormatEnum;
 }
 
