@@ -29,7 +29,7 @@ const CheckbotContainer = () => {
     <div className="container mx-auto">
       <CheckbotHeader />
       <div className="lg:grid lg:grid-cols-2 lg:gap-4 px-2 lg:px-0">
-        <div>
+        <div className="mb-4 lg:mb-0">
           <CheckbotInstructionDropdown />
           {isPersonalInstruction && <CheckbotPersonalInstructionInput />}
           <CheckbotTextInput />
