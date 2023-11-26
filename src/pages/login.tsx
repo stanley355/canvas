@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
+
 import LoginForm from "@/modules/login/components/LoginForm";
 import MetaSEO from "@/common/components/MetaSEO";
-import Cookies from "js-cookie";
+import LoginHeader from "@/modules/login/components/LoginHeader";
 
-const LoginPage = () => {
+const Login = () => {
   const seo = {
     title:
       "LanguageAI - 10x Better Writing Check and Translation for All Languages",
@@ -12,18 +14,12 @@ const LoginPage = () => {
     url: process.env.NEXT_PUBLIC_BASE_URL,
   };
 
-  useEffect(() => {
-    const cookieToken = Cookies.get("token");
-    if (cookieToken) {
-      window.location.href = "/profile/";
-    }
-  }, []);
-
   return (
     <div>
       <MetaSEO seo={seo} />
-      <div className="bg-gradient-to-b from-black via-blue-900 to-white pb-4">
-        <div className="container py-4 lg:pt-12 h-screen mx-auto">
+      <div className="bg-gradient-to-br from-white via-slate-100 to-white h-screen">
+        <div className="container mx-auto p-4 lg:px-0">
+          <LoginHeader />
           <LoginForm />
         </div>
       </div>
@@ -31,4 +27,22 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Login;
+export const getServerSideProps: GetServerSideProps = async (
+  ctx: GetServerSidePropsContext
+) => {
+  const token = ctx.req.cookies.token;
+
+  if (token) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/profile/",
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};

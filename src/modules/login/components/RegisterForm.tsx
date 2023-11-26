@@ -90,6 +90,7 @@ const RegisterForm = () => {
       />
       <button
         type="submit"
+        disabled={hasSubmit}
         className="py-2 rounded-lg bg-blue-900 text-white text-lg w-full"
       >
         {hasSubmit ? (
