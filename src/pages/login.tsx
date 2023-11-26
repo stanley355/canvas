@@ -27,7 +27,7 @@ const Login = () => {
           </div>
 
           <div className="text-center">
-            Don't have an account? <Link href="/register/" className="text-blue-900 underline">Register</Link>{" "}
+            Don&apos;t have an account? <Link href="/register/" className="text-blue-900 underline">Register</Link>{" "}
           </div>
         </div>
       </div>
