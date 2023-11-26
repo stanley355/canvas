@@ -31,8 +31,7 @@ const TranslateContainer = () => {
       {showLoginModal && <LoginModal />}
       {showNoPlansModal && <NoPlansModal />}
       <div className="mt-4">
-
-    <PlanOptions />
+        <PlanOptions />
       </div>
     </div>
   );
