@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { FaSpinner } from "react-icons/fa";
-import { SiTaichilang } from "react-icons/si";
 import { toast } from "react-toastify";
+import { FaEnvelope, FaKey, FaUser, FaSpinner } from "react-icons/fa6";
 import Cookies from "js-cookie";
-import GoogleLoginBtn from "./GoogleLoginBtn";
+
 import Button from "@/common/components/Button";
 import { validateRegisForm } from "../lib/validateRegisForm";
 import { checkUserExist } from "../lib/checkUserExist";
 import { IRegisterUser, registerUser } from "../lib/registerUser";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import RegisterFormInputField from "./RegisterFormInputField";
 
 const RegisterForm = () => {
   const [hasSubmit, setHasSubmit] = useState(false);
@@ -45,7 +45,7 @@ const RegisterForm = () => {
       setHasSubmit(false);
       sendFirebaseEvent("register", {});
       Cookies.set("token", registerResult.token);
-      window.location.href = "/login/";
+      window.location.href = "/profile/";
       return;
     } else {
       setHasSubmit(false);
@@ -55,72 +55,51 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center mb-8 lg:w-1/3 lg:mx-auto text-white">
-      <h1 className="flex flex-row items-center mb-2">
-        <SiTaichilang className="text-3xl" />
-        <span className="ml-2 text-2xl ">Registration</span>
-      </h1>
-      <h2 className="text-2xl mb-4">
-        Don&apos;t worry, it&apos;s always free !
-      </h2>
-      <div>Direct Registration via Google</div>
-      <GoogleLoginBtn />
-      <div className="my-2">or</div>
-      <form onSubmit={handleSubmit} className="w-full">
-        <div className="flex flex-col mb-4">
-          <label htmlFor="email">Email*</label>
-          <input
-            type="email"
-            id="email_input"
-            name="email"
-            className="p-2 text-black rounded-sm"
-            placeholder="myemail@email.com"
-          />
-        </div>
-        <div className="flex flex-col mb-4">
-          <label htmlFor="fullname">Fullname*</label>
-          <input
-            type="text"
-            id="fullname_input"
-            name="fullname"
-            className="p-2 text-black rounded-sm"
-            placeholder="myname"
-          />
-        </div>
-        <div className="flex flex-col mb-4">
-          <label htmlFor="password">Password*</label>
-          <input
-            type="password"
-            id="password_input"
-            name="password"
-            className="p-2 text-black rounded-sm"
-            placeholder="******"
-          />
-        </div>
-        <div className="flex flex-col mb-8">
-          <label htmlFor="repassword">Retype Password*</label>
-          <input
-            type="password"
-            id="repassword_input"
-            name="repassword"
-            className="p-2 text-black rounded-sm"
-            placeholder="******"
-          />
-        </div>
-        <Button
-          disabled={hasSubmit}
-          type="submit"
-          wrapperClassName="border border-white p-2 rounded-sm flex items-center justify-center bg-white text-black hover:bg-black hover:text-white"
-          buttonClassName="w-full"
-        >
-          {hasSubmit ? (
-            <FaSpinner className="animate-spin mx-auto" />
-          ) : (
-            "Register"
-          )}
-        </Button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} className="w-full">
+      <RegisterFormInputField
+        icon={<FaEnvelope className="text-blue-900" />}
+        title="Email"
+        inputType="email"
+        inputName="email"
+        inputID="email"
+        placeholder="myemail@email.com"
+      />
+      <RegisterFormInputField
+        icon={<FaUser className="text-blue-900" />}
+        title="Fullname"
+        inputType="text"
+        inputName="fullname"
+        inputID="fullname_input"
+        placeholder="fullname"
+      />
+      <RegisterFormInputField
+        icon={<FaKey className="text-blue-900" />}
+        title="Password"
+        inputType="password"
+        inputName="password"
+        inputID="password_input"
+        placeholder="********"
+      />
+      <RegisterFormInputField
+        icon={<FaKey className="text-blue-900" />}
+        title="Re-type Password"
+        inputType="password"
+        inputName="repassword"
+        inputID="repassword_input"
+        placeholder="********"
+      />
+      <button
+        type="submit"
+        disabled={hasSubmit}
+        className="py-2 rounded-lg bg-blue-900 text-white text-lg w-full"
+      >
+        {hasSubmit ? (
+          <FaSpinner className="animate-spin mx-auto" />
+        ) : (
+          "Register"
+        )}
+      </button>
+    </form>
   );
 };
 
