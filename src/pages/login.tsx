@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
-
 import LoginForm from "@/modules/login/components/LoginForm";
 import MetaSEO from "@/common/components/MetaSEO";
 import LoginHeader from "@/modules/login/components/LoginHeader";
+import GoogleLoginBtn from "@/modules/login/components/GoogleLoginBtn";
+import Link from "next/link";
 
 const Login = () => {
   const seo = {
@@ -18,9 +18,17 @@ const Login = () => {
     <div>
       <MetaSEO seo={seo} />
       <div className="bg-gradient-to-br from-white via-slate-100 to-white h-screen">
-        <div className="container mx-auto p-4 lg:px-0">
+        <div className="container mx-auto p-4 lg:px-0 lg:w-1/4">
           <LoginHeader />
           <LoginForm />
+          <div className="my-4 flex flex-col items-center">
+            <div className="text-lg mb-2">or</div>
+            <GoogleLoginBtn />
+          </div>
+
+          <div className="text-center">
+            Don't have an account? <Link href="/register/" className="text-blue-900 underline">Register</Link>{" "}
+          </div>
         </div>
       </div>
     </div>

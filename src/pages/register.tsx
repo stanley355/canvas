@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
-import RegisterForm from "@/modules/login/components/RegisterForm";
-import Cookies from "js-cookie";
-import MetaSEO from "@/common/components/MetaSEO";
+import Link from "next/link";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import RegisterForm from "@/modules/login/components/RegisterForm";
+import MetaSEO from "@/common/components/MetaSEO";
 import RegisterHeader from "@/modules/login/components/RegisterHeader";
 import GoogleLoginBtn from "@/modules/login/components/GoogleLoginBtn";
 
@@ -25,6 +24,9 @@ const Register = () => {
           <div className="my-4 flex flex-col items-center">
             <div className="text-lg mb-2">or</div>
             <GoogleLoginBtn />
+          </div>
+          <div className="text-center">
+            Have an account? <Link href="/login/" className="text-blue-900 underline">Login</Link>{" "}
           </div>
         </div>
       </div>
