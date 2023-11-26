@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import MetaSEO from "@/common/components/MetaSEO";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import RegisterHeader from "@/modules/login/components/RegisterHeader";
+import GoogleLoginBtn from "@/modules/login/components/GoogleLoginBtn";
 
 const Register = () => {
   const seo = {
@@ -18,9 +19,13 @@ const Register = () => {
     <div>
       <MetaSEO seo={seo} />
       <div className="h-screen bg-gradient-to-br from-white via-slate-100 to-white">
-        <div className="container mx-auto p-4 lg:px-0">
+        <div className="container mx-auto p-4 lg:px-0 lg:w-1/4">
           <RegisterHeader />
           <RegisterForm />
+          <div className="my-4 flex flex-col items-center">
+            <div className="text-lg mb-2">or</div>
+            <GoogleLoginBtn />
+          </div>
         </div>
       </div>
     </div>

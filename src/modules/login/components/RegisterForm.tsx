@@ -88,18 +88,16 @@ const RegisterForm = () => {
         inputID="repassword_input"
         placeholder="********"
       />
-      <Button
-        disabled={hasSubmit}
+      <button
         type="submit"
-        wrapperClassName="border border-white px-2 rounded-lg flex items-center justify-center bg-blue-900 text-white text-lg"
-        buttonClassName="w-full p-2"
+        className="py-2 rounded-lg bg-blue-900 text-white text-lg w-full"
       >
         {hasSubmit ? (
           <FaSpinner className="animate-spin mx-auto" />
         ) : (
           "Register"
         )}
-      </Button>
+      </button>
     </form>
   );
 };
