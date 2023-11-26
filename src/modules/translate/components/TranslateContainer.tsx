@@ -10,7 +10,7 @@ import PlanOptions from "@/modules/plans/components/PlanOptions";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
 const NoPlansModal = dynamic(
-  () => import("../../premium/components/NoPlansModal")
+  () => import("../../plans/components/NoPlansModal")
 );
 
 const TranslateContainer = () => {
@@ -30,6 +30,7 @@ const TranslateContainer = () => {
       </div>
       {showLoginModal && <LoginModal />}
       {showNoPlansModal && <NoPlansModal />}
+      <NoPlansModal />
       <div className="mt-4">
         <PlanOptions />
       </div>

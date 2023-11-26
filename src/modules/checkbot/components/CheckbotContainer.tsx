@@ -13,7 +13,7 @@ import { CheckbotResultFormatEnum } from "../lib/checkbotStates";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
 const NoPlansModal = dynamic(
-  () => import("../../premium/components/NoPlansModal")
+  () => import("../../plans/components/NoPlansModal")
 );
 
 const CheckbotContainer = () => {
