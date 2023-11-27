@@ -25,7 +25,6 @@ const CheckbotContainer = () => {
     checkbotResultFormat,
   } = checkbotStates;
 
-  // TODO: showHistory and show no plan
   return (
     <div className="container mx-auto">
       <CheckbotHeader />

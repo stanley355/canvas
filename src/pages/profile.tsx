@@ -32,7 +32,7 @@ const Profile = (props: IProfile) => {
       <div className="bg-gradient-to-br from-white via-slate-100 to-white">
         <div className="container mx-auto h-screen p-4 lg:px-0">
           <ProfileIdentity user={user} />
-
+      
         </div>
       </div>
     </div>

@@ -15,7 +15,6 @@ const NoPlansModal = dynamic(
 const TranslateContainer = () => {
   const { translateStates } = useTranslate();
   const { showLoginModal, showNoPlansModal } = translateStates;
-  // TODO: showHistory and show no plan
   return (
     <div className="container mx-auto">
       <TranslateHeader />
@@ -29,7 +28,6 @@ const TranslateContainer = () => {
       </div>
       {showLoginModal && <LoginModal />}
       {showNoPlansModal && <NoPlansModal />}
-      <NoPlansModal />
       <div className="mt-4">
         <PlanOptions />
       </div>
