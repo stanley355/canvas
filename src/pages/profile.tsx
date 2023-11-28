@@ -1,18 +1,19 @@
-import React from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import Cookies from "js-cookie";
 import { decode } from "jsonwebtoken";
 
-import Button from "@/common/components/Button";
 import MetaSEO from "@/common/components/MetaSEO";
 import { HOME_SEO } from "@/modules/home/lib/constant";
 import { fetchUserData } from "@/common/lib/fetchUserData";
-import PlanBox from "@/modules/profile/components/PlanBox";
-import { fetchActiveSubscription } from "@/modules/profile/lib/fetchActiveSubscription";
+import { fetchUserSubscription } from "@/common/lib/api/subscriptions/fetchUserSubscription";
+import { IUser } from "@/common/lib/api/users/userInterfaces";
+import ProfileIdentity from "@/modules/profile/components/ProfileIdentity";
+import { ISubscription } from "@/common/lib/api/subscriptions/subscriptionInterface";
+import ProfileSubscriptionStatus from "@/modules/profile/components/ProfileSubscriptionStatus";
 
-interface IProfile {
-  user: any;
-  subscription: any;
+export interface IProfile {
+  user: IUser;
+  subscription: ISubscription;
 }
 
 const Profile = (props: IProfile) => {
@@ -20,34 +21,23 @@ const Profile = (props: IProfile) => {
 
   const onLogoutClick = () => {
     Cookies.remove("token");
-    Cookies.remove("subscription");
-    window.location.href = "/";
+    window.location.href = "/login/";
   };
 
   return (
     <div>
       <MetaSEO seo={HOME_SEO} />
-      <div className="bg-gradient-to-br from-white via-blue-300 to-white">
-        <div className="container mx-auto min-h-screen text-black bg-white p-4 lg:flex">
-          <div className="lg:w-1/3">
-            <div className="text-2xl">{user.fullname}</div>
-            <div>{user.email}</div>
-            <Button
-              type="button"
-              title="logout"
-              onClick={onLogoutClick}
-              wrapperClassName="p-1 w-fit border border-gray-500 rounded hidden lg:block mt-2"
-              buttonClassName="w-full h-full hover:underline"
-            />
-          </div>
-          <PlanBox user={user} subscription={subscription} />
-          <Button
+      <div className="bg-gradient-to-br from-white via-slate-100 to-white">
+        <div className="container mx-auto h-screen p-4 lg:w-1/3 border-x border-blue-900">
+          <ProfileIdentity user={user} />
+          <ProfileSubscriptionStatus user={user} subscription={subscription} />
+          <button
             type="button"
-            title="logout"
             onClick={onLogoutClick}
-            wrapperClassName="p-1 w-fit border border-gray-500 rounded lg:hidden"
-            buttonClassName="w-full h-full"
-          />
+            className="border border-blue-900 text-blue-900 p-1 px-2 rounded-md hover:underline"
+          >
+            Logout
+          </button>
         </div>
       </div>
     </div>
@@ -71,7 +61,7 @@ export const getServerSideProps: GetServerSideProps = async (
 
   const decodedToken: any = decode(token);
   const user = await fetchUserData(decodedToken.email);
-  const subscription = await fetchActiveSubscription(decodedToken.id);
+  const subscription = await fetchUserSubscription(decodedToken.id);
 
   return {
     props: {

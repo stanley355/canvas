@@ -13,7 +13,7 @@ import { CheckbotResultFormatEnum } from "../lib/checkbotStates";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
 const NoPlansModal = dynamic(
-  () => import("../../premium/components/NoPlansModal")
+  () => import("../../plans/components/NoPlansModal")
 );
 
 const CheckbotContainer = () => {
@@ -25,7 +25,6 @@ const CheckbotContainer = () => {
     checkbotResultFormat,
   } = checkbotStates;
 
-  // TODO: showHistory and show no plan
   return (
     <div className="container mx-auto">
       <CheckbotHeader />
