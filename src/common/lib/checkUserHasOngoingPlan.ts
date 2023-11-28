@@ -30,9 +30,9 @@ export const checkUserHasOngoingPlan = async (
       hasOngoingPlan: true,
     };
   }
-
+  const userData = await fetchUserByEmail(user?.email);
   return {
     isSubscription: false,
-    hasOngoingPlan: false,
+    hasOngoingPlan: userData?.balance > 0,
   };
 };
