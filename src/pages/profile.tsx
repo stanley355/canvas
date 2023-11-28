@@ -1,5 +1,3 @@
-import React from "react";
-import { FaEnvelope, FaRegCircleUser } from "react-icons/fa6";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import Cookies from "js-cookie";
 import { decode } from "jsonwebtoken";
@@ -20,10 +18,9 @@ export interface IProfile {
 
 const Profile = (props: IProfile) => {
   const { user, subscription } = props;
-  
+
   const onLogoutClick = () => {
     Cookies.remove("token");
-    Cookies.remove("subscription");
     window.location.href = "/login/";
   };
 
@@ -31,9 +28,16 @@ const Profile = (props: IProfile) => {
     <div>
       <MetaSEO seo={HOME_SEO} />
       <div className="bg-gradient-to-br from-white via-slate-100 to-white">
-        <div className="container mx-auto h-screen p-4 lg:px-0 lg:w-1/3 border-x border-blue-900">
+        <div className="container mx-auto h-screen p-4 lg:w-1/3 border-x border-blue-900">
           <ProfileIdentity user={user} />
-          <ProfileSubscriptionStatus /> 
+          <ProfileSubscriptionStatus user={user} subscription={subscription} />
+          <button
+            type="button"
+            onClick={onLogoutClick}
+            className="border border-blue-900 text-blue-900 p-1 px-2 rounded-md hover:underline"
+          >
+            Logout
+          </button>
         </div>
       </div>
     </div>
