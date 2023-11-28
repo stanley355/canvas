@@ -11,15 +11,16 @@ import { fetchUserSubscription } from "@/common/lib/api/subscriptions/fetchUserS
 import { IUser } from "@/common/lib/api/users/userInterfaces";
 import ProfileIdentity from "@/modules/profile/components/ProfileIdentity";
 import { ISubscription } from "@/common/lib/api/subscriptions/subscriptionInterface";
+import ProfileSubscriptionStatus from "@/modules/profile/components/ProfileSubscriptionStatus";
 
-interface IProfile {
+export interface IProfile {
   user: IUser;
   subscription: ISubscription;
 }
 
 const Profile = (props: IProfile) => {
   const { user, subscription } = props;
- 
+  
   const onLogoutClick = () => {
     Cookies.remove("token");
     Cookies.remove("subscription");
@@ -30,9 +31,9 @@ const Profile = (props: IProfile) => {
     <div>
       <MetaSEO seo={HOME_SEO} />
       <div className="bg-gradient-to-br from-white via-slate-100 to-white">
-        <div className="container mx-auto h-screen p-4 lg:px-0">
+        <div className="container mx-auto h-screen p-4 lg:px-0 lg:w-1/3 border-x border-blue-900">
           <ProfileIdentity user={user} />
-      
+          <ProfileSubscriptionStatus /> 
         </div>
       </div>
     </div>
