@@ -34,7 +34,7 @@ const CheckbotSubmitBtn = () => {
         name: "showLoginModal",
         value: true,
       });
-      sendFirebaseEvent("login_popup", {});
+      sendFirebaseEvent("login_popup");
       return;
     }
 
@@ -62,10 +62,7 @@ const CheckbotSubmitBtn = () => {
       return;
     }
 
-    sendFirebaseEvent("checkbot", {
-      name: "checkbot",
-      instruction: checkbotInstruction,
-    });
+    sendFirebaseEvent("checkbot");
 
     const prompt = checkbotPersonalInstruction
       ? `${checkbotPersonalInstruction}, text: "${checkbotText}"`

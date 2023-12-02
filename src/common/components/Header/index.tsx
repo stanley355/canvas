@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { FaAngleRight } from "react-icons/fa6";
+import Image from "next/image";
 import cookie from "js-cookie";
 import classNames from "classnames";
 
 import { HEADER_MENU } from "./constant";
 import Button from "../Button";
-import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
-import Image from "next/image";
+import { useDesktopScreen } from "@/common/lib/hooks/useDesktopScreen";
 
 const Header = () => {
   const isDesktop = useDesktopScreen();

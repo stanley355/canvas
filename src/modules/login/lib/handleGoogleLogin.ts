@@ -6,7 +6,7 @@ import { decode } from "jsonwebtoken";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 export const handleGoogleLogin = async (token: any) => {
-  sendFirebaseEvent("login", {});
+  sendFirebaseEvent("login");
   const decodedToken: any = decode(String(token.credential));
 
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/users/`;
@@ -24,7 +24,7 @@ export const handleGoogleLogin = async (token: any) => {
 
   const { data } = await axios(axiosConfig);
   if (data?.token) {
-    sendFirebaseEvent("google_login", {});
+    sendFirebaseEvent("google_login");
     Cookies.set("token", data.token);
 
     const path = Router.asPath;

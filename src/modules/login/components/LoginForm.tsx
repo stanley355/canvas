@@ -28,7 +28,7 @@ const LoginForm = () => {
       password,
     };
 
-    sendFirebaseEvent("login", {});
+    sendFirebaseEvent("login");
     const user = await loginUser(payload);
     
     if (user?.data?.error) {
@@ -38,7 +38,7 @@ const LoginForm = () => {
     }
 
     if (user?.token) {
-      sendFirebaseEvent("login_email_password", {});
+      sendFirebaseEvent("login_email_password");
       setHasSubmit(false);
       Cookies.set("token", user.token);
       window.location.href ="/profile";

@@ -1,14 +1,12 @@
+import { Inter } from "next/font/google";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Inter } from "next/font/google";
-import Cookies from "js-cookie";
-import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  const token = Cookies.get("paid_notice");
 
   return (
     <div className={inter.className}>

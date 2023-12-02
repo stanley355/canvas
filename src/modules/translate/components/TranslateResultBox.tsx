@@ -1,7 +1,7 @@
 import React from "react";
 import { toast } from "react-toastify";
 import Button from "@/common/components/Button";
-import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
+import { useDesktopScreen } from "@/common/lib/hooks/useDesktopScreen";
 import { useTranslate } from "../lib/useTranslate";
 
 const TranslateResultBox = () => {

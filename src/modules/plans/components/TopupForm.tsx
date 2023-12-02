@@ -41,7 +41,7 @@ const TopupForm = (props: ITopupForm) => {
     const token: any = Cookies.get("token");
     const user: any = decode(token);
 
-    sendFirebaseEvent("topup_va", {});
+    sendFirebaseEvent("topup_va");
     const topup = await createTopup(user.id, Number(amount));
     if (topup?.id) {
       const dokuVAPayload = {
