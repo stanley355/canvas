@@ -1,8 +1,38 @@
 export const HOME_SEO = {
   title: "Language AI: AI help for Accurate Translations & Grammar Checks ",
-  description:
-    "Translate your content effortlessly and ensure clarity with our advanced grammar checker.",
-  keywords:
-    "Language AI, AI, grammar check, free grammar check, high quality, translate, translation, machine translation",
+  description: `Unlock the power of Language AI: AI Translate and write flawlessly in any language. 
+    Free online translation & grammar check for English, Spanish, French, Chinese & more. 
+    Overcome grammar mistakes & write like a native speaker.`,
+  keywords: `
+      Language AI,
+      translate,
+      grammar check,
+      online translate,
+      free translate,
+      translate text,
+      translate document,
+      grammar checker,
+      online grammar check,
+      free grammar check,
+      check grammar,
+      language translation,
+      translation services,
+      translation software,
+      grammar correction,
+      writing correction,
+      proofreading services,
+      translate english to spanish,
+      translate english to french,
+      translate english to chinese,
+      grammar check for english,
+      free grammar check for students,
+      translate website,
+      translate business document,
+      improve writing skills,
+      overcome grammar mistakes,
+      write like a native speaker,
+      AI translation,
+      machine translation,
+    `,
   url: process.env.NEXT_PUBLIC_BASE_URL,
 };
