@@ -5,7 +5,7 @@ import TranslateContextInput from "./TranslateContextInput";
 import TranslateTextInput from "./TranslateTextInput";
 import TranslateResultBox from "./TranslateResultBox";
 import { useTranslate } from "../lib/useTranslate";
-import PlanOptions from "@/modules/plans/components/PlanOptions";
+import PlanList from "@/modules/plans/components/PlanList";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
 const NoPlansModal = dynamic(
@@ -29,7 +29,7 @@ const TranslateContainer = () => {
       {showLoginModal && <LoginModal />}
       {showNoPlansModal && <NoPlansModal />}
       <div className="mt-4">
-        <PlanOptions />
+        <PlanList />
       </div>
     </div>
   );

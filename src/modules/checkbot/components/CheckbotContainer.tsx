@@ -10,6 +10,7 @@ import CheckbotRemovedAndAddedBox from "./CheckbotRemovedAndAddedBox";
 import PlanOptions from "@/modules/plans/components/PlanOptions";
 import { useCheckbot } from "../lib/useCheckbot";
 import { CheckbotResultFormatEnum } from "../lib/checkbotStates";
+import PlanList from "@/modules/plans/components/PlanList";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
 const NoPlansModal = dynamic(
@@ -43,7 +44,7 @@ const CheckbotContainer = () => {
           )}
         </div>
       </div>
-      <PlanOptions />
+      <PlanList />
       {showLoginModal && <LoginModal />}
       {showNoPlansModal && <NoPlansModal />}
     </div>

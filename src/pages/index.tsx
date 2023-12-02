@@ -5,7 +5,6 @@ import { FaLanguage, FaRobot } from "react-icons/fa";
 
 import { HOME_SEO } from "@/modules/home/lib/constant";
 import MetaSEO from "@/common/components/MetaSEO";
-import { PlansSection } from "./plans";
 
 const Home = () => {
   return (
@@ -61,7 +60,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <PlansSection />
       </div>
     </div>
   );
