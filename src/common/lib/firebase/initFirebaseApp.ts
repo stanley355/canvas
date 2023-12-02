@@ -25,8 +25,6 @@ const initFirebaseApp = () => {
     };
 
     const app = initializeApp(firebaseConfig);
-    console.log(222, app);
-
     return app;
   }
 

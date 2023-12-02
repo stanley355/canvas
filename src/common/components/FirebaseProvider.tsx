@@ -8,9 +8,7 @@ const FirebaseProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (firebaseApp) {
-      const analy = getAnalytics(firebaseApp);
-      console.log(analy);
-      
+      getAnalytics(firebaseApp);
     }
   }, [firebaseApp]);
 
