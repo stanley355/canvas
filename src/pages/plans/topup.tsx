@@ -12,22 +12,25 @@ const PlansTopup = ({ user }: any) => {
   return (
     <div>
       <MetaSEO seo={HOME_SEO} />
-      <div className="bg-gradient-to-br from-white via-blue-300 to-white">
-        <div className="w-full lg:w-[450px] mx-auto min-h-screen bg-white text-black p-4">
-          <h1 className="mt-4 mb-2 text-center text-3xl font-semibold">
+      <div className="bg-gradient-to-br from-white via-slate-100 to-white h-[90vh]">
+        <div className="w-full lg:w-[400px] mx-auto text-black p-4 border-x border-blue-900 h-full">
+          <h1 className="text-center text-3xl font-semibold mb-2">
             Pay-as-you-Go
           </h1>
-          <h2 className="text-center mb-2">
+          <h2 className="text-center mb-4">
             Only pay for what you need, no expiration time
           </h2>
-          <div className="border border-gray-500 p-2 rounded">
+          <div className="border border-blue-900 p-2 rounded">
             Current Balance:{" "}
             <span className="text-green-700 font-semibold">
               {user?.balance}
             </span>
           </div>
-          {!vaInfo?.bank_name && <TopupForm dispatchVAinfo={setVaInfo} />}
-          {vaInfo?.bank_name && <VAinfo info={vaInfo} />}
+          {vaInfo?.bank_name ? (
+            <VAinfo info={vaInfo} />
+          ) : (
+            <TopupForm dispatchVAinfo={setVaInfo} />
+          )}
         </div>
       </div>
     </div>

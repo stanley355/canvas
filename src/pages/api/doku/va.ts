@@ -1,6 +1,7 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 import { generateDokuSignature } from "@/modules/plans/lib/generateDokuSignature";
+import { axiosErrorHandler } from "@/common/lib/api/axiosErrorHandler";
 
 const dokuCheckoutAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   const URL = String(process.env.DOKU_URL);
@@ -30,16 +31,13 @@ const dokuCheckoutAPI = async (req: NextApiRequest, res: NextApiResponse) => {
     data: req.body.main,
   };
 
-  let response;
   try {
     const { data } = await axios(axiosConfig);
-    response = data;
+    res.json(data);
   } catch (err: any) {
-    response = err?.response?.data ?? err;
+    const errorRes = axiosErrorHandler(err, URL);
+    res.json(errorRes);
   }
-
-  res.setHeader("Content-Type", "application/json");
-  res.json(response);
 };
 
 export default dokuCheckoutAPI;

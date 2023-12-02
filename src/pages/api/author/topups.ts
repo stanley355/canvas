@@ -1,3 +1,4 @@
+import { axiosErrorHandler } from "@/common/lib/api/axiosErrorHandler";
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -14,16 +15,15 @@ const topupAPI = async (req: NextApiRequest, res: NextApiResponse) => {
     data: req.body,
   };
 
-  let response;
   try {
     const { data } = await axios(axiosConfig);
-    response = data;
+    res.json(data);
   } catch (err: any) {
-    response = err.response?.data ?? err.response;
+    const errorRes = axiosErrorHandler(err, URL);
+    res.json(errorRes);
   }
 
   res.setHeader("Content-Type", "application/json");
-  res.json(response);
 };
 
 export default topupAPI;

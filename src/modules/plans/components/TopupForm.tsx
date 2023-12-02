@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import { FaSpinner } from "react-icons/fa";
+import { FaSpinner } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import { decode } from "jsonwebtoken";
 
-import Button from "@/common/components/Button";
 import { createTopup } from "../lib/createTopup";
 import { DOKU_VA_LIST } from "../lib/constant";
 import { createDokuVA } from "../lib/createDokuVA";
@@ -62,18 +61,18 @@ const TopupForm = (props: ITopupForm) => {
         return;
       }
 
-      toast.error("Something went wrong, please try again");
+      toast.error("Fail to create VA, please try again");
       setHasSubmit(false);
       return;
     }
 
     setHasSubmit(false);
-    toast.error("Something went wrong, please try again");
+    toast.error("Fail to create Topup, please try again");
     return;
   };
 
   return (
-    <div className="mt-8">
+    <div className="mt-4">
       <div className="font-semibold mb-2 text-xl">
         How much would you like to topup?
       </div>
@@ -85,7 +84,7 @@ const TopupForm = (props: ITopupForm) => {
               name="amount"
               id="amount_input"
               placeholder="Rp ..."
-              className="text-black p-2 w-full rounded border border-gray-500"
+              className="text-black p-2 w-full rounded border border-blue-900 focus:outline-none"
               disabled={hasSubmit}
             />
           </label>
@@ -93,24 +92,22 @@ const TopupForm = (props: ITopupForm) => {
         <Select
           options={DOKU_VA_LIST}
           placeholder="Payment Method (Virtual Account)"
-          className="text-black border border-gray-500 rounded"
+          className="text-black border border-blue-900 rounded mb-4"
           name="payment_method"
           isDisabled={hasSubmit}
           onChange={(option) => {
             setVaBank(String(option?.label));
           }}
         />
-        <Button
+        <button
           type="submit"
-          wrapperClassName="w-full text-center mt-4 p-2 bg-blue-900 text-white font-semibold rounded"
-          buttonClassName="w-full h-full"
-          disabled={hasSubmit}
+          className="w-full h-full text-center bg-blue-900 text-white font-bold rounded-md p-2"
         >
           {hasSubmit ? <FaSpinner className="mx-auto animate-spin" /> : "Topup"}
-        </Button>
+        </button>
       </form>
       <div>
-        * After Topup: If Balance is not updated, please wait for 5 minutes
+        * After Topup: If Balance is not updated, please wait for 2 minute
         delay.
       </div>
     </div>
