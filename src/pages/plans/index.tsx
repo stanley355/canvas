@@ -7,7 +7,7 @@ const Plans = () => {
   return (
     <div>
       <MetaSEO seo={HOME_SEO} />
-      <div className="bg-gradient-to-br from-white via-slate-300 to-white h-[90vh]">
+      <div className="bg-gradient-to-br from-white via-slate-300 to-white lg:h-[90vh]">
         <div className="container mx-auto p-4 lg:px-0">
           <PlanList />
         </div>
