@@ -23,7 +23,7 @@ const PlansTopup = ({ user }: any) => {
             Pay-as-you-Go
           </h1>
           <h2 className="text-center mb-4">
-            Only pay for what you need, no expiration time
+            Pay for what you need, no expiration time
           </h2>
           <div className="border border-blue-900 p-2 rounded">
             Current Balance:{" "}
