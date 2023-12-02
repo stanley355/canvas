@@ -61,7 +61,7 @@ const TopupForm = (props: ITopupForm) => {
         return;
       }
 
-      toast.error("Fail to create VA, please try again");
+      toast.error("Fail to create VAerror, please try again");
       setHasSubmit(false);
       return;
     }
@@ -101,13 +101,14 @@ const TopupForm = (props: ITopupForm) => {
         />
         <button
           type="submit"
+          disabled={hasSubmit}
           className="w-full h-full text-center bg-blue-900 text-white font-bold rounded-md p-2"
         >
           {hasSubmit ? <FaSpinner className="mx-auto animate-spin" /> : "Topup"}
         </button>
       </form>
       <div>
-        * After Topup: If Balance is not updated, please wait for 2 minute
+        * If Balance is not updated after payment, please wait for 2 minute
         delay.
       </div>
     </div>

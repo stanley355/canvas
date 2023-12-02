@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import Link from "next/link";
 import Image from "next/image";
-import { calcSubscriptionCost } from "@/modules/plans/lib/calcSubscriptionCost";
-import { formatSubscriptionMonth } from "@/modules/plans/lib/formatSubscriptionMonth";
-import {
-  formatSubscriptionEndDate,
-  formatSubscriptionStartDate,
-} from "@/modules/plans/lib/formatSubscriptionDate";
-import SubscriptionVAForm from "@/modules/plans/components/SubscriptionVAForm";
-import VAinfo from "@/modules/plans/components/VAinfo";
+import { FaCircleArrowLeft } from "react-icons/fa6";
+
 import MetaSEO from "@/common/components/MetaSEO";
 import { HOME_SEO } from "@/modules/home/lib/constant";
+import VAinfo from "@/modules/plans/components/VAinfo";
+import SubscriptionVAForm from "@/modules/plans/components/SubscriptionVAForm";
 import PlanSubscriptionOverview from "@/modules/plans/components/PlanSubscriptionOverview";
+import { calcSubscriptionCost } from "@/modules/plans/lib/calcSubscriptionCost";
 
 const Subscription = (props: any) => {
   const { duration } = props;
@@ -21,7 +19,10 @@ const Subscription = (props: any) => {
     <div>
       <MetaSEO seo={HOME_SEO} />
       <div className="bg-gradient-to-br from-white via-slate-100 to-white">
-        <div className="w-full lg:w-[400px] mx-auto h-screen p-4 border-x border-blue-900">
+        <div className="w-full lg:w-[400px] mx-auto h-[90vh] p-4 border-x border-blue-900">
+          <Link href="/plans">
+            <FaCircleArrowLeft className="text-2xl text-blue-900" />
+          </Link>
           <h1 className="mb-2 text-center text-3xl flex mx-auto w-fit">
             Language{" "}
             <Image
