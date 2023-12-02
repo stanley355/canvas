@@ -5,13 +5,14 @@ import { FaLanguage, FaRobot } from "react-icons/fa";
 
 import { HOME_SEO } from "@/modules/home/lib/constant";
 import MetaSEO from "@/common/components/MetaSEO";
+import PlanList from "@/modules/plans/components/PlanList";
 
 const Home = () => {
   return (
     <div>
       <MetaSEO seo={HOME_SEO} />
-      <div className="bg-gradient-to-br from-white via-blue-100 to-white">
-        <div className="container mx-auto p-4 mb-8">
+      <div className="bg-gradient-to-br from-white via-slate-100 to-white h-screen">
+        <div className="container mx-auto p-4">
           <h1 className="text-center flex items-center justify-center text-4xl mb-4 text-black mt-8">
             <span>Language</span>
             <Image
@@ -25,7 +26,7 @@ const Home = () => {
             High Quality Translation and Grammar Check
           </div>
 
-          <div className="lg:flex lg:items-center lg:justify-evenly">
+          <div className="lg:flex lg:items-center lg:justify-evenly mb-8">
             <div className="bg-white text-black rounded-lg p-4 mb-16 lg:mb-0 lg:w-[400px]">
               <div className="flex items-center justify-center gap-2 text-2xl lg:text-3xl">
                 <FaLanguage className="text-4xl" />
@@ -59,6 +60,8 @@ const Home = () => {
               </Link>
             </div>
           </div>
+
+          <PlanList />
         </div>
       </div>
     </div>
