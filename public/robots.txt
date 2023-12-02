@@ -1,10 +1,9 @@
 # *
 User-agent: *
-Disallow: /topup
-Disallow: /profile
+Allow: /
 
 # Host
-Host: https://languageai.world
+Host: https://languageai.world/
 
 # Sitemaps
 Sitemap: https://languageai.world/sitemap.xml
