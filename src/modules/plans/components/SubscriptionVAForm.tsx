@@ -5,8 +5,6 @@ import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import { decode } from "jsonwebtoken";
 
-import Button from "@/common/components/Button";
-import { createTopup } from "../lib/createTopup";
 import { DOKU_VA_LIST } from "../lib/constant";
 import { createDokuVA } from "../lib/createDokuVA";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
@@ -38,7 +36,7 @@ const SubscriptionVAForm = (props: ISubscriptionVAForm) => {
     const token: any = Cookies.get("token");
     const user: any = decode(token);
 
-    sendFirebaseEvent("subscription_va", {});
+    sendFirebaseEvent("subscription_va");
     const topup = await createSubscription(user.id, Number(amount), duration);
     if (topup?.id) {
       const dokuVAPayload = {

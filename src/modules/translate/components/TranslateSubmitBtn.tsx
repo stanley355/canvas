@@ -28,7 +28,7 @@ const TranslateSubmitBtn = () => {
         name: "showLoginModal",
         value: true,
       });
-      sendFirebaseEvent("login_popup", {});
+      sendFirebaseEvent("login_popup");
       return;
     }
 
@@ -52,10 +52,7 @@ const TranslateSubmitBtn = () => {
       return;
     }
 
-    sendFirebaseEvent("translate", {
-      name: "translate",
-      translate_language: translateLanguage?.value,
-    });
+    sendFirebaseEvent("translate");
 
     const prompt = `Translate "${translateText}" to ${
       translateLanguage?.value

@@ -43,7 +43,7 @@ const RegisterForm = () => {
 
     if (registerResult?.token) {
       setHasSubmit(false);
-      sendFirebaseEvent("register", {});
+      sendFirebaseEvent("register");
       Cookies.set("token", registerResult.token);
       window.location.href = "/profile/";
       return;

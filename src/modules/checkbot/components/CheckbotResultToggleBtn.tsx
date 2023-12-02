@@ -23,7 +23,7 @@ const CheckbotResultToggleBtn = () => {
         )}
         buttonClassName="w-full flex items-center justify-center gap-1 p-1.5"
         onClick={() => {
-          sendFirebaseEvent("checkbot_removed_format", {});
+          sendFirebaseEvent("checkbot_removed_format");
           dispatch({
             type: "SET",
             name: "checkbotResultFormat",
@@ -64,7 +64,7 @@ const CheckbotResultToggleBtn = () => {
         )}
         buttonClassName="w-full flex items-center justify-center gap-1 p-1.5"
         onClick={() => {
-          sendFirebaseEvent("checkbot_added_format", {});
+          sendFirebaseEvent("checkbot_added_format");
           dispatch({
             type: "SET",
             name: "checkbotResultFormat",
