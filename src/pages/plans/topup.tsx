@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import { decode } from "jsonwebtoken";
 import MetaSEO from "@/common/components/MetaSEO";
 import { HOME_SEO } from "@/modules/home/lib/constant";
 import TopupForm from "@/modules/plans/components/TopupForm";
 import VAinfo from "@/modules/plans/components/VAinfo";
-import { GetServerSideProps, GetServerSidePropsContext } from "next";
-import { decode } from "jsonwebtoken";
+import { FaCircleArrowLeft } from "react-icons/fa6";
+import Link from "next/link";
 
 const PlansTopup = ({ user }: any) => {
   const [vaInfo, setVaInfo] = useState<any>({});
@@ -12,22 +14,28 @@ const PlansTopup = ({ user }: any) => {
   return (
     <div>
       <MetaSEO seo={HOME_SEO} />
-      <div className="bg-gradient-to-br from-white via-blue-300 to-white">
-        <div className="w-full lg:w-[450px] mx-auto min-h-screen bg-white text-black p-4">
-          <h1 className="mt-4 mb-2 text-center text-3xl font-semibold">
+      <div className="bg-gradient-to-br from-white via-slate-100 to-white h-[90vh]">
+        <div className="w-full lg:w-[400px] mx-auto text-black p-4 border-x border-blue-900 h-full">
+          <Link href="/plans">
+            <FaCircleArrowLeft className="text-2xl text-blue-900" />
+          </Link>
+          <h1 className="text-center text-3xl font-semibold mb-2">
             Pay-as-you-Go
           </h1>
-          <h2 className="text-center mb-2">
-            Only pay for what you need, no expiration time
+          <h2 className="text-center mb-4">
+            Pay for what you need, no expiration time
           </h2>
-          <div className="border border-gray-500 p-2 rounded">
+          <div className="border border-blue-900 p-2 rounded">
             Current Balance:{" "}
             <span className="text-green-700 font-semibold">
               {user?.balance}
             </span>
           </div>
-          {!vaInfo?.bank_name && <TopupForm dispatchVAinfo={setVaInfo} />}
-          {vaInfo?.bank_name && <VAinfo info={vaInfo} />}
+          {vaInfo?.bank_name ? (
+            <VAinfo info={vaInfo} />
+          ) : (
+            <TopupForm dispatchVAinfo={setVaInfo} />
+          )}
         </div>
       </div>
     </div>

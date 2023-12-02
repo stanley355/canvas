@@ -1,3 +1,4 @@
+import { axiosErrorHandler } from "@/common/lib/api/axiosErrorHandler";
 import axios from "axios";
 
 interface ICreateDokuVA {
@@ -45,6 +46,11 @@ export const createDokuVA = async (payload: ICreateDokuVA) => {
     data: dokuPayload,
   };
 
-  const { data } = await axios(axiosConfig);
-  return data;
+  try {
+    const { data } = await axios(axiosConfig);
+    return data;
+  } catch (error: any) {
+    const errorRes = axiosErrorHandler(error, URL);
+    return errorRes;
+  }
 };

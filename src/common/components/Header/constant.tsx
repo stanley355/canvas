@@ -1,6 +1,11 @@
-import { FaLanguage, FaRobot, FaCircleUser } from "react-icons/fa6";
+import { FaLanguage, FaRobot, FaCircleUser, FaPlus } from "react-icons/fa6";
 
 export const HEADER_MENU = [
+  {
+    title: "Pricing",
+    url: "/plans/",
+    icon: <FaPlus />,
+  },
   {
     title: "AI Checkbot",
     url: "/checkbot/",
