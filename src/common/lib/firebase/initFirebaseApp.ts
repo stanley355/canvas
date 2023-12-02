@@ -13,20 +13,24 @@ const {
 } = getConfig().publicRuntimeConfig;
 
 const initFirebaseApp = () => {
-  const firebaseConfig = {
-    apiKey: FIREBASE_API_KEY,
-    authDomain: FIREBASE_AUTH_DOMAIN,
-    projectId: FIREBASE_PROJECT_ID,
-    storageBucket: FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: FIREBASE_MESSAGING_SENDER,
-    appId: FIREBASE_APP_ID,
-    measurementId: FIREBASE_MEASUREMENT_ID,
-  };
+  if (typeof window !== "undefined" && APP_ENV !== "develop") {
+    const firebaseConfig = {
+      apiKey: FIREBASE_API_KEY,
+      authDomain: FIREBASE_AUTH_DOMAIN,
+      projectId: FIREBASE_PROJECT_ID,
+      storageBucket: FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: FIREBASE_MESSAGING_SENDER,
+      appId: FIREBASE_APP_ID,
+      measurementId: FIREBASE_MEASUREMENT_ID,
+    };
 
-  if (APP_ENV !== "develop") {
     const app = initializeApp(firebaseConfig);
+    console.log(222, app);
+
     return app;
   }
+
+  return null;
 };
 
 export default initFirebaseApp;
