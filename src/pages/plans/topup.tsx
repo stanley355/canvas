@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import { decode } from "jsonwebtoken";
 import MetaSEO from "@/common/components/MetaSEO";
 import { HOME_SEO } from "@/modules/home/lib/constant";
 import TopupForm from "@/modules/plans/components/TopupForm";
 import VAinfo from "@/modules/plans/components/VAinfo";
-import { GetServerSideProps, GetServerSidePropsContext } from "next";
-import { decode } from "jsonwebtoken";
+import { FaCircleArrowLeft } from "react-icons/fa6";
+import Link from "next/link";
 
 const PlansTopup = ({ user }: any) => {
   const [vaInfo, setVaInfo] = useState<any>({});
@@ -14,6 +16,9 @@ const PlansTopup = ({ user }: any) => {
       <MetaSEO seo={HOME_SEO} />
       <div className="bg-gradient-to-br from-white via-slate-100 to-white h-[90vh]">
         <div className="w-full lg:w-[400px] mx-auto text-black p-4 border-x border-blue-900 h-full">
+          <Link href="/plans">
+            <FaCircleArrowLeft className="text-2xl text-blue-900" />
+          </Link>
           <h1 className="text-center text-3xl font-semibold mb-2">
             Pay-as-you-Go
           </h1>
