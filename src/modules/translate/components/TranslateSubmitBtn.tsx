@@ -73,12 +73,13 @@ const TranslateSubmitBtn = () => {
       });
 
       const fetchUserPromptsPayload = {
-        instruction: `Translate to ${translateLanguage}`,
+        instruction: `Translate to ${translateLanguage.value}`,
         prompt_token: chatCompletionRes.usage.prompt_tokens,
         completion_token: chatCompletionRes.usage.completion_tokens,
         prompt_text: translateText,
         completion_text: chatCompletionContent,
       };
+
 
       saveTranslateHistory(translateStates, chatCompletionContent);
       if (userHasOngoingPlan.isSubscription) {

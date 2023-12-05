@@ -4,7 +4,7 @@ import { decode } from "jsonwebtoken";
 
 import MetaSEO from "@/common/components/MetaSEO";
 import { HOME_SEO } from "@/modules/home/lib/constant";
-import { fetchUserData } from "@/common/lib/fetchUserData";
+import { fetchUserData } from "@/common/lib/api/users/fetchUserData";
 import { fetchUserSubscription } from "@/common/lib/api/subscriptions/fetchUserSubscription";
 import { IUser } from "@/common/lib/api/users/userInterfaces";
 import ProfileIdentity from "@/modules/profile/components/ProfileIdentity";
