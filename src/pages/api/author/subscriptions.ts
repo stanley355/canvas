@@ -1,3 +1,4 @@
+import { axiosErrorHandler } from "@/common/lib/api/axiosErrorHandler";
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -10,18 +11,18 @@ const authorSubscriptionsAPI = async (
   if (req.headers && req.headers.path) {
     URL += req.headers.path;
   }
-  const axiosConfig = {
+  const axiosReqConfig = {
     method: req.method,
     url: URL,
     data: req.body,
   };
 
   try {
-    const { data } = await axios(axiosConfig);
-    res.setHeader("Content-Type", "application/json");
-    res.json(data);
+    const { data } = await axios(axiosReqConfig);
+    res.send(data);
   } catch (err: any) {
-    res.status(err.response.status).send(err.response.data);
+    const errorRes = axiosErrorHandler(URL, err);
+    res.send(errorRes);
   }
 };
 

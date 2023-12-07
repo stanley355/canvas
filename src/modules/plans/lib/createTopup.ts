@@ -1,3 +1,4 @@
+import { axiosErrorHandler } from "@/common/lib/api/axiosErrorHandler";
 import axios from "axios";
 
 export const createTopup = async (user_id: string, topup_amount: number) => {
@@ -14,6 +15,11 @@ export const createTopup = async (user_id: string, topup_amount: number) => {
     },
   };
 
-  const { data } = await axios(axiosConfig);
-  return data;
+  try {
+    const { data } = await axios(axiosConfig);
+    return data;
+  } catch (error: any) {
+    const errorRes = axiosErrorHandler(error, URL);
+    return errorRes;
+  }
 };

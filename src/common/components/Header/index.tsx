@@ -1,45 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { Inter } from "next/font/google";
-import { FaAngleRight } from "react-icons/fa";
-import { SiTaichilang } from "react-icons/si";
+import { FaAngleRight } from "react-icons/fa6";
+import Image from "next/image";
 import cookie from "js-cookie";
 import classNames from "classnames";
 
 import { HEADER_MENU } from "./constant";
 import Button from "../Button";
-import { useDesktopScreen } from "@/common/hooks/useDesktopScreen";
-import Image from "next/image";
-
-const inter = Inter({ subsets: ["latin"] });
+import { useDesktopScreen } from "@/common/lib/hooks/useDesktopScreen";
 
 const Header = () => {
   const isDesktop = useDesktopScreen();
   const [showModal, setShowModal] = useState(false);
-  const [token, setToken] = useState("");
+  const cookieToken = cookie.get("token");
+  const [isLogin, setIsLogin] = useState(false);
 
   useEffect(() => {
-    if (!token) {
-      const cookieToken = cookie.get("token");
-      if (cookieToken) {
-        setToken(String(cookieToken));
-      }
+    if (cookieToken) {
+      setIsLogin(true);
     }
-  }, [token]);
+  }, [cookieToken]);
 
   return (
-    <nav
-      className={classNames(
-        "bg-black w-full p-4 lg:py-2 flex flex-row items-center justify-between fixed z-10",
-        inter.className
-      )}
-    >
+    <nav className="bg-blue-900 w-full p-4 lg:py-2 flex flex-row items-center justify-between fixed z-10">
       <Button
         type="link"
         href="/"
         wrapperClassName="text-2xl cursor-pointer text-white"
         buttonClassName="flex items-center w-full"
       >
-        <span>Language</span>
+        <span className="text-white">Language</span>
         <Image
           src="/images/languageai_white.png"
           alt="Language AI"
@@ -51,21 +40,22 @@ const Header = () => {
         type="button"
         title={showModal ? "Close" : "Menu"}
         onClick={() => setShowModal(!showModal)}
-        wrapperClassName="text-md active:underline lg:hidden"
+        wrapperClassName="text-md active:underline lg:hidden text-white"
       />
       {(showModal || isDesktop) && (
-        <div className="bg-gradient-to-b from-black via-blue-900 to-white lg:bg-gradient-to-b lg:from-black absolute lg:static lg:flex lg:gap-2 top-16 left-0 text-lg lg:text-xl w-full lg:w-fit h-screen lg:h-fit px-2 lg:px-0">
+        <div className="bg-white lg:bg-transparent text-blue-900 lg:text-white absolute lg:static lg:flex lg:gap-4 top-16 left-0 text-lg lg:text-2xl w-full lg:w-fit h-screen lg:h-fit px-2 lg:px-0">
           {HEADER_MENU.filter((menu) =>
-            token ? menu.title !== "Login" : menu.title !== "Profile"
+            isLogin ? menu.title !== "Login" : menu.title !== "Profile"
           ).map((menu, i) => (
             <Button
               type="link"
               key={menu.url}
               href={menu.url}
-              buttonClassName="flex items-center gap-2 w-full h-full"
+              onClick={() => setShowModal(false)}
+              buttonClassName="flex items-center gap-2 w-full h-full py-2 lg:pb-1"
               wrapperClassName={classNames(
-                "border-b lg:border-b-0 p-2 lg:bg-white lg:text-black lg:rounded-full group lg:hover:bg-blue-900 lg:hover:text-white lg:bg-gradient-to-r lg:from-blue-500",
-                i === 0 ? "border-t lg:border-t-0" : ""
+                "group border-b border-blue-900 lg:border-white",
+                i === 0 ? "border-t-0" : ""
               )}
             >
               <span>{menu.icon}</span>

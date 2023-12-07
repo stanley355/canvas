@@ -2,25 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-:root {}
-
-/* width */
-::-webkit-scrollbar {
-  width: 0.5rem;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: black;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: whitesmoke;
-  border: 1px solid black;
-  border-radius: 1rem;
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -32,8 +13,6 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
 }
-
-body {}
 
 a {
   color: inherit;

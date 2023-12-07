@@ -5,8 +5,6 @@ import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import { decode } from "jsonwebtoken";
 
-import Button from "@/common/components/Button";
-import { createTopup } from "../lib/createTopup";
 import { DOKU_VA_LIST } from "../lib/constant";
 import { createDokuVA } from "../lib/createDokuVA";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
@@ -38,7 +36,7 @@ const SubscriptionVAForm = (props: ISubscriptionVAForm) => {
     const token: any = Cookies.get("token");
     const user: any = decode(token);
 
-    sendFirebaseEvent("subscription_va", {});
+    sendFirebaseEvent("subscription_va");
     const topup = await createSubscription(user.id, Number(amount), duration);
     if (topup?.id) {
       const dokuVAPayload = {
@@ -58,13 +56,13 @@ const SubscriptionVAForm = (props: ISubscriptionVAForm) => {
         return;
       }
 
-      toast.error("Something went wrong, please try again");
+      toast.error("Fail to create VA, please try again");
       setHasSubmit(false);
       return;
     }
 
     setHasSubmit(false);
-    toast.error("Something went wrong, please try again");
+    toast.error("Fail to create Subscription, please try again");
     return;
   };
 
@@ -75,24 +73,23 @@ const SubscriptionVAForm = (props: ISubscriptionVAForm) => {
         <Select
           options={DOKU_VA_LIST}
           placeholder="Payment Method (Virtual Account)"
-          className="text-black border border-gray-500 rounded"
+          className="text-black border border-blue-900 rounded"
           name="payment_method"
           isDisabled={hasSubmit}
           onChange={(option) => {
             setVaBank(String(option?.label));
           }}
         />
-        <Button
+        <button
           type="submit"
-          wrapperClassName="w-full text-center mt-4 p-2 bg-blue-900 text-white font-semibold rounded"
-          buttonClassName="w-full h-full"
           disabled={hasSubmit}
+          className="w-full text-center mt-4 p-2 bg-blue-900 text-white font-semibold rounded"
         >
           {hasSubmit ? <FaSpinner className="mx-auto animate-spin" /> : "Topup"}
-        </Button>
+        </button>
       </form>
       <div>
-        * After Topup: If Balance is not updated, please wait for 5 minutes
+        *If Balance is not updated after payment, please wait for 2 minutes
         delay.
       </div>
     </div>

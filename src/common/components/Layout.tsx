@@ -1,22 +1,17 @@
-import React from "react";
+import { Inter } from "next/font/google";
 import { ToastContainer } from "react-toastify";
-import classNames from "classnames";
+import "react-toastify/dist/ReactToastify.css";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Inter } from "next/font/google";
-import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
+
   return (
-    <>
+    <div className={inter.className}>
       <Header />
-      <main
-        className={classNames("h-min-screen pt-16 lg:pt-12", inter.className)}
-      >
-        {children}
-      </main>
+      <main className="h-min-screen pt-16 lg:pt-12">{children}</main>
       <Footer />
       <ToastContainer
         position="top-center"
@@ -26,7 +21,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         pauseOnHover
         theme="light"
       />
-    </>
+    </div>
   );
 };
 
