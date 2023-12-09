@@ -1,5 +1,5 @@
 import { axiosErrorHandler } from "@/common/lib/api/axiosErrorHandler";
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
 const authorPromptsAPI = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -8,10 +8,13 @@ const authorPromptsAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.headers && req.headers.path) {
     URL += req.headers.path;
   }
-  const axiosConfig = {
+  const axiosConfig: AxiosRequestConfig = {
     method: req.method,
     url: URL,
     data: req.body,
+    headers: {
+      Authorization: process.env.AUTHOR_TOKEN
+    }
   };
 
   try {
