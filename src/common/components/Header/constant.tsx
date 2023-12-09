@@ -1,10 +1,10 @@
-import { FaLanguage, FaRobot, FaCircleUser, FaPlus } from "react-icons/fa6";
+import { FaLanguage, FaRobot, FaCircleUser, FaRupiahSign } from "react-icons/fa6";
 
 export const HEADER_MENU = [
   {
-    title: "Pricing",
+    title: "Harga",
     url: "/plans/",
-    icon: <FaPlus />,
+    icon: <FaRupiahSign />,
   },
   {
     title: "AI Checkbot",
@@ -17,12 +17,12 @@ export const HEADER_MENU = [
     icon: <FaLanguage />,
   },
   {
-    title: "Profile",
+    title: "Akun",
     url: "/profile/",
     icon: <FaCircleUser />,
   },
   {
-    title: "Login",
+    title: "Masuk",
     url: "/login/",
     icon: <FaCircleUser />,
   },
