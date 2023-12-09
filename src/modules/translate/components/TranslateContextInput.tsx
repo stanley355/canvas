@@ -10,7 +10,7 @@ const TranslateContextInput = () => {
         id="context_input"
         name="context"
         className="w-full rounded p-2 mb-2 bg-white text-black border border-gray-500"
-        placeholder="Context (what the text is about) "
+        placeholder="Konteks (opsional) "
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           dispatch({
             type: "SET",

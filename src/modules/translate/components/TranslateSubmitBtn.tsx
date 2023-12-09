@@ -33,12 +33,12 @@ const TranslateSubmitBtn = () => {
     }
 
     if (!translateLanguage?.value) {
-      toast.warning("Target Language could not be Empty");
+      toast.warning("Bahasa tujuan tidak boleh kosong");
       return;
     }
 
     if (!translateText) {
-      toast.warning("You haven't input your text!");
+      toast.warning("Harap masukkan teks Anda");
       return;
     }
 
@@ -91,7 +91,7 @@ const TranslateSubmitBtn = () => {
       return;
     }
 
-    toast.error("Something went wrong, please try again");
+    toast.error("Terjadi kesalahan, silakan coba lagi");
     setIsLoading(false);
     return;
   };
@@ -106,7 +106,7 @@ const TranslateSubmitBtn = () => {
       >
         {isLoading ? (
           <div className="flex flex-row items-center justify-center">
-            <span className="mr-2">Processing</span>
+            <span className="mr-2">Memproses</span>
             <FaSpinner className="animate-spin" />
           </div>
         ) : (

@@ -1,18 +1,15 @@
 import React from "react";
 import { toast } from "react-toastify";
 import Button from "@/common/components/Button";
-import { useDesktopScreen } from "@/common/lib/hooks/useDesktopScreen";
 import { useTranslate } from "../lib/useTranslate";
 
 const TranslateResultBox = () => {
   const { translateStates } = useTranslate();
   const { translateCompletion } = translateStates;
 
-  const isDesktop = useDesktopScreen();
-
   const copyText = () => {
     window.navigator.clipboard.writeText(translateCompletion);
-    toast.info("Text Copied to Clipboard");
+    toast.info("Teks ter-copy ke Clipboard");
   };
 
   return (
@@ -24,7 +21,7 @@ const TranslateResultBox = () => {
           className="w-full text-black p-2 bg-white border border-black rounded-md focus:outline-none"
           cols={30}
           rows={14}
-          placeholder="Your translation will show up here"
+          placeholder="Terjemahan Anda akan muncul di sini"
           onChange={() => {}}
           value={translateCompletion}
         />

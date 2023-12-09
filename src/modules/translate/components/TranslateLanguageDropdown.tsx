@@ -21,7 +21,7 @@ const TranslateLanguageDropdown = () => {
     <label htmlFor="translate_language" className="w-full mb-4">
       <Select
         className="text-black mb-2"
-        placeholder="Select Target Language"
+        placeholder="Pilih bahasa tujuan"
         id="translate_language_select"
         name="translate_language"
         aria-label="translate_lang_select"
