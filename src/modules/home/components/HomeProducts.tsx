@@ -12,7 +12,7 @@ const HomeProducts = () => {
           <div>AI Translate</div>
         </div>
         <div className="text-center mb-4 lg:text-lg">
-          Translate words, phrases, and entire documents over 100 languages
+          Terjemahkan teks secara akurat ke lebih dari 100 bahasa
         </div>
         <Link
           href="/translate"
@@ -27,7 +27,7 @@ const HomeProducts = () => {
           <div>AI Checkbot</div>
         </div>
         <div className="text-center mb-4 lg:text-lg">
-          Correct grammar, spelling, and wording errors in over 100 languages
+          Cek grammar, spelling, dan punctuation dari semua teks dan bahasa
         </div>
         <Link
           href="/checkbot"

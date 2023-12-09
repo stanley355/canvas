@@ -37,7 +37,7 @@ const PlanList = () => (
                 href={plan.url}
                 className="border border-gray-500 rounded-[2rem] bg-yellow-100 text-lg font-semibold p-4"
               >
-                Get started
+                Pilih Paket
               </Link>
             </div>
           </div>
