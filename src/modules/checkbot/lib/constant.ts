@@ -1,17 +1,8 @@
 export const CHECKBOT_SEO = {
   title:
-    "LanguageAI Checkbot: Check Grammar, Write Like a Pro, Free Online Grammar Checker & AI Writing Assistant",
-  description: `
-    Elevate your writing with our AI-powered grammar checker. 
-    Enhance your grammar skills and write with confidence in any language. 
-    Try our free online tool today.
-  `,
-  keywords: `
-    grammar check,
-    grammar checker,
-    online grammar check,
-    free grammar check,
-    check grammar,
-`,
+    "Check Grammar, Spelling and Punctuation errors with Language AI Checkbot",
+  description: `Check Grammar, Spelling and Punctuation errors for free with Language AI Checkbot. Improve your text
+  and check Grammar, Spelling and Punctuation errors`,
+  keywords: `grammar check, free grammar check, spelling check, spelling errors, punctuation errors, improve text, ai grammar check`,
   url: `${process.env.NEXT_PUBLIC_BASE_URL}/checkbot`,
 };
