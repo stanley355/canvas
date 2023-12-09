@@ -29,7 +29,7 @@ const SubscriptionVAForm = (props: ISubscriptionVAForm) => {
     const paymentMethod = target.payment_method.value;
     if (!paymentMethod) {
       setHasSubmit(false);
-      toast.error("Payment method is required!");
+      toast.error("Harap pilih metode pembayaran");
       return;
     }
 
@@ -56,23 +56,23 @@ const SubscriptionVAForm = (props: ISubscriptionVAForm) => {
         return;
       }
 
-      toast.error("Fail to create VA, please try again");
+      toast.error("Gagal membuat Virtual Account, harap coba lagi");
       setHasSubmit(false);
       return;
     }
 
     setHasSubmit(false);
-    toast.error("Fail to create Subscription, please try again");
+    toast.error("Gagal membuat Paket Langganan, harap coba lagi");
     return;
   };
 
   return (
     <div className="mt-8">
-      <div className="font-semibold mb-2 text-xl">Topup Via</div>
+      <div className="font-semibold mb-2 text-xl">Pembayaran Via</div>
       <form onSubmit={handleSubmit} className="w-full mb-4">
         <Select
           options={DOKU_VA_LIST}
-          placeholder="Payment Method (Virtual Account)"
+          placeholder="Pilih metode pembayaran (Virtual Account)"
           className="text-black border border-blue-900 rounded"
           name="payment_method"
           isDisabled={hasSubmit}
@@ -85,13 +85,9 @@ const SubscriptionVAForm = (props: ISubscriptionVAForm) => {
           disabled={hasSubmit}
           className="w-full text-center mt-4 p-2 bg-blue-900 text-white font-semibold rounded"
         >
-          {hasSubmit ? <FaSpinner className="mx-auto animate-spin" /> : "Topup"}
+          {hasSubmit ? <FaSpinner className="mx-auto animate-spin" /> : "Lanjut"}
         </button>
       </form>
-      <div>
-        *If Balance is not updated after payment, please wait for 2 minutes
-        delay.
-      </div>
     </div>
   );
 };

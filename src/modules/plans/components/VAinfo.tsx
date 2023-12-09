@@ -10,17 +10,17 @@ const VAinfo = ({ info }: IVAInfo) => {
   return (
     <div className="mt-4 text-lg">
       <div>
-        Payment via:{" "}
+        Pembayaran via:{" "}
         <span className="italic font-semibold">{info.bank_name} VA</span>
       </div>
       <div className="mt-2">
-        Amount:{" "}
+        Total:{" "}
         <span className="text-green-700 font-semibold italic">
           Rp{info.amount}
         </span>{" "}
       </div>
       <div className="text-center text-xl  mt-8 font-semibold">
-        <div>Virtual Account Number: </div>
+        <div>Nomor Virtual Account: </div>
         <button
           type="button"
           onClick={() => copyToClipboard(info.virtual_account_number)}
@@ -33,24 +33,22 @@ const VAinfo = ({ info }: IVAInfo) => {
         a.n Language - Stanley Winata
       </div>
       <div className="border border-blue-900 p-2 rounded flex flex-row mb-8 justify-center">
-        <div className="mr-2">Pay Before:</div>
+        <div className="mr-2">Bayar sebelum:</div>
         <span className="font-semibold">
           <Countdown
             date={new Date(info?.expired_date_utc ?? info.expired_date)}
           />
         </span>
       </div>
-      <div className="font-semibold">Notes:</div>
+      <div className="font-semibold">Catatan:</div>
       <div className="mb-4">
-        1. Before payment: <b>Don&apos;t refresh </b> or close this page
+        1. Sebelum pembayaran, jangan refresh atau menutup halaman ini
       </div>
       <div className="mb-4">
-        2. During payment: <b>Transfer the exact amount </b> e.g. transfer
-        Rp11.000 if your topup is Rp11.000
+        2. Transfer jumlah yang sesuai dengan jumlah total diatas (cth: transfer Rp11.000 jika total yang tertera Rp11.000)
       </div>
       <div>
-        3. After payment: <b> Go to Profile Page</b> to see updated balance,
-        there might be a 5 minutes delay
+        3. Setelah pembayaran: <b>Klik tombol akun di atas</b> untuk mengecek paket Anda,
       </div>
     </div>
   );

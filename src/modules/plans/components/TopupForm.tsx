@@ -28,13 +28,13 @@ const TopupForm = (props: ITopupForm) => {
     const paymentMethod = target.payment_method.value;
     if (!amount || !paymentMethod) {
       setHasSubmit(false);
-      toast.error("Topup amount and bank is required!");
+      toast.error("Harap pilih bank dan masukkan jumlah pembayaran");
       return;
     }
 
     if (amount < 10000) {
       setHasSubmit(false);
-      toast.error("Minimum topup amount is Rp10.000!");
+      toast.error("Jumlah pembayaran minimum Rp11.000");
       return;
     }
 
@@ -61,20 +61,20 @@ const TopupForm = (props: ITopupForm) => {
         return;
       }
 
-      toast.error("Fail to create VAerror, please try again");
+      toast.error("Gagal membuat virtual account, harap coba lagi");
       setHasSubmit(false);
       return;
     }
 
     setHasSubmit(false);
-    toast.error("Fail to create Topup, please try again");
+    toast.error("Terjadi kesalahan, harap coba lagi");
     return;
   };
 
   return (
     <div className="mt-4">
       <div className="font-semibold mb-2 text-xl">
-        How much would you like to topup?
+        Masukkan jumlah yang ingin Anda bayar
       </div>
       <form onSubmit={handleSubmit} className="w-full mb-4">
         <div className="mb-4">
@@ -91,7 +91,7 @@ const TopupForm = (props: ITopupForm) => {
         </div>
         <Select
           options={DOKU_VA_LIST}
-          placeholder="Payment Method (Virtual Account)"
+          placeholder="Metode pembayaran (Virtual Account)"
           className="text-black border border-blue-900 rounded mb-4"
           name="payment_method"
           isDisabled={hasSubmit}
@@ -104,13 +104,9 @@ const TopupForm = (props: ITopupForm) => {
           disabled={hasSubmit}
           className="w-full h-full text-center bg-blue-900 text-white font-bold rounded-md p-2"
         >
-          {hasSubmit ? <FaSpinner className="mx-auto animate-spin" /> : "Topup"}
+          {hasSubmit ? <FaSpinner className="mx-auto animate-spin" /> : "Lanjut"}
         </button>
       </form>
-      <div>
-        * If Balance is not updated after payment, please wait for 2 minute
-        delay.
-      </div>
     </div>
   );
 };
