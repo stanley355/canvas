@@ -5,9 +5,9 @@ import { PLAN_LIST } from "../lib/constant";
 
 const PlanList = () => (
   <div>
-    <h1 className="text-3xl lg:text-5xl mb-4">Pricing for All Stages</h1>
+    <h1 className="text-3xl lg:text-5xl mb-4">Paket Langganan untuk semua kebutuhan</h1>
     <h2 className="lg:text-lg mb-4">
-      All plans include access to AI Translate and AI Checkbot.
+      Semua paket dapat langsung aktif setelah pembayaran
     </h2>
     <div className="lg:grid lg:grid-cols-4 lg:gap-4">
       {PLAN_LIST.map((plan: any, index: number) => (
