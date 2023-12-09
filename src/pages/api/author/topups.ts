@@ -25,8 +25,6 @@ const topupAPI = async (req: NextApiRequest, res: NextApiResponse) => {
     const errorRes = axiosErrorHandler(err, URL);
     res.json(errorRes);
   }
-
-  res.setHeader("Content-Type", "application/json");
 };
 
 export default topupAPI;
