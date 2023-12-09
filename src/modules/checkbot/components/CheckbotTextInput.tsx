@@ -17,7 +17,7 @@ const CheckbotTextInput = () => {
           cols={30}
           rows={10}
           className="w-full h-full bg-white resize-none p-2 rounded border border-black text-black focus:outline-none "
-          placeholder="Put your text here"
+          placeholder="Masukkan teks Anda di sini"
           value={checkbotText}
           onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>{
             dispatch({

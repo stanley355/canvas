@@ -32,7 +32,7 @@ const CheckbotResultToggleBtn = () => {
         }}
       >
         <FaX className="text-sm" />
-        Removed
+        Dibuang
       </Button>
       <Button
         type="button"
@@ -52,7 +52,7 @@ const CheckbotResultToggleBtn = () => {
         }
       >
         <FaCircleMinus />
-        No Diff
+        Normal
       </Button>
       <Button
         type="button"
@@ -73,7 +73,7 @@ const CheckbotResultToggleBtn = () => {
         }}
       >
         <FaPlus />
-        Added
+        Ditambahkan
       </Button>
     </div>
   );

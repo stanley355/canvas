@@ -39,7 +39,6 @@ const CheckbotRemovedAndAddedBox = () => {
             </span>
           ))}
       </div>
-      <div>*Go to No Diff to copy</div>
     </>
   );
 };
