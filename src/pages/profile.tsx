@@ -36,7 +36,7 @@ const Profile = (props: IProfile) => {
             onClick={onLogoutClick}
             className="border border-blue-900 text-blue-900 p-1 px-2 rounded-md hover:underline"
           >
-            Logout
+            Keluar Akun
           </button>
         </div>
       </div>

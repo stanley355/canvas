@@ -30,7 +30,7 @@ const NoPlansModal = () => {
             href="/plans/"
             className="py-2 bg-blue-900 mt-4 w-full text-white font-bold text-center rounded-lg"
           >
-            Mulai Berlangganan
+            Lihat paket langganan
           </Link>
         </div>
       </div>
