@@ -15,12 +15,12 @@ const Login = () => {
           <LoginHeader />
           <LoginForm />
           <div className="my-4 flex flex-col items-center">
-            <div className="text-lg mb-2">or</div>
+            <div className="text-lg mb-2">atau</div>
             <GoogleLoginBtn />
           </div>
 
           <div className="text-center">
-            Don&apos;t have an account? <Link href="/register/" className="text-blue-900 underline">Register</Link>{" "}
+            Belum punya akun? <Link href="/register/" className="text-blue-900 underline">Daftar</Link>{" "}
           </div>
         </div>
       </div>

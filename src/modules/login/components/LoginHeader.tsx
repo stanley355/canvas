@@ -14,7 +14,7 @@ const LoginHeader = () => {
           height={30}
         />
       </h1>
-      <h2 className="text-center">User Login</h2>
+      <h2 className="text-center">Login Pengguna</h2>
     </div>
   );
 };

@@ -39,17 +39,17 @@ const CheckbotSubmitBtn = () => {
     }
 
     if (!checkbotInstruction) {
-      toast.warning("Please choose the instruction");
+      toast.warning("Harap pilih instruksi");
       return;
     }
 
     if (isPersonalInstruction && !checkbotPersonalInstruction) {
-      toast.warning("Personal Instruction could not be empty");
+      toast.warning("Harap masukkan instruksi");
       return;
     }
 
     if (!checkbotText) {
-      toast.warning("Text could not be empty");
+      toast.warning("Harap masukkan teks Anda");
       return;
     }
 
@@ -116,7 +116,7 @@ const CheckbotSubmitBtn = () => {
       return;
     }
 
-    toast.error("Something went wrong, please try again");
+    toast.error("Terjadi kesalahan, silakan coba lagi");
     setIsLoading(false);
     return;
   };
@@ -131,7 +131,7 @@ const CheckbotSubmitBtn = () => {
       >
         {isLoading ? (
           <div className="flex flex-row items-center justify-center">
-            <span className="mr-2">Processing</span>
+            <span className="mr-2">Memproses</span>
             <FaSpinner className="animate-spin" />
           </div>
         ) : (
