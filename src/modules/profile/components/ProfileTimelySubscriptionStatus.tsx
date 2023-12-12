@@ -18,7 +18,7 @@ const ProfileTimelySubscriptionStatus = (
     <div>
       <div className="flex items-center justify-between">
         <div>
-          <div className="font-bold text-xl">Subscription:</div>
+          <div className="font-bold text-xl">Paket Langganan:</div>
           <div className="text-lg">
             {subscription?.duration_type} Subscription
           </div>
@@ -34,11 +34,11 @@ const ProfileTimelySubscriptionStatus = (
       <div className="">
         <FaUserPlus className="text-blue-900 text-5xl my-4 mx-auto" />
         <div className="flex items-center gap-2">
-          <div>Start Date:</div>
+          <div>Tanggal Mulai:</div>
           <div>{formatSubscriptionDate(subscription?.start_at)}</div>
         </div>
         <div className="flex items-center gap-2">
-          <div>End Date:</div>
+          <div>Tanggal Berakhir:</div>
           <div>{formatSubscriptionDate(subscription?.end_at)}</div>
         </div>
       </div>

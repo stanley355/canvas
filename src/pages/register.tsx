@@ -15,11 +15,11 @@ const Register = () => {
           <RegisterHeader />
           <RegisterForm />
           <div className="my-4 flex flex-col items-center">
-            <div className="text-lg mb-2">or</div>
+            <div className="text-lg mb-2">atau</div>
             <GoogleLoginBtn />
           </div>
           <div className="text-center">
-            Have an account? <Link href="/login/" className="text-blue-900 underline">Login</Link>{" "}
+            Sudah punya akun? <Link href="/login/" className="text-blue-900 underline">Masuk</Link>{" "}
           </div>
         </div>
       </div>

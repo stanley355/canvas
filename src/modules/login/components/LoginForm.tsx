@@ -19,7 +19,7 @@ const LoginForm = () => {
 
     if (!email || !password) {
       setHasSubmit(false);
-      toast.error("Email and Password are required!");
+      toast.error("Harap masukkan email dan password");
       return;
     }
 
@@ -45,7 +45,7 @@ const LoginForm = () => {
       return;
     }
 
-    toast.error("Something went wrong, please try again");
+    toast.error("Terjadi kesalahan, silakan coba lagi");
     setHasSubmit(false);
     return;
   };
@@ -72,7 +72,7 @@ const LoginForm = () => {
         disabled={hasSubmit}
         className="py-2 rounded-lg bg-blue-900 text-white text-lg w-full"
       >
-        {hasSubmit ? <FaSpinner className="animate-spin mx-auto" /> : "Login"}
+        {hasSubmit ? <FaSpinner className="animate-spin mx-auto" /> : "Masuk"}
       </button>
     </form>
   );

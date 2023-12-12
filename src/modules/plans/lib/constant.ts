@@ -1,30 +1,30 @@
 export const PLAN_LIST = [
   {
     title: "Pay-as-you-Go",
-    desc: "Pay for what you need, no expiration time",
+    desc: "Bayar hanya untuk penggunaan Anda, tanpa masa berlaku",
     price: "Rp1",
-    unit: "per word",
+    unit: "per kata",
     url: "/plans/topup/",
   },
   {
     title: "Monthly",
-    desc: "Your best short term solution",
+    desc: "Solusi jangka pendek terbaik",
     price: "Rp25,000",
-    unit: "per month",
+    unit: "per bulan",
     url: "/plans/subscription?duration=Monthly",
   },
   {
     title: "Quarterly",
-    desc: "For credible translation and writing",
+    desc: "Untuk terjemahan dan penulisan berkualitas",
     price: "Rp70,000",
-    unit: "per three months",
+    unit: "per 3 bulan",
     url: "/plans/subscription?duration=Quarterly",
   },
   {
     title: "Half yearly",
-    desc: "Your long term solution",
+    desc: "Solusi jangka panjang Anda",
     price: "Rp150,000",
-    unit: "per six months",
+    unit: "per 6 bulan",
     url: "/plans/subscription?duration=HalfYearly",
   },
 ];

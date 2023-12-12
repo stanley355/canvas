@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <div>
       <MetaSEO seo={HOME_SEO} />
-      <div className="bg-gradient-to-br from-white via-slate-100 to-white lg:h-[90vh]">
+      <div className="bg-gradient-to-br from-white via-slate-100 to-white">
         <div className="container mx-auto p-4">
           <h1 className="text-center flex items-center justify-center text-4xl mb-2 mt-8 font-bold">
             <span>Language</span>

@@ -45,7 +45,7 @@ const Header = () => {
       {(showModal || isDesktop) && (
         <div className="bg-white lg:bg-transparent text-blue-900 lg:text-white absolute lg:static lg:flex lg:gap-4 top-16 left-0 text-lg lg:text-2xl w-full lg:w-fit h-screen lg:h-fit px-2 lg:px-0">
           {HEADER_MENU.filter((menu) =>
-            isLogin ? menu.title !== "Login" : menu.title !== "Profile"
+            isLogin ? menu.url !== "/login/" : menu.url !== "/profile/"
           ).map((menu, i) => (
             <Button
               type="link"

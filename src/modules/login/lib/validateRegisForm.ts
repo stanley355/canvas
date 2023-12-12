@@ -5,12 +5,12 @@ export const validateRegisForm = (e: React.FormEvent<HTMLFormElement>) => {
   const { email, fullname, password, repassword } = target;
 
   if (!email.value || !fullname.value || !password.value || !repassword.value) {
-    toast.error("All Field Should not be Empty!");
+    toast.error("Harap isi semua data");
     return false;
   }
 
   if (password.value !== repassword.value) {
-    toast.error("Password does not match!");
+    toast.error("Password tidak sama dengan konfirmasi password");
     return false;
   }
 

@@ -16,7 +16,7 @@ const ProfilePayGoSubscriptionStatus = (
     <div>
       <div className="flex items-center justify-between">
         <div>
-          <div className="font-bold text-xl">Subscription:</div>
+          <div className="font-bold text-xl">Paket Langganan:</div>
           <div className="text-lg">Pay as You Go</div>
         </div>
         <Link
@@ -30,7 +30,7 @@ const ProfilePayGoSubscriptionStatus = (
       <div className="">
         <FaUserPlus className="text-blue-900 text-5xl my-4 mx-auto" />
         <div className="flex items-center gap-2">
-          <div>Remaining Balance:</div>
+          <div>Sisa Kuota:</div>
           <div>Rp {user.balance}</div>
         </div>
       </div>

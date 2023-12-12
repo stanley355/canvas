@@ -9,7 +9,7 @@ const CheckbotPersonalInstructionInput = () => {
         type="text"
         name="checkbot_personal_instruction"
         className="w-full mb-2 p-2 border border-gray-500 rounded-md text-black"
-        placeholder="What's your instruction?"
+        placeholder="Masukkan instruksi Anda"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           dispatch({
             type: "SET",

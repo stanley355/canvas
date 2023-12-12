@@ -14,7 +14,7 @@ const RegisterHeader = () => {
           height={30}
         />
       </h1>
-      <h2 className="text-center">User Registration</h2>
+      <h2 className="text-center">Pendaftaran Pengguna</h2>
     </div>
   );
 };

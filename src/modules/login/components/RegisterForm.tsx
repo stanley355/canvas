@@ -28,7 +28,7 @@ const RegisterForm = () => {
 
     const userExist = await checkUserExist(email);
     if (userExist) {
-      toast.error("User with the same email already exists!");
+      toast.error("Pengguna sudah terdaftar");
       setHasSubmit(false);
       return;
     }
@@ -49,7 +49,7 @@ const RegisterForm = () => {
       return;
     } else {
       setHasSubmit(false);
-      toast.error("Something went wrong, please try again");
+      toast.error("Terjadi kesalahan, silakan coba lagi");
       return;
     }
   };
@@ -70,7 +70,7 @@ const RegisterForm = () => {
         inputType="text"
         inputName="fullname"
         inputID="fullname_input"
-        placeholder="fullname"
+        placeholder="Nama Lengkap"
       />
       <RegisterFormInputField
         icon={<FaKey className="text-blue-900" />}
@@ -82,7 +82,7 @@ const RegisterForm = () => {
       />
       <RegisterFormInputField
         icon={<FaKey className="text-blue-900" />}
-        title="Re-type Password"
+        title="Konfirmasi Password"
         inputType="password"
         inputName="repassword"
         inputID="repassword_input"
@@ -96,7 +96,7 @@ const RegisterForm = () => {
         {hasSubmit ? (
           <FaSpinner className="animate-spin mx-auto" />
         ) : (
-          "Register"
+          "Daftar"
         )}
       </button>
     </form>

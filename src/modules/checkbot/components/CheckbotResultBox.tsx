@@ -23,7 +23,7 @@ const CheckbotResultBox = () => {
           className="w-full text-black p-2 bg-white border border-black rounded-md focus:outline-none"
           cols={30}
           rows={10}
-          placeholder="Your check will show up here"
+          placeholder="Teks Anda akan muncul di sini"
           onChange={() => {}}
           value={checkbotCompletion}
         />

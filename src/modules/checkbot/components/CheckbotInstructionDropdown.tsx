@@ -35,7 +35,7 @@ const CheckbotInstructionDropdown = () => {
   return (
     <label htmlFor="checkbot_instruction_select">
       <Select
-        placeholder="What can I help you with?"
+        placeholder="Pilih instruksi"
         name="checkbot_instruction"
         options={CHECKBOT_INSTRUCTION_OPTIONS}
         className="w-full text-black mb-2 border-black"
