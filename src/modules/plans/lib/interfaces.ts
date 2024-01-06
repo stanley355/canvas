@@ -1,6 +1,6 @@
 export enum SubscriptionDurationType {
-    Monthly,
-    Quarterly,
-    HalfYearly,
-    Yearly
+    Monthly = "Monthly",
+    Quarterly = "Quarterly",
+    HalfYearly = "HalfYearly",
+    Yearly = "Yearly"
 }

@@ -21,6 +21,8 @@ export const createTopupPaylater = async (
     },
   };
 
+  console.log(axiosConfig);
+  
   try {
     const { data } = await axios(axiosConfig);
     return data;
