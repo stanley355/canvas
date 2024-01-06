@@ -1,7 +1,11 @@
-export const TRANSLATE_STATES = {
+import { ITranslateStates } from "./translateStatesInterfaces";
+
+
+export const TRANSLATE_STATES: ITranslateStates= {
   showLoginModal: false,
   showHistoryBar: false,
   showNoPlansModal: false,
+  showPaylaterOffer: false,
   translateLanguage: {
     label: "",
     value: ""

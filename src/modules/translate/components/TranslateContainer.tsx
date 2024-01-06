@@ -11,10 +11,14 @@ const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
 const NoPlansModal = dynamic(
   () => import("../../plans/components/NoPlansModal")
 );
+const PaylaterOfferModal = dynamic(
+  () => import("../../plans/components/PaylaterOfferModal")
+);
 
 const TranslateContainer = () => {
   const { translateStates } = useTranslate();
-  const { showLoginModal, showNoPlansModal } = translateStates;
+  const { showLoginModal, showNoPlansModal, showPaylaterOffer } =
+    translateStates;
   return (
     <div className="container mx-auto">
       <TranslateHeader />
@@ -26,11 +30,12 @@ const TranslateContainer = () => {
         </div>
         <TranslateResultBox />
       </div>
-      {showLoginModal && <LoginModal />}
-      {showNoPlansModal && <NoPlansModal />}
       <div className="mt-4">
         <PlanList />
       </div>
+      {showLoginModal && <LoginModal />}
+      {showNoPlansModal && <NoPlansModal />}
+      {showPaylaterOffer && <PaylaterOfferModal />}
     </div>
   );
 };

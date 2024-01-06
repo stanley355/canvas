@@ -45,7 +45,13 @@ const TranslateSubmitBtn = () => {
     setIsLoading(true);
     const user: any = decode(token);
     const userHasOngoingPlan = await checkUserHasOngoingPlan(user);
-    
+
+    if (userHasOngoingPlan.showPaylaterOffer) {
+      dispatch({ type: "SET", name: "showPaylaterOffer", value: true });
+      setIsLoading(false);
+      return;
+    }
+
     if (!userHasOngoingPlan.hasOngoingPlan) {
       dispatch({ type: "SET", name: "showNoPlansModal", value: true });
       setIsLoading(false);
@@ -79,7 +85,6 @@ const TranslateSubmitBtn = () => {
         prompt_text: translateText,
         completion_text: chatCompletionContent,
       };
-
 
       saveTranslateHistory(translateStates, chatCompletionContent);
       if (userHasOngoingPlan.isSubscription) {

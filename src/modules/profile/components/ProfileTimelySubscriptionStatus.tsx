@@ -39,7 +39,7 @@ const ProfileTimelySubscriptionStatus = (
           )}
         >
           {subscription.is_paylater ? <FaMoneyBillTrendUp /> : <FaPlusCircle />}
-          <div>{subscription.is_paylater ? "Bayar" : "Upgrade"}</div>
+          <div>{subscription.is_paylater ? "Bayar Tagihan" : "Upgrade"}</div>
         </Link>
       </div>
       <div className="">
