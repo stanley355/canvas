@@ -23,7 +23,7 @@ export const checkUserHasOngoingPlan = async (
       return {
         isSubscription: false,
         hasOngoingPlan: userData?.balance > 0,
-        showPaylaterOffer: false,
+        showPaylaterOffer: false, //as user already subscribed once, no need to show paylater offer
       };
     }
 
@@ -33,6 +33,7 @@ export const checkUserHasOngoingPlan = async (
       showPaylaterOffer: false,
     };
   }
+
   const userData = await fetchUserByEmail(user?.email);
   return {
     isSubscription: false,
