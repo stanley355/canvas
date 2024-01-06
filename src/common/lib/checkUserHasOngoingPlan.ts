@@ -7,6 +7,7 @@ import { IUser } from "./api/users/userInterfaces";
 interface ICheckUserHasOngoingPlanOutput {
   isSubscription: boolean;
   hasOngoingPlan: boolean;
+  showPaylaterOffer: boolean;
 }
 
 export const checkUserHasOngoingPlan = async (
@@ -22,17 +23,20 @@ export const checkUserHasOngoingPlan = async (
       return {
         isSubscription: false,
         hasOngoingPlan: userData?.balance > 0,
+        showPaylaterOffer: false,
       };
     }
 
     return {
       isSubscription: true,
       hasOngoingPlan: true,
+      showPaylaterOffer: false,
     };
   }
   const userData = await fetchUserByEmail(user?.email);
   return {
     isSubscription: false,
     hasOngoingPlan: userData?.balance > 0,
+    showPaylaterOffer: userData?.balance === 0,
   };
 };

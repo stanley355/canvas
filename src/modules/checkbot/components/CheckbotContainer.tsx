@@ -15,6 +15,9 @@ const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
 const NoPlansModal = dynamic(
   () => import("../../plans/components/NoPlansModal")
 );
+const PaylaterOfferModal = dynamic(
+  () => import("../../plans/components/PaylaterOfferModal")
+);
 
 const CheckbotContainer = () => {
   const { checkbotStates } = useCheckbot();
@@ -22,6 +25,7 @@ const CheckbotContainer = () => {
     isPersonalInstruction,
     showLoginModal,
     showNoPlansModal,
+    showPaylaterOffer,
     checkbotResultFormat,
   } = checkbotStates;
 
@@ -46,6 +50,7 @@ const CheckbotContainer = () => {
       <PlanList />
       {showLoginModal && <LoginModal />}
       {showNoPlansModal && <NoPlansModal />}
+      {showPaylaterOffer && <PaylaterOfferModal />}
     </div>
   );
 };
