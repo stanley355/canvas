@@ -7,4 +7,5 @@ export interface ISubscription {
   end_at: string
   duration_type: string
   paid: boolean
+  is_paylater: boolean
 }
