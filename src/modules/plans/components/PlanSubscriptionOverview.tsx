@@ -12,23 +12,23 @@ const PlanSubscriptionOverview = (props: IPlanSubscriptionOverview) => {
   return (
     <div className="border border-blue-900 rounded p-2 mt-4">
       <div className="text-center text-xl font-semibold mb-4">
-        Subscription Overview
+        Paket Langganan
       </div>
       <div>
-        Duration:{" "}
+        Durasi:{" "}
         <span className="font-semibold">
           {" "}
           {formatSubscriptionMonth(duration)}{" "}
         </span>
       </div>
       <div>
-        Cost:{" "}
+        Harga:{" "}
         <span className="text-green-700 font-semibold">
           Rp{calcSubscriptionCost(duration)}
         </span>{" "}
       </div>
-      <div>Start Date: {formatSubscriptionStartDate()}</div>
-      <div>End Date: {formatSubscriptionEndDate(duration)}</div>
+      <div>Tanggal Mulai: {formatSubscriptionStartDate()}</div>
+      <div>Tanggal Berakhir: {formatSubscriptionEndDate(duration)}</div>
     </div>
   );
 };

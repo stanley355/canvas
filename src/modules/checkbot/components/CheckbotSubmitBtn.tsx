@@ -10,7 +10,6 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { checkUserHasOngoingPlan } from "@/common/lib/checkUserHasOngoingPlan";
 import { fetchAIChatCompletion } from "@/common/lib/api/ai/fetchAIChatCompletion";
 import { IChatCompletionRes } from "@/common/lib/api/ai/aiAPIInterfaces";
-// import { saveTranslateHistory } from "../lib/saveTranslateHistory";
 import { fetchUserPrompts } from "@/common/lib/api/prompts/fetchUserPrompts";
 import { fetchUserPremiumPrompts } from "@/common/lib/api/prompts/fetchUserPremiumPrompts";
 import { createRemovedAndAddedDiff } from "@/common/lib/createRemovedAndAddedDiff";
@@ -56,6 +55,13 @@ const CheckbotSubmitBtn = () => {
     setIsLoading(true);
     const user: any = decode(token);
     const userHasOngoingPlan = await checkUserHasOngoingPlan(user);
+
+    if (userHasOngoingPlan.showPaylaterOffer) {
+      dispatch({ type: "SET", name: "showPaylaterOffer", value: true });
+      setIsLoading(false);
+      return;
+    }
+
     if (!userHasOngoingPlan.hasOngoingPlan) {
       dispatch({ type: "SET", name: "showNoPlansModal", value: true });
       setIsLoading(false);

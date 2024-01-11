@@ -1,13 +1,13 @@
 import { createContext } from "react";
-import { CHECKBOT_STATES } from "./checkbotStates";
+import { CHECKBOT_STATES, ICheckbotStates } from "./checkbotStates";
 
 export interface ICheckbotDispatchPayload {
   type: string;
-  name: string;
+  name: keyof ICheckbotStates;
   value: any;
 }
 
 export const CheckbotContext = createContext({
   checkbotStates: CHECKBOT_STATES,
-  dispatch: (dispatchPayload: ICheckbotDispatchPayload) => {},
+  dispatch: (_dispatchPayload: ICheckbotDispatchPayload) => {},
 });

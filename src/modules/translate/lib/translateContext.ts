@@ -1,9 +1,10 @@
 import { createContext } from "react";
 import { TRANSLATE_STATES } from "./translateStates";
+import { ITranslateStates } from "./translateStatesInterfaces";
 
 export interface ITranslateDispatchPayload {
   type: string;
-  name: string;
+  name: keyof ITranslateStates;
   value: any;
 }
 

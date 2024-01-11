@@ -3,8 +3,9 @@ import Link from "next/link";
 import { FaPlusCircle, FaExclamationCircle } from "react-icons/fa";
 import { IProfile } from "@/pages/profile";
 import { ISubscription } from "@/common/lib/api/subscriptions/subscriptionInterface";
-import { FaUserPlus } from "react-icons/fa6";
+import { FaUserPlus, FaMoneyBillTrendUp } from "react-icons/fa6";
 import { formatSubscriptionDate } from "../lib/formatSubscriptionDate";
+import classNames from "classnames";
 
 interface IProfileTimelySubscriptionStatus {
   subscription: ISubscription;
@@ -20,15 +21,25 @@ const ProfileTimelySubscriptionStatus = (
         <div>
           <div className="font-bold text-xl">Paket Langganan:</div>
           <div className="text-lg">
-            {subscription?.duration_type} Subscription
+            {subscription.is_paylater
+              ? "Paylater"
+              : subscription?.duration_type}{" "}
+            Subscription
           </div>
         </div>
         <Link
-          href="/plans/"
-          className="bg-blue-900 p-2 text-white font-bold flex items-center gap-2 rounded-md"
+          href={
+            subscription.is_paylater
+              ? "/plans/subscription?duration=Monthly"
+              : "/plans/"
+          }
+          className={classNames(
+            "p-2 text-white font-bold flex items-center gap-2 rounded-md",
+            subscription.is_paylater ? "bg-green-700 " : "bg-blue-900"
+          )}
         >
-          <FaPlusCircle />
-          <div>Upgrade</div>
+          {subscription.is_paylater ? <FaMoneyBillTrendUp /> : <FaPlusCircle />}
+          <div>{subscription.is_paylater ? "Bayar Tagihan" : "Perpanjang"}</div>
         </Link>
       </div>
       <div className="">
@@ -38,8 +49,10 @@ const ProfileTimelySubscriptionStatus = (
           <div>{formatSubscriptionDate(subscription?.start_at)}</div>
         </div>
         <div className="flex items-center gap-2">
-          <div>Tanggal Berakhir:</div>
-          <div>{formatSubscriptionDate(subscription?.end_at)}</div>
+          <div>
+            Tanggal {subscription.is_paylater ? "Jatuh Tempo" : "Berakhir"}:
+          </div>
+          <div className={subscription.is_paylater ? "font-bold" : ""}>{formatSubscriptionDate(subscription?.end_at)}</div>
         </div>
       </div>
     </div>
