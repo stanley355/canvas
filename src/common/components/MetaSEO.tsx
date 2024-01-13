@@ -9,7 +9,6 @@ const MetaSEO = ({ seo }: IMetaSEO) => {
   return (
     <Head>
       <link rel="icon" type="image/png" href="/images/languageai.png" />
-      <link rel="canonical" href={process.env.NEXT_PUBLIC_BASE_URL} />
       <title>{seo?.title}</title>
       <meta name="description" content={seo?.description} />
       <meta name="keywords" content={seo?.keywords} />
