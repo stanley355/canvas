@@ -22,14 +22,14 @@ const PaylaterOfferModal = () => {
       ? await createTopupPaylater(
           user.id,
           25000,
-          SubscriptionDurationType.Monthly
+          SubscriptionDurationType.Biweekly
         )
       : {};
 
     if (paylaterRes?.id) {
       setIsLoading(false);
       sendFirebaseEvent("paylater_click")
-      toast.success("Sukses berlangganan 1 bulan");
+      toast.success("Sukses berlangganan dengan Paylater");
       setTimeout(() => {
         window.location.reload();
       }, 1500);
@@ -60,7 +60,7 @@ const PaylaterOfferModal = () => {
             Anda tidak ada paket berlangganan
           </div>
           <div className="text-center text-lg mb-8">
-            Yuk coba 1 bulan dengan Paylater cuma Rp25.000,{" "}
+            Yuk coba Paylater cuma Rp25.000,{" "}
             <b>bonus gratis 1 bulan</b>
           </div>
           <button
