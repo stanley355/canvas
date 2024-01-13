@@ -58,6 +58,7 @@ const CheckbotSubmitBtn = () => {
 
     if (userHasOngoingPlan.showPaylaterOffer) {
       dispatch({ type: "SET", name: "showPaylaterOffer", value: true });
+      sendFirebaseEvent("paylater_popup");
       setIsLoading(false);
       return;
     }

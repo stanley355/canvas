@@ -9,6 +9,7 @@ import { decode } from "jsonwebtoken";
 
 import { createTopupPaylater } from "../lib/createTopupPaylater";
 import { SubscriptionDurationType } from "../lib/interfaces";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 const PaylaterOfferModal = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -27,10 +28,11 @@ const PaylaterOfferModal = () => {
 
     if (paylaterRes?.id) {
       setIsLoading(false);
+      sendFirebaseEvent("paylater_click")
       toast.success("Sukses berlangganan 1 bulan");
       setTimeout(() => {
         window.location.reload();
-      }, 1000);
+      }, 1500);
       return;
     }
 
