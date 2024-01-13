@@ -48,7 +48,6 @@ const Button = (props: IButton) => {
           type={type}
           onClick={onClick}
           aria-label={ariaLabel}
-          aria-required="true"
           className={buttonClassName}
         >
           {children || title}
