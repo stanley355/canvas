@@ -25,6 +25,8 @@ const RegisterFormInputField = (props: IRegisterFormInputField) => {
         id={inputID}
         className="p-2 rounded-lg focus:outline-none border border-blue-900"
         placeholder={placeholder}
+        aria-label="Pendaftaran Language AI"
+        aria-required="true"
       />
     </div>
   );

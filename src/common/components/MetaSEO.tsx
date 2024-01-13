@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 interface IMetaSEO {
   seo: any;
 }
 
 const MetaSEO = ({ seo }: IMetaSEO) => {
+  const router = useRouter();
+  const appName = useMemo(() => {
+    if (router.pathname.includes("translate")) {
+      return "Language AI Translate"
+    }
+
+    if (router.pathname.includes("checkbot")) {
+      return "Language AI Checkbot"
+    }
+
+    return "Language AI";
+  }, [router]);
+
   return (
     <Head>
-      <link rel="icon" type="image/png" href="/images/languageai.png" />
-      <link rel="canonical" href={process.env.NEXT_PUBLIC_BASE_URL} />
       <title>{seo?.title}</title>
       <meta name="description" content={seo?.description} />
       <meta name="keywords" content={seo?.keywords} />
@@ -31,13 +43,18 @@ const MetaSEO = ({ seo }: IMetaSEO) => {
       <meta property="og:type" content="website" />
       <meta property="og:description" content={seo?.description} />
       <meta property="og:url" content={seo?.url} />
-      <meta property="og:site_name" content="Language AI" />
+      <meta property="og:site_name" content={appName} />
       <meta name="twitter:title" content={seo?.title} />
       <meta name="twitter:description" content={seo?.description} />
       <meta name="twitter:site" content={seo?.url} />
       <meta name="twitter:creator" content="winatastanley355@gmail.com" />
       <meta name="twitter:label1" content="@languageai" />
       <meta name="twitter:data1" content="Language AI" />
+      <meta name="application-name" content={appName} />
+      <meta name="apple-mobile-web-app-title" content={appName} />
+      <link rel="icon" type="image/png" href="/images/languageai.png" />
+      <link rel="canonical" href={seo?.url} />
+      <link href="/opensearch.xml?hl=in" title={seo?.title} rel="search" type="application/opensearchdescription+xml" />
     </Head>
   );
 };

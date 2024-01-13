@@ -11,6 +11,8 @@ const TranslateContextInput = () => {
         name="context"
         className="w-full rounded p-2 mb-2 bg-white text-black border border-gray-500"
         placeholder="Konteks (opsional) "
+        aria-label="Language AI Terjemahan"
+        aria-required="true"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           dispatch({
             type: "SET",

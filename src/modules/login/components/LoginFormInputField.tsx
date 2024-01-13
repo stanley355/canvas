@@ -25,6 +25,8 @@ const LoginFormInputField = (props: ILoginFormInputField) => {
         id={inputID}
         className="p-2 rounded-lg focus:outline-none border border-blue-900"
         placeholder={placeholder}
+        aria-label="Language AI Login"
+        aria-required="true"
       />
     </div>
   );

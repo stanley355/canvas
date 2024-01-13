@@ -40,8 +40,8 @@ const CheckbotInstructionDropdown = () => {
         options={CHECKBOT_INSTRUCTION_OPTIONS}
         className="w-full text-black mb-2 border-black"
         id="checkbot_instruction_select"
-        aria-label="checkbot_instruction_select"
-        aria-labelledby="checkbot_instruction_select"
+        aria-label="Pilih Instruksi Checkbot"
+        aria-labelledby="Pilih Instruksi Checkbot"
         onChange={handleChange}
         styles={styles}
       />

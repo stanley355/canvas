@@ -86,6 +86,8 @@ const TopupForm = (props: ITopupForm) => {
               placeholder="Rp ..."
               className="text-black p-2 w-full rounded border border-blue-900 focus:outline-none"
               disabled={hasSubmit}
+        aria-label="Pembayaran Language AI"
+        aria-required="true"
             />
           </label>
         </div>

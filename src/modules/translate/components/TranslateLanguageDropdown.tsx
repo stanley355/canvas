@@ -24,8 +24,8 @@ const TranslateLanguageDropdown = () => {
         placeholder="Pilih bahasa tujuan"
         id="translate_language_select"
         name="translate_language"
-        aria-label="translate_lang_select"
-        aria-labelledby="translate_lang_select"
+        aria-label="Pilih Bahasa Terjemahan"
+        aria-labelledby="Pilih Bahasa Terjemahan"
         options={TRANSLATE_LANGUAGE_LIST}
         styles={dropdownStyling}
         onChange={(option) => {
