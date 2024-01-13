@@ -55,6 +55,7 @@ const ProfileTimelySubscriptionStatus = (
           <div className={subscription.is_paylater ? "font-bold" : ""}>{formatSubscriptionDate(subscription?.end_at)}</div>
         </div>
       </div>
+      {subscription.is_paylater && <i>*Bayar tagihan Paylater dan dapatkan <b>Gratis 1 Bulan</b> </i> }
     </div>
   );
 };
