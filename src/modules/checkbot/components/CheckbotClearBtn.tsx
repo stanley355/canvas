@@ -9,7 +9,7 @@ const CheckbotClearBtn = () => {
     <Button
       type="button"
       id="clear_text_btn"
-      ariaLabel="clear_text_btn"
+      ariaLabel="Bersihkan Cek Grammar"
       wrapperClassName="absolute top-1 right-1 bg-blue-900 text-white border-l border-b flex items-center p-1 rounded-md"
       onClick={() => {
         dispatch({

@@ -10,6 +10,8 @@ const CheckbotPersonalInstructionInput = () => {
         name="checkbot_personal_instruction"
         className="w-full mb-2 p-2 border border-gray-500 rounded-md text-black"
         placeholder="Masukkan instruksi Anda"
+        aria-label="Pilih Instruksi Checkbot"
+        aria-required="true"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           dispatch({
             type: "SET",
