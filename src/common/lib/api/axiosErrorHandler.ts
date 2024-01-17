@@ -1,3 +1,5 @@
+import LogRocket from "logrocket";
+
 export const axiosErrorHandler = (url: string, error: any) => {
   if (error.response) {
     const { data, status, headers } = error.response;
@@ -9,12 +11,14 @@ export const axiosErrorHandler = (url: string, error: any) => {
       data,
     };
 
+    LogRocket.log(`Response Err: ${url}`, errorResponse)
     return errorResponse;
   } else if (error.request) {
     // The request was made but no response was received
     // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
     // http.ClientRequest in node.js
 
+    LogRocket.log(`Request Err: ${url}`, error.toJSON());
     return {
       status: 400,
       headers: {},
@@ -22,6 +26,7 @@ export const axiosErrorHandler = (url: string, error: any) => {
     };
   } else {
     // Something happened in setting up the request that triggered an Error
+    LogRocket.log(`Unknown Err: ${url}`, error.toJSON());
     return {
       status: 500,
       headers: {},
