@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { FaEnvelope, FaKey, FaUser, FaSpinner } from "react-icons/fa6";
 import Cookies from "js-cookie";
+import { decode } from "jsonwebtoken";
+import LogRocket from "logrocket";
 
-import Button from "@/common/components/Button";
 import { validateRegisForm } from "../lib/validateRegisForm";
 import { checkUserExist } from "../lib/checkUserExist";
 import { IRegisterUser, registerUser } from "../lib/registerUser";
@@ -44,7 +45,14 @@ const RegisterForm = () => {
     if (registerResult?.token) {
       setHasSubmit(false);
       sendFirebaseEvent("register");
+
       Cookies.set("token", registerResult.token);
+      const decodedToken: any = decode(String(registerResult.token));
+      LogRocket.identify(decodedToken.id, {
+        name: decodedToken.name,
+        email: decodedToken.email
+      });
+
       window.location.href = "/profile/";
       return;
     } else {
