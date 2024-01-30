@@ -11,13 +11,10 @@ const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
 const NoPlansModal = dynamic(
   () => import("../../plans/components/NoPlansModal")
 );
-const PaylaterOfferModal = dynamic(
-  () => import("../../plans/components/PaylaterOfferModal")
-);
 
 const TranslateContainer = () => {
   const { translateStates } = useTranslate();
-  const { showLoginModal, showNoPlansModal, showPaylaterOffer } =
+  const { showLoginModal, showNoPlansModal } =
     translateStates;
   return (
     <div className="container mx-auto">
@@ -35,7 +32,6 @@ const TranslateContainer = () => {
       </div>
       {showLoginModal && <LoginModal />}
       {showNoPlansModal && <NoPlansModal />}
-      {showPaylaterOffer && <PaylaterOfferModal />}
     </div>
   );
 };

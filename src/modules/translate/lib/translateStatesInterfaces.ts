@@ -2,7 +2,6 @@ export interface ITranslateStates {
   showLoginModal: boolean
   showHistoryBar: boolean
   showNoPlansModal: boolean
-  showPaylaterOffer: boolean;
   translateLanguage: ITranslateLanguage
   translateContext: string
   translateText: string

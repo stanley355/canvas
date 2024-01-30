@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import { decode } from "jsonwebtoken";
+import LogRocket from "logrocket";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 export const handleGoogleLogin = async (token: any) => {
@@ -26,10 +27,14 @@ export const handleGoogleLogin = async (token: any) => {
   if (data?.token) {
     sendFirebaseEvent("google_login");
     Cookies.set("token", data.token);
+    LogRocket.identify(decodedToken.id, {
+      name: decodedToken.name,
+      email: decodedToken.email
+    });
 
     const path = Router.asPath;
     if (path === "/register" || path === "/login") {
-      window.location.href = "/";
+      window.location.href = "/profile/";
       return;
     }
 

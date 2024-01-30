@@ -8,7 +8,6 @@ export interface ICheckbotStates {
   showLoginModal: boolean;
   showHistoryBar: boolean;
   showNoPlansModal: boolean;
-  showPaylaterOffer: boolean;
   checkbotInstruction: string;
   isPersonalInstruction: boolean;
   checkbotPersonalInstruction: string;
@@ -23,7 +22,6 @@ export const CHECKBOT_STATES: ICheckbotStates = {
   showLoginModal: false,
   showHistoryBar: false,
   showNoPlansModal: false,
-  showPaylaterOffer: false,
   checkbotInstruction: "",
   isPersonalInstruction: false,
   checkbotPersonalInstruction: "",

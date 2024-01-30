@@ -56,13 +56,6 @@ const CheckbotSubmitBtn = () => {
     const user: any = decode(token);
     const userHasOngoingPlan = await checkUserHasOngoingPlan(user);
 
-    if (userHasOngoingPlan.showPaylaterOffer) {
-      dispatch({ type: "SET", name: "showPaylaterOffer", value: true });
-      sendFirebaseEvent("paylater_popup");
-      setIsLoading(false);
-      return;
-    }
-
     if (!userHasOngoingPlan.hasOngoingPlan) {
       dispatch({ type: "SET", name: "showNoPlansModal", value: true });
       setIsLoading(false);
