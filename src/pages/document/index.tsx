@@ -1,21 +1,21 @@
 import { useDesktopScreen } from "@/common/lib/hooks/useDesktopScreen";
 import DocumentBanner from "@/modules/document/components/DocumentBanner";
+import DocumentList from "@/modules/document/components/DocumentList";
 import DocumentMobile from "@/modules/document/components/DocumentMobile";
 import DocumentSearchBox from "@/modules/document/components/DocumentSearchBox";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 
 const DocumentHome = () => {
   const isDesktop = useDesktopScreen();
-
   if (!isDesktop) {
     return <DocumentMobile />
   }
 
-
   return (
-    <div className="container mx-auto border-x border-blue-900 pt-[2.5%]">
+    <div className="container mx-auto border-x border-blue-900 pt-[2.5%] min-h-screen">
       <DocumentBanner />
       <DocumentSearchBox />
+      <DocumentList />
     </div>
   )
 }
