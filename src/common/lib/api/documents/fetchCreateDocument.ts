@@ -1,7 +1,11 @@
 import axios from "axios";
 import { axiosErrorHandler } from "../axiosErrorHandler";
+import { IDocument } from "./documentInterface";
 
-export const fetchCreateDocument = async (userID: string) => {
+
+
+
+export const fetchCreateDocument = async (userID: string)=> {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/documents/`;
   const axiosConfig = {
     method: "POST",
