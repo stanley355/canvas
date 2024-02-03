@@ -21,7 +21,7 @@ const Header = () => {
   }, [cookieToken]);
 
   return (
-    <nav className="bg-blue-900 w-full p-4 lg:py-2 flex flex-row items-center justify-between fixed z-10">
+    <nav className="bg-blue-900 w-full p-2 flex flex-row items-center justify-between fixed z-10">
       <Button
         type="link"
         href="/"

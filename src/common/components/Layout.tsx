@@ -10,7 +10,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className={inter.className}>
       <Header />
-      <main className="h-min-screen pt-16 lg:pt-12">{children}</main>
+      <main className="min-h-screen pt-16 lg:pt-12">{children}</main>
       <Footer />
       <ToastContainer
         position="top-center"

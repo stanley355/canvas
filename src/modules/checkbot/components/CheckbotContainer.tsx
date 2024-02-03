@@ -43,7 +43,9 @@ const CheckbotContainer = () => {
           )}
         </div>
       </div>
-      <PlanList />
+      <div className="px-4">
+        <PlanList />
+      </div>
       {showLoginModal && <LoginModal />}
       {showNoPlansModal && <NoPlansModal />}
     </div>

@@ -1,8 +1,11 @@
+import DocumentMobile from "@/modules/document/components/DocumentMobile";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 
 const DocumentHome = () => {
   return (
-    <div>index</div>
+    <div className="min-h-[100vh]">
+      <DocumentMobile />
+    </div>
   )
 }
 

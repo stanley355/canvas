@@ -27,7 +27,7 @@ const TranslateContainer = () => {
         </div>
         <TranslateResultBox />
       </div>
-      <div className="mt-4">
+      <div className="mt-4 px-4">
         <PlanList />
       </div>
       {showLoginModal && <LoginModal />}
