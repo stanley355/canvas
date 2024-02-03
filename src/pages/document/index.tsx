@@ -1,10 +1,17 @@
+import { useDesktopScreen } from "@/common/lib/hooks/useDesktopScreen";
 import DocumentMobile from "@/modules/document/components/DocumentMobile";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 
 const DocumentHome = () => {
+  const isDesktop = useDesktopScreen();
+
+  if (!isDesktop) {
+    return <DocumentMobile />
+  }
+
+
   return (
-    <div className="min-h-[100vh]">
-      <DocumentMobile />
+    <div className="">
     </div>
   )
 }
