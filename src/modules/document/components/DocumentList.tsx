@@ -37,7 +37,9 @@ const DocumentList = (props: IDocumentList) => {
       </button>
 
       {userDocuments.length > 0 && userDocuments.map((doc: IDocument) =>
-        <Link href={`/document/${doc.id}`}
+        <Link
+          href={`/document/${doc.id}`}
+          key={doc.id}
           className="shadow-lg border border-gray-100 rounded-md flex flex-col items-center justify-center p-8 pb-4 hover:font-bold cursor-pointer h-40">
           <FaRegFile className="text-4xl text-blue-900" />
           <div className="mt-4 text-sm">{doc.name}</div>
