@@ -24,7 +24,7 @@ const DocumentHome = (props: IDocumentHome) => {
     <div className="container mx-auto border-x border-blue-900 pt-[2.5%] min-h-screen">
       <DocumentBanner user={user} />
       <DocumentSearchBox />
-      <DocumentList />
+      <DocumentList user={user} />
     </div>
   )
 }
