@@ -53,7 +53,7 @@ export const getServerSideProps: GetServerSideProps = async (
 
   return {
     props: {
-      user: decode(token),
+      user,
       userDocuments,
     },
   };

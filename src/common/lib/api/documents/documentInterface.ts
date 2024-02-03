@@ -5,5 +5,5 @@ export interface IDocument {
   updated_at: string
   name: string
   content: string | null 
-  ai_completion: string | null 
+  checkbot_completion: string | null 
 }
