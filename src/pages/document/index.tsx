@@ -7,14 +7,17 @@ import DocumentBanner from "@/modules/document/components/DocumentBanner";
 import DocumentList from "@/modules/document/components/DocumentList";
 import DocumentMobile from "@/modules/document/components/DocumentMobile";
 import DocumentSearchBox from "@/modules/document/components/DocumentSearchBox";
+import { fetchAllDocument } from "@/common/lib/api/documents/fetchAllDocument";
+import { IDocument } from "@/common/lib/api/documents/documentInterface";
 
 interface IDocumentHome {
-  user: IUser
+  user: IUser,
+  userDocuments: IDocument[]
 }
 
 const DocumentHome = (props: IDocumentHome) => {
-  const {user} = props;
-  
+  const {user, userDocuments} = props;
+
   const isDesktop = useDesktopScreen();
   if (!isDesktop) {
     return <DocumentMobile />
@@ -24,7 +27,7 @@ const DocumentHome = (props: IDocumentHome) => {
     <div className="container mx-auto border-x border-blue-900 pt-[2.5%] min-h-screen">
       <DocumentBanner user={user} />
       <DocumentSearchBox />
-      <DocumentList user={user} />
+      <DocumentList user={user} userDocuments={userDocuments} />
     </div>
   )
 }
@@ -44,10 +47,14 @@ export const getServerSideProps: GetServerSideProps = async (
     };
   }
 
+  const user: any = decode(token);
+
+  const userDocuments = await fetchAllDocument(user.id);
 
   return {
     props: {
-      user: decode(token)
+      user: decode(token),
+      userDocuments,
     },
   };
 };

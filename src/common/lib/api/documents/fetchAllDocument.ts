@@ -1,17 +1,13 @@
 import axios from "axios";
 import { axiosErrorHandler } from "../axiosErrorHandler";
 
-export const fetchCreateDocument = async (userID: string)=> {
+export const fetchAllDocument = async (userID: string)=> {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/documents/`;
   const axiosConfig = {
-    method: "POST",
+    method: "GET",
     url: URL,
     headers: {
-      path: "/",
-    },
-    data: {
-      user_id: userID,
-      name: "Dokumen Tanpa Judul",
+      path: `?user_id=${userID}`,
     },
   };
 

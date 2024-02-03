@@ -12,8 +12,6 @@ const DocumentEditor = () => {
     const content = `Correct this to standard English: ${editorText}`;
     const apiRes = await fetchAIChatCompletion(content);
 
-    console.log(apiRes.choices[0]);
-    
     return apiRes;
   } 
 
