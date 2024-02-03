@@ -1,5 +1,7 @@
 import { useDesktopScreen } from "@/common/lib/hooks/useDesktopScreen";
+import DocumentBanner from "@/modules/document/components/DocumentBanner";
 import DocumentMobile from "@/modules/document/components/DocumentMobile";
+import DocumentSearchBox from "@/modules/document/components/DocumentSearchBox";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 
 const DocumentHome = () => {
@@ -11,7 +13,9 @@ const DocumentHome = () => {
 
 
   return (
-    <div className="">
+    <div className="container mx-auto border-x border-blue-900 pt-[2.5%]">
+      <DocumentBanner />
+      <DocumentSearchBox />
     </div>
   )
 }
