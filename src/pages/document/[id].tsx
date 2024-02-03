@@ -1,12 +1,12 @@
-import { useMemo, useRef, useState } from 'react'
+import { useMemo } from 'react'
 import dynamic from 'next/dynamic';
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { decode } from "jsonwebtoken";
 import DocumentSuggestion from '@/modules/document/components/DocumentSuggestion';
-import 'react-quill/dist/quill.snow.css';
 import { fetchUserDocument } from '@/common/lib/api/documents/fetchUserDocument';
 import { IUser } from '@/common/lib/api/users/userInterfaces';
 import { IDocument } from '@/common/lib/api/documents/documentInterface';
+import 'react-quill/dist/quill.snow.css';
 
 interface IDocumentEditor {
   user: IUser,
@@ -54,7 +54,7 @@ export const getServerSideProps: GetServerSideProps = async (
 
   const user: any = decode(token);
   const document = await fetchUserDocument(user.id, String(ctx.query.id));
-
+  
   return {
     props: {
       user,
