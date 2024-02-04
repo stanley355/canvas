@@ -13,10 +13,33 @@ interface IDocumentSuggestionHeader {
 const DocumentSuggestionHeader = (props: IDocumentSuggestionHeader) => {
   const { user, document } = props;
 
+  const options = [
+    {
+      label: "Analyze Text Strength and Weakness",
+      value: "Analyze the strength and weakness of this text:",
+    },
+    {
+      label: "Correct grammar and spelling",
+      value: "Correct the grammar and spelling of this text:",
+    },
+    {
+      label: "Give Improvement Suggestion",
+      value: "Give improvement suggestions of this text:",
+    },
+    {
+      label: "Paraphrase Text",
+      value: "Summarize this text:",
+    },
+    {
+      label: "Rewrite Text",
+      value: "Rewrite this text:",
+    },
+  ]
+
   return (
     <div className="flex items-center justify-between pt-1">
       <DocumentTitle user={user} document={document} /> 
-      <ReactSelect options={[{ label: "hi", value: "woi" }]} placeholder="Pilih Instruksi" className="w-1/2" />
+      <ReactSelect options={options} placeholder="Pilih Instruksi" className="w-1/2 border-blue-900 border rounded-md" />
     </div>
   )
 }
