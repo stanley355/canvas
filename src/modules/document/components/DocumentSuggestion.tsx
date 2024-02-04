@@ -21,7 +21,7 @@ const DocumentSuggestion = (props: IDocumentSuggestion) => {
     if (documentEditorStates.suggestionText) return documentEditorStates.suggestionText;
     if (document.checkbot_completion) return document.checkbot_completion;
     return ""
-  }, [documentEditorStates.suggestionText])
+  }, [documentEditorStates.suggestionText, document.checkbot_completion])
 
   return (
     <div className="w-1/2 h-[89vh] relative">

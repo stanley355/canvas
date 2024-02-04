@@ -49,7 +49,7 @@ const DocumentList = (props: IDocumentList) => {
       </button>
 
       {userDocuments.length > 0 && userDocuments.map((doc: IDocument) =>
-        <div className="shadow-lg border border-gray-100 rounded-md cursor-pointer relative h-36">
+        <div className="shadow-lg border border-gray-100 rounded-md cursor-pointer relative h-36" key={doc.id}>
           <button
             type="button"
             onClick={async () => await handleDeletDocument(doc.id)}
@@ -58,7 +58,6 @@ const DocumentList = (props: IDocumentList) => {
           </button>
           <Link
             href={`/document/${doc.id}`}
-            key={doc.id}
             className="hover:font-bold">
             <FaRegFileWord className="text-4xl text-blue-900 h-3/5 mx-auto" />
             <div className="h-2/5 pl-2 text-ellipsis overflow-hidden ">{doc.name}</div>
