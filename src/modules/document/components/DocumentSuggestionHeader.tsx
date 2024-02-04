@@ -1,12 +1,13 @@
-import { IDocument } from '@/common/lib/api/documents/documentInterface'
-import { IUser } from '@/common/lib/api/users/userInterfaces'
-import { FaPen } from 'react-icons/fa6'
 import ReactSelect, { SingleValue } from 'react-select'
+import { toast } from 'react-toastify'
+
 import DocumentTitle from './DocumentTitle'
 import { fetchAIChatCompletionV2 } from '@/common/lib/api/ai/fetchAIChatCompletionV2'
+import { fetchUpdateDocument } from '@/common/lib/api/documents/fetchUpdateDocument'
 import { useDocumentEditor } from '../lib/useDocumentEditor'
 import { IChatCompletionRes } from '@/common/lib/api/ai/aiAPIInterfaces'
-import { toast } from 'react-toastify'
+import { IDocument } from '@/common/lib/api/documents/documentInterface'
+import { IUser } from '@/common/lib/api/users/userInterfaces'
 
 interface IDocumentSuggestionHeader {
   user: IUser,
@@ -50,6 +51,16 @@ const DocumentSuggestionHeader = (props: IDocumentSuggestionHeader) => {
         name: "suggestionText",
         value: apiRes.choices[0].message.content
       });
+
+      const updatePayload = {
+        id: document.id,
+        user_id: user.id,
+        name: document.name,
+        content: document.content,
+        checkbot_completion: apiRes.choices[0].message.content,
+      };
+  
+      await fetchUpdateDocument(updatePayload);
       return;
     }
 
