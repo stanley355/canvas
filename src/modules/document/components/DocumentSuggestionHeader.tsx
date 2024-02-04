@@ -1,8 +1,12 @@
 import { IDocument } from '@/common/lib/api/documents/documentInterface'
 import { IUser } from '@/common/lib/api/users/userInterfaces'
 import { FaPen } from 'react-icons/fa6'
-import ReactSelect from 'react-select'
+import ReactSelect, { SingleValue } from 'react-select'
 import DocumentTitle from './DocumentTitle'
+import { fetchAIChatCompletionV2 } from '@/common/lib/api/ai/fetchAIChatCompletionV2'
+import { useDocumentEditor } from '../lib/useDocumentEditor'
+import { IChatCompletionRes } from '@/common/lib/api/ai/aiAPIInterfaces'
+import { toast } from 'react-toastify'
 
 interface IDocumentSuggestionHeader {
   user: IUser,
@@ -12,34 +16,56 @@ interface IDocumentSuggestionHeader {
 
 const DocumentSuggestionHeader = (props: IDocumentSuggestionHeader) => {
   const { user, document } = props;
+  const { documentEditorStates, dispatch } = useDocumentEditor();
 
   const options = [
     {
       label: "Analyze Text Strength and Weakness",
-      value: "Analyze the strength and weakness of this text:",
+      value: "Analyze the strength and weakness of this text",
     },
     {
       label: "Correct grammar and spelling",
-      value: "Correct the grammar and spelling of this text:",
+      value: "Correct the grammar and spelling of this text",
     },
     {
       label: "Give Improvement Suggestion",
-      value: "Give improvement suggestions of this text:",
+      value: "Give improvement suggestions of this text",
     },
     {
       label: "Paraphrase Text",
-      value: "Summarize this text:",
+      value: "Summarize this text",
     },
     {
       label: "Rewrite Text",
-      value: "Rewrite this text:",
+      value: "Rewrite this text",
     },
-  ]
+  ];
+
+  const handleInstructionChange = async (option: SingleValue<{ label: string, value: string }>) => {
+    const apiRes: IChatCompletionRes = await fetchAIChatCompletionV2(String(option?.value), documentEditorStates.editorText);
+
+    if (apiRes.id) {
+      dispatch({
+        type: "SET",
+        name: "suggestionText",
+        value: apiRes.choices[0].message.content
+      });
+      return;
+    }
+
+    toast.error("Gagal melaksanakan instruksi, silakan coba lagi");
+    return;
+  }
 
   return (
     <div className="flex items-center justify-between pt-1 gap-4">
-      <DocumentTitle user={user} document={document} /> 
-      <ReactSelect options={options} placeholder="Pilih Instruksi" className="w-1/2 border-blue-900 border rounded-md" />
+      <DocumentTitle user={user} document={document} />
+      <ReactSelect
+        options={options}
+        placeholder="Pilih Instruksi"
+        className="w-1/2 border-blue-900 border rounded-md"
+        onChange={handleInstructionChange}
+      />
     </div>
   )
 }

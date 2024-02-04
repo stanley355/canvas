@@ -10,5 +10,5 @@ export interface IDocumentEditorDispatch{
 
 export const DocumentEditorContext = createContext({
   documentEditorStates: DOCUMENT_EDITOR_STATES,
-  dispatch: (dispatchPayload: IDocumentEditorStates) => {},
+  dispatch: (dispatchPayload: IDocumentEditorDispatch) => {},
 });

@@ -22,7 +22,7 @@ const DocumentTitle = (props: IDocumentTItle) => {
       user_id: user.id,
       name: titleValue ? titleValue : "Dokumen Tanpa Judul",
       content: document.content,
-      checkbot_completion: document.content,
+      checkbot_completion: document.checkbot_completion,
     };
 
     await fetchUpdateDocument(updatePayload);
