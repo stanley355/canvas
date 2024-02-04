@@ -20,7 +20,7 @@ const DocumentTitle = (props: IDocumentTItle) => {
     const updatePayload = {
       id: document.id,
       user_id: user.id,
-      name: titleValue,
+      name: titleValue ? titleValue : "Dokumen Tanpa Judul",
       content: document.content,
       checkbot_completion: document.content,
     };
@@ -30,19 +30,19 @@ const DocumentTitle = (props: IDocumentTItle) => {
   }
 
   return (
-    <div>
+    <div className='w-1/2'>
       {isEdit ?
         <input
           type="text"
           value={titleValue}
-          className='p-2 focus:outline-none'
+          className='p-2 w-full font-semibold rounded-md'
           autoFocus
           onChange={(e: ChangeEvent<HTMLInputElement>) => setTitleValue(e.target.value)}
           onBlur={handleUpdate}
         /> :
-        <button type="button" className='flex items-center gap-1 p-2 font-bold' onClick={() => setIsEdit(true)}>
-          <FaPen />
-          <div>{document.name}</div>
+        <button type="button" className='flex items-center gap-1 p-2 font-semibold  w-full' onClick={() => setIsEdit(true)}>
+          <FaPen className='text-xl'  />
+          <div className='truncate'>{document.name}</div>
         </button>}
     </div>
 

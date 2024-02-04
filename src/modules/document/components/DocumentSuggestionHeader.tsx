@@ -37,7 +37,7 @@ const DocumentSuggestionHeader = (props: IDocumentSuggestionHeader) => {
   ]
 
   return (
-    <div className="flex items-center justify-between pt-1">
+    <div className="flex items-center justify-between pt-1 gap-4">
       <DocumentTitle user={user} document={document} /> 
       <ReactSelect options={options} placeholder="Pilih Instruksi" className="w-1/2 border-blue-900 border rounded-md" />
     </div>
