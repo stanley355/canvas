@@ -11,7 +11,7 @@ export const axiosErrorHandler = (url: string, error: any) => {
       data,
     };
 
-    LogRocket.log(`Response Err: ${url}`, errorResponse);
+    LogRocket.log(`Response Err: ${url}`, errorResponse)
     return errorResponse;
   } else if (error.request) {
     // The request was made but no response was received

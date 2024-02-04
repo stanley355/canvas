@@ -12,30 +12,27 @@ import { IDocument } from "@/common/lib/api/documents/documentInterface";
 import { useState } from "react";
 
 interface IDocumentHome {
-  user: IUser;
-  userDocuments: IDocument[];
+  user: IUser,
+  userDocuments: IDocument[]
 }
 
 const DocumentHome = (props: IDocumentHome) => {
-  const { user, userDocuments } = props;
+  const {user, userDocuments} = props;
   const [documentList, setDocumentList] = useState(userDocuments);
 
   const isDesktop = useDesktopScreen();
   if (!isDesktop) {
-    return <DocumentMobile />;
+    return <DocumentMobile />
   }
 
   return (
     <div className="container mx-auto border-x border-blue-900 pt-[2.5%] min-h-screen">
       <DocumentBanner user={user} />
-      <DocumentSearchBox
-        userDocuments={userDocuments}
-        setDocumentList={setDocumentList}
-      />
+      <DocumentSearchBox userDocuments={userDocuments} setDocumentList={setDocumentList} />
       <DocumentList user={user} userDocuments={documentList} />
     </div>
-  );
-};
+  )
+}
 
 export default DocumentHome;
 export const getServerSideProps: GetServerSideProps = async (

@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { FaPlusCircle } from "react-icons/fa";
+import { FaPlusCircle} from "react-icons/fa";
 import { FaUserPlus } from "react-icons/fa6";
 import { IUser } from "@/common/lib/api/users/userInterfaces";
 

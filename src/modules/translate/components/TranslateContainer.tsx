@@ -14,7 +14,8 @@ const NoPlansModal = dynamic(
 
 const TranslateContainer = () => {
   const { translateStates } = useTranslate();
-  const { showLoginModal, showNoPlansModal } = translateStates;
+  const { showLoginModal, showNoPlansModal } =
+    translateStates;
   return (
     <div className="container mx-auto">
       <TranslateHeader />

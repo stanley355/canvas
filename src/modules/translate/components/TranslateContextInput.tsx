@@ -2,8 +2,8 @@ import React from "react";
 import { useTranslate } from "../lib/useTranslate";
 
 const TranslateContextInput = () => {
-  const { dispatch } = useTranslate();
-
+  const {dispatch } = useTranslate();
+  
   return (
     <label htmlFor="context">
       <input

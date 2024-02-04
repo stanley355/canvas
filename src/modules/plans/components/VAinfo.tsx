@@ -45,12 +45,10 @@ const VAinfo = ({ info }: IVAInfo) => {
         1. Sebelum pembayaran, jangan refresh atau menutup halaman ini
       </div>
       <div className="mb-4">
-        2. Transfer jumlah yang sesuai dengan jumlah total diatas (cth: transfer
-        Rp11.000 jika total yang tertera Rp11.000)
+        2. Transfer jumlah yang sesuai dengan jumlah total diatas (cth: transfer Rp11.000 jika total yang tertera Rp11.000)
       </div>
       <div>
-        3. Setelah pembayaran: <b>Klik tombol akun di atas</b> untuk mengecek
-        paket Anda,
+        3. Setelah pembayaran: <b>Klik tombol akun di atas</b> untuk mengecek paket Anda,
       </div>
     </div>
   );

@@ -85,11 +85,7 @@ const SubscriptionVAForm = (props: ISubscriptionVAForm) => {
           disabled={hasSubmit}
           className="w-full text-center mt-4 p-2 bg-blue-900 text-white font-semibold rounded"
         >
-          {hasSubmit ? (
-            <FaSpinner className="mx-auto animate-spin" />
-          ) : (
-            "Lanjut"
-          )}
+          {hasSubmit ? <FaSpinner className="mx-auto animate-spin" /> : "Lanjut"}
         </button>
       </form>
     </div>

@@ -1,10 +1,7 @@
 import axios from "axios";
 import { axiosErrorHandler } from "../axiosErrorHandler";
 
-export const fetchDeleteDocument = async (
-  userID: string,
-  documentID: string
-) => {
+export const fetchDeleteDocument= async (userID: string, documentID: string)=> {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/documents/`;
   const axiosConfig = {
     method: "DELETE",

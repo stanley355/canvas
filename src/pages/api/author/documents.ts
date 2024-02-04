@@ -2,10 +2,7 @@ import { axiosErrorHandler } from "@/common/lib/api/axiosErrorHandler";
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const authorDocumentsAPI = async (
-  req: NextApiRequest,
-  res: NextApiResponse
-) => {
+const authorDocumentsAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   let URL = `${process.env.AUTHOR_URL}v1/documents`;
 
   if (req.headers && req.headers.path) {
@@ -17,8 +14,8 @@ const authorDocumentsAPI = async (
     url: URL,
     data: req.body,
     headers: {
-      Authorization: process.env.AUTHOR_TOKEN,
-    },
+      Authorization: process.env.AUTHOR_TOKEN
+    }
   };
 
   try {

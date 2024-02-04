@@ -31,6 +31,7 @@ const openaiChatCompletionAPI = async (
       const { data } = await axios(axiosConfig);
       res.send(data);
     } catch (error) {
+
       // third try catch
       axiosConfig.data.model = "gpt-3.5-turbo";
       try {
@@ -40,6 +41,7 @@ const openaiChatCompletionAPI = async (
         const errorRes = await axiosErrorHandler(URL, err);
         res.send(errorRes);
       }
+
     }
   }
 };

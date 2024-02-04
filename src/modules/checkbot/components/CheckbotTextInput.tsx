@@ -19,13 +19,13 @@ const CheckbotTextInput = () => {
           className="w-full h-full bg-white resize-none p-2 rounded border border-black text-black focus:outline-none "
           placeholder="Masukkan teks Anda di sini"
           value={checkbotText}
-          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>{
             dispatch({
               type: "SET",
               name: "checkbotText",
               value: e.target.value,
-            });
-          }}
+            })}
+          }
         />
       </label>
       <CheckbotSubmitBtn />

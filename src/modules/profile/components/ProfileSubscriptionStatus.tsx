@@ -15,11 +15,9 @@ const ProfileSubscriptionStatus = (props: IProfile) => {
   }
 
   if (user?.balance > 0) {
-    return (
-      <div className="border-y border-blue-900 py-4 my-4">
-        <ProfilePayGoSubscriptionStatus user={user} />
-      </div>
-    );
+    return <div className="border-y border-blue-900 py-4 my-4">
+      <ProfilePayGoSubscriptionStatus user={user} />
+    </div>;
   }
 
   return (

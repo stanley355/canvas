@@ -2,11 +2,12 @@ import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { decode } from "jsonwebtoken";
 
 import { IDocumentEditor } from "@/modules/document/components/DocumentEditor";
-import DocumentEditor from "@/modules/document/components/DocumentEditor";
-import DocumentEditorProvider from "@/modules/document/components/DocumentEditorProvider";
+import DocumentEditor from '@/modules/document/components/DocumentEditor';
+import DocumentEditorProvider from '@/modules/document/components/DocumentEditorProvider';
 
-import { fetchUserDocument } from "@/common/lib/api/documents/fetchUserDocument";
-import "react-quill/dist/quill.snow.css";
+import { fetchUserDocument } from '@/common/lib/api/documents/fetchUserDocument';
+import 'react-quill/dist/quill.snow.css';
+
 
 const DocumentPage = (props: IDocumentEditor) => {
   const { user, document } = props;
@@ -15,13 +16,14 @@ const DocumentPage = (props: IDocumentEditor) => {
     <DocumentEditorProvider>
       <DocumentEditor user={user} document={document} />
     </DocumentEditorProvider>
-  );
-};
+  )
+}
 
 export default DocumentPage;
 export const getServerSideProps: GetServerSideProps = async (
   ctx: GetServerSidePropsContext
 ) => {
+
   const token = ctx.req.cookies.token;
 
   if (!token) {
@@ -35,7 +37,7 @@ export const getServerSideProps: GetServerSideProps = async (
 
   const user: any = decode(token);
   const document = await fetchUserDocument(user.id, String(ctx.query.id));
-
+  
   return {
     props: {
       user,

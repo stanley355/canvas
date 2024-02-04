@@ -20,10 +20,7 @@ const Login = () => {
           </div>
 
           <div className="text-center">
-            Belum punya akun?{" "}
-            <Link href="/register/" className="text-blue-900 underline">
-              Daftar
-            </Link>{" "}
+            Belum punya akun? <Link href="/register/" className="text-blue-900 underline">Daftar</Link>{" "}
           </div>
         </div>
       </div>

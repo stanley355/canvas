@@ -1,6 +1,8 @@
+
 import axios from "axios";
 import { IUser } from "../users/userInterfaces";
 import { axiosErrorHandler } from "../axiosErrorHandler";
+
 
 export interface IFetchUserPrompts {
   instruction: string;
@@ -10,10 +12,7 @@ export interface IFetchUserPrompts {
   completion_text: string;
 }
 
-export const fetchUserPrompts = async (
-  user: IUser,
-  payload: IFetchUserPrompts
-) => {
+export const fetchUserPrompts = async (user: IUser, payload: IFetchUserPrompts) => {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/prompts/`;
   const fetchPromptPayload = {
     user_id: user.id,
