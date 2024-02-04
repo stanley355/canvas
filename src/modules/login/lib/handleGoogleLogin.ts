@@ -29,7 +29,7 @@ export const handleGoogleLogin = async (token: any) => {
     Cookies.set("token", data.token);
     LogRocket.identify(decodedToken.id, {
       name: decodedToken.name,
-      email: decodedToken.email
+      email: decodedToken.email,
     });
 
     const path = Router.asPath;

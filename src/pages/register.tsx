@@ -19,7 +19,10 @@ const Register = () => {
             <GoogleLoginBtn />
           </div>
           <div className="text-center">
-            Sudah punya akun? <Link href="/login/" className="text-blue-900 underline">Masuk</Link>{" "}
+            Sudah punya akun?{" "}
+            <Link href="/login/" className="text-blue-900 underline">
+              Masuk
+            </Link>{" "}
           </div>
         </div>
       </div>

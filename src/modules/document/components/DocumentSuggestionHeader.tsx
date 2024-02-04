@@ -1,19 +1,18 @@
-import ReactSelect, { SingleValue } from 'react-select'
-import { toast } from 'react-toastify'
+import ReactSelect, { SingleValue } from "react-select";
+import { toast } from "react-toastify";
 
-import DocumentTitle from './DocumentTitle'
-import { fetchAIChatCompletionV2 } from '@/common/lib/api/ai/fetchAIChatCompletionV2'
-import { fetchUpdateDocument } from '@/common/lib/api/documents/fetchUpdateDocument'
-import { useDocumentEditor } from '../lib/useDocumentEditor'
-import { IChatCompletionRes } from '@/common/lib/api/ai/aiAPIInterfaces'
-import { IDocument } from '@/common/lib/api/documents/documentInterface'
-import { IUser } from '@/common/lib/api/users/userInterfaces'
+import DocumentTitle from "./DocumentTitle";
+import { fetchAIChatCompletionV2 } from "@/common/lib/api/ai/fetchAIChatCompletionV2";
+import { fetchUpdateDocument } from "@/common/lib/api/documents/fetchUpdateDocument";
+import { useDocumentEditor } from "../lib/useDocumentEditor";
+import { IChatCompletionRes } from "@/common/lib/api/ai/aiAPIInterfaces";
+import { IDocument } from "@/common/lib/api/documents/documentInterface";
+import { IUser } from "@/common/lib/api/users/userInterfaces";
 
 interface IDocumentSuggestionHeader {
-  user: IUser,
-  document: IDocument
+  user: IUser;
+  document: IDocument;
 }
-
 
 const DocumentSuggestionHeader = (props: IDocumentSuggestionHeader) => {
   const { user, document } = props;
@@ -42,23 +41,28 @@ const DocumentSuggestionHeader = (props: IDocumentSuggestionHeader) => {
     },
   ];
 
-  const handleInstructionChange = async (option: SingleValue<{ label: string, value: string }>) => {
+  const handleInstructionChange = async (
+    option: SingleValue<{ label: string; value: string }>
+  ) => {
     dispatch({
       type: "SET",
       name: "isLoading",
-      value: true
+      value: true,
     });
-    const apiRes: IChatCompletionRes = await fetchAIChatCompletionV2(String(option?.value), documentEditorStates.editorText);
+    const apiRes: IChatCompletionRes = await fetchAIChatCompletionV2(
+      String(option?.value),
+      documentEditorStates.editorText
+    );
     if (apiRes.id) {
       dispatch({
         type: "SET",
         name: "suggestionText",
-        value: apiRes.choices[0].message.content
+        value: apiRes.choices[0].message.content,
       });
       dispatch({
         type: "SET",
         name: "isLoading",
-        value: false
+        value: false,
       });
 
       const updatePayload = {
@@ -68,7 +72,7 @@ const DocumentSuggestionHeader = (props: IDocumentSuggestionHeader) => {
         content: document.content,
         checkbot_completion: apiRes.choices[0].message.content,
       };
-  
+
       await fetchUpdateDocument(updatePayload);
       return;
     }
@@ -76,11 +80,11 @@ const DocumentSuggestionHeader = (props: IDocumentSuggestionHeader) => {
     dispatch({
       type: "SET",
       name: "isLoading",
-      value: false
+      value: false,
     });
     toast.error("Gagal melaksanakan instruksi, silakan coba lagi");
     return;
-  }
+  };
 
   return (
     <div className="flex items-center justify-between pt-1 gap-4">
@@ -92,7 +96,7 @@ const DocumentSuggestionHeader = (props: IDocumentSuggestionHeader) => {
         onChange={handleInstructionChange}
       />
     </div>
-  )
-}
+  );
+};
 
-export default DocumentSuggestionHeader
+export default DocumentSuggestionHeader;

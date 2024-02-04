@@ -1,4 +1,11 @@
-import { FaLanguage, FaRobot, FaCircleUser, FaRupiahSign, FaFileCircleQuestion, FaFileWord } from "react-icons/fa6";
+import {
+  FaLanguage,
+  FaRobot,
+  FaCircleUser,
+  FaRupiahSign,
+  FaFileCircleQuestion,
+  FaFileWord,
+} from "react-icons/fa6";
 
 export const HEADER_MENU = [
   {

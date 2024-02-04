@@ -48,7 +48,7 @@ const LoginForm = () => {
       const decodedToken: any = decode(String(user.token));
       LogRocket.identify(decodedToken.id, {
         name: decodedToken.name,
-        email: decodedToken.email
+        email: decodedToken.email,
       });
 
       window.location.href = "/profile";

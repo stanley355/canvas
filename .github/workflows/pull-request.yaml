@@ -18,7 +18,7 @@ jobs:
 
       - name: Build
         run: yarn build
-      
+
       - name: Build develop Docker image
         uses: docker/build-push-action@v4
         with:
