@@ -43,13 +43,22 @@ const DocumentSuggestionHeader = (props: IDocumentSuggestionHeader) => {
   ];
 
   const handleInstructionChange = async (option: SingleValue<{ label: string, value: string }>) => {
+    dispatch({
+      type: "SET",
+      name: "isLoading",
+      value: true
+    });
     const apiRes: IChatCompletionRes = await fetchAIChatCompletionV2(String(option?.value), documentEditorStates.editorText);
-
     if (apiRes.id) {
       dispatch({
         type: "SET",
         name: "suggestionText",
         value: apiRes.choices[0].message.content
+      });
+      dispatch({
+        type: "SET",
+        name: "isLoading",
+        value: false
       });
 
       const updatePayload = {
@@ -64,6 +73,11 @@ const DocumentSuggestionHeader = (props: IDocumentSuggestionHeader) => {
       return;
     }
 
+    dispatch({
+      type: "SET",
+      name: "isLoading",
+      value: false
+    });
     toast.error("Gagal melaksanakan instruksi, silakan coba lagi");
     return;
   }

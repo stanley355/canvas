@@ -4,6 +4,7 @@ import DocumentSuggestionHeader from "./DocumentSuggestionHeader"
 import { useDocumentEditor } from "../lib/useDocumentEditor"
 import classNames from "classnames"
 import { useMemo } from "react"
+import { FaSpinner } from "react-icons/fa6"
 
 interface IDocumentSuggestion {
   user: IUser,
@@ -14,6 +15,7 @@ interface IDocumentSuggestion {
 const DocumentSuggestion = (props: IDocumentSuggestion) => {
   const { user, document } = props;
   const { documentEditorStates } = useDocumentEditor();
+  const {isLoading} = documentEditorStates;
 
   const suggestionValue = useMemo(()=> {
     if (documentEditorStates.suggestionText) return documentEditorStates.suggestionText;
@@ -22,7 +24,10 @@ const DocumentSuggestion = (props: IDocumentSuggestion) => {
   }, [documentEditorStates.suggestionText])
 
   return (
-    <div className="w-1/2 h-[89vh]">
+    <div className="w-1/2 h-[89vh] relative">
+   {  isLoading && <div className="absolute bg-[rgba(0,0,0,0.5)] top-1 left-0 z-10 w-full h-[94vh] flex items-center justify-center">
+        <FaSpinner className="text-white text-5xl animate-spin"/>
+      </div>}
       <DocumentSuggestionHeader user={user} document={document} />
       <textarea
         disabled
