@@ -18,6 +18,7 @@ interface IDocumentSuggestionHeader {
 const DocumentSuggestionHeader = (props: IDocumentSuggestionHeader) => {
   const { user, document } = props;
   const { documentEditorStates, dispatch } = useDocumentEditor();
+  const {editorText} = documentEditorStates;
 
   const options = [
     {
@@ -65,11 +66,13 @@ const DocumentSuggestionHeader = (props: IDocumentSuggestionHeader) => {
         id: document.id,
         user_id: user.id,
         name: document.name,
-        content: document.content,
+        content: editorText,
         checkbot_completion: apiRes.choices[0].message.content,
       };
   
-      await fetchUpdateDocument(updatePayload);
+      const b = await fetchUpdateDocument(updatePayload);
+      console.log(333, b);
+      
       return;
     }
 
@@ -83,7 +86,7 @@ const DocumentSuggestionHeader = (props: IDocumentSuggestionHeader) => {
   }
 
   return (
-    <div className="flex items-center justify-between pt-1 gap-4">
+    <div className="flex items-center justify-between py-1 gap-4">
       <DocumentTitle user={user} document={document} />
       <ReactSelect
         options={options}

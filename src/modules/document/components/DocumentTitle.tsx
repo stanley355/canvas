@@ -4,6 +4,7 @@ import { fetchUpdateDocument } from '@/common/lib/api/documents/fetchUpdateDocum
 import { IUser } from '@/common/lib/api/users/userInterfaces'
 import { useState, ChangeEvent } from 'react'
 import { FaPen } from 'react-icons/fa6'
+import { useDocumentEditor } from '../lib/useDocumentEditor'
 
 interface IDocumentTItle {
   user: IUser,
@@ -13,6 +14,8 @@ interface IDocumentTItle {
 
 const DocumentTitle = (props: IDocumentTItle) => {
   const { user, document } = props;
+  const {documentEditorStates} = useDocumentEditor();
+  const {editorText, suggestionText} = documentEditorStates;
   const [titleValue, setTitleValue] = useState(document.name)
   const [isEdit, setIsEdit] = useState(false);
 
@@ -21,8 +24,8 @@ const DocumentTitle = (props: IDocumentTItle) => {
       id: document.id,
       user_id: user.id,
       name: titleValue ? titleValue : "Dokumen Tanpa Judul",
-      content: document.content,
-      checkbot_completion: document.checkbot_completion,
+      content: editorText,
+      checkbot_completion: suggestionText,
     };
 
     await fetchUpdateDocument(updatePayload);

@@ -11,7 +11,7 @@ import 'react-quill/dist/quill.snow.css';
 
 const DocumentPage = (props: IDocumentEditor) => {
   const { user, document } = props;
-
+  
   return (
     <DocumentEditorProvider>
       <DocumentEditor user={user} document={document} />

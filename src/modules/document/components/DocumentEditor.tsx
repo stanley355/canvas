@@ -15,8 +15,9 @@ export interface IDocumentEditor {
 
 const DocumentEditor = (props: IDocumentEditor) => {
   const { user, document } = props;
-  const { dispatch } = useDocumentEditor();
-  
+  const { dispatch, documentEditorStates } = useDocumentEditor();
+  const { suggestionText } = documentEditorStates;
+
   const timeout = useRef<any>(null);
   const ReactQuill = useMemo(() => dynamic(() => import('react-quill'), { ssr: false }), []);
 
@@ -34,7 +35,7 @@ const DocumentEditor = (props: IDocumentEditor) => {
       user_id: user.id,
       name: document.name,
       content,
-      checkbot_completion: document.checkbot_completion,
+      checkbot_completion: suggestionText,
     };
 
     timeout.current = setTimeout(
