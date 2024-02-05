@@ -36,7 +36,7 @@ const DocumentSuggestion = (props: IDocumentSuggestion) => {
         onChange={() => { }}
         placeholder="Pilih instruksi untuk memulai"
         value={suggestionValue}
-        className={classNames("p-2 w-full h-full", suggestionValue ? "text-gray-700" : "text-gray-400")}
+        className={classNames("p-2 w-full h-full text-sm", suggestionValue ? "text-gray-700" : "text-gray-400")}
       />
 
     </div>
