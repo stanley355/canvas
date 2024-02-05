@@ -70,9 +70,7 @@ const DocumentSuggestionHeader = (props: IDocumentSuggestionHeader) => {
         checkbot_completion: apiRes.choices[0].message.content,
       };
   
-      const b = await fetchUpdateDocument(updatePayload);
-      console.log(333, b);
-      
+      await fetchUpdateDocument(updatePayload);
       return;
     }
 
