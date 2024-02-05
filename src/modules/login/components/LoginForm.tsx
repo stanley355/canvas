@@ -51,7 +51,7 @@ const LoginForm = () => {
         email: decodedToken.email
       });
 
-      window.location.href = "/profile";
+      window.location.href = "/document/";
       return;
     }
 
