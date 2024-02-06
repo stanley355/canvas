@@ -6,6 +6,7 @@ import TranslateTextInput from "./TranslateTextInput";
 import TranslateResultBox from "./TranslateResultBox";
 import { useTranslate } from "../lib/useTranslate";
 import PlanList from "@/modules/plans/components/PlanList";
+import HomeVideo from "@/modules/home/components/HomeVideo";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
 const NoPlansModal = dynamic(
@@ -27,7 +28,8 @@ const TranslateContainer = () => {
         </div>
         <TranslateResultBox />
       </div>
-      <div className="mt-4 px-4">
+      <div className="mt-12 px-4 lg:px-0">
+        <HomeVideo />
         <PlanList />
       </div>
       {showLoginModal && <LoginModal />}

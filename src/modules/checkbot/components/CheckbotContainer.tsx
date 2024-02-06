@@ -10,6 +10,7 @@ import CheckbotRemovedAndAddedBox from "./CheckbotRemovedAndAddedBox";
 import { useCheckbot } from "../lib/useCheckbot";
 import { CheckbotResultFormatEnum } from "../lib/checkbotStates";
 import PlanList from "@/modules/plans/components/PlanList";
+import HomeVideo from "@/modules/home/components/HomeVideo";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
 const NoPlansModal = dynamic(
@@ -43,7 +44,8 @@ const CheckbotContainer = () => {
           )}
         </div>
       </div>
-      <div className="px-4">
+      <div className="px-4 lg:px-0 mt-12">
+        <HomeVideo />
         <PlanList />
       </div>
       {showLoginModal && <LoginModal />}
