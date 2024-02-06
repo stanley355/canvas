@@ -7,6 +7,7 @@ import { HOME_SEO } from "@/modules/home/lib/constant";
 import MetaSEO from "@/common/components/MetaSEO";
 import PlanList from "@/modules/plans/components/PlanList";
 import HomeProducts from "@/modules/home/components/HomeProducts";
+import HomeVideo from "@/modules/home/components/HomeVideo";
 
 const Home = () => {
   return (
@@ -27,6 +28,7 @@ const Home = () => {
             How can AI help you?
           </div>
           <HomeProducts />
+          <HomeVideo />
           <PlanList />
         </div>
       </div>
