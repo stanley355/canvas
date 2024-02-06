@@ -1,11 +1,10 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React from 'react'
+import { useRouter } from 'next/router';
+import { sendFirebaseEvent } from '@/common/lib/firebase/sendFirebaseEvent';
 
 interface IDocumentVideoModal {
   onCloseClick: () => void;
 }
-
 
 const DocumentVideoModal = (props: IDocumentVideoModal) => {
   const { onCloseClick } = props;
@@ -22,7 +21,10 @@ const DocumentVideoModal = (props: IDocumentVideoModal) => {
         <div className='text-center mb-4'>Simpan dan periksa teksmu dengan mudah di Language AI</div>
         <div className='w-full lg:flex lg:flex-row-reverse lg:items-center lg:gap-4'>
           <button type="button"
-            onClick={() => router.push("/document/")}
+            onClick={() => {
+              sendFirebaseEvent('document_video_popup_click')
+              router.push("/document/")
+            }}
             className='p-2 w-full bg-blue-900 text-white mb-4 lg:mb-0 rounded-md text-lg'
           >
             Coba Langsung

@@ -1,6 +1,7 @@
 import { IDocument } from "@/common/lib/api/documents/documentInterface";
 import { fetchCreateDocument } from "@/common/lib/api/documents/fetchCreateDocument";
 import { IUser } from "@/common/lib/api/users/userInterfaces"
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { useRouter } from "next/router";
 import { FaFileExcel, FaFilePowerpoint, FaFileWord, FaRegEnvelope, FaRegFilePdf } from "react-icons/fa6"
 import { toast } from "react-toastify";
@@ -20,6 +21,7 @@ const DocumentBanner = (props: IDocumentBanner) => {
       return;
     }
 
+    sendFirebaseEvent('document_create');
     router.push(`/document/${newDocRes.id}`);
     return;
   }

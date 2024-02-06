@@ -8,6 +8,7 @@ import { useDocumentEditor } from '../lib/useDocumentEditor'
 import { IChatCompletionRes } from '@/common/lib/api/ai/aiAPIInterfaces'
 import { IDocument } from '@/common/lib/api/documents/documentInterface'
 import { IUser } from '@/common/lib/api/users/userInterfaces'
+import { sendFirebaseEvent } from '@/common/lib/firebase/sendFirebaseEvent'
 
 interface IDocumentSuggestionHeader {
   user: IUser,
@@ -51,6 +52,7 @@ const DocumentSuggestionHeader = (props: IDocumentSuggestionHeader) => {
     });
     const apiRes: IChatCompletionRes = await fetchAIChatCompletionV2(String(option?.value), documentEditorStates.editorText);
     if (apiRes.id) {
+      sendFirebaseEvent('document_instruct');
       dispatch({
         type: "SET",
         name: "suggestionText",

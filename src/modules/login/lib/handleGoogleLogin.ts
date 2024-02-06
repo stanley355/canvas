@@ -1,4 +1,3 @@
-import Router from "next/router";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";

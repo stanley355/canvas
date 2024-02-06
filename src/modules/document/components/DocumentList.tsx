@@ -7,6 +7,7 @@ import { fetchCreateDocument } from "@/common/lib/api/documents/fetchCreateDocum
 import { IDocument } from "@/common/lib/api/documents/documentInterface";
 import { IUser } from "@/common/lib/api/users/userInterfaces";
 import { fetchDeleteDocument } from "@/common/lib/api/documents/fetchDeleteDocument";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 interface IDocumentList {
   user: IUser,
@@ -24,6 +25,7 @@ const DocumentList = (props: IDocumentList) => {
       return;
     }
 
+    sendFirebaseEvent('document_create');
     router.push(`/document/${newDocRes.id}`);
     return;
   }
@@ -35,6 +37,7 @@ const DocumentList = (props: IDocumentList) => {
       return;
     }
 
+    sendFirebaseEvent('document_delete');
     router.reload();
     return;
   }

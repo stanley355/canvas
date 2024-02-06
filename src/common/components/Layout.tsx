@@ -1,11 +1,12 @@
+import { useEffect, useState } from "react";
 import { Inter } from "next/font/google";
+import Cookies from "js-cookie";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import DocumentVideoModal from "@/modules/document/components/DocumentVideoModal";
-import { useEffect, useState } from "react";
-import Cookies from "js-cookie";
+import { sendFirebaseEvent } from "../lib/firebase/sendFirebaseEvent";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,6 +16,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (!videoCookie) {
+      sendFirebaseEvent('document_video_popup');
       setShowVideoModal(true);
       Cookies.set('show_video', 'false', { expires: 2 });
       return;
