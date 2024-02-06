@@ -21,7 +21,8 @@ const DocumentVideoModal = (props: IDocumentVideoModal) => {
         <div className='w-full lg:flex lg:flex-row-reverse lg:items-center lg:gap-4'>
           <button type="button"
             onClick={() => {
-              sendFirebaseEvent('document_video_popup_click')
+              sendFirebaseEvent('document_video_popup_click');
+              onCloseClick();
               router.push("/document/")
             }}
             className='p-2 w-full bg-blue-900 text-white mb-4 lg:mb-0 rounded-md text-lg'
