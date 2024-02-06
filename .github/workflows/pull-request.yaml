@@ -19,12 +19,12 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: Build production Docker image
+      - name: Build develop Docker image
         uses: docker/build-push-action@v4
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/canvas:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/canvas:develop
           build-args: |
             NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}
             NEXT_PUBLIC_GOOGLE_CLIENT_ID=${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}
