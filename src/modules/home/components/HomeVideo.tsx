@@ -6,7 +6,7 @@ const HomeVideo = () => {
 
       <div className="text-3xl border-b pb-2 mb-4 ">(NEW and Free) Document Feature </div>
       <video controls autoPlay>
-        <source src={videoURL} type="video/mp4" />
+        <source src={'/document_video.mov'} type="video/mp4" />
       </video>
     </div>
   )
