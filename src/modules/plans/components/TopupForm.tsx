@@ -82,7 +82,7 @@ const TopupForm = (props: ITopupForm) => {
             <input
               type="number"
               name="amount"
-              id="amount_input"
+              id="amount_inputhas_expired"
               placeholder="Rp ..."
               className="text-black p-2 w-full rounded border border-blue-900 focus:outline-none"
               disabled={hasSubmit}

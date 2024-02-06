@@ -1,4 +1,3 @@
-import Router from "next/router";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
@@ -29,16 +28,10 @@ export const handleGoogleLogin = async (token: any) => {
     Cookies.set("token", data.token);
     LogRocket.identify(decodedToken.id, {
       name: decodedToken.name,
-      email: decodedToken.email
+      email: decodedToken.email,
     });
 
-    const path = Router.asPath;
-    if (path === "/register" || path === "/login") {
-      window.location.href = "/profile/";
-      return;
-    }
-
-    window.location.reload();
+    window.location.href = "/document/";
     return;
   }
 

@@ -9,16 +9,16 @@ const PlanList = () => (
     <h2 className="lg:text-lg mb-4">
       Semua paket dapat langsung aktif setelah pembayaran
     </h2>
-    <div className="lg:grid lg:grid-cols-4 lg:gap-4">
+    <div className="lg:grid lg:grid-cols-5 lg:gap-8">
       {PLAN_LIST.map((plan: any, index: number) => (
         <div
           key={plan.title}
           className={classNames(
-            "border border-blue-900 rounded mb-4",
-            index === 0 ? "bg-green-100" : "bg-white"
+            "border border-blue-900 rounded-md mb-4",
+            index === 1 ? "bg-green-100" : "bg-white"
           )}
         >
-          {index === 0 && (
+          {index === 1 && (
             <div className="p-2 text-center bg-yellow-100 border-b border-blue-900 rounded-t font-bold text-lg">
               #PROMO
             </div>
@@ -37,7 +37,7 @@ const PlanList = () => (
                 href={plan.url}
                 className="border border-gray-500 rounded-[2rem] bg-yellow-100 text-lg font-semibold p-4"
               >
-                Pilih Paket
+                {index === 0 ? "Buat Dokumen" : "Pilih Paket"}
               </Link>
             </div>
           </div>

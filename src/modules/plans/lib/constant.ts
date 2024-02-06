@@ -1,5 +1,12 @@
 export const PLAN_LIST = [
   {
+    title: "Document",
+    desc: "Check your Document Grammar and Spelling for free",
+    price: "FREE",
+    unit: "",
+    url: "/documents/",
+  },
+  {
     title: "Pay-as-you-Go",
     desc: "Bayar hanya untuk penggunaan Anda, tanpa masa berlaku",
     price: "Rp1",

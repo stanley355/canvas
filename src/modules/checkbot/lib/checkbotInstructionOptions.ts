@@ -1,58 +1,22 @@
 export const CHECKBOT_INSTRUCTION_OPTIONS = [
   {
-    label: "Ikuti intruksi saya",
-    value: "personal_instruction",
+    label: "Analyze Text Strength and Weakness",
+    value: "Analyze the strength and weakness of this text:",
   },
   {
-    label: "Analisa kekuatan dan kelemahan teks",
-    value: "Analyze the strength and weakness from this text:",
-  },
-  {
-    label: "Perbaiki Grammar",
-    value: "Correct the grammar of this text:",
-  },
-  {
-    label: "Perbaiki Spelling",
-    value: "Correct the spelling of this text:",
-  },
-  {
-    label: "Perbaiki Grammar & Spelling",
+    label: "Correct grammar and spelling",
     value: "Correct the grammar and spelling of this text:",
   },
   {
-    label: "Temukan kesimpulan",
-    value: "Find the conclusion of this text:",
-  },
-  {
-    label: "Temukan kata kunci",
-    value: "Find the keywords of this text:",
-  },
-  {
-    label: "Berikan saran peningkatan teks",
+    label: "Give Improvement Suggestion",
     value: "Give improvement suggestions of this text:",
   },
   {
-    label: "Parafrasa teks",
-    value: "Paraphrase this text:",
-  },
-  {
-    label: "Koreksi teks",
-    value: "Proofread this text:",
-  },
-  {
-    label: "Permudah teks",
-    value: "Simplify this text:",
-  },
-  {
-    label: "Rangkum teks",
+    label: "Paraphrase Text",
     value: "Summarize this text:",
   },
   {
-    label: "Tulis ulang teks",
+    label: "Rewrite Text",
     value: "Rewrite this text:",
-  },
-  {
-    label: "Review teks",
-    value: "Review this text:",
   },
 ];

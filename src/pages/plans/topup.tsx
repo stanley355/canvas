@@ -14,7 +14,7 @@ const PlansTopup = ({ user }: any) => {
   return (
     <div>
       <MetaSEO seo={HOME_SEO} />
-      <div className="bg-gradient-to-br from-white via-slate-100 to-white h-[90vh]">
+      <div className="bg-gradient-to-br from-white via-slate-100 to-white">
         <div className="w-full lg:w-[400px] mx-auto text-black p-4 border-x border-blue-900 h-full">
           <Link href="/plans">
             <FaCircleArrowLeft className="text-2xl text-blue-900" />
