@@ -3,7 +3,6 @@ import { toast } from "react-toastify";
 import { FaEnvelope, FaKey, FaUser, FaSpinner } from "react-icons/fa6";
 import Cookies from "js-cookie";
 import { decode } from "jsonwebtoken";
-import LogRocket from "logrocket";
 
 import { validateRegisForm } from "../lib/validateRegisForm";
 import { checkUserExist } from "../lib/checkUserExist";
@@ -47,12 +46,6 @@ const RegisterForm = () => {
       sendFirebaseEvent("register");
 
       Cookies.set("token", registerResult.token);
-      const decodedToken: any = decode(String(registerResult.token));
-      LogRocket.identify(decodedToken.id, {
-        name: decodedToken.name,
-        email: decodedToken.email
-      });
-
       window.location.href = "/document/";
       return;
     } else {

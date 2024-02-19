@@ -2,7 +2,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import { decode } from "jsonwebtoken";
-import LogRocket from "logrocket";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 export const handleGoogleLogin = async (token: any) => {
@@ -23,14 +22,10 @@ export const handleGoogleLogin = async (token: any) => {
   };
 
   const { data } = await axios(axiosConfig);
+  
   if (data?.token) {
     sendFirebaseEvent("google_login");
     Cookies.set("token", data.token);
-    LogRocket.identify(decodedToken.id, {
-      name: decodedToken.name,
-      email: decodedToken.email,
-    });
-
     window.location.href = "/document/";
     return;
   }

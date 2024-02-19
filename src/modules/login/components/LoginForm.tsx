@@ -4,7 +4,6 @@ import { FaSpinner } from "react-icons/fa";
 import { FaEnvelope, FaKey } from "react-icons/fa6";
 import Cookies from "js-cookie";
 import { decode } from "jsonwebtoken";
-import LogRocket from "logrocket";
 
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { loginUser } from "../lib/loginUser";
@@ -45,12 +44,6 @@ const LoginForm = () => {
       setHasSubmit(false);
 
       Cookies.set("token", user.token);
-      const decodedToken: any = decode(String(user.token));
-      LogRocket.identify(decodedToken.id, {
-        name: decodedToken.name,
-        email: decodedToken.email
-      });
-
       window.location.href = "/document/";
       return;
     }

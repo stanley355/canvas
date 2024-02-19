@@ -12,8 +12,8 @@ const DocumentVideoModal = (props: IDocumentVideoModal) => {
 
   return (
     <div className='fixed top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.5)] z-20'>
-      <div className='bg-white p-4 rounded-md shadow-lg mt-[25%] lg:mt-[5%] lg:w-2/3 lg:mx-auto'>
-        <video controls autoPlay>
+      <div className='bg-white p-4 rounded-md shadow-lg mt-[25%] lg:mt-[5%] lg:w-2/3 lg:mx-auto h-2/3'>
+        <video controls autoPlay className='w-full h-2/3'>
           <source src={'/document_video.mov'} type="video/mp4" />
         </video>
         <div className='text-center text-xl my-2 mt-4'><b>(NEW)</b>  Document Feature</div>
