@@ -22,7 +22,7 @@ const HeaderMobileMenu = (props: IHeaderMobileMenu) => {
             alt="LanguageAI"
             width={30}
             height={30}
-            className='border border-black'
+            className="border border-black"
           />
           <span>LanguageAI</span>
         </Link>

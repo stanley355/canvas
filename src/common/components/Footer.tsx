@@ -31,7 +31,6 @@ const Footer = () => (
         </Link>
       </div>
 
-
       <div>
         <div className="font-bold text-lg">Company</div>
         <Link
@@ -48,14 +47,14 @@ const Footer = () => (
         </Link>
       </div>
     </div>
-    <div className='flex items-center justify-between py-4'>
+    <div className="flex items-center justify-between py-4">
       <Link href="/" className="flex items-center gap-1 justify-between">
         <Image
           src="/images/languageai.png"
           alt="LanguageAI"
           width={30}
           height={30}
-          className='border border-black'
+          className="border border-black"
         />
         <span>LanguageAI</span>
       </Link>

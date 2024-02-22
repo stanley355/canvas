@@ -1,4 +1,9 @@
-import { TbBrandGrammarly, TbLanguage, TbUserCircle, TbReportMoney } from "react-icons/tb";
+import {
+  TbBrandGrammarly,
+  TbLanguage,
+  TbUserCircle,
+  TbReportMoney,
+} from "react-icons/tb";
 import { FaRupiahSign } from "react-icons/fa6";
 
 export const HEADER_MENU = [
@@ -15,7 +20,7 @@ export const HEADER_MENU = [
   {
     title: "Pricing",
     url: "/plans/",
-    icon: <FaRupiahSign/>,
+    icon: <FaRupiahSign />,
   },
   {
     title: "Account",

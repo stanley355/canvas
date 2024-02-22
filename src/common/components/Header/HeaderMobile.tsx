@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -21,7 +21,7 @@ const HeaderMobile = (props: IHeaderMobile) => {
           alt="LanguageAI"
           width={30}
           height={30}
-            className='border border-black'
+          className="border border-black"
         />
         <span>LanguageAI</span>
       </Link>
@@ -39,7 +39,7 @@ const HeaderMobile = (props: IHeaderMobile) => {
         />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default HeaderMobile
+export default HeaderMobile;
