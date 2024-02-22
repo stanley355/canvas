@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { HEADER_MENU } from './constant'
 import { IHeaderMenu } from '.'
+import { TbUserCircle } from 'react-icons/tb'
 
 interface IHeaderDesktop {
   isLogin: boolean
@@ -10,12 +11,12 @@ interface IHeaderDesktop {
 const HeaderDesktop = (props: IHeaderDesktop) => {
   const { isLogin } = props;
   return (
-    <div className='container mx-auto bg-white hidden lg:flex items-center py-2'>
+    <div className='container mx-auto bg-white hidden lg:flex items-center justify-between py-2'>
       <div className='flex items-center'>
         <Link href="/" className="flex items-center gap-1">
           <Image
             src="/images/languageai.png"
-            alt="LanguageAi"
+            alt="LanguageAI"
             width={35}
             height={35}
             className='border border-black'
@@ -30,7 +31,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
             <Link
               href={menu.url}
               key={menu.title}
-              className="gap-1 flex items-center justify-between p-2 rounded hover:border hover:border-blue-500"
+              className="gap-1 flex items-center justify-between p-2 rounded-md hover:border hover:border-blue-700"
             >
               {menu.icon}
               <span>{menu.title}</span>
@@ -39,7 +40,32 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
         </div>
       </div>
 
-      
+
+      {isLogin ?
+
+        <Link
+          href="/login/"
+          className="text-white text-sm flex items-center gap-1 p-2 rounded-md bg-blue-700 hover:bg-blue-900"
+        >
+          <TbUserCircle />
+          <span>Account</span>
+        </Link> :
+        <div className='flex gap-4'>
+          <Link
+            href="/login/"
+            className="font-bold p-2 rounded-md hover:border hover:border-blue-700"
+          >
+            Login
+          </Link>
+          <Link
+            href="/login/"
+            className="text-white text-sm flex items-center gap-1 p-2 rounded-md bg-blue-700 hover:bg-blue-900"
+          >
+            <span className='font-bold'>Get LanguageAI</span>
+            <span>It's Free</span>
+          </Link>
+        </div>
+      }
     </div>
   )
 }

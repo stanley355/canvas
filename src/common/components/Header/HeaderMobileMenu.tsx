@@ -39,6 +39,7 @@ const HeaderMobileMenu = (props: IHeaderMobileMenu) => {
             href={menu.url}
             key={menu.title}
             className="border-b py-4 flex items-center justify-between"
+            onClick={onCloseClick}
           >
             <div className="flex gap-2 items-center text-lg">
               {menu.icon}
