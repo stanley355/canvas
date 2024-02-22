@@ -1,34 +1,24 @@
-import { FaLanguage, FaRobot, FaCircleUser, FaRupiahSign, FaFileCircleQuestion, FaFileWord } from "react-icons/fa6";
+import { TbBrandGrammarly, TbLanguage, TbUserCircle } from "react-icons/tb";
 
 export const HEADER_MENU = [
   {
-    title: "Harga",
-    url: "/plans/",
-    icon: <FaRupiahSign />,
-  },
-  {
-    title: "AI Checkbot",
-    url: "/checkbot/",
-    icon: <FaRobot />,
-  },
-  {
     title: "AI Translate",
     url: "/translate/",
-    icon: <FaLanguage />,
+    icon: <TbLanguage />,
   },
   {
-    title: "(NEW) Document",
+    title: "AI Grammar",
     url: "/document/",
-    icon: <FaFileWord />,
+    icon: <TbBrandGrammarly />,
   },
   {
-    title: "Akun",
+    title: "Account",
     url: "/profile/",
-    icon: <FaCircleUser />,
+    icon: <TbUserCircle />,
   },
   {
-    title: "Masuk",
+    title: "Login",
     url: "/login/",
-    icon: <FaCircleUser />,
+    icon: <TbUserCircle />,
   },
 ];
