@@ -42,7 +42,6 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
 
 
       {isLogin ?
-
         <Link
           href="/login/"
           className="text-white text-sm flex items-center gap-1 p-2 rounded-md bg-blue-700 hover:bg-blue-900"
