@@ -1,6 +1,13 @@
 import { useMemo } from "react";
 import cookie from "js-cookie";
 import HeaderMobile from "./HeaderMobile";
+import HeaderDesktop from "./HeaderDesktop";
+
+export interface IHeaderMenu {
+  title: string;
+  url: string;
+  icon: React.ReactNode;
+}
 
 const Header = () => {
   const isLogin = useMemo(() => {
@@ -9,8 +16,9 @@ const Header = () => {
   }, []);
 
   return (
-    <nav>
+    <nav className="w-full">
       <HeaderMobile isLogin={isLogin} />
+      <HeaderDesktop isLogin={isLogin} />
     </nav>
   );
 };

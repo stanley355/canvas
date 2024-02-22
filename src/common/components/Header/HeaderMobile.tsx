@@ -15,12 +15,13 @@ const HeaderMobile = (props: IHeaderMobile) => {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <div className="lg:hidden w-full fixed z-10 left-0 top-0 border-b p-2 bg-white flex justify-between items-center">
-      <Link href="/" className="flex items-center">
+      <Link href="/" className="flex items-center gap-1">
         <Image
           src="/images/languageai.png"
           alt="LanguageAI"
           width={35}
           height={35}
+            className='border border-black'
         />
         <span>languageai</span>
       </Link>

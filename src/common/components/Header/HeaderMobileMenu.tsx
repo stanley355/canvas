@@ -3,12 +3,7 @@ import Image from "next/image";
 import { RxCross1 } from "react-icons/rx";
 import { TbChevronRight } from "react-icons/tb";
 import { HEADER_MENU } from "./constant";
-
-interface IHeaderMenu {
-  title: string;
-  url: string;
-  icon: React.ReactNode;
-}
+import { IHeaderMenu } from ".";
 
 interface IHeaderMobileMenu {
   isLogin: boolean;
@@ -21,12 +16,13 @@ const HeaderMobileMenu = (props: IHeaderMobileMenu) => {
   return (
     <div className="w-full fixed left-0 top-0 z-20 h-full bg-white">
       <div className="w-full border-b p-2 bg-white flex justify-between items-center">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center gap-1">
           <Image
             src="/images/languageai.png"
             alt="LanguageAI"
             width={35}
             height={35}
+            className='border border-black'
           />
           <span>languageai</span>
         </Link>
