@@ -19,11 +19,11 @@ const HeaderMobile = (props: IHeaderMobile) => {
         <Image
           src="/images/languageai.png"
           alt="LanguageAI"
-          width={35}
-          height={35}
+          width={30}
+          height={30}
             className='border border-black'
         />
-        <span>languageai</span>
+        <span>LanguageAI</span>
       </Link>
       <button
         type="button"
