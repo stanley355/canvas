@@ -9,8 +9,7 @@ export const axiosErrorHandler = (url: string, error: any) => {
       data,
     };
 
-    
-   console.error(`Response Err: ${url}`, errorResponse)
+    console.error(`Response Err: ${url}`, errorResponse);
     return errorResponse;
   } else if (error.request) {
     // The request was made but no response was received

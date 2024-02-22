@@ -16,9 +16,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (!videoCookie) {
-      sendFirebaseEvent('document_video_popup');
+      sendFirebaseEvent("document_video_popup");
       setShowVideoModal(true);
-      Cookies.set('show_video', 'false', { expires: 2 });
+      Cookies.set("show_video", "false", { expires: 2 });
       return;
     }
   }, [videoCookie]);
@@ -36,7 +36,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         pauseOnHover
         theme="light"
       />
-      {showVideoModal && <DocumentVideoModal onCloseClick={() => setShowVideoModal(false)} />}
+      {showVideoModal && (
+        <DocumentVideoModal onCloseClick={() => setShowVideoModal(false)} />
+      )}
     </div>
   );
 };

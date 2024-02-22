@@ -5,7 +5,6 @@ import { FaLanguage, FaRobot } from "react-icons/fa6";
 const HomeProducts = () => {
   return (
     <div className="lg:flex lg:items-center lg:justify-evenly mb-16">
-
       <div className="bg-white rounded-lg p-4 mb-8 lg:mb-0 lg:w-[400px] border border-blue-900">
         <div className="flex items-center justify-center gap-2 text-2xl lg:text-3xl font-bold">
           <FaLanguage className="text-4xl  text-blue-900" />

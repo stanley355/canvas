@@ -86,8 +86,8 @@ const TopupForm = (props: ITopupForm) => {
               placeholder="Rp ..."
               className="text-black p-2 w-full rounded border border-blue-900 focus:outline-none"
               disabled={hasSubmit}
-        aria-label="Pembayaran Language AI"
-        aria-required="true"
+              aria-label="Pembayaran Language AI"
+              aria-required="true"
             />
           </label>
         </div>
@@ -106,7 +106,11 @@ const TopupForm = (props: ITopupForm) => {
           disabled={hasSubmit}
           className="w-full h-full text-center bg-blue-900 text-white font-bold rounded-md p-2"
         >
-          {hasSubmit ? <FaSpinner className="mx-auto animate-spin" /> : "Lanjut"}
+          {hasSubmit ? (
+            <FaSpinner className="mx-auto animate-spin" />
+          ) : (
+            "Lanjut"
+          )}
         </button>
       </form>
     </div>

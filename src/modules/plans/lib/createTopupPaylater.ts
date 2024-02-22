@@ -20,7 +20,7 @@ export const createTopupPaylater = async (
       subscription_duration_type: durationType,
     },
   };
-  
+
   try {
     const { data } = await axios(axiosConfig);
     return data;

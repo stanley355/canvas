@@ -23,15 +23,19 @@ const Header = () => {
         />
         <span>languageai</span>
       </Link>
-      <button type="button" className="p-2 h-full" onClick={() => setShowMenu(true)}>
+      <button
+        type="button"
+        className="p-2 h-full"
+        onClick={() => setShowMenu(true)}
+      >
         <RxHamburgerMenu />
       </button>
-      {showMenu &&
+      {showMenu && (
         <HeaderMobileMenu
           isLogin={isLogin}
           onCloseClick={() => setShowMenu(false)}
         />
-      }
+      )}
     </nav>
   );
 };

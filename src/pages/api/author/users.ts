@@ -14,8 +14,8 @@ const authorUsersAPI = async (req: NextApiRequest, res: NextApiResponse) => {
     url: URL,
     data: req.body,
     headers: {
-      Authorization: process.env.AUTHOR_TOKEN
-    }
+      Authorization: process.env.AUTHOR_TOKEN,
+    },
   };
 
   try {
