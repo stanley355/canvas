@@ -29,13 +29,13 @@ const Footer = () => (
           <TbBrandGrammarly />
           <span>AI Grammar</span>
         </Link>
-        <Link
+        {/* <Link
           href="/plans/"
           className="flex items-center gap-1 py-2 hover:font-bold"
         >
           <FaRupiahSign />
           <span>Pricing</span>
-        </Link>
+        </Link> */}
       </div>
 
       <div>
