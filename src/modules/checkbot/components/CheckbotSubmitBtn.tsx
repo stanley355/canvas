@@ -98,20 +98,20 @@ const CheckbotSubmitBtn = () => {
         value: removedDiff,
       });
 
-      const fetchUserPromptsPayload = {
-        instruction: checkbotInstruction,
-        prompt_token: chatCompletionRes.usage.prompt_tokens,
-        completion_token: chatCompletionRes.usage.completion_tokens,
-        prompt_text: checkbotText,
-        completion_text: chatCompletionContent,
-      };
+      // const fetchUserPromptsPayload = {
+      //   instruction: checkbotInstruction,
+      //   prompt_token: chatCompletionRes.usage.prompt_tokens,
+      //   completion_token: chatCompletionRes.usage.completion_tokens,
+      //   prompt_text: checkbotText,
+      //   completion_text: chatCompletionContent,
+      // };
 
       saveCheckbotHistory(checkbotStates, chatCompletionContent);
-      if (userHasOngoingPlan.isSubscription) {
-        await fetchUserPrompts(user, fetchUserPromptsPayload);
-      } else {
-        await fetchUserPremiumPrompts(user, fetchUserPromptsPayload);
-      }
+      // if (userHasOngoingPlan.isSubscription) {
+      //   await fetchUserPrompts(user, fetchUserPromptsPayload);
+      // } else {
+      //   await fetchUserPremiumPrompts(user, fetchUserPromptsPayload);
+      // }
 
       return;
     }

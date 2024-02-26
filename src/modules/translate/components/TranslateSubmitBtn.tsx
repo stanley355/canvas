@@ -72,20 +72,20 @@ const TranslateSubmitBtn = () => {
         value: chatCompletionContent,
       });
 
-      const fetchUserPromptsPayload = {
-        instruction: `Translate to ${translateLanguage.value}`,
-        prompt_token: chatCompletionRes.usage.prompt_tokens,
-        completion_token: chatCompletionRes.usage.completion_tokens,
-        prompt_text: translateText,
-        completion_text: chatCompletionContent,
-      };
+      // const fetchUserPromptsPayload = {
+      //   instruction: `Translate to ${translateLanguage.value}`,
+      //   prompt_token: chatCompletionRes.usage.prompt_tokens,
+      //   completion_token: chatCompletionRes.usage.completion_tokens,
+      //   prompt_text: translateText,
+      //   completion_text: chatCompletionContent,
+      // };
 
       saveTranslateHistory(translateStates, chatCompletionContent);
-      if (userHasOngoingPlan.isSubscription) {
-        await fetchUserPrompts(user, fetchUserPromptsPayload);
-      } else {
-        await fetchUserPremiumPrompts(user, fetchUserPromptsPayload);
-      }
+      // if (userHasOngoingPlan.isSubscription) {
+      //   await fetchUserPrompts(user, fetchUserPromptsPayload);
+      // } else {
+      //   await fetchUserPremiumPrompts(user, fetchUserPromptsPayload);
+      // }
 
       return;
     }
