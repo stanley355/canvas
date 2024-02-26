@@ -29,7 +29,7 @@ const TranslateContainer = () => {
       </div>
       <div className="mt-12 px-4 lg:px-0">
         <HomeVideo />
-        <PlanList />
+        {/* <PlanList /> */}
       </div>
       {showLoginModal && <LoginModal />}
       {showNoPlansModal && <NoPlansModal />}

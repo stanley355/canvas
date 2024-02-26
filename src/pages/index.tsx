@@ -29,7 +29,7 @@ const Home = () => {
           </div>
           <HomeProducts />
           <HomeVideo />
-          <PlanList />
+          {/* <PlanList /> */}
         </div>
       </div>
     </div>

@@ -23,11 +23,11 @@ export const HEADER_MENU = [
     url: "/document/",
     icon: <TbBrandGrammarly />,
   },
-  {
-    title: "Pricing",
-    url: "/plans/",
-    icon: <FaRupiahSign />,
-  },
+  // {
+  //   title: "Pricing",
+  //   url: "/plans/",
+  //   icon: <FaRupiahSign />,
+  // },
   {
     title: "Account",
     url: "/profile/",
