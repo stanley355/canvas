@@ -44,13 +44,13 @@ const TranslateSubmitBtn = () => {
 
     setIsLoading(true);
     const user: any = decode(token);
-    const userHasOngoingPlan = await checkUserHasOngoingPlan(user);
+    // const userHasOngoingPlan = await checkUserHasOngoingPlan(user);
 
-    if (!userHasOngoingPlan.hasOngoingPlan) {
-      dispatch({ type: "SET", name: "showNoPlansModal", value: true });
-      setIsLoading(false);
-      return;
-    }
+    // if (!userHasOngoingPlan.hasOngoingPlan) {
+    //   dispatch({ type: "SET", name: "showNoPlansModal", value: true });
+    //   setIsLoading(false);
+    //   return;
+    // }
 
     sendFirebaseEvent("translate");
 
