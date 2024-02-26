@@ -2,14 +2,14 @@ import axios from "axios";
 import { axiosErrorHandler } from "../axiosErrorHandler";
 
 interface IUpdateDocumentPayload {
-  id: string,
-  user_id: string,
-  name: string,
-  content: string | null,
-  checkbot_completion: string | null,
+  id: string;
+  user_id: string;
+  name: string;
+  content: string | null;
+  checkbot_completion: string | null;
 }
 
-export const fetchUpdateDocument = async (payload: IUpdateDocumentPayload)=> {
+export const fetchUpdateDocument = async (payload: IUpdateDocumentPayload) => {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/documents/`;
   const axiosConfig = {
     method: "PUT",
@@ -17,7 +17,7 @@ export const fetchUpdateDocument = async (payload: IUpdateDocumentPayload)=> {
     headers: {
       path: "/",
     },
-    data: payload
+    data: payload,
   };
 
   try {

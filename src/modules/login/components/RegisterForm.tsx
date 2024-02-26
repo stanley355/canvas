@@ -94,11 +94,7 @@ const RegisterForm = () => {
         disabled={hasSubmit}
         className="py-2 rounded-lg bg-blue-900 text-white text-lg w-full"
       >
-        {hasSubmit ? (
-          <FaSpinner className="animate-spin mx-auto" />
-        ) : (
-          "Daftar"
-        )}
+        {hasSubmit ? <FaSpinner className="animate-spin mx-auto" /> : "Daftar"}
       </button>
     </form>
   );

@@ -10,11 +10,11 @@ const MetaSEO = ({ seo }: IMetaSEO) => {
   const router = useRouter();
   const appName = useMemo(() => {
     if (router.pathname.includes("translate")) {
-      return "Language AI Translate"
+      return "Language AI Translate";
     }
 
     if (router.pathname.includes("checkbot")) {
-      return "Language AI Checkbot"
+      return "Language AI Checkbot";
     }
 
     return "Language AI";
@@ -54,7 +54,12 @@ const MetaSEO = ({ seo }: IMetaSEO) => {
       <meta name="apple-mobile-web-app-title" content={appName} />
       <link rel="icon" type="image/png" href="/images/languageai.png" />
       <link rel="canonical" href={seo?.url} />
-      <link href="/opensearch.xml?hl=in" title={seo?.title} rel="search" type="application/opensearchdescription+xml" />
+      <link
+        href="/opensearch.xml?hl=in"
+        title={seo?.title}
+        rel="search"
+        type="application/opensearchdescription+xml"
+      />
     </Head>
   );
 };
