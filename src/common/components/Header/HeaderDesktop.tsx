@@ -62,7 +62,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
             className="text-white text-sm flex items-center gap-1 p-2 rounded-md bg-blue-700 hover:bg-blue-900"
           >
             <span className="font-bold">Get LanguageAI</span>
-            <span>It's Free</span>
+            <span>It&apos;s Free</span>
           </Link>
         </div>
       )}
