@@ -2,7 +2,8 @@ import {
   TbBrandGrammarly,
   TbLanguage,
   TbUserCircle,
-  TbReportMoney,
+  TbFileDots,
+  TbRobotFace,
 } from "react-icons/tb";
 import { FaRupiahSign } from "react-icons/fa6";
 
@@ -11,6 +12,11 @@ export const HEADER_MENU = [
     title: "AI Translate",
     url: "/translate/",
     icon: <TbLanguage />,
+  },
+  {
+    title: "AI Checkbot",
+    url: "/checkbot/",
+    icon: <TbRobotFace/>,
   },
   {
     title: "AI Grammar",

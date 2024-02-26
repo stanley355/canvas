@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { TbCopyright, TbLanguage, TbBrandGrammarly } from "react-icons/tb";
+import { TbCopyright, TbLanguage, TbBrandGrammarly, TbFileDots, TbRobotFace } from "react-icons/tb";
 import { FaRupiahSign } from "react-icons/fa6";
 
 const Footer = () => (
@@ -9,14 +9,21 @@ const Footer = () => (
       <div>
         <div className="font-bold text-lg">Features</div>
         <Link
-          href="/login/"
+          href="/translate/"
           className="flex items-center gap-1 py-2 hover:font-bold"
         >
           <TbLanguage />
           <span>AI Translate</span>
         </Link>
         <Link
-          href="/login/"
+          href="/checkbot/"
+          className="flex items-center gap-1 py-2 hover:font-bold"
+        >
+          <TbRobotFace />
+          <span>AI Checkbot</span>
+        </Link>
+        <Link
+          href="/document/"
           className="flex items-center gap-1 py-2 hover:font-bold"
         >
           <TbBrandGrammarly />
