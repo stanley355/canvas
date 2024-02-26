@@ -54,13 +54,13 @@ const CheckbotSubmitBtn = () => {
 
     setIsLoading(true);
     const user: any = decode(token);
-    const userHasOngoingPlan = await checkUserHasOngoingPlan(user);
+    // const userHasOngoingPlan = await checkUserHasOngoingPlan(user);
 
-    if (!userHasOngoingPlan.hasOngoingPlan) {
-      dispatch({ type: "SET", name: "showNoPlansModal", value: true });
-      setIsLoading(false);
-      return;
-    }
+    // if (!userHasOngoingPlan.hasOngoingPlan) {
+    //   dispatch({ type: "SET", name: "showNoPlansModal", value: true });
+    //   setIsLoading(false);
+    //   return;
+    // }
 
     sendFirebaseEvent("checkbot");
 
@@ -98,20 +98,20 @@ const CheckbotSubmitBtn = () => {
         value: removedDiff,
       });
 
-      const fetchUserPromptsPayload = {
-        instruction: checkbotInstruction,
-        prompt_token: chatCompletionRes.usage.prompt_tokens,
-        completion_token: chatCompletionRes.usage.completion_tokens,
-        prompt_text: checkbotText,
-        completion_text: chatCompletionContent,
-      };
+      // const fetchUserPromptsPayload = {
+      //   instruction: checkbotInstruction,
+      //   prompt_token: chatCompletionRes.usage.prompt_tokens,
+      //   completion_token: chatCompletionRes.usage.completion_tokens,
+      //   prompt_text: checkbotText,
+      //   completion_text: chatCompletionContent,
+      // };
 
       saveCheckbotHistory(checkbotStates, chatCompletionContent);
-      if (userHasOngoingPlan.isSubscription) {
-        await fetchUserPrompts(user, fetchUserPromptsPayload);
-      } else {
-        await fetchUserPremiumPrompts(user, fetchUserPromptsPayload);
-      }
+      // if (userHasOngoingPlan.isSubscription) {
+      //   await fetchUserPrompts(user, fetchUserPromptsPayload);
+      // } else {
+      //   await fetchUserPremiumPrompts(user, fetchUserPromptsPayload);
+      // }
 
       return;
     }
