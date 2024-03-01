@@ -18,7 +18,7 @@ import LoginCardHeader from "@/modules/login/components/LoginCardHeader";
 const Login = () => {
   return (
     <>
-      <Card className="w-full lg:w-[350px] mx-auto">
+      <Card className="w-full lg:w-[350px] mx-auto mt-0">
         <LoginCardHeader />
         <CardContent>
           <form>
