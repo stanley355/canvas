@@ -43,7 +43,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
 
       {isLogin ? (
         <Link
-          href="/login/"
+          href="/profile/"
           className="flex items-center gap-1 p-2 text-sm text-white bg-black border rounded-md h-fit hover:text-black hover:bg-white hover:border-black"
         >
           <TbUserCircle />

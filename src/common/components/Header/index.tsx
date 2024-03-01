@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import cookie from "js-cookie";
@@ -17,11 +17,13 @@ export interface IHeaderMenu {
 
 const Header = (props: IHeader) => {
   const { isLoginPage } = props;
+  
+  const cookieToken = cookie.get("token");
+  const [isLogin, setIsLogin] =useState(false);
+  useEffect(() => {
+    setIsLogin(Boolean(cookieToken));
+  }, [cookieToken]);
 
-  const isLogin = useMemo(() => {
-    const cookieToken = cookie.get("token");
-    return Boolean(cookieToken);
-  }, []);
 
   if (isLoginPage) {
     return <nav className="p-2 lg:px-0 lg:mx-auto lg:container">
