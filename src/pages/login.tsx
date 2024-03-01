@@ -1,27 +1,22 @@
-import { GetServerSideProps, GetServerSidePropsContext } from "next";
-import LoginForm from "@/modules/login/components/LoginForm";
-import MetaSEO from "@/common/components/MetaSEO";
-import LoginHeader from "@/modules/login/components/LoginHeader";
-import GoogleLoginBtn from "@/modules/login/components/GoogleLoginBtn";
-import Link from "next/link";
-import { HOME_SEO } from "@/modules/home/lib/constant";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/common/components/ui/card"
+import { GetStaticProps } from "next";
+
+import { Card } from "@/common/components/ui/card"
+import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
 import LoginCardHeader from "@/modules/login/components/LoginCardHeader";
-import { BackgroundGradient } from "@/common/components/ui/BackgroundGradient";
 import LoginCardFooter from "@/modules/login/components/LoginCardFooter";
 import LoginCardContent from "@/modules/login/components/LoginCardContent";
-import { GoogleOAuthProvider } from "@react-oauth/google";
+import { getLoginPageStaticProps } from "@/modules/login/lib/getLoginPageStaticProps";
 
-const Login = () => {
+interface ILoginProps {
+  datoCmsData: IMetaHead
+}
+
+const Login = (props: ILoginProps) => {
+  const { datoCmsData } = props;
+
   return (
     <>
+      <MetaHead pagesSchema={datoCmsData.pagesSchema} />
       <Card className="border-transparent w-full lg:w-[350px] lg:mx-auto lg:border-black">
         <LoginCardHeader />
         <LoginCardContent />
@@ -32,21 +27,4 @@ const Login = () => {
 };
 
 export default Login;
-export const getServerSideProps: GetServerSideProps = async (
-  ctx: GetServerSidePropsContext
-) => {
-  const token = ctx.req.cookies.token;
-
-  if (token) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: "/profile/",
-      },
-    };
-  }
-
-  return {
-    props: {},
-  };
-};
+export const getStaticProps: GetStaticProps = getLoginPageStaticProps;

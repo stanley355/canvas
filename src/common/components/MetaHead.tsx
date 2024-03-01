@@ -10,7 +10,7 @@ interface IMetaHeadSeo {
   }
 }
 
-interface IMetaHead {
+export interface IMetaHead {
   pagesSchema: {
     _updatedAt: string
     slug: string
