@@ -8,26 +8,9 @@ import { HOME_SEO } from "@/modules/home/lib/constant";
 
 const Login = () => {
   return (
-    <div>
-      <MetaSEO seo={HOME_SEO} />
-      <div className="bg-gradient-to-br from-white via-slate-100 to-white h-screen">
-        <div className="container mx-auto p-4 lg:px-0 lg:w-1/4">
-          <LoginHeader />
-          <LoginForm />
-          <div className="my-4 flex flex-col items-center">
-            <div className="text-lg mb-2">atau</div>
-            <GoogleLoginBtn />
-          </div>
-
-          <div className="text-center">
-            Belum punya akun?{" "}
-            <Link href="/register/" className="text-blue-900 underline">
-              Daftar
-            </Link>{" "}
-          </div>
-        </div>
-      </div>
-    </div>
+    <>
+      
+    </>
   );
 };
 
