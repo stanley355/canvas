@@ -13,7 +13,7 @@ const LoginCardContent = () => {
       <form onSubmit={(e: FormEvent<HTMLFormElement>) => e.preventDefault()} className="mb-4">
         <Label htmlFor="email">Email</Label>
         <Input type="email" id="email" name="email" placeholder="Email" />
-        {showError && <div className="p-2 mt-4 text-sm bg-red-300">
+        {showError && <div className="p-2 mt-4 text-xs bg-red-300">
           There was an error when processing, please use Google Login to continue
         </div>}
         <Button className="w-full mt-4" type="submit" onClick={() => setShowError(true)}>Submit</Button>
