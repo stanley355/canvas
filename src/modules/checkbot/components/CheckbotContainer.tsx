@@ -9,10 +9,9 @@ import CheckbotResultToggleBtn from "./CheckbotResultToggleBtn";
 import CheckbotRemovedAndAddedBox from "./CheckbotRemovedAndAddedBox";
 import { useCheckbot } from "../lib/useCheckbot";
 import { CheckbotResultFormatEnum } from "../lib/checkbotStates";
-import PlanList from "@/modules/plans/components/PlanList";
 import HomeVideo from "@/modules/home/components/HomeVideo";
 
-const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
+// const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
 const NoPlansModal = dynamic(
   () => import("../../plans/components/NoPlansModal")
 );
@@ -48,7 +47,7 @@ const CheckbotContainer = () => {
         <HomeVideo />
         {/* <PlanList /> */}
       </div>
-      {showLoginModal && <LoginModal />}
+      {/* {showLoginModal && <LoginModal />} */}
       {showNoPlansModal && <NoPlansModal />}
     </div>
   );
