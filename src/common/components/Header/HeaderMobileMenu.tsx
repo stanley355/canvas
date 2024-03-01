@@ -19,12 +19,12 @@ const HeaderMobileMenu = (props: IHeaderMobileMenu) => {
         <Link href="/" className="flex items-center gap-1">
           <Image
             src="/images/languageai.png"
-            alt="LanguageAI"
+            alt="LanguageAi"
             width={30}
             height={30}
             className="border border-black"
           />
-          <span>LanguageAI</span>
+          <span>LanguageAi</span>
         </Link>
         <button type="button" className="p-2 h-full" onClick={onCloseClick}>
           <RxCross1 />
