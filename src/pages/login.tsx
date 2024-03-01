@@ -14,11 +14,13 @@ import {
   CardTitle,
 } from "@/common/components/ui/card"
 import LoginCardHeader from "@/modules/login/components/LoginCardHeader";
+import { BackgroundGradient } from "@/common/components/ui/BackgroundGradient";
+import LoginCardFooter from "@/modules/login/components/LoginCardFooter";
 
 const Login = () => {
   return (
     <>
-      <Card className="w-full lg:w-[350px] mx-auto mt-0">
+      <Card className="border-transparent w-full lg:w-[350px] lg:mx-auto">
         <LoginCardHeader />
         <CardContent>
           <form>
@@ -46,11 +48,7 @@ const Login = () => {
             </div>
           </form>
         </CardContent>
-        <CardFooter className="flex justify-between">
-          hi
-          {/* <Button variant="outline">Cancel</Button>
-          <Button>Deploy</Button> */}
-        </CardFooter>
+        <LoginCardFooter />
       </Card>
     </>
   );
