@@ -17,11 +17,12 @@ import LoginCardHeader from "@/modules/login/components/LoginCardHeader";
 import { BackgroundGradient } from "@/common/components/ui/BackgroundGradient";
 import LoginCardFooter from "@/modules/login/components/LoginCardFooter";
 import LoginCardContent from "@/modules/login/components/LoginCardContent";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const Login = () => {
   return (
     <>
-      <Card className="border-transparent w-full lg:w-[350px] lg:mx-auto">
+      <Card className="border-transparent w-full lg:w-[350px] lg:mx-auto lg:border-black">
         <LoginCardHeader />
         <LoginCardContent />
         <LoginCardFooter />
