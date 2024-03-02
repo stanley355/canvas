@@ -1,4 +1,11 @@
-export const axiosErrorHandler = (url: string, error: any) => {
+
+export interface IAxiosErrorRes  {
+  status: number;
+  headers: Record<string, any>;
+  data: Record<string, any>;
+}
+
+export const axiosErrorHandler = (url: string, error: any): IAxiosErrorRes => {
   if (error.response) {
     const { data, status, headers } = error.response;
     // The request was made and the server responded with a status code

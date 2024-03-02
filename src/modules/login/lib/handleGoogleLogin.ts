@@ -1,40 +1,21 @@
-import axios from "axios";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
-import { decode } from "jsonwebtoken";
+import { JwtPayload, decode } from "jsonwebtoken";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { fetchUserGmailLogin } from "@/common/lib/api/users/fetchUserGmailLogin";
 
 export const handleGoogleLogin = async (token: any) => {
   sendFirebaseEvent("login");
-  const decodedToken: any = decode(String(token.credential));
+  const decodedToken = decode(String(token.credential)) as JwtPayload;
+  const loginRes= await fetchUserGmailLogin(decodedToken);
 
-  const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/users/`;
-  const axiosConfig = {
-    method: "POST",
-    url: URL,
-    headers: {
-      path: "/login/gmail/",
-    },
-    data: {
-      fullname: decodedToken.name,
-      email: decodedToken.email,
-    },
-  };
-
-  const { data } = await axios(axiosConfig);
-
-  if (data?.token) {
+  if (loginRes.token) {
     sendFirebaseEvent("google_login");
-    Cookies.set("token", data.token);
-    window.location.href = "/document/";
-    return;
+    Cookies.set("token", loginRes.token);
+    window.location.href = "/profile/";
+    return loginRes;
   }
 
-  if (data?.error) {
-    toast.error(data.message);
-    return "";
-  }
-
-  toast.error("Something went wrong, please try again");
-  return "";
+  toast.error(loginRes.data.message);
+  return loginRes;
 };
