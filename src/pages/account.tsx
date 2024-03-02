@@ -1,9 +1,13 @@
-import React from 'react'
+import { GetServerSideProps } from 'next';
+import { getAccountPageServerProps } from '@/modules/account/lib/getAccountPageServerProps';
 
 const Account = () => {
   return (
-    <div>account</div>
+    <div className='container mx-auto'>
+
+    </div>
   )
 }
 
-export default Account; 
+export default Account;
+export const getServerSideProps: GetServerSideProps = getAccountPageServerProps;

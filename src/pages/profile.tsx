@@ -28,13 +28,13 @@ const Profile = (props: IProfile) => {
     <div>
       <MetaSEO seo={HOME_SEO} />
       <div className="bg-gradient-to-br from-white via-slate-100 to-white">
-        <div className="container mx-auto h-screen p-4 lg:w-1/3 border-x border-blue-900">
+        <div className="container h-screen p-4 mx-auto border-blue-900 lg:w-1/3 border-x">
           <ProfileIdentity user={user} />
           <ProfileSubscriptionStatus user={user} subscription={subscription} />
           <button
             type="button"
             onClick={onLogoutClick}
-            className="border border-blue-900 text-blue-900 p-1 px-2 rounded-md hover:underline"
+            className="p-1 px-2 text-blue-900 border border-blue-900 rounded-md hover:underline"
           >
             Keluar Akun
           </button>
