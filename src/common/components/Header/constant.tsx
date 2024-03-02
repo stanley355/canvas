@@ -30,7 +30,7 @@ export const HEADER_MENU = [
   // },
   {
     title: "Account",
-    url: "/profile/",
+    url: "/account/",
     icon: <TbUserCircle />,
   },
   {

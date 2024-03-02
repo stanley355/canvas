@@ -33,7 +33,7 @@ const HeaderMobileMenu = (props: IHeaderMobileMenu) => {
 
       <div className="px-4">
         {HEADER_MENU.filter((menu: IHeaderMenu) =>
-          isLogin ? menu.url !== "/login/" : menu.url !== "/profile/"
+          isLogin ? menu.url !== "/login/" : menu.url !== "/account/"
         ).map((menu: IHeaderMenu) => (
           <Link
             href={menu.url}

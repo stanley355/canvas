@@ -27,7 +27,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
         <div className="flex items-center gap-4 px-4 ">
           {HEADER_MENU.filter(
             (menu: IHeaderMenu) =>
-              menu.url !== "/login/" && menu.url !== "/profile/"
+              menu.url !== "/login/" && menu.url !== "/account/"
           ).map((menu: IHeaderMenu) => (
             <Link
               href={menu.url}
@@ -43,7 +43,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
 
       {isLogin ? (
         <Link
-          href="/profile/"
+          href="/account/"
           className="flex items-center gap-1 p-2 text-sm text-white bg-black border rounded-md h-fit hover:text-black hover:bg-white hover:border-black"
         >
           <TbUserCircle />
