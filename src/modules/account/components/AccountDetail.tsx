@@ -1,11 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { TbChevronRight } from "react-icons/tb";
-
-import { IUser } from '@/common/lib/api/users/userInterfaces'
-import { Button } from '@/common/components/ui/button';
 import Cookies from 'js-cookie';
 import { FaRupiahSign } from 'react-icons/fa6';
+
+import { Button } from '@/common/components/ui/button';
+import { IUser } from '@/common/lib/api/users/userInterfaces'
 
 interface IAccountDetail {
   user: IUser
