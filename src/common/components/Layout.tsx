@@ -3,15 +3,20 @@ import "react-toastify/dist/ReactToastify.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import { useRouter } from "next/router";
+import { useMemo } from "react";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
+
+  const hasFooter = useMemo(() => {
+    return !["/login", "/account"].includes(router.asPath)
+  }, [router.asPath])
 
   return (
     <>
       <Header isLoginPage={router.asPath === "/login"} />
       <main>{children}</main>
-      {router.asPath !== "/login" && <Footer />}
+      {hasFooter && <Footer />}
       <ToastContainer
         position="top-center"
         autoClose={2000}

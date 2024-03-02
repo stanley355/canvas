@@ -14,7 +14,7 @@ const HeaderMobile = (props: IHeaderMobile) => {
   const { isLogin } = props;
   const [showMenu, setShowMenu] = useState(false);
   return (
-    <div className="fixed top-0 left-0 z-10 flex items-center justify-between w-full p-2 bg-white border-b lg:hidden">
+    <div className="fixed top-0 left-0 z-10 flex items-center justify-between w-full p-2 bg-white lg:hidden">
       <Link href="/" className="flex items-center gap-1">
         <Image
           src="/images/languageai.png"
