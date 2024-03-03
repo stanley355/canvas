@@ -16,7 +16,7 @@ export const HEADER_MENU = [
   {
     title: "AI Checkbot",
     url: "/checkbot/",
-    icon: <TbRobotFace/>,
+    icon: <TbRobotFace />,
   },
   {
     title: "AI Grammar",

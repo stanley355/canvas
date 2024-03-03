@@ -7,10 +7,9 @@ export const getLoginPageStaticProps: GetStaticProps = async () => {
     slug: "login",
   });
 
-  
   return {
     props: {
-      datoCmsData
+      datoCmsData,
     },
   };
 };

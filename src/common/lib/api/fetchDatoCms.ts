@@ -7,7 +7,7 @@ export const fetchDatoCms = async (
 ) => {
   const url = String(process.env.DATOCMS_API_URL);
   const header = {
-    "Authorization": `Bearer ${process.env.DATOCMS_API_TOKEN}`,
+    Authorization: `Bearer ${process.env.DATOCMS_API_TOKEN}`,
   };
   try {
     const datoCmsRes = await request(

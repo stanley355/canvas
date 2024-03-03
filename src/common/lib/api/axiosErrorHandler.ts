@@ -1,5 +1,4 @@
-
-export interface IAxiosErrorRes  {
+export interface IAxiosErrorRes {
   status: number;
   headers: Record<string, any>;
   data: Record<string, any>;

@@ -21,7 +21,7 @@ export const getAccountPageServerProps: GetServerSideProps = async (
 
   return {
     props: {
-      user
+      user,
     },
   };
 };

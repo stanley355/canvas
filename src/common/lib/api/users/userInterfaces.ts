@@ -7,5 +7,5 @@ export interface IUser {
 }
 
 export interface IUserLogin {
-  token: string
+  token: string;
 }

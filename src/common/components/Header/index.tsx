@@ -17,27 +17,28 @@ export interface IHeaderMenu {
 
 const Header = (props: IHeader) => {
   const { isLoginPage } = props;
-  
+
   const cookieToken = cookie.get("token");
-  const [isLogin, setIsLogin] =useState(false);
+  const [isLogin, setIsLogin] = useState(false);
   useEffect(() => {
     setIsLogin(Boolean(cookieToken));
   }, [cookieToken]);
 
-
   if (isLoginPage) {
-    return <nav className="p-2 lg:px-0 lg:mx-auto lg:container">
-      <Link href="/" className="flex items-center gap-1">
-        <Image
-          src="/images/languageai.png"
-          alt="LanguageAi"
-          width={30}
-          height={30}
-          className="border border-black"
-        />
-        <span>LanguageAi</span>
-      </Link>
-    </nav>
+    return (
+      <nav className="p-2 lg:px-0 lg:mx-auto lg:container">
+        <Link href="/" className="flex items-center gap-1">
+          <Image
+            src="/images/languageai.png"
+            alt="LanguageAi"
+            width={30}
+            height={30}
+            className="border border-black"
+          />
+          <span>LanguageAi</span>
+        </Link>
+      </nav>
+    );
   }
 
   return (
