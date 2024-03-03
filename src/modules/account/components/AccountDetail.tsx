@@ -45,7 +45,7 @@ const AccountDetail = (props: IAccountDetail) => {
         </div>
       </div>
 
-      <div className="mb-6">
+      <div className="mb-6 lg:hidden">
         <div className="text-lg font-bold ">Subscriptions</div>
         <Link
           className="flex items-center gap-2 py-2 border-b w-fit hover:border-b-black"
