@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React from 'react'
+import AccountSubscriptionDetailPlan from './AccountSubscriptionDetailPlan'
 
 const AccountSubscriptionDetail = () => {
   return (
@@ -17,6 +17,8 @@ const AccountSubscriptionDetail = () => {
       <div className='w-full p-2 text-sm bg-blue-100 lg:w-1/2'>
         Change your Plan to enjoy full feature. Choose a plan to ensure that everything you write is clear, engaging, and polished.
       </div>
+
+      <AccountSubscriptionDetailPlan />
     </div>
   )
 }
