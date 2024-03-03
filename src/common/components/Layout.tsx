@@ -10,7 +10,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   const hasFooter = useMemo(() => {
     return !["/login", "/account", "/account/subscription"].includes(router.pathname);
-  }, [router.asPath]);
+  }, [router.pathname]);
 
   return (
     <>
