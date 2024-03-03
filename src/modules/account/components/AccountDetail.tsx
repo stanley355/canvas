@@ -20,7 +20,7 @@ const AccountDetail = (props: IAccountDetail) => {
 
   return (
     <div>
-      <div className="mb-8 text-2xl font-bold">Account</div>
+      <div className="mb-8 text-2xl font-bold border-b lg:w-4/5">Account</div>
 
       <div className="pb-2 mb-2 border-b lg:border-transparent">
         <div className="mb-2 text-gray-500">Name</div>
