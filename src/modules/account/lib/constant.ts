@@ -55,7 +55,7 @@ export const ACCOUNT_SUBSCRIPTION_DETAIL_PLAN: IAccountSubscriptionDetailPlanCon
       "planDescription":
         "Clarity, vocabulary, tone suggestions, and Advance translation",
       "planCta": "Get Premium",
-      "planHref": "/subscription/premium",
+      "planHref": "/plans/premium",
       "planFeatures": [
         {
           "name": "Ai Translate",
@@ -105,7 +105,7 @@ export const ACCOUNT_SUBSCRIPTION_DETAIL_PLAN: IAccountSubscriptionDetailPlanCon
       "planDescription":
         "Clarity, vocabulary, tone suggestions, and Advance translation",
       "planCta": "Get PayAsYouGo",
-      "planHref": "/subscription/payasyougo",
+      "planHref": "/plans/payasyougo",
       "planFeatures": [
         {
           "name": "Ai Translate",

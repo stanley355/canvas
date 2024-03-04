@@ -1,5 +1,4 @@
 import PlanHomeStatistic from "@/modules/plans/components/PlanHomeStatistic";
-import { TbBrandGrammarly, TbChevronRight, TbLanguage, TbUser } from "react-icons/tb";
 
 const Plans = () => {
   return (
