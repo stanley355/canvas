@@ -10,7 +10,7 @@ const AccountSubscriptionDetail = () => {
         <div className="mb-2 text-gray-500">Your Plan</div>
         <div className='flex items-center gap-12'>
           <div>Free Plan</div>
-          <Link href={'/subscription'} className='font-bold text-blue-700 border-b border-b-transparent hover:border-b-blue-700'>Change</Link>
+          <Link href={'/plans/'} className='font-bold text-blue-700 border-b border-b-transparent hover:border-b-blue-700'>Change</Link>
         </div>
       </div>
 

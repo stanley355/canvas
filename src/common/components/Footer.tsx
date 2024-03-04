@@ -26,20 +26,6 @@ const Footer = () => (
           <TbRobotFace />
           <span>AI Checkbot</span>
         </Link>
-        <Link
-          href="/document/"
-          className="flex items-center gap-1 py-2 hover:font-bold"
-        >
-          <TbBrandGrammarly />
-          <span>AI Grammar</span>
-        </Link>
-        {/* <Link
-          href="/plans/"
-          className="flex items-center gap-1 py-2 hover:font-bold"
-        >
-          <FaRupiahSign />
-          <span>Pricing</span>
-        </Link> */}
       </div>
 
       <div>

@@ -21,7 +21,7 @@ const Login = (props: ILoginProps) => {
     if (token) window.location.href = "/account/"
   }, [token])
 
-  if (token) return <h1 className="text-2xl">Redirecting...</h1>
+  if (token) return <h1 className="px-4 text-2xl">Redirecting...</h1>
 
   return (
     <>
