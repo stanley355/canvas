@@ -2,8 +2,18 @@ import MetaSEO from "@/common/components/MetaSEO";
 import TranslateProvider from "@/modules/translate/components/TranslateProvider";
 import TranslateContainer from "@/modules/translate/components/TranslateContainer";
 import { TRANSLATE_SEO } from "@/modules/translate/lib/constant";
+import { GetStaticProps } from "next";
+import { getTranslatePageStaticProps } from "@/modules/translateV2/lib/getTranslatePageStaticProps";
+import { IMetaHead } from "@/common/components/MetaHead";
 
-const Translate = () => {
+interface ITranslateProps {
+  datoCmsData: IMetaHead
+}
+
+const Translate = (props: ITranslateProps) => {
+  const {datoCmsData} = props;
+  console.log(datoCmsData);
+  
   return (
     <TranslateProvider>
       <MetaSEO seo={TRANSLATE_SEO} />
@@ -15,3 +25,4 @@ const Translate = () => {
 };
 
 export default Translate;
+export const getStaticProps: GetStaticProps = getTranslatePageStaticProps;
