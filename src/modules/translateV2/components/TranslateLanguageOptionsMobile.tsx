@@ -40,6 +40,7 @@ const TranslateLanguageOptionsMobile = (
         <div className="p-4 font-semibold">Common Languages</div>
         {TRANSLATE_LANGUAGE_LIST_COMMON.map((option: IOption) => (
           <Button
+            key={option.label}
             variant={"ghost"}
             className="flex items-center justify-start w-full  pl-[15%] gap-2 py-6"
           >
@@ -51,6 +52,7 @@ const TranslateLanguageOptionsMobile = (
         <div className="p-4 font-semibold">All Languages</div>
         {TRANSLATE_LANGUAGE_LIST_V2.map((option: IOption) => (
           <Button
+            key={option.label}
             variant={"ghost"}
             className="flex items-center justify-start w-full  pl-[15%] gap-2 py-6"
           >
