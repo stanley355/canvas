@@ -4,10 +4,10 @@ import TranslateLanguageMenuBtn from "./TranslateLanguageMenuBtn"
 
 const TranslateLanguageMenuMobile = () => {
   return (
-    <div className="flex items-center justify-around w-full mt-4 ">
-      <TranslateLanguageMenuBtn />
+    <div className="grid grid-cols-[42.5%_15%_42.5%] w-full mt-4 place-items-center">
+      <TranslateLanguageMenuBtn languageLabel="Detect Language" optionTitle="Translate From" />
       <TbArrowRight />
-      <Button>Detect Language</Button>
+      <TranslateLanguageMenuBtn languageLabel="Indonesia" optionTitle="Translate To" />
     </div>
   )
 }

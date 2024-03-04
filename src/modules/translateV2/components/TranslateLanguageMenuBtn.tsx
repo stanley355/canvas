@@ -2,12 +2,18 @@ import { Button } from "@/common/components/ui/button"
 import TranslateLanguageOptionsMobile from "./TranslateLanguageOptionsMobile"
 import { useState } from "react"
 
-const TranslateLanguageMenuBtn = () => {
+interface ITranslateLanguageMenuBtn {
+ languageLabel: string;
+ optionTitle: string; 
+}
+
+const TranslateLanguageMenuBtn = (props: ITranslateLanguageMenuBtn) => {
+  const {languageLabel, optionTitle} = props;
   const [showOptions, setShowOptions] = useState(false);
   return (
     <div>
-      <Button variant={'ghost'} onClick={() => setShowOptions(true)}>Detect Language</Button>
-      {showOptions && <TranslateLanguageOptionsMobile title="Translate From" onCloseClick={() => setShowOptions(false)} />}
+      <Button variant={'ghost'} onClick={() => setShowOptions(true)}>{languageLabel}</Button>
+      {showOptions && <TranslateLanguageOptionsMobile title={optionTitle} onCloseClick={() => setShowOptions(false)} />}
     </div>
   )
 }
