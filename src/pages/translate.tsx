@@ -5,7 +5,7 @@ import TranslateProviderV2 from "@/modules/translateV2/components/TranslateProvi
 import TranslateContainerV2 from "@/modules/translateV2/components/TranslateContainerV2";
 
 interface ITranslateProps {
-  datoCmsData: IMetaHead
+  datoCmsData: IMetaHead;
 }
 
 const Translate = (props: ITranslateProps) => {

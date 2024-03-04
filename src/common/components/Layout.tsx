@@ -9,12 +9,20 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
 
   const hasFooter = useMemo(() => {
-    return !["/login", "/account", "/account/subscription", "/translate"].includes(router.pathname);
+    return ![
+      "/login",
+      "/account",
+      "/account/subscription",
+      "/translate",
+    ].includes(router.pathname);
   }, [router.pathname]);
 
   return (
     <>
-      <Header isLoginPage={router.asPath === "/login"} pathname={router.pathname} />
+      <Header
+        isLoginPage={router.asPath === "/login"}
+        pathname={router.pathname}
+      />
       <main>{children}</main>
       {hasFooter && <Footer />}
       <ToastContainer

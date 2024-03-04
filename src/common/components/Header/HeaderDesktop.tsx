@@ -22,7 +22,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
             height={30}
             className="border border-black"
           />
-        <span>{pathname === "/translate" ? "Translate" : "LanguageAi"}</span>
+          <span>{pathname === "/translate" ? "Translate" : "LanguageAi"}</span>
         </Link>
 
         <div className="flex items-center gap-4 px-4 ">

@@ -1,5 +1,5 @@
-import { TbLanguage } from "react-icons/tb"
-import TranslateLanguageMenuMobile from "./TranslateLanguageMenuMobile"
+import { TbLanguage } from "react-icons/tb";
+import TranslateLanguageMenuMobile from "./TranslateLanguageMenuMobile";
 
 const TranslateContainerV2 = () => {
   return (
@@ -10,7 +10,7 @@ const TranslateContainerV2 = () => {
       </div>
       <TranslateLanguageMenuMobile />
     </div>
-  )
-}
+  );
+};
 
-export default TranslateContainerV2
+export default TranslateContainerV2;

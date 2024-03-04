@@ -6,7 +6,10 @@ export interface ITranslateReducerV2Action {
   value: any;
 }
 
-export const translateReducerV2 = (state: ITranslateStatesV2, action: ITranslateReducerV2Action) => {
+export const translateReducerV2 = (
+  state: ITranslateStatesV2,
+  action: ITranslateReducerV2Action
+) => {
   switch (action.type) {
     case "SET":
       const newStates = structuredClone(state);
