@@ -6,10 +6,11 @@ import { TbUserCircle } from "react-icons/tb";
 
 interface IHeaderDesktop {
   isLogin: boolean;
+  pathname: string;
 }
 
 const HeaderDesktop = (props: IHeaderDesktop) => {
-  const { isLogin } = props;
+  const { isLogin, pathname } = props;
   return (
     <div className="container items-center justify-between hidden py-2 mx-auto bg-white lg:flex">
       <div className="flex items-center">
@@ -21,7 +22,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
             height={30}
             className="border border-black"
           />
-          <span>LanguageAi</span>
+        <span>{pathname === "/translate" ? "Translate" : "LanguageAi"}</span>
         </Link>
 
         <div className="flex items-center gap-4 px-4 ">

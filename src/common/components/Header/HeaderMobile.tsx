@@ -8,10 +8,11 @@ import HeaderMobileMenu from "./HeaderMobileMenu";
 
 interface IHeaderMobile {
   isLogin: boolean;
+  pathname: string;
 }
 
 const HeaderMobile = (props: IHeaderMobile) => {
-  const { isLogin } = props;
+  const { isLogin, pathname } = props;
   const [showMenu, setShowMenu] = useState(false);
   return (
     <div className="fixed top-0 left-0 z-10 flex items-center justify-between w-full p-2 bg-white lg:hidden">
@@ -23,7 +24,7 @@ const HeaderMobile = (props: IHeaderMobile) => {
           height={30}
           className="border border-black"
         />
-        <span>LanguageAi</span>
+        <span>{pathname === "/translate" ? "Translate" : "LanguageAi"}</span>
       </Link>
       <button
         type="button"

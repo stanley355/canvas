@@ -7,6 +7,7 @@ import HeaderDesktop from "./HeaderDesktop";
 
 interface IHeader {
   isLoginPage: boolean;
+  pathname: string;
 }
 
 export interface IHeaderMenu {
@@ -16,7 +17,7 @@ export interface IHeaderMenu {
 }
 
 const Header = (props: IHeader) => {
-  const { isLoginPage } = props;
+  const { isLoginPage, pathname } = props;
 
   const cookieToken = cookie.get("token");
   const [isLogin, setIsLogin] = useState(false);
@@ -43,8 +44,8 @@ const Header = (props: IHeader) => {
 
   return (
     <nav className="w-full">
-      <HeaderMobile isLogin={isLogin} />
-      <HeaderDesktop isLogin={isLogin} />
+      <HeaderMobile isLogin={isLogin} pathname={pathname} />
+      <HeaderDesktop isLogin={isLogin} pathname={pathname} />
     </nav>
   );
 };

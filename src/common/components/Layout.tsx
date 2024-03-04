@@ -14,7 +14,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <>
-      <Header isLoginPage={router.asPath === "/login"} />
+      <Header isLoginPage={router.asPath === "/login"} pathname={router.pathname} />
       <main>{children}</main>
       {hasFooter && <Footer />}
       <ToastContainer
