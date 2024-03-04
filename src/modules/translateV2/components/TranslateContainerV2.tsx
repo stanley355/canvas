@@ -1,4 +1,5 @@
 import { TbLanguage } from "react-icons/tb"
+import TranslateLanguageMenuMobile from "./TranslateLanguageMenuMobile"
 
 const TranslateContainerV2 = () => {
   return (
@@ -7,6 +8,7 @@ const TranslateContainerV2 = () => {
         <TbLanguage className="text-xl" />
         <span>Text</span>
       </div>
+      <TranslateLanguageMenuMobile />
     </div>
   )
 }
