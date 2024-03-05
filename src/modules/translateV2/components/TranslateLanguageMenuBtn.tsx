@@ -3,12 +3,13 @@ import TranslateLanguageOptionsMobile from "./TranslateLanguageOptionsMobile";
 import { useState } from "react";
 
 interface ITranslateLanguageMenuBtn {
+  isSource: boolean;
   languageLabel: string;
   optionTitle: string;
 }
 
 const TranslateLanguageMenuBtn = (props: ITranslateLanguageMenuBtn) => {
-  const { languageLabel, optionTitle } = props;
+  const { languageLabel, optionTitle, isSource } = props;
   const [showOptions, setShowOptions] = useState(false);
   return (
     <div>
@@ -17,6 +18,7 @@ const TranslateLanguageMenuBtn = (props: ITranslateLanguageMenuBtn) => {
       </Button>
       {showOptions && (
         <TranslateLanguageOptionsMobile
+          isSource={isSource}
           title={optionTitle}
           onCloseClick={() => setShowOptions(false)}
         />
