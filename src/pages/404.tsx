@@ -13,7 +13,8 @@ interface INotFoundProps {
 const NotFound = (props: INotFoundProps) => {
   const { datoCmsData } = props;
   const router = useRouter();
-  
+
+
   return (
     <div className='container flex flex-col items-center min-h-screen mx-auto my-16'>
       <MetaHead pagesSchema={datoCmsData.pagesSchema} />
@@ -28,7 +29,7 @@ const NotFound = (props: INotFoundProps) => {
 
 export default NotFound;
 
-export const getLoginPageStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const datoCmsData = await fetchDatoCms(getPagesSchema, {
     slug: "not-found",
   });
