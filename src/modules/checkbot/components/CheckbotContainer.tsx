@@ -11,10 +11,6 @@ import { useCheckbot } from "../lib/useCheckbot";
 import { CheckbotResultFormatEnum } from "../lib/checkbotStates";
 import HomeVideo from "@/modules/home/components/HomeVideo";
 
-// const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
-const NoPlansModal = dynamic(
-  () => import("../../plans/components/NoPlansModal")
-);
 
 const CheckbotContainer = () => {
   const { checkbotStates } = useCheckbot();
@@ -28,7 +24,7 @@ const CheckbotContainer = () => {
   return (
     <div className="container mx-auto">
       <CheckbotHeader />
-      <div className="lg:grid lg:grid-cols-2 lg:gap-4 px-2 lg:px-0 mb-4">
+      <div className="px-2 mb-4 lg:grid lg:grid-cols-2 lg:gap-4 lg:px-0">
         <div className="mb-4 lg:mb-0">
           <CheckbotInstructionDropdown />
           {isPersonalInstruction && <CheckbotPersonalInstructionInput />}
@@ -43,12 +39,11 @@ const CheckbotContainer = () => {
           )}
         </div>
       </div>
-      <div className="px-4 lg:px-0 mt-12">
+      <div className="px-4 mt-12 lg:px-0">
         <HomeVideo />
         {/* <PlanList /> */}
       </div>
       {/* {showLoginModal && <LoginModal />} */}
-      {showNoPlansModal && <NoPlansModal />}
     </div>
   );
 };

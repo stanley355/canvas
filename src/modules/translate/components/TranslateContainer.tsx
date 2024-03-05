@@ -5,13 +5,9 @@ import TranslateContextInput from "./TranslateContextInput";
 import TranslateTextInput from "./TranslateTextInput";
 import TranslateResultBox from "./TranslateResultBox";
 import { useTranslate } from "../lib/useTranslate";
-import PlanList from "@/modules/plans/components/PlanList";
 import HomeVideo from "@/modules/home/components/HomeVideo";
 
 // const LoginModal = dynamic(() => import("../../login/components/LoginModal"));
-const NoPlansModal = dynamic(
-  () => import("../../plans/components/NoPlansModal")
-);
 
 const TranslateContainer = () => {
   const { translateStates } = useTranslate();
@@ -32,7 +28,6 @@ const TranslateContainer = () => {
         {/* <PlanList /> */}
       </div>
       {/* {showLoginModal && <LoginModal />} */}
-      {showNoPlansModal && <NoPlansModal />}
     </div>
   );
 };
