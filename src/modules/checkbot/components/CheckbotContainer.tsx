@@ -11,7 +11,6 @@ import { useCheckbot } from "../lib/useCheckbot";
 import { CheckbotResultFormatEnum } from "../lib/checkbotStates";
 import HomeVideo from "@/modules/home/components/HomeVideo";
 
-
 const CheckbotContainer = () => {
   const { checkbotStates } = useCheckbot();
   const {

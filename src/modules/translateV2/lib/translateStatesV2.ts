@@ -7,18 +7,18 @@ export interface ITranslateStatesV2 {
     label: string;
     value: string;
   };
-  sourceText:string,
-  translatedText: string
+  sourceText: string;
+  translatedText: string;
 }
 export const TRANSLATE_STATES_V2: ITranslateStatesV2 = {
   sourceLanguage: {
     label: "Detect Language",
-    value: ""
+    value: "",
   },
   targetLanguage: {
     label: "Indonesian",
     value: "Indonesian",
   },
   sourceText: "",
-  translatedText: ""
+  translatedText: "",
 };

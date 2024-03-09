@@ -24,7 +24,9 @@ const TranslateLanguageOptionsSearchMobile = (
           placeholder="Search Language"
           autoFocus
           className="border-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
-          onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            onChange(e.target.value)
+          }
         />
       ) : (
         <span className="flex items-center text-lg">{title}</span>

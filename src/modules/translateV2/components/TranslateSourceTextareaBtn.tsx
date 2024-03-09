@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
-import { useTranslateV2 } from "../lib/useTranslateV2"
-import { Button } from "@/common/components/ui/button"
+import { useTranslateV2 } from "../lib/useTranslateV2";
+import { Button } from "@/common/components/ui/button";
 import { fetchAIChatCompletionV2 } from "@/common/lib/api/ai/fetchAIChatCompletionV2";
 import { IChatCompletionRes } from "@/common/lib/api/ai/aiAPIInterfaces";
 import { useState } from "react";
@@ -25,33 +25,37 @@ const TranslateSourceTextareaBtn = () => {
 
     setIsLoading(true);
     const system = `You are a translator. Translate the text to ${targetLanguage.value}`;
-    const translateRes: IChatCompletionRes = await fetchAIChatCompletionV2(system, sourceText);
+    const translateRes: IChatCompletionRes = await fetchAIChatCompletionV2(
+      system,
+      sourceText
+    );
 
     setIsLoading(false);
     if (translateRes.id) {
       dispatch({
         type: "SET",
         name: "translatedText",
-        value: translateRes.choices[0].message.content
+        value: translateRes.choices[0].message.content,
       });
       return;
     }
 
     toast.error("Server Busy, please try again");
     return;
-  }
+  };
 
   return (
-    <Button className='w-fit' onClick={handleClick} disabled={isLoading} >
-      {isLoading ?
+    <Button className="w-fit" onClick={handleClick} disabled={isLoading}>
+      {isLoading ? (
         <div className="flex items-center gap-2">
           <TbProgress className="text-lg animate-spin" />
           <span>Loading</span>
         </div>
-        : "Translate"
-      }
+      ) : (
+        "Translate"
+      )}
     </Button>
-  )
-}
+  );
+};
 
-export default TranslateSourceTextareaBtn
+export default TranslateSourceTextareaBtn;

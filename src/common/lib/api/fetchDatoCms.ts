@@ -9,7 +9,7 @@ export const fetchDatoCms = async (
   const header = {
     Authorization: `Bearer ${process.env.DATOCMS_API_TOKEN}`,
   };
-  
+
   try {
     const datoCmsRes = await request(
       url,
@@ -17,7 +17,7 @@ export const fetchDatoCms = async (
       variables ? variables : {},
       header
     );
-    
+
     return datoCmsRes;
   } catch (error) {
     const errorRes = axiosErrorHandler(url, error);

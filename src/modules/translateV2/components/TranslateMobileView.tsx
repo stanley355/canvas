@@ -1,4 +1,3 @@
-
 import TranslateLanguageMenuMobile from "./TranslateLanguageMenuMobile";
 import TranslateSourceTextareaMobile from "./TranslateSourceTextareaMobile";
 import TranslateResultBoxMobile from "./TranslateResultBoxMobile";
@@ -10,7 +9,7 @@ const TranslateMobileView = () => {
       <TranslateSourceTextareaMobile />
       <TranslateResultBoxMobile />
     </div>
-  )
-}
+  );
+};
 
-export default TranslateMobileView
+export default TranslateMobileView;
