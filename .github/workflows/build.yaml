@@ -44,3 +44,5 @@ jobs:
             DOKU_URL=${{ secrets.DOKU_URL }}
             DOKU_CLIENT_ID=${{ secrets.DOKU_CLIENT_ID }}
             DOKU_SECRET_KEY=${{ secrets.DOKU_SECRET_KEY }}
+            DATOCMS_API_URL=${{ secrets.DATOCMS_API_URL }}
+            DATOCMS_API_TOKEN=${{ secrets.DATOCMS_API_TOKEN }}
