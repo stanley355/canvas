@@ -20,7 +20,9 @@ const TranslateResultBoxDesktop = () => {
         translatedText ? "block" : "hidden"
       )}
     >
-      <div className="p-2  h-[25vh] overflow-scroll text-sm">{translatedText}</div>
+      <div className="p-2  h-[25vh] overflow-scroll text-sm">
+        {translatedText}
+      </div>
       <Button className="ml-[88%]" onClick={copyText}>
         Copy
       </Button>

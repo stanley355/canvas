@@ -44,7 +44,7 @@ const TranslateLanguageOptionsMobile = (
     dispatch({
       type: "SET",
       name: "sourceLanguage",
-      value: TRANSLATE_STATES_V2.sourceLanguage
+      value: TRANSLATE_STATES_V2.sourceLanguage,
     });
     onCloseClick();
     return;

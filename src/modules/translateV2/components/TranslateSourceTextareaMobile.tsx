@@ -5,7 +5,7 @@ import TranslateSourceTextareaBtn from "./TranslateSourceTextareaBtn";
 
 const TranslateSourceTextareaMobile = () => {
   const { translateStates, dispatch } = useTranslateV2();
-  const { sourceText} = translateStates;
+  const { sourceText } = translateStates;
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {

@@ -1,6 +1,6 @@
-import TranslateLanguageMenuDesktop from "./TranslateLanguageMenuDesktop"
-import TranslateResultBoxDesktop from "./TranslateResultBoxDesktop"
-import TranslateSourceTextareaDesktop from "./TranslateSourceTextAreaDesktop"
+import TranslateLanguageMenuDesktop from "./TranslateLanguageMenuDesktop";
+import TranslateResultBoxDesktop from "./TranslateResultBoxDesktop";
+import TranslateSourceTextareaDesktop from "./TranslateSourceTextAreaDesktop";
 
 const TranslateDesktopView = () => {
   return (
@@ -11,7 +11,7 @@ const TranslateDesktopView = () => {
         <TranslateResultBoxDesktop />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TranslateDesktopView
+export default TranslateDesktopView;

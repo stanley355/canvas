@@ -40,7 +40,7 @@ const TranslateSourceTextareaBtn = () => {
       return;
     }
 
-      setIsLoading(false);
+    setIsLoading(false);
     toast.error("Server Busy, please try again");
     return;
   };
