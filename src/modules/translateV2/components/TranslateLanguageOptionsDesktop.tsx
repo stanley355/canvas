@@ -38,7 +38,7 @@ const TranslateLanguageOptionsDesktop = (props: ITranslateLanguageOptionsDesktop
   return (
     <div className='absolute left-0 w-full overflow-hidden bg-white border rounded-lg top-11 h-72'>
       <div className="grid grid-cols-[5%_90%_5%] border w-full">
-        <Button variant={"ghost"} onClick={() => { }}>
+        <Button variant={"ghost"} onClick={onCloseClick}>
           <TbArrowLeft className="text-2xl" />
         </Button>
         <Input
@@ -56,13 +56,12 @@ const TranslateLanguageOptionsDesktop = (props: ITranslateLanguageOptionsDesktop
         {isSource && <Button variant={'ghost'}
           className='flex items-center gap-2'
           onClick={() => {
-            setLangList(TRANSLATE_LANGUAGE_LIST_V2);
-            onCloseClick();
             dispatch({
               type: "SET",
               name: "sourceLanguage",
               value: TRANSLATE_STATES_V2.sourceLanguage
             })
+            onCloseClick();
           }} >
           <span>Detect Language</span>
           <MdAutoAwesome className="text-xl" />
@@ -70,13 +69,12 @@ const TranslateLanguageOptionsDesktop = (props: ITranslateLanguageOptionsDesktop
         {langList.map((language: { label: string, value: string }) =>
           <Button variant={'ghost'}
             onClick={() => {
-              setLangList(TRANSLATE_LANGUAGE_LIST_V2);
-              onCloseClick()
               dispatch({
                 type: "SET",
                 name: isSource ? "sourceLanguage" : 'targetLanguage',
                 value: language
               })
+              onCloseClick()
             }}
             className={cn(
               isSource && sourceLanguage.label === language.label ? "bg-blue-100 text-blue-800" : "",
