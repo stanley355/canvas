@@ -1,13 +1,14 @@
 import TranslateLanguageMenuDesktop from "./TranslateLanguageMenuDesktop"
+import TranslateResultBoxDesktop from "./TranslateResultBoxDesktop"
 import TranslateSourceTextareaDesktop from "./TranslateSourceTextAreaDesktop"
 
 const TranslateDesktopView = () => {
   return (
-    <div className="px-4 mt-4">
+    <div className="hidden px-4 mt-4 lg:block">
       <TranslateLanguageMenuDesktop />
       <div className="grid grid-cols-2 gap-2">
         <TranslateSourceTextareaDesktop />
-        <TranslateSourceTextareaDesktop />
+        <TranslateResultBoxDesktop />
       </div>
     </div>
   )

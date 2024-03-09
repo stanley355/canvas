@@ -4,7 +4,7 @@ import { useTranslateV2 } from "../lib/useTranslateV2";
 import { toast } from "react-toastify";
 import { cn } from "@/common/lib/cn";
 
-const TranslateResultBoxMobile = () => {
+const TranslateResultBoxDesktop = () => {
   const { translateStates } = useTranslateV2();
   const { translatedText } = translateStates;
 
@@ -16,16 +16,16 @@ const TranslateResultBoxMobile = () => {
   return (
     <div
       className={cn(
-        "pb-2 bg-gray-100 border-b",
+        "pb-2 bg-gray-100 border-b rounded-md",
         translatedText ? "block" : "hidden"
       )}
     >
-      <div className="p-2 text-sm">{translatedText}</div>
-      <Button className="ml-[82%]" onClick={copyText}>
+      <div className="p-2  h-[25vh] overflow-scroll text-sm">{translatedText}</div>
+      <Button className="ml-[88%]" onClick={copyText}>
         Copy
       </Button>
     </div>
   );
 };
 
-export default TranslateResultBoxMobile;
+export default TranslateResultBoxDesktop;
