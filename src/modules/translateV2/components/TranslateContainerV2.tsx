@@ -1,6 +1,7 @@
 import { TbLanguage } from "react-icons/tb";
 import TranslateLanguageMenuMobile from "./TranslateLanguageMenuMobile";
 import TranslateSourceTextareaMobile from "./TranslateSourceTextareaMobile";
+import TranslateProps from "./TranslateProps";
 
 const TranslateContainerV2 = () => {
   return (
@@ -11,6 +12,7 @@ const TranslateContainerV2 = () => {
       </div>
       <TranslateLanguageMenuMobile />
       <TranslateSourceTextareaMobile />
+      <TranslateProps />
     </div>
   );
 };

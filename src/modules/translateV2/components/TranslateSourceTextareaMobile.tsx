@@ -36,7 +36,6 @@ const TranslateSourceTextareaMobile = () => {
         <div>{sourceText.length > 0 ? sourceText.split(" ").length : "0"} / 5000</div>
         <TranslateSourceTextareaBtn />
       </div>
-      <div>{translatedText}</div>
     </div>
   )
 }
