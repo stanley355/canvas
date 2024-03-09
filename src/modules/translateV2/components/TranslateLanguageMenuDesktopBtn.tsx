@@ -35,6 +35,7 @@ const TranslateLanguageMenuDesktopBtn = (props: ITranslateLanguageMenuDesktopBtn
           className='text-blue-800 border-b-2 rounded-none border-b-blue-800'>{sourceLanguage.label}</Button>}
         {TRANSLATE_LANGUAGE_LIST_COMMON.map((language: { label: string, value: string }) =>
           <Button variant={'ghost'}
+            key={`source_${language.label}`}
             onClick={() => {
               onBtnClick();
               dispatch({
@@ -56,6 +57,7 @@ const TranslateLanguageMenuDesktopBtn = (props: ITranslateLanguageMenuDesktopBtn
         {!targetInCommonLanguage && <Button variant={'ghost'} className='text-blue-800 border-b-2 rounded-none border-b-blue-800'>{targetLanguage.label}</Button>}
         {TRANSLATE_LANGUAGE_LIST_COMMON.map((language: { label: string, value: string }) =>
           <Button
+            key={`target_${language.label}`}
             onClick={() => {
               onBtnClick();
               dispatch({

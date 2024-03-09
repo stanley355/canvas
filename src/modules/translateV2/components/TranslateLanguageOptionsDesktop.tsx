@@ -68,6 +68,7 @@ const TranslateLanguageOptionsDesktop = (props: ITranslateLanguageOptionsDesktop
         </Button>}
         {langList.map((language: { label: string, value: string }) =>
           <Button variant={'ghost'}
+            key={`option_${language.label}`}
             onClick={() => {
               dispatch({
                 type: "SET",
