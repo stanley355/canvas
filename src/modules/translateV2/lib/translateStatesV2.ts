@@ -7,8 +7,8 @@ export interface ITranslateStatesV2 {
     label: string;
     value: string;
   };
-  sourceText: "",
-  translatedText: ""
+  sourceText:string,
+  translatedText: string
 }
 export const TRANSLATE_STATES_V2: ITranslateStatesV2 = {
   sourceLanguage: {

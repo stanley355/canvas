@@ -4,22 +4,18 @@ export interface IChatCompletionRes {
   created: number;
   model: string;
   choices: IChatCompletionChoice[];
-  usage: IChatCompletionUsage;
+  usage: {
+    prompt_tokens: number;
+    completion_tokens: number;
+    total_tokens: number;
+  };
 }
 
 interface IChatCompletionChoice {
   index: number;
-  message: IChatCompletionMessage;
+  message: {
+    role: string;
+    content: string;
+  };
   finish_reason: string;
-}
-
-interface IChatCompletionMessage {
-  role: string;
-  content: string;
-}
-
-interface IChatCompletionUsage {
-  prompt_tokens: number;
-  completion_tokens: number;
-  total_tokens: number;
 }

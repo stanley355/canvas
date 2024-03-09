@@ -2,10 +2,11 @@ import { useRef } from 'react'
 import { Button } from '@/common/components/ui/button'
 import { Textarea } from '@/common/components/ui/textarea'
 import { useTranslateV2 } from '../lib/useTranslateV2'
+import TranslateSourceTextareaBtn from './TranslateSourceTextareaBtn'
 
 const TranslateSourceTextareaMobile = () => {
-  const {translateStates, dispatch} = useTranslateV2();
-  const {sourceText} = translateStates;
+  const { translateStates, dispatch } = useTranslateV2();
+  const { sourceText, translatedText } = translateStates;
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -31,7 +32,11 @@ const TranslateSourceTextareaMobile = () => {
         value={sourceText}
         className="h-auto min-h-[25vh] overflow-hidden border-none resize-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
       />
-      <Button className='ml-[75%] w-fit'>translate</Button>
+      <div className='flex items-center justify-between px-2'>
+        <div>{sourceText.length > 0 ? sourceText.split(" ").length : "0"} / 5000</div>
+        <TranslateSourceTextareaBtn />
+      </div>
+      <div>{translatedText}</div>
     </div>
   )
 }
