@@ -1,11 +1,11 @@
 export const TRANSLATE_LANGUAGE_LIST_COMMON = [
   {
-    label: "English",
-    value: "English",
-  },
-  {
     label: "Indonesian",
     value: "Indonesian",
+  },
+  {
+    label: "English",
+    value: "English",
   },
   {
     label: "Chinese (Simplified)",
