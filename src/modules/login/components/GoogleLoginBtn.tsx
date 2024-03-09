@@ -11,10 +11,8 @@ const GoogleLoginBtn = () => {
       <GoogleLogin
         onSuccess={handleGoogleLogin}
         onError={() => toast.error("Something went wrong, please try again")}
-        logo_alignment="left"
-        shape="rectangular"
-        size="large"
-        text="signin_with"
+        text="continue_with"
+        theme="filled_blue"
       />
     </GoogleOAuthProvider>
   );

@@ -2,14 +2,29 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "./Header";
 import Footer from "./Footer";
+import { useRouter } from "next/router";
+import { useMemo } from "react";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
+  const router = useRouter();
+
+  const hasFooter = useMemo(() => {
+    return ![
+      "/login",
+      "/account",
+      "/account/subscription",
+      "/translate",
+    ].includes(router.pathname);
+  }, [router.pathname]);
 
   return (
-    <div className="">
-      <Header />
-      <main className="min-h-screen pt-16 lg:pt-12">{children}</main>
-      <Footer />
+    <>
+      <Header
+        isLoginPage={router.asPath === "/login"}
+        pathname={router.pathname}
+      />
+      <main>{children}</main>
+      {hasFooter && <Footer />}
       <ToastContainer
         position="top-center"
         autoClose={2000}
@@ -18,7 +33,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         pauseOnHover
         theme="light"
       />
-    </div>
+    </>
   );
 };
 

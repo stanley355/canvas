@@ -8,26 +8,27 @@ import HeaderMobileMenu from "./HeaderMobileMenu";
 
 interface IHeaderMobile {
   isLogin: boolean;
+  pathname: string;
 }
 
 const HeaderMobile = (props: IHeaderMobile) => {
-  const { isLogin } = props;
+  const { isLogin, pathname } = props;
   const [showMenu, setShowMenu] = useState(false);
   return (
-    <div className="lg:hidden w-full fixed z-10 left-0 top-0 border-b p-2 bg-white flex justify-between items-center">
+    <div className="fixed top-0 left-0 z-10 flex items-center justify-between w-full p-2 bg-white border-b lg:hidden">
       <Link href="/" className="flex items-center gap-1">
         <Image
           src="/images/languageai.png"
-          alt="LanguageAI"
+          alt="LanguageAi"
           width={30}
           height={30}
           className="border border-black"
         />
-        <span>LanguageAI</span>
+        <span>{pathname === "/translate" ? "Translate" : "LanguageAi"}</span>
       </Link>
       <button
         type="button"
-        className="p-2 h-full"
+        className="h-full p-2"
         onClick={() => setShowMenu(true)}
       >
         <RxHamburgerMenu />

@@ -1,22 +1,17 @@
-import { GetServerSideProps } from "next";
-import MetaSEO from "@/common/components/MetaSEO";
-import { HOME_SEO } from "@/modules/home/lib/constant";
-import PlanList from "@/modules/plans/components/PlanList";
+import PlanHomePlanList from "@/modules/plans/components/PlanHomePlanList";
+import PlanHomeStatistic from "@/modules/plans/components/PlanHomeStatistic";
 
 const Plans = () => {
   return (
-    <div>
-      <MetaSEO seo={HOME_SEO} />
-      <div className="container mx-auto p-4 lg:px-0">
-        <PlanList />
+    <div className="container px-6 mx-auto mt-24 lg:mt-4 lg:px-12">
+      <div className="mb-8 text-3xl font-bold text-center">
+        Great Writing Starts with a Plan
       </div>
+
+      <PlanHomeStatistic />
+      <PlanHomePlanList />
     </div>
   );
 };
 
 export default Plans;
-export const getServerSideProps: GetServerSideProps = async () => {
-  return {
-    props: {},
-  };
-};

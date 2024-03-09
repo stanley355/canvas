@@ -1,7 +1,11 @@
 export interface IUser {
-  balance: number;
-  email: string;
-  fullname: string;
   id: string;
+  fullname: string;
+  email: string;
   phone_number: string | null;
+  balance: number;
+}
+
+export interface IUserLogin {
+  token: string;
 }

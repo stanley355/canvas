@@ -1,13 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
-import { TbCopyright, TbLanguage, TbBrandGrammarly, TbFileDots, TbRobotFace } from "react-icons/tb";
-import { FaRupiahSign } from "react-icons/fa6";
+import {
+  TbCopyright,
+  TbLanguage,
+  TbBrandGrammarly,
+  TbRobotFace,
+} from "react-icons/tb";
 
 const Footer = () => (
-  <div className="container mx-auto pt-4 px-4 lg:px-0">
-    <div className="grid grid-cols-2 mb-4">
+  <div className="container mx-auto">
+    <div className="grid grid-cols-2 gap-4 mb-4">
       <div>
-        <div className="font-bold text-lg">Features</div>
+        <div className="text-lg font-bold">Features</div>
         <Link
           href="/translate/"
           className="flex items-center gap-1 py-2 hover:font-bold"
@@ -22,24 +26,10 @@ const Footer = () => (
           <TbRobotFace />
           <span>AI Checkbot</span>
         </Link>
-        <Link
-          href="/document/"
-          className="flex items-center gap-1 py-2 hover:font-bold"
-        >
-          <TbBrandGrammarly />
-          <span>AI Grammar</span>
-        </Link>
-        {/* <Link
-          href="/plans/"
-          className="flex items-center gap-1 py-2 hover:font-bold"
-        >
-          <FaRupiahSign />
-          <span>Pricing</span>
-        </Link> */}
       </div>
 
       <div>
-        <div className="font-bold text-lg">Company</div>
+        <div className="text-lg font-bold">Company</div>
         <Link
           href="/login/"
           className="flex items-center gap-1 py-2 hover:font-bold"
@@ -55,7 +45,7 @@ const Footer = () => (
       </div>
     </div>
     <div className="flex items-center justify-between py-4">
-      <Link href="/" className="flex items-center gap-1 justify-between">
+      <Link href="/" className="flex items-center justify-between gap-1">
         <Image
           src="/images/languageai.png"
           alt="LanguageAI"

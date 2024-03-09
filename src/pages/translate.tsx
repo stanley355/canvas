@@ -1,17 +1,23 @@
-import MetaSEO from "@/common/components/MetaSEO";
-import TranslateProvider from "@/modules/translate/components/TranslateProvider";
-import TranslateContainer from "@/modules/translate/components/TranslateContainer";
-import { TRANSLATE_SEO } from "@/modules/translate/lib/constant";
+import { GetStaticProps } from "next";
+import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
+import { getTranslatePageStaticProps } from "@/modules/translateV2/lib/getTranslatePageStaticProps";
+import TranslateProviderV2 from "@/modules/translateV2/components/TranslateProviderV2";
+import TranslateContainerV2 from "@/modules/translateV2/components/TranslateContainerV2";
 
-const Translate = () => {
+interface ITranslateProps {
+  datoCmsData: IMetaHead;
+}
+
+const Translate = (props: ITranslateProps) => {
+  const { datoCmsData } = props;
+
   return (
-    <TranslateProvider>
-      <MetaSEO seo={TRANSLATE_SEO} />
-      <div className="bg-gradient-to-b from-white via-slate-100 to-white">
-        <TranslateContainer />
-      </div>
-    </TranslateProvider>
+    <TranslateProviderV2>
+      <MetaHead pagesSchema={datoCmsData.pagesSchema} />
+      <TranslateContainerV2 />
+    </TranslateProviderV2>
   );
 };
 
 export default Translate;
+export const getStaticProps: GetStaticProps = getTranslatePageStaticProps;

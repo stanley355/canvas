@@ -1,52 +1,39 @@
-import { GetServerSideProps, GetServerSidePropsContext } from "next";
-import LoginForm from "@/modules/login/components/LoginForm";
-import MetaSEO from "@/common/components/MetaSEO";
-import LoginHeader from "@/modules/login/components/LoginHeader";
-import GoogleLoginBtn from "@/modules/login/components/GoogleLoginBtn";
-import Link from "next/link";
-import { HOME_SEO } from "@/modules/home/lib/constant";
+import { GetStaticProps } from "next";
 
-const Login = () => {
+import { Card } from "@/common/components/ui/card";
+import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
+import LoginCardHeader from "@/modules/login/components/LoginCardHeader";
+import LoginCardFooter from "@/modules/login/components/LoginCardFooter";
+import LoginCardContent from "@/modules/login/components/LoginCardContent";
+import { getLoginPageStaticProps } from "@/modules/login/lib/getLoginPageStaticProps";
+import { useEffect } from "react";
+import Cookies from "js-cookie";
+
+interface ILoginProps {
+  datoCmsData: IMetaHead;
+}
+
+const Login = (props: ILoginProps) => {
+  const { datoCmsData } = props;
+
+  const token = Cookies.get("token");
+  useEffect(() => {
+    if (token) window.location.href = "/account/";
+  }, [token]);
+
+  if (token) return <h1 className="px-4 text-2xl">Redirecting...</h1>;
+
   return (
-    <div>
-      <MetaSEO seo={HOME_SEO} />
-      <div className="bg-gradient-to-br from-white via-slate-100 to-white h-screen">
-        <div className="container mx-auto p-4 lg:px-0 lg:w-1/4">
-          <LoginHeader />
-          <LoginForm />
-          <div className="my-4 flex flex-col items-center">
-            <div className="text-lg mb-2">atau</div>
-            <GoogleLoginBtn />
-          </div>
-
-          <div className="text-center">
-            Belum punya akun?{" "}
-            <Link href="/register/" className="text-blue-900 underline">
-              Daftar
-            </Link>{" "}
-          </div>
-        </div>
-      </div>
-    </div>
+    <>
+      <MetaHead pagesSchema={datoCmsData.pagesSchema} />
+      <Card className="border-transparent w-full lg:w-[350px] lg:mx-auto lg:border-black">
+        <LoginCardHeader />
+        <LoginCardContent />
+        <LoginCardFooter />
+      </Card>
+    </>
   );
 };
 
 export default Login;
-export const getServerSideProps: GetServerSideProps = async (
-  ctx: GetServerSidePropsContext
-) => {
-  const token = ctx.req.cookies.token;
-
-  if (token) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: "/profile/",
-      },
-    };
-  }
-
-  return {
-    props: {},
-  };
-};
+export const getStaticProps: GetStaticProps = getLoginPageStaticProps;

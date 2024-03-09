@@ -1,7 +1,14 @@
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import cookie from "js-cookie";
 import HeaderMobile from "./HeaderMobile";
 import HeaderDesktop from "./HeaderDesktop";
+
+interface IHeader {
+  isLoginPage: boolean;
+  pathname: string;
+}
 
 export interface IHeaderMenu {
   title: string;
@@ -9,16 +16,36 @@ export interface IHeaderMenu {
   icon: React.ReactNode;
 }
 
-const Header = () => {
-  const isLogin = useMemo(() => {
-    const cookieToken = cookie.get("token");
-    return Boolean(cookieToken);
-  }, []);
+const Header = (props: IHeader) => {
+  const { isLoginPage, pathname } = props;
+
+  const cookieToken = cookie.get("token");
+  const [isLogin, setIsLogin] = useState(false);
+  useEffect(() => {
+    setIsLogin(Boolean(cookieToken));
+  }, [cookieToken]);
+
+  if (isLoginPage) {
+    return (
+      <nav className="p-2 lg:px-0 lg:mx-auto lg:container">
+        <Link href="/" className="flex items-center gap-1">
+          <Image
+            src="/images/languageai.png"
+            alt="LanguageAi"
+            width={30}
+            height={30}
+            className="border border-black"
+          />
+          <span>LanguageAi</span>
+        </Link>
+      </nav>
+    );
+  }
 
   return (
     <nav className="w-full">
-      <HeaderMobile isLogin={isLogin} />
-      <HeaderDesktop isLogin={isLogin} />
+      <HeaderMobile isLogin={isLogin} pathname={pathname} />
+      <HeaderDesktop isLogin={isLogin} pathname={pathname} />
     </nav>
   );
 };

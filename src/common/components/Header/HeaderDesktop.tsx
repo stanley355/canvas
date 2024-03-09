@@ -6,33 +6,34 @@ import { TbUserCircle } from "react-icons/tb";
 
 interface IHeaderDesktop {
   isLogin: boolean;
+  pathname: string;
 }
 
 const HeaderDesktop = (props: IHeaderDesktop) => {
-  const { isLogin } = props;
+  const { isLogin, pathname } = props;
   return (
-    <div className="container mx-auto bg-white hidden lg:flex items-center justify-between py-2">
+    <div className="container items-center justify-between hidden py-2 mx-auto bg-white lg:flex">
       <div className="flex items-center">
         <Link href="/" className="flex items-center gap-1">
           <Image
             src="/images/languageai.png"
-            alt="LanguageAI"
+            alt="LanguageAi"
             width={30}
             height={30}
             className="border border-black"
           />
-          <span>LanguageAI</span>
+          <span>{pathname === "/translate" ? "Translate" : "LanguageAi"}</span>
         </Link>
 
-        <div className="px-4 flex items-center gap-4 ">
+        <div className="flex items-center gap-4 px-4 ">
           {HEADER_MENU.filter(
             (menu: IHeaderMenu) =>
-              menu.url !== "/login/" && menu.url !== "/profile/"
+              menu.url !== "/login/" && menu.url !== "/account/"
           ).map((menu: IHeaderMenu) => (
             <Link
               href={menu.url}
               key={menu.title}
-              className="gap-1 flex items-center justify-between p-2 rounded-md hover:border hover:border-blue-700"
+              className="flex items-center justify-between gap-1 p-2 border border-transparent rounded-md hover:border-black"
             >
               {menu.icon}
               <span>{menu.title}</span>
@@ -43,23 +44,23 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
 
       {isLogin ? (
         <Link
-          href="/login/"
-          className="text-white text-sm flex items-center gap-1 p-2 rounded-md bg-blue-700 hover:bg-blue-900"
+          href="/account/"
+          className="flex items-center gap-1 p-2 text-sm text-white bg-black border rounded-md h-fit hover:text-black hover:bg-white hover:border-black"
         >
           <TbUserCircle />
           <span>Account</span>
         </Link>
       ) : (
-        <div className="flex gap-4">
+        <div className="flex items-center gap-4">
           <Link
             href="/login/"
-            className="font-bold p-2 rounded-md hover:border hover:border-blue-700"
+            className="p-2 border border-transparent rounded-md hover:border-black"
           >
             Login
           </Link>
           <Link
             href="/login/"
-            className="text-white text-sm flex items-center gap-1 p-2 rounded-md bg-blue-700 hover:bg-blue-900"
+            className="flex items-center gap-1 p-2 text-sm text-white bg-black border rounded-md h-fit hover:text-black hover:bg-white hover:border-black"
           >
             <span className="font-bold">Get LanguageAI</span>
             <span>It&apos;s Free</span>
