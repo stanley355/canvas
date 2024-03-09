@@ -5,7 +5,15 @@ import { useTranslateV2 } from '../lib/useTranslateV2'
 import { TRANSLATE_LANGUAGE_LIST_COMMON } from '../lib/constant';
 import { cn } from '@/common/lib/cn';
 
-const TranslateLanguageMenuDesktopBtn = () => {
+
+interface ITranslateLanguageMenuDesktopBtn {
+  onBtnClick: () => void;
+  onShowSourceOptionClick: () => void;
+  onShowTargetOptionClick: () => void;
+}
+
+const TranslateLanguageMenuDesktopBtn = (props: ITranslateLanguageMenuDesktopBtn) => {
+  const {onShowSourceOptionClick, onShowTargetOptionClick, onBtnClick} = props;
   const { translateStates, dispatch } = useTranslateV2();
   const { sourceLanguage, targetLanguage } = translateStates;
 
@@ -28,15 +36,16 @@ const TranslateLanguageMenuDesktopBtn = () => {
         {TRANSLATE_LANGUAGE_LIST_COMMON.map((language: { label: string, value: string }) =>
           <Button variant={'ghost'}
             onClick={() => {
+              onBtnClick();
               dispatch({
                 type: "SET",
                 name: "sourceLanguage",
                 value: language
-              })
+              });
             }}
             className={cn(sourceLanguage.label === language.label ? "text-blue-800 border-b-2 border-b-blue-800 rounded-none" : "")}>{language.label}</Button>
         )}
-        <Button variant={'ghost'} className='text-xl rounded-full'>
+        <Button variant={'ghost'} className='text-xl rounded-full' onClick={onShowSourceOptionClick}>
           <TbChevronDown />
         </Button>
       </div>
@@ -48,6 +57,7 @@ const TranslateLanguageMenuDesktopBtn = () => {
         {TRANSLATE_LANGUAGE_LIST_COMMON.map((language: { label: string, value: string }) =>
           <Button
             onClick={() => {
+              onBtnClick();
               dispatch({
                 type: "SET",
                 name: "targetLanguage",
@@ -56,7 +66,7 @@ const TranslateLanguageMenuDesktopBtn = () => {
             }}
             variant={'ghost'} className={cn(targetLanguage.label === language.label ? "text-blue-800 border-b-2 border-b-blue-800 rounded-none" : "")}>{language.label}</Button>
         )}
-        <Button variant={'ghost'} className='text-xl rounded-full'>
+        <Button variant={'ghost'} className='text-xl rounded-full' onClick={onShowTargetOptionClick}>
           <TbChevronDown />
         </Button>
       </div>

@@ -7,6 +7,7 @@ import {
 import TranslateLanguageOptionsSearchMobile from "./TranslateLanguageOptionsSearchMobile";
 import { useCallback, useState } from "react";
 import { useTranslateV2 } from "../lib/useTranslateV2";
+import { TRANSLATE_STATES_V2 } from "../lib/translateStatesV2";
 
 interface ITranslateLanguageOptionsMobile {
   isSource: boolean;
@@ -43,7 +44,7 @@ const TranslateLanguageOptionsMobile = (
     dispatch({
       type: "SET",
       name: "sourceLanguage",
-      value: { label: "Detect Language", value: "" },
+      value: TRANSLATE_STATES_V2.sourceLanguage
     });
     onCloseClick();
     return;
