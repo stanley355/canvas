@@ -28,7 +28,7 @@ const TranslateLanguageMenuDesktopBtn = (props: ITranslateLanguageMenuDesktopBtn
   }, [targetLanguage]);
 
   return (
-    <div className='grid grid-cols-[47.5%_5%_47.5%] '>
+    <div className='grid grid-cols-[49%_2%_49%] '>
       <div className='flex items-center'>
         {!sourceInCommonLanguage && <Button variant={'ghost'}
 

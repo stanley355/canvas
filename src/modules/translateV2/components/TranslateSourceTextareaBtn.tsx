@@ -30,8 +30,8 @@ const TranslateSourceTextareaBtn = () => {
       sourceText
     );
 
-    setIsLoading(false);
     if (translateRes.id) {
+      setIsLoading(false);
       dispatch({
         type: "SET",
         name: "translatedText",
@@ -40,6 +40,7 @@ const TranslateSourceTextareaBtn = () => {
       return;
     }
 
+      setIsLoading(false);
     toast.error("Server Busy, please try again");
     return;
   };

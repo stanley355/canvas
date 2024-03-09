@@ -36,7 +36,7 @@ const TranslateLanguageOptionsDesktop = (props: ITranslateLanguageOptionsDesktop
 
 
   return (
-    <div className='absolute left-0 w-full overflow-hidden bg-white border rounded-lg top-11 h-72'>
+    <div className='absolute left-0 w-full overflow-hidden bg-white border rounded-lg top-10 h-72'>
       <div className="grid grid-cols-[5%_90%_5%] border w-full">
         <Button variant={"ghost"} onClick={onCloseClick}>
           <TbArrowLeft className="text-2xl" />
