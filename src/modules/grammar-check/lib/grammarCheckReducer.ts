@@ -6,7 +6,7 @@ export interface IGrammarCheckReducerAction {
   value: any;
 }
 
-export const translateReducerV2 = (
+export const grammarCheckReducer= (
   state: IGrammarCheckStates,
   action:IGrammarCheckReducerAction 
 ) => {
