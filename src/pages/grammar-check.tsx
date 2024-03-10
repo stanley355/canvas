@@ -1,8 +1,11 @@
-import React from 'react'
+import GrammarCheckContainer from "@/modules/grammar-check/components/GrammarCheckContainer"
+import GrammarCheckProvider from "@/modules/grammar-check/components/GrammarCheckProvider"
 
 const GrammarCheck = () => {
   return (
-    <div>grammarbot</div>
+    <GrammarCheckProvider>
+      <GrammarCheckContainer />
+    </GrammarCheckProvider>
   )
 }
 
