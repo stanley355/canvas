@@ -1,25 +1,38 @@
+
+import { useState } from "react";
+import { TbLanguage, TbProgress } from "react-icons/tb";
 import { toast } from "react-toastify";
+import dynamic from "next/dynamic";
 import { useTranslateV2 } from "../lib/useTranslateV2";
 import { Button } from "@/common/components/ui/button";
 import { fetchAIChatCompletionV2 } from "@/common/lib/api/ai/fetchAIChatCompletionV2";
 import { IChatCompletionRes } from "@/common/lib/api/ai/aiAPIInterfaces";
-import { useState } from "react";
-import { TbProgress } from "react-icons/tb";
+import Cookies from "js-cookie";
+
+const LoginModal = dynamic(() => import('../../login/components/LoginModal'), { ssr: false });
 
 const TranslateSourceTextareaBtn = () => {
   const { translateStates, dispatch } = useTranslateV2();
   const { sourceText, targetLanguage } = translateStates;
 
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = async () => {
+    const token = Cookies.get('token');
+    if (!token) {
+      toast.info("Please Login to Continue");
+      setShowLoginModal(true);
+      return;
+    }
+
     if (!sourceText) {
-      toast.warning("Text could not be empty");
+      toast.info("Text could not be empty");
       return;
     }
 
     if (sourceText.split(" ").length > 5000) {
-      toast.warning("Text can't be more than 5000 words");
+      toast.info("Text can't be more than 5000 words");
       return;
     }
 
@@ -46,16 +59,22 @@ const TranslateSourceTextareaBtn = () => {
   };
 
   return (
-    <Button className="w-fit" onClick={handleClick} disabled={isLoading}>
-      {isLoading ? (
-        <div className="flex items-center gap-2">
-          <TbProgress className="text-lg animate-spin" />
-          <span>Loading</span>
-        </div>
-      ) : (
-        "Translate"
-      )}
-    </Button>
+    <>
+      {showLoginModal && <LoginModal />}
+      <Button className="w-fit" onClick={handleClick} disabled={isLoading}>
+        {isLoading ? (
+          <div className="flex items-center gap-2">
+            <TbProgress className="text-lg animate-spin" />
+            <span>Loading</span>
+          </div>
+        ) : (
+          <div className="flex items-center gap-2">
+            <TbLanguage className="text-lg" />
+            <span>Translate</span>
+          </div>
+        )}
+      </Button>
+    </>
   );
 };
 
