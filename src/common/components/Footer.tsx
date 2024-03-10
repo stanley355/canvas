@@ -3,8 +3,7 @@ import Image from "next/image";
 import {
   TbCopyright,
   TbLanguage,
-  TbBrandGrammarly,
-  TbRobotFace,
+  TbBrandGoogle,
 } from "react-icons/tb";
 
 const Footer = () => (
@@ -20,11 +19,11 @@ const Footer = () => (
           <span>AI Translate</span>
         </Link>
         <Link
-          href="/checkbot/"
+          href="/grammar-check/"
           className="flex items-center gap-1 py-2 hover:font-bold"
         >
-          <TbRobotFace />
-          <span>AI Checkbot</span>
+          <TbBrandGoogle />
+          <span>AI Grammar Check</span>
         </Link>
       </div>
 
