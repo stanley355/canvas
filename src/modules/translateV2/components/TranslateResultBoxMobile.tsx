@@ -21,7 +21,7 @@ const TranslateResultBoxMobile = () => {
         translatedText ? "block" : "hidden"
       )}
     >
-      <div className="p-2 text-sm min-h-[25vh]">{translatedText}</div>
+      <div className="p-2 text-sm h-[25vh]">{translatedText}</div>
       <Button className="ml-[76%] flex items-center gap-2" onClick={copyText}>
         <TbCopy />
         <span>Copy</span>
