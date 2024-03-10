@@ -16,10 +16,10 @@ const DocumentVideoModal = (props: IDocumentVideoModal) => {
         <video controls autoPlay className="w-full h-2/3">
           <source src={"/document_video.mov"} type="video/mp4" />
         </video>
-        <div className="text-center text-xl my-2 mt-4">
+        <div className="my-2 mt-4 text-xl text-center">
           <b>(NEW)</b> Document Feature
         </div>
-        <div className="text-center mb-4">
+        <div className="mb-4 text-center">
           Simpan dan periksa teksmu dengan mudah di Language AI
         </div>
         <div className="w-full lg:flex lg:flex-row-reverse lg:items-center lg:gap-4">
@@ -30,7 +30,7 @@ const DocumentVideoModal = (props: IDocumentVideoModal) => {
               onCloseClick();
               router.push("/document/");
             }}
-            className="p-2 w-full bg-blue-900 text-white mb-4 lg:mb-0 rounded-md text-lg"
+            className="w-full p-2 mb-4 text-lg text-white bg-blue-900 rounded-md lg:mb-0"
           >
             Coba Langsung
           </button>
