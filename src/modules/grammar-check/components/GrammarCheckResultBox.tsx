@@ -20,42 +20,45 @@ const GrammarCheckResultBox = () => {
 
 
   return (
-    <div className="pb-2 mt-4 border-b">
+    <div className="pb-2 mt-4 border-b lg:border-b-0">
       <GrammarCheckResultBoxDiffBtn />
-      <div className="p-2 text-sm h-[25vh]">
-        {activeDiff === GrammarCheckDiffs.Original && resultText}
-        {activeDiff === GrammarCheckDiffs.Removed &&
-          resultTextRemoved.map((diff: any, i: number) => (
-            <span
-              key={i}
-              className={
-                diff.removed
-                  ? "text-red-500 underline font-semibold"
-                  : "text-black"
-              }
-            >
-              {diff.value}
-            </span>
-          ))}
-        {activeDiff === GrammarCheckDiffs.Added &&
-          resultTextRemoved.map((diff: any, i: number) => (
-            <span
-              key={i}
-              className={
-                diff.added
-                  ? "text-green-500 underline font-semibold"
-                  : "text-black"
-              }
-            >
-              {diff.value}
-            </span>
-          ))}
-      </div>
+      <div className="lg:border lg:pb-2 lg:rounded-md">
 
-      <Button className="ml-[76%] flex items-center gap-2" onClick={copyText}>
-        <TbCopy />
-        <span>Copy</span>
-      </Button>
+        <div className="p-2 text-sm h-[25vh]">
+          {activeDiff === GrammarCheckDiffs.Original && resultText}
+          {activeDiff === GrammarCheckDiffs.Removed &&
+            resultTextRemoved.map((diff: any, i: number) => (
+              <span
+                key={i}
+                className={
+                  diff.removed
+                    ? "text-red-500 underline font-semibold"
+                    : "text-black"
+                }
+              >
+                {diff.value}
+              </span>
+            ))}
+          {activeDiff === GrammarCheckDiffs.Added &&
+            resultTextRemoved.map((diff: any, i: number) => (
+              <span
+                key={i}
+                className={
+                  diff.added
+                    ? "text-green-500 underline font-semibold"
+                    : "text-black"
+                }
+              >
+                {diff.value}
+              </span>
+            ))}
+        </div>
+
+        <Button className="ml-[76%] lg:ml-[85%] flex items-center gap-2" onClick={copyText}>
+          <TbCopy />
+          <span>Copy</span>
+        </Button>
+      </div>
     </div>
   )
 }

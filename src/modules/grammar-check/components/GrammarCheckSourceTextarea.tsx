@@ -11,7 +11,7 @@ const GrammarCheckSourceTextarea = () => {
   return (
     <div >
       <GrammarCheckInstructionSelect />
-      <div className="pb-2 border">
+      <div className="pb-2 border lg:rounded-md">
         <Textarea
           placeholder="Enter Text"
           onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
