@@ -27,7 +27,7 @@ const GrammarCheckInstructionSelect = () => {
       <SelectContent className="-left-2.5 lg:left-0 lg:-top-1">
         {GRAMMAR_CHECK_INSTRUCTIONS.map(
           (instruction: { label: string; value: string }) => (
-            <SelectItem value={instruction.value}>
+            <SelectItem value={instruction.value} key={instruction.label}>
               {instruction.label}
             </SelectItem>
           )
