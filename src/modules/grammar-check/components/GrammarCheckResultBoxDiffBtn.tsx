@@ -3,6 +3,7 @@ import { MdAutoAwesome } from "react-icons/md"
 import { TbMinus, TbPlus } from "react-icons/tb"
 import { useGrammarCheck } from "../lib/useGrammarCheck"
 import { GrammarCheckDiffs } from "../lib/grammarCheckStates"
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent"
 
 const GrammarCheckResultBoxDiffBtn = () => {
   const { grammarCheckStates, dispatch } = useGrammarCheck();
@@ -14,6 +15,7 @@ const GrammarCheckResultBoxDiffBtn = () => {
       <Button
         variant={activeDiff === GrammarCheckDiffs.Removed ? "default" : 'ghost'}
         onClick={() => {
+          sendFirebaseEvent("grammar_check_removed_diff");
           dispatch({
             name: "activeDiff",
             value: GrammarCheckDiffs.Removed
@@ -36,9 +38,9 @@ const GrammarCheckResultBoxDiffBtn = () => {
         <span>Result</span>
       </Button>
       <Button
-
         variant={activeDiff === GrammarCheckDiffs.Added ? "default" : 'ghost'}
         onClick={() => {
+          sendFirebaseEvent("grammar_check_added_diff");
           dispatch({
             name: "activeDiff",
             value: GrammarCheckDiffs.Added

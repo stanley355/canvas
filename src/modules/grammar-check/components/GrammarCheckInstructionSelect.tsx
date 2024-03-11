@@ -24,7 +24,7 @@ const GrammarCheckInstructionSelect = () => {
       <SelectTrigger className="w-full mt-4 border-none focus:ring-0 focus:ring-transparent focus:ring-offset-0">
         <SelectValue placeholder="Select instruction" />
       </SelectTrigger>
-      <SelectContent className="-left-2.5">
+      <SelectContent className="-left-2.5 lg:left-0 lg:-top-1">
         {GRAMMAR_CHECK_INSTRUCTIONS.map((instruction: { label: string, value: string }) =>
           <SelectItem value={instruction.value}>{instruction.label}</SelectItem>)}
       </SelectContent>
