@@ -1,6 +1,6 @@
 import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
-import GrammarCheckContainer from "@/modules/grammar-check/components/GrammarCheckContainer"
-import GrammarCheckProvider from "@/modules/grammar-check/components/GrammarCheckProvider"
+import GrammarCheckContainer from "@/modules/grammar-check/components/GrammarCheckContainer";
+import GrammarCheckProvider from "@/modules/grammar-check/components/GrammarCheckProvider";
 import { getGrammarCheckStaticProps } from "@/modules/grammar-check/lib/getGrammarCheckStaticProps";
 import { GetStaticProps } from "next";
 
@@ -15,8 +15,8 @@ const GrammarCheck = (props: IGrammarCheckProps) => {
       <MetaHead pagesSchema={datoCmsData.pagesSchema} />
       <GrammarCheckContainer />
     </GrammarCheckProvider>
-  )
-}
+  );
+};
 
 export default GrammarCheck;
 export const getStaticProps: GetStaticProps = getGrammarCheckStaticProps;

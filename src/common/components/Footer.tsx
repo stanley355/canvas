@@ -1,10 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import {
-  TbCopyright,
-  TbLanguage,
-  TbBrandGoogle,
-} from "react-icons/tb";
+import { TbCopyright, TbLanguage, TbBrandGoogle } from "react-icons/tb";
 
 const Footer = () => (
   <div className="container mx-auto">

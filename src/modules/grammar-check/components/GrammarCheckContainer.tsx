@@ -1,7 +1,7 @@
-import { TbBrandGoogle } from "react-icons/tb"
-import GrammarCheckSourceTextarea from "./GrammarCheckSourceTextarea"
-import GrammarCheckResultBox from "./GrammarCheckResultBox"
-import TranslateProps from "@/modules/translateV2/components/TranslateProps"
+import { TbBrandGoogle } from "react-icons/tb";
+import GrammarCheckSourceTextarea from "./GrammarCheckSourceTextarea";
+import GrammarCheckResultBox from "./GrammarCheckResultBox";
+import TranslateProps from "@/modules/translateV2/components/TranslateProps";
 
 const GrammarCheckContainer = () => {
   return (
@@ -11,13 +11,12 @@ const GrammarCheckContainer = () => {
         <span>Grammar Check</span>
       </div>
       <div className="lg:w-full lg:grid lg:grid-cols-2 lg:gap-2">
-
-      <GrammarCheckSourceTextarea />
-      <GrammarCheckResultBox />
+        <GrammarCheckSourceTextarea />
+        <GrammarCheckResultBox />
       </div>
       <TranslateProps />
     </div>
-  )
-}
+  );
+};
 
-export default GrammarCheckContainer
+export default GrammarCheckContainer;

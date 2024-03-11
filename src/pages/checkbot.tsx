@@ -13,5 +13,4 @@ export const getStaticProps: GetStaticProps = () => {
       destination: "/grammar-check/",
     },
   };
-
-}
+};

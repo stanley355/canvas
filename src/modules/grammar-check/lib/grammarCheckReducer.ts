@@ -6,9 +6,9 @@ export interface IGrammarCheckReducerAction {
   value: any;
 }
 
-export const grammarCheckReducer= (
+export const grammarCheckReducer = (
   state: IGrammarCheckStates,
-  action:IGrammarCheckReducerAction 
+  action: IGrammarCheckReducerAction
 ) => {
   switch (action.type) {
     case "SET":

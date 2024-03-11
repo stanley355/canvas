@@ -6,7 +6,7 @@ import { GrammarCheckContext } from "../lib/grammarCheckContext";
 const GrammarCheckProvider = ({ children }: { children: React.ReactNode }) => {
   const [grammarCheckStates, dispatch] = useReducer(
     grammarCheckReducer,
-   GRAMMAR_CHECK_STATES 
+    GRAMMAR_CHECK_STATES
   );
 
   return (

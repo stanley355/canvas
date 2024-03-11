@@ -1,4 +1,3 @@
-
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -13,7 +12,9 @@ import { fetchAIChatCompletionV2 } from "@/common/lib/api/ai/fetchAIChatCompleti
 import { IChatCompletionRes } from "@/common/lib/api/ai/aiAPIInterfaces";
 import { createRemovedAndAddedDiff } from "@/common/lib/createRemovedAndAddedDiff";
 
-const LoginModal = dynamic(() => import('../../login/components/LoginModal'), { ssr: false });
+const LoginModal = dynamic(() => import("../../login/components/LoginModal"), {
+  ssr: false,
+});
 
 const GrammarCheckSourceTextareaBtn = () => {
   const { grammarCheckStates, dispatch } = useGrammarCheck();
@@ -23,7 +24,7 @@ const GrammarCheckSourceTextareaBtn = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = async () => {
-    const token = Cookies.get('token');
+    const token = Cookies.get("token");
     if (!token) {
       toast.info("Please Login to Continue");
       setShowLoginModal(true);
@@ -40,7 +41,7 @@ const GrammarCheckSourceTextareaBtn = () => {
       return;
     }
 
-    sendFirebaseEvent('grammar_check');
+    sendFirebaseEvent("grammar_check");
     setIsLoading(true);
     const grammarCheckRes: IChatCompletionRes = await fetchAIChatCompletionV2(
       instruction,

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { TbLanguage, TbProgress } from "react-icons/tb";
 import { toast } from "react-toastify";
@@ -10,7 +9,9 @@ import { IChatCompletionRes } from "@/common/lib/api/ai/aiAPIInterfaces";
 import Cookies from "js-cookie";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
-const LoginModal = dynamic(() => import('../../login/components/LoginModal'), { ssr: false });
+const LoginModal = dynamic(() => import("../../login/components/LoginModal"), {
+  ssr: false,
+});
 
 const TranslateSourceTextareaBtn = () => {
   const { translateStates, dispatch } = useTranslateV2();
@@ -20,7 +21,7 @@ const TranslateSourceTextareaBtn = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = async () => {
-    const token = Cookies.get('token');
+    const token = Cookies.get("token");
     if (!token) {
       toast.info("Please Login to Continue");
       setShowLoginModal(true);
@@ -37,7 +38,7 @@ const TranslateSourceTextareaBtn = () => {
       return;
     }
 
-    sendFirebaseEvent('translate');
+    sendFirebaseEvent("translate");
     setIsLoading(true);
     const system = `You are a translator. Translate the text to ${targetLanguage.value}`;
     const translateRes: IChatCompletionRes = await fetchAIChatCompletionV2(

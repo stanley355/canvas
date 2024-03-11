@@ -1,7 +1,7 @@
-import { Card } from '@/common/components/ui/card'
-import LoginCardHeader from './LoginCardHeader'
-import LoginCardContent from './LoginCardContent'
-import LoginCardFooter from './LoginCardFooter'
+import { Card } from "@/common/components/ui/card";
+import LoginCardHeader from "./LoginCardHeader";
+import LoginCardContent from "./LoginCardContent";
+import LoginCardFooter from "./LoginCardFooter";
 
 const LoginCard = () => {
   return (
@@ -10,7 +10,7 @@ const LoginCard = () => {
       <LoginCardContent />
       <LoginCardFooter />
     </Card>
-  )
-}
+  );
+};
 
-export default LoginCard
+export default LoginCard;
