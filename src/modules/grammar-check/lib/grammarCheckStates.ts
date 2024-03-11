@@ -1,17 +1,11 @@
 export interface IGrammarCheckStates {
-  instruction: {
-    label: string;
-    value: string;
-  };
+  instruction: string;
   sourceText: string;
   resultText: string;
 }
 
 export const GRAMMAR_CHECK_STATES: IGrammarCheckStates = {
-  instruction: {
-    label: "",
-    value: "",
-  },
+  instruction: "",
   sourceText: "",
   resultText: "",
 };

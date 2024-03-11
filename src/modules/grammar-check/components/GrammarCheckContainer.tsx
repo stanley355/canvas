@@ -1,4 +1,5 @@
 import { TbBrandGoogle } from "react-icons/tb"
+import GrammarCheckSourceTextarea from "./GrammarCheckSourceTextarea"
 
 const GrammarCheckContainer = () => {
   return (
@@ -7,6 +8,7 @@ const GrammarCheckContainer = () => {
         <TbBrandGoogle className="text-xl" />
         <span>Grammar Check</span>
       </div>
+      <GrammarCheckSourceTextarea />
     </div>
   )
 }

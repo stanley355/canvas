@@ -8,6 +8,7 @@ import { Button } from "@/common/components/ui/button";
 import { fetchAIChatCompletionV2 } from "@/common/lib/api/ai/fetchAIChatCompletionV2";
 import { IChatCompletionRes } from "@/common/lib/api/ai/aiAPIInterfaces";
 import Cookies from "js-cookie";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 const LoginModal = dynamic(() => import('../../login/components/LoginModal'), { ssr: false });
 
@@ -36,6 +37,7 @@ const TranslateSourceTextareaBtn = () => {
       return;
     }
 
+    sendFirebaseEvent('translate');
     setIsLoading(true);
     const system = `You are a translator. Translate the text to ${targetLanguage.value}`;
     const translateRes: IChatCompletionRes = await fetchAIChatCompletionV2(
