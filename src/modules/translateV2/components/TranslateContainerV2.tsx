@@ -1,7 +1,6 @@
+import Link from "next/link";
 import { TbLanguage } from "react-icons/tb";
-import TranslateProps from "./TranslateProps";
 import TranslateMobileView from "./TranslateMobileView";
-import TranslateLanguageMenuDesktop from "./TranslateLanguageMenuDesktop";
 import TranslateDesktopView from "./TranslateDesktopView";
 
 const TranslateContainerV2 = () => {
@@ -13,7 +12,11 @@ const TranslateContainerV2 = () => {
       </div>
       <TranslateDesktopView />
       <TranslateMobileView />
-      <TranslateProps />
+
+      <div className="flex items-center justify-center gap-2 mt-16">
+        <span>Found an Issue ? </span>
+        <Link className="text-blue-500 border-b border-b-blue-500" href={'/support'}>Report</Link> 
+      </div>
     </div>
   );
 };

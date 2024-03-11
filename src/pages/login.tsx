@@ -25,7 +25,6 @@ const Login = (props: ILoginProps) => {
     <>
       <MetaHead pagesSchema={datoCmsData.pagesSchema} />
       <LoginCard />
-      <LoginModal />
     </>
   );
 };
