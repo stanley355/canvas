@@ -24,7 +24,7 @@ const HeaderMobile = (props: IHeaderMobile) => {
           height={30}
           className="border border-black"
         />
-        <span>{pathname === "/translate" ? "Translate" : "LanguageAi"}</span>
+        <span>LanguageAi</span>
       </Link>
       <button
         type="button"

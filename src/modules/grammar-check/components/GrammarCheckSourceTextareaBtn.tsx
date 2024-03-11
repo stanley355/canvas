@@ -1,21 +1,24 @@
-import { useState } from "react";
-import { TbLanguage, TbProgress } from "react-icons/tb";
-import { toast } from "react-toastify";
 import dynamic from "next/dynamic";
-import { useTranslateV2 } from "../lib/useTranslateV2";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import { TbBrandGoogle, TbProgress } from "react-icons/tb";
+import Cookies from "js-cookie";
+
 import { Button } from "@/common/components/ui/button";
+
+import { useGrammarCheck } from "../lib/useGrammarCheck";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { fetchAIChatCompletionV2 } from "@/common/lib/api/ai/fetchAIChatCompletionV2";
 import { IChatCompletionRes } from "@/common/lib/api/ai/aiAPIInterfaces";
-import Cookies from "js-cookie";
-import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { createRemovedAndAddedDiff } from "@/common/lib/createRemovedAndAddedDiff";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"), {
   ssr: false,
 });
 
-const TranslateSourceTextareaBtn = () => {
-  const { translateStates, dispatch } = useTranslateV2();
-  const { sourceText, targetLanguage } = translateStates;
+const GrammarCheckSourceTextareaBtn = () => {
+  const { grammarCheckStates, dispatch } = useGrammarCheck();
+  const { sourceText, instruction } = grammarCheckStates;
 
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -38,20 +41,29 @@ const TranslateSourceTextareaBtn = () => {
       return;
     }
 
-    sendFirebaseEvent("translate");
+    sendFirebaseEvent("grammar_check");
     setIsLoading(true);
-    const system = `You are a translator. Translate the text to ${targetLanguage.value}`;
-    const translateRes: IChatCompletionRes = await fetchAIChatCompletionV2(
-      system,
+    const grammarCheckRes: IChatCompletionRes = await fetchAIChatCompletionV2(
+      instruction,
       sourceText
     );
 
-    if (translateRes.id) {
+    if (grammarCheckRes.id) {
       setIsLoading(false);
+      const finalText = grammarCheckRes.choices[0].message.content;
+      const removedAddedDiff = createRemovedAndAddedDiff(sourceText, finalText);
+
       dispatch({
-        type: "SET",
-        name: "translatedText",
-        value: translateRes.choices[0].message.content,
+        name: "resultText",
+        value: finalText,
+      });
+      dispatch({
+        name: "resultTextAdded",
+        value: removedAddedDiff.addedDiff,
+      });
+      dispatch({
+        name: "resultTextRemoved",
+        value: removedAddedDiff.removedDiff,
       });
       return;
     }
@@ -72,8 +84,8 @@ const TranslateSourceTextareaBtn = () => {
           </div>
         ) : (
           <div className="flex items-center gap-2">
-            <TbLanguage className="text-lg" />
-            <span>Translate</span>
+            <TbBrandGoogle className="text-lg" />
+            <span>Check</span>
           </div>
         )}
       </Button>
@@ -81,4 +93,4 @@ const TranslateSourceTextareaBtn = () => {
   );
 };
 
-export default TranslateSourceTextareaBtn;
+export default GrammarCheckSourceTextareaBtn;

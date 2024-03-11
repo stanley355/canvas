@@ -1,6 +1,7 @@
 import { Button } from "@/common/components/ui/button";
 import { useTranslateV2 } from "../lib/useTranslateV2";
 import { toast } from "react-toastify";
+import { TbCopy } from "react-icons/tb";
 
 const TranslateResultBoxDesktop = () => {
   const { translateStates } = useTranslateV2();
@@ -16,8 +17,9 @@ const TranslateResultBoxDesktop = () => {
       <div className="p-2  h-[25vh] overflow-scroll text-sm">
         {translatedText}
       </div>
-      <Button className="ml-[88%]" onClick={copyText}>
-        Copy
+      <Button className="ml-[85%] flex items-center gap-2" onClick={copyText}>
+        <TbCopy />
+        <span>Copy</span>
       </Button>
     </div>
   );

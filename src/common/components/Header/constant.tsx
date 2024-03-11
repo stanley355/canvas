@@ -5,6 +5,7 @@ import {
   TbFileDots,
   TbRobotFace,
   TbRobot,
+  TbBrandGoogle,
 } from "react-icons/tb";
 import { FaRupiahSign } from "react-icons/fa6";
 
@@ -15,9 +16,9 @@ export const HEADER_MENU = [
     icon: <TbLanguage />,
   },
   {
-    title: "AI Checkbot",
-    url: "/checkbot/",
-    icon: <TbRobotFace />,
+    title: "AI Grammar Check",
+    url: "/grammar-check/",
+    icon: <TbBrandGoogle />,
   },
   {
     title: "Account",

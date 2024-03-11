@@ -3,6 +3,7 @@ import React from "react";
 import { useTranslateV2 } from "../lib/useTranslateV2";
 import { toast } from "react-toastify";
 import { cn } from "@/common/lib/cn";
+import { TbCopy } from "react-icons/tb";
 
 const TranslateResultBoxMobile = () => {
   const { translateStates } = useTranslateV2();
@@ -20,9 +21,10 @@ const TranslateResultBoxMobile = () => {
         translatedText ? "block" : "hidden"
       )}
     >
-      <div className="p-2 text-sm">{translatedText}</div>
-      <Button className="ml-[82%]" onClick={copyText}>
-        Copy
+      <div className="p-2 text-sm h-[25vh]">{translatedText}</div>
+      <Button className="ml-[76%] flex items-center gap-2" onClick={copyText}>
+        <TbCopy />
+        <span>Copy</span>
       </Button>
     </div>
   );
