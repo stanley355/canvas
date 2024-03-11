@@ -9,7 +9,7 @@ const GrammarCheckSourceTextarea = () => {
   const { sourceText } = grammarCheckStates;
 
   return (
-    <div>
+    <div >
       <GrammarCheckInstructionSelect />
       <div className="pb-2 border">
         <Textarea

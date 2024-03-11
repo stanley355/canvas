@@ -21,7 +21,7 @@ const GrammarCheckInstructionSelect = () => {
         value
       });
     }}>
-      <SelectTrigger className="w-full mt-8 border-none focus:ring-0 focus:ring-transparent focus:ring-offset-0">
+      <SelectTrigger className="w-full mt-4 border-none focus:ring-0 focus:ring-transparent focus:ring-offset-0">
         <SelectValue placeholder="Select instruction" />
       </SelectTrigger>
       <SelectContent className="-left-2.5">
