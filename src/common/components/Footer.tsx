@@ -3,7 +3,7 @@ import Image from "next/image";
 import { TbCopyright, TbLanguage, TbBrandGoogle } from "react-icons/tb";
 
 const Footer = () => (
-  <div className="container mx-auto">
+  <div className="container pt-4 mx-auto">
     <div className="grid grid-cols-2 gap-4 mb-4">
       <div>
         <div className="text-lg font-bold">Features</div>
@@ -32,7 +32,7 @@ const Footer = () => (
           About
         </Link>
         <Link
-          href="/login/"
+          href="/support/"
           className="flex items-center gap-1 py-2 hover:font-bold"
         >
           Support

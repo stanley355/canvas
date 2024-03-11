@@ -1,7 +1,7 @@
+import Link from "next/link";
 import { TbBrandGoogle } from "react-icons/tb";
 import GrammarCheckSourceTextarea from "./GrammarCheckSourceTextarea";
 import GrammarCheckResultBox from "./GrammarCheckResultBox";
-import TranslateProps from "@/modules/translateV2/components/TranslateProps";
 
 const GrammarCheckContainer = () => {
   return (
@@ -14,7 +14,10 @@ const GrammarCheckContainer = () => {
         <GrammarCheckSourceTextarea />
         <GrammarCheckResultBox />
       </div>
-      <TranslateProps />
+      <div className="flex items-center justify-center gap-2 mt-16">
+        <span>Found an Issue ? </span>
+        <Link className="text-blue-500 border-b border-b-blue-500" href={'/support'}>Report</Link> 
+      </div>
     </div>
   );
 };
