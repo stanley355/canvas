@@ -12,11 +12,11 @@ export const grammarCheckReducer = (
 ) => {
   switch (action.type) {
     case "SET":
-      const newCloneStates = structuredClone(state);
+      const newCloneStates:any = structuredClone(state);
       newCloneStates[action.name] = action.value;
       return newCloneStates;
     default:
-      const newStates = structuredClone(state);
+      const newStates:any = structuredClone(state);
       newStates[action.name] = action.value;
       return newStates;
   }
