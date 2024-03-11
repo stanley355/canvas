@@ -11,7 +11,7 @@ const CheckbotRemovedAndAddedBox = () => {
   } = checkbotStates;
   return (
     <>
-      <div className="border border-gray-500 h-64 rounded-md p-2 overflow-y-auto bg-white">
+      <div className="h-64 p-2 overflow-y-auto bg-white border border-gray-500 rounded-md">
         {checkbotResultFormat === CheckbotResultFormatEnum.Removed &&
           checkbotCompletionRemoved.map((diff: any, i: number) => (
             <span

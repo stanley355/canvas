@@ -8,8 +8,8 @@ export interface IGrammarCheckStates {
   instruction: string;
   sourceText: string;
   resultText: string;
-  resultTextRemoved: string;
-  resultTextAdded: string;
+  resultTextRemoved: any[];
+  resultTextAdded: any[];
   activeDiff: GrammarCheckDiffs;
 }
 
@@ -17,7 +17,7 @@ export const GRAMMAR_CHECK_STATES: IGrammarCheckStates = {
   instruction: "",
   sourceText: "",
   resultText: "",
-  resultTextRemoved: "",
-  resultTextAdded: "",
+  resultTextRemoved: [],
+  resultTextAdded: [],
   activeDiff: GrammarCheckDiffs.Original,
 };
