@@ -11,6 +11,7 @@ import { useGrammarCheck } from "../lib/useGrammarCheck";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { fetchAIChatCompletionV2 } from "@/common/lib/api/ai/fetchAIChatCompletionV2";
 import { IChatCompletionRes } from "@/common/lib/api/ai/aiAPIInterfaces";
+import { createRemovedAndAddedDiff } from "@/common/lib/createRemovedAndAddedDiff";
 
 const LoginModal = dynamic(() => import('../../login/components/LoginModal'), { ssr: false });
 
@@ -48,9 +49,20 @@ const GrammarCheckSourceTextareaBtn = () => {
 
     if (grammarCheckRes.id) {
       setIsLoading(false);
+      const finalText = grammarCheckRes.choices[0].message.content;
+      const removedAddedDiff = createRemovedAndAddedDiff(sourceText, finalText);
+
       dispatch({
-        name:  "resultText",
-        value: grammarCheckRes.choices[0].message.content,
+        name: "resultText",
+        value: finalText,
+      });
+      dispatch({
+        name: "resultTextAdded",
+        value: removedAddedDiff.addedDiff,
+      });
+      dispatch({
+        name: "resultTextRemoved",
+        value: removedAddedDiff.removedDiff,
       });
       return;
     }
