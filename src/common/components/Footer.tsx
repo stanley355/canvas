@@ -35,7 +35,7 @@ const Footer = () => (
           href="/support/"
           className="flex items-center gap-1 py-2 hover:font-bold"
         >
-          Support
+          Help
         </Link>
       </div>
     </div>

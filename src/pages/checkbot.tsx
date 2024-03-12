@@ -1,4 +1,4 @@
-import { GetServerSideProps} from "next";
+import { GetServerSideProps } from "next";
 
 // Permament redirect, GrammarCheck was Checkbot before
 const CheckBot = () => {
@@ -6,7 +6,7 @@ const CheckBot = () => {
 };
 
 export default CheckBot;
-export const getServerSideProps: GetServerSideProps= async() => {
+export const getServerSideProps: GetServerSideProps = async () => {
   return {
     redirect: {
       permanent: true,

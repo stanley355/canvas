@@ -16,7 +16,12 @@ const GrammarCheckContainer = () => {
       </div>
       <div className="flex items-center justify-center gap-2 mt-16">
         <span>Found an Issue ? </span>
-        <Link className="text-blue-500 border-b border-b-blue-500" href={'/support'}>Report</Link> 
+        <Link
+          className="text-blue-500 border-b border-b-blue-500"
+          href={"/support"}
+        >
+          Report
+        </Link>
       </div>
     </div>
   );
