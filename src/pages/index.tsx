@@ -4,6 +4,7 @@ import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
 import HomeHero from "@/modules/home/components/HomeHero";
 import HomeSponsors from "@/modules/home/components/HomeSponsors";
 import HomeExplanation from "@/modules/home/components/HomeExplanation";
+import HomeRoi from "@/modules/home/components/HomeRoi";
 
 interface IHomeProps {
   datoCmsData: IMetaHead;
@@ -17,6 +18,7 @@ const Home = (props: IHomeProps) => {
       <HomeHero />
       <HomeSponsors />
       <HomeExplanation />
+      <HomeRoi />
     </div>
   );
 };
