@@ -1,19 +1,27 @@
-import { Button } from "@/common/components/ui/button"
-import GoogleLoginBtn from "@/modules/login/components/GoogleLoginBtn"
-import Image from "next/image"
-import Link from "next/link"
-import { useRouter } from "next/router"
+import { Button } from "@/common/components/ui/button";
+import GoogleLoginBtn from "@/modules/login/components/GoogleLoginBtn";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const HomeHero = () => {
   const router = useRouter();
   return (
     <div className="container mx-auto mt-20 lg:grid lg:grid-cols-2 lg:mt-12">
       <div>
-
-        <div className="mb-8 text-3xl font-bold lg:text-5xl">Responsible AI that ensures your writing and reputation shine</div>
-        <div className="mb-8 text-lg lg:text-xl">Work with an AI writing partner that helps you find the words you need to write that tricky email, to get your point across, to keep your work moving.</div>
+        <div className="mb-8 text-3xl font-bold lg:text-5xl">
+          Responsible AI that ensures your writing and reputation shine
+        </div>
+        <div className="mb-8 text-lg lg:text-xl">
+          Work with an AI writing partner that helps you find the words you need
+          to write that tricky email, to get your point across, to keep your
+          work moving.
+        </div>
         <div className="mb-4 lg:flex lg:gap-2">
-          <Button className="w-full p-6 mb-6 text-lg text-white lg:text-md lg:p-4 lg:w-1/3 bg-emerald-700 hover:bg-emerald-600" onClick={() => router.push("/login")}>
+          <Button
+            className="w-full p-6 mb-6 text-lg text-white lg:text-md lg:p-4 lg:w-1/3 bg-emerald-700 hover:bg-emerald-600 shadow-lg"
+            onClick={() => router.push("/login")}
+          >
             Sign up it&apos;s free
           </Button>
           <GoogleLoginBtn />
@@ -38,9 +46,15 @@ const HomeHero = () => {
           apply.
         </div>
       </div>
-      <Image src={'/images/languageai.png'} alt="LanguageAi" width={350} height={350} className="mx-auto" />
+      <Image
+        src={"/images/languageai.png"}
+        alt="LanguageAi"
+        width={350}
+        height={350}
+        className="mx-auto"
+      />
     </div>
-  )
-}
+  );
+};
 
-export default HomeHero
+export default HomeHero;
