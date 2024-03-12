@@ -1,37 +1,19 @@
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { FaLanguage, FaRobot } from "react-icons/fa";
+import { GetStaticProps } from "next";
+import { getHomePageStaticProps } from "@/modules/home/lib/getHomePageStaticProps";
+import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
 
-import { HOME_SEO } from "@/modules/home/lib/constant";
-import MetaSEO from "@/common/components/MetaSEO";
-import HomeProducts from "@/modules/home/components/HomeProducts";
-import HomeVideo from "@/modules/home/components/HomeVideo";
+interface IHomeProps {
+  datoCmsData: IMetaHead;
+}
 
-const Home = () => {
+const Home = (props: IHomeProps) => {
+  const { datoCmsData } = props;
   return (
     <div>
-      <MetaSEO seo={HOME_SEO} />
-      <div className="bg-gradient-to-br from-white via-slate-100 to-white">
-        <div className="container p-4 mx-auto">
-          <h1 className="flex items-center justify-center mt-8 mb-2 text-4xl font-bold text-center">
-            <span>Language</span>
-            <Image
-              src="/images/languageai.png"
-              alt="Language AI"
-              width={50}
-              height={50}
-            />
-          </h1>
-          <div className="mb-8 text-2xl text-center text-black">
-            How can AI help you?
-          </div>
-          <HomeProducts />
-          <HomeVideo />
-        </div>
-      </div>
+      <MetaHead pagesSchema={datoCmsData.pagesSchema} />
     </div>
   );
 };
 
 export default Home;
+export const getStaticProps: GetStaticProps = getHomePageStaticProps;
