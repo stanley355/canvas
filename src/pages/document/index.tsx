@@ -10,8 +10,6 @@ import DocumentSearchBox from "@/modules/document/components/DocumentSearchBox";
 import { fetchAllDocument } from "@/common/lib/api/documents/fetchAllDocument";
 import { IDocument } from "@/common/lib/api/documents/documentInterface";
 import { useState } from "react";
-import MetaSEO from "@/common/components/MetaSEO";
-import { HOME_SEO } from "@/modules/home/lib/constant";
 
 interface IDocumentHome {
   user: IUser;
@@ -29,7 +27,6 @@ const DocumentHome = (props: IDocumentHome) => {
 
   return (
     <div className="container mx-auto border-x border-blue-900 pt-[2.5%] min-h-screen">
-      <MetaSEO seo={HOME_SEO} />
       <DocumentBanner user={user} />
       <DocumentSearchBox
         userDocuments={userDocuments}
