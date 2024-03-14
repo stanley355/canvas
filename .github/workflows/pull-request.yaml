@@ -38,9 +38,6 @@ jobs:
             FIREBASE_MESSAGING_SENDER=${{ secrets.FIREBASE_MESSAGING_SENDER }}
             FIREBASE_APP_ID=${{ secrets.FIREBASE_APP_ID }}
             FIREBASE_MEASUREMENT_ID=${{ secrets.FIREBASE_MEASUREMENT_ID }}
-            OPENAI_URL=${{ secrets.OPENAI_URL }}
-            OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
-            OPENAI_API_KEY_PREMIUM=${{ secrets.OPENAI_API_KEY_PREMIUM }}
             DOKU_URL=${{ secrets.DOKU_URL }}
             DOKU_CLIENT_ID=${{ secrets.DOKU_CLIENT_ID }}
             DOKU_SECRET_KEY=${{ secrets.DOKU_SECRET_KEY }}

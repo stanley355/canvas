@@ -5,7 +5,6 @@ import Cookies from "js-cookie";
 import { getLoginPageStaticProps } from "@/modules/login/lib/getLoginPageStaticProps";
 import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
 import LoginCard from "@/modules/login/components/LoginCard";
-import LoginModal from "@/modules/login/components/LoginModal";
 
 interface ILoginProps {
   datoCmsData: IMetaHead;

@@ -3,14 +3,15 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { TbBrandGoogle, TbProgress } from "react-icons/tb";
 import Cookies from "js-cookie";
+import { JwtPayload, decode } from "jsonwebtoken";
 
 import { Button } from "@/common/components/ui/button";
 
 import { useGrammarCheck } from "../lib/useGrammarCheck";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import { fetchAIChatCompletionV2 } from "@/common/lib/api/ai/fetchAIChatCompletionV2";
-import { IChatCompletionRes } from "@/common/lib/api/ai/aiAPIInterfaces";
 import { createRemovedAndAddedDiff } from "@/common/lib/createRemovedAndAddedDiff";
+import { fetchNewPrompts } from "@/common/lib/api/prompts/fetchNewPrompts";
+import { IFetchNewPromptsRes } from "@/common/lib/api/prompts/interfaces";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"), {
   ssr: false,
@@ -41,16 +42,20 @@ const GrammarCheckSourceTextareaBtn = () => {
       return;
     }
 
-    sendFirebaseEvent("grammar_check");
     setIsLoading(true);
-    const grammarCheckRes: IChatCompletionRes = await fetchAIChatCompletionV2(
-      instruction,
-      sourceText
-    );
+    sendFirebaseEvent("grammar_check");
+    
+    const user = decode(token) as JwtPayload;
+    const payload = {
+      user_id: user.id,
+      system_prompt: instruction,
+      user_prompt: sourceText
+    }
+    const grammarCheckRes: IFetchNewPromptsRes= await fetchNewPrompts(payload);
 
-    if (grammarCheckRes.id) {
+    if (grammarCheckRes.completion_text) {
       setIsLoading(false);
-      const finalText = grammarCheckRes.choices[0].message.content;
+      const finalText = grammarCheckRes.completion_text;
       const removedAddedDiff = createRemovedAndAddedDiff(sourceText, finalText);
 
       dispatch({
