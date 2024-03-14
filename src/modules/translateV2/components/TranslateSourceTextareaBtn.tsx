@@ -2,12 +2,14 @@ import { useState } from "react";
 import { TbLanguage, TbProgress } from "react-icons/tb";
 import { toast } from "react-toastify";
 import dynamic from "next/dynamic";
+import Cookies from "js-cookie";
+import { JwtPayload, decode } from "jsonwebtoken";
+
 import { useTranslateV2 } from "../lib/useTranslateV2";
 import { Button } from "@/common/components/ui/button";
-import { fetchAIChatCompletionV2 } from "@/common/lib/api/ai/fetchAIChatCompletionV2";
-import { IChatCompletionRes } from "@/common/lib/api/ai/aiAPIInterfaces";
-import Cookies from "js-cookie";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { fetchNewPrompts } from "@/common/lib/api/prompts/fetchNewPrompts";
+import { IFetchNewPromptsRes } from "@/common/lib/api/prompts/interfaces";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"), {
   ssr: false,
@@ -38,20 +40,24 @@ const TranslateSourceTextareaBtn = () => {
       return;
     }
 
-    sendFirebaseEvent("translate");
     setIsLoading(true);
-    const system = `You are a translator. Translate the text to ${targetLanguage.value}`;
-    const translateRes: IChatCompletionRes = await fetchAIChatCompletionV2(
-      system,
-      sourceText
-    );
+    sendFirebaseEvent("translate");
 
-    if (translateRes.id) {
+    const user = decode(token) as JwtPayload;
+    const system = `You are a translator. Translate the text to ${targetLanguage.value}`;
+    const payload = {
+      user_id: user.id,
+      system_prompt: system,
+      user_prompt: sourceText
+    }
+    const translateRes : IFetchNewPromptsRes = await fetchNewPrompts(payload);
+
+    if (translateRes.completion_text) {
       setIsLoading(false);
       dispatch({
         type: "SET",
         name: "translatedText",
-        value: translateRes.choices[0].message.content,
+        value: translateRes.completion_text,
       });
       return;
     }
