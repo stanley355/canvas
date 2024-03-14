@@ -2,10 +2,8 @@ import ReactSelect, { SingleValue } from "react-select";
 import { toast } from "react-toastify";
 
 import DocumentTitle from "./DocumentTitle";
-import { fetchAIChatCompletionV2 } from "@/common/lib/api/ai/fetchAIChatCompletionV2";
 import { fetchUpdateDocument } from "@/common/lib/api/documents/fetchUpdateDocument";
 import { useDocumentEditor } from "../lib/useDocumentEditor";
-import { IChatCompletionRes } from "@/common/lib/api/ai/aiAPIInterfaces";
 import { IDocument } from "@/common/lib/api/documents/documentInterface";
 import { IUser } from "@/common/lib/api/users/userInterfaces";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
@@ -51,34 +49,34 @@ const DocumentSuggestionHeader = (props: IDocumentSuggestionHeader) => {
       name: "isLoading",
       value: true,
     });
-    const apiRes: IChatCompletionRes = await fetchAIChatCompletionV2(
-      String(option?.value),
-      documentEditorStates.editorText
-    );
-    if (apiRes.id) {
-      sendFirebaseEvent("document_instruct");
-      dispatch({
-        type: "SET",
-        name: "suggestionText",
-        value: apiRes.choices[0].message.content,
-      });
-      dispatch({
-        type: "SET",
-        name: "isLoading",
-        value: false,
-      });
+    // const apiRes: IChatCompletionRes = await fetchAIChatCompletionV2(
+    //   String(option?.value),
+    //   documentEditorStates.editorText
+    // );
+    // if (apiRes.id) {
+    //   sendFirebaseEvent("document_instruct");
+    //   dispatch({
+    //     type: "SET",
+    //     name: "suggestionText",
+    //     value: apiRes.choices[0].message.content,
+    //   });
+    //   dispatch({
+    //     type: "SET",
+    //     name: "isLoading",
+    //     value: false,
+    //   });
 
-      const updatePayload = {
-        id: document.id,
-        user_id: user.id,
-        name: document.name,
-        content: editorText,
-        checkbot_completion: apiRes.choices[0].message.content,
-      };
+    //   const updatePayload = {
+    //     id: document.id,
+    //     user_id: user.id,
+    //     name: document.name,
+    //     content: editorText,
+    //     checkbot_completion: apiRes.choices[0].message.content,
+    //   };
 
-      await fetchUpdateDocument(updatePayload);
-      return;
-    }
+    //   await fetchUpdateDocument(updatePayload);
+    //   return;
+    // }
 
     dispatch({
       type: "SET",
@@ -90,12 +88,12 @@ const DocumentSuggestionHeader = (props: IDocumentSuggestionHeader) => {
   };
 
   return (
-    <div className="flex items-center justify-between py-1 gap-4">
+    <div className="flex items-center justify-between gap-4 py-1">
       <DocumentTitle user={user} document={document} />
       <ReactSelect
         options={options}
         placeholder="Pilih Instruksi"
-        className="w-1/2 border-blue-900 border rounded-md"
+        className="w-1/2 border border-blue-900 rounded-md"
         onChange={handleInstructionChange}
       />
     </div>
