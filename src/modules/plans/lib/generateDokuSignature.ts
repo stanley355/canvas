@@ -1,46 +1,18 @@
-// WARNING! Must be called on server side
-import sha256 from "crypto-js/sha256";
-import hmacSHA256 from "crypto-js/hmac-sha256";
-import Base64 from "crypto-js/enc-base64";
+import CryptoJS from "crypto-js";
 
-interface IDokuSignature {
-  requestID: string;
-  timestamp: string;
-  dokuPath: string;
-  dokuPayload?: string | any;
+export function generateDokuSignature(payload: any, timestamp: string) {
+    console.log(444, payload.order.invoice_number);
+    const digestSHA256 = CryptoJS.SHA256(JSON.stringify(payload));
+    const digestBase64 = CryptoJS.enc.Base64.stringify(digestSHA256);
+    
+    const signatureComponents = 'Client-Id:' + String(process.env.DOKU_CLIENT_ID) +'\n'+
+    'Request-Id:' + payload.order.invoice_number +'\n'+
+    'Request-Timestamp:' + timestamp + '\n'+
+    'Request-Target:/checkout/v1/payment' + '\n'+
+    'Digest:' + digestBase64;
+
+    const signatureHmacSha256 = CryptoJS.HmacSHA256(signatureComponents, String(process.env.DOKU_SECRET_KEY));
+    const signatureBase64 = CryptoJS.enc.Base64.stringify(signatureHmacSha256);
+
+    return 'HMACSHA256='+signatureBase64;
 }
-
-const generateDokuDigest = (payload: IDokuSignature) => {
-  const body = JSON.stringify(payload.dokuPayload);
-  const hashDigest = sha256(body);
-  const hmacDigest = Base64.stringify(hashDigest);
-  const digest = `Digest:${hmacDigest}`;
-
-  return digest;
-};
-
-const generateSignatureString = (payload: IDokuSignature) => {
-  const clientID = `Client-Id:${process.env.DOKU_CLIENT_ID}`;
-  const reqID = `Request-Id:${payload.requestID}`;
-  const reqTimestamp = `Request-Timestamp:${payload.timestamp}`;
-  const reqTarget = `Request-Target:${payload.dokuPath}`;
-  const baseString =
-    clientID + "\n" + reqID + "\n" + reqTimestamp + "\n" + reqTarget;
-
-  if (payload.dokuPayload) {
-    const digest = generateDokuDigest(payload);
-    return baseString + "\n" + digest;
-  }
-
-  return baseString;
-};
-
-// WARNING! Must be called on server side
-export const generateDokuSignature = (payload: IDokuSignature) => {
-  const signatureString = generateSignatureString(payload);
-  const privateKey = String(process.env.DOKU_SECRET_KEY);
-  const hmac = hmacSHA256(signatureString, privateKey);
-  const base64 = Base64.stringify(hmac);
-
-  return `HMACSHA256=${base64}`;
-};
