@@ -48,7 +48,8 @@ const TranslateSourceTextareaBtn = () => {
     const payload = {
       user_id: user.id,
       system_prompt: system,
-      user_prompt: sourceText
+      user_prompt: sourceText,
+      prompt_type: "Translate"
     }
     const translateRes : IFetchNewPromptsRes = await fetchNewPrompts(payload);
 

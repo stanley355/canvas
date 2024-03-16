@@ -1,35 +1,3 @@
-export const DOKU_VA_LIST = [
-  {
-    label: "BCA via DOKU",
-    value: "/doku-virtual-account/v2/payment-code",
-  },
-  {
-    label: "BSI (Bank Syariah Indonesia)",
-    value: "/bsm-virtual-account/v2/payment-code",
-  },
-  {
-    label: "Bank Mandiri",
-    value: "/mandiri-virtual-account/v2/payment-code",
-  },
-
-  {
-    label: "Bank BRI",
-    value: "/bri-virtual-account/v2/payment-code",
-  },
-  {
-    label: "Bank BNI",
-    value: "/bni-virtual-account/v2/payment-code",
-  },
-  {
-    label: "Bank CIMB",
-    value: "/cimb-virtual-account/v2/payment-code",
-  },
-  {
-    label: "ATM Bersama",
-    value: "/doku-virtual-account/v2/payment-code",
-  },
-];
-
 export interface IPlanList {
   title: string;
   description: string;
@@ -61,7 +29,7 @@ export const PLAN_LIST_V2: IPlanList[] = [
         isBold: false,
       },
       {
-        name: "Ai Checkbot",
+        name: "Ai Grammar Check",
         limit: "10x / Month",
         isBold: false,
       },
@@ -97,7 +65,7 @@ export const PLAN_LIST_V2: IPlanList[] = [
         isBold: true,
       },
       {
-        name: "Ai Checkbot",
+        name: "Ai Grammar Check",
         limit: "Unlimited",
         isBold: true,
       },
@@ -148,7 +116,7 @@ export const PLAN_LIST_V2: IPlanList[] = [
         isBold: true,
       },
       {
-        name: "Ai Checkbot",
+        name: "Ai Grammar Check",
         limit: "Credit Limit",
         isBold: true,
       },
