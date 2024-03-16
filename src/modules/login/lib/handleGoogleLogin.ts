@@ -12,7 +12,7 @@ export const handleGoogleLogin = async (token: any) => {
   if (loginRes.token) {
     sendFirebaseEvent("google_login");
     Cookies.set("token", loginRes.token);
-    window.location.reload();
+    window.location.href = "/account/";
     return loginRes;
   }
 
