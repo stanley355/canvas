@@ -1,6 +1,6 @@
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { JwtPayload, decode } from "jsonwebtoken";
-import { fetchUser } from "@/common/lib/api/users/fetchUser";
+import { fetchUserAccount } from "@/common/lib/api/users/fetchUserAccount";
 
 export const getAccountPageServerProps: GetServerSideProps = async (
   ctx: GetServerSidePropsContext
@@ -17,11 +17,11 @@ export const getAccountPageServerProps: GetServerSideProps = async (
   }
 
   const decodedToken = decode(token) as JwtPayload;
-  const user = await fetchUser(decodedToken.email);
+  const account = await fetchUserAccount(decodedToken.id);
 
   return {
     props: {
-      user,
+      account,
     },
   };
 };

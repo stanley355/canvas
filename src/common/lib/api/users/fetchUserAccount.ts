@@ -1,13 +1,13 @@
 import axios from "axios";
 import { axiosErrorHandler } from "../axiosErrorHandler";
 
-export const fetchUser = async (email: string) => {
+export const fetchUserAccount = async (id: string) => {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/users/`;
   const axiosConfig = {
     method: "GET",
     url: URL,
     headers: {
-      path: `?email=${email}`,
+      path: `/account?id=${id}`,
     },
   };
 
