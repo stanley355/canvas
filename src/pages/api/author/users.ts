@@ -20,10 +20,10 @@ const authorUsersAPI = async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     const { data } = await axios(axiosConfig);
-    res.send(data);
+    res.json(data);
   } catch (err: any) {
     const errorRes = axiosErrorHandler(URL, err);
-    res.send(errorRes);
+    res.status(err.response.status).send(errorRes);
   }
 };
 

@@ -23,7 +23,7 @@ const topupAPI = async (req: NextApiRequest, res: NextApiResponse) => {
     res.json(data);
   } catch (err: any) {
     const errorRes = axiosErrorHandler(err, URL);
-    res.json(errorRes);
+    res.status(err.response.status).send(errorRes);
   }
 };
 
