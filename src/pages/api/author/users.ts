@@ -23,7 +23,7 @@ const authorUsersAPI = async (req: NextApiRequest, res: NextApiResponse) => {
     res.json(data);
   } catch (err: any) {
     const errorRes = axiosErrorHandler(URL, err);
-    res.status(err.response.status).send(errorRes);
+    res.json(errorRes);
   }
 };
 

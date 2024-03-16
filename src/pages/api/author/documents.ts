@@ -26,7 +26,7 @@ const authorDocumentsAPI = async (
     res.json(data);
   } catch (err: any) {
     const errorRes = axiosErrorHandler(URL, err);
-    res.status(err.response.status).send(errorRes);
+    res.json(errorRes);
   }
 };
 
