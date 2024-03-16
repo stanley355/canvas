@@ -1,6 +1,6 @@
 import { IDocument } from "@/common/lib/api/documents/documentInterface";
 import { fetchCreateDocument } from "@/common/lib/api/documents/fetchCreateDocument";
-import { IUser } from "@/common/lib/api/users/userInterfaces";
+import { IUser } from "@/common/lib/api/users/interfaces";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { useRouter } from "next/router";
 import {
@@ -33,9 +33,9 @@ const DocumentBanner = (props: IDocumentBanner) => {
   };
 
   return (
-    <div className="flex items-center p-4 border-l-4 border-blue-900 w-4/5 mx-auto shadow-lg gap-8">
+    <div className="flex items-center w-4/5 gap-8 p-4 mx-auto border-l-4 border-blue-900 shadow-lg">
       <div className="leading-8">
-        <div className="text-md font-bold">
+        <div className="font-bold text-md">
           All-in-one Writing Assistant for ALL Languages
         </div>
         <div className="text-sm">
@@ -52,7 +52,7 @@ const DocumentBanner = (props: IDocumentBanner) => {
       <button
         type="button"
         onClick={handleClick}
-        className="bg-blue-900 text-white p-2 rounded-md ml-16 text-sm"
+        className="p-2 ml-16 text-sm text-white bg-blue-900 rounded-md"
       >
         Buat Dokumen
       </button>
