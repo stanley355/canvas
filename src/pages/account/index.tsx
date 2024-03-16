@@ -2,9 +2,10 @@ import { GetServerSideProps } from "next";
 import { getAccountPageServerProps } from "@/modules/account/lib/getAccountPageServerProps";
 
 import AccountDetail from "@/modules/account/components/AccountDetail";
-import AccountSubscriptionDetail from "@/modules/account/components/AccountSubscriptionDetail";
+import AccountPlanDetail from "@/modules/account/components/AccountPlanDetail";
+import AccountPlanList from "@/modules/account/components/AccountPlanList";
 
-import {IUser} from '@/common/lib/api/users/interfaces'
+import { IUser } from '@/common/lib/api/users/interfaces'
 import { ISubscription } from "@/common/lib/api/subscriptions/interfaces";
 import { ITopup } from "@/common/lib/api/topups/interfaces";
 
@@ -18,13 +19,15 @@ interface IAccountProps {
 
 const Account = (props: IAccountProps) => {
   const { account } = props;
-  console.log(account);
-  
+
   return (
     <div className="container px-6 mx-auto mt-16 lg:mt-4 lg:px-12">
       <div className="lg:grid lg:grid-cols-2">
         <AccountDetail user={account.user} />
-        <AccountSubscriptionDetail />
+        <div>
+          <AccountPlanDetail />
+          <AccountPlanList />
+        </div>
       </div>
     </div>
   );
