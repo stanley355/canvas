@@ -1,7 +1,9 @@
-import { Textarea } from "@/common/components/ui/textarea";
-import GrammarCheckInstructionSelect from "./GrammarCheckInstructionSelect";
-import { useGrammarCheck } from "../lib/useGrammarCheck";
 import { ChangeEvent } from "react";
+import { TbX } from "react-icons/tb";
+import { Textarea } from "@/common/components/ui/textarea";
+import { Button } from "@/common/components/ui/button";
+import { useGrammarCheck } from "../lib/useGrammarCheck";
+import GrammarCheckInstructionSelect from "./GrammarCheckInstructionSelect";
 import GrammarCheckSourceTextareaBtn from "./GrammarCheckSourceTextareaBtn";
 
 const GrammarCheckSourceTextarea = () => {
@@ -11,7 +13,16 @@ const GrammarCheckSourceTextarea = () => {
   return (
     <div>
       <GrammarCheckInstructionSelect />
-      <div className="pb-2 border lg:rounded-md">
+      <div className="relative pb-2 border lg:rounded-md">
+        <Button variant={'ghost'} className="absolute top-0 right-0" onClick={() => {
+          dispatch({
+            type: "SET",
+            name: "sourceText",
+            value: "",
+          })
+        }} >
+          <TbX className="text-2xl" />
+        </Button>
         <Textarea
           placeholder="Enter Text"
           onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
