@@ -16,6 +16,19 @@ export const fetchDokuCheckoutPayment = async (topup: ITopup, user: IUser) => {
     },
     payment: {
       payment_due_date: 60,
+      payment_method_types: [
+        "VIRTUAL_ACCOUNT_BCA",
+        "VIRTUAL_ACCOUNT_BANK_MANDIRI",
+        "VIRTUAL_ACCOUNT_BANK_SYARIAH_MANDIRI",
+        "VIRTUAL_ACCOUNT_DOKU",
+        "VIRTUAL_ACCOUNT_BRI",
+        "VIRTUAL_ACCOUNT_BNI",
+        "VIRTUAL_ACCOUNT_BANK_PERMATA",
+        "VIRTUAL_ACCOUNT_BANK_CIMB",
+        "VIRTUAL_ACCOUNT_BANK_DANAMON",
+        "EMONEY_SHOPEEPAY",
+        "EMONEY_OVO"
+    ]
     },
     customer: {
       name: user.fullname,
