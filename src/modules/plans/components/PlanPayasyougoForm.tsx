@@ -26,6 +26,11 @@ const PlanPayasyougoForm = () => {
       return;
     }
 
+    if (amount.value < 11000) {
+      toast.info("Minimum amount is Rp 11.000");
+      return;
+    }
+
     setIsLoading(true);
     const token = Cookies.get("token");
     const user = decode(String(token)) as JwtPayload;
