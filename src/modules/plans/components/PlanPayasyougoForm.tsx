@@ -1,16 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
+import Cookies from 'js-cookie'
+import { JwtPayload, decode } from 'jsonwebtoken'
+import { toast } from 'react-toastify'
+
 import { Button } from '@/common/components/ui/button'
 import { Input } from '@/common/components/ui/input'
 import { Label } from '@/common/components/ui/label'
-import { toast } from 'react-toastify'
-import Cookies from 'js-cookie'
-import { JwtPayload, decode } from 'jsonwebtoken'
+
 import { fetchTopupPayasyouGo } from '@/common/lib/api/topups/fetchTopupPayasyougo'
 import { fetchDokuCheckoutPayment } from '@/common/lib/api/doku/fetchDokuCheckoutPayment'
 import { IUser } from '@/common/lib/api/users/interfaces'
+import { IDokuCheckoutPaymentRes } from '@/common/lib/api/doku/interfaces'
+import { TbProgress } from 'react-icons/tb'
 
 const PlanPayasyougoForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -21,6 +26,7 @@ const PlanPayasyougoForm = () => {
       return;
     }
 
+    setIsLoading(true);
     const token = Cookies.get('token');
     const user = decode(String(token)) as JwtPayload;
 
@@ -31,11 +37,18 @@ const PlanPayasyougoForm = () => {
     const topup = await fetchTopupPayasyouGo(topupPayload);
 
     if (topup.id) {
-      const doku = await fetchDokuCheckoutPayment(topup, user as IUser);
-      console.log(doku);
+      const doku: IDokuCheckoutPaymentRes = await fetchDokuCheckoutPayment(topup, user as IUser);
+      if (doku.response.payment.url) {
+        setIsLoading(false);
+        window.open(doku.response.payment.url, "_blank");
+        return;
+      }
+      setIsLoading(false);
+      toast.error("Fail to create payment, please try again");
       return;
     }
 
+    setIsLoading(false);
     toast.error(topup.data.message ? topup.data.message : "Fail to create payment, please try again");
     return;
   }
@@ -47,7 +60,19 @@ const PlanPayasyougoForm = () => {
       <form className='p-4 border-2 rounded-md shadow-lg' onSubmit={handleSubmit}>
         <Label htmlFor='amount_input' className='mb-4 text-gray-500'>Topup Balance Amount</Label>
         <Input id='amount_input' name='amount' type='number' placeholder='Rp ...' className='mb-4' />
-        <Button type='submit' className='w-full mb-4'>Continue</Button>
+        <Button type='submit' className='w-full mb-4'>
+          {isLoading ? (
+            <div className="flex items-center gap-2">
+              <TbProgress className="text-lg animate-spin" />
+              <span>Loading</span>
+            </div>
+          ) : (
+            <div >
+              Continue
+            </div>
+          )}
+
+        </Button>
         <div className="w-full p-2 mb-4 text-sm bg-blue-100">
           You will be charged based on your Topup amount, and your Balance will be deducted based on your usage
         </div>
