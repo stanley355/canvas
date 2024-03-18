@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TbLanguage, TbProgress } from "react-icons/tb";
 import { toast } from "react-toastify";
 import dynamic from "next/dynamic";
@@ -21,6 +21,15 @@ const TranslateSourceTextareaBtn = () => {
 
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingText, setLoadingText] = useState("");
+
+  useEffect(() => {
+    if (isLoading) {
+      setTimeout(() => setLoadingText("In progress"), 2000);
+      setTimeout(() => setLoadingText("Hang on there"), 4000);
+      setTimeout(() => setLoadingText("Cleaning up"), 6000);
+    }
+  }, [isLoading]);
 
   const handleClick = async () => {
     const token = Cookies.get("token");
@@ -55,6 +64,7 @@ const TranslateSourceTextareaBtn = () => {
 
     if (translateRes.completion_text) {
       setIsLoading(false);
+      setLoadingText("");
       dispatch({
         type: "SET",
         name: "translatedText",
@@ -64,6 +74,7 @@ const TranslateSourceTextareaBtn = () => {
     }
 
     setIsLoading(false);
+      setLoadingText("");
     toast.error("Server Busy, please try again");
     return;
   };
@@ -75,7 +86,7 @@ const TranslateSourceTextareaBtn = () => {
         {isLoading ? (
           <div className="flex items-center gap-2">
             <TbProgress className="text-lg animate-spin" />
-            <span>Loading</span>
+            <span>{loadingText ? loadingText : "Loading"}</span>
           </div>
         ) : (
           <div className="flex items-center gap-2">

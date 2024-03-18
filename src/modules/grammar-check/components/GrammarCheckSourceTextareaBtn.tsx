@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { TbBrandGoogle, TbProgress } from "react-icons/tb";
 import Cookies from "js-cookie";
@@ -23,6 +23,15 @@ const GrammarCheckSourceTextareaBtn = () => {
 
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingText, setLoadingText] = useState("");
+
+  useEffect(() => {
+    if (isLoading) {
+      setTimeout(() => setLoadingText("In progress"), 2000);
+      setTimeout(() => setLoadingText("Hang on there"), 4000);
+      setTimeout(() => setLoadingText("Cleaning up"), 6000);
+    }
+  }, [isLoading]);
 
   const handleClick = async () => {
     const token = Cookies.get("token");
@@ -44,7 +53,7 @@ const GrammarCheckSourceTextareaBtn = () => {
 
     setIsLoading(true);
     sendFirebaseEvent("grammar_check");
-    
+
     const user = decode(token) as JwtPayload;
     const payload = {
       user_id: user.id,
@@ -52,10 +61,11 @@ const GrammarCheckSourceTextareaBtn = () => {
       user_prompt: sourceText,
       prompt_type: "GrammarCheck"
     }
-    const grammarCheckRes: IFetchNewPromptsRes= await fetchNewPrompts(payload);
+    const grammarCheckRes: IFetchNewPromptsRes = await fetchNewPrompts(payload);
 
     if (grammarCheckRes.completion_text) {
       setIsLoading(false);
+      setLoadingText("");
       const finalText = grammarCheckRes.completion_text;
       const removedAddedDiff = createRemovedAndAddedDiff(sourceText, finalText);
 
@@ -75,6 +85,7 @@ const GrammarCheckSourceTextareaBtn = () => {
     }
 
     setIsLoading(false);
+    setLoadingText("");
     toast.error("Server Busy, please try again");
     return;
   };
@@ -86,7 +97,7 @@ const GrammarCheckSourceTextareaBtn = () => {
         {isLoading ? (
           <div className="flex items-center gap-2">
             <TbProgress className="text-lg animate-spin" />
-            <span>Loading</span>
+            <span>{loadingText ? loadingText : "Loading"}</span>
           </div>
         ) : (
           <div className="flex items-center gap-2">
