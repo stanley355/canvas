@@ -40,7 +40,7 @@ const PlanPayasyougoForm = () => {
       const doku: IDokuCheckoutPaymentRes = await fetchDokuCheckoutPayment(topup, user as IUser);
       if (doku.response.payment.url) {
         setIsLoading(false);
-        window.open(doku.response.payment.url, "_blank");
+        window.location.href =  doku.response.payment.url;
         return;
       }
       setIsLoading(false);
