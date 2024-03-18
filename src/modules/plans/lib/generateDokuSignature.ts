@@ -1,7 +1,6 @@
 import CryptoJS from "crypto-js";
 
 export function generateDokuSignature(payload: any, timestamp: string) {
-  console.log(444, payload.order.invoice_number);
   const digestSHA256 = CryptoJS.SHA256(JSON.stringify(payload));
   const digestBase64 = CryptoJS.enc.Base64.stringify(digestSHA256);
 
