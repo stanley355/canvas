@@ -6,7 +6,7 @@ import { IUser } from "../users/interfaces";
 export const fetchDokuCheckoutPayment = async (topup: ITopup, user: IUser) => {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/doku/checkout-payment/`;
 
-  const callbackUrl = process.env.NEXT_PUBLIC_BASE_URL;
+  const callbackUrl = `${process.env.NEXT_PUBLIC_BASE_URL}account/`;
 
   const dokuPayload = {
     order: {
@@ -27,8 +27,8 @@ export const fetchDokuCheckoutPayment = async (topup: ITopup, user: IUser) => {
         "VIRTUAL_ACCOUNT_BANK_CIMB",
         "VIRTUAL_ACCOUNT_BANK_DANAMON",
         "EMONEY_SHOPEEPAY",
-        "EMONEY_OVO",
-      ],
+        "EMONEY_OVO"
+    ]
     },
     customer: {
       name: user.fullname,
