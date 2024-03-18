@@ -7,6 +7,8 @@ import { toast } from 'react-toastify'
 import Cookies from 'js-cookie'
 import { JwtPayload, decode } from 'jsonwebtoken'
 import { fetchTopupPayasyouGo } from '@/common/lib/api/topups/fetchTopupPayasyougo'
+import { fetchDokuCheckoutPayment } from '@/common/lib/api/doku/fetchDokuCheckoutPayment'
+import { IUser } from '@/common/lib/api/users/interfaces'
 
 const PlanPayasyougoForm = () => {
 
@@ -24,9 +26,18 @@ const PlanPayasyougoForm = () => {
 
     const topupPayload = {
       userID: user.id,
-      topupAmount: amount.value
+      topupAmount: Number(amount.value)
     }
     const topup = await fetchTopupPayasyouGo(topupPayload);
+
+    if (topup.id) {
+      const doku = await fetchDokuCheckoutPayment(topup, user as IUser);
+      console.log(doku);
+      return;
+    }
+
+    toast.error(topup.data.message ? topup.data.message : "Fail to create payment, please try again");
+    return;
   }
 
   return (

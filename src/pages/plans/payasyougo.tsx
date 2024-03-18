@@ -6,8 +6,7 @@ import { GetServerSideProps, GetServerSidePropsContext } from "next";
 const PayasyougoPlans = () => {
   return (
     <div className="container mx-auto mt-16">
-      <div>
-
+      <div className="lg:w-1/3 lg:mx-auto">
         <PlanPayasyougoCard />
         <PlanPayasyougoForm />
       </div>
