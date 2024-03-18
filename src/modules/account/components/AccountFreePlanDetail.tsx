@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Link from "next/link";
 
 const AccountFreePlanDetail = () => {
   return (
@@ -23,7 +23,7 @@ const AccountFreePlanDetail = () => {
         everything you write is clear, engaging, and polished.
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AccountFreePlanDetail
+export default AccountFreePlanDetail;

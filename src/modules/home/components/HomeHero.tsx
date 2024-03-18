@@ -27,15 +27,17 @@ const HomeHero = () => {
           to write that tricky email, to get your point across, to keep your
           work moving.
         </div>
-        {showLogin && <div className="mb-4 lg:flex lg:gap-2">
-          <Button
-            className="w-full p-6 mb-6 text-lg text-white shadow-lg lg:text-md lg:p-4 lg:w-1/3 bg-emerald-700 hover:bg-emerald-600"
-            onClick={() => router.push("/login")}
-          >
-            Sign up it&apos;s free
-          </Button>
-          <GoogleLoginBtn />
-        </div>}
+        {showLogin && (
+          <div className="mb-4 lg:flex lg:gap-2">
+            <Button
+              className="w-full p-6 mb-6 text-lg text-white shadow-lg lg:text-md lg:p-4 lg:w-1/3 bg-emerald-700 hover:bg-emerald-600"
+              onClick={() => router.push("/login")}
+            >
+              Sign up it&apos;s free
+            </Button>
+            <GoogleLoginBtn />
+          </div>
+        )}
         <div>
           This site is protected by reCAPTCHA and the Google
           <Link

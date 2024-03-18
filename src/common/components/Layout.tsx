@@ -16,7 +16,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       "/translate",
       "/grammar-check",
       "/plans/payasyougo",
-      "/plans/premium"
+      "/plans/premium",
     ].includes(router.pathname);
   }, [router.pathname]);
 

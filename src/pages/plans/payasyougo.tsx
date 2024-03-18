@@ -10,11 +10,13 @@ const PayasyougoPlans = () => {
         <PlanPayasyougoForm />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default PayasyougoPlans;
-export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSidePropsContext) => {
+export const getServerSideProps: GetServerSideProps = async (
+  ctx: GetServerSidePropsContext
+) => {
   const token = ctx.req.cookies.token;
 
   if (!token) {
@@ -29,4 +31,4 @@ export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSideP
   return {
     props: {},
   };
-}
+};

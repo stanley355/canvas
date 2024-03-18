@@ -1,16 +1,16 @@
 import { ITopup } from "@/common/lib/api/topups/interfaces";
-import { IUser } from "@/common/lib/api/users/interfaces"
+import { IUser } from "@/common/lib/api/users/interfaces";
 import Link from "next/link";
 import AccountTopupTable from "./AccountTopupTable";
 
 interface IAccountPayasyougoPlanDetail {
   user: IUser;
-  topups: ITopup[]
+  topups: ITopup[];
 }
 
 const AccountPayasyougoPlanDetail = (props: IAccountPayasyougoPlanDetail) => {
   const { user, topups } = props;
-  
+
   return (
     <div className="pb-4">
       <div className="mb-8 text-2xl font-bold border-b">Subscription</div>
@@ -37,7 +37,7 @@ const AccountPayasyougoPlanDetail = (props: IAccountPayasyougoPlanDetail) => {
 
       {topups && topups?.length > 0 && <AccountTopupTable topups={topups} />}
     </div>
-  )
-}
+  );
+};
 
-export default AccountPayasyougoPlanDetail
+export default AccountPayasyougoPlanDetail;

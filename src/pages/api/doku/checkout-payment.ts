@@ -9,7 +9,7 @@ const dokuCheckoutPaymentAPI = async (
   res: NextApiResponse
 ) => {
   try {
-    const timestamp = new Date().toISOString().slice(0, 19)+"Z";
+    const timestamp = new Date().toISOString().slice(0, 19) + "Z";
 
     const axiosConfig = {
       method: req.method,
@@ -25,7 +25,7 @@ const dokuCheckoutPaymentAPI = async (
 
     const { data } = await axios(axiosConfig);
     res.json(data);
-  } catch (error:any) {
+  } catch (error: any) {
     const errorRes = axiosErrorHandler("/checkout/v1/payment", error);
     res.status(error.response.status).send(errorRes);
   }

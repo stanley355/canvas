@@ -58,9 +58,9 @@ const TranslateSourceTextareaBtn = () => {
       user_id: user.id,
       system_prompt: system,
       user_prompt: sourceText,
-      prompt_type: "Translate"
-    }
-    const translateRes : IFetchNewPromptsRes = await fetchNewPrompts(payload);
+      prompt_type: "Translate",
+    };
+    const translateRes: IFetchNewPromptsRes = await fetchNewPrompts(payload);
 
     if (translateRes.completion_text) {
       setIsLoading(false);
@@ -74,7 +74,7 @@ const TranslateSourceTextareaBtn = () => {
     }
 
     setIsLoading(false);
-      setLoadingText("");
+    setLoadingText("");
     toast.error("Server Busy, please try again");
     return;
   };

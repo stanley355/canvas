@@ -1,11 +1,10 @@
 import axios from "axios";
 import { axiosErrorHandler } from "../axiosErrorHandler";
 
-
 export enum TopupPremiumDuration {
   Monthly = "Monthly",
   Quarterly = "Quarterly",
-  HalfYearly = "HalfYearly"
+  HalfYearly = "HalfYearly",
 }
 
 interface IFetchTopupPremium {

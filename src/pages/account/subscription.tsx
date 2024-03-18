@@ -7,9 +7,9 @@ import { ITopup } from "@/common/lib/api/topups/interfaces";
 
 interface IAccountSubscription {
   account: {
-    user: IUser,
-    active_subscription: ISubscription,
-    topups: ITopup[]
+    user: IUser;
+    active_subscription: ISubscription;
+    topups: ITopup[];
   };
 }
 

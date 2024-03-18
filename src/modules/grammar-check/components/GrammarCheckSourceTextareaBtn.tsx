@@ -59,8 +59,8 @@ const GrammarCheckSourceTextareaBtn = () => {
       user_id: user.id,
       system_prompt: instruction,
       user_prompt: sourceText,
-      prompt_type: "GrammarCheck"
-    }
+      prompt_type: "GrammarCheck",
+    };
     const grammarCheckRes: IFetchNewPromptsRes = await fetchNewPrompts(payload);
 
     if (grammarCheckRes.completion_text) {

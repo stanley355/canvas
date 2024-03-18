@@ -21,13 +21,17 @@ const TranslateSourceTextareaMobile = () => {
 
   return (
     <div className="relative pb-2 border">
-      <Button variant={'ghost'} className="absolute top-0 right-0" onClick={() => {
-        dispatch({
-          type: "SET",
-          name: "sourceText",
-          value: "",
-        })
-      }} >
+      <Button
+        variant={"ghost"}
+        className="absolute top-0 right-0"
+        onClick={() => {
+          dispatch({
+            type: "SET",
+            name: "sourceText",
+            value: "",
+          });
+        }}
+      >
         <TbX className="text-2xl" />
       </Button>
       <Textarea

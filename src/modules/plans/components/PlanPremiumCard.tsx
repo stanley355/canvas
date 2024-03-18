@@ -1,4 +1,3 @@
-
 const PlanPremiumCard = () => {
   return (
     <div>
@@ -17,7 +16,7 @@ const PlanPremiumCard = () => {
         </ul>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default PlanPremiumCard;

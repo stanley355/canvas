@@ -1,4 +1,3 @@
-
 const PlanPayasyougoCard = () => {
   return (
     <div>
@@ -18,7 +17,7 @@ const PlanPayasyougoCard = () => {
         </ul>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default PlanPayasyougoCard;

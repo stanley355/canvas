@@ -4,15 +4,15 @@ import { getAccountPageServerProps } from "@/modules/account/lib/getAccountPageS
 import AccountDetail from "@/modules/account/components/AccountDetail";
 import AccountPlanDetail from "@/modules/account/components/AccountPlanDetail";
 
-import { IUser } from '@/common/lib/api/users/interfaces'
+import { IUser } from "@/common/lib/api/users/interfaces";
 import { ISubscription } from "@/common/lib/api/subscriptions/interfaces";
 import { ITopup } from "@/common/lib/api/topups/interfaces";
 
 interface IAccountProps {
   account: {
-    user: IUser,
-    active_subscription: ISubscription,
-    topups: ITopup[]
+    user: IUser;
+    active_subscription: ISubscription;
+    topups: ITopup[];
   };
 }
 

@@ -9,9 +9,9 @@ import AccountPremiumPlanDetail from "./AccountPremiumPlanDetail";
 
 interface IAccountPlanDetail {
   account: {
-    user: IUser,
-    active_subscription: ISubscription,
-    topups: ITopup[]
+    user: IUser;
+    active_subscription: ISubscription;
+    topups: ITopup[];
   };
 }
 
@@ -20,11 +20,16 @@ const AccountPlanDetail = (props: IAccountPlanDetail) => {
   const { user, active_subscription, topups } = account;
 
   if (active_subscription && active_subscription?.id) {
-    return <AccountPremiumPlanDetail subscription={active_subscription} topups={topups} />
+    return (
+      <AccountPremiumPlanDetail
+        subscription={active_subscription}
+        topups={topups}
+      />
+    );
   }
 
   if (user.balance > 0) {
-    return <AccountPayasyougoPlanDetail user={user} topups={topups} />
+    return <AccountPayasyougoPlanDetail user={user} topups={topups} />;
   }
 
   return (
