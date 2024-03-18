@@ -3,7 +3,6 @@ const PlanPremiumCard = () => {
   return (
     <div>
       <div className="pb-4 border-b-2">
-        <div className="mb-2 text-center text-gray-500">Your Plan</div>
         <div className="text-xl font-bold text-center">Premium Plan</div>
       </div>
 
