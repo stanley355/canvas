@@ -2,6 +2,8 @@ import { useRef } from "react";
 import { Textarea } from "@/common/components/ui/textarea";
 import { useTranslateV2 } from "../lib/useTranslateV2";
 import TranslateSourceTextareaBtn from "./TranslateSourceTextareaBtn";
+import { Button } from "@/common/components/ui/button";
+import { TbX } from "react-icons/tb";
 
 const TranslateSourceTextareaMobile = () => {
   const { translateStates, dispatch } = useTranslateV2();
@@ -18,7 +20,16 @@ const TranslateSourceTextareaMobile = () => {
   };
 
   return (
-    <div className="pb-2 border">
+    <div className="relative pb-2 border">
+      <Button variant={'ghost'} className="absolute top-0 right-0" onClick={() => {
+        dispatch({
+          type: "SET",
+          name: "sourceText",
+          value: "",
+        })
+      }} >
+        <TbX className="text-2xl" />
+      </Button>
       <Textarea
         placeholder="Enter Text"
         onChange={handleChange}
