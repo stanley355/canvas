@@ -1,5 +1,4 @@
 import axios from "axios";
-import Jwt from 'jsonwebtoken';
 import { axiosErrorHandler } from "../axiosErrorHandler";
 import { ITopup } from "../topups/interfaces";
 import { IUser } from "../users/interfaces";
@@ -7,8 +6,7 @@ import { IUser } from "../users/interfaces";
 export const fetchDokuCheckoutPayment = async (topup: ITopup, user: IUser) => {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/doku/checkout-payment/`;
 
-  const token = Jwt.sign(topup, URL); 
-  const callbackUrl = `${process.env.NEXT_PUBLIC_BASE_URL}plans/paid?token=${token}`;
+  const callbackUrl = `${process.env.NEXT_PUBLIC_BASE_URL}account/`;
 
   const dokuPayload = {
     "order": {
