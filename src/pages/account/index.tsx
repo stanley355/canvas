@@ -3,7 +3,6 @@ import { getAccountPageServerProps } from "@/modules/account/lib/getAccountPageS
 
 import AccountDetail from "@/modules/account/components/AccountDetail";
 import AccountPlanDetail from "@/modules/account/components/AccountPlanDetail";
-import AccountPlanList from "@/modules/account/components/AccountPlanList";
 
 import { IUser } from '@/common/lib/api/users/interfaces'
 import { ISubscription } from "@/common/lib/api/subscriptions/interfaces";

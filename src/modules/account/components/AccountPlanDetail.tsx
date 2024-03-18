@@ -4,6 +4,7 @@ import { ITopup } from "@/common/lib/api/topups/interfaces";
 import { IUser } from "@/common/lib/api/users/interfaces";
 import AccountFreePlanDetail from "./AccountFreePlanDetail";
 import AccountPlanList from "./AccountPlanList";
+import AccountPayasyougoPlanDetail from "./AccountPayasyougoPlanDetail";
 
 interface IAccountPlanDetail {
   account: {
@@ -14,22 +15,17 @@ interface IAccountPlanDetail {
 }
 
 const AccountPlanDetail = (props: IAccountPlanDetail) => {
-  const {account} = props;
-  const {user, active_subscription} = account;
+  const { account } = props;
+  const { user, active_subscription } = account;
 
-  if (user.balance <= 0 && !active_subscription) {
-    return (
-      <div>
-        <AccountFreePlanDetail />
-        <AccountPlanList />
-      </div>
-    )
+  if (user.balance > 0) {
+    return <AccountPayasyougoPlanDetail user={user} />
   }
-
 
   return (
     <div>
-woi
+      <AccountFreePlanDetail />
+      <AccountPlanList />
     </div>
   );
 };
