@@ -1,27 +1,35 @@
 import Link from "next/link";
+import { ISubscription } from "@/common/lib/api/subscriptions/interfaces";
+import { ITopup } from "@/common/lib/api/topups/interfaces";
+import { IUser } from "@/common/lib/api/users/interfaces";
+import AccountFreePlanDetail from "./AccountFreePlanDetail";
+import AccountPlanList from "./AccountPlanList";
 
-const AccountPlanDetail = () => {
+interface IAccountPlanDetail {
+  account: {
+    user: IUser,
+    active_subscription: ISubscription,
+    topups: ITopup[]
+  };
+}
+
+const AccountPlanDetail = (props: IAccountPlanDetail) => {
+  const {account} = props;
+  const {user, active_subscription} = account;
+
+  if (user.balance <= 0 && !active_subscription) {
+    return (
+      <div>
+        <AccountFreePlanDetail />
+        <AccountPlanList />
+      </div>
+    )
+  }
+
+
   return (
     <div>
-      <div className="mb-8 text-2xl font-bold border-b">Subscription</div>
-      <div className="mb-4 text-xl font-bold">Plan Details</div>
-      <div className="pb-2 mb-2">
-        <div className="mb-2 text-gray-500">Your Plan</div>
-        <div className="flex items-center gap-12">
-          <div>Free Plan</div>
-          <Link
-            href={"/plans/"}
-            className="font-bold text-blue-700 border-b border-b-transparent hover:border-b-blue-700"
-          >
-            Change
-          </Link>
-        </div>
-      </div>
-
-      <div className="w-full p-2 text-sm bg-blue-100 lg:w-1/2">
-        Change your Plan to enjoy full feature. Choose a plan to ensure that
-        everything you write is clear, engaging, and polished.
-      </div>
+woi
     </div>
   );
 };
