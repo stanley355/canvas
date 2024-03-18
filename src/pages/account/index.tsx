@@ -23,7 +23,7 @@ const Account = (props: IAccountProps) => {
     <div className="container px-6 mx-auto mt-16 lg:mt-4 lg:px-12">
       <div className="lg:grid lg:grid-cols-2">
         <AccountDetail user={account.user} />
-          <AccountPlanDetail account={account} />
+        <AccountPlanDetail account={account} />
       </div>
     </div>
   );
