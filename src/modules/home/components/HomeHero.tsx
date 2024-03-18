@@ -1,10 +1,11 @@
-import { Button } from "@/common/components/ui/button";
-import GoogleLoginBtn from "@/modules/login/components/GoogleLoginBtn";
-import Cookies from "js-cookie";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+
+import { Button } from "@/common/components/ui/button";
+import GoogleLoginBtn from "@/modules/login/components/GoogleLoginBtn";
 
 const HomeHero = () => {
   const router = useRouter();
@@ -13,9 +14,7 @@ const HomeHero = () => {
   useEffect(() => {
     const token = Cookies.get("token");
     if (token) setShowLogin(false);
-  }, []);
-
-
+  }, [router]);
 
   return (
     <div className="container mx-auto mt-20 lg:grid lg:grid-cols-2 lg:mt-12">
