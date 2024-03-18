@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { TbCopyright, TbLanguage, TbBrandGoogle } from "react-icons/tb";
+import { FaRupiahSign } from "react-icons/fa6";
 
 const Footer = () => (
   <div className="container pt-4 mx-auto">
@@ -20,6 +21,13 @@ const Footer = () => (
         >
           <TbBrandGoogle />
           <span>AI Grammar Check</span>
+        </Link>
+        <Link
+          href="/plans/"
+          className="flex items-center gap-1 py-2 hover:font-bold"
+        >
+          <FaRupiahSign />
+          <span>Pricing</span>
         </Link>
       </div>
 

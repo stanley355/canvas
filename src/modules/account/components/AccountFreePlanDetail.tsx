@@ -1,7 +1,6 @@
 import Link from "next/link";
-import AccountSubscriptionDetailPlan from "./AccountSubscriptionDetailPlan";
 
-const AccountSubscriptionDetail = () => {
+const AccountFreePlanDetail = () => {
   return (
     <div>
       <div className="mb-8 text-2xl font-bold border-b">Subscription</div>
@@ -23,10 +22,8 @@ const AccountSubscriptionDetail = () => {
         Change your Plan to enjoy full feature. Choose a plan to ensure that
         everything you write is clear, engaging, and polished.
       </div>
-
-      <AccountSubscriptionDetailPlan />
     </div>
   );
 };
 
-export default AccountSubscriptionDetail;
+export default AccountFreePlanDetail;

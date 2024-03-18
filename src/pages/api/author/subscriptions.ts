@@ -22,10 +22,10 @@ const authorSubscriptionsAPI = async (
 
   try {
     const { data } = await axios(axiosReqConfig);
-    res.send(data);
+    res.json(data);
   } catch (err: any) {
     const errorRes = axiosErrorHandler(URL, err);
-    res.send(errorRes);
+    res.json(errorRes);
   }
 };
 

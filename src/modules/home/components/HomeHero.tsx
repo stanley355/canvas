@@ -1,13 +1,20 @@
-import { Button } from "@/common/components/ui/button";
-import GoogleLoginBtn from "@/modules/login/components/GoogleLoginBtn";
-import Cookies from "js-cookie";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
+
+import { Button } from "@/common/components/ui/button";
+import GoogleLoginBtn from "@/modules/login/components/GoogleLoginBtn";
 
 const HomeHero = () => {
   const router = useRouter();
-  const token = Cookies.get("token")
+  const [showLogin, setShowLogin] = useState(true);
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (token) setShowLogin(false);
+  }, [router]);
 
   return (
     <div className="container mx-auto mt-20 lg:grid lg:grid-cols-2 lg:mt-12">
@@ -20,15 +27,17 @@ const HomeHero = () => {
           to write that tricky email, to get your point across, to keep your
           work moving.
         </div>
-        {!token && <div className="mb-4 lg:flex lg:gap-2">
-          <Button
-            className="w-full p-6 mb-6 text-lg text-white shadow-lg lg:text-md lg:p-4 lg:w-1/3 bg-emerald-700 hover:bg-emerald-600"
-            onClick={() => router.push("/login")}
-          >
-            Sign up it&apos;s free
-          </Button>
-          <GoogleLoginBtn />
-        </div>}
+        {showLogin && (
+          <div className="mb-4 lg:flex lg:gap-2">
+            <Button
+              className="w-full p-6 mb-6 text-lg text-white shadow-lg lg:text-md lg:p-4 lg:w-1/3 bg-emerald-700 hover:bg-emerald-600"
+              onClick={() => router.push("/login")}
+            >
+              Sign up it&apos;s free
+            </Button>
+            <GoogleLoginBtn />
+          </div>
+        )}
         <div>
           This site is protected by reCAPTCHA and the Google
           <Link

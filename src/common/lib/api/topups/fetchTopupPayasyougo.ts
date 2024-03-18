@@ -1,17 +1,22 @@
 import axios from "axios";
 import { axiosErrorHandler } from "../axiosErrorHandler";
 
-export const fetchCreateDocument = async (userID: string) => {
-  const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/documents/`;
+interface IFetchTopupPayasyouGo {
+  userID: string;
+  topupAmount: number;
+}
+
+export const fetchTopupPayasyouGo = async (payload: IFetchTopupPayasyouGo) => {
+  const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/topups/`;
   const axiosConfig = {
     method: "POST",
     url: URL,
     headers: {
-      path: "/",
+      path: `/payasyougo/`,
     },
     data: {
-      user_id: userID,
-      name: "Dokumen Tanpa Judul",
+      user_id: payload.userID,
+      topup_amount: payload.topupAmount,
     },
   };
 

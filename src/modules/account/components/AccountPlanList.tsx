@@ -8,7 +8,7 @@ import {
 } from "../lib/constant";
 import { cn } from "@/common/lib/cn";
 
-const AccountSubscriptionDetailPlan = () => {
+const AccountPlanList = () => {
   const router = useRouter();
 
   return (
@@ -56,4 +56,4 @@ const AccountSubscriptionDetailPlan = () => {
   );
 };
 
-export default AccountSubscriptionDetailPlan;
+export default AccountPlanList;

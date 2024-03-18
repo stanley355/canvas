@@ -19,10 +19,10 @@ const authorPromptsAPI = async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     const { data } = await axios(axiosConfig);
-    res.send(data);
+    res.json(data);
   } catch (err: any) {
     const errorRes = axiosErrorHandler(URL, err);
-    return errorRes;
+    res.json(errorRes);
   }
 };
 

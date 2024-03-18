@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import { FaRupiahSign } from "react-icons/fa6";
 
 import { Button } from "@/common/components/ui/button";
-import { IUser } from "@/common/lib/api/users/userInterfaces";
+import { IUser } from "@/common/lib/api/users/interfaces";
 
 interface IAccountDetail {
   user: IUser;

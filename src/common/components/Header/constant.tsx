@@ -22,6 +22,11 @@ export const HEADER_MENU = [
     icon: <TbBrandGoogle />,
   },
   {
+    title: "Pricing",
+    url: "/plans/",
+    icon: <FaRupiahSign />,
+  },
+  {
     title: "Help",
     url: "/support/",
     icon: <TbHelp />,
