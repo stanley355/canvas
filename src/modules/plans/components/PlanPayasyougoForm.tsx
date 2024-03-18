@@ -60,7 +60,7 @@ const PlanPayasyougoForm = () => {
       <form className='p-4 border-2 rounded-md shadow-lg' onSubmit={handleSubmit}>
         <Label htmlFor='amount_input' className='mb-4 text-gray-500'>Topup Balance Amount</Label>
         <Input id='amount_input' name='amount' type='number' placeholder='Rp ...' className='mb-4' />
-        <Button type='submit' className='w-full mb-4'>
+        <Button type='submit' className='w-full mb-4 bg-emerald-800 hover:bg-emerald-700'>
           {isLoading ? (
             <div className="flex items-center gap-2">
               <TbProgress className="text-lg animate-spin" />
