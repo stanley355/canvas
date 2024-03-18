@@ -9,7 +9,7 @@ const PlanPayasyougoCard = () => {
 
       <div className="w-3/4 py-4 mx-auto">
         <div className="mb-4 font-semibold">What to expect?</div>
-        <ul className="text-gray-500 list-disc">
+        <ul className="mb-4 text-gray-500 list-disc">
           <li>Ai Translate</li>
           <li>Ai Grammar Check</li>
           <li>Grammar and Spelling Fix</li>

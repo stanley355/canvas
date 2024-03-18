@@ -1,11 +1,16 @@
 import PlanPayasyougoCard from "@/modules/plans/components/PlanPayasyougoCard";
+import PlanPayasyougoForm from "@/modules/plans/components/PlanPayasyougoForm";
 import { JwtPayload, decode } from "jsonwebtoken";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 
 const PayasyougoPlans = () => {
   return (
     <div className="container mx-auto mt-16">
-      <PlanPayasyougoCard />
+      <div>
+
+        <PlanPayasyougoCard />
+        <PlanPayasyougoForm />
+      </div>
     </div>
   )
 }

@@ -27,7 +27,7 @@ const AccountPayasyougoPlanDetail = (props: IAccountPayasyougoPlanDetail) => {
           </Link>
         </div>
 
-        <div className="mb-2 text-gray-500">Pay as You Go Credit</div>
+        <div className="mb-2 text-gray-500">Pay as You Go Balance</div>
         <div>Rp {user.balance}</div>
       </div>
 
