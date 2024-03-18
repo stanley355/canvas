@@ -16,10 +16,10 @@ interface IAccountPlanDetail {
 
 const AccountPlanDetail = (props: IAccountPlanDetail) => {
   const { account } = props;
-  const { user, active_subscription } = account;
+  const { user, active_subscription, topups } = account;
 
   if (user.balance > 0) {
-    return <AccountPayasyougoPlanDetail user={user} />
+    return <AccountPayasyougoPlanDetail user={user} topups={topups} />
   }
 
   return (
