@@ -16,9 +16,12 @@ const LoginModal = dynamic(() => import("../../login/components/LoginModal"), {
   ssr: false,
 });
 
-const ExceedLimitModal = dynamic(() => import("../../../common/components/ExceedLimitModal"), {
-  ssr: false
-})
+const ExceedLimitModal = dynamic(
+  () => import("../../../common/components/ExceedLimitModal"),
+  {
+    ssr: false,
+  }
+);
 
 const TranslateSourceTextareaBtn = () => {
   const { translateStates, dispatch } = useTranslateV2();
@@ -67,7 +70,8 @@ const TranslateSourceTextareaBtn = () => {
       user_prompt: sourceText,
       prompt_type: "Translate",
     };
-    const translateRes: IFetchNewPromptsRes & IAxiosErrorRes = await fetchNewPrompts(payload);
+    const translateRes: IFetchNewPromptsRes & IAxiosErrorRes =
+      await fetchNewPrompts(payload);
 
     if (translateRes.completion_text) {
       setIsLoading(false);
@@ -111,7 +115,9 @@ const TranslateSourceTextareaBtn = () => {
         )}
       </Button>
       {showLoginModal && <LoginModal />}
-      {showLimitModal && <ExceedLimitModal onCloseClick={() => setShowLimitModal(false)} />}
+      {showLimitModal && (
+        <ExceedLimitModal onCloseClick={() => setShowLimitModal(false)} />
+      )}
     </>
   );
 };

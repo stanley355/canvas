@@ -17,9 +17,12 @@ const LoginModal = dynamic(() => import("../../login/components/LoginModal"), {
   ssr: false,
 });
 
-const ExceedLimitModal = dynamic(() => import("../../../common/components/ExceedLimitModal"), {
-  ssr: false
-})
+const ExceedLimitModal = dynamic(
+  () => import("../../../common/components/ExceedLimitModal"),
+  {
+    ssr: false,
+  }
+);
 
 const GrammarCheckSourceTextareaBtn = () => {
   const { grammarCheckStates, dispatch } = useGrammarCheck();
@@ -67,7 +70,8 @@ const GrammarCheckSourceTextareaBtn = () => {
       user_prompt: sourceText,
       prompt_type: "GrammarCheck",
     };
-    const grammarCheckRes: IFetchNewPromptsRes & IAxiosErrorRes = await fetchNewPrompts(payload);
+    const grammarCheckRes: IFetchNewPromptsRes & IAxiosErrorRes =
+      await fetchNewPrompts(payload);
 
     if (grammarCheckRes.completion_text) {
       setIsLoading(false);
@@ -121,7 +125,9 @@ const GrammarCheckSourceTextareaBtn = () => {
         )}
       </Button>
       {showLoginModal && <LoginModal />}
-      {showLimitModal && <ExceedLimitModal onCloseClick={() => setShowLimitModal(false)} />}
+      {showLimitModal && (
+        <ExceedLimitModal onCloseClick={() => setShowLimitModal(false)} />
+      )}
     </>
   );
 };
