@@ -20,17 +20,17 @@ export const PLAN_LIST_V2: IPlanList[] = [
     description: "Get peace of mind with writing that’s mistake-free.",
     price: 0,
     priceDescription: "per month",
-    ctaText: "Current Plan",
+    ctaText: "Automatically Applied",
     ctaLink: "/",
     features: [
       {
         name: "Ai Translate",
-        limit: "Unlimited",
+        limit: "5x / Month",
         isBold: false,
       },
       {
         name: "Ai Grammar Check",
-        limit: "10x / Month",
+        limit: "5x / Month",
         isBold: false,
       },
       {
@@ -112,7 +112,7 @@ export const PLAN_LIST_V2: IPlanList[] = [
     features: [
       {
         name: "Ai Translate",
-        limit: "Unlimited",
+        limit: "Credit Limit",
         isBold: true,
       },
       {

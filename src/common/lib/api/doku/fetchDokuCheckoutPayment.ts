@@ -27,8 +27,8 @@ export const fetchDokuCheckoutPayment = async (topup: ITopup, user: IUser) => {
         "VIRTUAL_ACCOUNT_BANK_CIMB",
         "VIRTUAL_ACCOUNT_BANK_DANAMON",
         "EMONEY_SHOPEEPAY",
-        "EMONEY_OVO"
-    ]
+        "EMONEY_OVO",
+      ],
     },
     customer: {
       name: user.fullname,

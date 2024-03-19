@@ -19,17 +19,17 @@ export const ACCOUNT_SUBSCRIPTION_DETAIL_PLAN: IAccountSubscriptionDetailPlanCon
       planUsage: "For Basic Use",
       planTitle: "Free",
       planDescription: "Basic writing suggestions and text translate",
-      planCta: "Current Plan",
+      planCta: "Automatically Applied",
       planHref: "/",
       planFeatures: [
         {
           name: "Ai Translate",
-          limit: "Unlimited",
+          limit: "5x / Month",
           isBold: false,
         },
         {
           name: "Ai Checkbot",
-          limit: "10x / Month",
+          limit: "5x / Month",
           isBold: false,
         },
         {
@@ -109,7 +109,7 @@ export const ACCOUNT_SUBSCRIPTION_DETAIL_PLAN: IAccountSubscriptionDetailPlanCon
       planFeatures: [
         {
           name: "Ai Translate",
-          limit: "Unlimited",
+          limit: "Credit Limit",
           isBold: true,
         },
         {

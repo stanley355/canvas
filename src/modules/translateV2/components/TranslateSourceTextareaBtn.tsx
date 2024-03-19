@@ -10,16 +10,26 @@ import { Button } from "@/common/components/ui/button";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { fetchNewPrompts } from "@/common/lib/api/prompts/fetchNewPrompts";
 import { IFetchNewPromptsRes } from "@/common/lib/api/prompts/interfaces";
+import { IAxiosErrorRes } from "@/common/lib/api/axiosErrorHandler";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"), {
   ssr: false,
 });
+
+const ExceedLimitModal = dynamic(
+  () => import("../../../common/components/ExceedLimitModal"),
+  {
+    ssr: false,
+  }
+);
 
 const TranslateSourceTextareaBtn = () => {
   const { translateStates, dispatch } = useTranslateV2();
   const { sourceText, targetLanguage } = translateStates;
 
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showLimitModal, setShowLimitModal] = useState(false);
+
   const [isLoading, setIsLoading] = useState(false);
   const [loadingText, setLoadingText] = useState("");
 
@@ -60,7 +70,8 @@ const TranslateSourceTextareaBtn = () => {
       user_prompt: sourceText,
       prompt_type: "Translate",
     };
-    const translateRes: IFetchNewPromptsRes = await fetchNewPrompts(payload);
+    const translateRes: IFetchNewPromptsRes & IAxiosErrorRes =
+      await fetchNewPrompts(payload);
 
     if (translateRes.completion_text) {
       setIsLoading(false);
@@ -73,6 +84,15 @@ const TranslateSourceTextareaBtn = () => {
       return;
     }
 
+    if (translateRes.status && translateRes.status === 400) {
+      if (translateRes?.data?.status === 600) {
+        setIsLoading(false);
+        setLoadingText("");
+        setShowLimitModal(true);
+        return;
+      }
+    }
+
     setIsLoading(false);
     setLoadingText("");
     toast.error("Server Busy, please try again");
@@ -81,7 +101,6 @@ const TranslateSourceTextareaBtn = () => {
 
   return (
     <>
-      {showLoginModal && <LoginModal />}
       <Button className="w-fit" onClick={handleClick} disabled={isLoading}>
         {isLoading ? (
           <div className="flex items-center gap-2">
@@ -95,6 +114,10 @@ const TranslateSourceTextareaBtn = () => {
           </div>
         )}
       </Button>
+      {showLoginModal && <LoginModal />}
+      {showLimitModal && (
+        <ExceedLimitModal onCloseClick={() => setShowLimitModal(false)} />
+      )}
     </>
   );
 };
