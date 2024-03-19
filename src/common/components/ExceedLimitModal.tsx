@@ -19,7 +19,7 @@ const ExceedLimitModal = (props: IExceedLimitModal) => {
           width={350}
           height={400}
           alt="LanguageAi Limit"
-          className="rounded-t-md"
+          className="w-full rounded-t-md h-auto"
         />
         <div className="p-4">
           <div className="flex items-center justify-center gap-1 text-lg font-semibold">
