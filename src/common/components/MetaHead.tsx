@@ -33,6 +33,7 @@ const MetaHead = (props: IMetaHead) => {
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
+      <link rel="canonical" href={process.env.NEXT_PUBLIC_BASE_URL + pagesSchema.slug} />
       <link rel="icon" type="image/png" href="/images/languageai.png" />
       {/* opengraph */}
       <meta property="og:title" content={pagesSchema.seo.title} />
