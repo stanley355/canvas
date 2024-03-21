@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import React from "react";
 
 interface IMetaHeadSeo {
@@ -21,13 +22,15 @@ export interface IMetaHead {
 
 const MetaHead = (props: IMetaHead) => {
   const { pagesSchema } = props;
+  console.log(window.location.origin);
+  
   return (
     <Head>
       {/* meta */}
       <title>{pagesSchema.seo.title}</title>
       <meta name="description" content={pagesSchema.seo.description} />
       <meta name="keywords" content={pagesSchema.keywords} />
-      <meta name="robots" content="follow, index" />
+      <meta name="robots" content={window.location.origin === "https://languageai.world" ? "nofollow, noindex" : "follow, index"} />
       <meta charSet="UTF-8" />
       <meta
         name="viewport"
