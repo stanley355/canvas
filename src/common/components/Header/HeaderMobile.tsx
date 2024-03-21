@@ -1,8 +1,6 @@
-import React from "react";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import cookie from "js-cookie";
 import { RxHamburgerMenu } from "react-icons/rx";
 import HeaderMobileMenu from "./HeaderMobileMenu";
 
@@ -12,7 +10,7 @@ interface IHeaderMobile {
 }
 
 const HeaderMobile = (props: IHeaderMobile) => {
-  const { isLogin, pathname } = props;
+  const { isLogin } = props;
   const [showMenu, setShowMenu] = useState(false);
   return (
     <div className="fixed top-0 left-0 z-10 flex items-center justify-between w-full p-2 bg-white border-b lg:hidden">
