@@ -22,7 +22,6 @@ export interface IMetaHead {
 
 const MetaHead = (props: IMetaHead) => {
   const { pagesSchema } = props;
-  console.log(window.location.origin);
   
   return (
     <Head>
