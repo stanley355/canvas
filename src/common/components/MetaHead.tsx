@@ -30,7 +30,7 @@ const MetaHead = (props: IMetaHead) => {
       <title>{pagesSchema.seo.title}</title>
       <meta name="description" content={pagesSchema.seo.description} />
       <meta name="keywords" content={pagesSchema.keywords} />
-      <meta name="robots" content={window.location.origin === "https://languageai.world" ? "nofollow, noindex" : "follow, index"} />
+      <meta name="robots" content={typeof window !== 'undefined' && window.location.origin === "https://languageai.world" ? "nofollow, noindex" : "follow, index"} />
       <meta charSet="UTF-8" />
       <meta
         name="viewport"
