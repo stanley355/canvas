@@ -19,7 +19,7 @@ const HeaderMobile = (props: IHeaderMobile) => {
       <Link href="/" className="flex items-center gap-1">
         <Image
           src="/images/languageai.png"
-          alt="LanguageAi"
+          alt="LanguageAi Navbar"
           width={30}
           height={30}
           className="border border-black"
@@ -29,6 +29,8 @@ const HeaderMobile = (props: IHeaderMobile) => {
       <button
         type="button"
         className="h-full p-2"
+        aria-label="Open Menu"
+        aria-labelledby="Open Menu By"
         onClick={() => setShowMenu(true)}
       >
         <RxHamburgerMenu />
