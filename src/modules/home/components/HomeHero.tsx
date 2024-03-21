@@ -43,7 +43,7 @@ const HomeHero = () => {
           <Link
             href={"https://policies.google.com/privacy"}
             target="_blank"
-            className="mx-1 text-blue-500 border-b border-b-blue-500"
+            className="mx-1 text-blue-600 border-b border-b-blue-600"
           >
             Privacy Policy
           </Link>
@@ -51,7 +51,7 @@ const HomeHero = () => {
           <Link
             href={"https://policies.google.com/terms"}
             target="_blank"
-            className="mx-1 text-blue-500 border-b border-b-blue-500"
+            className="mx-1 text-blue-600 border-b border-b-blue-600"
           >
             Terms of Service
           </Link>
@@ -64,6 +64,7 @@ const HomeHero = () => {
         width={350}
         height={350}
         className="mx-auto"
+        loading="eager"
       />
     </div>
   );

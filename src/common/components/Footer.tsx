@@ -51,7 +51,7 @@ const Footer = () => (
       <Link href="/" className="flex items-center justify-between gap-1">
         <Image
           src="/images/languageai.png"
-          alt="LanguageAI"
+          alt="LanguageAI Footer"
           width={30}
           height={30}
           className="border border-black"

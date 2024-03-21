@@ -15,7 +15,7 @@ const HomeExplanation = () => {
           </div>
         </div>
         <Image
-          src={"/images/home/better_writing_cartoon.jpg"}
+          src={"/images/home/better_writing_cartoon.webp"}
           alt="LanguageAi Writing"
           width={350}
           height={350}
@@ -34,7 +34,7 @@ const HomeExplanation = () => {
           </div>
         </div>
         <Image
-          src={"/images/home/right_context_cartoon.jpg"}
+          src={"/images/home/right_context_cartoon.webp"}
           alt="LanguageAi Right Context"
           width={350}
           height={350}
@@ -53,7 +53,7 @@ const HomeExplanation = () => {
           </div>
         </div>
         <Image
-          src={"/images/home/work_where_cartoon.jpg"}
+          src={"/images/home/work_where_cartoon.webp"}
           alt="LanguageAi Easiness"
           width={350}
           height={350}
@@ -72,7 +72,7 @@ const HomeExplanation = () => {
           </div>
         </div>
         <Image
-          src={"/images/home/writing_style_cartoon.jpeg"}
+          src={"/images/home/writing_style_cartoon.webp"}
           alt="LanguageAi Style"
           width={350}
           height={350}
