@@ -5,21 +5,27 @@ import { toast } from 'react-toastify';
 import { TbPhotoAi, TbUpload } from 'react-icons/tb';
 import Tesseract from 'tesseract.js';
 import Cookies from 'js-cookie';
+import { JwtPayload, decode } from 'jsonwebtoken';
 
 import { cn } from '@/common/lib/cn';
 import { sendFirebaseEvent } from '@/common/lib/firebase/sendFirebaseEvent';
+import { fetchNewImageToTextPrompt } from '@/common/lib/api/prompts/fetchImageToTextPrompt';
+import { IAxiosErrorRes } from '@/common/lib/api/axiosErrorHandler';
+import { IPrompt } from '@/common/lib/api/prompts/interfaces';
 
 interface IImageToTextInput {
   dispatchRecognizedText: (text: string) => void;
 }
 
 const LoginModal = dynamic(() => import('../../login/components/LoginModal'), {ssr: false} );
+const ExceedLimitModal = dynamic(() => import("../../../common/components/ExceedLimitModal"), {ssr: false});
 
 const ImageToTextInput = (props: IImageToTextInput) => {
   const { dispatchRecognizedText } = props;
   const fileInput = useRef<any>(null);
 
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showLimitModal, setShowLimitModal] = useState(false);
 
   const [imageUrl, setImageUrl] = useState("");
   const [imageName, setImageName] = useState("-");
@@ -42,17 +48,30 @@ const ImageToTextInput = (props: IImageToTextInput) => {
     }
   };
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const token = Cookies.get("token");
     if (!token) {
       setShowLoginModal(true);
       return;
     }
-
+    
     sendFirebaseEvent("image_to_text");
+
+    const user = decode(token) as JwtPayload;
+    const imagePromptRes: IPrompt & IAxiosErrorRes = await fetchNewImageToTextPrompt(user.id);
+
+    if (imagePromptRes.status && imagePromptRes.status === 400) {
+      if (imagePromptRes?.data?.status === 600) {
+        setShowLimitModal(true);
+        return;
+      }
+    }
+    
+
     const target = event.target as any;
     const image = target.files[0];
     setImageName(image.name);
+
     const imageUrl = URL.createObjectURL(image)
     recognizeText(imageUrl);
     setImageUrl(imageUrl);
@@ -76,6 +95,7 @@ const ImageToTextInput = (props: IImageToTextInput) => {
         </div>
       </button>
       {showLoginModal && <LoginModal />}
+      {showLimitModal && <ExceedLimitModal onCloseClick={()=> setShowLimitModal(false)} /> }
     </div>
   )
 }
