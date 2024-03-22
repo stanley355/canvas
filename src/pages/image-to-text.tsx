@@ -25,7 +25,7 @@ const ImageToText = (props: IImageToText) => {
         <span>Image to Text</span>
       </div>
       <div className='lg:grid lg:grid-cols-2 lg:gap-8 lg:mt-8'>
-        <ImageToTextInput dispatchRecognizedText={setRecognizedText} />
+        <ImageToTextInput dispatchRecognizedText={setRecognizedText}  recognizedText={recognizedText} />
         <ImageToTextResult recognizedText={recognizedText} />
       </div>
 
