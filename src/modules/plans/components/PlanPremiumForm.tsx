@@ -12,6 +12,7 @@ import {
 } from "@/common/lib/api/topups/fetchTopupPremium";
 import { IDokuCheckoutPaymentRes } from "@/common/lib/api/doku/interfaces";
 import { IUser } from "@/common/lib/api/users/interfaces";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 const PlanPremiumForm = () => {
   const [loadingBtn, setLoadingBtn] = useState<null | TopupPremiumDuration>(
@@ -19,6 +20,7 @@ const PlanPremiumForm = () => {
   );
 
   const handleClick = async (duration: TopupPremiumDuration) => {
+    sendFirebaseEvent("create_premium_payment");
     setLoadingBtn(duration);
     const token = Cookies.get("token");
     const user = decode(String(token)) as JwtPayload;

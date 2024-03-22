@@ -13,6 +13,7 @@ import { fetchDokuCheckoutPayment } from "@/common/lib/api/doku/fetchDokuCheckou
 import { IUser } from "@/common/lib/api/users/interfaces";
 import { IDokuCheckoutPaymentRes } from "@/common/lib/api/doku/interfaces";
 import { TbProgress } from "react-icons/tb";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 const PlanPayasyougoForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -31,6 +32,7 @@ const PlanPayasyougoForm = () => {
       return;
     }
 
+    sendFirebaseEvent("create_payasyougo_payment");
     setIsLoading(true);
     const token = Cookies.get("token");
     const user = decode(String(token)) as JwtPayload;
