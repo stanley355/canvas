@@ -9,15 +9,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
 
   const hasFooter = useMemo(() => {
-    return ![
-      "/login",
-      "/account",
-      "/account/subscription",
-      "/translate",
-      "/grammar-check",
-      "/plans/payasyougo",
-      "/plans/premium",
-    ].includes(router.pathname);
+    return ["/", "/plans"].includes(router.pathname);
   }, [router.pathname]);
 
   return (
