@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 import { GetStaticProps } from "next";
 import { TbSpeakerphone } from "react-icons/tb";
 
@@ -29,6 +30,16 @@ const TextToSpeech = (props: ITTSProps) => {
 
       <TextToSpeechTextarea onConvertSuccess={setFilename} />
       <TextToSpeechResult fileName={fileName} />
+      </div>
+
+      <div className="flex items-center justify-center gap-2 mt-16">
+        <span>Found an Issue ? </span>
+        <Link
+          className="text-blue-500 border-b border-b-blue-500"
+          href={"/support"}
+        >
+          Report
+        </Link>
       </div>
     </div>
   )
