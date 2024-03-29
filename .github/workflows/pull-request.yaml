@@ -27,6 +27,7 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/canvas:develop
           build-args: |
             NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}
+            NEXT_PUBLIC_FILE_URL=${{ secrets.NEXT_PUBLIC_FILE_URL }}
             NEXT_PUBLIC_GOOGLE_CLIENT_ID=${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}
             NEXT_SHARP_PATH=${{ secrets.NEXT_SHARP_PATH }}
             AUTHOR_URL=${{ secrets.AUTHOR_URL }}

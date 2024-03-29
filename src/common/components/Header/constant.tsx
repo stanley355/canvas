@@ -1,13 +1,10 @@
 import {
-  TbBrandGrammarly,
   TbLanguage,
   TbUserCircle,
-  TbFileDots,
-  TbRobotFace,
-  TbRobot,
   TbBrandGoogle,
   TbHelp,
   TbPhotoAi,
+  TbSpeakerphone,
 } from "react-icons/tb";
 import { FaRupiahSign } from "react-icons/fa6";
 
@@ -26,6 +23,11 @@ export const HEADER_MENU = [
     title: "AI Image to Text",
     url: "/image-to-text/",
     icon: <TbPhotoAi />,
+  },
+  {
+    title: "AI Text to Speech",
+    url: "/text-to-speech/",
+    icon: <TbSpeakerphone />,
   },
   {
     title: "Pricing",

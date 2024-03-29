@@ -1,35 +1,33 @@
 import { useState } from "react";
-import { GetStaticProps } from "next";
-import { TbPhotoAi } from "react-icons/tb";
 import Link from "next/link";
+import { GetStaticProps } from "next";
+import { TbSpeakerphone } from "react-icons/tb";
 
-import ImageToTextInput from "@/modules/image-to-text/components/ImageToTextInput";
-import ImageToTextResult from "@/modules/image-to-text/components/ImageToTextResult";
+import TextToSpeechTextarea from "@/modules/text-to-speech/components/TextToSpeechTextarea";
+import TextToSpeechResult from "@/modules/text-to-speech/components/TextToSpeechResult";
 import { fetchDatoCms } from "@/common/lib/api/fetchDatoCms";
 import { getPagesSchema } from "@/common/lib/api/gql";
 import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
 
-interface IImageToText {
+interface ITTSProps {
   datoCmsData: IMetaHead;
 }
 
-const ImageToText = (props: IImageToText) => {
+const TextToSpeech = (props: ITTSProps) => {
   const { datoCmsData } = props;
-  const [recognizedText, setRecognizedText] = useState("");
+  const [fileName, setFilename] = useState("");
 
   return (
     <div className="container px-0 pb-8 mx-auto mt-16 lg:mt-4 lg:px-4">
       <MetaHead pagesSchema={datoCmsData.pagesSchema} />
       <div className="flex items-center gap-1 px-3 py-1 ml-4 text-blue-800 bg-blue-100 border border-gray-300 rounded-md w-fit">
-        <TbPhotoAi className="text-xl" />
-        <span>Image to Text</span>
+        <TbSpeakerphone className="text-xl" />
+        <span>Text to Speech</span>
       </div>
-      <div className="lg:grid lg:grid-cols-2 lg:gap-8 lg:mt-8">
-        <ImageToTextInput
-          dispatchRecognizedText={setRecognizedText}
-          recognizedText={recognizedText}
-        />
-        <ImageToTextResult recognizedText={recognizedText} />
+
+      <div className="grid grid-cols-2 mt-4 lg:px-4">
+        <TextToSpeechTextarea onConvertSuccess={setFilename} />
+        <TextToSpeechResult fileName={fileName} />
       </div>
 
       <div className="flex items-center justify-center gap-2 mt-16">
@@ -45,10 +43,10 @@ const ImageToText = (props: IImageToText) => {
   );
 };
 
-export default ImageToText;
+export default TextToSpeech;
 export const getStaticProps: GetStaticProps = async () => {
   const datoCmsData = await fetchDatoCms(getPagesSchema, {
-    slug: "image-to-text",
+    slug: "text-to-speech",
   });
 
   return {
