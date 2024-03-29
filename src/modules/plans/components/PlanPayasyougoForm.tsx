@@ -98,7 +98,7 @@ const PlanPayasyougoForm = () => {
         </Button>
         <div className="w-full p-2 mb-4 text-sm bg-blue-100">
           You will be charged based on your Topup amount, and your Balance will
-          be deducted based on your usage
+          be deducted based on your usage (Rp 0.5 per word)
         </div>
 
         <div className="text-sm">
