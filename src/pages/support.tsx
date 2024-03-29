@@ -8,10 +8,9 @@ interface ITTSProps {
   datoCmsData: IMetaHead;
 }
 
-
 const Support = (props: ITTSProps) => {
-  const {datoCmsData} = props;
-  
+  const { datoCmsData } = props;
+
   const link =
     "mailto:winatastanley355@gmail.com?subject=I%20found%20a%20bug%20on%20LanguageAi";
   return (

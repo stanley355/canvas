@@ -11,7 +11,7 @@ export const fetchNewImageToTextPrompt = async (userID: string) => {
     },
     data: {
       user_id: userID,
-      prompt_type: "ImageToText"
+      prompt_type: "ImageToText",
     },
   };
 

@@ -1,7 +1,10 @@
 import axios from "axios";
 import { axiosErrorHandler } from "../axiosErrorHandler";
 
-export const fetchTextToSpeechPrompt = async (userID: string, userPrompt: string) => {
+export const fetchTextToSpeechPrompt = async (
+  userID: string,
+  userPrompt: string
+) => {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/prompts/`;
   const axiosConfig = {
     method: "POST",
@@ -12,7 +15,7 @@ export const fetchTextToSpeechPrompt = async (userID: string, userPrompt: string
     data: {
       user_id: userID,
       user_prompt: userPrompt,
-      voice: "Alloy"
+      voice: "Alloy",
     },
   };
 

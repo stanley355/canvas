@@ -10,15 +10,20 @@ import { JwtPayload, decode } from "jsonwebtoken";
 import { toast } from "react-toastify";
 import { fetchTextToSpeechPromptFileDelete } from "@/common/lib/api/prompts/fetchTextToSpeechPromptFileDelete";
 
-const LoginModal = dynamic(() => import("../../login/components/LoginModal"), { ssr: false });
-const ExceedLimitModal = dynamic(() => import("../../../common/components/ExceedLimitModal"), { ssr: false });
+const LoginModal = dynamic(() => import("../../login/components/LoginModal"), {
+  ssr: false,
+});
+const ExceedLimitModal = dynamic(
+  () => import("../../../common/components/ExceedLimitModal"),
+  { ssr: false }
+);
 
 interface ITextToSpeechTextarea {
   onConvertSuccess: (filename: string) => void;
 }
 
 const TextToSpeechTextarea = (props: ITextToSpeechTextarea) => {
-  const { onConvertSuccess } = props
+  const { onConvertSuccess } = props;
 
   const [previousFilename, setPreviousFilename] = useState("");
   const [sourceText, setSourceText] = useState("");
@@ -29,12 +34,12 @@ const TextToSpeechTextarea = (props: ITextToSpeechTextarea) => {
 
   const deleteFileOnQuit = async () => {
     await fetchTextToSpeechPromptFileDelete(previousFilename);
-  }
-  
+  };
+
   useEffect(() => {
     return () => {
-      if (previousFilename) deleteFileOnQuit()
-    }
+      if (previousFilename) deleteFileOnQuit();
+    };
   }, []);
 
   const handleClick = async () => {
@@ -45,7 +50,7 @@ const TextToSpeechTextarea = (props: ITextToSpeechTextarea) => {
     }
 
     setIsLoading(true);
-    const user = decode(String(token)) as JwtPayload
+    const user = decode(String(token)) as JwtPayload;
     const ttsFetch = await fetchTextToSpeechPrompt(user.id, sourceText);
 
     if (ttsFetch.status && ttsFetch.status === 400) {
@@ -71,7 +76,7 @@ const TextToSpeechTextarea = (props: ITextToSpeechTextarea) => {
     setIsLoading(false);
     toast.error("Server busy, please try again");
     return;
-  }
+  };
 
   return (
     <div className="relative pb-2 border">
@@ -84,7 +89,9 @@ const TextToSpeechTextarea = (props: ITextToSpeechTextarea) => {
       </Button>
       <Textarea
         placeholder="Enter Text"
-        onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setSourceText(e.target.value)}
+        onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
+          setSourceText(e.target.value)
+        }
         value={sourceText}
         className="h-[25vh] border-none resize-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
       />
@@ -94,15 +101,21 @@ const TextToSpeechTextarea = (props: ITextToSpeechTextarea) => {
         </div>
 
         <Button className="gap-1" disabled={isLoading} onClick={handleClick}>
-          {isLoading ? <TbProgress className="animate-spin" /> : <TbSpeakerphone />}
+          {isLoading ? (
+            <TbProgress className="animate-spin" />
+          ) : (
+            <TbSpeakerphone />
+          )}
           <span>Convert</span>
         </Button>
       </div>
 
-      {showLimitModal && <ExceedLimitModal onCloseClick={() => setShowLimitModal(false)} />}
+      {showLimitModal && (
+        <ExceedLimitModal onCloseClick={() => setShowLimitModal(false)} />
+      )}
       {showLoginModal && <LoginModal />}
     </div>
-  )
-}
+  );
+};
 
-export default TextToSpeechTextarea
+export default TextToSpeechTextarea;

@@ -13,11 +13,10 @@ interface ITTSProps {
   datoCmsData: IMetaHead;
 }
 
-
 const TextToSpeech = (props: ITTSProps) => {
-  const {datoCmsData} = props;
+  const { datoCmsData } = props;
   const [fileName, setFilename] = useState("");
-  
+
   return (
     <div className="container px-0 pb-8 mx-auto mt-16 lg:mt-4 lg:px-4">
       <MetaHead pagesSchema={datoCmsData.pagesSchema} />
@@ -27,9 +26,8 @@ const TextToSpeech = (props: ITTSProps) => {
       </div>
 
       <div className="grid grid-cols-2 mt-4 lg:px-4">
-
-      <TextToSpeechTextarea onConvertSuccess={setFilename} />
-      <TextToSpeechResult fileName={fileName} />
+        <TextToSpeechTextarea onConvertSuccess={setFilename} />
+        <TextToSpeechResult fileName={fileName} />
       </div>
 
       <div className="flex items-center justify-center gap-2 mt-16">
@@ -42,8 +40,8 @@ const TextToSpeech = (props: ITTSProps) => {
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default TextToSpeech;
 export const getStaticProps: GetStaticProps = async () => {
@@ -56,4 +54,4 @@ export const getStaticProps: GetStaticProps = async () => {
       datoCmsData,
     },
   };
-}
+};
