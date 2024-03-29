@@ -14,8 +14,6 @@ export const fetchTextToSpeechPromptFileDelete = async (file_name: string) => {
 
   try {
     const { data } = await axios(axiosConfig);
-    console.log("Delete result: ", data);
-
     return data;
   } catch (error) {
     const errorRes = axiosErrorHandler(URL, error);
