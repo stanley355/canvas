@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { TbProgress, TbSpeakerphone, TbX } from "react-icons/tb";
 import Cookies from "js-cookie";
 
@@ -26,6 +26,16 @@ const TextToSpeechTextarea = (props: ITextToSpeechTextarea) => {
 
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showLimitModal, setShowLimitModal] = useState(false);
+
+  const deleteFileOnQuit = async () => {
+    await fetchTextToSpeechPromptFileDelete(previousFilename);
+  }
+  
+  useEffect(() => {
+    return () => {
+      if (previousFilename) deleteFileOnQuit()
+    }
+  }, []);
 
   const handleClick = async () => {
     const token = Cookies.get("token");
