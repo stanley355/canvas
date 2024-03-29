@@ -34,6 +34,16 @@ export const PLAN_LIST_V2: IPlanList[] = [
         isBold: false,
       },
       {
+        name: "Ai Image to Text",
+        limit: "5x / Month",
+        isBold: false,
+      },
+      {
+        name: "Ai Text to Speech",
+        limit: "5x / Month",
+        isBold: false,
+      },
+      {
         name: "Grammar Fix",
         limit: "",
         isBold: false,
@@ -68,6 +78,16 @@ export const PLAN_LIST_V2: IPlanList[] = [
         name: "Ai Grammar Check",
         limit: "Unlimited",
         isBold: true,
+      },
+      {
+        name: "Ai Image to Text",
+        limit: "Unlimited",
+        isBold: false,
+      },
+      {
+        name: "Ai Text to Speech",
+        limit: "Unlimited",
+        isBold: false,
       },
       {
         name: "Grammar Fix",
@@ -105,7 +125,7 @@ export const PLAN_LIST_V2: IPlanList[] = [
     title: "PayAsYouGo",
     description:
       "Move your team’s work forward with consistent, on-brand writing.",
-    price: 1,
+    price: 0.5,
     priceDescription: "per word",
     ctaText: "Get PayAsYouGo",
     ctaLink: "/plans/payasyougo/",
@@ -119,6 +139,16 @@ export const PLAN_LIST_V2: IPlanList[] = [
         name: "Ai Grammar Check",
         limit: "Credit Limit",
         isBold: true,
+      },
+      {
+        name: "Ai Image to Text",
+        limit: "Credit limit",
+        isBold: false,
+      },
+      {
+        name: "Ai Text to Speech",
+        limit: "Credit limit",
+        isBold: false,
       },
       {
         name: "Grammar Fix",

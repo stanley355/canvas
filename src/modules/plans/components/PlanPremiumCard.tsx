@@ -10,6 +10,8 @@ const PlanPremiumCard = () => {
         <ul className="mb-4 text-gray-500 list-disc">
           <li>Ai Translate</li>
           <li>Ai Grammar Check</li>
+          <li>Ai Image to Text</li>
+          <li>Ai Text to Speech</li>
           <li>Grammar and Spelling Fix</li>
           <li>Punctuation Fix</li>
           <li>Word choices and suggestions</li>
