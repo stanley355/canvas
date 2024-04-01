@@ -9,6 +9,7 @@ import { fetchTextToSpeechPrompt } from "@/common/lib/api/prompts/fetchTextToSpe
 import { JwtPayload, decode } from "jsonwebtoken";
 import { toast } from "react-toastify";
 import { fetchTextToSpeechPromptFileDelete } from "@/common/lib/api/prompts/fetchTextToSpeechPromptFileDelete";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"), {
   ssr: false,
@@ -49,7 +50,18 @@ const TextToSpeechTextarea = (props: ITextToSpeechTextarea) => {
       return;
     }
 
+    if (!sourceText) {
+      toast.info("Text can not be empty");
+      return;
+    }
+
+    if (sourceText.split(" ").length > 5000) {
+      toast.info("Maximum 5,000 words");
+      return;
+    }
+
     setIsLoading(true);
+    sendFirebaseEvent("text_to_speech")
     const user = decode(String(token)) as JwtPayload;
     const ttsFetch = await fetchTextToSpeechPrompt(user.id, sourceText);
 
