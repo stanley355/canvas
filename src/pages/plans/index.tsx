@@ -1,8 +1,10 @@
 import { GetStaticProps } from "next";
+import Link from "next/link";
 import PlanHomePlanList from "@/modules/plans/components/PlanHomePlanList";
 import PlanHomeStatistic from "@/modules/plans/components/PlanHomeStatistic";
 import { getPlanPageStaticProps } from "@/modules/plans/lib/getPlanPageStaticProps";
 import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
+import { useRouter } from "next/router";
 
 interface IPlansProps {
   datoCmsData: IMetaHead;
@@ -10,11 +12,20 @@ interface IPlansProps {
 
 const Plans = (props: IPlansProps) => {
   const { datoCmsData } = props;
+  const router = useRouter();
   return (
     <div className="container px-6 mx-auto mt-24 lg:mt-4 lg:px-12">
       <MetaHead pagesSchema={datoCmsData.pagesSchema} />
-      <div className="mb-8 text-3xl font-bold text-center">
+      <div className="mb-2 text-3xl font-bold text-center">
         Great Writing Starts with a Plan
+      </div>
+
+      <div className="items-center justify-center mb-8 lg:flex">
+        <button type="button"
+          onClick={() => { router.push("/plans/students/") }}
+          className="fixed left-0 w-full p-2 text-center bg-yellow-300 border top-12 lg:text-sm lg:static lg:w-fit ">
+          Are you a student? Apply here for <span className="text-blue-500 underline">Student Plan</span>
+        </button>
       </div>
 
       <PlanHomeStatistic />

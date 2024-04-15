@@ -18,8 +18,8 @@ const PlanStudentsBenefits = () => {
       <div className="p-4">
         <div className="mb-2 text-3xl font-bold">Students</div>
         <div className="mb-2">AI writing partner that makes it easy to raise your grades and feedback your writing</div>
-        <div className="text-3xl font-bold">Free</div>
-        <div>for one year, then 50% off</div>
+        <div className="text-3xl font-bold">Full 1 Year Free</div>
+        <div>then 50% off</div>
 
         <Button
           className="w-full py-6 my-4 bg-emerald-800 hover:bg-emerald-700"
