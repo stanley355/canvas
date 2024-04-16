@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export enum InstitutionLevel {
+export enum StudentInstitutionLevel {
   JuniorHigh = "JuniorHigh",
   SeniorHigh = "SeniorHigh",
   College = "College",
@@ -11,7 +11,7 @@ interface IFetchStudentData {
   studentID: string;
   studentEmail?: string;
   studentCardImgUrl?: string;
-  institutionLevel: InstitutionLevel
+  institutionLevel: StudentInstitutionLevel
   institutionName: string;
 }
 
