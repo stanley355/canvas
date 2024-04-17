@@ -2,6 +2,7 @@ import { StudentInstitutionLevel } from "@/common/lib/api/students/fetchStudent"
 import AccountStudentCantReapply from "@/modules/account/components/AccountStudentCantReapply";
 import AccountStudentForm from "@/modules/account/components/AccountStudentForm";
 import AccountStudentFreeDiscount from "@/modules/account/components/AccountStudentFreeDiscount";
+import AccountStudentHalfDiscount from "@/modules/account/components/AccountStudentHalfDiscount";
 import { getAccountStudentPageServerProps } from "@/modules/account/lib/getAccountStudentPageServerSideProps";
 import { GetServerSideProps } from "next";
 
@@ -27,9 +28,10 @@ const AccountStudents = (props: IAccountStudents) => {
     return <AccountStudentFreeDiscount />
   }
 
-  // is_student && is_half_discount
+  if (studentAvailability.is_student && studentAvailability.is_half_discount) {
+    return <AccountStudentHalfDiscount />
+  }
 
-  // !is_student && !is_free_discount && !is_half_discount 
   return <AccountStudentForm />
 }
 
