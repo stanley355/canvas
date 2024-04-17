@@ -34,7 +34,7 @@ const AccountStudentForm = () => {
 
     if (file) {
       const storage = getStorage();
-      const storageRef = ref(storage, `student_card/${studentID}`);
+      const storageRef = ref(storage, `student_card/${institutionLevel}/${studentID}`);
       await uploadBytes(storageRef, file).then((snapshot) => { });
     }
 
