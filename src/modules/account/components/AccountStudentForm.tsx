@@ -1,5 +1,8 @@
-import { ChangeEvent, useReducer } from 'react'
+import { ChangeEvent, useReducer, useState } from 'react'
 import { toast } from 'react-toastify'
+import { useRouter } from 'next/router';
+import Cookies from 'js-cookie';
+import { decode, JwtPayload } from 'jsonwebtoken';
 import { getStorage, ref, uploadBytes } from 'firebase/storage';
 
 import { Input } from '@/common/components/ui/input'
@@ -10,10 +13,13 @@ import TnCLink from '@/common/components/TnCLink'
 
 import { accountStudentFormReducer } from '../lib/accountStudentFormReducer'
 import { ACCOUNT_STUDENT_FORM_STATES } from '../lib/AccountStudentFormStates'
+import { fetchStudent } from '@/common/lib/api/students/fetchStudent';
+import { TbProgress } from 'react-icons/tb';
 
 const AccountStudentForm = () => {
+  const router = useRouter();
   const [formStates, dispatch] = useReducer(accountStudentFormReducer, ACCOUNT_STUDENT_FORM_STATES);
-
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -38,6 +44,30 @@ const AccountStudentForm = () => {
       await uploadBytes(storageRef, file).then((snapshot) => { });
     }
 
+    const token = Cookies.get('token');
+    const user = decode(String(token)) as JwtPayload;
+    const payload = {
+      userID: user.id,
+      studentID,
+      ...studentEmail && { studentEmail },
+      ...file && { studentCardImgUrl: `student_card/${institutionLevel}/${studentID}` },
+      institutionLevel,
+      institutionName
+    }
+
+    const addStudent = await fetchStudent(payload);
+    if (addStudent.id) {
+      router.push("/account");
+      return;
+    }
+
+    if (addStudent.message) {
+      toast.error(addStudent.message);
+      return;
+    }
+
+    toast.error("Fail to apply, please try again");
+    return;
   }
 
   return (
@@ -68,7 +98,16 @@ const AccountStudentForm = () => {
           <Input type='file' name='student_id_card' id='student_id_card_input' accept='image/*' />
         </div>
 
-        <Button type='submit' className='w-full p-4 py-6 mb-2'>Submit Application</Button>
+        <Button type='submit' className='w-full p-4 py-6 mb-2' disabled={isLoading}>
+          {
+            isLoading ?
+              <div className='flex items-center gap-1'>
+                <TbProgress className='animate-spin' />
+                <span>Loading</span>
+              </div> :
+              <div>Submit Application</div>
+          }
+        </Button>
         <TnCLink />
       </form>
     </div>
