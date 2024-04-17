@@ -1,6 +1,9 @@
+
 import { Input } from '@/common/components/ui/input'
 import AccountStudentInstitutionLevelSelect from './AccountStudentInstitutionLevelSelect'
 import AccountStudentInstitutionSelect from './AccountStudentInstitutionSelect'
+import { Button } from '@/common/components/ui/button'
+import TnCLink from '@/common/components/TnCLink'
 
 const AccountStudentForm = () => {
   return (
@@ -9,18 +12,27 @@ const AccountStudentForm = () => {
       <div className='mb-2 text-3xl font-semibold text-center'>Student Plan Application</div>
       <div className='mb-8 text-center'>Enter your information to apply</div>
 
-      <form className='px-2' onSubmit={(e: React.FormEvent<HTMLFormElement>) => { }}>
+      <form className='px-4' onSubmit={(e: React.FormEvent<HTMLFormElement>) => { }}>
         <div className='mb-8'>
           <label htmlFor="student_id">Student ID <span className='text-red-500'>*</span></label>
-          <Input type='text' name='student_id' id='student_id_input' />
+          <Input type='text' name='student_id' id='student_id_input' placeholder='my id number' />
         </div>
         <div className='mb-8'>
-          <label htmlFor="student_email">Student Email <span className='text-red-500'>*</span></label>
-          <Input type='email' name='student_email' id='student_email_input' />
+          <label htmlFor="student_email">Student Email (optional)</label>
+          <Input type='email' name='student_email' id='student_email_input' placeholder='myname@email.com' />
         </div>
 
         <AccountStudentInstitutionLevelSelect />
         <AccountStudentInstitutionSelect />
+
+        
+        <div className='mb-8'>
+          <label htmlFor="student_id_card">Student ID Card (optional)</label>
+          <Input type='file' name='student_id_card' id='student_id_card_input' accept='image/*' />
+        </div>
+
+        <Button type='submit' className='w-full p-4 py-6 mb-2'>Submit Application</Button>
+        <TnCLink />
       </form>
     </div>
   )
