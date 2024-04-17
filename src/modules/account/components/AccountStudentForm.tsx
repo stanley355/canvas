@@ -1,4 +1,4 @@
-import { useReducer } from 'react'
+import { ChangeEvent, useReducer } from 'react'
 
 import { Input } from '@/common/components/ui/input'
 import { Button } from '@/common/components/ui/button'
@@ -18,19 +18,22 @@ const AccountStudentForm = () => {
       <div className='mb-2 text-3xl font-semibold text-center'>Student Plan Application</div>
       <div className='mb-8 text-center'>Enter your information to apply</div>
 
-      <form className='px-4 lg:w-1/4 lg:border lg:rounded-md lg:py-4 lg:mx-auto' onSubmit={(e: React.FormEvent<HTMLFormElement>) => { }}>
+      <form className='px-4 lg:w-1/4 lg:border lg:rounded-md lg:py-4 lg:mx-auto' onSubmit={(e: React.FormEvent<HTMLFormElement>) => { e.preventDefault() }}>
         <div className='mb-8'>
           <label htmlFor="student_id">Student ID <span className='text-red-500'>*</span></label>
-          <Input type='text' name='student_id' id='student_id_input' placeholder='my id number' />
+          <Input type='text' name='student_id' id='student_id_input' placeholder='my id number'
+            onChange={(e: ChangeEvent<HTMLInputElement>) => dispatch({ name: "studentID", value: e.target.value })}
+          />
         </div>
         <div className='mb-8'>
           <label htmlFor="student_email">Student Email (optional)</label>
-          <Input type='email' name='student_email' id='student_email_input' placeholder='myname@email.com' />
+          <Input type='email' name='student_email' id='student_email_input' placeholder='myname@email.com' 
+            onChange={(e: ChangeEvent<HTMLInputElement>) => dispatch({ name: "studentEmail", value: e.target.value })}
+          />
         </div>
 
-        <AccountStudentInstitutionLevelSelect />
-        <AccountStudentInstitutionSelect />
-
+        <AccountStudentInstitutionLevelSelect dispatch={dispatch} />
+        <AccountStudentInstitutionSelect dispatch={dispatch} />
 
         <div className='mb-8'>
           <label htmlFor="student_id_card">Student ID Card (optional)</label>
