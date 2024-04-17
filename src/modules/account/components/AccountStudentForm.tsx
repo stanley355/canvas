@@ -1,6 +1,7 @@
 import { ChangeEvent, useReducer, useState } from 'react'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router';
+import { TbProgress } from 'react-icons/tb';
 import Cookies from 'js-cookie';
 import { decode, JwtPayload } from 'jsonwebtoken';
 import { getStorage, ref, uploadBytes } from 'firebase/storage';
@@ -14,7 +15,7 @@ import TnCLink from '@/common/components/TnCLink'
 import { accountStudentFormReducer } from '../lib/accountStudentFormReducer'
 import { ACCOUNT_STUDENT_FORM_STATES } from '../lib/AccountStudentFormStates'
 import { fetchStudent } from '@/common/lib/api/students/fetchStudent';
-import { TbProgress } from 'react-icons/tb';
+import { sendFirebaseEvent } from '@/common/lib/firebase/sendFirebaseEvent';
 
 const AccountStudentForm = () => {
   const router = useRouter();
@@ -35,6 +36,7 @@ const AccountStudentForm = () => {
       return;
     }
 
+    setIsLoading(true);
     const target = e.target as any;
     const file = target.student_id_card.files[0];
 
@@ -44,6 +46,7 @@ const AccountStudentForm = () => {
       await uploadBytes(storageRef, file).then((snapshot) => { });
     }
 
+    sendFirebaseEvent('student_application');
     const token = Cookies.get('token');
     const user = decode(String(token)) as JwtPayload;
     const payload = {
@@ -56,6 +59,8 @@ const AccountStudentForm = () => {
     }
 
     const addStudent = await fetchStudent(payload);
+
+    setIsLoading(false);
     if (addStudent.id) {
       router.push("/account");
       return;
