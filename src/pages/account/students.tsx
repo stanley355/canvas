@@ -1,14 +1,30 @@
+import { StudentInstitutionLevel } from "@/common/lib/api/students/fetchStudent";
+import AccountStudentCantReapply from "@/modules/account/components/AccountStudentCantReapply";
 import AccountStudentForm from "@/modules/account/components/AccountStudentForm";
 import { getAccountStudentPageServerProps } from "@/modules/account/lib/getAccountStudentPageServerSideProps";
 import { GetServerSideProps } from "next";
 
 interface IAccountStudents {
-  studentAvailability: Record<string, boolean>
+  studentAvailability: {
+    is_free_discount: boolean;
+    is_half_discount: boolean
+    is_student: boolean
+    last_institution_level: string
+  }
 }
 
 const AccountStudents = (props: IAccountStudents) => {
-  const {studentAvailability} = props;
-  // is_student && !if_free_discount && !is_half_discount && can_reapply 
+  const { studentAvailability } = props;
+
+  if (!studentAvailability.is_free_discount &&
+    !studentAvailability.is_half_discount &&
+    studentAvailability.last_institution_level === StudentInstitutionLevel.College) {
+    return <AccountStudentCantReapply />
+  }
+
+  // last institution level === College
+
+  // is_student && !is_free_discount && !is_half_discount && can_reapply 
   // !is_student && can_reapply
   return <AccountStudentForm />
 }
