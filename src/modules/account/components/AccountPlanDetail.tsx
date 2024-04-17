@@ -7,6 +7,7 @@ import AccountPayasyougoPlanDetail from "./AccountPayasyougoPlanDetail";
 import AccountPremiumPlanDetail from "./AccountPremiumPlanDetail";
 import { IStudent } from "@/common/lib/api/students/interfaces";
 import AccountStudentPlanDetail from "./AccountStudentPlanDetail";
+import { useMemo } from "react";
 
 interface IAccountPlanDetail {
   account: {
@@ -21,7 +22,16 @@ const AccountPlanDetail = (props: IAccountPlanDetail) => {
   const { account } = props;
   const { user, active_subscription, topups, active_student_discount } = account;
 
-  if (active_student_discount.student_application_valid) {
+  const isFreeStudent = useMemo(() => {
+    if (active_student_discount.student_application_valid) {
+      const isFreeDiscount = new Date(active_student_discount.free_discount_end_at).getTime() > new Date().getTime();
+      return isFreeDiscount;
+    }
+
+    return false;
+  }, [active_student_discount])
+
+  if (isFreeStudent) {
     return <AccountStudentPlanDetail student={active_student_discount} topups={topups} />
   }
 
@@ -40,7 +50,7 @@ const AccountPlanDetail = (props: IAccountPlanDetail) => {
 
   return (
     <div>
-      <AccountFreePlanDetail />
+      <AccountFreePlanDetail student={active_student_discount} />
       <AccountPlanList />
     </div>
   );
