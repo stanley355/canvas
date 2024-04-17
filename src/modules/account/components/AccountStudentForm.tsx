@@ -1,11 +1,17 @@
+import { useReducer } from 'react'
 
 import { Input } from '@/common/components/ui/input'
+import { Button } from '@/common/components/ui/button'
 import AccountStudentInstitutionLevelSelect from './AccountStudentInstitutionLevelSelect'
 import AccountStudentInstitutionSelect from './AccountStudentInstitutionSelect'
-import { Button } from '@/common/components/ui/button'
 import TnCLink from '@/common/components/TnCLink'
 
+import { accountStudentFormReducer } from '../lib/accountStudentFormReducer'
+import { ACCOUNT_STUDENT_FORM_STATES } from '../lib/AccountStudentFormStates'
+
 const AccountStudentForm = () => {
+  const [formStates, dispatch] = useReducer(accountStudentFormReducer, ACCOUNT_STUDENT_FORM_STATES);
+
   return (
     <div className='min-h-screen'>
       <div className='w-full p-1 mt-12 mb-4 font-semibold bg-yellow-300 lg:mt-0 border-y lg:text-center'>Get full one year free as a student, then 50% off for the 2nd year</div>
@@ -25,7 +31,7 @@ const AccountStudentForm = () => {
         <AccountStudentInstitutionLevelSelect />
         <AccountStudentInstitutionSelect />
 
-        
+
         <div className='mb-8'>
           <label htmlFor="student_id_card">Student ID Card (optional)</label>
           <Input type='file' name='student_id_card' id='student_id_card_input' accept='image/*' />
