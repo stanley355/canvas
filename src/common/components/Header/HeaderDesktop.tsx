@@ -14,7 +14,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
   return (
     <div className="container items-center justify-between hidden py-2 mx-auto bg-white lg:flex">
       <div className="flex items-center">
-        <Link href="/" className="flex items-center gap-1">
+        <Link href="/" className="flex items-center gap-1 mr-2">
           <Image
             src="/images/languageai.png"
             alt="LanguageAi"
@@ -33,7 +33,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
             <Link
               href={menu.url}
               key={menu.title}
-              className="flex items-center justify-between gap-1 p-2 border border-transparent rounded-md hover:border-black"
+              className="flex items-center justify-between gap-1 p-2 text-sm border border-transparent rounded-md hover:border-black"
             >
               {menu.icon}
               <span>{menu.title}</span>

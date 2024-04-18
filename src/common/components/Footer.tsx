@@ -8,6 +8,7 @@ import {
   TbSpeakerphone,
 } from "react-icons/tb";
 import { FaRupiahSign } from "react-icons/fa6";
+import { PiStudentDuotone } from "react-icons/pi";
 
 const Footer = () => (
   <div className="container pt-4 mx-auto">
@@ -49,10 +50,23 @@ const Footer = () => (
           <FaRupiahSign />
           <span>Pricing</span>
         </Link>
+        <Link
+          href="/plans/students/"
+          className="flex items-center gap-1 py-2 hover:font-bold"
+        >
+          <PiStudentDuotone />
+          <span>Student Pricing</span>
+        </Link>
       </div>
 
       <div>
         <div className="text-lg font-bold">Company</div>
+        <Link
+          href="/students/"
+          className="flex items-center gap-1 py-2 hover:font-bold"
+        >
+          For Students
+        </Link>
         <Link
           href="/login/"
           className="flex items-center gap-1 py-2 hover:font-bold"

@@ -14,13 +14,12 @@ import { IDokuCheckoutPaymentRes } from "@/common/lib/api/doku/interfaces";
 import { IUser } from "@/common/lib/api/users/interfaces";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
-const PlanPremiumForm = () => {
+const PlanStudentPremiumForm = () => {
   const [loadingBtn, setLoadingBtn] = useState<null | TopupPremiumDuration>(
     null
   );
 
   const handleClick = async (duration: TopupPremiumDuration) => {
-    sendFirebaseEvent("create_premium_payment");
     setLoadingBtn(duration);
     const token = Cookies.get("token");
     const user = decode(String(token)) as JwtPayload;
@@ -72,7 +71,7 @@ const PlanPremiumForm = () => {
           <div className="flex items-center justify-between w-full">
             <div className="text-lg font-semibold">Half yearly</div>
             <div className="flex items-center gap-2 text-lg">
-              <span className="font-semibold">Rp 150.000</span>
+              <span className="font-semibold">Rp 70.000</span>
               {loadingBtn === TopupPremiumDuration.HalfYearly ? (
                 <TbProgress className="text-emerald-700 animate-spin" />
               ) : (
@@ -80,9 +79,9 @@ const PlanPremiumForm = () => {
               )}
             </div>
           </div>
-          <div className="flex items-center justify-between text-gray-500">
+          <div className="flex items-center justify-between w-full text-gray-500">
             <div>6 Months</div>
-            <div></div>
+            <div className="p-1 bg-emerald-100 text-emerald-700">Save 64%%</div>
           </div>
         </Button>
         <Button
@@ -94,7 +93,7 @@ const PlanPremiumForm = () => {
           <div className="flex items-center justify-between w-full">
             <div className="text-lg font-semibold">Quarterly</div>
             <div className="flex items-center gap-2 text-lg">
-              <span className="font-semibold">Rp 70.000</span>
+              <span className="font-semibold">Rp 30.000</span>
               {loadingBtn === TopupPremiumDuration.Quarterly ? (
                 <TbProgress className="text-emerald-700 animate-spin" />
               ) : (
@@ -104,7 +103,7 @@ const PlanPremiumForm = () => {
           </div>
           <div className="flex items-center justify-between w-full text-gray-500">
             <div>3 Months</div>
-            <div className="p-1 bg-emerald-100 text-emerald-700">Save 7%</div>
+            <div className="p-1 bg-emerald-100 text-emerald-700">Save 68%%</div>
           </div>
         </Button>
         <Button
@@ -116,7 +115,7 @@ const PlanPremiumForm = () => {
           <div className="flex items-center justify-between w-full">
             <div className="text-lg font-semibold">Monthly</div>
             <div className="flex items-center gap-2 text-lg">
-              <span className="font-semibold">Rp 25.000</span>
+              <span className="font-semibold">Rp 12.500</span>
               {loadingBtn === TopupPremiumDuration.Monthly ? (
                 <TbProgress className="text-emerald-700 animate-spin" />
               ) : (
@@ -126,6 +125,7 @@ const PlanPremiumForm = () => {
           </div>
           <div className="flex items-center justify-between w-full text-gray-500">
             <div>1 Month</div>
+            <div className="p-1 bg-emerald-100 text-emerald-700">Save 50%</div>
           </div>
         </Button>
       </div>
@@ -133,4 +133,4 @@ const PlanPremiumForm = () => {
   );
 };
 
-export default PlanPremiumForm;
+export default PlanStudentPremiumForm;

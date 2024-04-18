@@ -183,3 +183,56 @@ export const PLAN_LIST_V2: IPlanList[] = [
     ],
   },
 ];
+
+export const STUDENT_PLAN_FEATURES = [
+  {
+    name: "Ai Translate",
+    limit: "Unlimited",
+    isBold: true,
+  },
+  {
+    name: "Ai Grammar Check",
+    limit: "Unlimited",
+    isBold: true,
+  },
+  {
+    name: "Ai Image to Text",
+    limit: "Unlimited",
+    isBold: false,
+  },
+  {
+    name: "Ai Text to Speech",
+    limit: "Unlimited",
+    isBold: false,
+  },
+  {
+    name: "Grammar Fix",
+    limit: "",
+    isBold: false,
+  },
+  {
+    name: "Spelling Fix",
+    limit: "",
+    isBold: false,
+  },
+  {
+    name: "Punctuation Fix",
+    limit: "",
+    isBold: false,
+  },
+  {
+    name: "Full Sentence Rewrites",
+    limit: "",
+    isBold: false,
+  },
+  {
+    name: "Word Choice",
+    limit: "",
+    isBold: false,
+  },
+  {
+    name: "Tone Suggestions",
+    limit: "",
+    isBold: false,
+  },
+];

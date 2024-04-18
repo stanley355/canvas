@@ -1,6 +1,8 @@
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import { decode, JwtPayload } from "jsonwebtoken";
 import PlanPremiumCard from "@/modules/plans/components/PlanPremiumCard";
 import PlanPremiumForm from "@/modules/plans/components/PlanPremiumForm";
-import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import { fetchStudentAvailability } from "@/common/lib/api/students/fetchStudentAvailability";
 
 const PremiumPlans = () => {
   return (
@@ -24,6 +26,18 @@ export const getServerSideProps: GetServerSideProps = async (
       redirect: {
         permanent: false,
         destination: "/login/",
+      },
+    };
+  }
+
+  const decodedToken = decode(token) as JwtPayload;
+  const studentAvailability = await fetchStudentAvailability(decodedToken.id);
+
+  if (studentAvailability?.is_student) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/plans/premium/students/",
       },
     };
   }
