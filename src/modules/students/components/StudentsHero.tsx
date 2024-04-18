@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image"
-import { useRouter } from "next/router"
+import Image from "next/image";
+import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 import { TbPercentage } from "react-icons/tb";
 
-import { Button } from "@/common/components/ui/button"
+import { Button } from "@/common/components/ui/button";
 import GoogleLoginBtn from "@/modules/login/components/GoogleLoginBtn";
 
 const StudentsHero = () => {
@@ -22,11 +22,21 @@ const StudentsHero = () => {
     <div className="container px-4 py-8 mx-auto mt-12 lg:mt-0 lg:grid lg:grid-cols-2 lg:gap-8 lg:place-items-center">
       <div className="mb-8 text-white">
         <h1 className="mb-8">LanguageAi for Students</h1>
-        <div className="mb-8 text-3xl font-bold">AI That Helps You Make the Grade</div>
-        <div className="mb-8 lg:w-3/4">LanguageAi is your AI writing partner that makes it easy to raise your grades and meet your goals with writing feedback for school and beyond.</div>
+        <div className="mb-8 text-3xl font-bold">
+          AI That Helps You Make the Grade
+        </div>
+        <div className="mb-8 lg:w-3/4">
+          LanguageAi is your AI writing partner that makes it easy to raise your
+          grades and meet your goals with writing feedback for school and
+          beyond.
+        </div>
 
         <div className="items-center gap-2 mb-2 lg:flex">
-          <Button variant={'secondary'} onClick={() => router.push("/plans/students/")} className="gap-2 mb-4 text-lg font-bold text-indigo-900 border rounded lg:mb-0 lg:text-sm">
+          <Button
+            variant={"secondary"}
+            onClick={() => router.push("/plans/students/")}
+            className="gap-2 mb-4 text-lg font-bold text-indigo-900 border rounded lg:mb-0 lg:text-sm"
+          >
             <TbPercentage className="text-lg font-bold" />
             <span>Check Student Discount</span>
           </Button>
@@ -61,7 +71,7 @@ const StudentsHero = () => {
         className="rounded-md lg:w-full"
       />
     </div>
-  )
-}
+  );
+};
 
-export default StudentsHero
+export default StudentsHero;

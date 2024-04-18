@@ -9,10 +9,11 @@ const StudentsBoostGrades = () => {
       <div className="container mx-auto text-white lg:mb-8">
         <div className="mb-4 text-center">For students</div>
         <div className="mb-4 text-3xl font-semibold text-center">
-        Boost Your Grades With Better Writing
+          Boost Your Grades With Better Writing
         </div>
         <div className="mb-4 text-center lg:w-1/3 lg:mx-auto">
-        Join thousand of students worldwide who use Grammarly to improve their writing and achieve their goals.
+          Join thousand of students worldwide who use Grammarly to improve their
+          writing and achieve their goals.
         </div>
       </div>
       <div className="px-4 mb-4 lg:flex lg:mx-auto lg:w-1/2 lg:justify-evenly">

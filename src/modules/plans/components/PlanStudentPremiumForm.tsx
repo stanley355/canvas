@@ -24,7 +24,7 @@ const PlanStudentPremiumForm = () => {
     const token = Cookies.get("token");
     const user = decode(String(token)) as JwtPayload;
 
-    sendFirebaseEvent('topup_premium_student');
+    sendFirebaseEvent("topup_premium_student");
     const topupPayload = {
       userID: user.id,
       duration,

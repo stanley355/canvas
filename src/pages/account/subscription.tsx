@@ -19,7 +19,7 @@ const AccountSubscription = (props: IAccountSubscription) => {
   const { account } = props;
   return (
     <div className="container mx-auto mt-16 lg:mt-4 lg:px-12">
-      <AccountPlanDetail account={account}  />
+      <AccountPlanDetail account={account} />
     </div>
   );
 };

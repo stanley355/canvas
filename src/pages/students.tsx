@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 
 import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
-import StudentsHero from "@/modules/students/components/StudentsHero"
+import StudentsHero from "@/modules/students/components/StudentsHero";
 
 import { fetchDatoCms } from "@/common/lib/api/fetchDatoCms";
 import { getPagesSchema } from "@/common/lib/api/gql";
@@ -10,7 +10,7 @@ import StudentsAssignmentBenefit from "@/modules/students/components/StudentsAss
 import StudentsBoostGrades from "@/modules/students/components/StudentsBoostGrades";
 
 interface IStudents {
-  datoCmsData: IMetaHead
+  datoCmsData: IMetaHead;
 }
 
 const Students = (props: IStudents) => {
@@ -26,8 +26,8 @@ const Students = (props: IStudents) => {
       <StudentsAssignmentBenefit />
       <StudentsBoostGrades />
     </div>
-  )
-}
+  );
+};
 
 export default Students;
 

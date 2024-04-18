@@ -34,7 +34,7 @@ const PlanPayasyougoForm = () => {
 
     sendFirebaseEvent("create_payasyougo_payment");
     setIsLoading(true);
-    sendFirebaseEvent('topup_pay_as_you_go');
+    sendFirebaseEvent("topup_pay_as_you_go");
     const token = Cookies.get("token");
     const user = decode(String(token)) as JwtPayload;
 

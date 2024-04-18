@@ -65,7 +65,7 @@ const Footer = () => (
           href="/students/"
           className="flex items-center gap-1 py-2 hover:font-bold"
         >
-         For Students 
+          For Students
         </Link>
         <Link
           href="/login/"
