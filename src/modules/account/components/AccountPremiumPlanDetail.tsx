@@ -10,7 +10,7 @@ interface IAccountPayasyougoPlanDetail {
 
 const AccountPremiumPlanDetail = (props: IAccountPayasyougoPlanDetail) => {
   const { subscription, topups } = props;
-  
+
   return (
     <div className="pb-4">
       <div className="mb-4 text-2xl font-bold border-b">Subscription</div>

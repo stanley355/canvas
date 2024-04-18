@@ -54,7 +54,7 @@ const Footer = () => (
           href="/plans/students/"
           className="flex items-center gap-1 py-2 hover:font-bold"
         >
-          <PiStudentDuotone/>
+          <PiStudentDuotone />
           <span>Student Pricing</span>
         </Link>
       </div>

@@ -2,8 +2,12 @@ const PlanStudentPremiumCard = () => {
   return (
     <div>
       <div className="pb-4 border-b-2">
-        <div className="text-xl font-bold text-center">Student Premium Plan</div>
-        <div className="text-sm text-center">Enjoy 50% reduced pricing as student</div>
+        <div className="text-xl font-bold text-center">
+          Student Premium Plan
+        </div>
+        <div className="text-sm text-center">
+          Enjoy 50% reduced pricing as student
+        </div>
       </div>
 
       <div className="w-3/4 py-4 mx-auto">

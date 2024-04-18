@@ -1,4 +1,3 @@
-
 import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
 import { fetchDatoCms } from "@/common/lib/api/fetchDatoCms";
 import { getPagesSchema } from "@/common/lib/api/gql";
@@ -20,8 +19,8 @@ const Students = (props: IPlansProps) => {
       <PlanHomeStatistic />
       <PlanStudentsBenefits />
     </div>
-  )
-}
+  );
+};
 
 export default Students;
 export const getStaticProps: GetStaticProps = async () => {
@@ -29,7 +28,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      datoCmsData
-    }
-  }
-}
+      datoCmsData,
+    },
+  };
+};

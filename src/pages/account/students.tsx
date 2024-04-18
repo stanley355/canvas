@@ -9,31 +9,35 @@ import { GetServerSideProps } from "next";
 interface IAccountStudents {
   studentAvailability: {
     is_free_discount: boolean;
-    is_half_discount: boolean
-    is_student: boolean
-    last_institution_level: string
-  }
+    is_half_discount: boolean;
+    is_student: boolean;
+    last_institution_level: string;
+  };
 }
 
 const AccountStudents = (props: IAccountStudents) => {
   const { studentAvailability } = props;
 
-  if (!studentAvailability.is_free_discount &&
+  if (
+    !studentAvailability.is_free_discount &&
     !studentAvailability.is_half_discount &&
-    studentAvailability.last_institution_level === StudentInstitutionLevel.College) {
-    return <AccountStudentCantReapply />
+    studentAvailability.last_institution_level ===
+      StudentInstitutionLevel.College
+  ) {
+    return <AccountStudentCantReapply />;
   }
 
   if (studentAvailability.is_student && studentAvailability.is_free_discount) {
-    return <AccountStudentFreeDiscount />
+    return <AccountStudentFreeDiscount />;
   }
 
   if (studentAvailability.is_student && studentAvailability.is_half_discount) {
-    return <AccountStudentHalfDiscount />
+    return <AccountStudentHalfDiscount />;
   }
 
-  return <AccountStudentForm />
-}
+  return <AccountStudentForm />;
+};
 
 export default AccountStudents;
-export const getServerSideProps: GetServerSideProps = getAccountStudentPageServerProps;
+export const getServerSideProps: GetServerSideProps =
+  getAccountStudentPageServerProps;

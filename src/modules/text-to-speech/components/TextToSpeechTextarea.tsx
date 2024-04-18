@@ -61,7 +61,7 @@ const TextToSpeechTextarea = (props: ITextToSpeechTextarea) => {
     }
 
     setIsLoading(true);
-    sendFirebaseEvent("text_to_speech")
+    sendFirebaseEvent("text_to_speech");
     const user = decode(String(token)) as JwtPayload;
     const ttsFetch = await fetchTextToSpeechPrompt(user.id, sourceText);
 

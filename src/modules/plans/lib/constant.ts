@@ -235,4 +235,4 @@ export const STUDENT_PLAN_FEATURES = [
     limit: "",
     isBold: false,
   },
-]
+];

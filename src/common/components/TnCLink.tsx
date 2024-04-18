@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Link from "next/link";
 
 const TnCLink = () => {
   return (
@@ -21,7 +21,7 @@ const TnCLink = () => {
       </Link>
       apply.
     </div>
-  )
-}
+  );
+};
 
-export default TnCLink
+export default TnCLink;

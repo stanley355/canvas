@@ -11,7 +11,7 @@ interface IFetchStudentData {
   studentID: string;
   studentEmail?: string;
   studentCardImgUrl?: string;
-  institutionLevel: StudentInstitutionLevel
+  institutionLevel: StudentInstitutionLevel;
   institutionName: string;
 }
 
@@ -26,11 +26,13 @@ export const fetchStudent = async (payload: IFetchStudentData) => {
     data: {
       user_id: payload.userID,
       student_id: payload.studentID,
-      ...payload.studentEmail && { student_email: payload.studentEmail },
-      ...payload.studentCardImgUrl && { student_card_img_url: payload.studentCardImgUrl },
+      ...(payload.studentEmail && { student_email: payload.studentEmail }),
+      ...(payload.studentCardImgUrl && {
+        student_card_img_url: payload.studentCardImgUrl,
+      }),
       institution_level: payload.institutionLevel,
-      institution_name: payload.institutionName
-    }
+      institution_name: payload.institutionName,
+    },
   };
 
   try {

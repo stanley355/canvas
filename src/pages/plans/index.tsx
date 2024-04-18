@@ -21,10 +21,15 @@ const Plans = (props: IPlansProps) => {
       </div>
 
       <div className="items-center justify-center mb-8 lg:flex">
-        <button type="button"
-          onClick={() => { router.push("/plans/students/") }}
-          className="fixed left-0 w-full p-2 text-center bg-yellow-300 border top-12 lg:text-sm lg:static lg:w-fit ">
-          Are you a student? Apply here for free <span className="ml-1 text-blue-500 underline">Student Plan </span>
+        <button
+          type="button"
+          onClick={() => {
+            router.push("/plans/students/");
+          }}
+          className="fixed left-0 w-full p-2 text-center bg-yellow-300 border top-12 lg:text-sm lg:static lg:w-fit "
+        >
+          Are you a student? Apply here for free{" "}
+          <span className="ml-1 text-blue-500 underline">Student Plan </span>
         </button>
       </div>
 

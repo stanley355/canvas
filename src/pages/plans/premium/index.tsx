@@ -39,7 +39,7 @@ export const getServerSideProps: GetServerSideProps = async (
         permanent: false,
         destination: "/plans/premium/students/",
       },
-    }; 
+    };
   }
 
   return {

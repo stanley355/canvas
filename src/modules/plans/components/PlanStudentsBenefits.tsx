@@ -1,10 +1,10 @@
-import { useRouter } from 'next/router'
-import { MdAutoAwesome } from 'react-icons/md'
-import { TbCircleCheck } from 'react-icons/tb';
+import { useRouter } from "next/router";
+import { MdAutoAwesome } from "react-icons/md";
+import { TbCircleCheck } from "react-icons/tb";
 
-import { Button } from '@/common/components/ui/button'
-import { cn } from '@/common/lib/cn';
-import { IPlanListFeature, STUDENT_PLAN_FEATURES } from '../lib/constant';
+import { Button } from "@/common/components/ui/button";
+import { cn } from "@/common/lib/cn";
+import { IPlanListFeature, STUDENT_PLAN_FEATURES } from "../lib/constant";
 
 const PlanStudentsBenefits = () => {
   const router = useRouter();
@@ -17,7 +17,10 @@ const PlanStudentsBenefits = () => {
       </div>
       <div className="p-4">
         <div className="mb-2 text-3xl font-bold">Students</div>
-        <div className="mb-2">AI writing partner that makes it easy to raise your grades and feedback your writing</div>
+        <div className="mb-2">
+          AI writing partner that makes it easy to raise your grades and
+          feedback your writing
+        </div>
         <div className="text-3xl font-bold">Full 1 Year Free</div>
         <div>then 50% off</div>
 
@@ -29,25 +32,27 @@ const PlanStudentsBenefits = () => {
         </Button>
 
         <div>
-          {STUDENT_PLAN_FEATURES.map((feature: IPlanListFeature, index: number) => (
-            <div
-              key={`${feature.name}${index}`}
-              className={cn(
-                "flex items-center justify-between text-lg mb-4",
-                feature.isBold ? "font-bold" : ""
-              )}
-            >
-              <div className="flex items-center gap-4">
-                <TbCircleCheck />
-                <span>{feature.name}</span>
+          {STUDENT_PLAN_FEATURES.map(
+            (feature: IPlanListFeature, index: number) => (
+              <div
+                key={`${feature.name}${index}`}
+                className={cn(
+                  "flex items-center justify-between text-lg mb-4",
+                  feature.isBold ? "font-bold" : ""
+                )}
+              >
+                <div className="flex items-center gap-4">
+                  <TbCircleCheck />
+                  <span>{feature.name}</span>
+                </div>
+                <span>{feature.limit}</span>
               </div>
-              <span>{feature.limit}</span>
-            </div>
-          ))}
+            )
+          )}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PlanStudentsBenefits
+export default PlanStudentsBenefits;
