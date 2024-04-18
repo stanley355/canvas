@@ -19,48 +19,46 @@ const StudentsHero = () => {
   }, [router]);
 
   return (
-    <div className="container px-4 py-8 mx-auto mt-12 lg:mt-0">
-      <div className=" lg:grid lg:grid-cols-2 lg:gap-8 lg:place-items-center">
-        <div className="mb-8 text-white">
-          <h1 className="mb-8">LanguageAi for Students</h1>
-          <div className="mb-8 text-3xl font-bold">AI That Helps You Make the Grade</div>
-          <div className="mb-8 lg:w-3/4">LanguageAi is your AI writing partner that makes it easy to raise your grades and meet your goals with writing feedback for school and beyond.</div>
+    <div className="container px-4 py-8 mx-auto mt-12 lg:mt-0 lg:grid lg:grid-cols-2 lg:gap-8 lg:place-items-center">
+      <div className="mb-8 text-white">
+        <h1 className="mb-8">LanguageAi for Students</h1>
+        <div className="mb-8 text-3xl font-bold">AI That Helps You Make the Grade</div>
+        <div className="mb-8 lg:w-3/4">LanguageAi is your AI writing partner that makes it easy to raise your grades and meet your goals with writing feedback for school and beyond.</div>
 
-          <div className="items-center gap-2 mb-2 lg:flex">
-            <Button variant={'secondary'} onClick={() => router.push("/plans/students/")} className="gap-2 mb-4 text-lg border rounded lg:mb-0 lg:text-sm">
-              <TbPercentage className="text-lg font-bold" />
-              <span>Check Student Discount</span>
-            </Button>
-            {showLogin && <GoogleLoginBtn />}
-          </div>
-          <div className="text-sm lg:w-3/4">
-            * This site is protected by reCAPTCHA and the Google
-            <Link
-              href={"https://policies.google.com/privacy"}
-              target="_blank"
-              className="mx-1 border-b "
-            >
-              Privacy Policy
-            </Link>
-            and
-            <Link
-              href={"https://policies.google.com/terms"}
-              target="_blank"
-              className="mx-1 border-b "
-            >
-              Terms of Service
-            </Link>
-            apply.
-          </div>
+        <div className="items-center gap-2 mb-2 lg:flex">
+          <Button variant={'secondary'} onClick={() => router.push("/plans/students/")} className="gap-2 mb-4 text-lg border rounded lg:mb-0 lg:text-sm">
+            <TbPercentage className="text-lg font-bold" />
+            <span>Check Student Discount</span>
+          </Button>
+          {showLogin && <GoogleLoginBtn />}
         </div>
-        <Image
-          src="/images/students/students_hero.jpg"
-          alt="LanguageAi for Students"
-          width={400}
-          height={400}
-          className="rounded-md lg:w-full"
-        />
+        <div className="text-sm lg:w-3/4">
+          * This site is protected by reCAPTCHA and the Google
+          <Link
+            href={"https://policies.google.com/privacy"}
+            target="_blank"
+            className="mx-1 border-b "
+          >
+            Privacy Policy
+          </Link>
+          and
+          <Link
+            href={"https://policies.google.com/terms"}
+            target="_blank"
+            className="mx-1 border-b "
+          >
+            Terms of Service
+          </Link>
+          apply.
+        </div>
       </div>
+      <Image
+        src="/images/students/students_hero.jpg"
+        alt="LanguageAi for Students"
+        width={400}
+        height={400}
+        className="rounded-md lg:w-full"
+      />
     </div>
   )
 }
