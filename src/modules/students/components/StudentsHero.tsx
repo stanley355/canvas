@@ -53,8 +53,9 @@ const StudentsHero = () => {
         </div>
       </div>
       <Image
-        src="/images/students/students_hero.jpg"
+        src="/images/students/students_hero.webp"
         alt="LanguageAi for Students"
+        loading="eager"
         width={400}
         height={400}
         className="rounded-md lg:w-full"
