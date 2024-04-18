@@ -32,6 +32,7 @@ const PlanPayasyougoForm = () => {
       return;
     }
 
+    sendFirebaseEvent("create_payasyougo_payment");
     setIsLoading(true);
     sendFirebaseEvent('topup_pay_as_you_go');
     const token = Cookies.get("token");
