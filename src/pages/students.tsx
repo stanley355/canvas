@@ -18,7 +18,7 @@ const Students = (props: IStudents) => {
 
   return (
     <div>
-      {/* <MetaHead pagesSchema={datoCmsData.pagesSchema} /> */}
+      <MetaHead pagesSchema={datoCmsData.pagesSchema} />
       <div className="bg-indigo-900">
         <StudentsHero />
         <StudentsHeroSupport />
@@ -32,13 +32,13 @@ const Students = (props: IStudents) => {
 export default Students;
 
 export const getStaticProps: GetStaticProps = async () => {
-  // const datoCmsData = await fetchDatoCms(getPagesSchema, {
-  //   slug: "students",
-  // });
+  const datoCmsData = await fetchDatoCms(getPagesSchema, {
+    slug: "students",
+  });
 
   return {
     props: {
-      // datoCmsData,
+      datoCmsData,
     },
   };
 };

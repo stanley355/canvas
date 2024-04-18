@@ -11,22 +11,22 @@ import { PiStudentDuotone } from "react-icons/pi";
 
 export const HEADER_MENU = [
   {
-    title: "AI Translate",
+    title: "Translate",
     url: "/translate/",
     icon: <TbLanguage />,
   },
   {
-    title: "AI Grammar Check",
+    title: "Grammar Check",
     url: "/grammar-check/",
     icon: <TbBrandGoogle />,
   },
   {
-    title: "AI Image to Text",
+    title: "Image to Text",
     url: "/image-to-text/",
     icon: <TbPhotoAi />,
   },
   {
-    title: "AI Text to Speech",
+    title: "Text to Speech",
     url: "/text-to-speech/",
     icon: <TbSpeakerphone />,
   },
@@ -44,6 +44,11 @@ export const HEADER_MENU = [
     title: "Help",
     url: "/support/",
     icon: <TbHelp />,
+  },
+  {
+    title: "Student Support",
+    url: "/students/",
+    icon: <PiStudentDuotone />,
   },
   {
     title: "Account",

@@ -14,7 +14,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
   return (
     <div className="container items-center justify-between hidden py-2 mx-auto bg-white lg:flex">
       <div className="flex items-center">
-        <Link href="/" className="flex items-center gap-1">
+        <Link href="/" className="flex items-center gap-1 mr-2">
           <Image
             src="/images/languageai.png"
             alt="LanguageAi"
