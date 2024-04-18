@@ -1,6 +1,8 @@
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import { decode, JwtPayload } from "jsonwebtoken";
 import PlanPayasyougoCard from "@/modules/plans/components/PlanPayasyougoCard";
 import PlanPayasyougoForm from "@/modules/plans/components/PlanPayasyougoForm";
+import { fetchStudentAvailability } from "@/common/lib/api/students/fetchStudentAvailability";
 
 const PayasyougoPlans = () => {
   return (
@@ -26,6 +28,18 @@ export const getServerSideProps: GetServerSideProps = async (
         destination: "/login/",
       },
     };
+  }
+
+  const decodedToken = decode(token) as JwtPayload;
+  const studentAvailability = await fetchStudentAvailability(decodedToken.id);
+
+  if (studentAvailability?.is_student) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/premium/students/",
+      },
+    }; 
   }
 
   return {
