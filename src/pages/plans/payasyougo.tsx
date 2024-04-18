@@ -37,7 +37,7 @@ export const getServerSideProps: GetServerSideProps = async (
     return {
       redirect: {
         permanent: false,
-        destination: "/premium/students/",
+        destination: "/plans/premium/students/",
       },
     }; 
   }
