@@ -33,7 +33,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
             <Link
               href={menu.url}
               key={menu.title}
-              className="flex items-center justify-between gap-1 p-2 border border-transparent rounded-md hover:border-black"
+              className="flex items-center justify-between gap-1 p-2 text-sm border border-transparent rounded-md hover:border-black"
             >
               {menu.icon}
               <span>{menu.title}</span>

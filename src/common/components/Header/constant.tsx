@@ -7,6 +7,7 @@ import {
   TbSpeakerphone,
 } from "react-icons/tb";
 import { FaRupiahSign } from "react-icons/fa6";
+import { PiStudentDuotone } from "react-icons/pi";
 
 export const HEADER_MENU = [
   {
@@ -33,6 +34,11 @@ export const HEADER_MENU = [
     title: "Pricing",
     url: "/plans/",
     icon: <FaRupiahSign />,
+  },
+  {
+    title: "Student Pricing",
+    url: "/plans/students/",
+    icon: <PiStudentDuotone />,
   },
   {
     title: "Help",
