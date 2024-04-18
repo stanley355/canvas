@@ -1,21 +1,14 @@
 import Select from 'react-select';
-import { IAccountStudentFormStates } from '../lib/AccountStudentFormStates';
-import { IAccountStudentFormAction } from '../lib/accountStudentFormReducer';
 import { Input } from '@/common/components/ui/input';
 import { ReactSelectSingleValue } from '@/common/lib/types';
 import { ChangeEvent, useState } from 'react';
 
-interface IAccountStudentInstitutionSelect {
-  dispatch: (action: IAccountStudentFormAction) => void;
-}
 
-const AccountStudentInstitutionSelect = (props: IAccountStudentInstitutionSelect) => {
-  const { dispatch } = props;
+const AccountStudentInstitutionSelect = () => {
   const [showInput, setShowInput] = useState(false);
 
   const handleChange = (e: ReactSelectSingleValue) => {
     const value = e?.value;
-    dispatch({ name: "institutionName", value: e?.value });
     setShowInput(value === "");
     return;
   }
@@ -37,8 +30,8 @@ const AccountStudentInstitutionSelect = (props: IAccountStudentInstitutionSelect
       />
       {showInput &&
         <div className='mb-8'>
-          <label htmlFor="institution_name">Please input your School / University Name <span className='text-red-500'>*</span> </label>
-          <Input type='text' name='institution_name' id='institution_name_input' onChange={(e: ChangeEvent<HTMLInputElement>) => dispatch({ name: "institutionName", value: e.target.value })} />
+          <label htmlFor="institution_name_other">Please input your School / University Name <span className='text-red-500'>*</span> </label>
+          <Input type='text' name='institution_name_other' id='institution_name_input'  />
         </div>}
     </div>
   )
