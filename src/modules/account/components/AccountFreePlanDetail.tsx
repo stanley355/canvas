@@ -12,13 +12,13 @@ const AccountFreePlanDetail = (props: IAccountFreePlanDetail) => {
   const router = useRouter();
 
   const isHalfDiscount = useMemo(() => {
-    if (student.student_application_valid) {
+    if (student && student.student_application_valid) {
       const hasDiscount = new Date(student.half_discount_end_at).getTime() > new Date().getTime();
       return hasDiscount
     }
 
     return false;
-  }, [student])
+  }, [student]);
 
   return (
     <div>
@@ -51,8 +51,10 @@ const AccountFreePlanDetail = (props: IAccountFreePlanDetail) => {
       </div>
 
       <div className="w-full p-2 text-sm bg-blue-100 lg:w-1/2">
-        Change your Plan to enjoy full feature. Choose a plan to ensure that
-        everything you write is clear, engaging, and polished.
+
+        {isHalfDiscount ?
+          `Subscribe to premium plan to enjoy 50% student discount until ${new Date(student.half_discount_end_at).toLocaleDateString('id-ID')}` :
+          'Change your Plan to enjoy full feature. Choose a plan to ensure that everything you write is clear, engaging, and polished.'}
       </div>
     </div>
   );
