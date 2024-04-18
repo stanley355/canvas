@@ -7,6 +7,7 @@ import { fetchDatoCms } from "@/common/lib/api/fetchDatoCms";
 import { getPagesSchema } from "@/common/lib/api/gql";
 import StudentsHeroSupport from "@/modules/students/components/StudentsHeroSupport";
 import StudentsAssignmentBenefit from "@/modules/students/components/StudentsAssignmentBenefit";
+import StudentsBoostGrades from "@/modules/students/components/StudentsBoostGrades";
 
 interface IStudents {
   datoCmsData: IMetaHead
@@ -23,6 +24,7 @@ const Students = (props: IStudents) => {
         <StudentsHeroSupport />
       </div>
       <StudentsAssignmentBenefit />
+      <StudentsBoostGrades />
     </div>
   )
 }

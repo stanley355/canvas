@@ -26,7 +26,7 @@ const StudentsHero = () => {
         <div className="mb-8 lg:w-3/4">LanguageAi is your AI writing partner that makes it easy to raise your grades and meet your goals with writing feedback for school and beyond.</div>
 
         <div className="items-center gap-2 mb-2 lg:flex">
-          <Button variant={'secondary'} onClick={() => router.push("/plans/students/")} className="gap-2 mb-4 text-lg border rounded lg:mb-0 lg:text-sm">
+          <Button variant={'secondary'} onClick={() => router.push("/plans/students/")} className="gap-2 mb-4 text-lg font-bold text-indigo-900 border rounded lg:mb-0 lg:text-sm">
             <TbPercentage className="text-lg font-bold" />
             <span>Check Student Discount</span>
           </Button>
