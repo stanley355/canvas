@@ -16,7 +16,8 @@ const Plans = (props: IPlansProps) => {
   return (
     <div className="container px-6 mx-auto mt-24 lg:mt-4 lg:px-12">
       <MetaHead pagesSchema={datoCmsData.pagesSchema} />
-      <div className="mb-2 text-3xl font-bold text-center">
+
+      <div className="pt-12 mb-2 text-3xl font-bold text-center lg:pt-0 ">
         Great Writing Starts with a Plan
       </div>
 
@@ -32,6 +33,7 @@ const Plans = (props: IPlansProps) => {
           <span className="ml-1 text-blue-500 underline">Student Plan </span>
         </button>
       </div>
+
 
       <PlanHomeStatistic />
       <PlanHomePlanList />
