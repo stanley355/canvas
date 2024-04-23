@@ -61,9 +61,9 @@ const HomeHero = () => {
       <Image
         src={"/images/languageai.png"}
         alt="LanguageAi"
-        width={350}
-        height={350}
-        className="mx-auto"
+        width={1024}
+        height={1024}
+        className="mx-auto lg:w-1/2 lg:h-auto"
         loading="eager"
       />
     </div>

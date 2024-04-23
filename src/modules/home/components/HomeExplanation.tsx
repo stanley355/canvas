@@ -17,6 +17,7 @@ const HomeExplanation = () => {
         <Image
           src={"/images/home/better_writing_cartoon.webp"}
           alt="LanguageAi Writing"
+          loading="lazy"
           width={350}
           height={350}
           className="w-full lg:h-auto"
@@ -36,8 +37,9 @@ const HomeExplanation = () => {
         <Image
           src={"/images/home/right_context_cartoon.webp"}
           alt="LanguageAi Right Context"
-          width={350}
-          height={350}
+          loading="lazy"
+          width={1024}
+          height={674}
           className="w-full lg:h-auto"
         />
       </div>
@@ -55,6 +57,7 @@ const HomeExplanation = () => {
         <Image
           src={"/images/home/work_where_cartoon.webp"}
           alt="LanguageAi Easiness"
+          loading="lazy"
           width={350}
           height={350}
           className="w-full lg:h-auto"
@@ -74,6 +77,7 @@ const HomeExplanation = () => {
         <Image
           src={"/images/home/writing_style_cartoon.webp"}
           alt="LanguageAi Style"
+          loading="lazy"
           width={350}
           height={350}
           className="w-full mx-auto"

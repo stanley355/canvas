@@ -49,7 +49,7 @@ const AccountDetail = (props: IAccountDetail) => {
         <div className="text-lg font-bold ">Subscriptions</div>
         <Link
           className="flex items-center gap-2 py-2 border-b w-fit hover:border-b-black"
-          href="/subscriptions"
+          href="/account/subscription"
         >
           <FaRupiahSign />
           <span>Check Subscription</span>
