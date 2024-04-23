@@ -46,7 +46,7 @@ export const HEADER_MENU = [
     icon: <TbHelp />,
   },
   {
-    title: "Student Support",
+    title: "For Students",
     url: "/students/",
     icon: <PiStudentDuotone />,
   },

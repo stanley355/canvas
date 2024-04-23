@@ -21,6 +21,7 @@ const StudentsAssignmentBenefit = () => {
             className="w-full h-auto mb-4"
             alt="LanguageAi Write Strategic"
             src="/images/students/write_strategic.webp"
+            loading="lazy"
           />
           <div className="mb-4 text-2xl font-semibold">Write strategically</div>
           <div>
@@ -30,11 +31,12 @@ const StudentsAssignmentBenefit = () => {
         </div>
         <div className="mb-12 lg:max-h-80">
           <Image
-            width={400}
-            height={400}
-            className="w-full mb-4 h-80 lg:max-h-80"
+            width={500}
+            height={418}
+            className="w-full mb-4 lg:max-h-80"
             alt="LanguageAi Edit and Click"
             src="/images/students/edit_click.webp"
+            loading="lazy"
           />
           <div className="mb-4 text-2xl font-semibold">Edit in one click</div>
           <div>
@@ -49,6 +51,7 @@ const StudentsAssignmentBenefit = () => {
             className="w-full h-auto mb-4 lg:max-h-80"
             alt="LanguageAi Write Strategic"
             src="/images/students/citation.webp"
+            loading="lazy"
           />
           <div className="mb-4 text-2xl font-semibold">
             Boost your writing Resources
@@ -65,6 +68,7 @@ const StudentsAssignmentBenefit = () => {
             className="w-full h-auto mb-4 lg:max-h-80"
             alt="LanguageAi Work to work"
             src="/images/home/work_where_cartoon.webp"
+            loading="lazy"
           />
           <div className="mb-4 text-2xl font-semibold">
             Works where you work
