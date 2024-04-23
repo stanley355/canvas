@@ -1,6 +1,6 @@
 const PlanStudentPremiumCard = () => {
   return (
-    <div>
+    <div className="pt-16 lg:pt-4">
       <div className="pb-4 border-b-2">
         <div className="text-xl font-bold text-center">
           Student Premium Plan

@@ -4,6 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { useRouter } from "next/router";
 import { useMemo } from "react";
+import Head from "next/head";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();

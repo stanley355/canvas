@@ -25,7 +25,7 @@ const TextToSpeech = (props: ITTSProps) => {
         <span>Text to Speech</span>
       </div>
 
-      <div className="grid grid-cols-2 mt-4 lg:px-4">
+      <div className="grid-cols-2 mt-4 lg:grid lg:px-4">
         <TextToSpeechTextarea onConvertSuccess={setFilename} />
         <TextToSpeechResult fileName={fileName} />
       </div>
