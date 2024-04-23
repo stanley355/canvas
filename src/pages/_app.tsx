@@ -8,8 +8,7 @@ import Script from "next/script";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <FirebaseProvider>
-
-      <Script type="text/javascript" strategy="afterInteractive">
+      <Script type="text/javascript" id="microsoft-clarity" strategy="afterInteractive">
         {`(function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
