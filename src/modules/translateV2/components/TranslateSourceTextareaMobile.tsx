@@ -24,6 +24,7 @@ const TranslateSourceTextareaMobile = () => {
       <Button
         variant={"ghost"}
         className="absolute top-0 right-0"
+        aria-label="Delete Text"
         onClick={() => {
           dispatch({
             type: "SET",

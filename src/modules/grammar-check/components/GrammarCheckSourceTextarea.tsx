@@ -16,6 +16,7 @@ const GrammarCheckSourceTextarea = () => {
       <div className="relative pb-2 border lg:rounded-md">
         <Button
           variant={"ghost"}
+          aria-label="Delete Text"
           className="absolute top-0 right-0"
           onClick={() => {
             dispatch({
