@@ -21,7 +21,7 @@ const GrammarCheckResultBox = () => {
     <div className="pb-2 mt-4 border-b lg:border-b-0">
       <GrammarCheckResultBoxDiffBtn />
       <div className="lg:border lg:pb-2 lg:rounded-md">
-        <div className="p-2 text-sm h-[25vh]">
+        <div className="p-2 text-sm h-[25vh] overflow-scroll">
           {activeDiff === GrammarCheckDiffs.Original && resultText}
           {activeDiff === GrammarCheckDiffs.Removed &&
             resultTextRemoved.map((diff: any, i: number) => (
