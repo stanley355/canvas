@@ -1,10 +1,13 @@
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { HEADER_MENU } from "./constant";
-import { IHeaderMenu } from ".";
-import { TbArrowAutofitDown, TbBrandGoogle, TbLanguage, TbPhotoAi, TbSpeakerphone, TbUserCircle } from "react-icons/tb";
+import { TbArrowAutofitDown, TbBrandGoogle, TbDiscount, TbHelp, TbHelpCircle, TbLanguage, TbPhotoAi, TbSpeakerphone, TbUserCircle } from "react-icons/tb";
+
 import CanvasLink from "../ui/CanvasLink";
 import CanvasButton from "../ui/CanvasButton";
+import { cn } from "@/common/lib/cn";
+import { PiStudent, PiStudentBold, PiStudentDuotone } from "react-icons/pi";
+import { FaRupiahSign } from "react-icons/fa6";
 
 interface IHeaderDesktop {
   isLogin: boolean;
@@ -13,8 +16,14 @@ interface IHeaderDesktop {
 
 const HeaderDesktop = (props: IHeaderDesktop) => {
   const { isLogin, pathname } = props;
-  
+  const [showOtherMenu, setShowOtherMenu] =useState(false);
+  const [showStudentMenu, setShowStudentMenu] = useState(false);
   const layoutLinkClassnames = "border border-transparent rounded-md hover:border-black" 
+
+  useEffect(() => {
+    setShowOtherMenu(false);
+    setShowStudentMenu(false);
+  }, [pathname])
 
   return (
     <div className="container items-center justify-between hidden py-2 mx-auto bg-white lg:flex">
@@ -48,13 +57,16 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
             <span>Ai Grammar Check</span>
           </CanvasLink>
 
-          <div className="relative border border-red-500">
-            <CanvasButton variant="iconButton" className={layoutLinkClassnames}>
+          <div className="relative">
+            <CanvasButton 
+            variant="iconButton" 
+            onClick={() => setShowOtherMenu(!showOtherMenu)}
+            className={showOtherMenu ? "border border-black rounded-md" : layoutLinkClassnames}>
               <TbArrowAutofitDown />
               <span>Other Ai Tools</span>
             </CanvasButton>
 
-            <div className="absolute left-0 z-50 bg-white border border-blue-500 top-10">
+            <div className={cn("absolute left-0 z-50 bg-white border border-black rounded-md top-10 hidden", showOtherMenu ? "block" : "")}>
               <CanvasLink
                 variant="iconButton"
                 href="/image-to-text"
@@ -73,6 +85,52 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
               </CanvasLink>
             </div>
           </div>
+
+          <div className="relative">
+            <CanvasButton 
+            variant="iconButton" 
+            onClick={() => setShowStudentMenu(!showStudentMenu)}
+            className={showStudentMenu ? "border border-black rounded-md" : layoutLinkClassnames}>
+              <PiStudentDuotone className="text-lg" />
+              <span>For Students</span>
+            </CanvasButton>
+
+            <div className={cn("absolute left-0 z-50 bg-white border border-black rounded-md top-10 hidden", showStudentMenu? "block" : "")}>
+              <CanvasLink
+                variant="iconButton"
+                href="/image-to-text"
+                classNames={layoutLinkClassnames}
+              >
+                <PiStudentDuotone className="text-lg"/>
+                <span>Student Promo</span>
+              </CanvasLink>
+              <CanvasLink
+                variant="iconButton"
+                href="/plans/students"
+                classNames={layoutLinkClassnames}
+              >
+                <FaRupiahSign className="text-lg"/>
+                <span>Student Pricing</span>
+              </CanvasLink>
+            </div>
+          </div>
+
+          <CanvasLink
+            variant="iconButton"
+            href="/plans/"
+            classNames={layoutLinkClassnames}
+          >
+            <FaRupiahSign />
+            <span>Pricing</span>
+          </CanvasLink>
+          <CanvasLink
+            variant="iconButton"
+            href="/support/"
+            classNames={layoutLinkClassnames}
+          >
+            <TbHelpCircle />
+            <span>Help and Support</span>
+          </CanvasLink>
         </div>
       </div>
 
