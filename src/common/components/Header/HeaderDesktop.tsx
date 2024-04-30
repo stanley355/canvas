@@ -4,6 +4,7 @@ import { HEADER_MENU } from "./constant";
 import { IHeaderMenu } from ".";
 import { TbArrowAutofitDown, TbBrandGoogle, TbLanguage, TbPhotoAi, TbSpeakerphone, TbUserCircle } from "react-icons/tb";
 import CanvasLink from "../ui/CanvasLink";
+import CanvasButton from "../ui/CanvasButton";
 
 interface IHeaderDesktop {
   isLogin: boolean;
@@ -12,6 +13,9 @@ interface IHeaderDesktop {
 
 const HeaderDesktop = (props: IHeaderDesktop) => {
   const { isLogin, pathname } = props;
+  
+  const layoutLinkClassnames = "border border-transparent rounded-md hover:border-black" 
+
   return (
     <div className="container items-center justify-between hidden py-2 mx-auto bg-white lg:flex">
       <div className="flex items-center">
@@ -27,32 +31,34 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
         </Link>
 
         <div className="flex items-center gap-4 px-4 ">
-          <Link
+          <CanvasLink
+            variant="iconButton"
             href="/translate/"
-            className="flex items-center justify-between gap-1 p-2 text-sm border border-transparent rounded-md hover:border-black"
+            classNames={layoutLinkClassnames}
           >
             <TbLanguage />
             <span>Ai Translate</span>
-          </Link>
-          <Link
+          </CanvasLink>
+          <CanvasLink
+            variant="iconButton"
             href="/grammar-check/"
-            className="flex items-center justify-between gap-1 p-2 text-sm border border-transparent rounded-md hover:border-black"
+            classNames={layoutLinkClassnames}
           >
             <TbBrandGoogle />
             <span>Ai Grammar Check</span>
-          </Link>
+          </CanvasLink>
 
           <div className="relative border border-red-500">
-            <button type="button" className="flex items-center justify-between gap-1 p-2 text-sm border border-transparent rounded-md hover:border-black">
+            <CanvasButton variant="iconButton" className={layoutLinkClassnames}>
               <TbArrowAutofitDown />
               <span>Other Ai Tools</span>
-            </button>
+            </CanvasButton>
 
             <div className="absolute left-0 z-50 bg-white border border-blue-500 top-10">
               <CanvasLink
                 variant="iconButton"
                 href="/image-to-text"
-                classNames="border border-transparent rounded-md hover:border-black"
+                classNames={layoutLinkClassnames}
               >
                 <TbPhotoAi />
                 <span>Image to Text</span>
@@ -60,7 +66,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
               <CanvasLink
                 variant="iconButton"
                 href="/text-to-speech"
-                classNames="border border-transparent rounded-md hover:border-black"
+                classNames={layoutLinkClassnames}
               >
                 <TbSpeakerphone />
                 <span>Text to Speech</span>
