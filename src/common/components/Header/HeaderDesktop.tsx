@@ -2,7 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { HEADER_MENU } from "./constant";
 import { IHeaderMenu } from ".";
-import { TbUserCircle } from "react-icons/tb";
+import { TbArrowAutofitDown, TbBrandGoogle, TbLanguage, TbPhotoAi, TbSpeakerphone, TbUserCircle } from "react-icons/tb";
+import CanvasLink from "../ui/CanvasLink";
 
 interface IHeaderDesktop {
   isLogin: boolean;
@@ -26,19 +27,46 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
         </Link>
 
         <div className="flex items-center gap-4 px-4 ">
-          {HEADER_MENU.filter(
-            (menu: IHeaderMenu) =>
-              menu.url !== "/login/" && menu.url !== "/account/"
-          ).map((menu: IHeaderMenu) => (
-            <Link
-              href={menu.url}
-              key={menu.title}
-              className="flex items-center justify-between gap-1 p-2 text-sm border border-transparent rounded-md hover:border-black"
-            >
-              {menu.icon}
-              <span>{menu.title}</span>
-            </Link>
-          ))}
+          <Link
+            href="/translate/"
+            className="flex items-center justify-between gap-1 p-2 text-sm border border-transparent rounded-md hover:border-black"
+          >
+            <TbLanguage />
+            <span>Ai Translate</span>
+          </Link>
+          <Link
+            href="/grammar-check/"
+            className="flex items-center justify-between gap-1 p-2 text-sm border border-transparent rounded-md hover:border-black"
+          >
+            <TbBrandGoogle />
+            <span>Ai Grammar Check</span>
+          </Link>
+
+          <div className="relative border border-red-500">
+            <button type="button" className="flex items-center justify-between gap-1 p-2 text-sm border border-transparent rounded-md hover:border-black">
+              <TbArrowAutofitDown />
+              <span>Other Ai Tools</span>
+            </button>
+
+            <div className="absolute left-0 z-50 bg-white border border-blue-500 top-10">
+              <CanvasLink
+                variant="iconButton"
+                href="/image-to-text"
+                classNames="border border-transparent rounded-md hover:border-black"
+              >
+                <TbPhotoAi />
+                <span>Image to Text</span>
+              </CanvasLink>
+              <CanvasLink
+                variant="iconButton"
+                href="/text-to-speech"
+                classNames="border border-transparent rounded-md hover:border-black"
+              >
+                <TbSpeakerphone />
+                <span>Text to Speech</span>
+              </CanvasLink>
+            </div>
+          </div>
         </div>
       </div>
 
