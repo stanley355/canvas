@@ -11,6 +11,7 @@ import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { fetchNewPrompts } from "@/common/lib/api/prompts/fetchNewPrompts";
 import { IFetchNewPromptsRes } from "@/common/lib/api/prompts/interfaces";
 import { IAxiosErrorRes } from "@/common/lib/api/axiosErrorHandler";
+import { createTranslateSystemContent } from "../lib/createTranslateSystemContent";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"), {
   ssr: false,
@@ -25,7 +26,7 @@ const ExceedLimitModal = dynamic(
 
 const TranslateSourceTextareaBtn = () => {
   const { translateStates, dispatch } = useTranslateV2();
-  const { sourceText, targetLanguage } = translateStates;
+  const { sourceText, targetLanguage, sourceLanguage } = translateStates;
 
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showLimitModal, setShowLimitModal] = useState(false);
@@ -63,7 +64,9 @@ const TranslateSourceTextareaBtn = () => {
     sendFirebaseEvent("translate");
 
     const user = decode(token) as JwtPayload;
-    const system = `You are a translator. Translate the text to ${targetLanguage.value}`;
+
+    
+    const system = createTranslateSystemContent(sourceLanguage.value, targetLanguage.value);
     const payload = {
       user_id: user.id,
       system_prompt: system,
