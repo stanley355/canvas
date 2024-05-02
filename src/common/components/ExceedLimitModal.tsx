@@ -28,7 +28,7 @@ const ExceedLimitModal = (props: IExceedLimitModal) => {
             <span className="text-xl">You run out of Monthly Limit</span>
           </div>
           <div className="mb-4 text-center text-gray-500">
-            Subscribe to enjoy unlimited usage
+            Upgrade Premium to enjoy unlimited usage
           </div>
 
           <CanvasButton
@@ -37,7 +37,7 @@ const ExceedLimitModal = (props: IExceedLimitModal) => {
             onClick={() => router.push("/plans/")}
           >
 
-            <span>See Plans</span>
+            <span>Check Premium</span>
             <TbArrowRight className="animate-bounce" />
           </CanvasButton>
           <CanvasButton
