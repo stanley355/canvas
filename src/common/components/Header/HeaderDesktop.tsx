@@ -16,9 +16,9 @@ interface IHeaderDesktop {
 
 const HeaderDesktop = (props: IHeaderDesktop) => {
   const { isLogin, pathname } = props;
-  const [showOtherMenu, setShowOtherMenu] =useState(false);
+  const [showOtherMenu, setShowOtherMenu] = useState(false);
   const [showStudentMenu, setShowStudentMenu] = useState(false);
-  const layoutLinkClassnames = "border border-transparent rounded-md hover:border-black" 
+  const layoutLinkClassnames = "border border-transparent rounded-md hover:border-black"
 
   useEffect(() => {
     setShowOtherMenu(false);
@@ -41,7 +41,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
 
         <div className="flex items-center gap-4 px-4 ">
           <CanvasLink
-            variant="iconButton"
+            variant="ghost"
             href="/translate/"
             classNames={layoutLinkClassnames}
           >
@@ -49,7 +49,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
             <span>Ai Translate</span>
           </CanvasLink>
           <CanvasLink
-            variant="iconButton"
+            variant="ghost"
             href="/grammar-check/"
             classNames={layoutLinkClassnames}
           >
@@ -58,17 +58,17 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           </CanvasLink>
 
           <div className="relative">
-            <CanvasButton 
-            variant="iconButton" 
-            onClick={() => setShowOtherMenu(!showOtherMenu)}
-            className={showOtherMenu ? "border border-black rounded-md" : layoutLinkClassnames}>
+            <CanvasButton
+              variant="ghost"
+              onClick={() => setShowOtherMenu(!showOtherMenu)}
+              className={showOtherMenu ? "border border-black rounded-md" : layoutLinkClassnames}>
               <TbArrowAutofitDown />
               <span>Other Ai Tools</span>
             </CanvasButton>
 
             <div className={cn("absolute left-0 z-50 bg-white border border-black rounded-md top-10 hidden", showOtherMenu ? "block" : "")}>
               <CanvasLink
-                variant="iconButton"
+                variant="ghost"
                 href="/image-to-text"
                 classNames={layoutLinkClassnames}
               >
@@ -76,7 +76,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
                 <span>Image to Text</span>
               </CanvasLink>
               <CanvasLink
-                variant="iconButton"
+                variant="ghost"
                 href="/text-to-speech"
                 classNames={layoutLinkClassnames}
               >
@@ -87,36 +87,36 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           </div>
 
           <div className="relative">
-            <CanvasButton 
-            variant="iconButton" 
-            onClick={() => setShowStudentMenu(!showStudentMenu)}
-            className={showStudentMenu ? "border border-black rounded-md" : layoutLinkClassnames}>
+            <CanvasButton
+              variant="ghost"
+              onClick={() => setShowStudentMenu(!showStudentMenu)}
+              className={showStudentMenu ? "border border-black rounded-md" : layoutLinkClassnames}>
               <PiStudentDuotone className="text-lg" />
               <span>For Students</span>
             </CanvasButton>
 
-            <div className={cn("absolute left-0 z-50 bg-white border border-black rounded-md top-10 hidden", showStudentMenu? "block" : "")}>
+            <div className={cn("absolute left-0 z-50 bg-white border border-black rounded-md top-10 hidden", showStudentMenu ? "block" : "")}>
               <CanvasLink
-                variant="iconButton"
+                variant="ghost"
                 href="/image-to-text"
                 classNames={layoutLinkClassnames}
               >
-                <PiStudentDuotone className="text-lg"/>
+                <PiStudentDuotone className="text-lg" />
                 <span>Student Promo</span>
               </CanvasLink>
               <CanvasLink
-                variant="iconButton"
+                variant="ghost"
                 href="/plans/students"
                 classNames={layoutLinkClassnames}
               >
-                <FaRupiahSign className="text-lg"/>
+                <FaRupiahSign className="text-lg" />
                 <span>Student Pricing</span>
               </CanvasLink>
             </div>
           </div>
 
           <CanvasLink
-            variant="iconButton"
+            variant="ghost"
             href="/plans/"
             classNames={layoutLinkClassnames}
           >
@@ -124,7 +124,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
             <span>Pricing</span>
           </CanvasLink>
           <CanvasLink
-            variant="iconButton"
+            variant="ghost"
             href="/support/"
             classNames={layoutLinkClassnames}
           >
@@ -135,28 +135,21 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
       </div>
 
       {isLogin ? (
-        <Link
-          href="/account/"
-          className="flex items-center gap-1 p-2 text-sm text-white bg-black border rounded-md h-fit hover:text-black hover:bg-white hover:border-black"
-        >
+        <CanvasLink href="/account" variant="default">
           <TbUserCircle />
           <span>Account</span>
-        </Link>
+        </CanvasLink>
+
       ) : (
-        <div className="flex items-center gap-4">
-          <Link
-            href="/login/"
-            className="p-2 border border-transparent rounded-md hover:border-black"
-          >
+        <div className="flex items-center gap-4" >
+          <CanvasLink href="/login/" variant="ghost" classNames={layoutLinkClassnames} >
             Login
-          </Link>
-          <Link
-            href="/login/"
-            className="flex items-center gap-1 p-2 text-sm text-white bg-black border rounded-md h-fit hover:text-black hover:bg-white hover:border-black"
-          >
+          </CanvasLink>
+          <CanvasLink href="/login/" variant="default" classNames="gap-2">
             <span className="font-bold">Get LanguageAI</span>
             <span>It&apos;s Free</span>
-          </Link>
+          </CanvasLink>
+
         </div>
       )}
     </div>
