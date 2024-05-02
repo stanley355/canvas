@@ -1,16 +1,18 @@
-import { useEffect, useState } from "react";
-import { TbLanguage, TbProgress } from "react-icons/tb";
+import { useState } from "react";
+import { TbLanguage } from "react-icons/tb";
 import { toast } from "react-toastify";
 import dynamic from "next/dynamic";
 import Cookies from "js-cookie";
 import { JwtPayload, decode } from "jsonwebtoken";
 
+import CanvasButton from "@/common/components/ui/CanvasButton";
 import { useTranslateV2 } from "../lib/useTranslateV2";
-import { Button } from "@/common/components/ui/button";
+import { createTranslateSystemContent } from "../lib/createTranslateSystemContent";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import { fetchNewPrompts } from "@/common/lib/api/prompts/fetchNewPrompts";
-import { IFetchNewPromptsRes } from "@/common/lib/api/prompts/interfaces";
-import { IAxiosErrorRes } from "@/common/lib/api/axiosErrorHandler";
+import {
+  PromptsV2Type,
+  fetchPromptsV2,
+} from "@/common/lib/apiV2/prompts/fetchPromptsV2";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"), {
   ssr: false,
@@ -25,21 +27,12 @@ const ExceedLimitModal = dynamic(
 
 const TranslateSourceTextareaBtn = () => {
   const { translateStates, dispatch } = useTranslateV2();
-  const { sourceText, targetLanguage } = translateStates;
+  const { sourceText, targetLanguage, sourceLanguage } = translateStates;
 
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showLimitModal, setShowLimitModal] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
-  const [loadingText, setLoadingText] = useState("");
-
-  useEffect(() => {
-    if (isLoading) {
-      setTimeout(() => setLoadingText("In progress"), 2000);
-      setTimeout(() => setLoadingText("Hang on there"), 4000);
-      setTimeout(() => setLoadingText("Cleaning up"), 6000);
-    }
-  }, [isLoading]);
 
   const handleClick = async () => {
     const token = Cookies.get("token");
@@ -63,57 +56,50 @@ const TranslateSourceTextareaBtn = () => {
     sendFirebaseEvent("translate");
 
     const user = decode(token) as JwtPayload;
-    const system = `You are a translator. Translate the text to ${targetLanguage.value}`;
+    const system_content = createTranslateSystemContent(
+      sourceLanguage.value,
+      targetLanguage.value
+    );
     const payload = {
       user_id: user.id,
-      system_prompt: system,
-      user_prompt: sourceText,
-      prompt_type: "Translate",
+      prompt_type: PromptsV2Type.Translate,
+      system_content,
+      user_content: `"""${sourceText}"""`,
     };
-    const translateRes: IFetchNewPromptsRes & IAxiosErrorRes =
-      await fetchNewPrompts(payload);
+    const promptResponse = await fetchPromptsV2(payload);
 
-    if (translateRes.completion_text) {
-      setIsLoading(false);
-      setLoadingText("");
+    setIsLoading(false);
+
+    if (promptResponse.completion_text) {
       dispatch({
         type: "SET",
         name: "translatedText",
-        value: translateRes.completion_text,
+        value: promptResponse.completion_text,
       });
       return;
     }
 
-    if (translateRes.status && translateRes.status === 400) {
-      if (translateRes?.data?.status === 600) {
-        setIsLoading(false);
-        setLoadingText("");
-        setShowLimitModal(true);
-        return;
-      }
+    // Payment Required
+    if (promptResponse?.status === 402) {
+      setShowLimitModal(true);
+      return;
     }
 
-    setIsLoading(false);
-    setLoadingText("");
     toast.error("Server Busy, please try again");
     return;
   };
 
   return (
     <>
-      <Button className="w-fit" onClick={handleClick} disabled={isLoading}>
-        {isLoading ? (
-          <div className="flex items-center gap-2">
-            <TbProgress className="text-lg animate-spin" />
-            <span>{loadingText ? loadingText : "Loading"}</span>
-          </div>
-        ) : (
-          <div className="flex items-center gap-2">
-            <TbLanguage className="text-lg" />
-            <span>Translate</span>
-          </div>
-        )}
-      </Button>
+      <CanvasButton
+        isLoading={isLoading}
+        className="w-fit"
+        onClick={handleClick}
+      >
+        <TbLanguage className="text-lg" />
+        <span>Translate</span>
+      </CanvasButton>
+
       {showLoginModal && <LoginModal />}
       {showLimitModal && (
         <ExceedLimitModal onCloseClick={() => setShowLimitModal(false)} />

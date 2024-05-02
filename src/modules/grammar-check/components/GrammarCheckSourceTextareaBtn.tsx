@@ -1,17 +1,18 @@
 import dynamic from "next/dynamic";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
-import { TbBrandGoogle, TbProgress } from "react-icons/tb";
+import { TbBrandGoogle } from "react-icons/tb";
 import Cookies from "js-cookie";
 import { JwtPayload, decode } from "jsonwebtoken";
 
-import { Button } from "@/common/components/ui/button";
 import { useGrammarCheck } from "../lib/useGrammarCheck";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { createRemovedAndAddedDiff } from "@/common/lib/createRemovedAndAddedDiff";
-import { fetchNewPrompts } from "@/common/lib/api/prompts/fetchNewPrompts";
-import { IFetchNewPromptsRes } from "@/common/lib/api/prompts/interfaces";
-import { IAxiosErrorRes } from "@/common/lib/api/axiosErrorHandler";
+import {
+  PromptsV2Type,
+  fetchPromptsV2,
+} from "@/common/lib/apiV2/prompts/fetchPromptsV2";
+import CanvasButton from "@/common/components/ui/CanvasButton";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"), {
   ssr: false,
@@ -32,15 +33,6 @@ const GrammarCheckSourceTextareaBtn = () => {
   const [showLimitModal, setShowLimitModal] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
-  const [loadingText, setLoadingText] = useState("");
-
-  useEffect(() => {
-    if (isLoading) {
-      setTimeout(() => setLoadingText("In progress"), 2000);
-      setTimeout(() => setLoadingText("Hang on there"), 4000);
-      setTimeout(() => setLoadingText("Cleaning up"), 6000);
-    }
-  }, [isLoading]);
 
   const handleClick = async () => {
     const token = Cookies.get("token");
@@ -66,22 +58,23 @@ const GrammarCheckSourceTextareaBtn = () => {
     const user = decode(token) as JwtPayload;
     const payload = {
       user_id: user.id,
-      system_prompt: instruction,
-      user_prompt: sourceText,
-      prompt_type: "GrammarCheck",
+      system_content: instruction,
+      user_content: sourceText,
+      prompt_type: PromptsV2Type.GrammarCheck,
     };
-    const grammarCheckRes: IFetchNewPromptsRes & IAxiosErrorRes =
-      await fetchNewPrompts(payload);
+    const promptResponse = await fetchPromptsV2(payload);
 
-    if (grammarCheckRes.completion_text) {
-      setIsLoading(false);
-      setLoadingText("");
-      const finalText = grammarCheckRes.completion_text;
-      const removedAddedDiff = createRemovedAndAddedDiff(sourceText, finalText);
+    setIsLoading(false);
+
+    if (promptResponse.completion_text) {
+      const removedAddedDiff = createRemovedAndAddedDiff(
+        sourceText,
+        promptResponse.completion_text
+      );
 
       dispatch({
         name: "resultText",
-        value: finalText,
+        value: promptResponse.completion_text,
       });
       dispatch({
         name: "resultTextAdded",
@@ -94,36 +87,22 @@ const GrammarCheckSourceTextareaBtn = () => {
       return;
     }
 
-    if (grammarCheckRes.status && grammarCheckRes.status === 400) {
-      if (grammarCheckRes?.data?.status === 600) {
-        setIsLoading(false);
-        setLoadingText("");
-        setShowLimitModal(true);
-        return;
-      }
+    // Payment Required
+    if (promptResponse?.status === 402) {
+      setShowLimitModal(true);
+      return;
     }
 
-    setIsLoading(false);
-    setLoadingText("");
     toast.error("Server Busy, please try again");
     return;
   };
 
   return (
     <>
-      <Button className="w-fit" onClick={handleClick} disabled={isLoading}>
-        {isLoading ? (
-          <div className="flex items-center gap-2">
-            <TbProgress className="text-lg animate-spin" />
-            <span>{loadingText ? loadingText : "Loading"}</span>
-          </div>
-        ) : (
-          <div className="flex items-center gap-2">
-            <TbBrandGoogle className="text-lg" />
-            <span>Check</span>
-          </div>
-        )}
-      </Button>
+      <CanvasButton isLoading={isLoading} onClick={handleClick}>
+        <TbBrandGoogle className="text-lg" />
+        <span>Check</span>
+      </CanvasButton>
       {showLoginModal && <LoginModal />}
       {showLimitModal && (
         <ExceedLimitModal onCloseClick={() => setShowLimitModal(false)} />
