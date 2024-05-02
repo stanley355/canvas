@@ -5,6 +5,7 @@ export interface IFetchNewPrompts {
   user_id: string;
   system_prompt: string;
   user_prompt: string;
+  prompt_type: string;
 }
 
 export const fetchNewPrompts = async (payload: IFetchNewPrompts) => {
