@@ -1,4 +1,3 @@
-import { axiosErrorHandler } from "@/common/lib/api/axiosErrorHandler";
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -24,7 +23,6 @@ const authorV2PromptsAPI = async (
     const { data } = await axios(axiosConfig);
     res.json(data);
   } catch (err: any) {
-    console.error(err)
     res.status(err.response.status).json(err.response.data);
   }
 };

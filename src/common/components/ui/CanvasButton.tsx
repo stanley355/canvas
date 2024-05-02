@@ -13,8 +13,11 @@ const CanvasButton = (props: CanvasLinkProps) => {
   const [loadingText, setLoadingText] = useState("Loading");
 
   useEffect(() => {
-    setTimeout(() => setLoadingText("Processing"), 2500)
-    setTimeout(() => setLoadingText("Cleaning"), 5000)
+    if (!isLoading) {
+      setLoadingText("Loading")
+    }
+    setTimeout(() => setLoadingText("Processing"), 2000);
+    setTimeout(() => setLoadingText("Cleaning"), 4000);
   }, [isLoading])
 
   return <button

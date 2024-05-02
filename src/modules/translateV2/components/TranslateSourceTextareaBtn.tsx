@@ -53,7 +53,6 @@ const TranslateSourceTextareaBtn = () => {
     sendFirebaseEvent("translate");
 
     const user = decode(token) as JwtPayload;
-
     const system_content = createTranslateSystemContent(sourceLanguage.value, targetLanguage.value);
     const payload = {
       user_id: user.id,
@@ -61,9 +60,8 @@ const TranslateSourceTextareaBtn = () => {
       system_content,
       user_content: `"""${sourceText}"""`,
     };
-
-
     const promptResponse = await fetchPromptsV2(payload);
+
     setIsLoading(false);
 
     if (promptResponse.completion_text) {
