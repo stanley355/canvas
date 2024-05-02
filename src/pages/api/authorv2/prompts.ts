@@ -24,7 +24,8 @@ const authorV2PromptsAPI = async (
     const { data } = await axios(axiosConfig);
     res.json(data);
   } catch (err: any) {
-    res.status(err.response.status).send(err);
+    console.error(err)
+    res.status(err.response.status).json(err.response.data);
   }
 };
 
