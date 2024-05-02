@@ -1,4 +1,4 @@
 export interface IAuthorErrorResponse {
-  status: number,
+  status: number;
   status_text: string;
 }

@@ -34,7 +34,6 @@ const Plans = (props: IPlansProps) => {
         </button>
       </div>
 
-
       <PlanHomeStatistic />
       <PlanHomePlanList />
     </div>

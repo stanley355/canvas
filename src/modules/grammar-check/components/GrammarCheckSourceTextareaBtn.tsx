@@ -8,7 +8,10 @@ import { JwtPayload, decode } from "jsonwebtoken";
 import { useGrammarCheck } from "../lib/useGrammarCheck";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { createRemovedAndAddedDiff } from "@/common/lib/createRemovedAndAddedDiff";
-import { PromptsV2Type, fetchPromptsV2 } from "@/common/lib/apiV2/prompts/fetchPromptsV2";
+import {
+  PromptsV2Type,
+  fetchPromptsV2,
+} from "@/common/lib/apiV2/prompts/fetchPromptsV2";
 import CanvasButton from "@/common/components/ui/CanvasButton";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"), {
@@ -64,7 +67,10 @@ const GrammarCheckSourceTextareaBtn = () => {
     setIsLoading(false);
 
     if (promptResponse.completion_text) {
-      const removedAddedDiff = createRemovedAndAddedDiff(sourceText, promptResponse.completion_text);
+      const removedAddedDiff = createRemovedAndAddedDiff(
+        sourceText,
+        promptResponse.completion_text
+      );
 
       dispatch({
         name: "resultText",

@@ -9,7 +9,10 @@ import CanvasButton from "@/common/components/ui/CanvasButton";
 import { useTranslateV2 } from "../lib/useTranslateV2";
 import { createTranslateSystemContent } from "../lib/createTranslateSystemContent";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import { PromptsV2Type, fetchPromptsV2 } from "@/common/lib/apiV2/prompts/fetchPromptsV2";
+import {
+  PromptsV2Type,
+  fetchPromptsV2,
+} from "@/common/lib/apiV2/prompts/fetchPromptsV2";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"), {
   ssr: false,
@@ -53,7 +56,10 @@ const TranslateSourceTextareaBtn = () => {
     sendFirebaseEvent("translate");
 
     const user = decode(token) as JwtPayload;
-    const system_content = createTranslateSystemContent(sourceLanguage.value, targetLanguage.value);
+    const system_content = createTranslateSystemContent(
+      sourceLanguage.value,
+      targetLanguage.value
+    );
     const payload = {
       user_id: user.id,
       prompt_type: PromptsV2Type.Translate,
@@ -85,7 +91,11 @@ const TranslateSourceTextareaBtn = () => {
 
   return (
     <>
-      <CanvasButton isLoading={isLoading} className="w-fit" onClick={handleClick}>
+      <CanvasButton
+        isLoading={isLoading}
+        className="w-fit"
+        onClick={handleClick}
+      >
         <TbLanguage className="text-lg" />
         <span>Translate</span>
       </CanvasButton>

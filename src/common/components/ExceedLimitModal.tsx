@@ -1,5 +1,10 @@
 import Image from "next/image";
-import { TbAnalyze, TbArrowRight, TbCheck, TbExclamationCircle } from "react-icons/tb";
+import {
+  TbAnalyze,
+  TbArrowRight,
+  TbCheck,
+  TbExclamationCircle,
+} from "react-icons/tb";
 import { useRouter } from "next/router";
 import { Button } from "./ui/button";
 import CanvasButton from "./ui/CanvasButton";
@@ -36,7 +41,6 @@ const ExceedLimitModal = (props: IExceedLimitModal) => {
             className="w-full mb-4 text-md"
             onClick={() => router.push("/plans/")}
           >
-
             <span>Check Premium</span>
             <TbArrowRight className="animate-bounce" />
           </CanvasButton>

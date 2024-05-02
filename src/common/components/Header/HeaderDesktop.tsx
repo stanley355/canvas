@@ -1,7 +1,17 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { TbArrowAutofitDown, TbBrandGoogle, TbDiscount, TbHelp, TbHelpCircle, TbLanguage, TbPhotoAi, TbSpeakerphone, TbUserCircle } from "react-icons/tb";
+import {
+  TbArrowAutofitDown,
+  TbBrandGoogle,
+  TbDiscount,
+  TbHelp,
+  TbHelpCircle,
+  TbLanguage,
+  TbPhotoAi,
+  TbSpeakerphone,
+  TbUserCircle,
+} from "react-icons/tb";
 
 import CanvasLink from "../ui/CanvasLink";
 import CanvasButton from "../ui/CanvasButton";
@@ -18,12 +28,13 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
   const { isLogin, pathname } = props;
   const [showOtherMenu, setShowOtherMenu] = useState(false);
   const [showStudentMenu, setShowStudentMenu] = useState(false);
-  const layoutLinkClassnames = "border border-transparent rounded-md hover:border-black"
+  const layoutLinkClassnames =
+    "border border-transparent rounded-md hover:border-black";
 
   useEffect(() => {
     setShowOtherMenu(false);
     setShowStudentMenu(false);
-  }, [pathname])
+  }, [pathname]);
 
   return (
     <div className="container items-center justify-between hidden py-2 mx-auto bg-white lg:flex">
@@ -61,12 +72,22 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
             <CanvasButton
               variant="ghost"
               onClick={() => setShowOtherMenu(!showOtherMenu)}
-              className={showOtherMenu ? "border border-black rounded-md" : layoutLinkClassnames}>
+              className={
+                showOtherMenu
+                  ? "border border-black rounded-md"
+                  : layoutLinkClassnames
+              }
+            >
               <TbArrowAutofitDown />
               <span>Other Ai Tools</span>
             </CanvasButton>
 
-            <div className={cn("absolute left-0 z-50 bg-white border border-black rounded-md top-10 hidden", showOtherMenu ? "block" : "")}>
+            <div
+              className={cn(
+                "absolute left-0 z-50 bg-white border border-black rounded-md top-10 hidden",
+                showOtherMenu ? "block" : ""
+              )}
+            >
               <CanvasLink
                 variant="ghost"
                 href="/image-to-text"
@@ -90,12 +111,22 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
             <CanvasButton
               variant="ghost"
               onClick={() => setShowStudentMenu(!showStudentMenu)}
-              className={showStudentMenu ? "border border-black rounded-md" : layoutLinkClassnames}>
+              className={
+                showStudentMenu
+                  ? "border border-black rounded-md"
+                  : layoutLinkClassnames
+              }
+            >
               <PiStudentDuotone className="text-lg" />
               <span>For Students</span>
             </CanvasButton>
 
-            <div className={cn("absolute left-0 z-50 bg-white border border-black rounded-md top-10 hidden", showStudentMenu ? "block" : "")}>
+            <div
+              className={cn(
+                "absolute left-0 z-50 bg-white border border-black rounded-md top-10 hidden",
+                showStudentMenu ? "block" : ""
+              )}
+            >
               <CanvasLink
                 variant="ghost"
                 href="/image-to-text"
@@ -139,17 +170,19 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           <TbUserCircle />
           <span>Account</span>
         </CanvasLink>
-
       ) : (
-        <div className="flex items-center gap-4" >
-          <CanvasLink href="/login/" variant="ghost" classNames={layoutLinkClassnames} >
+        <div className="flex items-center gap-4">
+          <CanvasLink
+            href="/login/"
+            variant="ghost"
+            classNames={layoutLinkClassnames}
+          >
             Login
           </CanvasLink>
           <CanvasLink href="/login/" variant="default" classNames="gap-2">
             <span className="font-bold">Get LanguageAI</span>
             <span>It&apos;s Free</span>
           </CanvasLink>
-
         </div>
       )}
     </div>
