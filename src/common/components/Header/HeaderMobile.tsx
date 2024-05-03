@@ -31,7 +31,7 @@ const HeaderMobile = (props: IHeaderMobile) => {
         aria-labelledby="Open Menu By"
         onClick={() => setShowMenu(true)}
       >
-        <RxHamburgerMenu />
+        Menu
       </button>
       {showMenu && (
         <HeaderMobileMenu

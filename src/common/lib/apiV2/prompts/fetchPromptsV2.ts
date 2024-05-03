@@ -27,6 +27,8 @@ export const fetchPromptsV2 = async (
     data,
   };
 
+  console.log(data);
+  
   try {
     const { data } = await axios(axiosConfig);
     return data;

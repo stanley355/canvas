@@ -64,7 +64,7 @@ const TranslateSourceTextareaBtn = () => {
       user_id: user.id,
       prompt_type: PromptsV2Type.Translate,
       system_content,
-      user_content: `"""${sourceText}"""`,
+      user_content: sourceText,
     };
     const promptResponse = await fetchPromptsV2(payload);
 

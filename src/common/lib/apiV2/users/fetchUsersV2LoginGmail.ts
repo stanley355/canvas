@@ -1,9 +1,14 @@
 import axios from "axios";
-import { axiosErrorHandler } from "../axiosErrorHandler";
 import { JwtPayload } from "jsonwebtoken";
 
-export const fetchUserGmailLogin = async (req: JwtPayload) => {
-  const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/author/users/`;
+interface IFetchUsersV2LoginGmailResponse {
+  token: string;
+}
+
+export const fetchUsersV2LoginGmail = async (
+  req: JwtPayload
+): Promise<IFetchUsersV2LoginGmailResponse> => {
+  const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/authorv2/users/`;
   const axiosConfig = {
     method: "POST",
     url: URL,
@@ -19,8 +24,7 @@ export const fetchUserGmailLogin = async (req: JwtPayload) => {
   try {
     const { data } = await axios(axiosConfig);
     return data;
-  } catch (error) {
-    const err = axiosErrorHandler(URL, error);
-    return err;
+  } catch (error: any) {
+    return error.response.data;
   }
 };

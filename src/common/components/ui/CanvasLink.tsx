@@ -7,7 +7,7 @@ import {
 
 interface CanvasLinkProps extends LinkProps {
   variant?: keyof ICanvasButtonVariants;
-  classNames?: string;
+  className?: string;
   children: React.ReactNode;
 }
 
@@ -16,11 +16,11 @@ const CanvasLink = (props: CanvasLinkProps) => {
 
   return (
     <Link
+      {...props}
       className={cn(
         CANVAS_BUTTON_VARIANTS[variant ? variant : "default"],
-        props.classNames
+        props.className,
       )}
-      {...props}
     >
       {props.children}
     </Link>
