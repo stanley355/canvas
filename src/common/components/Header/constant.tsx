@@ -41,14 +41,14 @@ export const HEADER_MENU = [
     icon: <PiStudentDuotone />,
   },
   {
-    title: "Help",
-    url: "/support/",
-    icon: <TbHelp />,
-  },
-  {
     title: "For Students",
     url: "/students/",
     icon: <PiStudentDuotone />,
+  },
+  {
+    title: "Help",
+    url: "/support/",
+    icon: <TbHelp />,
   },
   {
     title: "Account",

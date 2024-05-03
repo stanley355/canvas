@@ -54,7 +54,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           <CanvasLink
             variant="ghost"
             href="/translate/"
-            classNames={layoutLinkClassnames}
+            className={layoutLinkClassnames}
           >
             <TbLanguage />
             <span>Ai Translate</span>
@@ -62,7 +62,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           <CanvasLink
             variant="ghost"
             href="/grammar-check/"
-            classNames={layoutLinkClassnames}
+            className={layoutLinkClassnames}
           >
             <TbBrandGoogle />
             <span>Ai Grammar Check</span>
@@ -91,7 +91,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
               <CanvasLink
                 variant="ghost"
                 href="/image-to-text"
-                classNames={layoutLinkClassnames}
+                className={layoutLinkClassnames}
               >
                 <TbPhotoAi />
                 <span>Image to Text</span>
@@ -99,7 +99,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
               <CanvasLink
                 variant="ghost"
                 href="/text-to-speech"
-                classNames={layoutLinkClassnames}
+                className={layoutLinkClassnames}
               >
                 <TbSpeakerphone />
                 <span>Text to Speech</span>
@@ -130,7 +130,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
               <CanvasLink
                 variant="ghost"
                 href="/image-to-text"
-                classNames={layoutLinkClassnames}
+                className={layoutLinkClassnames}
               >
                 <PiStudentDuotone className="text-lg" />
                 <span>Student Promo</span>
@@ -138,7 +138,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
               <CanvasLink
                 variant="ghost"
                 href="/plans/students"
-                classNames={layoutLinkClassnames}
+                className={layoutLinkClassnames}
               >
                 <FaRupiahSign className="text-lg" />
                 <span>Student Pricing</span>
@@ -149,7 +149,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           <CanvasLink
             variant="ghost"
             href="/plans/"
-            classNames={layoutLinkClassnames}
+            className={layoutLinkClassnames}
           >
             <FaRupiahSign />
             <span>Pricing</span>
@@ -157,7 +157,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           <CanvasLink
             variant="ghost"
             href="/support/"
-            classNames={layoutLinkClassnames}
+            className={layoutLinkClassnames}
           >
             <TbHelpCircle />
             <span>Help and Support</span>
@@ -175,11 +175,11 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           <CanvasLink
             href="/login/"
             variant="ghost"
-            classNames={layoutLinkClassnames}
+            className={layoutLinkClassnames}
           >
             Login
           </CanvasLink>
-          <CanvasLink href="/login/" variant="default" classNames="gap-2">
+          <CanvasLink href="/login/" variant="default" className="gap-2">
             <span className="font-bold">Get LanguageAI</span>
             <span>It&apos;s Free</span>
           </CanvasLink>
