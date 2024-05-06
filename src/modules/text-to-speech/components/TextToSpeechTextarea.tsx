@@ -41,7 +41,7 @@ const TextToSpeechTextarea = (props: ITextToSpeechTextarea) => {
     return () => {
       if (previousFilename) deleteFileOnQuit();
     };
-  }, [previousFilename]);
+  }, [previousFilename, deleteFileOnQuit]);
 
   const handleClick = async () => {
     const token = Cookies.get("token");
