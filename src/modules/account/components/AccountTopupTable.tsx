@@ -8,10 +8,6 @@ interface IAccountTopupTable {
 const AccountTopupTable = (props: IAccountTopupTable) => {
   const { topups } = props;
 
-  // created_at: string
-  // topup_amount: number
-  // paid: boolean
-  // topup_type: string
   return (
     <div>
       <div className="mb-2 text-2xl font-semibold">Payment History</div>
@@ -39,6 +35,7 @@ const AccountTopupTable = (props: IAccountTopupTable) => {
                 Rp {topup.topup_amount}
               </td>
               <td className="p-1 border">
+                {/* Only show paid topup from the backend */}
                 <TbCheck className="mx-auto" />
               </td>
             </tr>

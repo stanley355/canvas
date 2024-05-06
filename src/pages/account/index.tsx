@@ -8,6 +8,7 @@ import { IUser } from "@/common/lib/api/users/interfaces";
 import { ISubscription } from "@/common/lib/api/subscriptions/interfaces";
 import { ITopup } from "@/common/lib/api/topups/interfaces";
 import { IStudent } from "@/common/lib/api/students/interfaces";
+import AccountPageError from "@/modules/account/components/AccountPageError";
 
 interface IAccountProps {
   account: {
@@ -20,6 +21,10 @@ interface IAccountProps {
 
 const Account = (props: IAccountProps) => {
   const { account } = props;
+
+  if (!account.user) {
+    return <AccountPageError />;
+  }
 
   return (
     <div className="container px-6 mx-auto mt-16 lg:mt-4 lg:px-12">

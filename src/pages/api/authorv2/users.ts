@@ -1,10 +1,7 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const authorV2UsersAPI = async (
-  req: NextApiRequest,
-  res: NextApiResponse
-) => {
+const authorV2UsersAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   let URL = `${process.env.AUTHOR_URL}v2/users`;
 
   if (req.headers && req.headers.path) {
