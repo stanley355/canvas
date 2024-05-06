@@ -1,15 +1,15 @@
 import { GetServerSideProps } from "next";
+import { TbReload } from "react-icons/tb";
 import { getAccountPageServerProps } from "@/modules/account/lib/getAccountPageServerProps";
 
 import AccountDetail from "@/modules/account/components/AccountDetail";
 import AccountPlanDetail from "@/modules/account/components/AccountPlanDetail";
+import CanvasButton from "@/common/components/ui/CanvasButton";
 
 import { IUser } from "@/common/lib/api/users/interfaces";
 import { ISubscription } from "@/common/lib/api/subscriptions/interfaces";
 import { ITopup } from "@/common/lib/api/topups/interfaces";
 import { IStudent } from "@/common/lib/api/students/interfaces";
-import CanvasButton from "@/common/components/ui/CanvasButton";
-import { TbReload } from "react-icons/tb";
 
 interface IAccountProps {
   account: {
