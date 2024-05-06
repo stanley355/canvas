@@ -36,7 +36,7 @@ const AccountTopupTable = (props: IAccountTopupTable) => {
               </td>
               <td className="p-1 border">
                 {/* Only show paid topup from the backend */}
-                <TbCheck className="mx-auto" /> 
+                <TbCheck className="mx-auto" />
               </td>
             </tr>
           ))}

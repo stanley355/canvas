@@ -23,9 +23,9 @@ const Account = (props: IAccountProps) => {
   const { account } = props;
 
   if (!account.user) {
-    return <AccountPageError />
+    return <AccountPageError />;
   }
-  
+
   return (
     <div className="container px-6 mx-auto mt-16 lg:mt-4 lg:px-12">
       <div className="lg:grid lg:grid-cols-2">

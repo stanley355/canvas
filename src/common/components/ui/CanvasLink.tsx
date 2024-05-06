@@ -19,7 +19,7 @@ const CanvasLink = (props: CanvasLinkProps) => {
       {...props}
       className={cn(
         CANVAS_BUTTON_VARIANTS[variant ? variant : "default"],
-        props.className,
+        props.className
       )}
     >
       {props.children}

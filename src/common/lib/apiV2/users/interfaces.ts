@@ -1,4 +1,3 @@
-
 export interface IUserV2 {
   id: string;
   fullname: string;

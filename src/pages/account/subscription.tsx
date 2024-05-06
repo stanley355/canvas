@@ -22,9 +22,9 @@ const AccountSubscription = (props: IAccountSubscription) => {
   const { account } = props;
 
   if (!account.user) {
-    return <AccountPageError />
+    return <AccountPageError />;
   }
-  
+
   return (
     <div className="container mx-auto mt-16 lg:mt-4 lg:px-12">
       <AccountPlanDetail account={account} />
