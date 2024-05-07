@@ -1,15 +1,15 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { TbProgress, TbSpeakerphone, TbX } from "react-icons/tb";
 import Cookies from "js-cookie";
 
 import { Button } from "@/common/components/ui/button";
 import { Textarea } from "@/common/components/ui/textarea";
 import dynamic from "next/dynamic";
-import { fetchTextToSpeechPrompt } from "@/common/lib/api/prompts/fetchTextToSpeechPrompt";
 import { JwtPayload, decode } from "jsonwebtoken";
 import { toast } from "react-toastify";
-import { fetchTextToSpeechPromptFileDelete } from "@/common/lib/api/prompts/fetchTextToSpeechPromptFileDelete";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { PromptsV2Type, fetchPromptsV2 } from "@/common/lib/apiV2/prompts/fetchPromptsV2";
+import { fetchDeleteTtsFileV2 } from "@/common/lib/apiV2/prompts/fetchDeleteTtsFileV2";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"), {
   ssr: false,
@@ -26,22 +26,12 @@ interface ITextToSpeechTextarea {
 const TextToSpeechTextarea = (props: ITextToSpeechTextarea) => {
   const { onConvertSuccess } = props;
 
-  const [previousFilename, setPreviousFilename] = useState("");
+  const [previousFileID, setPreviousFileID] = useState("");
   const [sourceText, setSourceText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showLimitModal, setShowLimitModal] = useState(false);
-
-  const deleteFileOnQuit = async () => {
-    await fetchTextToSpeechPromptFileDelete(previousFilename);
-  };
-
-  useEffect(() => {
-    return () => {
-      if (previousFilename) deleteFileOnQuit();
-    };
-  }, [previousFilename]);
 
   const handleClick = async () => {
     const token = Cookies.get("token");
@@ -62,26 +52,28 @@ const TextToSpeechTextarea = (props: ITextToSpeechTextarea) => {
 
     setIsLoading(true);
     sendFirebaseEvent("text_to_speech");
-    const user = decode(String(token)) as JwtPayload;
-    const ttsFetch = await fetchTextToSpeechPrompt(user.id, sourceText);
 
-    if (ttsFetch.status && ttsFetch.status === 400) {
-      if (ttsFetch?.data?.status === 600) {
-        setIsLoading(false);
-        setShowLimitModal(true);
-        return;
-      }
+    const user = decode(String(token)) as JwtPayload;
+    const payload = {
+      user_id: user.id,
+      prompt_type: PromptsV2Type.TextToSpeech,
+      system_content: "",
+      user_content: sourceText
+    }
+    const promptResponse = await fetchPromptsV2(payload);
+
+    // Payment Required
+    if (promptResponse?.status === 402) {
+      setShowLimitModal(true);
+      return;
     }
 
-    if (ttsFetch.file_name) {
+    if (promptResponse.id) {
       setIsLoading(false);
-      onConvertSuccess(ttsFetch.file_name);
+      onConvertSuccess(String(promptResponse.id));
 
-      if (previousFilename) {
-        await fetchTextToSpeechPromptFileDelete(previousFilename);
-      }
-
-      setPreviousFilename(ttsFetch.file_name);
+      if (previousFileID) await fetchDeleteTtsFileV2(Number(previousFileID));
+      setPreviousFileID(String(promptResponse.id));
       return;
     }
 
