@@ -2,17 +2,15 @@ import { useRef, useState, useMemo } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { toast } from "react-toastify";
-import { TbPhotoAi, TbUpload } from "react-icons/tb";
+import { TbPhotoAi } from "react-icons/tb";
 import Tesseract from "tesseract.js";
 import Cookies from "js-cookie";
 import { JwtPayload, decode } from "jsonwebtoken";
 
-import { cn } from "@/common/lib/cn";
+import ImageToTextCtaBtn from "./ImageToTextCtaBtn";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import { fetchNewImageToTextPrompt } from "@/common/lib/api/prompts/fetchImageToTextPrompt";
-import { IAxiosErrorRes } from "@/common/lib/api/axiosErrorHandler";
-import { IPrompt } from "@/common/lib/api/prompts/interfaces";
-import { fetchNewImageToTextPromptUpdate } from "@/common/lib/api/prompts/fetchImageToTextPromptUpdate";
+import { PromptsV2Type, fetchPromptsV2 } from "@/common/lib/apiV2/prompts/fetchPromptsV2";
+import { fetchUpdateImageToTextPromptsV2 } from "@/common/lib/apiV2/prompts/fetchUpdateImageToTextPromptV2";
 
 interface IImageToTextInput {
   recognizedText: string;
@@ -68,17 +66,21 @@ const ImageToTextInput = (props: IImageToTextInput) => {
     sendFirebaseEvent("image_to_text");
 
     const user = decode(token) as JwtPayload;
-    const imagePromptRes: IPrompt & IAxiosErrorRes =
-      await fetchNewImageToTextPrompt(user.id);
+    const payload = {
+      user_id: user.id,
+      prompt_type: PromptsV2Type.ImageToText,
+      system_content: "",
+      user_content: ""
+    }
+    const promptResponse = await fetchPromptsV2(payload);
 
-    if (imagePromptRes.status && imagePromptRes.status === 400) {
-      if (imagePromptRes?.data?.status === 600) {
-        setShowLimitModal(true);
-        return;
-      }
+    // Payment Required
+    if (promptResponse?.status === 402) {
+      setShowLimitModal(true);
+      return;
     }
 
-    if (imagePromptRes.id) {
+    if (promptResponse.id) {
       const target = event.target as any;
       const image = target.files[0];
       setImageName(image.name);
@@ -88,11 +90,11 @@ const ImageToTextInput = (props: IImageToTextInput) => {
       recognizeText(imageUrl);
 
       const payload = {
-        userID: user.id,
-        promptID: imagePromptRes.id,
-        completionText: recognizedText,
+        user_id: user.id,
+        prompt_id: promptResponse.id,
+        completion_text: recognizedText,
       };
-      await fetchNewImageToTextPromptUpdate(payload);
+      await fetchUpdateImageToTextPromptsV2(payload);
       return;
     }
 
@@ -128,25 +130,11 @@ const ImageToTextInput = (props: IImageToTextInput) => {
         ) : (
           <TbPhotoAi className="w-full text-[10rem] text-blue-700 h-40" />
         )}
-        <div className="flex items-center justify-between px-2 mt-4">
-          <div className="w-1/2 text-sm text-left text-ellipsis">
-            <div className="text-gray-500">
-              {isLoading ? `Converting` : "File Name:"}
-            </div>
-            <div className="w-full overflow-hidden text-sm font-semibold whitespace-nowrap text-ellipsis">
-              {isLoading ? `${recognizeProgress}%` : imageName}
-            </div>
-          </div>
-          <div
-            className={cn(
-              "flex items-center w-1/4 lg:w-fit gap-1 p-2 text-white border rounded-md ",
-              isLoading ? "bg-gray-500" : "bg-emerald-700 hover:bg-emerald-600"
-            )}
-          >
-            <TbUpload />
-            <span>Upload</span>
-          </div>
-        </div>
+        <ImageToTextCtaBtn
+          isLoading={isLoading}
+          recognizeProgress={recognizeProgress}
+          imageName={imageName}
+        />
       </button>
       {showLoginModal && <LoginModal />}
       {showLimitModal && (
