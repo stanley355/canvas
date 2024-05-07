@@ -2,18 +2,18 @@ import { useMemo } from "react";
 import { TbDotsVertical, TbCircleCaretRight } from "react-icons/tb";
 
 interface ITextToSpeechResult {
-  fileName: string;
+  promptID: number;
 }
 
 const TextToSpeechResult = (props: ITextToSpeechResult) => {
-  const { fileName } = props;
+  const { promptID } = props;
   const fileUrl = useMemo(() => {
-    return `${process.env.NEXT_PUBLIC_FILE_URL}v1/files/${fileName}`;
-  }, [fileName]);
+    return `${process.env.NEXT_PUBLIC_FILE_URL}v1/files/${promptID}.mp3`;
+  }, [promptID]);
 
   return (
     <div className="px-2 mt-4 lg:mt-0">
-      {fileName ? (
+      {promptID ? (
         <audio controls className="w-full" src={fileUrl}>
           <source src={fileUrl} type="audio/mp3" />
         </audio>
@@ -23,7 +23,7 @@ const TextToSpeechResult = (props: ITextToSpeechResult) => {
           <span>your audio will show here</span>
         </div>
       )}
-      {fileName ? (
+      {promptID? (
         <div className="flex items-center float-right mt-2 text-sm text-gray-500">
           *click the <TbDotsVertical /> icon to download{" "}
         </div>

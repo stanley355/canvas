@@ -15,7 +15,7 @@ interface ITTSProps {
 
 const TextToSpeech = (props: ITTSProps) => {
   const { datoCmsData } = props;
-  const [fileName, setFilename] = useState("");
+  const [promptID, setPromptID] = useState<string>("");
 
   return (
     <div className="container px-0 pb-8 mx-auto mt-16 lg:mt-4 lg:px-4">
@@ -26,8 +26,8 @@ const TextToSpeech = (props: ITTSProps) => {
       </div>
 
       <div className="grid-cols-2 mt-4 lg:grid lg:px-4">
-        <TextToSpeechTextarea onConvertSuccess={setFilename} />
-        <TextToSpeechResult fileName={fileName} />
+        <TextToSpeechTextarea onConvertSuccess={setPromptID} />
+        <TextToSpeechResult promptID={Number(promptID)} />
       </div>
 
       <div className="flex items-center justify-center gap-2 mt-16">
