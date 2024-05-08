@@ -129,7 +129,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
             >
               <CanvasLink
                 variant="ghost"
-                href="/image-to-text"
+                href="/students/"
                 className={layoutLinkClassnames}
               >
                 <PiStudentDuotone className="text-lg" />

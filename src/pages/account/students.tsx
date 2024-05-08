@@ -1,4 +1,4 @@
-import { StudentInstitutionLevel } from "@/common/lib/api/students/fetchStudent";
+import { StudentInstitutionLevel } from "@/common/lib/apiV2/students/fetchStudentV2";
 import AccountStudentCantReapply from "@/modules/account/components/AccountStudentCantReapply";
 import AccountStudentForm from "@/modules/account/components/AccountStudentForm";
 import AccountStudentFreeDiscount from "@/modules/account/components/AccountStudentFreeDiscount";

@@ -8,12 +8,12 @@ import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 import { Input } from "@/common/components/ui/input";
 import { Button } from "@/common/components/ui/button";
+import TnCLink from "@/common/components/TnCLink";
 import AccountStudentInstitutionLevelSelect from "./AccountStudentInstitutionLevelSelect";
 import AccountStudentInstitutionSelect from "./AccountStudentInstitutionSelect";
-import TnCLink from "@/common/components/TnCLink";
-
-import { fetchStudent } from "@/common/lib/api/students/fetchStudent";
+import { fetchStudentV2 } from "@/common/lib/apiV2/students/fetchStudentV2";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+
 
 const AccountStudentForm = () => {
   const router = useRouter();
@@ -49,8 +49,9 @@ const AccountStudentForm = () => {
     }
 
     setIsLoading(true);
-    const file = target.student_id_card.files[0];
+    sendFirebaseEvent("student_application");
 
+    const file = target.student_id_card.files[0];
     if (file) {
       const storage = getStorage();
       const storageRef = ref(
@@ -60,23 +61,22 @@ const AccountStudentForm = () => {
       await uploadBytes(storageRef, file).then((snapshot) => {});
     }
 
-    sendFirebaseEvent("student_application");
     const token = Cookies.get("token");
     const user = decode(String(token)) as JwtPayload;
     const payload = {
-      userID: user.id,
-      studentID: student_id.value,
-      ...(student_email.value && { studentEmail: student_email.value }),
+      user_id: user.id,
+      student_id: student_id.value,
+      ...(student_email.value && { student_email: student_email.value }),
       ...(file && {
-        studentCardImgUrl: `student_card/${institution_level.value}/${student_id.value}`,
+        student_card_img_url: `student_card/${institution_level.value}/${student_id.value}`,
       }),
-      institutionLevel: institution_level.value,
-      institutionName: institution_name.value
+      institution_level: institution_level.value,
+      institution_name: institution_name.value
         ? institution_name.value
         : institution_name_other.value,
     };
 
-    const addStudent = await fetchStudent(payload);
+    const addStudent = await fetchStudentV2(payload);
 
     setIsLoading(false);
     if (addStudent.id) {
@@ -84,8 +84,8 @@ const AccountStudentForm = () => {
       return;
     }
 
-    if (addStudent.message) {
-      toast.error(addStudent.message);
+    if (addStudent.status === 400) {
+      toast.error(addStudent.status_text);
       return;
     }
 
