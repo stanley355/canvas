@@ -14,6 +14,7 @@ import { IUser } from "@/common/lib/api/users/interfaces";
 import { IDokuCheckoutPaymentRes } from "@/common/lib/api/doku/interfaces";
 import { TbProgress } from "react-icons/tb";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { fetchTopupPayasyougoV2 } from "@/common/lib/apiV2/topups/fetchTopupPayasyougoV2";
 
 const PlanPayasyougoForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -27,8 +28,8 @@ const PlanPayasyougoForm = () => {
       return;
     }
 
-    if (amount.value < 11000) {
-      toast.info("Minimum amount is Rp 11.000");
+    if (amount.value < 10000) {
+      toast.info("Minimum amount is Rp 10.000");
       return;
     }
 
@@ -38,33 +39,26 @@ const PlanPayasyougoForm = () => {
     const token = Cookies.get("token");
     const user = decode(String(token)) as JwtPayload;
 
-    const topupPayload = {
-      userID: user.id,
-      topupAmount: Number(amount.value),
-    };
-    const topup = await fetchTopupPayasyouGo(topupPayload);
+    const topup = await fetchTopupPayasyougoV2(user.id, Number(amount.value));
 
+    console.log(111, topup);
+    
     if (topup.id) {
       const doku: IDokuCheckoutPaymentRes = await fetchDokuCheckoutPayment(
         topup,
         user as IUser
       );
       if (doku.response.payment.url) {
+        console.log(222, doku);
+        
         setIsLoading(false);
-        window.location.href = doku.response.payment.url;
+        // window.location.href = doku.response.payment.url;
         return;
       }
-      setIsLoading(false);
-      toast.error("Fail to create payment, please try again");
-      return;
     }
 
     setIsLoading(false);
-    toast.error(
-      topup.data.message
-        ? topup.data.message
-        : "Fail to create payment, please try again"
-    );
+    toast.error("Fail to create payment, please try again");
     return;
   };
 
