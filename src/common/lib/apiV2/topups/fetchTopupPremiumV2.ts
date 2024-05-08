@@ -6,7 +6,10 @@ export enum TopupPremiumDuration {
   HalfYearly = "HalfYearly",
 }
 
-export const fetchTopupPremiumV2 = async (user_id: string, duration: TopupPremiumDuration) => {
+export const fetchTopupPremiumV2 = async (
+  user_id: string,
+  duration: TopupPremiumDuration
+) => {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/authorv2/topups/`;
   const axiosConfig = {
     method: "POST",
@@ -23,7 +26,7 @@ export const fetchTopupPremiumV2 = async (user_id: string, duration: TopupPremiu
   try {
     const { data } = await axios(axiosConfig);
     return data;
-  } catch (error:any) {
-    return error?.response?.data ? error.response.data : {}
+  } catch (error: any) {
+    return error?.response?.data ? error.response.data : {};
   }
 };

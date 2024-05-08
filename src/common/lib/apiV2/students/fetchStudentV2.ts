@@ -17,7 +17,9 @@ interface IFetchStudentV2Request {
   institution_name: string;
 }
 
-export const fetchStudentV2 = async (payload: IFetchStudentV2Request): Promise<IStudent & IAuthorErrorResponse> => {
+export const fetchStudentV2 = async (
+  payload: IFetchStudentV2Request
+): Promise<IStudent & IAuthorErrorResponse> => {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/authorv2/students/`;
   const axiosConfig = {
     method: "POST",

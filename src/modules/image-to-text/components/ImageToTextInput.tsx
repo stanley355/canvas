@@ -9,7 +9,10 @@ import { JwtPayload, decode } from "jsonwebtoken";
 
 import ImageToTextCtaBtn from "./ImageToTextCtaBtn";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import { PromptsV2Type, fetchPromptsV2 } from "@/common/lib/apiV2/prompts/fetchPromptsV2";
+import {
+  PromptsV2Type,
+  fetchPromptsV2,
+} from "@/common/lib/apiV2/prompts/fetchPromptsV2";
 import { fetchUpdateImageToTextPromptsV2 } from "@/common/lib/apiV2/prompts/fetchUpdateImageToTextPromptV2";
 
 interface IImageToTextInput {
@@ -70,8 +73,8 @@ const ImageToTextInput = (props: IImageToTextInput) => {
       user_id: user.id,
       prompt_type: PromptsV2Type.ImageToText,
       system_content: "",
-      user_content: ""
-    }
+      user_content: "",
+    };
     const promptResponse = await fetchPromptsV2(payload);
 
     // Payment Required

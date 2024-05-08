@@ -6,7 +6,7 @@ export enum PromptsV2Type {
   Translate = "Translate",
   GrammarCheck = "GrammarCheck",
   ImageToText = "ImageToText",
-  TextToSpeech = "TextToSpeech"
+  TextToSpeech = "TextToSpeech",
 }
 
 interface IFetchPromptsV2 {

@@ -15,21 +15,20 @@ interface IAccountStudents {
 const AccountStudents = (props: IAccountStudents) => {
   const { student } = props;
 
-  const isFreeDiscount = useMemo(()=> {
+  const isFreeDiscount = useMemo(() => {
     const currentTime = new Date().getTime();
     const freeDiscTime = new Date(student.free_discount_end_at).getTime();
     return freeDiscTime > currentTime;
-  }, [student])
-  const isHalfDiscount = useMemo(()=> {
+  }, [student]);
+  const isHalfDiscount = useMemo(() => {
     const currentTime = new Date().getTime();
     const halfDiscTime = new Date(student.half_discount_end_at).getTime();
-    return halfDiscTime> currentTime;
+    return halfDiscTime > currentTime;
   }, [student]);
   if (
     !isFreeDiscount &&
     !isHalfDiscount &&
-    student.institution_level===
-      StudentInstitutionLevel.College
+    student.institution_level === StudentInstitutionLevel.College
   ) {
     return <AccountStudentCantReapply />;
   }

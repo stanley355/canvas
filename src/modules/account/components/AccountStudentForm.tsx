@@ -14,7 +14,6 @@ import AccountStudentInstitutionSelect from "./AccountStudentInstitutionSelect";
 import { fetchStudentV2 } from "@/common/lib/apiV2/students/fetchStudentV2";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
-
 const AccountStudentForm = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);

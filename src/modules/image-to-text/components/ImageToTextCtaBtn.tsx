@@ -1,10 +1,10 @@
-import { TbUpload } from 'react-icons/tb';
-import { cn } from '@/common/lib/cn';
+import { TbUpload } from "react-icons/tb";
+import { cn } from "@/common/lib/cn";
 
 interface IImageToTextCtaBtn {
   isLoading: boolean;
   recognizeProgress: number;
-  imageName: string
+  imageName: string;
 }
 
 const ImageToTextCtaBtn = (props: IImageToTextCtaBtn) => {
@@ -29,7 +29,7 @@ const ImageToTextCtaBtn = (props: IImageToTextCtaBtn) => {
         <span>Upload</span>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ImageToTextCtaBtn
+export default ImageToTextCtaBtn;

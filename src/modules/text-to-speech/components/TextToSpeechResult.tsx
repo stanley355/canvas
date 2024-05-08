@@ -23,7 +23,7 @@ const TextToSpeechResult = (props: ITextToSpeechResult) => {
           <span>your audio will show here</span>
         </div>
       )}
-      {promptID? (
+      {promptID ? (
         <div className="flex items-center float-right mt-2 text-sm text-gray-500">
           *click the <TbDotsVertical /> icon to download{" "}
         </div>

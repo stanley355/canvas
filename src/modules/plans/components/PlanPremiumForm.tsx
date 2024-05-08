@@ -6,7 +6,10 @@ import { JwtPayload, decode } from "jsonwebtoken";
 
 import { Button } from "@/common/components/ui/button";
 import { fetchDokuCheckoutPayment } from "@/common/lib/api/doku/fetchDokuCheckoutPayment";
-import { TopupPremiumDuration, fetchTopupPremiumV2 } from "@/common/lib/apiV2/topups/fetchTopupPremiumV2";
+import {
+  TopupPremiumDuration,
+  fetchTopupPremiumV2,
+} from "@/common/lib/apiV2/topups/fetchTopupPremiumV2";
 import { IDokuCheckoutPaymentRes } from "@/common/lib/api/doku/interfaces";
 import { IUser } from "@/common/lib/api/users/interfaces";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";

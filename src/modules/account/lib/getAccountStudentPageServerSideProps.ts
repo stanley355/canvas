@@ -25,7 +25,7 @@ export const getAccountStudentPageServerProps: GetServerSideProps = async (
         permanent: false,
         destination: "/account/",
       },
-    }; 
+    };
   }
   return {
     props: {

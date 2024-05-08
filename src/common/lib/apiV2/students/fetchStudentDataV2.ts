@@ -2,7 +2,9 @@ import axios from "axios";
 import { IStudent } from "../../api/students/interfaces";
 import { IAuthorErrorResponse } from "../authorErrorInterface";
 
-export const fetchStudentDataV2 = async (user_id: string): Promise<IStudent & IAuthorErrorResponse> => {
+export const fetchStudentDataV2 = async (
+  user_id: string
+): Promise<IStudent & IAuthorErrorResponse> => {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/authorv2/students/`;
   const axiosConfig = {
     method: "GET",
