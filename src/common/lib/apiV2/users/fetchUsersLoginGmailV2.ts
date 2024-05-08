@@ -1,13 +1,13 @@
 import axios from "axios";
 import { JwtPayload } from "jsonwebtoken";
 
-interface IFetchUsersV2LoginGmailResponse {
+interface IFetchUsersLoginGmailV2Response {
   token: string;
 }
 
-export const fetchUsersV2LoginGmail = async (
+export const fetchUsersLoginGmailV2 = async (
   req: JwtPayload
-): Promise<IFetchUsersV2LoginGmailResponse> => {
+): Promise<IFetchUsersLoginGmailV2Response> => {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/authorv2/users/`;
   const axiosConfig = {
     method: "POST",
