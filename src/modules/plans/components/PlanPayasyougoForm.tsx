@@ -8,7 +8,6 @@ import { Button } from "@/common/components/ui/button";
 import { Input } from "@/common/components/ui/input";
 import { Label } from "@/common/components/ui/label";
 
-import { fetchTopupPayasyouGo } from "@/common/lib/api/topups/fetchTopupPayasyougo";
 import { fetchDokuCheckoutPayment } from "@/common/lib/api/doku/fetchDokuCheckoutPayment";
 import { IUser } from "@/common/lib/api/users/interfaces";
 import { IDokuCheckoutPaymentRes } from "@/common/lib/api/doku/interfaces";
@@ -41,18 +40,14 @@ const PlanPayasyougoForm = () => {
 
     const topup = await fetchTopupPayasyougoV2(user.id, Number(amount.value));
 
-    console.log(111, topup);
-    
     if (topup.id) {
       const doku: IDokuCheckoutPaymentRes = await fetchDokuCheckoutPayment(
         topup,
         user as IUser
       );
       if (doku.response.payment.url) {
-        console.log(222, doku);
-        
         setIsLoading(false);
-        // window.location.href = doku.response.payment.url;
+        window.location.href = doku.response.payment.url;
         return;
       }
     }
