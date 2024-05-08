@@ -1,5 +1,5 @@
 import Select from "react-select";
-import { StudentInstitutionLevel } from "@/common/lib/api/students/fetchStudent";
+import { StudentInstitutionLevel } from "@/common/lib/apiV2/students/fetchStudentV2";
 
 const AccountStudentInstitutionLevelSelect = () => {
   return (

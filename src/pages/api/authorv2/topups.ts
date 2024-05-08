@@ -1,11 +1,8 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const authorV2PromptsAPI = async (
-  req: NextApiRequest,
-  res: NextApiResponse
-) => {
-  let URL = `${process.env.AUTHOR_URL}v2/prompts`;
+const authorV2TopupsAPI = async (req: NextApiRequest, res: NextApiResponse) => {
+  let URL = `${process.env.AUTHOR_URL}v2/topups`;
 
   if (req.headers && req.headers.path) {
     URL += req.headers.path;
@@ -25,8 +22,8 @@ const authorV2PromptsAPI = async (
   } catch (err: any) {
     res
       .status(err?.response?.status ? err.response.status : 500)
-      .json(err?.response?.data ? err?.response?.data : {});
+      .json(err?.response?.data ? err.response.data : {});
   }
 };
 
-export default authorV2PromptsAPI;
+export default authorV2TopupsAPI;

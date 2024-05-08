@@ -8,12 +8,12 @@ import { Button } from "@/common/components/ui/button";
 import { Input } from "@/common/components/ui/input";
 import { Label } from "@/common/components/ui/label";
 
-import { fetchTopupPayasyouGo } from "@/common/lib/api/topups/fetchTopupPayasyougo";
 import { fetchDokuCheckoutPayment } from "@/common/lib/api/doku/fetchDokuCheckoutPayment";
 import { IUser } from "@/common/lib/api/users/interfaces";
 import { IDokuCheckoutPaymentRes } from "@/common/lib/api/doku/interfaces";
 import { TbProgress } from "react-icons/tb";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { fetchTopupPayasyougoV2 } from "@/common/lib/apiV2/topups/fetchTopupPayasyougoV2";
 
 const PlanPayasyougoForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -27,22 +27,17 @@ const PlanPayasyougoForm = () => {
       return;
     }
 
-    if (amount.value < 11000) {
-      toast.info("Minimum amount is Rp 11.000");
+    if (amount.value < 10000) {
+      toast.info("Minimum amount is Rp 10.000");
       return;
     }
 
-    sendFirebaseEvent("create_payasyougo_payment");
     setIsLoading(true);
-    sendFirebaseEvent("topup_pay_as_you_go");
+    sendFirebaseEvent("topup_payasyougo");
+
     const token = Cookies.get("token");
     const user = decode(String(token)) as JwtPayload;
-
-    const topupPayload = {
-      userID: user.id,
-      topupAmount: Number(amount.value),
-    };
-    const topup = await fetchTopupPayasyouGo(topupPayload);
+    const topup = await fetchTopupPayasyougoV2(user.id, Number(amount.value));
 
     if (topup.id) {
       const doku: IDokuCheckoutPaymentRes = await fetchDokuCheckoutPayment(
@@ -54,17 +49,10 @@ const PlanPayasyougoForm = () => {
         window.location.href = doku.response.payment.url;
         return;
       }
-      setIsLoading(false);
-      toast.error("Fail to create payment, please try again");
-      return;
     }
 
     setIsLoading(false);
-    toast.error(
-      topup.data.message
-        ? topup.data.message
-        : "Fail to create payment, please try again"
-    );
+    toast.error("Fail to create payment, please try again");
     return;
   };
 

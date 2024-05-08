@@ -1,11 +1,11 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const authorV2PromptsAPI = async (
+const authorV2StudentsAPI = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
-  let URL = `${process.env.AUTHOR_URL}v2/prompts`;
+  let URL = `${process.env.AUTHOR_URL}v2/students`;
 
   if (req.headers && req.headers.path) {
     URL += req.headers.path;
@@ -29,4 +29,4 @@ const authorV2PromptsAPI = async (
   }
 };
 
-export default authorV2PromptsAPI;
+export default authorV2StudentsAPI;

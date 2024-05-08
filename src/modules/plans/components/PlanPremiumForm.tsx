@@ -8,8 +8,8 @@ import { Button } from "@/common/components/ui/button";
 import { fetchDokuCheckoutPayment } from "@/common/lib/api/doku/fetchDokuCheckoutPayment";
 import {
   TopupPremiumDuration,
-  fetchTopupPremium,
-} from "@/common/lib/api/topups/fetchTopupPremium";
+  fetchTopupPremiumV2,
+} from "@/common/lib/apiV2/topups/fetchTopupPremiumV2";
 import { IDokuCheckoutPaymentRes } from "@/common/lib/api/doku/interfaces";
 import { IUser } from "@/common/lib/api/users/interfaces";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
@@ -20,39 +20,27 @@ const PlanPremiumForm = () => {
   );
 
   const handleClick = async (duration: TopupPremiumDuration) => {
-    sendFirebaseEvent("create_premium_payment");
     setLoadingBtn(duration);
+    sendFirebaseEvent("topup_premium");
     const token = Cookies.get("token");
     const user = decode(String(token)) as JwtPayload;
-
-    sendFirebaseEvent("topup_premium_student");
-    const topupPayload = {
-      userID: user.id,
-      duration,
-    };
-    const topup = await fetchTopupPremium(topupPayload);
+    const topup = await fetchTopupPremiumV2(user.id, duration);
 
     if (topup.id) {
       const doku: IDokuCheckoutPaymentRes = await fetchDokuCheckoutPayment(
         topup,
         user as IUser
       );
+
       if (doku.response.payment.url) {
         setLoadingBtn(null);
         window.location.href = doku.response.payment.url;
         return;
       }
-      setLoadingBtn(null);
-      toast.error("Fail to create payment, please try again");
-      return;
     }
 
     setLoadingBtn(null);
-    toast.error(
-      topup.data.message
-        ? topup.data.message
-        : "Fail to create payment, please try again"
-    );
+    toast.error("Fail to create payment, please try again");
     return;
   };
   return (

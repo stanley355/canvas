@@ -21,8 +21,8 @@ const authorV2UsersAPI = async (req: NextApiRequest, res: NextApiResponse) => {
     res.json(data);
   } catch (err: any) {
     res
-      .status(err.response.status ? err.response.status : 500)
-      .json(err.response.data ? err.response.data : {});
+      .status(err?.response?.status ? err.response.status : 500)
+      .json(err?.response?.data ? err.response.data : {});
   }
 };
 

@@ -8,7 +8,10 @@ import dynamic from "next/dynamic";
 import { JwtPayload, decode } from "jsonwebtoken";
 import { toast } from "react-toastify";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import { PromptsV2Type, fetchPromptsV2 } from "@/common/lib/apiV2/prompts/fetchPromptsV2";
+import {
+  PromptsV2Type,
+  fetchPromptsV2,
+} from "@/common/lib/apiV2/prompts/fetchPromptsV2";
 import { fetchDeleteTtsFileV2 } from "@/common/lib/apiV2/prompts/fetchDeleteTtsFileV2";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"), {
@@ -58,8 +61,8 @@ const TextToSpeechTextarea = (props: ITextToSpeechTextarea) => {
       user_id: user.id,
       prompt_type: PromptsV2Type.TextToSpeech,
       system_content: "",
-      user_content: sourceText
-    }
+      user_content: sourceText,
+    };
     const promptResponse = await fetchPromptsV2(payload);
 
     // Payment Required
