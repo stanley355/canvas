@@ -31,17 +31,13 @@ const PlanPremiumForm = () => {
 
       if (doku.response.payment.url) {
         setLoadingBtn(null);
-        // window.location.href = doku.response.payment.url;
+        window.location.href = doku.response.payment.url;
         return;
       }
     }
 
     setLoadingBtn(null);
-    toast.error(
-      topup.data.message
-        ? topup.data.message
-        : "Fail to create payment, please try again"
-    );
+    toast.error("Fail to create payment, please try again");
     return;
   };
   return (

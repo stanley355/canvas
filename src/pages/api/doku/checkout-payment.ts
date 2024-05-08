@@ -2,7 +2,6 @@ import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 import { generateDokuSignature } from "@/modules/plans/lib/generateDokuSignature";
 import { axiosErrorHandler } from "@/common/lib/api/axiosErrorHandler";
-import { fetchTopupPayasyouGo } from "@/common/lib/api/topups/fetchTopupPayasyougo";
 
 const dokuCheckoutPaymentAPI = async (
   req: NextApiRequest,
