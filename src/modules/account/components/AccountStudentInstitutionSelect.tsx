@@ -35,6 +35,10 @@ const AccountStudentInstitutionSelect = () => {
             label: "Sekolah Karunia Jakarta",
             value: "Sekolah Karunia Jakarta",
           },
+          {
+            label: "Sekolah Anugerah Jakarta",
+            value: "Sekolah Anugerah Jakarta",
+          },
           { label: "Lainnya", value: "" },
         ]}
       />
