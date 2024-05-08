@@ -20,12 +20,10 @@ const PlanPremiumForm = () => {
   );
 
   const handleClick = async (duration: TopupPremiumDuration) => {
-    sendFirebaseEvent("create_premium_payment");
     setLoadingBtn(duration);
+    sendFirebaseEvent("topup_premium");
     const token = Cookies.get("token");
     const user = decode(String(token)) as JwtPayload;
-
-    sendFirebaseEvent("topup_premium_student");
     const topupPayload = {
       userID: user.id,
       duration,
