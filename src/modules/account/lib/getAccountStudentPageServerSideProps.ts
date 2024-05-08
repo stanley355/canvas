@@ -19,6 +19,14 @@ export const getAccountStudentPageServerProps: GetServerSideProps = async (
   const decodedToken = decode(token) as JwtPayload;
   const student = await fetchStudentDataV2(decodedToken.id);
 
+  if (!student.id) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/account/",
+      },
+    }; 
+  }
   return {
     props: {
       student,
