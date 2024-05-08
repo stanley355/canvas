@@ -1,8 +1,8 @@
 import axios from "axios";
-import { IUserV2 } from "./interfaces";
+import { IUser } from "../../api/users/interfaces";
 
 interface IFetchUsersAccountV2Response {
-  user: IUserV2;
+  user: IUser;
   active_student_discount: Record<string, string | number>;
   active_subscription: Record<string, string | number>;
   topups: Record<string, string | number>[];
