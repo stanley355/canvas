@@ -3,9 +3,12 @@ import { useTranslateV2 } from "../lib/useTranslateV2";
 import { toast } from "react-toastify";
 import { TbCopy } from "react-icons/tb";
 
-const TranslateResultBoxDesktop = () => {
-  const { translateStates } = useTranslateV2();
-  const { translatedText } = translateStates;
+interface TranslateLanguageMenuDesktopProps {
+  translatedText: string;
+}
+
+const TranslateResultBoxDesktop = (props: TranslateLanguageMenuDesktopProps) => {
+  const { translatedText } = props;
 
   const copyText = () => {
     window.navigator.clipboard.writeText(translatedText);
