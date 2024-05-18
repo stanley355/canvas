@@ -68,22 +68,24 @@ const TranslateSourceTextareaBtn = () => {
     };
     const promptResponse = await fetchPromptsV2(payload);
 
-    setIsLoading(false);
-
-    if (promptResponse.completion_text) {
-      dispatch({
-        type: "SET",
-        name: "translatedText",
-        value: promptResponse.completion_text,
-      });
-      return;
-    }
 
     // Payment Required
     if (promptResponse?.status === 402) {
       setShowLimitModal(true);
       return;
     }
+    
+    setIsLoading(false);
+
+    if (promptResponse.length > 0 && promptResponse[0].completion_text) {
+      dispatch({
+        type: "SET",
+        name: "translatedText",
+        value: promptResponse[0].completion_text,
+      });
+      return;
+    }
+
 
     toast.error("Server Busy, please try again");
     return;
