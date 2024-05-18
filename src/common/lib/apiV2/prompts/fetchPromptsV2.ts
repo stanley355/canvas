@@ -14,6 +14,7 @@ interface IFetchPromptsV2 {
   prompt_type: PromptsV2Type;
   system_content: string;
   user_content: string;
+  n?: number
 }
 
 export const fetchPromptsV2 = async (

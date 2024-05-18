@@ -5,9 +5,12 @@ import { toast } from "react-toastify";
 import { cn } from "@/common/lib/cn";
 import { TbCopy } from "react-icons/tb";
 
-const TranslateResultBoxMobile = () => {
-  const { translateStates } = useTranslateV2();
-  const { translatedText } = translateStates;
+interface TranslateResultBoxMobileProps {
+  translatedText: string;
+}
+
+const TranslateResultBoxMobile = (props: TranslateResultBoxMobileProps) => {
+  const {translatedText} = props;
 
   const copyText = () => {
     window.navigator.clipboard.writeText(translatedText);
@@ -16,10 +19,7 @@ const TranslateResultBoxMobile = () => {
 
   return (
     <div
-      className={cn(
-        "pb-2 bg-gray-100 border-b",
-        translatedText ? "block" : "hidden"
-      )}
+      className={"pb-2 bg-gray-100 border-b"}
     >
       <div className="p-2 text-sm h-[25vh]">{translatedText}</div>
       <Button className="ml-[76%] flex items-center gap-2" onClick={copyText}>

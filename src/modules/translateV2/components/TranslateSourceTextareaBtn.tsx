@@ -13,6 +13,7 @@ import {
   PromptsV2Type,
   fetchPromptsV2,
 } from "@/common/lib/apiV2/prompts/fetchPromptsV2";
+import { IPrompt } from "@/common/lib/api/prompts/interfaces";
 
 const LoginModal = dynamic(() => import("../../login/components/LoginModal"), {
   ssr: false,
@@ -27,7 +28,7 @@ const ExceedLimitModal = dynamic(
 
 const TranslateSourceTextareaBtn = () => {
   const { translateStates, dispatch } = useTranslateV2();
-  const { sourceText, targetLanguage, sourceLanguage } = translateStates;
+  const { sourceText, targetLanguage, sourceLanguage, resultVariant } = translateStates;
 
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showLimitModal, setShowLimitModal] = useState(false);
@@ -65,9 +66,9 @@ const TranslateSourceTextareaBtn = () => {
       prompt_type: PromptsV2Type.Translate,
       system_content,
       user_content: sourceText,
+      n: resultVariant 
     };
     const promptResponse = await fetchPromptsV2(payload);
-
 
     // Payment Required
     if (promptResponse?.status === 402) {
@@ -77,11 +78,11 @@ const TranslateSourceTextareaBtn = () => {
     
     setIsLoading(false);
 
-    if (promptResponse.length > 0 && promptResponse[0].completion_text) {
+    if (promptResponse.length > 0 ) {
       dispatch({
         type: "SET",
-        name: "translatedText",
-        value: promptResponse[0].completion_text,
+        name: "translatedTexts",
+        value: promptResponse.map((prompt: IPrompt) =>prompt.completion_text ) ,
       });
       return;
     }
