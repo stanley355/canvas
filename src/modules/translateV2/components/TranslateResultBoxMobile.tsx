@@ -1,11 +1,9 @@
-import { Button } from "@/common/components/ui/button";
-import React from "react";
-import { useTranslateV2 } from "../lib/useTranslateV2";
-import { toast } from "react-toastify";
-import { cn } from "@/common/lib/cn";
 import { TbCopy } from "react-icons/tb";
+import { toast } from "react-toastify";
+import { Button } from "@/common/components/ui/button";
 
 interface TranslateResultBoxMobileProps {
+  key?: string;
   translatedText: string;
 }
 

@@ -12,7 +12,7 @@ export const translateReducerV2 = (
 ) => {
   switch (action.type) {
     case "SET":
-      const newStates = structuredClone(state);
+      const newStates: Record<string, any> = structuredClone(state);
       newStates[action.name] = action.value;
       return newStates;
     default:

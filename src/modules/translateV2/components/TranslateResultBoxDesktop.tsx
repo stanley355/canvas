@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { TbCopy } from "react-icons/tb";
 
 interface TranslateLanguageMenuDesktopProps {
+  key?: string;
   translatedText: string;
 }
 

@@ -11,9 +11,9 @@ const TranslateMobileView = () => {
       <TranslateLanguageMenuMobile />
       <TranslateSourceTextareaMobile />
 
-      {translatedTexts.length > 0 && translatedTexts.map((text) =>
+      {translatedTexts.length > 0 && translatedTexts.map((text: string, index:number) =>
 
-        <TranslateResultBoxMobile translatedText={text} />
+        <TranslateResultBoxMobile key={`translate_result_${index}`} translatedText={text} />
       )
       }
 
