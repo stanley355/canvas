@@ -14,11 +14,12 @@ interface IFetchPromptsV2 {
   prompt_type: PromptsV2Type;
   system_content: string;
   user_content: string;
+  n?: number
 }
 
 export const fetchPromptsV2 = async (
   data: IFetchPromptsV2
-): Promise<IPrompt & IAuthorErrorResponse> => {
+): Promise<IPrompt[] & IPrompt & IAuthorErrorResponse> => {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/authorv2/prompts/`;
   const axiosConfig = {
     method: "POST",

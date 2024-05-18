@@ -16,12 +16,8 @@ export const fetchDeleteTtsFileV2 = async (
 
   try {
     const { data } = await axios(axiosConfig);
-    console.log(11, data);
-
     return data;
   } catch (error: any) {
-    console.log(33, error);
-
-    return error.response.data;
+    return error?.response?.data ? error.response.data : {};
   }
 };

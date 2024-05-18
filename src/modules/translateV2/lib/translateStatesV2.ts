@@ -8,7 +8,8 @@ export interface ITranslateStatesV2 {
     value: string;
   };
   sourceText: string;
-  translatedText: string;
+  translatedTexts: string[];
+  resultVariant: number;
 }
 export const TRANSLATE_STATES_V2: ITranslateStatesV2 = {
   sourceLanguage: {
@@ -20,5 +21,6 @@ export const TRANSLATE_STATES_V2: ITranslateStatesV2 = {
     value: "Indonesian",
   },
   sourceText: "",
-  translatedText: "",
+  translatedTexts: [],
+  resultVariant: 1
 };

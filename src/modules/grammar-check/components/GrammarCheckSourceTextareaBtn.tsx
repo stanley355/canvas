@@ -66,15 +66,22 @@ const GrammarCheckSourceTextareaBtn = () => {
 
     setIsLoading(false);
 
-    if (promptResponse.completion_text) {
+    // Payment Required
+    if (promptResponse?.status === 402) {
+      setShowLimitModal(true);
+      return;
+    }
+
+
+    if (promptResponse[0].completion_text) {
       const removedAddedDiff = createRemovedAndAddedDiff(
         sourceText,
-        promptResponse.completion_text
+        promptResponse[0].completion_text
       );
 
       dispatch({
         name: "resultText",
-        value: promptResponse.completion_text,
+        value: promptResponse[0].completion_text,
       });
       dispatch({
         name: "resultTextAdded",
@@ -87,11 +94,6 @@ const GrammarCheckSourceTextareaBtn = () => {
       return;
     }
 
-    // Payment Required
-    if (promptResponse?.status === 402) {
-      setShowLimitModal(true);
-      return;
-    }
 
     toast.error("Server Busy, please try again");
     return;

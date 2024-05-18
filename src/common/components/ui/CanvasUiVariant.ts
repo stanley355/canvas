@@ -2,6 +2,7 @@ export interface ICanvasButtonVariants {
   default: string;
   primary: string;
   ghost: string;
+  none: string;
 }
 
 export const CANVAS_BUTTON_VARIANTS: ICanvasButtonVariants = {
@@ -10,4 +11,5 @@ export const CANVAS_BUTTON_VARIANTS: ICanvasButtonVariants = {
   primary:
     "flex items-center justify-center gap-1 text-sm p-2 text-white bg-emerald-800 rounded-md hover:bg-emerald-600",
   ghost: "flex items-center justify-center gap-1 p-2 text-sm",
+  none: ""
 };
