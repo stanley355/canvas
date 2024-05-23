@@ -1,12 +1,11 @@
 import {
   TbLanguage,
   TbUserCircle,
-  TbBrandGoogle,
   TbHelp,
   TbPhotoAi,
   TbSpeakerphone,
 } from "react-icons/tb";
-import { FaRupiahSign } from "react-icons/fa6";
+import { FaRobot, FaRupiahSign } from "react-icons/fa6";
 import { PiStudentDuotone } from "react-icons/pi";
 
 export const HEADER_MENU = [
@@ -16,9 +15,9 @@ export const HEADER_MENU = [
     icon: <TbLanguage />,
   },
   {
-    title: "Grammar Check",
-    url: "/grammar-check/",
-    icon: <TbBrandGoogle />,
+    title: "Checkbot",
+    url: "/checkbot/",
+    icon: <FaRobot />,
   },
   {
     title: "Image to Text",

@@ -17,7 +17,7 @@ import CanvasLink from "../ui/CanvasLink";
 import CanvasButton from "../ui/CanvasButton";
 import { cn } from "@/common/lib/cn";
 import { PiStudent, PiStudentBold, PiStudentDuotone } from "react-icons/pi";
-import { FaRupiahSign } from "react-icons/fa6";
+import { FaRobot, FaRupiahSign } from "react-icons/fa6";
 
 interface IHeaderDesktop {
   isLogin: boolean;
@@ -61,11 +61,11 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           </CanvasLink>
           <CanvasLink
             variant="ghost"
-            href="/grammar-check/"
+            href="/checkbot/"
             className={layoutLinkClassnames}
           >
-            <TbBrandGoogle />
-            <span>Ai Grammar Check</span>
+            <FaRobot />
+            <span>Ai Checkbot</span>
           </CanvasLink>
 
           <div className="relative">
