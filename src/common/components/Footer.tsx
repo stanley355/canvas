@@ -3,11 +3,10 @@ import Image from "next/image";
 import {
   TbCopyright,
   TbLanguage,
-  TbBrandGoogle,
   TbPhotoAi,
   TbSpeakerphone,
 } from "react-icons/tb";
-import { FaRupiahSign } from "react-icons/fa6";
+import { FaRobot, FaRupiahSign } from "react-icons/fa6";
 import { PiStudentDuotone } from "react-icons/pi";
 
 const Footer = () => (
@@ -26,8 +25,8 @@ const Footer = () => (
           href="/grammar-check/"
           className="flex items-center gap-1 py-2 hover:font-bold"
         >
-          <TbBrandGoogle />
-          <span>AI Grammar Check</span>
+          <FaRobot />
+          <span>AI Checkbot</span>
         </Link>
         <Link
           href="/image-to-text/"
