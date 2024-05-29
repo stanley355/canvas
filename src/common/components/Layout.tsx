@@ -20,7 +20,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         pathname={router.pathname}
       />
       <main>{children}</main>
-      {hasFooter && <Footer />}
+      {/* {hasFooter && <Footer />} */}
       <ToastContainer
         position="top-center"
         autoClose={2000}

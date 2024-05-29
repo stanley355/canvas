@@ -1,10 +1,8 @@
 import { GetStaticProps } from "next";
 import { getHomePageStaticProps } from "@/modules/home/lib/getHomePageStaticProps";
 import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
-import HomeHero from "@/modules/home/components/HomeHero";
-import HomeSponsors from "@/modules/home/components/HomeSponsors";
-import HomeExplanation from "@/modules/home/components/HomeExplanation";
-import HomeRoi from "@/modules/home/components/HomeRoi";
+import HomeMobile from "@/modules/home/components/mobile/HomeMobile";
+
 
 interface IHomeProps {
   datoCmsData: IMetaHead;
@@ -15,10 +13,7 @@ const Home = (props: IHomeProps) => {
   return (
     <div>
       <MetaHead pagesSchema={datoCmsData.pagesSchema} />
-      <HomeHero />
-      <HomeSponsors />
-      <HomeExplanation />
-      <HomeRoi />
+      <HomeMobile />
     </div>
   );
 };
