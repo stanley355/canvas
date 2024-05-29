@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const HomeSponsors = () => {
   return (
-    <div className="container mx-auto mb-4 lg:mt-16">
+    <div className="container px-4 mx-auto mb-4 lg:mt-16">
       <div className="mb-4 text-lg text-center text-gray-500">
         Trusted by more than 2000 people
       </div>

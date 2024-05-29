@@ -3,7 +3,7 @@ import React from "react";
 
 const HomeExplanation = () => {
   return (
-    <div className="container mx-auto mt-8 lg:mt-16 lg:grid lg:grid-cols-2 lg:gap-16">
+    <div className="container px-4 mx-auto mt-8 lg:mt-16 lg:grid lg:grid-cols-2 lg:gap-16">
       <div className="mb-16 lg:flex lg:border-b">
         <div className="lg:w-1/3">
           <div className="mb-4 text-4xl font-semibold">

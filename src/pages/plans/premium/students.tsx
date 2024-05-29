@@ -4,7 +4,7 @@ import PlanStudentPremiumForm from "@/modules/plans/components/PlanStudentPremiu
 
 const PremiumStudentPlans = () => {
   return (
-    <div className="container mx-auto mt-16 lg:mt-4">
+    <div className="container px-4 mx-auto mt-16 lg:mt-4">
       <div className="fixed left-0 w-full p-2 text-center bg-yellow-300 border top-12 lg:text-sm lg:static lg:w-fit lg:mx-auto ">
         System detected you have 50% student dicount, enjoy your reduced pricing
       </div>

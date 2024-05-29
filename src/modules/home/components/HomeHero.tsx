@@ -17,7 +17,7 @@ const HomeHero = () => {
   }, [router]);
 
   return (
-    <div className="container mx-auto mt-20 lg:grid lg:grid-cols-2 lg:mt-12">
+    <div className="container px-4 mx-auto mt-20 lg:grid lg:grid-cols-2 lg:mt-12">
       <div>
         <div className="mb-8 text-3xl font-bold lg:text-5xl">
           Responsible AI that ensures your writing and reputation shine
