@@ -31,13 +31,13 @@ const HomeMobileHero = () => {
         <h1 className='mb-4 text-4xl font-bold text-center'>Solve your language problems</h1>
         <h2 className='mb-8 text-xl text-center'>Multilanguage translation and writing, our AI gets it all covered </h2>
         <div className='flex items-center justify-center h-12 mb-8 '>
-          {isLogin ? <CanvasLink href="/plans/" variant="primary" className="w-1/2 gap-2 text-lg">
-            <FaRupiahSign />
-            See Pricing
-          </CanvasLink> :
+          {isLogin ?
+            <CanvasLink href="/plans/" variant="primary" className="w-1/2 gap-2 text-lg">
+              <FaRupiahSign />
+              See Pricing
+            </CanvasLink> :
             <GoogleLoginBtn />
           }
-
         </div>
       </div>
     </>

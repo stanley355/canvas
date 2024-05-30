@@ -1,10 +1,10 @@
-import CanvasLink from "@/common/components/ui/CanvasLink"
 import { FaRobot } from "react-icons/fa6"
-import { TbLanguage } from "react-icons/tb"
+import { TbLanguage, TbPhotoAi, TbSpeakerphone } from "react-icons/tb"
+import CanvasLink from "@/common/components/ui/CanvasLink"
 
 const HomeMobileFourHorsemen = () => {
   return (
-    <>
+    <div className="px-4">
       <CanvasLink href={'/checkbot/'} className="gap-2 p-4 mb-4 text-black bg-white border-black rounded-lg">
         <FaRobot className="w-2/3 text-6xl" />
         <div>
@@ -21,11 +21,32 @@ const HomeMobileFourHorsemen = () => {
             Tired of word by word translation tools? Our AI understands your context and process it pragmatically
           </div>
         </div>
-        <TbLanguage className="w-2/3 text-8xl" />
+        <TbLanguage className="w-2/3 text-7xl" />
+      </CanvasLink>
+
+      <CanvasLink href={'/image-to-text/'} className="gap-2 mb-4 text-black bg-white border-black rounded-lg">
+        <TbPhotoAi className="w-2/3 text-6xl" />
+        <div>
+          <div className="text-lg font-semibold text-blue-800">Ai Image to Text</div>
+          <div>
+            Get words from your images instantly. Applicable for all languages and texts.
+          </div>
+        </div>
       </CanvasLink>
 
 
-    </>
+      <CanvasLink href={'/text-to-speech/'} className="gap-2 mb-4 text-black bg-white border-black rounded-lg">
+        <div>
+          <div className="text-lg font-semibold text-blue-800">Ai Text to Speech</div>
+          <div>
+            Listen to the music. Place your text and let our Ai speak for you. This Ai speaks in many languages.
+          </div>
+        </div>
+        <TbSpeakerphone className="w-2/3 text-6xl" />
+      </CanvasLink>
+
+
+    </div>
   )
 }
 
