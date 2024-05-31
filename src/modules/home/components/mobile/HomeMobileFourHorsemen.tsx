@@ -4,7 +4,7 @@ import CanvasLink from "@/common/components/ui/CanvasLink"
 
 const HomeMobileFourHorsemen = () => {
   return (
-    <div className="px-4">
+    <div className="px-4 mb-8">
       <CanvasLink href={'/checkbot/'} className="gap-2 p-4 mb-4 text-black bg-white border-black rounded-lg">
         <FaRobot className="w-2/3 text-6xl" />
         <div>
