@@ -29,11 +29,10 @@ const HomeMobileFourHorsemen = () => {
         <div>
           <div className="text-lg font-semibold text-blue-800">Ai Image to Text</div>
           <div>
-            Get words from your images instantly. Applicable for all languages and texts.
+            Extract words from images instantly. Upload and sit back, the texts will appear in seconds.
           </div>
         </div>
       </CanvasLink>
-
 
       <CanvasLink href={'/text-to-speech/'} className="gap-2 mb-4 text-black bg-white border-black rounded-lg">
         <div>
