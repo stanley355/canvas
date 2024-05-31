@@ -2,7 +2,7 @@ import { FaRobot } from "react-icons/fa6"
 import { TbLanguage, TbPhotoAi, TbSpeakerphone } from "react-icons/tb"
 import CanvasLink from "@/common/components/ui/CanvasLink"
 
-const HomeMobileFourHorsemen = () => {
+const HomeFourHorsemen = () => {
   return (
     <div className="px-4 mb-8">
       <CanvasLink href={'/checkbot/'} className="gap-2 p-4 mb-4 text-black bg-white border-black rounded-lg">
@@ -49,4 +49,4 @@ const HomeMobileFourHorsemen = () => {
   )
 }
 
-export default HomeMobileFourHorsemen
+export default HomeFourHorsemen
