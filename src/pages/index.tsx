@@ -15,7 +15,7 @@ const Home = (props: IHomeProps) => {
   return (
     <div>
       <MetaHead pagesSchema={datoCmsData.pagesSchema} />
-      <div className="container mx-auto mt-12">
+      <div className="container mx-auto mt-12 lg:max-w-full lg:mt-0">
         <HomeHero />
         <HomeFourHorsemen />
         <HomeStudent />
