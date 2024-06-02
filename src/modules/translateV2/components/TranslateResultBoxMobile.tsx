@@ -8,7 +8,7 @@ interface TranslateResultBoxMobileProps {
 }
 
 const TranslateResultBoxMobile = (props: TranslateResultBoxMobileProps) => {
-  const {translatedText} = props;
+  const { translatedText } = props;
 
   const copyText = () => {
     window.navigator.clipboard.writeText(translatedText);
@@ -16,9 +16,7 @@ const TranslateResultBoxMobile = (props: TranslateResultBoxMobileProps) => {
   };
 
   return (
-    <div
-      className={"pb-2 bg-gray-100 border-b"}
-    >
+    <div className={"pb-2 bg-gray-100 border-b"}>
       <div className="p-2 text-sm h-[25vh]">{translatedText}</div>
       <Button className="ml-[76%] flex items-center gap-2" onClick={copyText}>
         <TbCopy />

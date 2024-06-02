@@ -5,7 +5,6 @@ import HomeHero from "@/modules/home/components/HomeHero";
 import HomeFourHorsemen from "@/modules/home/components/HomeFourHorsemen";
 import HomeStudent from "@/modules/home/components/HomeStudent";
 
-
 interface IHomeProps {
   datoCmsData: IMetaHead;
 }

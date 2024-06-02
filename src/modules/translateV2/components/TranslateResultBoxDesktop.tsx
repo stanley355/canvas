@@ -8,7 +8,9 @@ interface TranslateLanguageMenuDesktopProps {
   translatedText: string;
 }
 
-const TranslateResultBoxDesktop = (props: TranslateLanguageMenuDesktopProps) => {
+const TranslateResultBoxDesktop = (
+  props: TranslateLanguageMenuDesktopProps
+) => {
   const { translatedText } = props;
 
   const copyText = () => {

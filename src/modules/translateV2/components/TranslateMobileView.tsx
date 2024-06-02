@@ -11,12 +11,13 @@ const TranslateMobileView = () => {
       <TranslateLanguageMenuMobile />
       <TranslateSourceTextareaMobile />
 
-      {translatedTexts.length > 0 && translatedTexts.map((text: string, index:number) =>
-
-        <TranslateResultBoxMobile key={`translate_result_${index}`} translatedText={text} />
-      )
-      }
-
+      {translatedTexts.length > 0 &&
+        translatedTexts.map((text: string, index: number) => (
+          <TranslateResultBoxMobile
+            key={`translate_result_${index}`}
+            translatedText={text}
+          />
+        ))}
     </div>
   );
 };

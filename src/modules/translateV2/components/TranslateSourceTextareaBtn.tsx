@@ -28,7 +28,8 @@ const ExceedLimitModal = dynamic(
 
 const TranslateSourceTextareaBtn = () => {
   const { translateStates, dispatch } = useTranslateV2();
-  const { sourceText, targetLanguage, sourceLanguage, resultVariant } = translateStates;
+  const { sourceText, targetLanguage, sourceLanguage, resultVariant } =
+    translateStates;
 
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showLimitModal, setShowLimitModal] = useState(false);
@@ -66,7 +67,7 @@ const TranslateSourceTextareaBtn = () => {
       prompt_type: PromptsV2Type.Translate,
       system_content,
       user_content: sourceText,
-      n: resultVariant 
+      n: resultVariant,
     };
     const promptResponse = await fetchPromptsV2(payload);
 
@@ -75,18 +76,17 @@ const TranslateSourceTextareaBtn = () => {
       setShowLimitModal(true);
       return;
     }
-    
+
     setIsLoading(false);
 
-    if (promptResponse.length > 0 ) {
+    if (promptResponse.length > 0) {
       dispatch({
         type: "SET",
         name: "translatedTexts",
-        value: promptResponse.map((prompt: IPrompt) =>prompt.completion_text ) ,
+        value: promptResponse.map((prompt: IPrompt) => prompt.completion_text),
       });
       return;
     }
-
 
     toast.error("Server Busy, please try again");
     return;

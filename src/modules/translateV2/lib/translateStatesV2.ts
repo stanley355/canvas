@@ -22,5 +22,5 @@ export const TRANSLATE_STATES_V2: ITranslateStatesV2 = {
   },
   sourceText: "",
   translatedTexts: [],
-  resultVariant: 1
+  resultVariant: 1,
 };
