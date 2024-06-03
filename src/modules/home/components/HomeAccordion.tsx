@@ -14,7 +14,7 @@ const HomeAccordion = (props: HomeAccordionProps) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className='bg-white rounded-lg'>
+    <div className='mb-4 bg-white rounded-lg'>
       <CanvasButton variant='primary-reverse' className={cn('justify-between w-full text-lg font-semibold', open && 'rounded-b-none border-b')}
         onClick={() => setOpen(!open)}>
         <h3>{title}</h3>
