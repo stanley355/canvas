@@ -12,7 +12,7 @@ const HomeStudent = () => {
 
   return (
     <div className="bg-emerald-800">
-      <div className="p-4 text-white lg:py-8 lg:container">
+      <div className="p-4 py-8 text-white lg:container">
         <div className="mb-2 text-3xl font-semibold text-center lg:text-5xl">
           Student? Free!
         </div>
