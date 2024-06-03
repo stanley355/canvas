@@ -18,7 +18,7 @@ const HomeHero = () => {
   return (
     <>
       <div
-        style={{ backgroundColor: "rgba(255, 255, 255 , 0.5)" }}
+        style={{ backgroundColor: "rgba(255, 255, 255 , 0.75)" }}
         className="bg-[url('/images/home/hero-background.webp')] bg-cover py-4 mb-4 lg:bg-blend-overlay"
       >
         <Image
