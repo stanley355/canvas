@@ -1,6 +1,7 @@
+import { TbCheck } from "react-icons/tb";
 import { PiStudentDuotone } from "react-icons/pi";
 import CanvasLink from "@/common/components/ui/CanvasLink";
-import { TbCheck, TbCircleCheck } from "react-icons/tb";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 const HomeStudent = () => {
   const STUDENT_ITEM = [
@@ -23,6 +24,7 @@ const HomeStudent = () => {
         <CanvasLink
           href="/plans/students"
           variant="primary-reverse"
+          onClick={()=> sendFirebaseEvent('click_home_apply_student')}
           className="w-1/2 mx-auto mb-8 text-xl border lg:w-1/4 lg:hover:bg-emerald-600 border-emerald-800 lg:border-white lg:hover:text-white"
         >
           <PiStudentDuotone />

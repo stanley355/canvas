@@ -35,7 +35,7 @@ const HomeHero = () => {
           Solve all language problems
         </h1>
         <h2 className="mb-8 text-xl text-center">
-          Multilanguage writing and translation, our AI gets it all covered{" "}
+          Multilanguage translation and writing, our AI gets it all covered{" "}
         </h2>
         <div className="flex items-center justify-center h-12 mb-8 ">
           {isLogin ? (

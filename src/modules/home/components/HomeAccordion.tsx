@@ -2,6 +2,7 @@ import { useState } from "react";
 import { TbChevronDown, TbChevronUp } from "react-icons/tb";
 import { cn } from "@/common/lib/cn";
 import CanvasButton from "@/common/components/ui/CanvasButton";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 
 interface HomeAccordionProps {
   key: string;
@@ -21,9 +22,12 @@ const HomeAccordion = (props: HomeAccordionProps) => {
           "justify-between w-full text-lg font-semibold",
           open && "rounded-b-none border-b"
         )}
-        onClick={() => setOpen(!open)}
+        onClick={() => {
+          if (!open) sendFirebaseEvent('click_home_faq')
+          setOpen(!open);
+        }}
       >
-        <h3>{title}</h3>
+        <h3 className="w-4/5 text-left">{title}</h3>
         {open ? (
           <TbChevronUp className="text-3xl" />
         ) : (
