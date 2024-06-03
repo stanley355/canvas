@@ -6,7 +6,7 @@ const HomeUserOrigin = () => {
     <div className='p-4 mx-auto lg:container'>
       <div className='mb-4 text-2xl font-semibold text-center lg:mb-8'>with users coming from:</div>
 
-      <div className="lg:grid lg:grid-cols-[40%_20%_40%]">
+      <div className="lg:grid lg:grid-cols-[40%_20%_40%] lg:place-items-center">
         <div className='grid grid-cols-2 gap-4 mb-8 place-items-center'>
           <Image
             src="/images/schools/budi_mulia.png"
@@ -19,6 +19,7 @@ const HomeUserOrigin = () => {
             alt='Unika Atma Jaya'
             width={200}
             height={200}
+            className='w-2/3'
           />
         </div>
         <Image

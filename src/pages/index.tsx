@@ -6,6 +6,7 @@ import HomeFourHorsemen from "@/modules/home/components/HomeFourHorsemen";
 import HomeStudent from "@/modules/home/components/HomeStudent";
 import HomeStatistic from "@/modules/home/components/HomeStatistic";
 import HomeUserOrigin from "@/modules/home/components/HomeUserOrigin";
+import HomeUserNeed from "@/modules/home/components/HomeUserNeed";
 
 interface IHomeProps {
   datoCmsData: IMetaHead;
@@ -22,6 +23,7 @@ const Home = (props: IHomeProps) => {
         <HomeStudent />
         <HomeStatistic />
         <HomeUserOrigin />
+        <HomeUserNeed />
       </div>
     </div>
   );
