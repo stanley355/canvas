@@ -11,12 +11,16 @@ const TranslateDesktopView = () => {
       <TranslateLanguageMenuDesktop />
       <div className="grid grid-cols-2 gap-2">
         <TranslateSourceTextareaDesktop />
-          {translatedTexts.length > 0 ?
-            translatedTexts.map((text: string, index: number) =>
-              <TranslateResultBoxDesktop key={`translate_result_${index}`} translatedText={text} />
-            ) :
-            <TranslateResultBoxDesktop translatedText="" />
-          }
+        {translatedTexts.length > 0 ? (
+          translatedTexts.map((text: string, index: number) => (
+            <TranslateResultBoxDesktop
+              key={`translate_result_${index}`}
+              translatedText={text}
+            />
+          ))
+        ) : (
+          <TranslateResultBoxDesktop translatedText="" />
+        )}
       </div>
     </div>
   );

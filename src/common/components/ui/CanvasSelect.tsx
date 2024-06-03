@@ -49,17 +49,17 @@ const Select = (props: SelectProps) => {
         {selectedOption.label
           ? selectedOption.label
           : placeholder
-            ? placeholder
-            : "Select"}
+          ? placeholder
+          : "Select"}
       </CanvasButton>
-
 
       <div
         className={cn(
           "absolute top-12 left-0 border py-2 rounded-md bg-white z-50 shadow",
           showOptions ? "visible" : "invisible",
           optionContainerClassname
-        )}>
+        )}
+      >
         {options.map((option: IOption) => (
           <CanvasButton
             key={option.label}
@@ -71,7 +71,6 @@ const Select = (props: SelectProps) => {
               optionClassname
             )}
           >
-
             {option.label}
           </CanvasButton>
         ))}

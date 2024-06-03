@@ -72,7 +72,6 @@ const GrammarCheckSourceTextareaBtn = () => {
       return;
     }
 
-
     if (promptResponse[0].completion_text) {
       const removedAddedDiff = createRemovedAndAddedDiff(
         sourceText,
@@ -93,7 +92,6 @@ const GrammarCheckSourceTextareaBtn = () => {
       });
       return;
     }
-
 
     toast.error("Server Busy, please try again");
     return;

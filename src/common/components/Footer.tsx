@@ -10,7 +10,7 @@ import { FaRobot, FaRupiahSign } from "react-icons/fa6";
 import { PiStudentDuotone } from "react-icons/pi";
 
 const Footer = () => (
-  <div className="container pt-4 mx-auto">
+  <div className="container p-4 mx-auto ">
     <div className="grid grid-cols-2 gap-4 mb-4">
       <div>
         <div className="text-lg font-bold">Features</div>

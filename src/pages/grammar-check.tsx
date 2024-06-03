@@ -5,7 +5,7 @@ const GrammarCheck = () => {
 };
 
 export default GrammarCheck;
-export const getServerSideProps: GetServerSideProps= async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   return {
     redirect: {
       permanent: true,

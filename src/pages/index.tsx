@@ -2,9 +2,11 @@ import { GetStaticProps } from "next";
 import { getHomePageStaticProps } from "@/modules/home/lib/getHomePageStaticProps";
 import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
 import HomeHero from "@/modules/home/components/HomeHero";
-import HomeSponsors from "@/modules/home/components/HomeSponsors";
-import HomeExplanation from "@/modules/home/components/HomeExplanation";
-import HomeRoi from "@/modules/home/components/HomeRoi";
+import HomeFourHorsemen from "@/modules/home/components/HomeFourHorsemen";
+import HomeStudent from "@/modules/home/components/HomeStudent";
+import HomeStatistic from "@/modules/home/components/HomeStatistic";
+import HomeUserOrigin from "@/modules/home/components/HomeUserOrigin";
+import HomeFaq from "@/modules/home/components/HomeFaq";
 
 interface IHomeProps {
   datoCmsData: IMetaHead;
@@ -15,10 +17,14 @@ const Home = (props: IHomeProps) => {
   return (
     <div>
       <MetaHead pagesSchema={datoCmsData.pagesSchema} />
-      <HomeHero />
-      <HomeSponsors />
-      <HomeExplanation />
-      <HomeRoi />
+      <div className="container mx-auto mt-12 lg:max-w-full lg:mt-0">
+        <HomeHero />
+        <HomeFourHorsemen />
+        <HomeStudent />
+        <HomeStatistic />
+        <HomeUserOrigin />
+        <HomeFaq faq={datoCmsData?.pagesSchema?.faq} />
+      </div>
     </div>
   );
 };
