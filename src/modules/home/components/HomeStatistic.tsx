@@ -2,7 +2,7 @@ import Image from "next/image"
 
 const HomeStatistic = () => {
   return (
-    <div className='p-4 py-8 border-b lg:container'>
+    <div className='p-4 py-8 lg:container'>
       <div className="flex items-center justify-center gap-1 mb-4">
         <Image
           src={"/images/languageai.png"}
@@ -14,7 +14,7 @@ const HomeStatistic = () => {
         <span className="text-lg">Languageai.id</span>
       </div>
 
-      <div className='mb-8 text-2xl font-bold text-center'>By the time you are reading this, we served more than:</div>
+      <div className='mb-8 text-2xl font-bold text-center lg:mb-12'>By the time you are reading this, we served more than:</div>
 
       <div className="lg:grid lg:grid-cols-3">
         <div className='flex justify-between gap-4 mb-8 text-xl'>
@@ -32,7 +32,7 @@ const HomeStatistic = () => {
           <div>Language Check</div>
         </div>
 
-        <div className='flex justify-between gap-4 mb-8 text-xl'>
+        <div className='flex justify-between gap-4 text-xl'>
           <div className='flex flex-col items-center'>
             <div className='text-3xl font-semibold'>1,813</div>
             <div>Users</div>
@@ -43,8 +43,6 @@ const HomeStatistic = () => {
           </div>
         </div>
       </div>
-
-      <div className="text-xl text-center">with students coming from:</div>
     </div>
   )
 }
