@@ -17,7 +17,7 @@ export interface IMetaHead {
     slug: string;
     keywords: string;
     seo: IMetaHeadSeo;
-    faq: Record<string, string>[]
+    faq: Record<string, string>[];
   };
 }
 

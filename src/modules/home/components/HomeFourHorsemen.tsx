@@ -13,7 +13,8 @@ const HomeFourHorsemen = () => {
         <div>
           <div className="text-lg font-semibold text-blue-800">Ai Checkbot</div>
           <div>
-            Check your grammar and writing beyond English! Use it for Indonesian, Chinese, and more!
+            Check your grammar and writing beyond English! Use it for
+            Indonesian, Chinese, and more!
           </div>
         </div>
       </CanvasLink>
