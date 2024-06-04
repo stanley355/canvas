@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
+import { removeTrailingSlash } from "../lib/removeTrailingSlash";
 
 interface IMetaHeadSeo {
   title: string;
@@ -23,6 +24,7 @@ export interface IMetaHead {
 
 const MetaHead = (props: IMetaHead) => {
   const { pagesSchema } = props;
+  const url = removeTrailingSlash(String(process.env.NEXT_PUBLIC_BASE_URL)) + pagesSchema.slug;
 
   return (
     <Head>
@@ -30,40 +32,14 @@ const MetaHead = (props: IMetaHead) => {
       <title>{pagesSchema.seo.title}</title>
       <meta name="description" content={pagesSchema.seo.description} />
       <meta name="keywords" content={pagesSchema.keywords} />
-      <meta
-        name="robots"
-        content={
-          typeof window !== "undefined" &&
-          window.location.origin.includes(".world")
-            ? "nofollow, noindex"
-            : "follow, index"
-        }
-      />
+      <meta name="robots" content="follow, index" />
       <meta charSet="UTF-8" />
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, shrink-to-fit=no"
-      />
-      <link
-        rel="canonical"
-        href={
-          pagesSchema.slug === "home"
-            ? process.env.NEXT_PUBLIC_BASE_URL
-            : process.env.NEXT_PUBLIC_BASE_URL + pagesSchema.slug
-        }
-      />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
       <link rel="icon" type="image/png" href="/images/languageai.png" />
       {/* opengraph */}
       <meta property="og:title" content={pagesSchema.seo.title} />
       <meta property="og:type" content="website" />
-      <meta
-        property="og:url"
-        content={
-          pagesSchema.slug === "home"
-            ? process.env.NEXT_PUBLIC_BASE_URL
-            : process.env.NEXT_PUBLIC_BASE_URL + pagesSchema.slug
-        }
-      />
+      <meta property="og:url" content={url} />
       <meta property="og:image" content={pagesSchema.seo.image.url} />
       <meta property="og:description" content={pagesSchema.seo.description} />
       <meta property="og:site_name" content="LanguageAi" />
@@ -71,14 +47,7 @@ const MetaHead = (props: IMetaHead) => {
       <meta name="twitter:title" content={pagesSchema.seo.title} />
       <meta name="twitter:description" content={pagesSchema.seo.description} />
       <meta name="twitter:site" content="website" />
-      <meta
-        name="twitter:card"
-        content={
-          pagesSchema.slug === "home"
-            ? process.env.NEXT_PUBLIC_BASE_URL
-            : process.env.NEXT_PUBLIC_BASE_URL + pagesSchema.slug
-        }
-      />
+      <meta name="twitter:card" content={url} />
       <meta name="twitter:image" content={pagesSchema.seo.image.url} />
       <meta name="twitter:image:alt" content={pagesSchema.seo.image.alt} />
     </Head>
