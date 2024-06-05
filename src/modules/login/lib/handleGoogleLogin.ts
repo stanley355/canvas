@@ -14,8 +14,8 @@ export const handleGoogleLogin = async (token: any) => {
   
   const decodedToken = decode(String(token.credential)) as JwtPayload;
   const loginRes = await fetchUsersLoginGmailV2(decodedToken);
-
-  if (loginRes.token !== "") {
+  
+  if (loginRes?.token) {
     Cookies.set("token", loginRes.token);
     window.location.href = "/account/";
     return loginRes;
