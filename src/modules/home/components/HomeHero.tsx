@@ -42,7 +42,7 @@ const HomeHero = () => {
             <CanvasLink
               href="/plans/"
               variant="primary"
-              className="w-1/2 gap-2 text-lg"
+              className="w-1/2 gap-2 text-lg lg:w-1/6"
             >
               <FaRupiahSign />
               See Pricing
