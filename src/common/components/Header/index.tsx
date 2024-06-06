@@ -26,20 +26,15 @@ const Header = (props: IHeader) => {
   }, [cookieToken]);
 
   if (isLoginPage) {
-    return (
-      <nav className="p-2 lg:px-0 lg:mx-auto lg:container">
-        <Link href="/" className="flex items-center gap-1">
-          <Image
-            src="/images/languageai.png"
-            alt="LanguageAi"
-            width={30}
-            height={30}
-            className="border border-black"
-          />
-          <span>LanguageAi</span>
-        </Link>
-      </nav>
-    );
+    return <Link href="/">
+      <Image
+        src="/images/languageai/languageai_black.png"
+        alt="languageai.id"
+        width={500}
+        height={65}
+        className="py-4"
+      />
+    </Link>
   }
 
   return (

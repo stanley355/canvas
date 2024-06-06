@@ -5,7 +5,7 @@ import LoginCardFooter from "./LoginCardFooter";
 
 const LoginCard = () => {
   return (
-    <Card className="border-transparent w-full lg:w-[350px] lg:mx-auto lg:border-black">
+    <Card className="border-transparent w-full lg:w-[350px] lg:mx-auto lg:border-black mt-4">
       <LoginCardHeader />
       <LoginCardContent />
       <LoginCardFooter />
