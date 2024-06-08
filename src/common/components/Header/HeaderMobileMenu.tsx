@@ -1,11 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { TbChevronRight, TbX } from "react-icons/tb";
-import CanvasButton from "../ui/CanvasButton";
-import { HEADER_MENU } from "./constant";
-import { IHeaderMenu } from ".";
 
+import CanvasButton from "../ui/CanvasButton";
+
+import { MOBILE_HEADER_MENU } from "./constant";
+import { IHeaderMenu } from ".";
+import styles from './header.module.scss';
 import { cn } from "@/common/lib/cn";
+
 interface IHeaderMobileMenu {
   isLogin: boolean;
   onCloseClick: () => void;
@@ -16,7 +19,7 @@ const HeaderMobileMenu = (props: IHeaderMobileMenu) => {
   const { onCloseClick, isLogin } = props;
 
   return (
-    <div className="fixed top-0 left-0 z-20 w-full h-full bg-white">
+    <div className={cn("fixed top-0 left-0 z-20 w-full h-full bg-white", styles.header_mobile_menu)}>
       <div className="flex items-center justify-between w-full border-b">
         <Link href="/" className="pl-4">
           <Image
@@ -37,21 +40,21 @@ const HeaderMobileMenu = (props: IHeaderMobileMenu) => {
         </CanvasButton>
       </div>
 
-      <div className={cn("px-4")}>
-        {HEADER_MENU.filter((menu: IHeaderMenu) =>
+      <div className={cn("px-4", styles.header_mobile_menu_link_container)}>
+        {MOBILE_HEADER_MENU.filter((menu: IHeaderMenu) =>
           isLogin ? menu.url !== "/login/" : menu.url !== "/account/"
         ).map((menu: IHeaderMenu) => (
           <Link
-            href={menu.url}
             key={menu.title}
+            href={menu.url}
             className="flex items-center justify-between py-4 border-b"
             onClick={onCloseClick}
           >
             <div className="flex items-center gap-2 text-lg">
               {menu.icon}
-              <span>{menu.title}</span>
+              {menu.title}
             </div>
-            <TbChevronRight />
+            <TbChevronRight className=" text-emerald-800" />
           </Link>
         ))}
       </div>

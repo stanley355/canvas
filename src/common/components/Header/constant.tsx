@@ -8,54 +8,50 @@ import {
 import { FaRobot, FaRupiahSign } from "react-icons/fa6";
 import { PiStudentDuotone } from "react-icons/pi";
 
-export const HEADER_MENU = [
+export const MOBILE_HEADER_MENU = [
   {
-    title: "Translate",
+    title: "AI CHECKBOT",
+    url: "/checkbot/",
+    icon: <FaRobot  />,
+  },
+  {
+    title: "AI TRANSLATE",
     url: "/translate/",
     icon: <TbLanguage />,
   },
   {
-    title: "Checkbot",
-    url: "/checkbot/",
-    icon: <FaRobot />,
-  },
-  {
-    title: "Image to Text",
+    title: "AI IMAGE TO TEXT",
     url: "/image-to-text/",
     icon: <TbPhotoAi />,
   },
   {
-    title: "Text to Speech",
+    title: "AI TEXT TO SPEECH",
     url: "/text-to-speech/",
     icon: <TbSpeakerphone />,
   },
   {
-    title: "Pricing",
-    url: "/plans/",
-    icon: <FaRupiahSign />,
-  },
-  {
-    title: "Student Pricing",
+    title: "FOR STUDENTS",
     url: "/plans/students/",
     icon: <PiStudentDuotone />,
   },
   {
-    title: "For Students",
-    url: "/students/",
-    icon: <PiStudentDuotone />,
+    title: "PRICING",
+    url: "/plans/",
+    icon: <FaRupiahSign />,
   },
+
   {
-    title: "Help",
+    title: "HELP AND SUPPORT",
     url: "/support/",
     icon: <TbHelp />,
   },
   {
-    title: "Account",
+    title: "ACCOUNT",
     url: "/account/",
     icon: <TbUserCircle />,
   },
   {
-    title: "Login",
+    title: "LOGIN",
     url: "/login/",
     icon: <TbUserCircle />,
   },
