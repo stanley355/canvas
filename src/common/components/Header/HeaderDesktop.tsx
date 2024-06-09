@@ -3,7 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   TbArrowAutofitDown,
+  TbArrowDown,
   TbBrandGoogle,
+  TbChevronDown,
   TbDiscount,
   TbHelp,
   TbHelpCircle,
@@ -12,12 +14,13 @@ import {
   TbSpeakerphone,
   TbUserCircle,
 } from "react-icons/tb";
+import { TbArrowBarToRight } from "react-icons/tb";
+import { FaRobot } from "react-icons/fa6";
 
 import CanvasLink from "../ui/CanvasLink";
 import CanvasButton from "../ui/CanvasButton";
+import HeaderDesktopPricingMenu from "./HeaderDesktopPricingMenu";
 import { cn } from "@/common/lib/cn";
-import { PiStudent, PiStudentBold, PiStudentDuotone } from "react-icons/pi";
-import { FaRobot, FaRupiahSign } from "react-icons/fa6";
 
 interface IHeaderDesktop {
   isLogin: boolean;
@@ -26,165 +29,96 @@ interface IHeaderDesktop {
 
 const HeaderDesktop = (props: IHeaderDesktop) => {
   const { isLogin, pathname } = props;
-  const [showOtherMenu, setShowOtherMenu] = useState(false);
-  const [showStudentMenu, setShowStudentMenu] = useState(false);
-  const layoutLinkClassnames =
-    "border border-transparent rounded-md hover:border-black";
-
-  useEffect(() => {
-    setShowOtherMenu(false);
-    setShowStudentMenu(false);
-  }, [pathname]);
+  const [showPricingMenu, setShowPricingMenu] = useState(false);
 
   return (
-    <div className="container items-center justify-between hidden py-2 mx-auto bg-white lg:flex">
-      <div className="flex items-center">
-        <Link href="/" className="flex items-center gap-1 mr-2">
-          <Image
-            src="/images/languageai.png"
-            alt="LanguageAi"
-            width={30}
-            height={30}
-            className="border border-black"
-          />
-          <span>LanguageAi</span>
-        </Link>
+    <div className="flex items-center justify-between p-4 bg-white">
+      <Link href="/">
+        <Image
+          src="/images/languageai/languageai_black.png"
+          alt="languageai.id"
+          width={150}
+          height={65}
+        />
+      </Link>
 
-        <div className="flex items-center gap-4 px-4 ">
-          <CanvasLink
-            variant="ghost"
-            href="/translate/"
-            className={layoutLinkClassnames}
-          >
-            <TbLanguage />
-            <span>Ai Translate</span>
-          </CanvasLink>
-          <CanvasLink
-            variant="ghost"
-            href="/checkbot/"
-            className={layoutLinkClassnames}
-          >
-            <FaRobot />
-            <span>Ai Checkbot</span>
-          </CanvasLink>
-
-          <div className="relative">
-            <CanvasButton
-              variant="ghost"
-              onClick={() => setShowOtherMenu(!showOtherMenu)}
-              className={
-                showOtherMenu
-                  ? "border border-black rounded-md"
-                  : layoutLinkClassnames
-              }
-            >
-              <TbArrowAutofitDown />
-              <span>Other Ai Tools</span>
-            </CanvasButton>
-
-            <div
-              className={cn(
-                "absolute left-0 z-50 bg-white border border-black rounded-md top-10 hidden",
-                showOtherMenu ? "block" : ""
-              )}
-            >
-              <CanvasLink
-                variant="ghost"
-                href="/image-to-text"
-                className={layoutLinkClassnames}
-              >
-                <TbPhotoAi />
-                <span>Image to Text</span>
-              </CanvasLink>
-              <CanvasLink
-                variant="ghost"
-                href="/text-to-speech"
-                className={layoutLinkClassnames}
-              >
-                <TbSpeakerphone />
-                <span>Text to Speech</span>
-              </CanvasLink>
-            </div>
-          </div>
-
-          <div className="relative">
-            <CanvasButton
-              variant="ghost"
-              onClick={() => setShowStudentMenu(!showStudentMenu)}
-              className={
-                showStudentMenu
-                  ? "border border-black rounded-md"
-                  : layoutLinkClassnames
-              }
-            >
-              <PiStudentDuotone className="text-lg" />
-              <span>For Students</span>
-            </CanvasButton>
-
-            <div
-              className={cn(
-                "absolute left-0 z-50 bg-white border border-black rounded-md top-10 hidden",
-                showStudentMenu ? "block" : ""
-              )}
-            >
-              <CanvasLink
-                variant="ghost"
-                href="/students/"
-                className={layoutLinkClassnames}
-              >
-                <PiStudentDuotone className="text-lg" />
-                <span>Student Promo</span>
-              </CanvasLink>
-              <CanvasLink
-                variant="ghost"
-                href="/plans/students"
-                className={layoutLinkClassnames}
-              >
-                <FaRupiahSign className="text-lg" />
-                <span>Student Pricing</span>
-              </CanvasLink>
-            </div>
-          </div>
-
-          <CanvasLink
-            variant="ghost"
-            href="/plans/"
-            className={layoutLinkClassnames}
-          >
-            <FaRupiahSign />
-            <span>Pricing</span>
-          </CanvasLink>
-          <CanvasLink
-            variant="ghost"
-            href="/support/"
-            className={layoutLinkClassnames}
-          >
-            <TbHelpCircle />
-            <span>Help and Support</span>
-          </CanvasLink>
-        </div>
+      <div className="flex border rounded-full">
+        <CanvasLink
+          href="/checkbot/"
+          variant="none"
+          className={cn(
+            "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-black",
+            pathname === "/checkbot" ? "border-black" : "border-transparent"
+          )}
+        >
+          <FaRobot />
+          <span>Checkbot</span>
+        </CanvasLink>
+        <CanvasLink
+          href="/translate/"
+          variant="none"
+          className={cn(
+            "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-black",
+            pathname === "/translate" ? "border-black" : "border-transparent"
+          )}
+        >
+          <TbLanguage />
+          <span>Translate</span>
+        </CanvasLink>
+        <CanvasLink
+          href="/image-to-text"
+          variant="none"
+          className={cn(
+            "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-black",
+            pathname === "/image-to-text"
+              ? "border-black"
+              : "border-transparent"
+          )}
+        >
+          <TbPhotoAi />
+          <span>Image to Text</span>
+        </CanvasLink>
+        <CanvasLink
+          href="/text-to-speech/"
+          variant="none"
+          className={cn(
+            "flex items-center gap-2 p-2 px-4 border border-transparent rounded-full hover:border-black",
+            pathname === "/text-to-speech"
+              ? "border-black"
+              : "border-transparent"
+          )}
+        >
+          <TbSpeakerphone />
+          <span>Text to Speech</span>
+        </CanvasLink>
       </div>
 
-      {isLogin ? (
-        <CanvasLink href="/account" variant="default">
-          <TbUserCircle />
-          <span>Account</span>
-        </CanvasLink>
-      ) : (
-        <div className="flex items-center gap-4">
-          <CanvasLink
-            href="/login/"
-            variant="ghost"
-            className={layoutLinkClassnames}
-          >
-            Login
+      <div className="relative flex gap-2">
+        {showPricingMenu && (
+          <HeaderDesktopPricingMenu
+            onCloseClick={() => setShowPricingMenu(false)}
+          />
+        )}
+        <CanvasButton
+          variant="ghost"
+          onClick={() => setShowPricingMenu(true)}
+          className="items-center border border-transparent hover:border-black "
+        >
+          <span>Pricing</span>
+          <TbChevronDown />
+        </CanvasButton>
+        {isLogin ? (
+          <CanvasLink href="/account">
+            <TbUserCircle />
+            <span>ACCOUNT</span>
           </CanvasLink>
-          <CanvasLink href="/login/" variant="default" className="gap-2">
-            <span className="font-bold">Get LanguageAI</span>
-            <span>It&apos;s Free</span>
+        ) : (
+          <CanvasLink href={"/login"}>
+            <span>SIGN IN</span>
+            <TbArrowBarToRight />
           </CanvasLink>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

@@ -15,9 +15,9 @@ interface IHomeProps {
 const Home = (props: IHomeProps) => {
   const { datoCmsData } = props;
   return (
-    <div>
+    <>
       <MetaHead pagesSchema={datoCmsData.pagesSchema} />
-      <div className="container mx-auto mt-12 lg:max-w-full lg:mt-0">
+      <div className="">
         <HomeHero />
         <HomeFourHorsemen />
         <HomeStudent />
@@ -25,7 +25,7 @@ const Home = (props: IHomeProps) => {
         <HomeUserOrigin />
         <HomeFaq faq={datoCmsData?.pagesSchema?.faq} />
       </div>
-    </div>
+    </>
   );
 };
 

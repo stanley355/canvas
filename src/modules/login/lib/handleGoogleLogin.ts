@@ -9,12 +9,12 @@ export const handleGoogleLogin = async (token: any) => {
   sendFirebaseEvent("login_google");
 
   if (window.location.pathname === "/") {
-    sendFirebaseEvent('login_home')
+    sendFirebaseEvent("login_home");
   }
-  
+
   const decodedToken = decode(String(token.credential)) as JwtPayload;
   const loginRes = await fetchUsersLoginGmailV2(decodedToken);
-  
+
   if (loginRes?.token) {
     Cookies.set("token", loginRes.token);
     window.location.href = "/account/";

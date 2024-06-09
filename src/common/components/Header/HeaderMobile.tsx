@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { RxHamburgerMenu } from "react-icons/rx";
 import HeaderMobileMenu from "./HeaderMobileMenu";
+import CanvasButton from "../ui/CanvasButton";
 
 interface IHeaderMobile {
   isLogin: boolean;
@@ -13,26 +13,24 @@ const HeaderMobile = (props: IHeaderMobile) => {
   const { isLogin } = props;
   const [showMenu, setShowMenu] = useState(false);
   return (
-    <div className="fixed top-0 left-0 z-10 flex items-center justify-between w-full p-2 bg-white border-b lg:hidden">
-      <Link href="/" className="flex items-center gap-1">
+    <div className="fixed top-0 left-0 z-10 flex items-center justify-between w-full bg-white border-b lg:hidden">
+      <Link href="/" className="pl-4">
         <Image
-          src="/images/languageai.png"
-          alt="LanguageAi Navbar"
-          width={30}
-          height={30}
-          className="border border-black"
+          src="/images/languageai/languageai_black.png"
+          alt="languageai.id"
+          width={150}
+          height={65}
+          className="h-full"
         />
-        <span>LanguageAi</span>
       </Link>
-      <button
+      <CanvasButton
         type="button"
-        className="h-full p-2"
-        aria-label="Open Menu"
-        aria-labelledby="Open Menu By"
+        variant="none"
+        className="p-4"
         onClick={() => setShowMenu(true)}
       >
         Menu
-      </button>
+      </CanvasButton>
       {showMenu && (
         <HeaderMobileMenu
           isLogin={isLogin}

@@ -8,7 +8,7 @@ const HomeFourHorsemen = () => {
     <div className="px-4 mb-8 lg:grid lg:grid-cols-4 lg:gap-4 lg:container">
       <CanvasLink
         href={"/translate/"}
-        onClick={() => sendFirebaseEvent('click_home_features_translate')}
+        onClick={() => sendFirebaseEvent("click_home_features_translate")}
         className="gap-2 mb-4 text-black bg-white border-black rounded-lg"
       >
         <TbLanguage className="w-2/3 text-7xl" />
@@ -24,7 +24,7 @@ const HomeFourHorsemen = () => {
       </CanvasLink>
       <CanvasLink
         href={"/checkbot/"}
-        onClick={() => sendFirebaseEvent('click_home_features_checkbot')}
+        onClick={() => sendFirebaseEvent("click_home_features_checkbot")}
         className="gap-2 p-4 mb-4 text-black bg-white border-black rounded-lg"
       >
         <FaRobot className="hidden w-2/3 text-6xl lg:block" />
@@ -38,10 +38,9 @@ const HomeFourHorsemen = () => {
         <FaRobot className="w-2/3 text-6xl lg:hidden" />
       </CanvasLink>
 
-
       <CanvasLink
         href={"/image-to-text/"}
-        onClick={() => sendFirebaseEvent('click_home_features_itt')}
+        onClick={() => sendFirebaseEvent("click_home_features_itt")}
         className="gap-2 mb-4 text-black bg-white border-black rounded-lg"
       >
         <TbPhotoAi className="w-2/3 text-6xl" />
@@ -58,7 +57,7 @@ const HomeFourHorsemen = () => {
 
       <CanvasLink
         href={"/text-to-speech/"}
-        onClick={() => sendFirebaseEvent('click_home_features_tts')}
+        onClick={() => sendFirebaseEvent("click_home_features_tts")}
         className="gap-2 mb-4 text-black bg-white border-black rounded-lg"
       >
         <TbSpeakerphone className="hidden w-2/3 text-6xl lg:block" />
