@@ -40,7 +40,7 @@ const Header = (props: IHeader) => {
   return (
     <nav className="w-full">
       <HeaderMobile isLogin={isLogin} pathname={pathname} />
-      {/* <HeaderDesktop isLogin={isLogin} pathname={pathname} /> */}
+      <HeaderDesktop isLogin={isLogin} />
     </nav>
   );
 };
