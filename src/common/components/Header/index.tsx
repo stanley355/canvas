@@ -26,21 +26,23 @@ const Header = (props: IHeader) => {
   }, [cookieToken]);
 
   if (isLoginPage) {
-    return <Link href="/" className="w-full">
-      <Image
-        src="/images/languageai/languageai_black.png"
-        alt="languageai.id"
-        width={200}
-        height={65}
-        className="p-4 mx-auto"
-      />
-    </Link>
+    return (
+      <Link href="/" className="w-full">
+        <Image
+          src="/images/languageai/languageai_black.png"
+          alt="languageai.id"
+          width={200}
+          height={65}
+          className="p-4 mx-auto"
+        />
+      </Link>
+    );
   }
 
   return (
     <nav className="w-full">
       <HeaderMobile isLogin={isLogin} pathname={pathname} />
-      <HeaderDesktop isLogin={isLogin} />
+      <HeaderDesktop isLogin={isLogin} pathname={pathname} />
     </nav>
   );
 };

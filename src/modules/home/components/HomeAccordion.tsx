@@ -23,7 +23,7 @@ const HomeAccordion = (props: HomeAccordionProps) => {
           open && "rounded-b-none border-b"
         )}
         onClick={() => {
-          if (!open) sendFirebaseEvent('click_home_faq')
+          if (!open) sendFirebaseEvent("click_home_faq");
           setOpen(!open);
         }}
       >

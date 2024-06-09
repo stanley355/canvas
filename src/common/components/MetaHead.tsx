@@ -24,7 +24,9 @@ export interface IMetaHead {
 
 const MetaHead = (props: IMetaHead) => {
   const { pagesSchema } = props;
-  const url = removeTrailingSlash(String(process.env.NEXT_PUBLIC_BASE_URL)) + pagesSchema.slug;
+  const url =
+    removeTrailingSlash(String(process.env.NEXT_PUBLIC_BASE_URL)) +
+    pagesSchema.slug;
 
   return (
     <Head>
@@ -34,7 +36,10 @@ const MetaHead = (props: IMetaHead) => {
       <meta name="keywords" content={pagesSchema.keywords} />
       <meta name="robots" content="follow, index" />
       <meta charSet="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      />
       <link rel="icon" type="image/png" href="/images/languageai.png" />
       {/* opengraph */}
       <meta property="og:title" content={pagesSchema.seo.title} />

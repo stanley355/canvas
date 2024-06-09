@@ -12,7 +12,7 @@ export const MOBILE_HEADER_MENU = [
   {
     title: "AI CHECKBOT",
     url: "/checkbot/",
-    icon: <FaRobot  />,
+    icon: <FaRobot />,
   },
   {
     title: "AI TRANSLATE",

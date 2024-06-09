@@ -6,7 +6,7 @@ import CanvasButton from "../ui/CanvasButton";
 
 import { MOBILE_HEADER_MENU } from "./constant";
 import { IHeaderMenu } from ".";
-import styles from './header.module.scss';
+import styles from "./header.module.scss";
 import { cn } from "@/common/lib/cn";
 
 interface IHeaderMobileMenu {
@@ -14,12 +14,16 @@ interface IHeaderMobileMenu {
   onCloseClick: () => void;
 }
 
-
 const HeaderMobileMenu = (props: IHeaderMobileMenu) => {
   const { onCloseClick, isLogin } = props;
 
   return (
-    <div className={cn("fixed top-0 left-0 z-20 w-full h-full bg-white", styles.header_mobile_menu)}>
+    <div
+      className={cn(
+        "fixed top-0 left-0 z-20 w-full h-full bg-white",
+        styles.header_mobile_menu
+      )}
+    >
       <div className="flex items-center justify-between w-full border-b">
         <Link href="/" className="pl-4">
           <Image
