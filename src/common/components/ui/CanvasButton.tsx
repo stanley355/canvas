@@ -13,7 +13,7 @@ interface CanvasLinkProps
 }
 
 const CanvasButton = (props: CanvasLinkProps) => {
-  const { variant, isLoading } = props;
+  const { variant, isLoading, ...rest } = props;
   const [loadingText, setLoadingText] = useState("Loading");
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const CanvasButton = (props: CanvasLinkProps) => {
 
   return (
     <button
-      {...props} //put on top so the bottom props can override
+      {...rest} //put on top so the bottom props can override
       disabled={isLoading}
       className={cn(
         CANVAS_BUTTON_VARIANTS[variant ? variant : "default"],
