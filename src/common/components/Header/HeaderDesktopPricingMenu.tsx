@@ -43,7 +43,7 @@ const HeaderDesktopPricingMenu = (props: HeaderDesktopPricingMenuProps) => {
               <div>See pricing overview and comparison</div>
             </div>
           </CanvasLink>
-          <CanvasLink href={"/plans"} variant="ghost"
+          <CanvasLink href={"/plans/students"} variant="ghost"
             onClick={onCloseClick}
             className="relative justify-start gap-4 overflow-hidden text-white border border-transparent rounded-lg bg-emerald-800 hover:border-black hover:bg-white hover:text-black">
             <div className="absolute w-1/3 py-1 text-xs font-bold text-center text-red-500 rotate-45 bg-yellow-200 top-4 -right-8 h-fit">
@@ -55,7 +55,7 @@ const HeaderDesktopPricingMenu = (props: HeaderDesktopPricingMenuProps) => {
               <div>I am a student and I want it free</div>
             </div>
           </CanvasLink>
-          <CanvasLink href={"/plans"} variant="ghost"
+          <CanvasLink href={"/plans/premium"} variant="ghost"
             onClick={onCloseClick}
             className="relative justify-start gap-4 overflow-hidden text-white border border-transparent rounded-lg bg-emerald-800 hover:border-black hover:bg-white hover:text-black">
             <div className="absolute w-1/3 py-1 text-xs font-bold text-center text-red-500 rotate-45 bg-yellow-200 top-4 -right-8 h-fit">
@@ -67,7 +67,7 @@ const HeaderDesktopPricingMenu = (props: HeaderDesktopPricingMenuProps) => {
               <div>I want to pay monthly or yearly</div>
             </div>
           </CanvasLink>
-          <CanvasLink href={"/plans"} variant="ghost"
+          <CanvasLink href={"/plans/payasyougo"} variant="ghost"
             onClick={onCloseClick}
             className="relative justify-start gap-4 overflow-hidden text-white bg-blue-800 border border-transparent rounded-lg hover:border-black hover:bg-white hover:text-black">
             <div className="absolute w-1/3 py-1 text-xs font-bold text-center text-red-500 rotate-45 bg-yellow-200 top-4 -right-8 h-fit">

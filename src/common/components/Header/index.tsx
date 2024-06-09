@@ -26,13 +26,13 @@ const Header = (props: IHeader) => {
   }, [cookieToken]);
 
   if (isLoginPage) {
-    return <Link href="/">
+    return <Link href="/" className="w-full">
       <Image
         src="/images/languageai/languageai_black.png"
         alt="languageai.id"
-        width={500}
+        width={200}
         height={65}
-        className="py-4"
+        className="p-4 mx-auto"
       />
     </Link>
   }
