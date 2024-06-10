@@ -16,20 +16,7 @@ const HomeHero = () => {
   }, [router]);
 
   return (
-    <>
-      <div
-        style={{ backgroundColor: "rgba(255, 255, 255 , 0.75)" }}
-        className="bg-[url('/images/home/hero-background.webp')] bg-cover py-4 mb-4 lg:bg-blend-overlay"
-      >
-        <Image
-          src={"/images/languageai.png"}
-          alt="LanguageAi"
-          width={200}
-          height={200}
-          className="p-2 mx-auto bg-white border-4 rounded-full shadow-lg lg:border-black"
-        />
-      </div>
-
+    <div className="mt-20 lg:mt-8">
       <div className="px-4">
         <h1 className="mb-4 text-4xl font-bold text-center lg:text-5xl">
           Solve all language problems
@@ -52,7 +39,7 @@ const HomeHero = () => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

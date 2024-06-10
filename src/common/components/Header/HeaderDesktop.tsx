@@ -52,7 +52,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           )}
         >
           <FaRobot />
-          <span>Checkbot</span>
+          <span>AI Checkbot</span>
         </CanvasLink>
         <CanvasLink
           href="/translate/"
@@ -63,7 +63,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           )}
         >
           <TbLanguage />
-          <span>Translate</span>
+          <span>AI Translate</span>
         </CanvasLink>
         <CanvasLink
           href="/image-to-text"

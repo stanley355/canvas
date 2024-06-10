@@ -1,20 +1,20 @@
+import Link from "next/link";
 import Image from "next/image";
 
 const HomeStatistic = () => {
   return (
     <div className="p-4 py-8 lg:container">
-      <div className="flex items-center justify-center gap-1 mb-4">
+      <Link href="/">
         <Image
-          src={"/images/languageai.png"}
-          alt="LanguageAi"
-          width={30}
-          height={30}
-          className="bg-white border border-black shadow-lg "
+          src="/images/languageai/languageai_black.png"
+          alt="languageai.id"
+          width={200}
+          height={130}
+          className="mx-auto mb-4"
         />
-        <span className="text-lg">Languageai.id</span>
-      </div>
+      </Link>
 
-      <div className="mb-8 text-2xl font-bold text-center lg:mb-12">
+      <div className="mb-8 text-2xl font-semibold text-center">
         By the time you are reading this, we served more than:
       </div>
 
