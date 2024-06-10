@@ -32,7 +32,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
   const [showPricingMenu, setShowPricingMenu] = useState(false);
 
   return (
-    <div className="flex items-center justify-between p-4 bg-white">
+    <div className="items-center justify-between hidden p-4 bg-white lg:flex">
       <Link href="/">
         <Image
           src="/images/languageai/languageai_black.png"
