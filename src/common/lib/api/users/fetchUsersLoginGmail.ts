@@ -6,9 +6,9 @@ interface IResponse {
   token: string;
 }
 
-export const fetchUsersLoginGmailV2 = async (
+export const fetchUsersLoginGmail = async (
   payload: JwtPayload
-): Promise<IResponse | IAuthorError> => {
+): Promise<IResponse & IAuthorError> => {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}api/users/login/gmail`;
   const req= {
     fullname: payload.name,
@@ -19,6 +19,8 @@ export const fetchUsersLoginGmailV2 = async (
     const { data } = await axios.post(url, req);
     return data;
   } catch (error: any) {
+    console.log(error);
+    
     return error.response.data;
   }
 };

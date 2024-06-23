@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import { JwtPayload, decode } from "jsonwebtoken";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import { fetchUsersLoginGmailV2 } from "@/common/lib/apiV2/users/fetchUsersLoginGmailV2";
+import { fetchUsersLoginGmail } from "@/common/lib/api/users/fetchUsersLoginGmail";
 import { LOGIN_FAIL_MESSAGE } from "./constant";
 
 export const handleGoogleLogin = async (token: any) => {
@@ -10,11 +10,16 @@ export const handleGoogleLogin = async (token: any) => {
   sendFirebaseEvent("login_google");
 
   const decodedToken = decode(String(token.credential)) as JwtPayload;
-  const loginRes = await fetchUsersLoginGmailV2(decodedToken);
+  const loginRes = await fetchUsersLoginGmail(decodedToken);
 
   if (loginRes?.token) {
     Cookies.set("token", loginRes.token);
     window.location.href = "/account/";
+    return loginRes;
+  }
+
+  if (loginRes?.statusText) {
+    toast.error(loginRes.statusText);
     return loginRes;
   }
 
