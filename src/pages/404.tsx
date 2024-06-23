@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
 import { Button } from "@/common/components/ui/button";
-import { fetchDatoCms } from "@/common/lib/api/fetchDatoCms";
+import { fetchDatoCms } from "@/common/lib/api/dato/fetchDatoCms";
 import { getPagesSchema } from "@/common/lib/api/gql";
 
 interface INotFoundProps {

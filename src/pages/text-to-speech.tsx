@@ -5,7 +5,7 @@ import { TbSpeakerphone } from "react-icons/tb";
 
 import TextToSpeechTextarea from "@/modules/text-to-speech/components/TextToSpeechTextarea";
 import TextToSpeechResult from "@/modules/text-to-speech/components/TextToSpeechResult";
-import { fetchDatoCms } from "@/common/lib/api/fetchDatoCms";
+import { fetchDatoCms } from "@/common/lib/api/dato/fetchDatoCms";
 import { getPagesSchema } from "@/common/lib/api/gql";
 import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
 

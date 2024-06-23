@@ -1,5 +1,5 @@
 import { request } from "graphql-request";
-import { axiosErrorHandler } from "./axiosErrorHandler";
+import { axiosErrorHandler } from "../axiosErrorHandler";
 
 export const fetchDatoCms = async (
   gqlQuery: string,

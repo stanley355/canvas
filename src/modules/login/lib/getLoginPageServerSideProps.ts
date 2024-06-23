@@ -1,5 +1,5 @@
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
-import { fetchDatoCms } from "@/common/lib/api/fetchDatoCms";
+import { fetchDatoCms } from "@/common/lib/api/dato/fetchDatoCms";
 import { getPagesSchema } from "@/common/lib/api/gql";
 
 export const getLoginPageServerSideProps: GetServerSideProps= async (ctx: GetServerSidePropsContext) => {

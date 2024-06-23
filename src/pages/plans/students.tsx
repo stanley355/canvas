@@ -1,5 +1,5 @@
 import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
-import { fetchDatoCms } from "@/common/lib/api/fetchDatoCms";
+import { fetchDatoCms } from "@/common/lib/api/dato/fetchDatoCms";
 import { getPagesSchema } from "@/common/lib/api/gql";
 import PlanHomeStatistic from "@/modules/plans/components/PlanHomeStatistic";
 import PlanStudentsBenefits from "@/modules/plans/components/PlanStudentsBenefits";

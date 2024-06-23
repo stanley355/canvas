@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { GetStaticProps } from "next";
-import { fetchDatoCms } from "@/common/lib/api/fetchDatoCms";
+import { fetchDatoCms } from "@/common/lib/api/dato/fetchDatoCms";
 import { getPagesSchema } from "@/common/lib/api/gql";
 import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
 
