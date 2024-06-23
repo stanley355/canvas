@@ -2,25 +2,31 @@ import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import { JwtPayload, decode } from "jsonwebtoken";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import { fetchUsersLoginGmailV2 } from "@/common/lib/apiV2/users/fetchUsersLoginGmailV2";
+import { fetchUsersLoginGmail } from "@/common/lib/api/users/fetchUsersLoginGmail";
+import { LOGIN_FAIL_MESSAGE } from "./constant";
 
 export const handleGoogleLogin = async (token: any) => {
   sendFirebaseEvent("login");
   sendFirebaseEvent("login_google");
 
-  if (window.location.pathname === "/") {
-    sendFirebaseEvent("login_home");
-  }
-
   const decodedToken = decode(String(token.credential)) as JwtPayload;
-  const loginRes = await fetchUsersLoginGmailV2(decodedToken);
+  const loginRes = await fetchUsersLoginGmail(decodedToken);
 
   if (loginRes?.token) {
     Cookies.set("token", loginRes.token);
-    window.location.href = "/account/";
+    const redirectPath =
+      window.location.pathname === "/" || window.location.pathname === "/login"
+        ? "/account"
+        : window.location.pathname;
+    window.location.href = redirectPath;
     return loginRes;
   }
 
-  toast.error("Server busy, please try again");
+  if (loginRes?.statusText) {
+    toast.error(loginRes.statusText);
+    return loginRes;
+  }
+
+  toast.error(LOGIN_FAIL_MESSAGE);
   return loginRes;
 };

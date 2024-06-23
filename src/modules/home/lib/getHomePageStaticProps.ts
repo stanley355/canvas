@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import { fetchDatoCms } from "@/common/lib/api/fetchDatoCms";
+import { fetchDatoCms } from "@/common/lib/api/dato/fetchDatoCms";
 import { getPagesSchema } from "@/common/lib/api/gql";
 
 export const getHomePageStaticProps: GetStaticProps = async () => {

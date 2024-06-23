@@ -5,7 +5,3 @@ export interface IUser {
   phone_number: string | null;
   balance: number;
 }
-
-export interface IUserLogin {
-  token: string;
-}

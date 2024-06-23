@@ -1,5 +1,8 @@
 # CANVAS
 
+### 1.3.4 (refactor)
+- Update login page and api
+
 ### 1.3.3 (enhancement)
 - Update Header navbar design
 

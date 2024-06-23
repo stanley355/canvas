@@ -3,7 +3,7 @@ import { GetStaticProps } from "next";
 import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
 import StudentsHero from "@/modules/students/components/StudentsHero";
 
-import { fetchDatoCms } from "@/common/lib/api/fetchDatoCms";
+import { fetchDatoCms } from "@/common/lib/api/dato/fetchDatoCms";
 import { getPagesSchema } from "@/common/lib/api/gql";
 import StudentsHeroSupport from "@/modules/students/components/StudentsHeroSupport";
 import StudentsAssignmentBenefit from "@/modules/students/components/StudentsAssignmentBenefit";

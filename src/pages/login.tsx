@@ -1,30 +1,24 @@
-import { GetStaticProps } from "next";
-import { useEffect } from "react";
-import Cookies from "js-cookie";
+import { GetServerSideProps } from "next";
+import { getLoginPageServerSideProps } from "@/modules/login/lib/getLoginPageServerSideProps";
 
-import { getLoginPageStaticProps } from "@/modules/login/lib/getLoginPageStaticProps";
-import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
+import NextHead, { NextHeadProps } from "@/common/components/NextHead";
 import LoginCard from "@/modules/login/components/LoginCard";
 
 interface ILoginProps {
-  datoCmsData: IMetaHead;
+  datoCmsData: NextHeadProps;
 }
+
+export const getServerSideProps: GetServerSideProps = getLoginPageServerSideProps;
 
 const Login = (props: ILoginProps) => {
   const { datoCmsData } = props;
 
-  const token = Cookies.get("token");
-  useEffect(() => {
-    if (token) window.location.href = "/account/";
-  }, [token]);
-
   return (
-    <>
-      <MetaHead pagesSchema={datoCmsData.pagesSchema} />
+    <div className="px-4 lg:px-0">
+      {datoCmsData && <NextHead pagesSchema={datoCmsData.pagesSchema} />}
       <LoginCard />
-    </>
+    </div>
   );
 };
 
 export default Login;
-export const getStaticProps: GetStaticProps = getLoginPageStaticProps;
