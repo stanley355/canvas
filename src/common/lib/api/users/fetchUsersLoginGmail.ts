@@ -19,8 +19,6 @@ export const fetchUsersLoginGmail = async (
     const { data } = await axios.post(url, req);
     return data;
   } catch (error: any) {
-    console.log(error);
-    
     return error.response.data;
   }
 };
