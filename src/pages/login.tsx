@@ -1,8 +1,8 @@
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
 
-import { getLoginPageStaticProps } from "@/modules/login/lib/getLoginPageStaticProps";
+import { getLoginPageServerSideProps } from "@/modules/login/lib/getLoginPageServerSideProps";
 import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
 import LoginCard from "@/modules/login/components/LoginCard";
 
@@ -27,4 +27,4 @@ const Login = (props: ILoginProps) => {
 };
 
 export default Login;
-export const getStaticProps: GetStaticProps = getLoginPageStaticProps;
+export const getServerSideProps: GetServerSideProps = getLoginPageServerSideProps;
