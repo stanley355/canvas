@@ -10,7 +10,7 @@ const GoogleLoginBtn = () => {
     >
       <GoogleLogin
         onSuccess={handleGoogleLogin}
-        onError={() => toast.error("Something went wrong, please try again")}
+        onError={() => toast.error("Login fail, please try again")}
         text="continue_with"
         theme="filled_blue"
       />

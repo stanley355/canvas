@@ -14,6 +14,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        'brand-primary': "#172554",
         "black-rgba": "rgba(0, 0, 0, 0.54)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
