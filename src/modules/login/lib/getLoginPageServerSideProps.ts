@@ -5,7 +5,7 @@ import { getDatoPagesSchema } from "@/common/lib/api/dato/datoQueries";
 export const getLoginPageServerSideProps: GetServerSideProps= async (ctx: GetServerSidePropsContext) => {
   const token = ctx.req.cookies.token;
 
-  if (!token) {
+  if (token) {
     return {
       redirect: {
         permanent: false,
