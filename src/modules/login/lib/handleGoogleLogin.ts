@@ -3,14 +3,11 @@ import Cookies from "js-cookie";
 import { JwtPayload, decode } from "jsonwebtoken";
 import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { fetchUsersLoginGmailV2 } from "@/common/lib/apiV2/users/fetchUsersLoginGmailV2";
+import { LOGIN_FAIL_MESSAGE } from "./constant";
 
 export const handleGoogleLogin = async (token: any) => {
   sendFirebaseEvent("login");
   sendFirebaseEvent("login_google");
-
-  if (window.location.pathname === "/") {
-    sendFirebaseEvent("login_home");
-  }
 
   const decodedToken = decode(String(token.credential)) as JwtPayload;
   const loginRes = await fetchUsersLoginGmailV2(decodedToken);
@@ -21,6 +18,6 @@ export const handleGoogleLogin = async (token: any) => {
     return loginRes;
   }
 
-  toast.error("Server busy, please try again");
+  toast.error(LOGIN_FAIL_MESSAGE);
   return loginRes;
 };

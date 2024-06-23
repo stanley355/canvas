@@ -2,6 +2,7 @@ import React from "react";
 import { toast } from "react-toastify";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { handleGoogleLogin } from "../lib/handleGoogleLogin";
+import { LOGIN_FAIL_MESSAGE } from "../lib/constant";
 
 const GoogleLoginBtn = () => {
   return (
@@ -10,7 +11,7 @@ const GoogleLoginBtn = () => {
     >
       <GoogleLogin
         onSuccess={handleGoogleLogin}
-        onError={() => toast.error("Login fail, please try again")}
+        onError={() => toast.error(LOGIN_FAIL_MESSAGE)}
         text="continue_with"
         theme="filled_blue"
       />
