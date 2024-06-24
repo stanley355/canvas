@@ -16,6 +16,7 @@ import CanvasButton from "../ui/CanvasButton";
 import HeaderDesktopPricingMenu from "./HeaderDesktopPricingMenu";
 import { cn } from "@/common/lib/cn";
 import NextLink from "../NextLink";
+import NextButton from "../NextButton";
 
 interface IHeaderDesktop {
   isLogin: boolean;
@@ -94,24 +95,24 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
             onCloseClick={() => setShowPricingMenu(false)}
           />
         )}
-        <CanvasButton
-          variant="ghost"
+        <NextButton
+          variant="outline"
           onClick={() => setShowPricingMenu(true)}
-          className="items-center border border-transparent hover:border-black "
+          className="gap-1 border-transparent text-brand-primary"
         >
-          <span>Pricing</span>
+          <span>pricing</span>
           <TbChevronDown />
-        </CanvasButton>
+        </NextButton>
         {isLogin ? (
-          <CanvasLink href="/account">
+          <NextLink href="/account">
             <TbUserCircle />
             <span>ACCOUNT</span>
-          </CanvasLink>
+          </NextLink>
         ) : (
-          <CanvasLink href={"/login"}>
+          <NextLink href={"/login"}>
             <span>SIGN IN</span>
             <TbArrowBarToRight />
-          </CanvasLink>
+          </NextLink>
         )}
       </div>
     </div>
