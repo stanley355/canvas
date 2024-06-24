@@ -1,14 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
-  TbArrowAutofitDown,
-  TbArrowDown,
-  TbBrandGoogle,
   TbChevronDown,
-  TbDiscount,
-  TbHelp,
-  TbHelpCircle,
   TbLanguage,
   TbPhotoAi,
   TbSpeakerphone,
