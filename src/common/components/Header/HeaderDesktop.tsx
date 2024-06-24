@@ -15,6 +15,7 @@ import CanvasLink from "../ui/CanvasLink";
 import CanvasButton from "../ui/CanvasButton";
 import HeaderDesktopPricingMenu from "./HeaderDesktopPricingMenu";
 import { cn } from "@/common/lib/cn";
+import NextLink from "../NextLink";
 
 interface IHeaderDesktop {
   isLogin: boolean;
@@ -26,7 +27,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
   const [showPricingMenu, setShowPricingMenu] = useState(false);
 
   return (
-    <div className="items-center justify-between hidden p-4 bg-white lg:flex ">
+    <div className="items-center justify-between hidden p-4 pt-2 bg-white lg:flex ">
       <Link href="/">
         <Image
           src="/images/languageai/languageai_black.png"
@@ -37,7 +38,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
       </Link>
 
       <div className="flex rounded-full text-brand-primary">
-        <CanvasLink
+        <NextLink
           href="/checkbot/"
           variant="none"
           className={cn(
@@ -47,8 +48,8 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
         >
           <FaRobot />
           <span>AI Checkbot</span>
-        </CanvasLink>
-        <CanvasLink
+        </NextLink>
+        <NextLink
           href="/translate/"
           variant="none"
           className={cn(
@@ -58,8 +59,8 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
         >
           <TbLanguage />
           <span>AI Translate</span>
-        </CanvasLink>
-        <CanvasLink
+        </NextLink>
+        <NextLink
           href="/image-to-text"
           variant="none"
           className={cn(
@@ -71,8 +72,8 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
         >
           <TbPhotoAi />
           <span>Image to Text</span>
-        </CanvasLink>
-        <CanvasLink
+        </NextLink>
+        <NextLink
           href="/text-to-speech/"
           variant="none"
           className={cn(
@@ -84,7 +85,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
         >
           <TbSpeakerphone />
           <span>Text to Speech</span>
-        </CanvasLink>
+        </NextLink>
       </div>
 
       <div className="relative flex gap-2">
