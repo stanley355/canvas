@@ -32,7 +32,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
   const [showPricingMenu, setShowPricingMenu] = useState(false);
 
   return (
-    <div className="items-center justify-between hidden p-4 bg-white lg:flex">
+    <div className="items-center justify-between hidden p-4 bg-white lg:flex ">
       <Link href="/">
         <Image
           src="/images/languageai/languageai_black.png"
@@ -42,13 +42,13 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
         />
       </Link>
 
-      <div className="flex border rounded-full">
+      <div className="flex rounded-full text-brand-primary">
         <CanvasLink
           href="/checkbot/"
           variant="none"
           className={cn(
-            "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-black",
-            pathname === "/checkbot" ? "border-black" : "border-transparent"
+            "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-brand-primary",
+            pathname === "/checkbot" ? "border-brand-primary " : "border-transparent"
           )}
         >
           <FaRobot />
@@ -58,8 +58,8 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           href="/translate/"
           variant="none"
           className={cn(
-            "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-black",
-            pathname === "/translate" ? "border-black" : "border-transparent"
+            "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-brand-primary",
+            pathname === "/translate" ? "border-brand-primary" : "border-transparent"
           )}
         >
           <TbLanguage />
@@ -69,9 +69,9 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           href="/image-to-text"
           variant="none"
           className={cn(
-            "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-black",
+            "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-brand-primary",
             pathname === "/image-to-text"
-              ? "border-black"
+              ? "border-brand-primary"
               : "border-transparent"
           )}
         >
@@ -82,9 +82,9 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           href="/text-to-speech/"
           variant="none"
           className={cn(
-            "flex items-center gap-2 p-2 px-4 border border-transparent rounded-full hover:border-black",
+            "flex items-center gap-2 p-2 px-4 border border-transparent rounded-full hover:border-brand-primary",
             pathname === "/text-to-speech"
-              ? "border-black"
+              ? "border-brand-primary"
               : "border-transparent"
           )}
         >
