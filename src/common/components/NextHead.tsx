@@ -1,23 +1,10 @@
 import Head from 'next/head'
 import { removeTrailingSlash } from '../lib/removeTrailingSlash';
+import { IDatoPagesSchema } from '../lib/api/dato/interfaces';
 
-interface INextHeadSeo {
-  title: string;
-  description: string;
-  image: {
-    alt: string;
-    url: string;
-  };
-}
 
 export interface NextHeadProps {
-  pagesSchema: {
-    _updatedAt: string;
-    slug: string;
-    keywords: string;
-    seo: INextHeadSeo;
-    faq: Record<string, string>[];
-  };
+  pagesSchema: IDatoPagesSchema
 }
 
 const NextHead = (props: NextHeadProps) => {
