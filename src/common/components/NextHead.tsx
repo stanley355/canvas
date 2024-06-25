@@ -26,7 +26,7 @@ const NextHead = (props: NextHeadProps) => {
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
-      <link rel="icon" type="image/png" href="/images/languageai_icon.png" />
+      <link rel="icon" type="image/png" href="/images/languageai/languageai_icon.png" />
       {/* opengraph */}
       <meta property="og:title" content={pagesSchema.seo.title} />
       <meta property="og:type" content="website" />
