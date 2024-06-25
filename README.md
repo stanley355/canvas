@@ -1,5 +1,8 @@
 # CANVAS
 
+### 1.3.5 (enchancement)
+- Update header and footer
+
 ### 1.3.4 (refactor)
 - Update login page and api
 
