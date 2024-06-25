@@ -4,14 +4,15 @@ import {
   TbCopyright,
   TbLanguage,
   TbPhotoAi,
+  TbQuestionMark,
   TbSpeakerphone,
 } from "react-icons/tb";
 import { FaRobot, FaRupiahSign } from "react-icons/fa6";
 import { PiStudentDuotone } from "react-icons/pi";
 
 const Footer = () => (
-  <div className="container p-4 mx-auto ">
-    <div className="grid grid-cols-2 gap-4 mb-4">
+  <div className="container p-4 pb-0 mx-auto text-brand-primary">
+    <div className="flex justify-between grid-cols-2 gap-4 mb-4 lg:grid">
       <div>
         <div className="text-lg font-bold">Features</div>
         <Link
@@ -42,6 +43,14 @@ const Footer = () => (
           <TbSpeakerphone />
           <span>AI Text to Speech</span>
         </Link>
+
+      </div>
+
+
+      <div>
+        <div className="text-lg font-bold">Company</div>
+
+  
         <Link
           href="/plans/"
           className="flex items-center gap-1 py-2 hover:font-bold"
@@ -56,27 +65,12 @@ const Footer = () => (
           <PiStudentDuotone />
           <span>Student Pricing</span>
         </Link>
-      </div>
-
-      <div>
-        <div className="text-lg font-bold">Company</div>
-        <Link
-          href="/students/"
-          className="flex items-center gap-1 py-2 hover:font-bold"
-        >
-          For Students
-        </Link>
-        <Link
-          href="/login/"
-          className="flex items-center gap-1 py-2 hover:font-bold"
-        >
-          About
-        </Link>
         <Link
           href="/support/"
           className="flex items-center gap-1 py-2 hover:font-bold"
         >
-          Help
+          <TbQuestionMark />
+          Help and support
         </Link>
       </div>
     </div>
@@ -94,7 +88,7 @@ const Footer = () => (
       <div className="flex items-center">
         <span>{new Date().getFullYear()}</span>
         <TbCopyright />
-        <span>LanguageAI</span>
+        <span>Languageai.id</span>
       </div>
     </div>
   </div>

@@ -3,7 +3,6 @@ import Image from "next/image";
 import { FaMoneyBills } from "react-icons/fa6";
 import { PiStudentDuotone } from "react-icons/pi";
 import { TbCalendarDollar, TbWalk, TbX } from "react-icons/tb";
-import CanvasLink from "../ui/CanvasLink";
 import Modal from "../Modal";
 import NextButton from "../NextButton";
 import NextLink from "../NextLink";
