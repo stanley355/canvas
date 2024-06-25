@@ -104,12 +104,12 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           <TbChevronDown />
         </NextButton>
         {isLogin ? (
-          <NextLink href="/account">
+          <NextLink href="/account" className="gap-1">
             <TbUserCircle />
             <span>ACCOUNT</span>
           </NextLink>
         ) : (
-          <NextLink href={"/login"}>
+          <NextLink href={"/login"} className="gap-1">
             <span>SIGN IN</span>
             <TbArrowBarToRight />
           </NextLink>
