@@ -1,23 +1,10 @@
 import Head from 'next/head'
 import { removeTrailingSlash } from '../lib/removeTrailingSlash';
+import { IDatoPagesSchema } from '../lib/api/dato/interfaces';
 
-interface INextHeadSeo {
-  title: string;
-  description: string;
-  image: {
-    alt: string;
-    url: string;
-  };
-}
 
 export interface NextHeadProps {
-  pagesSchema: {
-    _updatedAt: string;
-    slug: string;
-    keywords: string;
-    seo: INextHeadSeo;
-    faq: Record<string, string>[];
-  };
+  pagesSchema: IDatoPagesSchema
 }
 
 const NextHead = (props: NextHeadProps) => {
@@ -39,7 +26,7 @@ const NextHead = (props: NextHeadProps) => {
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
-      <link rel="icon" type="image/png" href="/images/languageai_icon.png" />
+      <link rel="icon" type="image/png" href="/images/languageai/languageai_icon.png" />
       {/* opengraph */}
       <meta property="og:title" content={pagesSchema.seo.title} />
       <meta property="og:type" content="website" />

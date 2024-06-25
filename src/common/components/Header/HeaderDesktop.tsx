@@ -1,14 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
-  TbArrowAutofitDown,
-  TbArrowDown,
-  TbBrandGoogle,
   TbChevronDown,
-  TbDiscount,
-  TbHelp,
-  TbHelpCircle,
   TbLanguage,
   TbPhotoAi,
   TbSpeakerphone,
@@ -21,6 +15,8 @@ import CanvasLink from "../ui/CanvasLink";
 import CanvasButton from "../ui/CanvasButton";
 import HeaderDesktopPricingMenu from "./HeaderDesktopPricingMenu";
 import { cn } from "@/common/lib/cn";
+import NextLink from "../NextLink";
+import NextButton from "../NextButton";
 
 interface IHeaderDesktop {
   isLogin: boolean;
@@ -32,7 +28,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
   const [showPricingMenu, setShowPricingMenu] = useState(false);
 
   return (
-    <div className="items-center justify-between hidden p-4 bg-white lg:flex">
+    <div className="items-center justify-between hidden p-4 pt-2 bg-white lg:flex ">
       <Link href="/">
         <Image
           src="/images/languageai/languageai_black.png"
@@ -42,55 +38,55 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
         />
       </Link>
 
-      <div className="flex border rounded-full">
-        <CanvasLink
+      <div className="flex rounded-full text-brand-primary">
+        <NextLink
           href="/checkbot/"
           variant="none"
           className={cn(
-            "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-black",
-            pathname === "/checkbot" ? "border-black" : "border-transparent"
+            "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-brand-primary",
+            pathname === "/checkbot" ? "border-brand-primary " : "border-transparent"
           )}
         >
           <FaRobot />
           <span>AI Checkbot</span>
-        </CanvasLink>
-        <CanvasLink
+        </NextLink>
+        <NextLink
           href="/translate/"
           variant="none"
           className={cn(
-            "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-black",
-            pathname === "/translate" ? "border-black" : "border-transparent"
+            "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-brand-primary",
+            pathname === "/translate" ? "border-brand-primary" : "border-transparent"
           )}
         >
           <TbLanguage />
           <span>AI Translate</span>
-        </CanvasLink>
-        <CanvasLink
+        </NextLink>
+        <NextLink
           href="/image-to-text"
           variant="none"
           className={cn(
-            "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-black",
+            "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-brand-primary",
             pathname === "/image-to-text"
-              ? "border-black"
+              ? "border-brand-primary"
               : "border-transparent"
           )}
         >
           <TbPhotoAi />
           <span>Image to Text</span>
-        </CanvasLink>
-        <CanvasLink
+        </NextLink>
+        <NextLink
           href="/text-to-speech/"
           variant="none"
           className={cn(
-            "flex items-center gap-2 p-2 px-4 border border-transparent rounded-full hover:border-black",
+            "flex items-center gap-2 p-2 px-4 border border-transparent rounded-full hover:border-brand-primary",
             pathname === "/text-to-speech"
-              ? "border-black"
+              ? "border-brand-primary"
               : "border-transparent"
           )}
         >
           <TbSpeakerphone />
           <span>Text to Speech</span>
-        </CanvasLink>
+        </NextLink>
       </div>
 
       <div className="relative flex gap-2">
@@ -99,24 +95,24 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
             onCloseClick={() => setShowPricingMenu(false)}
           />
         )}
-        <CanvasButton
-          variant="ghost"
+        <NextButton
+          variant="outline"
           onClick={() => setShowPricingMenu(true)}
-          className="items-center border border-transparent hover:border-black "
+          className="gap-1 border-transparent text-brand-primary"
         >
-          <span>Pricing</span>
+          <span>pricing</span>
           <TbChevronDown />
-        </CanvasButton>
+        </NextButton>
         {isLogin ? (
-          <CanvasLink href="/account">
+          <NextLink href="/account" className="gap-1">
             <TbUserCircle />
             <span>ACCOUNT</span>
-          </CanvasLink>
+          </NextLink>
         ) : (
-          <CanvasLink href={"/login"}>
+          <NextLink href={"/login"} className="gap-1">
             <span>SIGN IN</span>
             <TbArrowBarToRight />
-          </CanvasLink>
+          </NextLink>
         )}
       </div>
     </div>

@@ -1,7 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
 import Cookies from "js-cookie";
-import { FaRupiahSign } from "react-icons/fa6";
 
 import { Button } from "@/common/components/ui/button";
 import { IUser } from "@/common/lib/api/users/interfaces";
@@ -43,17 +41,6 @@ const AccountDetail = (props: IAccountDetail) => {
           />
           <span className="text-gray-500">Google</span>
         </div>
-      </div>
-
-      <div className="mb-6 lg:hidden">
-        <div className="text-lg font-bold ">Subscriptions</div>
-        <Link
-          className="flex items-center gap-2 py-2 border-b w-fit hover:border-b-black"
-          href="/account/subscription"
-        >
-          <FaRupiahSign />
-          <span>Check Subscription</span>
-        </Link>
       </div>
 
       <div className="mb-8">
