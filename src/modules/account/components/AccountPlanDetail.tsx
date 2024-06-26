@@ -2,7 +2,6 @@ import { ISubscription } from "@/common/lib/api/subscriptions/interfaces";
 import { ITopup } from "@/common/lib/api/topups/interfaces";
 import { IUser } from "@/common/lib/api/users/interfaces";
 import AccountFreePlanDetail from "./AccountFreePlanDetail";
-import AccountPlanList from "./AccountPlanList";
 import AccountPayasyougoPlanDetail from "./AccountPayasyougoPlanDetail";
 import AccountPremiumPlanDetail from "./AccountPremiumPlanDetail";
 import { IStudent } from "@/common/lib/api/students/interfaces";
