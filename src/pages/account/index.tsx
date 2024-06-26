@@ -46,7 +46,7 @@ const Account = (props: IAccountProps) => {
   };
 
   return (
-    <div className="container px-6 mx-auto mt-16 lg:mt-4 lg:px-12">
+    <div className="container px-6 pb-8 mx-auto mt-16 lg:mt-4">
       <NextHead pagesSchema={schema} />
       <div className="lg:grid lg:grid-cols-2">
         <AccountDetail user={account.user} />

@@ -8,6 +8,7 @@ import AccountPremiumPlanDetail from "./AccountPremiumPlanDetail";
 import { IStudent } from "@/common/lib/api/students/interfaces";
 import AccountStudentPlanDetail from "./AccountStudentPlanDetail";
 import { useMemo } from "react";
+import AccountFreePlanTable from "./AccountFreePlanTable";
 
 interface IAccountPlanDetail {
   account: {
@@ -62,7 +63,7 @@ const AccountPlanDetail = (props: IAccountPlanDetail) => {
   return (
     <div>
       <AccountFreePlanDetail />
-      <AccountPlanList />
+      <AccountFreePlanTable />
     </div>
   );
 };

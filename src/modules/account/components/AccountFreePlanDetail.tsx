@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const AccountFreePlanDetail = () => {
   return (
-    <div>
+    <div className="mb-4">
       <div className="mb-4 text-2xl font-bold border-b">Subscription</div>
 
       <div className="mb-4 text-xl font-bold">Plan Details</div>
