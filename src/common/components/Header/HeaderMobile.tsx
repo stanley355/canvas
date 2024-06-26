@@ -13,7 +13,7 @@ const HeaderMobile = (props: IHeaderMobile) => {
   const { isLogin } = props;
   const [showMenu, setShowMenu] = useState(false);
   return (
-    <div className="fixed top-0 left-0 z-10 flex items-center justify-between w-full bg-white border-b lg:hidden text-brand-primary">
+    <div className="fixed top-0 left-0 z-10 flex items-center justify-between w-full bg-white border-b lg:hidden">
       <Link href="/" className="pl-4">
         <Image
           src="/images/languageai/languageai_black.png"

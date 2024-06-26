@@ -11,7 +11,7 @@ import { FaRobot, FaRupiahSign } from "react-icons/fa6";
 import { PiStudentDuotone } from "react-icons/pi";
 
 const Footer = () => (
-  <div className="container p-4 pb-0 mx-auto text-brand-primary">
+  <div className="container p-4 pb-0 mx-auto">
     <div className="flex justify-between grid-cols-2 gap-4 mb-4 lg:grid">
       <div>
         <div className="text-lg font-bold">Features</div>

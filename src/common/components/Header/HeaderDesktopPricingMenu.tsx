@@ -18,7 +18,7 @@ const HeaderDesktopPricingMenu = (props: HeaderDesktopPricingMenuProps) => {
       <div className="w-2/3 mx-auto bg-white rounded-lg mt-[10%] relative p-4">
         <NextButton
           onClick={onCloseClick}
-          className="absolute p-1 text-2xl border-transparent text-brand-primary right-2 top-2"
+          className="absolute p-1 text-2xl border-transparent right-2 top-2"
           variant="outline"
         >
           <TbX />
@@ -31,7 +31,7 @@ const HeaderDesktopPricingMenu = (props: HeaderDesktopPricingMenuProps) => {
           height={130}
           className="mx-auto mb-2 "
         />
-        <div className="mb-8 text-2xl text-center text-brand-primary">
+        <div className="mb-8 text-2xl text-center">
           Which pricing suits your needs?
         </div>
         <div className="grid grid-cols-3 gap-2">

@@ -38,7 +38,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
         />
       </Link>
 
-      <div className="flex rounded-full text-brand-primary">
+      <div className="flex rounded-full">
         <NextLink
           href="/checkbot/"
           variant="none"
@@ -98,7 +98,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
         <NextButton
           variant="outline"
           onClick={() => setShowPricingMenu(true)}
-          className="gap-1 border-transparent text-brand-primary"
+          className="gap-1 border-transparent"
         >
           <span>pricing</span>
           <TbChevronDown />
