@@ -43,14 +43,11 @@ const Footer = () => (
           <TbSpeakerphone />
           <span>AI Text to Speech</span>
         </Link>
-
       </div>
-
 
       <div>
         <div className="text-lg font-bold">Company</div>
 
-  
         <Link
           href="/plans/"
           className="flex items-center gap-1 py-2 hover:font-bold"

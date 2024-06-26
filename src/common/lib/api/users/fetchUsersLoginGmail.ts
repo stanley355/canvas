@@ -10,7 +10,7 @@ export const fetchUsersLoginGmail = async (
   payload: JwtPayload
 ): Promise<IResponse & IAuthorError> => {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}api/users/login/gmail`;
-  const req= {
+  const req = {
     fullname: payload.name,
     email: payload.email,
   };

@@ -8,7 +8,8 @@ interface ILoginProps {
   datoCmsData: NextHeadProps;
 }
 
-export const getServerSideProps: GetServerSideProps = getLoginPageServerSideProps;
+export const getServerSideProps: GetServerSideProps =
+  getLoginPageServerSideProps;
 
 const Login = (props: ILoginProps) => {
   const { datoCmsData } = props;

@@ -1,12 +1,15 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const authorV2UsersLoginGmailApi = async (req: NextApiRequest, res: NextApiResponse) => {
+const authorV2UsersLoginGmailApi = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+) => {
   const url = `${process.env.AUTHOR_URL}v2/users/login/gmail/`;
 
   try {
     const { data } = await axios.post(url, req.body, {
-      headers: { "Authorization": process.env.AUTHOR_TOKEN },
+      headers: { Authorization: process.env.AUTHOR_TOKEN },
     });
     res.json(data);
   } catch (err: any) {

@@ -9,7 +9,7 @@ const authorV2UsersAccount = async (
 
   try {
     const { data } = await axios.get(url, {
-      headers: { "Authorization": process.env.AUTHOR_TOKEN },
+      headers: { Authorization: process.env.AUTHOR_TOKEN },
     });
     res.json(data);
   } catch (err: any) {

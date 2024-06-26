@@ -44,7 +44,9 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           variant="none"
           className={cn(
             "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-brand-primary",
-            pathname === "/checkbot" ? "border-brand-primary " : "border-transparent"
+            pathname === "/checkbot"
+              ? "border-brand-primary "
+              : "border-transparent"
           )}
         >
           <FaRobot />
@@ -55,7 +57,9 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           variant="none"
           className={cn(
             "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-brand-primary",
-            pathname === "/translate" ? "border-brand-primary" : "border-transparent"
+            pathname === "/translate"
+              ? "border-brand-primary"
+              : "border-transparent"
           )}
         >
           <TbLanguage />

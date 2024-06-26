@@ -8,10 +8,7 @@ interface IResponse {
   topups: Record<string, string | number>[];
 }
 
-export const fetchUsersAccount = async (
-  id: string
-): Promise<IResponse> => {
-  
+export const fetchUsersAccount = async (id: string): Promise<IResponse> => {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}api/users/account?id=${id}`;
 
   try {
