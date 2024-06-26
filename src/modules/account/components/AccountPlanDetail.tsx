@@ -61,7 +61,7 @@ const AccountPlanDetail = (props: IAccountPlanDetail) => {
 
   return (
     <div>
-      <AccountFreePlanDetail student={active_student_discount} />
+      <AccountFreePlanDetail />
       <AccountPlanList />
     </div>
   );
