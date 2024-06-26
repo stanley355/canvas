@@ -21,6 +21,8 @@ interface IAccountProps {
   };
 }
 
+export const getServerSideProps: GetServerSideProps = getAccountPageServerProps;
+
 const Account = (props: IAccountProps) => {
   const { account } = props;
 
@@ -55,4 +57,3 @@ const Account = (props: IAccountProps) => {
 };
 
 export default Account;
-export const getServerSideProps: GetServerSideProps = getAccountPageServerProps;
