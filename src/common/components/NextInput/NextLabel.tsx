@@ -1,16 +1,16 @@
 
-export interface NextLabelProps 
+export interface NextLabelProps
   extends React.LabelHTMLAttributes<HTMLLabelElement> {
- required: boolean; 
+  required?: boolean;
 }
 
 
 const NextLabel = (props: NextLabelProps) => {
-  const {required,children, ...rest} = props;
+  const { required, children, ...rest } = props;
   return (
     <label {...rest}>
-     {props.children} 
-     {required && <span className="text-red-500">*</span> }
+      {props.children}
+      {required && <span className="text-red-500">*</span>}
     </label>
   )
 }
