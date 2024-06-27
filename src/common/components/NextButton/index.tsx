@@ -1,5 +1,5 @@
 import { cn } from "@/common/lib/cn";
-import { NEXT_BUTTON_VARIANTS, INextButtonVariants } from "./constant";
+import { NEXT_BUTTON_VARIANTS, INextButtonVariants } from "./variants";
 
 interface NextButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
