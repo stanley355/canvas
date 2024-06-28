@@ -2,7 +2,7 @@ import Head from "next/head";
 import { removeTrailingSlash } from "../lib/removeTrailingSlash";
 import { IDatoPagesSchema } from "../lib/api/dato/interfaces";
 
-export interface NextHeadProps {
+interface NextHeadProps {
   pagesSchema: IDatoPagesSchema;
 }
 

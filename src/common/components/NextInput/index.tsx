@@ -1,11 +1,10 @@
 import { cn } from "@/common/lib/cn";
 import { NEXT_INPUT_VARIANTS, INextInputVariants } from "./variants";
 
-export interface NextInputProps
+interface NextInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   variants?: keyof INextInputVariants
 }
-
 
 const NextInput = (props: NextInputProps) => {
   const { className, variants, ...rest } = props;
