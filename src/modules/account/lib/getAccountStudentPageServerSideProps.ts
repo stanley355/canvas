@@ -1,6 +1,6 @@
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { JwtPayload, decode } from "jsonwebtoken";
-import { fetchStudentDataV2 } from "@/common/lib/apiV2/students/fetchStudentDataV2";
+import { fetchStudents } from "@/common/lib/api/students/fetchStudents";
 
 export const getAccountStudentPageServerProps: GetServerSideProps = async (
   ctx: GetServerSidePropsContext
@@ -17,7 +17,7 @@ export const getAccountStudentPageServerProps: GetServerSideProps = async (
   }
 
   const decodedToken = decode(token) as JwtPayload;
-  const student = await fetchStudentDataV2(decodedToken.id);
+  const student = await fetchStudents(decodedToken.id);
 
   return {
     props: {
