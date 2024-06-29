@@ -6,8 +6,7 @@ module.exports = {
     "/plans/premium/students",
     "/plans/payasyougo",
     "/account",
-    "/account/subscription",
-    "/account/students",
+    "/students/application",
   ],
   generateRobotsTxt: true,
   // Add any additional configuration options here

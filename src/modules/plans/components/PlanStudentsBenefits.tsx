@@ -26,7 +26,7 @@ const PlanStudentsBenefits = () => {
 
         <Button
           className="w-full py-6 my-4 bg-emerald-800 hover:bg-emerald-700"
-          onClick={() => router.push("/account/students/")}
+          onClick={() => router.push("/students/application/")}
         >
           Apply Student Plan
         </Button>
