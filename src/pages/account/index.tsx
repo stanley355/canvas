@@ -40,7 +40,7 @@ const Account = (props: IAccountProps) => {
       description: "Account and Subscription",
       image: {
         alt: "Languageai.id",
-        url: "/images/languageai/languageai_icon.png",
+        url: "/images/languageai/logo.png",
       },
     },
   };
