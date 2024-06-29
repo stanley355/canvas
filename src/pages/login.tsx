@@ -16,7 +16,7 @@ const Login = (props: ILoginProps) => {
 
   return (
     <div className="px-4 lg:px-0">
-      {datoCmsData && <NextHead pagesSchema={datoCmsData.pagesSchema} />}
+      {datoCmsData?.pagesSchema && <NextHead pagesSchema={datoCmsData.pagesSchema} />}
       <LoginCard />
     </div>
   );

@@ -29,7 +29,7 @@ const Header = (props: IHeader) => {
     return (
       <Link href="/" className="w-full">
         <Image
-          src="/images/languageai/languageai_black.png"
+          src="/images/languageai/logo.png"
           alt="languageai.id"
           width={200}
           height={65}

@@ -2,7 +2,7 @@ import Head from "next/head";
 import { removeTrailingSlash } from "../lib/removeTrailingSlash";
 import { IDatoPagesSchema } from "../lib/api/dato/interfaces";
 
-interface NextHeadProps {
+export interface NextHeadProps {
   pagesSchema: IDatoPagesSchema;
 }
 
@@ -28,7 +28,7 @@ const NextHead = (props: NextHeadProps) => {
       <link
         rel="icon"
         type="image/png"
-        href="/images/languageai/languageai_icon.png"
+        href="/images/languageai/icon.png"
       />
       {/* opengraph */}
       <meta property="og:title" content={pagesSchema.seo.title} />
