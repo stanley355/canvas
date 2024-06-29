@@ -11,7 +11,7 @@ import { FaRobot, FaRupiahSign } from "react-icons/fa6";
 import { PiStudentDuotone } from "react-icons/pi";
 
 const Footer = () => (
-  <div className="container p-4 pb-0 mx-auto text-brand-primary">
+  <div className="container p-4 pb-0 mx-auto">
     <div className="flex justify-between grid-cols-2 gap-4 mb-4 lg:grid">
       <div>
         <div className="text-lg font-bold">Features</div>
@@ -43,14 +43,11 @@ const Footer = () => (
           <TbSpeakerphone />
           <span>AI Text to Speech</span>
         </Link>
-
       </div>
-
 
       <div>
         <div className="text-lg font-bold">Company</div>
 
-  
         <Link
           href="/plans/"
           className="flex items-center gap-1 py-2 hover:font-bold"
@@ -74,10 +71,10 @@ const Footer = () => (
         </Link>
       </div>
     </div>
-    <div className="flex items-center justify-between py-4">
+    <div className="flex items-center justify-between py-4 pb-6">
       <Link href="/">
         <Image
-          src="/images/languageai/languageai_black.png"
+          src="/images/languageai/logo.png"
           alt="languageai.id"
           width={150}
           height={65}
@@ -85,10 +82,10 @@ const Footer = () => (
         />
       </Link>
 
-      <div className="flex items-center">
+      <div className="flex items-center text-brand-primary pt-2">
         <span>{new Date().getFullYear()}</span>
-        <TbCopyright />
-        <span>Languageai.id</span>
+        <TbCopyright  className="hidden lg:flex"/>
+        <span className="hidden lg:flex">languageai.id</span>
       </div>
     </div>
   </div>

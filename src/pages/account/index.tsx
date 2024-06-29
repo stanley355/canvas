@@ -21,6 +21,8 @@ interface IAccountProps {
   };
 }
 
+export const getServerSideProps: GetServerSideProps = getAccountPageServerProps;
+
 const Account = (props: IAccountProps) => {
   const { account } = props;
 
@@ -38,13 +40,13 @@ const Account = (props: IAccountProps) => {
       description: "Account and Subscription",
       image: {
         alt: "Languageai.id",
-        url: "/images/languageai/languageai_icon.png"
-      }
+        url: "/images/languageai/logo.png",
+      },
     },
-  }
+  };
 
   return (
-    <div className="container px-6 mx-auto mt-16 lg:mt-4 lg:px-12 text-brand-primary">
+    <div className="container px-4 pb-8 mx-auto mt-20 lg:mt-4">
       <NextHead pagesSchema={schema} />
       <div className="lg:grid lg:grid-cols-2">
         <AccountDetail user={account.user} />
@@ -55,4 +57,3 @@ const Account = (props: IAccountProps) => {
 };
 
 export default Account;
-export const getServerSideProps: GetServerSideProps = getAccountPageServerProps;

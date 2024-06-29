@@ -1,8 +1,6 @@
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
-  TbChevronDown,
   TbLanguage,
   TbPhotoAi,
   TbSpeakerphone,
@@ -11,12 +9,8 @@ import {
 import { TbArrowBarToRight } from "react-icons/tb";
 import { FaRobot } from "react-icons/fa6";
 
-import CanvasLink from "../ui/CanvasLink";
-import CanvasButton from "../ui/CanvasButton";
-import HeaderDesktopPricingMenu from "./HeaderDesktopPricingMenu";
 import { cn } from "@/common/lib/cn";
 import NextLink from "../NextLink";
-import NextButton from "../NextButton";
 
 interface IHeaderDesktop {
   isLogin: boolean;
@@ -25,26 +19,27 @@ interface IHeaderDesktop {
 
 const HeaderDesktop = (props: IHeaderDesktop) => {
   const { isLogin, pathname } = props;
-  const [showPricingMenu, setShowPricingMenu] = useState(false);
 
   return (
     <div className="items-center justify-between hidden p-4 pt-2 bg-white lg:flex ">
       <Link href="/">
         <Image
-          src="/images/languageai/languageai_black.png"
+          src="/images/languageai/logo.png"
           alt="languageai.id"
           width={150}
           height={65}
         />
       </Link>
 
-      <div className="flex rounded-full text-brand-primary">
+      <div className="flex rounded-full pt-1">
         <NextLink
           href="/checkbot/"
           variant="none"
           className={cn(
             "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-brand-primary",
-            pathname === "/checkbot" ? "border-brand-primary " : "border-transparent"
+            pathname === "/checkbot"
+              ? "border-brand-primary "
+              : "border-transparent"
           )}
         >
           <FaRobot />
@@ -55,7 +50,9 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           variant="none"
           className={cn(
             "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-brand-primary",
-            pathname === "/translate" ? "border-brand-primary" : "border-transparent"
+            pathname === "/translate"
+              ? "border-brand-primary"
+              : "border-transparent"
           )}
         >
           <TbLanguage />
@@ -89,20 +86,6 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
         </NextLink>
       </div>
 
-      <div className="relative flex gap-2">
-        {showPricingMenu && (
-          <HeaderDesktopPricingMenu
-            onCloseClick={() => setShowPricingMenu(false)}
-          />
-        )}
-        <NextButton
-          variant="outline"
-          onClick={() => setShowPricingMenu(true)}
-          className="gap-1 border-transparent text-brand-primary"
-        >
-          <span>pricing</span>
-          <TbChevronDown />
-        </NextButton>
         {isLogin ? (
           <NextLink href="/account" className="gap-1">
             <TbUserCircle />
@@ -114,7 +97,6 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
             <TbArrowBarToRight />
           </NextLink>
         )}
-      </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Cookies from "js-cookie";
 
-import { Button } from "@/common/components/ui/button";
+import NextButton from "@/common/components/NextButton";
 import { IUser } from "@/common/lib/api/users/interfaces";
 
 interface IAccountDetail {
@@ -45,14 +45,13 @@ const AccountDetail = (props: IAccountDetail) => {
 
       <div className="mb-8">
         <div className="mb-2 text-lg font-bold">Session</div>
-        <Button
+        <NextButton
           onClick={handleLogout}
-          variant={"secondary"}
-          size={"sm"}
-          className="hover:bg-black hover:text-white"
+          variant="outline"
+          className="px-2 py-1"
         >
           Logout
-        </Button>
+        </NextButton>
       </div>
     </div>
   );

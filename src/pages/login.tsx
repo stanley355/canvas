@@ -8,14 +8,15 @@ interface ILoginProps {
   datoCmsData: NextHeadProps;
 }
 
-export const getServerSideProps: GetServerSideProps = getLoginPageServerSideProps;
+export const getServerSideProps: GetServerSideProps =
+  getLoginPageServerSideProps;
 
 const Login = (props: ILoginProps) => {
   const { datoCmsData } = props;
 
   return (
     <div className="px-4 lg:px-0">
-      {datoCmsData && <NextHead pagesSchema={datoCmsData.pagesSchema} />}
+      {datoCmsData?.pagesSchema && <NextHead pagesSchema={datoCmsData.pagesSchema} />}
       <LoginCard />
     </div>
   );

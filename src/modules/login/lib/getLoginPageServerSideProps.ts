@@ -2,7 +2,9 @@ import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { fetchDatoCms } from "@/common/lib/api/dato/fetchDatoCms";
 import { getDatoPagesSchema } from "@/common/lib/api/dato/datoQueries";
 
-export const getLoginPageServerSideProps: GetServerSideProps= async (ctx: GetServerSidePropsContext) => {
+export const getLoginPageServerSideProps: GetServerSideProps = async (
+  ctx: GetServerSidePropsContext
+) => {
   const token = ctx.req.cookies.token;
 
   if (token) {
@@ -13,7 +15,7 @@ export const getLoginPageServerSideProps: GetServerSideProps= async (ctx: GetSer
       },
     };
   }
-  
+
   const datoCmsData = await fetchDatoCms(getDatoPagesSchema, {
     slug: "login",
   });

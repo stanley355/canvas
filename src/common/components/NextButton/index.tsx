@@ -1,8 +1,9 @@
 import { cn } from "@/common/lib/cn";
-import { NEXT_BUTTON_VARIANTS, INextButtonVariants } from "./constant";
+import { NEXT_BUTTON_VARIANTS, INextButtonVariants } from "./variants";
 
 interface NextButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  key?:string;
   variant?: keyof INextButtonVariants;
 }
 
@@ -11,7 +12,7 @@ const NextButton = (props: NextButtonProps) => {
 
   return (
     <button
-      {...rest} //put on top so the bottom props can override
+      {...rest}
       className={cn(
         NEXT_BUTTON_VARIANTS[variant ? variant : "default"],
         props.className

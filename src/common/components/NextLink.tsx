@@ -1,6 +1,6 @@
 import Link, { LinkProps } from "next/link";
 import { cn } from "@/common/lib/cn";
-import { INextButtonVariants, NEXT_BUTTON_VARIANTS } from "./constant";
+import { INextButtonVariants, NEXT_BUTTON_VARIANTS } from "./NextButton/variants";
 
 interface NextLinkProps extends LinkProps {
   variant?: keyof INextButtonVariants;

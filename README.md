@@ -1,5 +1,9 @@
 # CANVAS
 
+### 1.3.6
+- Move `/account/students` to `/students/application`
+- Change brand color to `#172554`
+
 ### 1.3.5 (enchancement)
 - Update header and footer ui
 - Update account page seo

@@ -2,7 +2,7 @@ import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { decode, JwtPayload } from "jsonwebtoken";
 import PlanPremiumCard from "@/modules/plans/components/PlanPremiumCard";
 import PlanPremiumForm from "@/modules/plans/components/PlanPremiumForm";
-import { fetchStudentDataV2 } from "@/common/lib/apiV2/students/fetchStudentDataV2";
+import { fetchStudents } from "@/common/lib/api/students/fetchStudents";
 
 const PremiumPlans = () => {
   return (
@@ -31,7 +31,7 @@ export const getServerSideProps: GetServerSideProps = async (
   }
 
   const decodedToken = decode(token) as JwtPayload;
-  const studentAvailability = await fetchStudentDataV2(decodedToken.id);
+  const studentAvailability = await fetchStudents(decodedToken.id);
 
   if (studentAvailability?.id) {
     return {
