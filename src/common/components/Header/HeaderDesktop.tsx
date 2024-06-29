@@ -31,7 +31,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
         />
       </Link>
 
-      <div className="flex rounded-full">
+      <div className="flex rounded-full pt-1">
         <NextLink
           href="/checkbot/"
           variant="none"

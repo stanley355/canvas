@@ -71,10 +71,10 @@ const Footer = () => (
         </Link>
       </div>
     </div>
-    <div className="flex items-center justify-between py-4">
+    <div className="flex items-center justify-between py-4 pb-6">
       <Link href="/">
         <Image
-          src="/images/languageai/languageai_black.png"
+          src="/images/languageai/logo.png"
           alt="languageai.id"
           width={150}
           height={65}
@@ -82,10 +82,10 @@ const Footer = () => (
         />
       </Link>
 
-      <div className="flex items-center">
+      <div className="flex items-center text-brand-primary pt-2">
         <span>{new Date().getFullYear()}</span>
-        <TbCopyright />
-        <span>Languageai.id</span>
+        <TbCopyright  className="hidden lg:flex"/>
+        <span className="hidden lg:flex">languageai.id</span>
       </div>
     </div>
   </div>
