@@ -1,12 +1,19 @@
+import { useRouter } from 'next/router';
 import StudentApplicationForm from '@/modules/students/components/application/StudentApplicationForm';
-import React from 'react'
+import NextButton from '@/common/components/NextButton';
+import { TbArrowLeft } from 'react-icons/tb';
 
 const StudentApplication = () => {
+  const router = useRouter();
   return (
-    <div className='mt-16 p-4 lg:container'>
+    <div className=' p-4 lg:w-[400px] lg:mx-auto'>
       <h1 className='text-2xl font-bold text-center mb-4'>Student Plan Application</h1>
-      <h2 className='text-center mb-4'>Enter your student information to get unlimited use (1st year) and 50% discount (2nd year)</h2>
+      <h2 className='text-center mb-4'>Enter your student information to get <b>free & unlimited</b> use of Languageai</h2>
       <StudentApplicationForm />
+      <NextButton variant='outline' className='border-transparent p-2' onClick={()=> router.back()}>
+        <TbArrowLeft />
+        <span>Back</span>
+      </NextButton>
     </div>
   )
 }

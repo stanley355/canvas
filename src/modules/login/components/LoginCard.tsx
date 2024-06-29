@@ -15,8 +15,8 @@ const LoginCard = () => {
       </div>
 
       <div className="text-center">
-        By signing up, you agree to the <b className="text-brand-primary">Terms and Conditions</b> and{" "}
-        <b className="text-brand-primary"> Privacy Policy</b>.
+        By signing up, you agree to the <b>Terms and Conditions</b> and{" "}
+        <b> Privacy Policy</b>.
       </div>
     </div>
   );

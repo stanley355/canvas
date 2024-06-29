@@ -6,7 +6,7 @@ import HeaderMobile from "./HeaderMobile";
 import HeaderDesktop from "./HeaderDesktop";
 
 interface IHeader {
-  isLoginPage: boolean;
+  isSimpleHeader: boolean;
   pathname: string;
 }
 
@@ -17,7 +17,7 @@ export interface IHeaderMenu {
 }
 
 const Header = (props: IHeader) => {
-  const { isLoginPage, pathname } = props;
+  const { isSimpleHeader, pathname } = props;
 
   const cookieToken = cookie.get("token");
   const [isLogin, setIsLogin] = useState(false);
@@ -25,7 +25,7 @@ const Header = (props: IHeader) => {
     setIsLogin(Boolean(cookieToken));
   }, [cookieToken]);
 
-  if (isLoginPage) {
+  if (isSimpleHeader) {
     return (
       <Link href="/" className="w-full">
         <Image

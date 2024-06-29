@@ -18,7 +18,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className={inter.className}>
       <Header
-        isLoginPage={router.asPath === "/login"}
+        isSimpleHeader={["/login", "/students/application"].includes(router.asPath)}
         pathname={router.pathname}
       />
       <main>{children}</main>
