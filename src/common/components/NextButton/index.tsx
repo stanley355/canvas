@@ -12,7 +12,7 @@ const NextButton = (props: NextButtonProps) => {
 
   return (
     <button
-      {...rest} //put on top so the bottom props can override
+      {...rest}
       className={cn(
         NEXT_BUTTON_VARIANTS[variant ? variant : "default"],
         props.className
