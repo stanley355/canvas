@@ -8,6 +8,7 @@ import { MOBILE_HEADER_MENU } from "./constant";
 import { IHeaderMenu } from ".";
 import styles from "./header.module.scss";
 import { cn } from "@/common/lib/cn";
+import NextButton from "../NextButton";
 
 interface IHeaderMobileMenu {
   isLogin: boolean;
@@ -27,21 +28,21 @@ const HeaderMobileMenu = (props: IHeaderMobileMenu) => {
       <div className="flex items-center justify-between w-full border-b">
         <Link href="/" className="pl-4">
           <Image
-            src="/images/languageai/languageai_black.png"
+            src="/images/languageai/logo.png"
             alt="languageai.id"
-            width={150}
-            height={65}
-            className="h-full"
+            width={100}
+            height={50}
+            className="h-full w-auto"
           />
         </Link>
-        <CanvasButton
+        <NextButton
           type="button"
           variant="none"
           className="p-4 py-5"
           onClick={onCloseClick}
         >
-          <TbX />
-        </CanvasButton>
+          <TbX className="text-brand-primary"/>
+        </NextButton>
       </div>
 
       <div className={cn("px-4", styles.header_mobile_menu_link_container)}>
@@ -54,11 +55,11 @@ const HeaderMobileMenu = (props: IHeaderMobileMenu) => {
             className="flex items-center justify-between py-4 border-b"
             onClick={onCloseClick}
           >
-            <div className="flex items-center gap-2 text-lg">
+            <div className="flex items-center gap-2 text-lg ">
               {menu.icon}
               {menu.title}
             </div>
-            <TbChevronRight className=" text-emerald-800" />
+            <TbChevronRight className=" text-brand-primary" />
           </Link>
         ))}
       </div>
