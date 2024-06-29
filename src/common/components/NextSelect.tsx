@@ -32,7 +32,7 @@ const NextSelect = (props: NextSelectProps) => {
       <NextButton
         type="button"
         variant="outline"
-        className={cn("gap-1 w-full justify-between text-black", selectClassname)}
+        className={cn("gap-1 w-full justify-between", selectClassname)}
         onClick={() => setShowOptions(!showOptions)}
       >
         {selectedOption.label}
@@ -41,7 +41,7 @@ const NextSelect = (props: NextSelectProps) => {
 
       <div
         className={cn(
-          "absolute top-12 left-0 flex flex-col rounded-lg border border-blue-600 w-full",
+          "absolute top-12 left-0 flex flex-col rounded-lg border border-brand-primary w-full",
           showOptions ? "visible h-auto" : "invisible h-0",
           optionContainerClassname)}
       >
@@ -49,7 +49,7 @@ const NextSelect = (props: NextSelectProps) => {
           <NextButton
             type="button"
             variant="none"
-            className={cn("px-4 py-2 w-full text-left z-10", optionClassname)}
+            className={cn("px-4 py-2 w-full text-left z-10 hover:bg-blue-100 rounded-lg", optionClassname)}
             key={String(option.label)}
             onClick={() => {
               setSelectedOption(option);
