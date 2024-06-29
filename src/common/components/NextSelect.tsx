@@ -41,7 +41,7 @@ const NextSelect = (props: NextSelectProps) => {
 
       <div
         className={cn(
-          "absolute top-12 left-0 flex flex-col rounded-lg border border-brand-primary w-full",
+          "absolute top-12 left-0 flex flex-col rounded-lg border border-brand-primary w-full bg-white",
           showOptions ? "visible h-auto" : "invisible h-0",
           optionContainerClassname)}
       >

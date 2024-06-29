@@ -18,6 +18,10 @@ const StudentApplicationForm = () => {
         <NextLabel required htmlFor="institution_input">School/University Name</NextLabel>
         <NextInput placeholder="School/University Name" id="institution_input" name="institution" className="border-brand-primary" />
       </div>
+      <div className="mb-4">
+        <NextLabel htmlFor="studentidcard_input">Student ID Card (Optional)</NextLabel>
+        <NextInput type="file" id="studentidcard_input" name="student_id_card" className="border-brand-primary" />
+      </div>
     </form>
   )
 }
