@@ -12,7 +12,7 @@ const AccountFreePlanDetail = () => {
           <div>Free Plan</div>
           <Link
             href="/plans"
-            className="font-bold text-blue-700 border-b border-b-transparent hover:border-b-blue-700"
+            className="font-bold text-blue-800 border-b border-b-transparent hover:border-b-blue-800 "
           >
             Change
           </Link>

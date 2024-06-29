@@ -27,10 +27,10 @@ const AccountFreePlanTable = () => {
           <td className='p-2 border'>Unlimited</td>
         </tr>
         <tr className='[&>*]:text-center [&>*]:border [&>*]:border-black'>
-          <td className='p-2 border'>Base Price</td>
-          <td className='p-2 border'>Rp 0</td>
-          <td className='p-2 border'>Rp 0</td>
-          <td className='p-2 border'>Rp 25,000</td>
+          <td className='p-2 border'>AI Text To Speech</td>
+          <td className='p-2 border'>5x / Month</td>
+          <td className='p-2 border'>Unlimited</td>
+          <td className='p-2 border'>Unlimited</td>
         </tr>
         <tr className='[&>*]:text-center [&>*]:border [&>*]:border-black bg-blue-100'>
           <td className='p-2 border'>Time</td>
@@ -54,7 +54,7 @@ const AccountFreePlanTable = () => {
           <td className='p-2 border'></td>
           <td className='p-2 border'>Applied</td>
           <td className='p-2 border'>
-            <NextLink href="/student/application" className='justify-center mx-auto w-fit gap-1'>
+            <NextLink href="/students/application" className='justify-center mx-auto w-fit gap-1'>
               <PiStudentDuotone />
               <span>Apply</span>
             </NextLink>
@@ -66,7 +66,6 @@ const AccountFreePlanTable = () => {
             </NextLink>
           </td>
         </tr>
-
       </tbody>
     </table>
   )
