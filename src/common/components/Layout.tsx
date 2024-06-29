@@ -11,6 +11,10 @@ const inter = Inter({ subsets: ["latin"] });
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
 
+  const isSimpleHeader = useMemo(()=> {
+    return ["/login", "/students/application"].includes(router.pathname);
+  }, [router.pathname])
+  
   const hasFooter = useMemo(() => {
     return ["/", "/plans", "/students"].includes(router.pathname);
   }, [router.pathname]);
@@ -18,7 +22,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className={inter.className}>
       <Header
-        isSimpleHeader={["/login", "/students/application"].includes(router.asPath)}
+        isSimpleHeader={isSimpleHeader}
         pathname={router.pathname}
       />
       <main>{children}</main>
