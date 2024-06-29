@@ -1,11 +1,15 @@
 import { useRouter } from 'next/router';
 import { TbArrowLeft } from 'react-icons/tb';
+import { GetServerSideProps } from 'next';
 
 import NextHead from '@/common/components/NextHead';
 import NextButton from '@/common/components/NextButton';
 import StudentApplicationForm from '@/modules/students/components/application/StudentApplicationForm';
 
 import { STUDENT_APPLICATION_SEO_SCHEMA } from '@/modules/students/lib/StudentApplicationSeoSchema';
+import { getStudentApplicationPageServerProps } from '@/modules/students/lib/getStudentApplicationPageServerSideProps';
+
+export const getServerSideProps: GetServerSideProps = getStudentApplicationPageServerProps;
 
 const StudentApplication = () => {
   const router = useRouter();
