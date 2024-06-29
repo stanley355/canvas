@@ -1,14 +1,23 @@
-import NextInput from "@/common/components/NextInput"
-import NextLabel from "@/common/components/NextLabel"
-import StudentInstitutionLevelField from "./StudentInstitutionLevelField"
-import NextButton from "@/common/components/NextButton"
 import { useState } from "react"
 import { toast } from "react-toastify"
-import { EMAIL_REGEX } from "@/common/lib/regex"
+import Cookies from "js-cookie"
+import { JwtPayload, decode } from "jsonwebtoken"
 import { getStorage, ref, uploadBytes } from "firebase/storage"
 
+import NextInput from "@/common/components/NextInput"
+import NextLabel from "@/common/components/NextLabel"
+import NextButton from "@/common/components/NextButton"
+
+import StudentInstitutionLevelField from "./StudentInstitutionLevelField"
+import { EMAIL_REGEX } from "@/common/lib/regex"
+import { fetchStudentsApplication } from "@/common/lib/api/students/fetchStudentsApplication"
+import { useRouter } from "next/router"
+import { TbProgress } from "react-icons/tb"
+
 const StudentApplicationForm = () => {
+  const router = useRouter();
   const [institutionLevel, setInstitutionLevel] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleAction = async (formEvent: React.FormEvent<HTMLFormElement>) => {
     formEvent.preventDefault();
@@ -41,8 +50,32 @@ const StudentApplicationForm = () => {
       await uploadBytes(storageRef, file);
     }
 
+    const token = Cookies.get("token");
+    const user = decode(String(token)) as JwtPayload;
+    const req = {
+      user_id: user.id,
+      student_id: student_id.value,
+      institution_level: institutionLevel,
+      institution_name: institution_name.value,
+      ...(student_email.value && { student_email: student_email.value }),
+      ...(file && {
+        student_card_img_url: studentIdCardPath,
+      }),
+    };
 
+    const studentApplication = await fetchStudentsApplication(req);
+    if (studentApplication?.id) {
+      router.push("/account");
+      return;
+    }
 
+    if (studentApplication?.status) {
+      toast.error(studentApplication?.statusText);
+      return;
+    }
+
+    toast.error("Fail to apply, please try again");
+    return;
   }
 
   return (
@@ -64,7 +97,9 @@ const StudentApplicationForm = () => {
         <NextLabel htmlFor="studentidcard_input">Student ID Card (Optional)</NextLabel>
         <NextInput type="file" id="studentidcard_input" name="student_id_card" className="border-brand-primary" />
       </div>
-      <NextButton className="w-full justify-center text-lg mb-4" type="submit">Submit</NextButton>
+      <NextButton className="w-full justify-center text-lg mb-4" type="submit">
+        {isLoading ? <TbProgress className="animate-spin" /> : "Submit"}
+      </NextButton>
       <div className="text-center">
         By signing up, you agree to the <b>Terms and Conditions</b> and{" "}
         <b> Privacy Policy</b>.

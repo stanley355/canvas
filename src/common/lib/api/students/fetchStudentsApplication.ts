@@ -21,6 +21,6 @@ export const fetchStudentsApplication = async (
     const { data } = await axios.post(url, req);
     return data;
   } catch (error: any) {
-    return error?.response?.data ? error.response.data : {};
+    return error?.response?.data;
   }
 };
