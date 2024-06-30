@@ -6,7 +6,7 @@ const HomeStatistic = () => {
     <div className="p-4 py-8 lg:container">
       <Link href="/">
         <Image
-          src="/images/languageai/languageai_black.png"
+          src="/images/languageai/logo.png"
           alt="languageai.id"
           width={200}
           height={130}
