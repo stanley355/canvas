@@ -1,5 +1,10 @@
 # CANVAS
 
+### 1.3.7
+
+- Remove payasyougo topup
+- Remove `/plans/students` to `/plans`
+
 ### 1.3.6
 
 - Move `/account/students` to `/students/application`
