@@ -4,11 +4,11 @@ import NextButton from "@/common/components/NextButton"
 const PlanStudentsForm = () => {
   return (
     <div className="px-4">
-      <NextButton className="flex-col items-start w-full p-4 flex border border-brand-primary rounded-t-lg hover:bg-gradient-to-b from-white to-blue-100" variant="none">
+      <NextButton className="flex-col items-start w-full p-4 rounded-b-none " variant="outline">
         <div className="p-2 mb-2 text-sm rounded-md bg-yellow-300">
           Most Popular
         </div>
-        <div className="flex items-center justify-between w-full mb-2">
+        <div className="flex items-center justify-between w-full">
           <div className="text-lg font-semibold">Half yearly</div>
           <div className="flex items-center gap-2 text-lg">
             <span className="font-semibold">Rp 70.000</span>
@@ -25,7 +25,7 @@ const PlanStudentsForm = () => {
           <div className="p-1 bg-brand-primary text-white">Save 64%</div>
         </div>
       </NextButton>
-      <NextButton className="flex-col items-start w-full p-4 flex border border-brand-primary hover:bg-gradient-to-b from-white to-blue-100" variant="none">
+      <NextButton className="flex-col items-start w-full p-4 rounded-none " variant="outline">
         <div className="flex items-center justify-between w-full mb-2">
           <div className="text-lg font-semibold">Quarterly</div>
           <div className="flex items-center gap-2 text-lg">
@@ -43,7 +43,7 @@ const PlanStudentsForm = () => {
           <div className="p-1 bg-brand-primary text-white">Save 68%</div>
         </div>
       </NextButton>
-       <NextButton className="flex-col items-start w-full p-4 flex border border-brand-primary rounded-b-lg hover:bg-gradient-to-b from-white to-blue-100" variant="none">
+      <NextButton className="flex-col items-start w-full p-4 rounded-t-none " variant="outline">
         <div className="flex items-center justify-between w-full mb-2">
           <div className="text-lg font-semibold">Monthly</div>
           <div className="flex items-center gap-2 text-lg">
