@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 const PlanHomeSchools = () => {
   return (
-    <div>
+    <div className='mb-12'>
       <div className='text-lg text-center font-semibold mb-2'>Trusted by students from</div>
 
       <div className='grid grid-cols-3 place-items-center h-[20vh]'>

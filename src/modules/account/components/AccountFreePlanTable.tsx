@@ -33,7 +33,7 @@ const AccountFreePlanTable = () => {
           <td className='p-2 border'>Unlimited</td>
         </tr>
         <tr className='[&>*]:text-center [&>*]:border [&>*]:border-black bg-blue-100'>
-          <td className='p-2 border'>Time</td>
+          <td className='p-2 border'>Subscription Time</td>
           <td className='p-2 border'>Forever</td>
           <td className='p-2 border'>
             <ol className='list-disc ml-4 text-left'>

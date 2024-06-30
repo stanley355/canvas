@@ -5,6 +5,7 @@ import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
 import { getPlanPageStaticProps } from "@/modules/plans/lib/getPlanPageStaticProps";
 import NextHead from "@/common/components/NextHead";
 import PlanHomeSchools from "@/modules/plans/components/home/PlanHomeSchools";
+import PlanHomeList from "@/modules/plans/components/home/PlanHomeList";
 // import PlanHomePlanList from "@/modules/plans/components/PlanHomePlanList";
 // import PlanHomeStatistic from "@/modules/plans/components/PlanHomeStatistic";
 
@@ -21,6 +22,7 @@ const Plans = (props: IPlansProps) => {
 
       <h1 className="text-center font-bold text-3xl mb-4">A Plan for your Need</h1>
       <PlanHomeSchools />
+      <PlanHomeList />
       {/* <MetaHead pagesSchema={datoCmsData.pagesSchema} /> */}
 
       {/* <div className="pt-12 mb-2 text-3xl font-bold text-center lg:pt-0 ">
