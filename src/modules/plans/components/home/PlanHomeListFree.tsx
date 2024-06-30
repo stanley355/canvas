@@ -15,8 +15,8 @@ const PlanHomeListFree = () => {
           disabled
           className="p-4 text-lg justify-center py-4 mb-8 w-full">{PLAN_LIST.free.ctaText}</NextButton>
 
-        {PLAN_LIST.free.features.map((feat) => <div className="grid grid-cols-2 mb-4">
-          <span className="font-semibold">{feat.label}</span>
+        {PLAN_LIST.free.features.map((feat) => <div className="grid grid-cols-2 mb-4" key={`free_${feat.label}`}> 
+          <span className="font-semibold" >{feat.label}</span>
           <span className="text-right">{feat.value}</span>
         </div>)}
       </div>

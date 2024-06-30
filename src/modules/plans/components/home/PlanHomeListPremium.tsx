@@ -17,8 +17,8 @@ const PlanHomeListPremium = () => {
 
         <NextLink href="/plans/premium/" className="text-lg justify-center py-4 mb-8">{PLAN_LIST.premium.ctaText}</NextLink>
 
-        {PLAN_LIST.premium.features.map((feat)=> <div className="grid grid-cols-2 mb-4">
-          <span className="font-semibold">{feat.label}</span>
+        {PLAN_LIST.premium.features.map((feat)=> <div className="grid grid-cols-2 mb-4" key={`premium_${feat.label}`}>
+          <span className="font-semibold" >{feat.label}</span>
           <span className="text-right">{feat.value}</span>
         </div> )}
       </div>
