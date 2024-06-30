@@ -10,7 +10,7 @@ const AccountTopupTable = (props: IAccountTopupTable) => {
 
   return (
     <div>
-      <div className="mb-2 text-2xl font-semibold">Payment History</div>
+      <div className="mb-2 text-lg font-semibold">Payment History</div>
       <table>
         <thead>
           <tr className="text-sm">

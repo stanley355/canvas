@@ -32,8 +32,9 @@ const AccountPayasyougoPlanDetail = (props: IAccountPayasyougoPlanDetail) => {
         <div>Rp {user.balance}</div>
       </div>
 
-      <div className="w-full p-2 mb-4 text-sm bg-blue-100 lg:w-1/2">
-        Your credit amount will change according to your usage
+      <div className="w-full p-2 mb-4 text-sm bg-red-100 lg:w-1/2">
+        We are discontinuing `Pay As You Go` payment plan, but you can use your
+        balance until the end of July 31st 2024
       </div>
 
       {topups && topups?.length > 0 && <AccountTopupTable topups={topups} />}

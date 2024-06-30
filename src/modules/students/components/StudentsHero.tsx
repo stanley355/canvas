@@ -34,7 +34,7 @@ const StudentsHero = () => {
         <div className="items-center gap-2 mb-2 lg:flex">
           <Button
             variant={"secondary"}
-            onClick={() => router.push("/plans/students/")}
+            onClick={() => router.push("/plans/")}
             className="gap-2 mb-4 text-lg font-bold text-indigo-900 border rounded lg:mb-0 lg:text-sm"
           >
             <TbPercentage className="text-lg font-bold" />

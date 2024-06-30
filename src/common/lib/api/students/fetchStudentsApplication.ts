@@ -13,7 +13,7 @@ interface IRequest {
 }
 
 export const fetchStudentsApplication = async (
-  req:IRequest 
+  req: IRequest
 ): Promise<IStudent & IAuthorError> => {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}api/students/application/`;
 

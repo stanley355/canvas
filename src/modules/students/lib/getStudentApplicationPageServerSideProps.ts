@@ -18,7 +18,22 @@ export const getStudentApplicationPageServerProps: GetServerSideProps = async (
 
   const decodedToken = decode(token) as JwtPayload;
   const student = await fetchStudents(decodedToken.id);
-  
+
+  if (student?.free_discount_end_at) {
+    const currentTime = new Date().getTime();
+    const freeDiscTime = new Date(student.free_discount_end_at).getTime();
+
+    // student has free discount
+    if (freeDiscTime > currentTime) {
+      return {
+        redirect: {
+          permanent: false,
+          destination: "/login/",
+        },
+      };
+    }
+  }
+
   return {
     props: {
       student,

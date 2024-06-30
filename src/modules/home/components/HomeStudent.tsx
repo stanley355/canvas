@@ -22,7 +22,7 @@ const HomeStudent = () => {
           unlimited use
         </div>
         <CanvasLink
-          href="/plans/students"
+          href="/students/application"
           variant="primary-reverse"
           onClick={() => sendFirebaseEvent("click_home_apply_student")}
           className="w-1/2 mx-auto mb-8 text-xl border lg:w-1/4 lg:hover:bg-emerald-600 border-emerald-800 lg:border-white lg:hover:text-white"

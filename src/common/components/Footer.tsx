@@ -56,7 +56,7 @@ const Footer = () => (
           <span>Pricing</span>
         </Link>
         <Link
-          href="/plans/students/"
+          href="/plans/"
           className="flex items-center gap-1 py-2 hover:font-bold"
         >
           <PiStudentDuotone />
@@ -84,7 +84,7 @@ const Footer = () => (
 
       <div className="flex items-center text-brand-primary pt-2">
         <span>{new Date().getFullYear()}</span>
-        <TbCopyright  className="hidden lg:flex"/>
+        <TbCopyright className="hidden lg:flex" />
         <span className="hidden lg:flex">languageai.id</span>
       </div>
     </div>

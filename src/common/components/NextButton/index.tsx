@@ -3,7 +3,7 @@ import { NEXT_BUTTON_VARIANTS, INextButtonVariants } from "./variants";
 
 interface NextButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  key?:string;
+  key?: string;
   variant?: keyof INextButtonVariants;
 }
 
