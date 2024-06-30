@@ -82,5 +82,30 @@ export const PLAN_LIST = {
         value: "Five percent discount for Quarterly payment"
       },
     ]
-  }
+  },
+  student: {
+    title: 'Student',
+    desc: "Apply for Student plan and get unlimited use",
+    price: "Rp 0",
+    priceDesc: "first year, then 50% off for second year",
+    ctaText: "Apply",
+    features: [
+      {
+        label: "AI Translate",
+        value: "Unlimited"
+      },
+      {
+        label: "AI Checkbot",
+        value: "Unlimited"
+      },
+      {
+        label: "AI Text to Speech",
+        value: "Unlimited"
+      },
+      {
+        label: "Subscription Time",
+        value: "Until Graduation (*renewable)"
+      },
+    ]
+  },
 }

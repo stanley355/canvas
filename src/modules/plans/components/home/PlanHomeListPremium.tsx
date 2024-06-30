@@ -4,7 +4,7 @@ import NextLink from "@/common/components/NextLink"
 
 const PlanHomeListPremium = () => {
   return (
-    <div className='border-brand-primary border rounded-lg'>
+    <div className='border-brand-primary border rounded-lg mb-8'>
       <div className="flex items-center justify-center bg-brand-primary text-white rounded-t-lg py-2 text-xl gap-1">
         <div>Most Popular</div>
         <MdAutoAwesome />

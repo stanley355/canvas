@@ -1,11 +1,12 @@
 import React from 'react'
 import PlanHomeListPremium from './PlanHomeListPremium'
+import PlanHomeListStudent from './PlanHomeListStudent'
 
 const PlanHomeList = () => {
   return (
     <div className='mb-8'>
-      {/* Premium */}
       <PlanHomeListPremium />
+      <PlanHomeListStudent />
     </div>
   )
 }
