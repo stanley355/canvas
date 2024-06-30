@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 import { getPlanStudentPageServerProps } from "@/modules/plans/lib/getPlanStudentPageServerProps";
 import { IStudent } from "@/common/lib/api/students/interfaces";
+import PlanStudentsFeatures from "@/modules/plans/components/students/PlanStudentsFeatures";
 
 export const getServerSideProps: GetServerSideProps = getPlanStudentPageServerProps;
 
@@ -17,6 +18,7 @@ const StudentsPlans = (props: StudentsPlansProps) => {
         Your free student plan has ended on <i>{new Date(student.free_discount_end_at).toLocaleDateString('id-ID')}</i>, 
         but you can enjoy student pricing <b>(50% discount)</b> until <i>{new Date(student.half_discount_end_at).toLocaleDateString('id-id')}</i>
       </div>
+      <PlanStudentsFeatures />
     </div>
   )
 }

@@ -108,7 +108,7 @@ export const PLAN_LIST = {
       },
       {
         label: "Subscription Time",
-        value: "Until Graduation (*renewable)",
+        value: "Renewable on Graduation",
       },
     ],
   },
