@@ -15,7 +15,7 @@ const NextButton = (props: NextButtonProps) => {
       {...rest}
       className={cn(
         NEXT_BUTTON_VARIANTS[variant ? variant : "default"],
-        props.className
+        props.className,
       )}
     >
       {props.children}

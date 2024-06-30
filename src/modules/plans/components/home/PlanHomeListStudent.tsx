@@ -10,7 +10,7 @@ const PlanHomeListStudent = () => {
         <div className="text-3xl font-semibold">{PLAN_LIST.student.price}</div>
         <div className="mb-4">{PLAN_LIST.student.priceDesc}</div>
 
-        <NextLink href="/plans/student/" className="text-2xl justify-center py-4 mb-8">{PLAN_LIST.student.ctaText}</NextLink>
+        <NextLink href="/students/application/" className="text-2xl justify-center py-4 mb-8">{PLAN_LIST.student.ctaText}</NextLink>
 
         {PLAN_LIST.student.features.map((feat)=> <div className="grid grid-cols-2 mb-4">
           <span className="font-semibold">{feat.label}</span>

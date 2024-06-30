@@ -108,4 +108,25 @@ export const PLAN_LIST = {
       },
     ]
   },
+  free: {
+    title: 'Free',
+    desc: "Utilize Languageai for your needs",
+    price: "Rp 0",
+    priceDesc: "/month",
+    ctaText: "Automatically Applied",
+    features: [
+      {
+        label: "AI Translate",
+        value: "10x/Month"
+      },
+      {
+        label: "AI Checkbot",
+        value: "10x/Month"
+      },
+      {
+        label: "AI Text to Speech",
+        value: "10x/Month"
+      },
+    ]
+  },
 }
