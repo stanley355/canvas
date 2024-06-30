@@ -3,8 +3,10 @@ import { useRouter } from "next/router";
 
 import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
 import { getPlanPageStaticProps } from "@/modules/plans/lib/getPlanPageStaticProps";
-import PlanHomePlanList from "@/modules/plans/components/PlanHomePlanList";
-import PlanHomeStatistic from "@/modules/plans/components/PlanHomeStatistic";
+import NextHead from "@/common/components/NextHead";
+import PlanHomeSchools from "@/modules/plans/components/home/PlanHomeSchools";
+// import PlanHomePlanList from "@/modules/plans/components/PlanHomePlanList";
+// import PlanHomeStatistic from "@/modules/plans/components/PlanHomeStatistic";
 
 interface IPlansProps {
   datoCmsData: IMetaHead;
@@ -14,10 +16,14 @@ const Plans = (props: IPlansProps) => {
   const { datoCmsData } = props;
   const router = useRouter();
   return (
-    <div className="container px-6 mx-auto mt-24 lg:mt-4 lg:px-12">
-      <MetaHead pagesSchema={datoCmsData.pagesSchema} />
+    <div className="container mt-20 px-4">
+      <NextHead pagesSchema={datoCmsData.pagesSchema} />
 
-      <div className="pt-12 mb-2 text-3xl font-bold text-center lg:pt-0 ">
+      <h1 className="text-center font-bold text-3xl mb-4">A Plan for your Need</h1>
+      <PlanHomeSchools />
+      {/* <MetaHead pagesSchema={datoCmsData.pagesSchema} /> */}
+
+      {/* <div className="pt-12 mb-2 text-3xl font-bold text-center lg:pt-0 ">
         Great Writing Starts with a Plan
       </div>
 
@@ -35,7 +41,7 @@ const Plans = (props: IPlansProps) => {
       </div>
 
       <PlanHomeStatistic />
-      <PlanHomePlanList />
+      <PlanHomePlanList /> */}
     </div>
   );
 };
