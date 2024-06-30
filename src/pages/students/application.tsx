@@ -7,7 +7,6 @@ import NextHead from '@/common/components/NextHead';
 import NextButton from '@/common/components/NextButton';
 import StudentApplicationForm from '@/modules/students/components/application/StudentApplicationForm';
 import AccountStudentHalfDiscount from '@/modules/account/components/AccountStudentHalfDiscount';
-import AccountStudentFreeDiscount from '@/modules/account/components/AccountStudentFreeDiscount';
 
 import { STUDENT_APPLICATION_SEO_SCHEMA } from '@/modules/students/lib/StudentApplicationSeoSchema';
 import { getStudentApplicationPageServerProps } from '@/modules/students/lib/getStudentApplicationPageServerSideProps';
@@ -23,20 +22,11 @@ const StudentApplication = (props: StudentApplicationProps) => {
   const { student } = props;
   const router = useRouter();
 
-  const isFreeDiscount = useMemo(() => {
-    const currentTime = new Date().getTime();
-    const freeDiscTime = new Date(student.free_discount_end_at).getTime();
-    return freeDiscTime > currentTime;
-  }, [student]);
   const isHalfDiscount = useMemo(() => {
     const currentTime = new Date().getTime();
     const halfDiscTime = new Date(student.half_discount_end_at).getTime();
     return halfDiscTime > currentTime;
   }, [student]);
-
-  if (isFreeDiscount) {
-    return <AccountStudentFreeDiscount/>;
-  }
 
   if (isHalfDiscount) {
     return <AccountStudentHalfDiscount />;
