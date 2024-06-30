@@ -85,7 +85,7 @@ export const PLAN_LIST = {
   },
   student: {
     title: 'Student',
-    desc: "Apply for Student plan and get unlimited use",
+    desc: "Apply Student plan and get unlimited use",
     price: "Rp 0",
     priceDesc: "first year, then 50% off for second year",
     ctaText: "Apply",

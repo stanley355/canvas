@@ -15,7 +15,7 @@ const PlanHomeListPremium = () => {
         <div className="text-3xl font-semibold">{PLAN_LIST.premium.price}</div>
         <div className="mb-4">{PLAN_LIST.premium.priceDesc}</div>
 
-        <NextLink href="/plans/premium/" className="text-2xl justify-center py-4 mb-8">{PLAN_LIST.premium.ctaText}</NextLink>
+        <NextLink href="/plans/premium/" className="text-lg justify-center py-4 mb-8">{PLAN_LIST.premium.ctaText}</NextLink>
 
         {PLAN_LIST.premium.features.map((feat)=> <div className="grid grid-cols-2 mb-4">
           <span className="font-semibold">{feat.label}</span>
