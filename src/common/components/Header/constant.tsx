@@ -30,11 +30,6 @@ export const MOBILE_HEADER_MENU = [
     icon: <TbSpeakerphone />,
   },
   {
-    title: "FOR STUDENTS",
-    url: "/plans/students/",
-    icon: <PiStudentDuotone />,
-  },
-  {
     title: "PRICING",
     url: "/plans/",
     icon: <FaRupiahSign />,

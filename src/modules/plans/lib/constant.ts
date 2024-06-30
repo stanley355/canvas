@@ -1,4 +1,8 @@
-
+export interface IPlanListFeature {
+  name: string;
+  limit: string;
+  isBold: boolean;
+}
 
 export const STUDENT_PLAN_FEATURES = [
   {
