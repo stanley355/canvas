@@ -2,7 +2,7 @@ import { PLAN_LIST } from "../../lib/constant"
 
 const PlanStudentsFeatures = () => {
   return (
-    <div className="px-4 mb-4">
+    <div className="px-4 mb-8">
       <div className="pb-4 mb-4 border-b border-brand-primary">
         <h1 className="text-center text-2xl font-bold">Student Premium Plan</h1>
         <div className="text-center">What you get</div>
