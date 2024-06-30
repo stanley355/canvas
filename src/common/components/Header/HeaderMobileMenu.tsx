@@ -41,7 +41,7 @@ const HeaderMobileMenu = (props: IHeaderMobileMenu) => {
           className="p-4 py-5"
           onClick={onCloseClick}
         >
-          <TbX className="text-brand-primary"/>
+          <TbX className="text-brand-primary" />
         </NextButton>
       </div>
 

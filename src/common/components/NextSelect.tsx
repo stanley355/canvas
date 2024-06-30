@@ -1,7 +1,7 @@
-import { memo, useState } from "react"
-import { TbChevronDown, TbChevronUp } from "react-icons/tb"
-import NextButton from "./NextButton"
-import { cn } from "../lib/cn"
+import { memo, useState } from "react";
+import { TbChevronDown, TbChevronUp } from "react-icons/tb";
+import NextButton from "./NextButton";
+import { cn } from "../lib/cn";
 import { IOption } from "./interfaces";
 
 interface NextSelectProps {
@@ -22,10 +22,13 @@ const NextSelect = (props: NextSelectProps) => {
     optionClassname,
     placeholder,
     options,
-    onChange
+    onChange,
   } = props;
   const [showOptions, setShowOptions] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<IOption>({ label: placeholder ? placeholder : "Select", value: null })
+  const [selectedOption, setSelectedOption] = useState<IOption>({
+    label: placeholder ? placeholder : "Select",
+    value: null,
+  });
 
   return (
     <div className={cn("relative w-full", containerClassname)}>
@@ -43,13 +46,17 @@ const NextSelect = (props: NextSelectProps) => {
         className={cn(
           "absolute top-12 left-0 flex flex-col rounded-lg border border-brand-primary w-full bg-white",
           showOptions ? "visible h-auto" : "invisible h-0",
-          optionContainerClassname)}
+          optionContainerClassname
+        )}
       >
-        {options.map((option) =>
+        {options.map((option) => (
           <NextButton
             type="button"
             variant="none"
-            className={cn("px-4 py-2 w-full text-left z-10 hover:bg-blue-100 rounded-lg", optionClassname)}
+            className={cn(
+              "px-4 py-2 w-full text-left z-10 hover:bg-blue-100 rounded-lg",
+              optionClassname
+            )}
             key={String(option.label)}
             onClick={() => {
               setSelectedOption(option);
@@ -59,10 +66,10 @@ const NextSelect = (props: NextSelectProps) => {
           >
             {option.label}
           </NextButton>
-        )}
+        ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default memo(NextSelect)
+export default memo(NextSelect);

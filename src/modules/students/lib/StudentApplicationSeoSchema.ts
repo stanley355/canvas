@@ -7,7 +7,8 @@ export const STUDENT_APPLICATION_SEO_SCHEMA: IDatoPagesSchema = {
   faq: [],
   seo: {
     title: `Student Plan Application`,
-    description: "Enter your student information to get free & unlimited use of Languageai",
+    description:
+      "Enter your student information to get free & unlimited use of Languageai",
     image: {
       alt: "Languageai.id",
       url: "/images/languageai/logo.png",

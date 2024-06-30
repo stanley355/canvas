@@ -1,18 +1,18 @@
-import { useState } from "react"
-import { toast } from "react-toastify"
-import Cookies from "js-cookie"
-import { JwtPayload, decode } from "jsonwebtoken"
-import { getStorage, ref, uploadBytes } from "firebase/storage"
+import { useState } from "react";
+import { toast } from "react-toastify";
+import Cookies from "js-cookie";
+import { JwtPayload, decode } from "jsonwebtoken";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 
-import NextInput from "@/common/components/NextInput"
-import NextLabel from "@/common/components/NextLabel"
-import NextButton from "@/common/components/NextButton"
+import NextInput from "@/common/components/NextInput";
+import NextLabel from "@/common/components/NextLabel";
+import NextButton from "@/common/components/NextButton";
 
-import StudentInstitutionLevelField from "./StudentInstitutionLevelField"
-import { EMAIL_REGEX } from "@/common/lib/regex"
-import { fetchStudentsApplication } from "@/common/lib/api/students/fetchStudentsApplication"
-import { useRouter } from "next/router"
-import { TbProgress } from "react-icons/tb"
+import StudentInstitutionLevelField from "./StudentInstitutionLevelField";
+import { EMAIL_REGEX } from "@/common/lib/regex";
+import { fetchStudentsApplication } from "@/common/lib/api/students/fetchStudentsApplication";
+import { useRouter } from "next/router";
+import { TbProgress } from "react-icons/tb";
 
 const StudentApplicationForm = () => {
   const router = useRouter();
@@ -22,22 +22,15 @@ const StudentApplicationForm = () => {
   const handleAction = async (formEvent: React.FormEvent<HTMLFormElement>) => {
     formEvent.preventDefault();
     const target = formEvent.target as any;
-    const {
-      student_id,
-      student_email,
-      institution_name,
-      student_id_card
-    } = target;
+    const { student_id, student_email, institution_name, student_id_card } =
+      target;
 
     if (!student_id.value || !institutionLevel || !institution_name.value) {
       toast.error("Please complete all required field");
       return;
     }
 
-    if (
-      student_email.value &&
-      !student_email.value.match(EMAIL_REGEX)
-    ) {
+    if (student_email.value && !student_email.value.match(EMAIL_REGEX)) {
       toast.error("Please input correct email");
       return;
     }
@@ -76,26 +69,53 @@ const StudentApplicationForm = () => {
 
     toast.error("Fail to apply, please try again");
     return;
-  }
+  };
 
   return (
     <form onSubmit={handleAction} className="mb-4">
       <div className="mb-4">
-        <NextLabel required htmlFor="studentid_input">Student ID</NextLabel>
-        <NextInput placeholder="Student ID" id="studentid_input" name="student_id" className="border-brand-primary" />
+        <NextLabel required htmlFor="studentid_input">
+          Student ID
+        </NextLabel>
+        <NextInput
+          placeholder="Student ID"
+          id="studentid_input"
+          name="student_id"
+          className="border-brand-primary"
+        />
       </div>
       <div className="mb-4">
         <NextLabel htmlFor="studentemail_input">Student Email</NextLabel>
-        <NextInput placeholder="Email" type="email" id="studentemail_input" name="student_email" className="border-brand-primary" />
+        <NextInput
+          placeholder="Email"
+          type="email"
+          id="studentemail_input"
+          name="student_email"
+          className="border-brand-primary"
+        />
       </div>
       <StudentInstitutionLevelField setInstitutionLevel={setInstitutionLevel} />
       <div className="mb-4">
-        <NextLabel required htmlFor="institution_input">School/University Name</NextLabel>
-        <NextInput placeholder="School/University Name" id="institution_input" name="institution_name" className="border-brand-primary" />
+        <NextLabel required htmlFor="institution_input">
+          School/University Name
+        </NextLabel>
+        <NextInput
+          placeholder="School/University Name"
+          id="institution_input"
+          name="institution_name"
+          className="border-brand-primary"
+        />
       </div>
       <div className="mb-4">
-        <NextLabel htmlFor="studentidcard_input">Student ID Card (Optional)</NextLabel>
-        <NextInput type="file" id="studentidcard_input" name="student_id_card" className="border-brand-primary" />
+        <NextLabel htmlFor="studentidcard_input">
+          Student ID Card (Optional)
+        </NextLabel>
+        <NextInput
+          type="file"
+          id="studentidcard_input"
+          name="student_id_card"
+          className="border-brand-primary"
+        />
       </div>
       <NextButton className="w-full justify-center text-lg mb-4" type="submit">
         {isLoading ? <TbProgress className="animate-spin" /> : "Submit"}
@@ -105,7 +125,7 @@ const StudentApplicationForm = () => {
         <b> Privacy Policy</b>.
       </div>
     </form>
-  )
-}
+  );
+};
 
-export default StudentApplicationForm
+export default StudentApplicationForm;

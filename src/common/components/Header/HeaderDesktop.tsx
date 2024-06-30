@@ -86,17 +86,17 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
         </NextLink>
       </div>
 
-        {isLogin ? (
-          <NextLink href="/account" className="gap-1">
-            <TbUserCircle />
-            <span>ACCOUNT</span>
-          </NextLink>
-        ) : (
-          <NextLink href={"/login"} className="gap-1">
-            <span>SIGN IN</span>
-            <TbArrowBarToRight />
-          </NextLink>
-        )}
+      {isLogin ? (
+        <NextLink href="/account" className="gap-1">
+          <TbUserCircle />
+          <span>ACCOUNT</span>
+        </NextLink>
+      ) : (
+        <NextLink href={"/login"} className="gap-1">
+          <span>SIGN IN</span>
+          <TbArrowBarToRight />
+        </NextLink>
+      )}
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { NEXT_BUTTON_VARIANTS, INextButtonVariants } from "./variants";
 
 interface NextButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  key?:string;
+  key?: string;
   variant?: keyof INextButtonVariants;
 }
 
@@ -15,7 +15,7 @@ const NextButton = (props: NextButtonProps) => {
       {...rest}
       className={cn(
         NEXT_BUTTON_VARIANTS[variant ? variant : "default"],
-        props.className,
+        props.className
       )}
     >
       {props.children}

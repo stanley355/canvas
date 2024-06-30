@@ -59,7 +59,7 @@ export const STUDENT_PLAN_FEATURES = [
 
 export const PLAN_LIST = {
   premium: {
-    title: 'Premium',
+    title: "Premium",
     desc: "Monthly, Quarterly, or Half Yearly use",
     price: "Rp 25,000",
     priceDesc: "/month, no auto credit",
@@ -67,28 +67,28 @@ export const PLAN_LIST = {
     features: [
       {
         label: "AI Translate",
-        value: "Unlimited"
+        value: "Unlimited",
       },
       {
         label: "AI Checkbot",
-        value: "Unlimited"
+        value: "Unlimited",
       },
       {
         label: "AI Text to Speech",
-        value: "Unlimited"
+        value: "Unlimited",
       },
       {
         label: "Subscription Time",
-        value: "Monthly, Quarterly, or Half yearly"
+        value: "Monthly, Quarterly, or Half yearly",
       },
       {
         label: "Bonus",
-        value: "Five percent discount for Quarterly payment"
+        value: "Five percent discount for Quarterly payment",
       },
-    ]
+    ],
   },
   student: {
-    title: 'Student',
+    title: "Student",
     desc: "Apply Student plan and get unlimited use",
     price: "Rp 0",
     priceDesc: "first year, then 50% off for second year",
@@ -96,24 +96,24 @@ export const PLAN_LIST = {
     features: [
       {
         label: "AI Translate",
-        value: "Unlimited"
+        value: "Unlimited",
       },
       {
         label: "AI Checkbot",
-        value: "Unlimited"
+        value: "Unlimited",
       },
       {
         label: "AI Text to Speech",
-        value: "Unlimited"
+        value: "Unlimited",
       },
       {
         label: "Subscription Time",
-        value: "Until Graduation (*renewable)"
+        value: "Until Graduation (*renewable)",
       },
-    ]
+    ],
   },
   free: {
-    title: 'Free',
+    title: "Free",
     desc: "Utilize Languageai for your needs",
     price: "Rp 0",
     priceDesc: "/month",
@@ -121,16 +121,16 @@ export const PLAN_LIST = {
     features: [
       {
         label: "AI Translate",
-        value: "10x/Month"
+        value: "10x/Month",
       },
       {
         label: "AI Checkbot",
-        value: "10x/Month"
+        value: "10x/Month",
       },
       {
         label: "AI Text to Speech",
-        value: "10x/Month"
+        value: "10x/Month",
       },
-    ]
+    ],
   },
-}
+};

@@ -2,7 +2,6 @@ import axios from "axios";
 import { IStudent } from "../../api/students/interfaces";
 import { IAuthorError } from "../interfaces";
 
-
 export const fetchStudents = async (
   userID: string
 ): Promise<IStudent & IAuthorError> => {

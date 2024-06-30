@@ -1,6 +1,4 @@
-
-interface NextLabelProps
-  extends React.LabelHTMLAttributes<HTMLLabelElement> {
+interface NextLabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   required?: boolean;
 }
 
@@ -11,7 +9,7 @@ const NextLabel = (props: NextLabelProps) => {
       {props.children}
       {required && <span className="text-red-500">*</span>}
     </label>
-  )
-}
+  );
+};
 
-export default NextLabel 
+export default NextLabel;

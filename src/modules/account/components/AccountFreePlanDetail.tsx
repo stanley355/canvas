@@ -20,7 +20,8 @@ const AccountFreePlanDetail = () => {
       </div>
 
       <div className="w-full p-2 text-sm bg-blue-100 lg:w-1/2">
-        Change your Plan to enjoy full feature. Choose a plan to ensure that everything you write is clear, engaging, and polished.
+        Change your Plan to enjoy full feature. Choose a plan to ensure that
+        everything you write is clear, engaging, and polished.
       </div>
     </div>
   );

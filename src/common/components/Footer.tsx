@@ -84,7 +84,7 @@ const Footer = () => (
 
       <div className="flex items-center text-brand-primary pt-2">
         <span>{new Date().getFullYear()}</span>
-        <TbCopyright  className="hidden lg:flex"/>
+        <TbCopyright className="hidden lg:flex" />
         <span className="hidden lg:flex">languageai.id</span>
       </div>
     </div>
