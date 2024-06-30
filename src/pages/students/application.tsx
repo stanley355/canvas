@@ -8,9 +8,7 @@ import NextButton from '@/common/components/NextButton';
 import StudentApplicationForm from '@/modules/students/components/application/StudentApplicationForm';
 import AccountStudentHalfDiscount from '@/modules/account/components/AccountStudentHalfDiscount';
 import AccountStudentFreeDiscount from '@/modules/account/components/AccountStudentFreeDiscount';
-import AccountStudentCantReapply from '@/modules/account/components/AccountStudentCantReapply';
 
-import { StudentInstitutionLevel } from '@/modules/students/lib/StudentInstitutionLevel';
 import { STUDENT_APPLICATION_SEO_SCHEMA } from '@/modules/students/lib/StudentApplicationSeoSchema';
 import { getStudentApplicationPageServerProps } from '@/modules/students/lib/getStudentApplicationPageServerSideProps';
 import { IStudent } from '@/common/lib/api/students/interfaces';
@@ -35,13 +33,6 @@ const StudentApplication = (props: StudentApplicationProps) => {
     const halfDiscTime = new Date(student.half_discount_end_at).getTime();
     return halfDiscTime > currentTime;
   }, [student]);
-  if (
-    !isFreeDiscount &&
-    !isHalfDiscount &&
-    student.institution_level === StudentInstitutionLevel.College
-  ) {
-    return <AccountStudentCantReapply />;
-  }
 
   if (isFreeDiscount) {
     return <AccountStudentFreeDiscount/>;
