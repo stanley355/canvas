@@ -45,7 +45,7 @@ const PlanStudentsForm = () => {
           key={plan.title}
           onClick={() => handleClick(plan.duration)}
           variant="outline"
-          className={cn("flex-col items-start w-full p-4 rounded-none", index === 0 && "rounded-t-lg", index === 2 && "rounded-b-lg")}
+          className={cn("flex-col items-start w-full p-4 rounded-none border-gray-200", index === 0 && "rounded-t-lg border-brand-primary", index === 2 && "rounded-b-lg")}
         >
           {index === 0 && <div className="p-2 mb-2 text-sm rounded-md bg-yellow-300">
             Most Popular
