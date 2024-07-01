@@ -1,5 +1,6 @@
 import { TbReload } from "react-icons/tb";
 import CanvasButton from "@/common/components/ui/CanvasButton";
+import NextButton from "@/common/components/NextButton";
 
 const AccountPageError = () => {
   return (
@@ -7,13 +8,13 @@ const AccountPageError = () => {
       <div className="mt-40 text-xl text-center text-gray-500">
         Application error, please refresh and try again
       </div>
-      <CanvasButton
+      <NextButton
         className="gap-2 px-4 mx-auto mt-8 text-lg"
         onClick={() => window.location.reload()}
       >
         <TbReload />
         Refresh
-      </CanvasButton>
+      </NextButton>
     </div>
   );
 };
