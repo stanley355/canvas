@@ -1,5 +1,9 @@
 # CANVAS
 
+### 1.3.9
+
+- Update Student Homepage
+
 ### 1.3.8
 
 - Move `/plans/premium/students` to `/plans/students/`
