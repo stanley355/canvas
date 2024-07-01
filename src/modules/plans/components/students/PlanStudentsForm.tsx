@@ -12,11 +12,13 @@ import { fetchTopupPremium } from "@/common/lib/api/topups/fetchTopupPremium"
 import { fetchDokuCheckoutPayment } from "@/common/lib/api/doku/fetchDokuCheckoutPayment"
 import { cn } from "@/common/lib/cn"
 import { IUser } from "@/common/lib/api/users/interfaces"
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent"
 
 const PlanStudentsForm = () => {
   const [selectedDuration, setSelectedDuration] = useState<PremiumTopupDuration | null>(null);
 
   const handleClick = async (duration: PremiumTopupDuration) => {
+    sendFirebaseEvent('click_premium_student');
     setSelectedDuration(duration);
 
     const token = Cookies.get('token');
