@@ -34,7 +34,11 @@ export const MOBILE_HEADER_MENU = [
     url: "/plans/",
     icon: <FaRupiahSign />,
   },
-
+  {
+    title: "STUDENTS",
+    url: "/students/",
+    icon: <PiStudentDuotone />,
+  },
   {
     title: "HELP AND SUPPORT",
     url: "/support/",
