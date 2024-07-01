@@ -1,5 +1,8 @@
 import { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
+import { TbArrowLeft } from "react-icons/tb";
 import NextHead from "@/common/components/NextHead";
+import NextButton from "@/common/components/NextButton";
 
 import { getPlanStudentPageServerProps } from "@/modules/plans/lib/getPlanStudentPageServerProps";
 import PlanStudentsFeatures from "@/modules/plans/components/students/PlanStudentsFeatures";
@@ -16,6 +19,7 @@ interface StudentsPlansProps {
 
 const StudentsPlans = (props: StudentsPlansProps) => {
   const {student} = props;
+  const router = useRouter()
 
   const schema: IDatoPagesSchema = {
     _updatedAt: "",
@@ -41,6 +45,14 @@ const StudentsPlans = (props: StudentsPlansProps) => {
       </div>
       <PlanStudentsFeatures />
       <PlanStudentsForm />
+      <NextButton
+        variant="outline"
+        className="border-transparent p-2 mt-4 pl-4"
+        onClick={() => router.back()}
+      >
+        <TbArrowLeft/>
+        <span>Back</span>
+      </NextButton>
     </div>
   )
 }

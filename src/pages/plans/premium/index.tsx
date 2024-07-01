@@ -31,9 +31,9 @@ export const getServerSideProps: GetServerSideProps = async (
   }
 
   const decodedToken = decode(token) as JwtPayload;
-  const studentAvailability = await fetchStudents(decodedToken.id);
+  const student = await fetchStudents(decodedToken.id);
 
-  if (studentAvailability?.id) {
+  if (student?.id) {
     return {
       redirect: {
         permanent: false,
