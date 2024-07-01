@@ -1,4 +1,4 @@
-import { PLAN_LIST } from "../../lib/constant"
+import { PLAN_LIST } from "../../lib/constant";
 
 const PlanStudentsFeatures = () => {
   return (
@@ -8,14 +8,14 @@ const PlanStudentsFeatures = () => {
         <div className="text-center">What you get</div>
       </div>
 
-      {PLAN_LIST.student.features.map((feat) =>
+      {PLAN_LIST.student.features.map((feat) => (
         <div className="grid grid-cols-2 mb-4" key={`student_${feat.label}`}>
           <span className="font-semibold">{feat.label}</span>
           <span className="text-right">{feat.value}</span>
         </div>
-      )}
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default PlanStudentsFeatures
+export default PlanStudentsFeatures;

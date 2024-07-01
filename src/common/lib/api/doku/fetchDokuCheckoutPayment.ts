@@ -46,6 +46,6 @@ export const fetchDokuCheckoutPayment = async (topup: ITopup, user: IUser) => {
     const { data } = await axios(axiosConfig);
     return data;
   } catch (error) {
-    return apiErrorHandler(error)
+    return apiErrorHandler(error);
   }
 };

@@ -4,7 +4,6 @@ module.exports = {
   exclude: [
     "/plans/premium",
     "/plans/students",
-    "/plans/payasyougo",
     "/account",
     "/students/application",
   ],

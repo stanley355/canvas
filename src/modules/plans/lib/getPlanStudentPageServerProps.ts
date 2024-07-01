@@ -2,7 +2,9 @@ import { fetchStudents } from "@/common/lib/api/students/fetchStudents";
 import { JwtPayload, decode } from "jsonwebtoken";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 
-export const getPlanStudentPageServerProps: GetServerSideProps = async (ctx: GetServerSidePropsContext) => {
+export const getPlanStudentPageServerProps: GetServerSideProps = async (
+  ctx: GetServerSidePropsContext
+) => {
   const token = ctx.req.cookies.token;
 
   if (!token) {
@@ -27,7 +29,7 @@ export const getPlanStudentPageServerProps: GetServerSideProps = async (ctx: Get
 
   return {
     props: {
-      student
+      student,
     },
   };
-}
+};

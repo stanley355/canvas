@@ -2,7 +2,7 @@ export interface IApiError {
   status: number;
   statusText: string;
   headers: Record<string, any>;
-  data: any
+  data: any;
 }
 
 export const apiErrorHandler = (error: any): IApiError => {
