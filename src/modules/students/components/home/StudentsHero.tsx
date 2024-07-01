@@ -10,7 +10,7 @@ const StudentsHero = () => {
         <div className='lg:pt-24'>
           <h1 className='text-lg my-8'>Languageai for Students</h1>
           <h2 className='text-3xl w-3/4 mb-4 lg:font-bold'>One AI for your assignments</h2>
-          <h3 className='mb-8'>Languageai can translate your work, check your texts, and rewrite your sentences. Utilize AI Checkbot to check your grammar, spelling, and provide correction for you.</h3>
+          <p className='mb-8'>Languageai translates your work, checks your texts, and rewrites your sentences. Utilize AI Checkbot to fix your grammar, spelling, and provide correction for you.</p>
           <NextLink href="/students/application" variant='outline' className='text-brand-primary py-4 w-fit bg-gradient-to-b from-white to-blue-100 hover:to-blue-200 text-lg font-semibold'>Apply Student Plan</NextLink>
           <div className="text-left mt-4 lg:w-1/2">
             By signing up, you agree to the <b>Terms and Conditions</b> and{" "}
