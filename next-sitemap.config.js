@@ -3,8 +3,7 @@ module.exports = {
   generateRobotsTxt: true,
   exclude: [
     "/plans/premium",
-    "/plans/premium/students",
-    "/plans/payasyougo",
+    "/plans/students",
     "/account",
     "/students/application",
   ],

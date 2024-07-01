@@ -25,7 +25,7 @@ const AccountStudentHalfDiscount = () => {
           raise your grades!
         </div>
         <Link
-          href="/plans/premium/students/"
+          href="/plans/students/"
           className="flex items-center gap-1 p-2 mb-8 text-white rounded-md bg-emerald-800 hover:bg-emerald-700 w-fit"
         >
           <TbEye className="text-xl" />
@@ -65,7 +65,7 @@ const AccountStudentHalfDiscount = () => {
             <span>Go back to Account</span>
           </Link>
           <Link
-            href="/plans/premium/students/"
+            href="/plans/students/"
             className="flex items-center p-2 text-white rounded-md bg-emerald-800 hover:bg-emerald-700 w-fit"
           >
             <span>See Subscription</span>

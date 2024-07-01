@@ -1,5 +1,5 @@
 import axios from "axios";
-import { axiosErrorHandler } from "../axiosErrorHandler";
+import { apiErrorHandler } from "../apiErrorHandler";
 import { ITopup } from "../topups/interfaces";
 import { IUser } from "../users/interfaces";
 
@@ -46,7 +46,6 @@ export const fetchDokuCheckoutPayment = async (topup: ITopup, user: IUser) => {
     const { data } = await axios(axiosConfig);
     return data;
   } catch (error) {
-    const errorRes = axiosErrorHandler(URL, error);
-    return errorRes;
+    return apiErrorHandler(error);
   }
 };

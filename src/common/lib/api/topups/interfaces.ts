@@ -6,3 +6,9 @@ export interface ITopup {
   paid: boolean;
   topup_type: string;
 }
+
+export enum PremiumTopupDuration {
+  Monthly = "Monthly",
+  Quarterly = "Quarterly",
+  HalfYearly = "HalfYearly",
+}

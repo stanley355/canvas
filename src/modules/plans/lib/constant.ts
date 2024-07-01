@@ -1,3 +1,5 @@
+import { PremiumTopupDuration } from "@/common/lib/api/topups/interfaces";
+
 export interface IPlanListFeature {
   name: string;
   limit: string;
@@ -108,7 +110,7 @@ export const PLAN_LIST = {
       },
       {
         label: "Subscription Time",
-        value: "Until Graduation (*renewable)",
+        value: "Renewable on Graduation",
       },
     ],
   },
@@ -134,3 +136,27 @@ export const PLAN_LIST = {
     ],
   },
 };
+
+export const STUDENT_PLAN_LIST = [
+  {
+    title: "Half Yearly",
+    price: "Rp 70,000",
+    durationText: "6 Months",
+    duration: PremiumTopupDuration.HalfYearly,
+    discountText: "Save 65%",
+  },
+  {
+    title: "Quarterly",
+    price: "Rp 30,000",
+    durationText: "3 Months",
+    duration: PremiumTopupDuration.Quarterly,
+    discountText: "Save 70%",
+  },
+  {
+    title: "Monthly",
+    price: "Rp 12,500",
+    durationText: "1 Month",
+    duration: PremiumTopupDuration.Monthly,
+    discountText: "Save 50%",
+  },
+];
