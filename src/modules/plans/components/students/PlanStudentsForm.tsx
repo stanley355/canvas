@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { toast } from "react-toastify"
 import { TbProgress, TbChevronRight } from "react-icons/tb"
 import Cookies from "js-cookie"
 import { JwtPayload, decode } from "jsonwebtoken"
@@ -8,7 +9,9 @@ import NextButton from "@/common/components/NextButton"
 import { STUDENT_PLAN_LIST } from "../../lib/constant"
 import { PremiumTopupDuration } from "@/common/lib/api/topups/interfaces"
 import { fetchTopupPremium } from "@/common/lib/api/topups/fetchTopupPremium"
+import { fetchDokuCheckoutPayment } from "@/common/lib/api/doku/fetchDokuCheckoutPayment"
 import { cn } from "@/common/lib/cn"
+import { IUser } from "@/common/lib/api/users/interfaces"
 
 const PlanStudentsForm = () => {
   const [selectedDuration, setSelectedDuration] = useState<PremiumTopupDuration | null>(null);
@@ -19,8 +22,16 @@ const PlanStudentsForm = () => {
     const token = Cookies.get('token');
     const user = decode(String(token)) as JwtPayload;;
     const topup = await fetchTopupPremium(user.id, duration);
-    console.log(topup);
 
+    if (topup.id) {
+      const doku = await fetchDokuCheckoutPayment(topup, user as IUser);
+      if (doku?.response?.payment.url) {
+        window.location.href = doku.response.payment.url;
+        return;
+      }
+    }
+
+    toast.error("Fail to create payment link, please try again");
     setSelectedDuration(null);
     return;
   }
