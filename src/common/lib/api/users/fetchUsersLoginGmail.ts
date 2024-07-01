@@ -19,6 +19,8 @@ export const fetchUsersLoginGmail = async (
     const { data } = await axios.post(url, req);
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error?.response?.data
+      ? error?.response.data
+      : { status: 400, statusText: "Login fail, please try again" };
   }
 };
