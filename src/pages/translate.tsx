@@ -1,21 +1,24 @@
 import { GetStaticProps } from "next";
-import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
+import NextHead, { NextHeadProps } from "@/common/components/NextHead";
 import { getTranslatePageStaticProps } from "@/modules/translateV2/lib/getTranslatePageStaticProps";
-import TranslateProviderV2 from "@/modules/translateV2/components/TranslateProviderV2";
-import TranslateContainerV2 from "@/modules/translateV2/components/TranslateContainerV2";
+import TranslateProvider from "@/modules/translate/components/TranslateProvider";
+import TranslateHeader from "@/modules/translate/components/TranslateHeader";
 
 interface ITranslateProps {
-  datoCmsData: IMetaHead;
+  datoCmsData: NextHeadProps;
 }
 
 const Translate = (props: ITranslateProps) => {
   const { datoCmsData } = props;
 
+  // TODO: Remove h-screen if unnecessary
   return (
-    <TranslateProviderV2>
-      <MetaHead pagesSchema={datoCmsData.pagesSchema} />
-      <TranslateContainerV2 />
-    </TranslateProviderV2>
+    <div className="mt-16 container lg:mx-auto lg:mt-0 h-screen"> 
+      <NextHead pagesSchema={datoCmsData.pagesSchema} />
+      <TranslateProvider>
+        <TranslateHeader />
+      </TranslateProvider>
+    </div>
   );
 };
 

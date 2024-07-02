@@ -26,7 +26,7 @@ const NextSelect = (props: NextSelectProps) => {
   } = props;
   const [showOptions, setShowOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState<IOption>({
-    label: placeholder ? placeholder : "Select",
+    label: "",
     value: null,
   });
 
@@ -38,7 +38,7 @@ const NextSelect = (props: NextSelectProps) => {
         className={cn("gap-1 w-full justify-between", selectClassname)}
         onClick={() => setShowOptions(!showOptions)}
       >
-        {selectedOption.label}
+        {selectedOption.label ? selectedOption.label : placeholder}
         {showOptions ? <TbChevronUp /> : <TbChevronDown />}
       </NextButton>
 
