@@ -23,7 +23,7 @@ const Footer = () => (
           <span>AI Translate</span>
         </Link>
         <Link
-          href="/grammar-check/"
+          href="/checkbot/"
           className="flex items-center gap-1 py-2 hover:font-bold"
         >
           <FaRobot />
@@ -67,7 +67,7 @@ const Footer = () => (
           className="flex items-center gap-1 py-2 hover:font-bold"
         >
           <TbQuestionMark />
-          Help and support
+          Support and Help
         </Link>
       </div>
     </div>
