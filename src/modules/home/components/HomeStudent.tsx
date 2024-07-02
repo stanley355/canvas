@@ -1,7 +1,7 @@
 import { TbCheck } from "react-icons/tb";
 import { PiStudentDuotone } from "react-icons/pi";
 import CanvasLink from "@/common/components/ui/CanvasLink";
-import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { sendFirebaseEvent } from "@/modules/firebase/sendFirebaseEvent";
 
 const HomeStudent = () => {
   const STUDENT_ITEM = [

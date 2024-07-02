@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import { JwtPayload, decode } from "jsonwebtoken";
-import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { sendFirebaseEvent } from "@/modules/firebase/sendFirebaseEvent";
 import { fetchUsersLoginGmail } from "@/common/lib/api/users/fetchUsersLoginGmail";
 import { LOGIN_FAIL_MESSAGE } from "./constant";
 import { FIREBASE_EVENT_NAMES } from "@/common/lib/firebase/firebaseEventNames";

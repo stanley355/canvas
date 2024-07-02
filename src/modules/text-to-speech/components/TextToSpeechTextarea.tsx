@@ -7,7 +7,7 @@ import { Textarea } from "@/common/components/ui/textarea";
 import dynamic from "next/dynamic";
 import { JwtPayload, decode } from "jsonwebtoken";
 import { toast } from "react-toastify";
-import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { sendFirebaseEvent } from "@/modules/firebase/sendFirebaseEvent";
 import {
   PromptsV2Type,
   fetchPromptsV2,

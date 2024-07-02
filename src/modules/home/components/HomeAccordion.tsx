@@ -2,7 +2,7 @@ import { useState } from "react";
 import { TbChevronDown, TbChevronUp } from "react-icons/tb";
 import { cn } from "@/common/lib/cn";
 import CanvasButton from "@/common/components/ui/CanvasButton";
-import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { sendFirebaseEvent } from "@/modules/firebase/sendFirebaseEvent";
 
 interface HomeAccordionProps {
   key: string;

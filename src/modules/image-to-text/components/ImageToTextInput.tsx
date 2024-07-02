@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 import { JwtPayload, decode } from "jsonwebtoken";
 
 import ImageToTextCtaBtn from "./ImageToTextCtaBtn";
-import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { sendFirebaseEvent } from "@/modules/firebase/sendFirebaseEvent";
 import {
   PromptsV2Type,
   fetchPromptsV2,
