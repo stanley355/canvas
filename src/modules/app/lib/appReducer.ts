@@ -1,4 +1,4 @@
-import { APP_STATES, IAppStates } from "./appStates";
+import { IAppStates } from "./appStates";
 
 export interface IAppReducerAction {
   key: keyof IAppStates;
