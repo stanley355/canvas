@@ -1,5 +1,9 @@
 # CANVAS
 
+### 1.4.1
+- Update firebase analytic path
+- Update 404 and support page
+
 ### 1.4.0
 - Update Plans Premium page
 
