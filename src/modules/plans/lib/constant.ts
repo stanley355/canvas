@@ -101,3 +101,27 @@ export const STUDENT_PLAN_LIST = [
     discountText: "Save 50%",
   },
 ];
+
+export const PREMIUM_PLAN_LIST = [
+  {
+    title: "Half Yearly",
+    price: "Rp 150,000",
+    durationText: "6 Months",
+    duration: PremiumTopupDuration.HalfYearly,
+    discountText: "",
+  },
+  {
+    title: "Quarterly",
+    price: "Rp 70,000",
+    durationText: "3 Months",
+    duration: PremiumTopupDuration.Quarterly,
+    discountText: "Save 7%",
+  },
+  {
+    title: "Monthly",
+    price: "Rp 25,000",
+    durationText: "1 Month",
+    duration: PremiumTopupDuration.Monthly,
+    discountText: "",
+  },
+];

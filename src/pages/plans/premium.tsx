@@ -5,6 +5,8 @@ import { IDatoPagesSchema } from "@/common/lib/api/dato/interfaces";
 
 import NextHead from "@/common/components/NextHead";
 import PlanPremiumFeatures from "@/modules/plans/components/premium/PlanPremiumFeatures";
+import PlanStudentsForm from "@/modules/plans/components/students/PlanStudentsForm";
+import PlanPremiumForm from "@/modules/plans/components/premium/PlanPremiumForm";
 
 export const getServerSideProps: GetServerSideProps = getPlanPremiumPageServerProps;
 
@@ -28,6 +30,7 @@ const PremiumPlans = () => {
     <div className="container mt-20 lg:mt-0 lg:w-1/3 pb-8">
       <NextHead pagesSchema={schema} />
       <PlanPremiumFeatures />
+      <PlanPremiumForm />
     </div>
   );
 };
