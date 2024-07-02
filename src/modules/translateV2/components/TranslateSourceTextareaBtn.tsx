@@ -8,7 +8,7 @@ import { JwtPayload, decode } from "jsonwebtoken";
 import CanvasButton from "@/common/components/ui/CanvasButton";
 import { useTranslateV2 } from "../lib/useTranslateV2";
 import { createTranslateSystemContent } from "../lib/createTranslateSystemContent";
-import { sendFirebaseEvent } from "@/modules/firebase/sendFirebaseEvent";
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import {
   PromptsV2Type,
   fetchPromptsV2,

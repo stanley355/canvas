@@ -1,5 +1,5 @@
 import type { AppProps } from "next/app";
-import FirebaseProvider from "@/modules/firebase/FirebaseProvider";
+import FirebaseProvider from "@/modules/firebase/components/FirebaseProvider";
 import Layout from "@/common/components/Layout";
 import "@/styles/globals.scss";
 import "@/styles/shadcn.scss";

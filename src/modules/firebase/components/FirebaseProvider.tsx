@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { getAnalytics } from "firebase/analytics";
-import { FirebaseContext } from "./firebaseContext";
-import initFirebaseApp from "./initFirebaseApp";
+import { FirebaseContext } from "./FirebaseContext";
+import initFirebaseApp from "../lib/initFirebaseApp";
 
 const FirebaseProvider = ({ children }: { children: React.ReactNode }) => {
   const firebaseApp = initFirebaseApp();

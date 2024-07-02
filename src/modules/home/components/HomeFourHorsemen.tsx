@@ -1,7 +1,7 @@
 import { FaRobot } from "react-icons/fa6";
 import { TbLanguage, TbPhotoAi, TbSpeakerphone } from "react-icons/tb";
 import CanvasLink from "@/common/components/ui/CanvasLink";
-import { sendFirebaseEvent } from "@/modules/firebase/sendFirebaseEvent";
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 
 const HomeFourHorsemen = () => {
   return (

@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 import { JwtPayload, decode } from "jsonwebtoken";
 
 import { useGrammarCheck } from "../lib/useGrammarCheck";
-import { sendFirebaseEvent } from "@/modules/firebase/sendFirebaseEvent";
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import { createRemovedAndAddedDiff } from "@/common/lib/createRemovedAndAddedDiff";
 import {
   PromptsV2Type,

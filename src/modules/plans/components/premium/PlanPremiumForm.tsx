@@ -12,7 +12,7 @@ import { fetchTopupPremium } from "@/common/lib/api/topups/fetchTopupPremium";
 import { fetchDokuCheckoutPayment } from "@/common/lib/api/doku/fetchDokuCheckoutPayment";
 import { cn } from "@/common/lib/cn";
 import { IUser } from "@/common/lib/api/users/interfaces";
-import { sendFirebaseEvent } from "@/modules/firebase/sendFirebaseEvent";
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import { FIREBASE_EVENT_NAMES } from "@/common/lib/firebase/firebaseEventNames";
 
 const PlanPremiumForm = () => {
