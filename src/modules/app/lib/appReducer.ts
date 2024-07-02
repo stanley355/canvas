@@ -1,7 +1,7 @@
 import { APP_STATES, IAppStates } from "./appStates";
 
 export interface IAppReducerAction {
-  name: keyof IAppStates;
+  key: keyof IAppStates;
   value: any;
 }
 
@@ -9,6 +9,6 @@ export const appReducer = (
   state: Record<keyof IAppStates, any>,
   action: IAppReducerAction
 ) => {
-  state[action.name] = action.value;
+  state[action.key] = action.value;
   return structuredClone(state);
 };
