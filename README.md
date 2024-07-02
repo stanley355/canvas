@@ -1,5 +1,8 @@
 # CANVAS
 
+### 1.4.0
+- Update Plans Premium page
+
 ### 1.3.9
 
 - Update Student Homepage
