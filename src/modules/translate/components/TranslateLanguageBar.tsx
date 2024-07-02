@@ -6,10 +6,8 @@ import { TranslateContext } from "./TranslateContext";
 const TranslateLanguageBar = () => {
   const { translateStates, translateDispatch } = useContext(TranslateContext);
 
-  console.log(translateStates);
-
   return (
-    <div className="grid grid-cols-[42.5%_15%_42.5%] w-full place-items-center border-b border-b-brand-primary">
+    <div className="grid grid-cols-[42.5%_15%_42.5%] lg:grid-cols-[49%_2%_49%] w-full place-items-center border-b border-b-brand-primary">
       <TranslateLanguageBtn
         isFirstLanguage
         language={translateStates.firstLanguage}

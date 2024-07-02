@@ -2,6 +2,8 @@ import { useMemo, useState } from "react";
 import NextButton from "@/common/components/NextButton";
 import TranslateLanguageMenu from "./TranslateLanguageMenu";
 import { ITranslateReducerAction } from "../lib/translateReducer";
+import { TRANSLATE_COMMON_LANGUAGE_LIST } from "../lib/translateLanguageList";
+import { cn } from "@/common/lib/cn";
 
 interface TranslateLanguageBtn {
   isFirstLanguage: boolean;
@@ -20,14 +22,34 @@ const TranslateLanguageBtn = (props: TranslateLanguageBtn) => {
   }, [isFirstLanguage, language]);
 
   return (
-    <div>
+    <div className="lg:w-full">
       <NextButton
         variant="none"
-        className="w-full p-4"
+        className="w-full p-4 lg:hidden"
         onClick={() => setOpenMenu(true)}
       >
         {placeholder}
       </NextButton>
+
+      <div className="hidden lg:flex">
+        <NextButton
+          variant="none"
+          className="p-4 font-semibold border-b border-brand-primary"
+          onClick={() => translateDispatch({ key: isFirstLanguage ? "firstLanguage" : "secondLanguage", value: "" })}
+        >
+          {placeholder}
+        </NextButton>
+        {TRANSLATE_COMMON_LANGUAGE_LIST
+          .filter((commonLanguage) => commonLanguage !== language)
+          .map((listLanguage) =>
+            <NextButton variant="none"
+              className={cn("p-4", listLanguage === language && 'font-semibold border-b border-brand-primary')}
+              onClick={() => translateDispatch({ key: isFirstLanguage ? "firstLanguage" : "secondLanguage", value: listLanguage })}
+            >
+              {listLanguage}
+            </NextButton>
+          )}
+      </div>
 
       {openMenu && (
         <TranslateLanguageMenu

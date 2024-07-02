@@ -11,7 +11,7 @@ const TranslateHeader = () => {
   const { translateDispatch } = useContext(TranslateContext);
 
   return (
-    <div className="p-4 lg:grid lg:grid-cols-[33%_66%] lg:w-1/2 lg:px-0">
+    <div className="p-4 lg:grid lg:grid-cols-[29%_71%] lg:w-1/2 lg:px-0">
       <div className="flex border border-brand-primary items-center gap-1 rounded-lg p-2 bg-blue-100 mb-4 mx-auto lg:mx-0 w-fit lg:mb-0">
         <TbLanguage />
         <span>Languageai Translate</span>
