@@ -20,7 +20,7 @@ const HeaderMobile = (props: IHeaderMobile) => {
           alt="languageai.id"
           width={100}
           height={50}
-          className="w-auto h-full"
+          className="w-1/2 h-full"
         />
       </Link>
       <NextButton
