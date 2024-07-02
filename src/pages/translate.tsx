@@ -3,6 +3,7 @@ import NextHead, { NextHeadProps } from "@/common/components/NextHead";
 import { getTranslatePageStaticProps } from "@/modules/translateV2/lib/getTranslatePageStaticProps";
 import TranslateProvider from "@/modules/translate/components/TranslateProvider";
 import TranslateHeader from "@/modules/translate/components/TranslateHeader";
+import TranslateBody from "@/modules/translate/components/TranslateBody";
 
 interface ITranslateProps {
   datoCmsData: NextHeadProps;
@@ -17,6 +18,7 @@ const Translate = (props: ITranslateProps) => {
       <NextHead pagesSchema={datoCmsData.pagesSchema} />
       <TranslateProvider>
         <TranslateHeader />
+        <TranslateBody />
       </TranslateProvider>
     </div>
   );
