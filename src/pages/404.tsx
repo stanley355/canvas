@@ -28,7 +28,6 @@ const NotFound = () => {
     },
   };
   
-
   return (
     <div className="container flex flex-col items-center h-screen mx-auto mt-16 lg:mt-0">
       <NextHead pagesSchema={pageSchema} />
