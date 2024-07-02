@@ -1,17 +1,35 @@
+import { useMemo, useState } from 'react'
 import NextButton from '@/common/components/NextButton'
-import React from 'react'
-import { MdAutoAwesome } from 'react-icons/md'
 import TranslateLanguageMenu from './TranslateLanguageMenu'
+import { ITranslateReducerAction } from '../lib/translateReducer';
 
-const TranslateLanguageBtn = () => {
+interface TranslateLanguageBtn {
+  isFirstLanguage: boolean;
+  language: string;
+  translateDispatch: (action: ITranslateReducerAction) => void;
+}
+
+const TranslateLanguageBtn = (props: TranslateLanguageBtn) => {
+  const { isFirstLanguage, language, translateDispatch } = props;
+  const [openMenu, setOpenMenu] = useState(false);
+
+  const placeholder = useMemo(() => {
+    if (language) return language;
+    if (isFirstLanguage) return 'Detect Language';
+    return 'Indonesia'
+  }, [isFirstLanguage, language])
+
   return (
     <div>
-      <NextButton variant='none' className='w-full p-4'>
-        <MdAutoAwesome className='hidden' />
-        <span>Detect Language</span>
+      <NextButton variant='none' className='w-full p-4' onClick={() => setOpenMenu(true)}>
+        {placeholder}
       </NextButton>
 
-      <TranslateLanguageMenu />
+      {openMenu && <TranslateLanguageMenu
+        isFirstLanguage={isFirstLanguage}
+        onCloseClick={() => setOpenMenu(false)}
+        translateDispatch={translateDispatch}
+      />}
     </div>
   )
 }
