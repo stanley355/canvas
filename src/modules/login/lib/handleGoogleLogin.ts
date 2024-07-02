@@ -7,13 +7,12 @@ import { LOGIN_FAIL_MESSAGE } from "./constant";
 import { FIREBASE_EVENT_NAMES } from "@/common/lib/firebase/firebaseEventNames";
 
 export const handleGoogleLogin = async (token: any) => {
-  sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.login);
+  sendFirebaseEvent(FIREBASE_EVENT_NAMES.login.login);
+  sendFirebaseEvent(FIREBASE_EVENT_NAMES.login.loginGoogle);
   const decodedToken = decode(String(token.credential)) as JwtPayload;
   const loginRes = await fetchUsersLoginGmail(decodedToken);
 
   if (loginRes?.token) {
-    sendFirebaseEvent(FIREBASE_EVENT_NAMES.login.login);
-    sendFirebaseEvent(FIREBASE_EVENT_NAMES.login.loginGoogle);
     Cookies.set("token", loginRes.token);
     const redirectPath =
       window.location.pathname === "/" || window.location.pathname === "/login"

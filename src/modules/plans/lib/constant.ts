@@ -1,64 +1,5 @@
 import { PremiumTopupDuration } from "@/common/lib/api/topups/interfaces";
 
-export interface IPlanListFeature {
-  name: string;
-  limit: string;
-  isBold: boolean;
-}
-
-export const STUDENT_PLAN_FEATURES = [
-  {
-    name: "Ai Translate",
-    limit: "Unlimited",
-    isBold: true,
-  },
-  {
-    name: "Ai Grammar Check",
-    limit: "Unlimited",
-    isBold: true,
-  },
-  {
-    name: "Ai Image to Text",
-    limit: "Unlimited",
-    isBold: false,
-  },
-  {
-    name: "Ai Text to Speech",
-    limit: "Unlimited",
-    isBold: false,
-  },
-  {
-    name: "Grammar Fix",
-    limit: "",
-    isBold: false,
-  },
-  {
-    name: "Spelling Fix",
-    limit: "",
-    isBold: false,
-  },
-  {
-    name: "Punctuation Fix",
-    limit: "",
-    isBold: false,
-  },
-  {
-    name: "Full Sentence Rewrites",
-    limit: "",
-    isBold: false,
-  },
-  {
-    name: "Word Choice",
-    limit: "",
-    isBold: false,
-  },
-  {
-    name: "Tone Suggestions",
-    limit: "",
-    isBold: false,
-  },
-];
-
 export const PLAN_LIST = {
   premium: {
     title: "Premium",
@@ -158,5 +99,29 @@ export const STUDENT_PLAN_LIST = [
     durationText: "1 Month",
     duration: PremiumTopupDuration.Monthly,
     discountText: "Save 50%",
+  },
+];
+
+export const PREMIUM_PLAN_LIST = [
+  {
+    title: "Half Yearly",
+    price: "Rp 150,000",
+    durationText: "6 Months",
+    duration: PremiumTopupDuration.HalfYearly,
+    discountText: "",
+  },
+  {
+    title: "Quarterly",
+    price: "Rp 70,000",
+    durationText: "3 Months",
+    duration: PremiumTopupDuration.Quarterly,
+    discountText: "Save 7%",
+  },
+  {
+    title: "Monthly",
+    price: "Rp 25,000",
+    durationText: "1 Month",
+    duration: PremiumTopupDuration.Monthly,
+    discountText: "",
   },
 ];

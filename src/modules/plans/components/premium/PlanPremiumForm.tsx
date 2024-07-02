@@ -6,22 +6,21 @@ import { JwtPayload, decode } from "jsonwebtoken";
 
 import NextButton from "@/common/components/NextButton";
 
-import { cn } from "@/common/lib/cn";
+import { PREMIUM_PLAN_LIST } from "../../lib/constant";
+import { PremiumTopupDuration } from "@/common/lib/api/topups/interfaces";
 import { fetchTopupPremium } from "@/common/lib/api/topups/fetchTopupPremium";
 import { fetchDokuCheckoutPayment } from "@/common/lib/api/doku/fetchDokuCheckoutPayment";
-import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-
+import { cn } from "@/common/lib/cn";
 import { IUser } from "@/common/lib/api/users/interfaces";
-import { STUDENT_PLAN_LIST } from "../../lib/constant";
+import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
 import { FIREBASE_EVENT_NAMES } from "@/common/lib/firebase/firebaseEventNames";
-import { PremiumTopupDuration } from "@/common/lib/api/topups/interfaces";
 
-const PlanStudentsForm = () => {
+const PlanPremiumForm = () => {
   const [selectedDuration, setSelectedDuration] =
     useState<PremiumTopupDuration | null>(null);
 
   const handleClick = async (duration: PremiumTopupDuration) => {
-    sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.premium_student);
+    sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.premium);
     setSelectedDuration(duration);
 
     const token = Cookies.get("token");
@@ -43,7 +42,7 @@ const PlanStudentsForm = () => {
 
   return (
     <div className="px-4">
-      {STUDENT_PLAN_LIST.map((plan, index) => (
+      {PREMIUM_PLAN_LIST.map((plan, index) => (
         <NextButton
           key={plan.title}
           onClick={() => handleClick(plan.duration)}
@@ -72,9 +71,9 @@ const PlanStudentsForm = () => {
           </div>
           <div className="flex items-center justify-between w-full">
             <div>{plan.durationText}</div>
-            <div className="p-1 bg-brand-primary text-white">
+          { plan.discountText && <div className="p-1 bg-brand-primary text-white">
               {plan.discountText}
-            </div>
+            </div>}
           </div>
         </NextButton>
       ))}
@@ -82,4 +81,4 @@ const PlanStudentsForm = () => {
   );
 };
 
-export default PlanStudentsForm;
+export default PlanPremiumForm;
