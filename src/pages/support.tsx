@@ -9,7 +9,7 @@ const Support = () => {
     keywords: "",
     faq: [],
     seo: {
-      title: `Suppport and Hel`,
+      title: `Suppport and Help`,
       description:
         "Found an error on Languageai? Email me at winatastanley355@gmail.com",
       image: {

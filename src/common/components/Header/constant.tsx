@@ -40,7 +40,7 @@ export const MOBILE_HEADER_MENU = [
     icon: <PiStudentDuotone />,
   },
   {
-    title: "HELP AND SUPPORT",
+    title: "SUPPORT AND HELP",
     url: "/support/",
     icon: <TbHelp />,
   },
