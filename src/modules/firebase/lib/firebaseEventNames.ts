@@ -5,6 +5,6 @@ export const FIREBASE_EVENT_NAMES = {
   },
   click: {
     premium: "click_premium",
-    premium_student: "click_premium_student"
+    premium_student: "click_premium_student",
   },
 };

@@ -1,7 +1,7 @@
 import { TbChevronDown, TbLanguage } from "react-icons/tb";
 import CanvasSelect, { IOption } from "@/common/components/ui/CanvasSelect";
 import { useTranslateV2 } from "../lib/useTranslateV2";
-import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 
 const TranslateHeader = () => {
   const { dispatch } = useTranslateV2();

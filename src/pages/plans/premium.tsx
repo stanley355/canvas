@@ -10,7 +10,8 @@ import PlanPremiumFeatures from "@/modules/plans/components/premium/PlanPremiumF
 import PlanPremiumForm from "@/modules/plans/components/premium/PlanPremiumForm";
 import { useRouter } from "next/router";
 
-export const getServerSideProps: GetServerSideProps = getPlanPremiumPageServerProps;
+export const getServerSideProps: GetServerSideProps =
+  getPlanPremiumPageServerProps;
 
 const PremiumPlans = () => {
   const router = useRouter();

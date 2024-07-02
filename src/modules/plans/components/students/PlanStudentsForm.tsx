@@ -9,11 +9,11 @@ import NextButton from "@/common/components/NextButton";
 import { cn } from "@/common/lib/cn";
 import { fetchTopupPremium } from "@/common/lib/api/topups/fetchTopupPremium";
 import { fetchDokuCheckoutPayment } from "@/common/lib/api/doku/fetchDokuCheckoutPayment";
-import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 
 import { IUser } from "@/common/lib/api/users/interfaces";
 import { STUDENT_PLAN_LIST } from "../../lib/constant";
-import { FIREBASE_EVENT_NAMES } from "@/common/lib/firebase/firebaseEventNames";
+import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 import { PremiumTopupDuration } from "@/common/lib/api/topups/interfaces";
 
 const PlanStudentsForm = () => {

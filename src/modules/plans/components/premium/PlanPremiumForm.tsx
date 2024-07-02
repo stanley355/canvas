@@ -6,14 +6,16 @@ import { JwtPayload, decode } from "jsonwebtoken";
 
 import NextButton from "@/common/components/NextButton";
 
-import { PREMIUM_PLAN_LIST } from "../../lib/constant";
-import { PremiumTopupDuration } from "@/common/lib/api/topups/interfaces";
+import { cn } from "@/common/lib/cn";
 import { fetchTopupPremium } from "@/common/lib/api/topups/fetchTopupPremium";
 import { fetchDokuCheckoutPayment } from "@/common/lib/api/doku/fetchDokuCheckoutPayment";
-import { cn } from "@/common/lib/cn";
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
+
 import { IUser } from "@/common/lib/api/users/interfaces";
-import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
-import { FIREBASE_EVENT_NAMES } from "@/common/lib/firebase/firebaseEventNames";
+
+import { PremiumTopupDuration } from "@/common/lib/api/topups/interfaces";
+import { PREMIUM_PLAN_LIST } from "../../lib/constant";
+import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 
 const PlanPremiumForm = () => {
   const [selectedDuration, setSelectedDuration] =
@@ -71,9 +73,11 @@ const PlanPremiumForm = () => {
           </div>
           <div className="flex items-center justify-between w-full">
             <div>{plan.durationText}</div>
-          { plan.discountText && <div className="p-1 bg-brand-primary text-white">
-              {plan.discountText}
-            </div>}
+            {plan.discountText && (
+              <div className="p-1 bg-brand-primary text-white">
+                {plan.discountText}
+              </div>
+            )}
           </div>
         </NextButton>
       ))}

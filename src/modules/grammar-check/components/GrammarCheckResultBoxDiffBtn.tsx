@@ -3,7 +3,7 @@ import { MdAutoAwesome } from "react-icons/md";
 import { TbMinus, TbPlus } from "react-icons/tb";
 import { useGrammarCheck } from "../lib/useGrammarCheck";
 import { GrammarCheckDiffs } from "../lib/grammarCheckStates";
-import { sendFirebaseEvent } from "@/common/lib/firebase/sendFirebaseEvent";
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 
 const GrammarCheckResultBoxDiffBtn = () => {
   const { grammarCheckStates, dispatch } = useGrammarCheck();
