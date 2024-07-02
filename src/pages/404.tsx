@@ -13,21 +13,21 @@ import { IDatoPagesSchema } from "@/common/lib/api/dato/interfaces";
 const NotFound = () => {
   const router = useRouter();
 
-  const pageSchema: IDatoPagesSchema= {
+  const pageSchema: IDatoPagesSchema = {
     _updatedAt: "",
     slug: "/404",
     keywords: "",
     faq: [],
     seo: {
       title: `Page Not Found`,
-      description:"Languageai Page Not Found",
+      description: "Languageai Page Not Found",
       image: {
         alt: "Languageai.id",
         url: "/images/languageai/logo.png",
       },
     },
   };
-  
+
   return (
     <div className="container flex flex-col items-center h-screen mx-auto mt-16 lg:mt-0">
       <NextHead pagesSchema={pageSchema} />

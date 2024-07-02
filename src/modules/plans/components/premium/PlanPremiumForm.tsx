@@ -73,9 +73,11 @@ const PlanPremiumForm = () => {
           </div>
           <div className="flex items-center justify-between w-full">
             <div>{plan.durationText}</div>
-          { plan.discountText && <div className="p-1 bg-brand-primary text-white">
-              {plan.discountText}
-            </div>}
+            {plan.discountText && (
+              <div className="p-1 bg-brand-primary text-white">
+                {plan.discountText}
+              </div>
+            )}
           </div>
         </NextButton>
       ))}

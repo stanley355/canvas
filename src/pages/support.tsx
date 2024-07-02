@@ -10,7 +10,8 @@ const Support = () => {
     faq: [],
     seo: {
       title: `Suppport and Hel`,
-      description:"Found an error on Languageai? Email me at winatastanley355@gmail.com",
+      description:
+        "Found an error on Languageai? Email me at winatastanley355@gmail.com",
       image: {
         alt: "Languageai.id",
         url: "/images/languageai/logo.png",
@@ -31,10 +32,15 @@ const Support = () => {
         height={400}
         className="mx-auto w-full h-auto rounded-lg mb-4 lg:w-1/5 "
       />
-      <h1 className="text-3xl font-bold mb-2 lg:text-center">Found an error?</h1>
+      <h1 className="text-3xl font-bold mb-2 lg:text-center">
+        Found an error?
+      </h1>
       <div className="text-lg lg:flex lg:justify-center">
         <div>Email me at</div>
-        <a className="text-blue-500 border-b border-b-blue-500 lg:ml-2" href={link}>
+        <a
+          className="text-blue-500 border-b border-b-blue-500 lg:ml-2"
+          href={link}
+        >
           winatastanley355@gmail.com
         </a>
       </div>
