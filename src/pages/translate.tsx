@@ -14,7 +14,7 @@ const Translate = (props: ITranslateProps) => {
 
   // TODO: Remove h-screen if unnecessary
   return (
-    <div className="mt-16 container lg:mx-auto lg:mt-0 h-screen"> 
+    <div className="mt-16 container lg:mx-auto lg:mt-0 h-screen">
       <NextHead pagesSchema={datoCmsData.pagesSchema} />
       <TranslateProvider>
         <TranslateHeader />

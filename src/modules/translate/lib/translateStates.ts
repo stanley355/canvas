@@ -1,4 +1,3 @@
-
 export interface ITranslateStates {
   firstLanguage: string;
   secondLanguage: string;
@@ -10,5 +9,5 @@ export const TRANSLATE_STATES: ITranslateStates = {
   firstLanguage: "",
   secondLanguage: "",
   n: 1,
-  temperature: 1
-}
+  temperature: 1,
+};

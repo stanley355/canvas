@@ -2,7 +2,7 @@ export const TRANSLATE_COMMON_LANGUAGE_LIST = [
   "Indonesian",
   "English",
   "Chinese (简笔)",
-]
+];
 
 export const TRANSLATE_LANGUAGE_LIST = [
   "Afrikaans",

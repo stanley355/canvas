@@ -1,13 +1,13 @@
-import { useContext } from 'react'
-import { TbArrowRight } from 'react-icons/tb'
-import TranslateLanguageBtn from './TranslateLanguageBtn'
-import { TranslateContext } from './TranslateContext'
+import { useContext } from "react";
+import { TbArrowRight } from "react-icons/tb";
+import TranslateLanguageBtn from "./TranslateLanguageBtn";
+import { TranslateContext } from "./TranslateContext";
 
 const TranslateLanguageBar = () => {
   const { translateStates, translateDispatch } = useContext(TranslateContext);
 
   console.log(translateStates);
-  
+
   return (
     <div className="grid grid-cols-[42.5%_15%_42.5%] w-full place-items-center border-b border-b-brand-primary">
       <TranslateLanguageBtn
@@ -17,12 +17,12 @@ const TranslateLanguageBar = () => {
       />
       <TbArrowRight />
       <TranslateLanguageBtn
-        isFirstLanguage={false} 
+        isFirstLanguage={false}
         language={translateStates.secondLanguage}
         translateDispatch={translateDispatch}
       />
     </div>
-  )
-}
+  );
+};
 
-export default TranslateLanguageBar
+export default TranslateLanguageBar;

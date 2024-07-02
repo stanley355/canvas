@@ -7,7 +7,7 @@ export interface ITranslateReducerAction {
 
 export const translateReducer = (
   state: Record<keyof ITranslateStates, any>,
-  action: ITranslateReducerAction 
+  action: ITranslateReducerAction
 ) => {
   state[action.key] = action.value;
   return structuredClone(state);

@@ -8,4 +8,4 @@ export interface IAppStates {
 export const APP_STATES = {
   showLoginModal: false,
   showMonthlyLimitModal: false,
-}
+};
