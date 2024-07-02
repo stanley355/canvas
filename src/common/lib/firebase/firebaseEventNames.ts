@@ -4,6 +4,7 @@ export const FIREBASE_EVENT_NAMES = {
     loginGoogle: "login_google",
   },
   click: {
-    login: "click_login",
+    premium: "click_premium",
+    premium_student: "click_premium_student"
   },
 };
