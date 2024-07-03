@@ -35,15 +35,15 @@ const AccountFreePlanTable = () => {
         <tr className="[&>*]:text-center [&>*]:border [&>*]:border-black bg-blue-100">
           <td className="p-2 border">Subscription Time</td>
           <td className="p-2 border">Forever</td>
-          <td className="p-2 border">
-            <ol className="list-disc ml-4 text-left">
+          <td className="p-2 border ">
+            <ol className="list-disc list-inside text-left">
               <li>1st year: Free</li>
               <li>2nd year: 50% off</li>
               <li className="font-semibold">*renewable</li>
             </ol>
           </td>
           <td className="p-2 border">
-            <ol className="list-disc ml-4 text-left">
+            <ol className="list-disc list-inside text-left">
               <li>Monthly</li>
               <li>Quarterly</li>
               <li>Yearly</li>
