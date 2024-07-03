@@ -4,6 +4,8 @@ import NextButton from "@/common/components/NextButton";
 import NextTextarea from "@/common/components/NextTextarea";
 import { TranslateContext } from "./TranslateContext";
 import { ITranslateReducerAction } from "../lib/translateReducer";
+import Cookies from "js-cookie";
+import { AppContext } from "@/modules/app/components/AppContext";
 
 interface TranslateFirstLanguageTextareaProps {
   firstLanguageText: string;
@@ -14,6 +16,16 @@ const TranslateFirstLanguageTextarea = (
   props: TranslateFirstLanguageTextareaProps
 ) => {
   const { firstLanguageText, translateDispatch } = props;
+  const { appDispatch } = useContext(AppContext)
+
+  const handleClick = async () => {
+    const token = Cookies.get('token');
+
+    if (!token) {
+      appDispatch({ key: "showLoginModal", value: true });
+      return;
+    }
+  }
 
   return (
     <div className="relative mb-4">
@@ -33,7 +45,10 @@ const TranslateFirstLanguageTextarea = (
           translateDispatch({ key: "firstLanguageText", value: e.target.value })
         }
       />
-      <NextButton className="absolute bottom-4 right-2 lg:right-3 p-2">
+      <NextButton
+        onClick={handleClick}
+        className="absolute bottom-4 right-2 lg:right-3 p-2"
+      >
         <TbLanguage />
         <span>Translate</span>
       </NextButton>

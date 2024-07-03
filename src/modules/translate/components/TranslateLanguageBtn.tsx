@@ -1,10 +1,12 @@
 import { useMemo, useState } from "react";
+import { TbChevronDown, TbChevronUp } from "react-icons/tb";
+
 import NextButton from "@/common/components/NextButton";
 import TranslateLanguageMenu from "./TranslateLanguageMenu";
+
+import { cn } from "@/common/lib/cn";
 import { ITranslateReducerAction } from "../lib/translateReducer";
 import { TRANSLATE_COMMON_LANGUAGE_LIST } from "../lib/translateLanguageList";
-import { cn } from "@/common/lib/cn";
-import { TbChevronDown, TbChevronUp } from "react-icons/tb";
 
 interface TranslateLanguageBtn {
   isFirstLanguage: boolean;

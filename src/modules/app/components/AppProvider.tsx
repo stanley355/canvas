@@ -1,7 +1,10 @@
+import dynamic from "next/dynamic";
 import { useReducer } from "react";
 import { AppContext } from "./AppContext";
 import { appReducer } from "../lib/appReducer";
 import { APP_STATES } from "../lib/appStates";
+
+const LoginModal = dynamic(()=> import('../../login/components/LoginModal'), {ssr: false});
 
 interface IAppProvider {
   children: React.ReactNode;
@@ -12,6 +15,7 @@ const AppProvider = (props: IAppProvider) => {
   return (
     <AppContext.Provider value={{ appStates, appDispatch }}>
       {props.children}
+      {appStates.showLoginModal && <LoginModal />}
     </AppContext.Provider>
   );
 };

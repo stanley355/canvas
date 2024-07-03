@@ -3,6 +3,7 @@ import { getLoginPageServerSideProps } from "@/modules/login/lib/getLoginPageSer
 
 import NextHead, { NextHeadProps } from "@/common/components/NextHead";
 import LoginCard from "@/modules/login/components/LoginCard";
+import LoginModal from "@/modules/login/components/LoginModal";
 
 interface ILoginProps {
   datoCmsData: NextHeadProps;
@@ -15,11 +16,11 @@ const Login = (props: ILoginProps) => {
   const { datoCmsData } = props;
 
   return (
-    <div className="px-4 lg:px-0">
+    <div className="px-4 lg:px-0 lg:mt-16">
       {datoCmsData?.pagesSchema && (
         <NextHead pagesSchema={datoCmsData.pagesSchema} />
       )}
-      <LoginCard />
+      <LoginModal />
     </div>
   );
 };
