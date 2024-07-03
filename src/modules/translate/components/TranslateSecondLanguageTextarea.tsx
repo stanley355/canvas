@@ -10,9 +10,8 @@ const TranslateSecondLanguageTextarea = () => {
 
   if (translateStates.secondLanguageTexts.length > 0) {
     return translateStates.secondLanguageTexts.map((text, index) =>
-      <div className='relative mb-4'>
+      <div className='relative mb-4' key={`secondLanguageText_${index}`}>
         <NextTextarea
-          key={`secondLanguageText_${index}`}
           readOnly
           value={text}
           className='border-gray-200 resize-none h-60 rounded-t-none pr-12'
