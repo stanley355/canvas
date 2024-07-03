@@ -22,6 +22,7 @@ const TranslateHeader = () => {
       <div className="flex justify-evenly gap-2 lg:w-full">
         <NextSelect
           placeholder="Variant: 1"
+          selectClassname="border-gray-200"
           options={TRANSLATE_VARIANT_OPTIONS}
           onChange={(option) =>
             translateDispatch({ key: "n", value: option.value })
@@ -29,6 +30,7 @@ const TranslateHeader = () => {
         />
         <NextSelect
           placeholder="Random: Mid"
+          selectClassname="border-gray-200"
           options={TRANSLATE_RANDOMNESS_OPTIONS}
           onChange={(option) =>
             translateDispatch({ key: "temperature", value: option.value })
