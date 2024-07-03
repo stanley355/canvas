@@ -13,12 +13,13 @@ import { cn } from "@/common/lib/cn";
 
 interface TranslateLanguageMenuProps {
   isFirstLanguage: boolean;
+  language: string;
   onCloseClick: () => void;
   translateDispatch: (action: ITranslateReducerAction) => void;
 }
 
 const TranslateLanguageMenu = (props: TranslateLanguageMenuProps) => {
-  const { isFirstLanguage, onCloseClick, translateDispatch } = props;
+  const { isFirstLanguage, language, onCloseClick, translateDispatch } = props;
   const [langList, setLangList] = useState(TRANSLATE_LANGUAGE_LIST);
 
   const onSearch = (e: ChangeEvent<HTMLInputElement>) => {
@@ -39,7 +40,7 @@ const TranslateLanguageMenu = (props: TranslateLanguageMenuProps) => {
   };
 
   return (
-    <div className="fixed top-0 left-0 bg-white z-50 border border-red-50 w-full overflow-y-scroll h-screen">
+    <div className="fixed top-0 left-0 bg-white z-10 lg:absolute lg:top-14 border lg:border-brand-primary w-full overflow-y-scroll h-screen lg:h-fit">
       <div className="flex items-center border-b">
         <NextButton variant="none" className="p-4" onClick={onCloseClick}>
           <TbArrowLeft className="text-2xl" />
@@ -56,17 +57,21 @@ const TranslateLanguageMenu = (props: TranslateLanguageMenuProps) => {
       </div>
 
       <div
-        className={
+        className={cn(
           langList.length === TRANSLATE_LANGUAGE_LIST.length
             ? "block"
-            : "hidden"
-        }
+            : "hidden", 'lg:hidden'
+        )}
       >
         {isFirstLanguage && (
           <NextButton
             variant="none"
             onClick={() => handleClick()}
-            className="w-full rounded-none border-x-none border-t-none p-4 text-left border-b text-sm pl-8 flex gap-2 items-center"
+            className={cn(
+              "w-full rounded-none border-x-none border-t-none p-4 text-left border-b text-sm pl-8 flex gap-2 items-center",
+              language === "" && 'font-semibold bg-blue-100'
+            )}
+
           >
             <MdAutoAwesome />
             <span>Detect Language</span>
@@ -75,27 +80,48 @@ const TranslateLanguageMenu = (props: TranslateLanguageMenuProps) => {
 
         <div className="font-semibold p-4">Common Languages</div>
         <div>
-          {TRANSLATE_COMMON_LANGUAGE_LIST.map((language) => (
+          {TRANSLATE_COMMON_LANGUAGE_LIST.map((listLanguage) => (
             <NextButton
+              key={`common_${listLanguage}`}
               variant="none"
-              className="w-full rounded-none border-x-none border-t-none p-4 text-left border-b text-sm pl-8"
-              onClick={() => handleClick(language)}
+              onClick={() => handleClick(listLanguage)}
+              className={cn("w-full rounded-none border-x-none border-t-none p-4 text-left border-b text-sm pl-8",
+                language === listLanguage && 'font-semibold bg-blue-100'
+
+              )}
             >
-              {language}
+              {listLanguage}
             </NextButton>
           ))}
         </div>
       </div>
 
-      <div className="font-semibold p-4">All Languages</div>
-      <div>
-        {langList.map((language) => (
+      <div className="font-semibold p-4 lg:hidden">All Languages</div>
+      <div className="lg:grid lg:grid-cols-8">
+        {isFirstLanguage && (
           <NextButton
             variant="none"
-            className="w-full rounded-none border-x-none border-t-none p-4 text-left border-b text-sm pl-8"
-            onClick={() => handleClick(language)}
+            onClick={() => handleClick()}
+            className={cn(
+              "w-full rounded-none p-4 text-left hover:bg-blue-100 text-sm pl-8 gap-2 lg:px-2 items-center hidden lg:flex",
+              language === "" && 'font-semibold bg-blue-100'
+            )}
           >
-            {language}
+            <MdAutoAwesome />
+            <span>Detect Language</span>
+          </NextButton>
+        )}
+        {langList.map((listLanguage) => (
+          <NextButton
+            key={listLanguage}
+            variant="none"
+            className={cn(
+              "w-full rounded-none border-x-none border-t-none p-4 text-left border-b lg:border-none text-sm pl-8 hover:bg-blue-100 lg:px-2 lg:text-center",
+              language === listLanguage && 'font-semibold bg-blue-100'
+            )}
+            onClick={() => handleClick(listLanguage)}
+          >
+            {listLanguage}
           </NextButton>
         ))}
       </div>

@@ -7,7 +7,7 @@ export interface ITranslateStates {
 
 export const TRANSLATE_STATES: ITranslateStates = {
   firstLanguage: "",
-  secondLanguage: "",
+  secondLanguage: "Indonesian",
   n: 1,
   temperature: 1,
 };
