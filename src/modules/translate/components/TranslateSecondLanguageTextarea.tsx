@@ -15,6 +15,7 @@ const TranslateSecondLanguageTextarea = (props: TranslateSecondLanguageTextareaP
     <div className='relative mb-4'>
       <NextTextarea
         readOnly
+        placeholder='Terjemahan'
         value={secondLanguageText}
         className='border-gray-200 resize-none h-60 pr-12 focus:border-gray-200 hover:border-gray-200'
       />
