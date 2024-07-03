@@ -1,17 +1,21 @@
 import { useContext, useState } from "react"
 import { TbLanguage, TbProgress } from "react-icons/tb"
-import Cookies from "js-cookie"
-import NextButton from "@/common/components/NextButton"
-import { AppContext } from "@/modules/app/components/AppContext"
-import { TranslateContext } from "./TranslateContext"
 import { toast } from "react-toastify"
+import Cookies from "js-cookie"
+
+import NextButton from "@/common/components/NextButton"
+import { TranslateContext } from "./TranslateContext"
+
+import { AppContext } from "@/modules/app/components/AppContext"
 import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent"
 import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames"
+import { createTranslateSystemContent } from "../lib/createTranslateSystemContent"
+import { JwtPayload, decode } from "jsonwebtoken"
 
 const TranslateSubmitBtn = () => {
   const { appDispatch } = useContext(AppContext);
   const { translateStates, translateDispatch } = useContext(TranslateContext);
-  const { firstLanguageText } = translateStates;
+  const { firstLanguageText, firstLanguage, secondLanguage } = translateStates;
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -30,6 +34,8 @@ const TranslateSubmitBtn = () => {
 
     setIsLoading(true);
     sendFirebaseEvent(FIREBASE_EVENT_NAMES.translate);
+    const systemContent = createTranslateSystemContent(firstLanguage, secondLanguage);
+    const user = decode(token) as JwtPayload;
   }
 
   return (
