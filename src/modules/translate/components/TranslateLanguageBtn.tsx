@@ -35,7 +35,7 @@ const TranslateLanguageBtn = (props: TranslateLanguageBtn) => {
       <div className="hidden lg:flex">
         <NextButton
           variant="none"
-          className="p-4 font-semibold border-b border-brand-primary"
+          className="p-2 px-4 font-semibold border-b border-brand-primary"
           onClick={() => translateDispatch({ key: isFirstLanguage ? "firstLanguage" : "secondLanguage", value: "" })}
         >
           {placeholder}
@@ -46,7 +46,7 @@ const TranslateLanguageBtn = (props: TranslateLanguageBtn) => {
             <NextButton
               key={`common_${listLanguage}`}
               variant="none"
-              className={cn("p-4", listLanguage === language && 'font-semibold border-b border-brand-primary')}
+              className={cn("p-2 px-4 border-b border-b-transparent hover:border-b-brand-primary", listLanguage === language && 'font-semibold border-b border-brand-primary')}
               onClick={() => translateDispatch({ key: isFirstLanguage ? "firstLanguage" : "secondLanguage", value: listLanguage })}
             >
               {listLanguage}
@@ -54,7 +54,7 @@ const TranslateLanguageBtn = (props: TranslateLanguageBtn) => {
           )}
         <NextButton
           variant="none"
-          className="p-4"
+          className={cn("p-2 px-4 rounded-full hover:bg-blue-100", openMenu && 'bg-blue-100')}
           onClick={() => setOpenMenu(!openMenu)}
         >
           {openMenu ? <TbChevronUp /> : <TbChevronDown />}
