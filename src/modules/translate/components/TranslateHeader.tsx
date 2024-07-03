@@ -6,6 +6,8 @@ import { TranslateContext } from "./TranslateContext";
 
 import { TRANSLATE_VARIANT_OPTIONS } from "../lib/translateVariantOptions";
 import { TRANSLATE_RANDOMNESS_OPTIONS } from "../lib/translateRandomnessOptions";
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
+import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 
 const TranslateHeader = () => {
   const { translateDispatch } = useContext(TranslateContext);
@@ -24,17 +26,19 @@ const TranslateHeader = () => {
           placeholder="Variant: 1"
           selectClassname="border-gray-200"
           options={TRANSLATE_VARIANT_OPTIONS}
-          onChange={(option) =>
+          onChange={(option) =>{
+            sendFirebaseEvent(FIREBASE_EVENT_NAMES.change.change_translate_n);
             translateDispatch({ key: "n", value: option.value })
-          }
+          }}
         />
         <NextSelect
           placeholder="Random: Mid"
           selectClassname="border-gray-200"
           options={TRANSLATE_RANDOMNESS_OPTIONS}
-          onChange={(option) =>
+          onChange={(option) =>{
+            sendFirebaseEvent(FIREBASE_EVENT_NAMES.change.change_translate_temperature);
             translateDispatch({ key: "temperature", value: option.value })
-          }
+          }}
         />
       </div>
     </div>
