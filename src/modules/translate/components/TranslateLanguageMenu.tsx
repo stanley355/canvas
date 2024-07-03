@@ -60,7 +60,8 @@ const TranslateLanguageMenu = (props: TranslateLanguageMenuProps) => {
         className={cn(
           langList.length === TRANSLATE_LANGUAGE_LIST.length
             ? "block"
-            : "hidden", 'lg:hidden'
+            : "hidden",
+          "lg:hidden"
         )}
       >
         {isFirstLanguage && (
@@ -69,9 +70,8 @@ const TranslateLanguageMenu = (props: TranslateLanguageMenuProps) => {
             onClick={() => handleClick()}
             className={cn(
               "w-full rounded-none border-x-none border-t-none p-4 text-left border-b text-sm pl-8 flex gap-2 items-center",
-              language === "" && 'font-semibold bg-blue-100'
+              language === "" && "font-semibold bg-blue-100"
             )}
-
           >
             <MdAutoAwesome />
             <span>Detect Language</span>
@@ -85,9 +85,9 @@ const TranslateLanguageMenu = (props: TranslateLanguageMenuProps) => {
               key={`common_${listLanguage}`}
               variant="none"
               onClick={() => handleClick(listLanguage)}
-              className={cn("w-full rounded-none border-x-none border-t-none p-4 text-left border-b text-sm pl-8",
-                language === listLanguage && 'font-semibold bg-blue-100'
-
+              className={cn(
+                "w-full rounded-none border-x-none border-t-none p-4 text-left border-b text-sm pl-8",
+                language === listLanguage && "font-semibold bg-blue-100"
               )}
             >
               {listLanguage}
@@ -104,7 +104,7 @@ const TranslateLanguageMenu = (props: TranslateLanguageMenuProps) => {
             onClick={() => handleClick()}
             className={cn(
               "w-full rounded-none p-4 text-left hover:bg-blue-100 text-sm pl-8 gap-2 lg:px-2 items-center hidden lg:flex",
-              language === "" && 'font-semibold bg-blue-100'
+              language === "" && "font-semibold bg-blue-100"
             )}
           >
             <MdAutoAwesome />
@@ -117,7 +117,7 @@ const TranslateLanguageMenu = (props: TranslateLanguageMenuProps) => {
             variant="none"
             className={cn(
               "w-full rounded-none border-x-none border-t-none p-4 text-left border-b lg:border-none text-sm pl-8 hover:bg-blue-100 lg:px-2 lg:text-center",
-              language === listLanguage && 'font-semibold bg-blue-100'
+              language === listLanguage && "font-semibold bg-blue-100"
             )}
             onClick={() => handleClick(listLanguage)}
           >

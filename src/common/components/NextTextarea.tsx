@@ -1,9 +1,9 @@
 import { cn } from "../lib/cn";
-import { NEXT_INPUT_VARIANTS, INextInputVariants } from "./NextInput/variants"
+import { NEXT_INPUT_VARIANTS, INextInputVariants } from "./NextInput/variants";
 
 export interface NextTextareaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  variants?: keyof INextInputVariants
+  variants?: keyof INextInputVariants;
 }
 
 const NextTextarea = (props: NextTextareaProps) => {
@@ -17,7 +17,7 @@ const NextTextarea = (props: NextTextareaProps) => {
         props.className
       )}
     />
-  )
-}
+  );
+};
 
-export default NextTextarea
+export default NextTextarea;

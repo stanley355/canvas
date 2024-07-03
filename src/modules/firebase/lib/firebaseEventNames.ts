@@ -10,6 +10,6 @@ export const FIREBASE_EVENT_NAMES = {
   },
   change: {
     change_translate_n: "change_translate_n",
-    change_translate_temperature: "change_translate_temperature"
-  }
+    change_translate_temperature: "change_translate_temperature",
+  },
 };

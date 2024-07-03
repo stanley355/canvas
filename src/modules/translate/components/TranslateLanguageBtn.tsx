@@ -36,25 +36,42 @@ const TranslateLanguageBtn = (props: TranslateLanguageBtn) => {
         <NextButton
           variant="none"
           className="p-2 px-4 font-semibold border-b border-brand-primary"
-          onClick={() => translateDispatch({ key: isFirstLanguage ? "firstLanguage" : "secondLanguage", value: "" })}
+          onClick={() =>
+            translateDispatch({
+              key: isFirstLanguage ? "firstLanguage" : "secondLanguage",
+              value: "",
+            })
+          }
         >
           {placeholder}
         </NextButton>
-        {TRANSLATE_COMMON_LANGUAGE_LIST
-          .filter((commonLanguage) => commonLanguage !== language)
-          .map((listLanguage) =>
-            <NextButton
-              key={`common_${listLanguage}`}
-              variant="none"
-              className={cn("p-2 px-4 border-b border-b-transparent hover:border-b-brand-primary", listLanguage === language && 'font-semibold border-b border-brand-primary')}
-              onClick={() => translateDispatch({ key: isFirstLanguage ? "firstLanguage" : "secondLanguage", value: listLanguage })}
-            >
-              {listLanguage}
-            </NextButton>
-          )}
+        {TRANSLATE_COMMON_LANGUAGE_LIST.filter(
+          (commonLanguage) => commonLanguage !== language
+        ).map((listLanguage) => (
+          <NextButton
+            key={`common_${listLanguage}`}
+            variant="none"
+            className={cn(
+              "p-2 px-4 border-b border-b-transparent hover:border-b-brand-primary",
+              listLanguage === language &&
+                "font-semibold border-b border-brand-primary"
+            )}
+            onClick={() =>
+              translateDispatch({
+                key: isFirstLanguage ? "firstLanguage" : "secondLanguage",
+                value: listLanguage,
+              })
+            }
+          >
+            {listLanguage}
+          </NextButton>
+        ))}
         <NextButton
           variant="none"
-          className={cn("p-2 px-4 rounded-full hover:bg-blue-100", openMenu && 'bg-blue-100')}
+          className={cn(
+            "p-2 px-4 rounded-full hover:bg-blue-100",
+            openMenu && "bg-blue-100"
+          )}
           onClick={() => setOpenMenu(!openMenu)}
         >
           {openMenu ? <TbChevronUp /> : <TbChevronDown />}
