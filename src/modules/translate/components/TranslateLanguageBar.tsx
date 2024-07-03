@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, memo } from "react";
 import { TbArrowRight } from "react-icons/tb";
 import TranslateLanguageBtn from "./TranslateLanguageBtn";
 import { TranslateContext } from "./TranslateContext";
@@ -23,4 +23,4 @@ const TranslateLanguageBar = () => {
   );
 };
 
-export default TranslateLanguageBar;
+export default memo(TranslateLanguageBar);

@@ -3,6 +3,8 @@ export interface ITranslateStates {
   secondLanguage: string;
   n: 1 | 2 | 3;
   temperature: 0.5 | 1 | 1.5;
+  firstLanguageText: string;
+  secondLanguageText:string[];
 }
 
 export const TRANSLATE_STATES: ITranslateStates = {
@@ -10,4 +12,6 @@ export const TRANSLATE_STATES: ITranslateStates = {
   secondLanguage: "Indonesian",
   n: 1,
   temperature: 1,
+  firstLanguageText: "",
+  secondLanguageText: []
 };
