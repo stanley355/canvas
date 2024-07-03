@@ -3,7 +3,6 @@ import { getLoginPageServerSideProps } from "@/modules/login/lib/getLoginPageSer
 
 import NextHead, { NextHeadProps } from "@/common/components/NextHead";
 import LoginCard from "@/modules/login/components/LoginCard";
-import LoginModal from "@/modules/login/components/LoginModal";
 
 interface ILoginProps {
   datoCmsData: NextHeadProps;
