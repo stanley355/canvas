@@ -20,7 +20,7 @@ const Login = (props: ILoginProps) => {
       {datoCmsData?.pagesSchema && (
         <NextHead pagesSchema={datoCmsData.pagesSchema} />
       )}
-      <LoginModal />
+      <LoginCard />
     </div>
   );
 };
