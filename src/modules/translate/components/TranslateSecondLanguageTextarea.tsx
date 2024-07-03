@@ -15,7 +15,7 @@ const TranslateSecondLanguageTextarea = () => {
           key={`secondLanguageText_${index}`}
           readOnly
           value={text}
-          className='border-gray-200 resize-none h-60 rounded-t-none pr-12 focus:border-gray-200'
+          className='border-gray-200 resize-none h-60 rounded-t-none pr-12'
         />
         <NextButton className='absolute bottom-4 right-2 lg:right-3 p-2' onClick={()=> copyToClipboard(text)}>
           <TbCopy />
