@@ -40,7 +40,7 @@ const TranslateLanguageMenu = (props: TranslateLanguageMenuProps) => {
   };
 
   return (
-    <div className="fixed top-0 left-0 bg-white z-10 lg:absolute lg:top-14 border lg:border-brand-primary w-full overflow-y-scroll h-screen lg:h-fit">
+    <div className="fixed top-0 left-0 bg-white z-10 lg:absolute lg:top-14 border lg:rounded-lg w-full overflow-y-scroll h-screen lg:h-fit">
       <div className="flex items-center border-b">
         <NextButton variant="none" className="p-4" onClick={onCloseClick}>
           <TbArrowLeft className="text-2xl" />
