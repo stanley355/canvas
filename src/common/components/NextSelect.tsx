@@ -5,6 +5,7 @@ import { cn } from "../lib/cn";
 import { IOption } from "./interfaces";
 
 interface NextSelectProps {
+  id?: string;
   containerClassname?: string;
   selectClassname?: string;
   optionContainerClassname?: string;
@@ -16,6 +17,7 @@ interface NextSelectProps {
 
 const NextSelect = (props: NextSelectProps) => {
   const {
+    id,
     containerClassname,
     selectClassname,
     optionContainerClassname,
@@ -33,6 +35,7 @@ const NextSelect = (props: NextSelectProps) => {
   return (
     <div className={cn("relative w-full", containerClassname)}>
       <NextButton
+        id={id}
         type="button"
         variant="outline"
         className={cn("gap-1 w-full justify-between", selectClassname)}

@@ -8,6 +8,7 @@ import { TRANSLATE_VARIANT_OPTIONS } from "../lib/translateVariantOptions";
 import { TRANSLATE_DIFF_OPTIONS } from "../lib/translateDiffOptions";
 import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
+import { Tooltip } from "react-tooltip";
 
 const TranslateHeader = () => {
   const { translateDispatch } = useContext(TranslateContext);
@@ -16,13 +17,11 @@ const TranslateHeader = () => {
     <div className="p-4 lg:flex lg:w-1/2 lg:px-0">
       <div className="flex border border-brand-primary items-center gap-1 rounded-lg p-2 bg-blue-100 mb-4 mx-auto lg:mx-0 w-fit lg:mb-0 lg:mr-2">
         <TbLanguage />
-        <div>
-          <span className="lg:hidden mr-1">Languageai</span>
           Translate
-        </div>
       </div>
       <div className="flex justify-evenly gap-2 lg:w-full">
         <NextSelect
+          id="translate_variant"
           placeholder="Variant: 1"
           selectClassname="border-gray-200"
           options={TRANSLATE_VARIANT_OPTIONS}
@@ -32,6 +31,7 @@ const TranslateHeader = () => {
           }}
         />
         <NextSelect
+          id="translate_diff"
           placeholder="Diff: Mid"
           selectClassname="border-gray-200"
           options={TRANSLATE_DIFF_OPTIONS}
@@ -42,6 +42,14 @@ const TranslateHeader = () => {
             translateDispatch({ key: "temperature", value: option.value });
           }}
         />
+        <Tooltip anchorSelect="#translate_variant"  className="z-40">
+          <div>How many chat completion choices to</div>
+          <div>generate for each input message</div>
+        </Tooltip>
+        <Tooltip anchorSelect="#translate_diff"  className="z-40">
+          <div>Higher diff will make the output more random,</div>
+          <div>Lower diff will make it more focused and deterministic</div>
+        </Tooltip>
       </div>
     </div>
   );

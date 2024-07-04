@@ -4,6 +4,7 @@ import { getTranslatePageStaticProps } from "@/modules/translateV2/lib/getTransl
 import TranslateProvider from "@/modules/translate/components/TranslateProvider";
 import TranslateHeader from "@/modules/translate/components/TranslateHeader";
 import TranslateBody from "@/modules/translate/components/TranslateBody";
+import NextLink from "@/common/components/NextLink";
 
 interface ITranslateProps {
   datoCmsData: NextHeadProps;
@@ -19,6 +20,7 @@ const Translate = (props: ITranslateProps) => {
         <TranslateHeader />
         <TranslateBody />
       </TranslateProvider>
+      <div className="flex w-fit items-center gap-1 mx-auto">Found an error? <NextLink href="/support" variant="none" className="text-blue-500 underline">Report</NextLink> </div>
     </div>
   );
 };
