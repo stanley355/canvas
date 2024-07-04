@@ -1,22 +1,19 @@
-import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
-import GrammarCheckContainer from "@/modules/grammar-check/components/GrammarCheckContainer";
-import GrammarCheckProvider from "@/modules/grammar-check/components/GrammarCheckProvider";
-import { getGrammarCheckStaticProps } from "@/modules/grammar-check/lib/getGrammarCheckStaticProps";
 import { GetStaticProps } from "next";
+import NextHead, { NextHeadProps } from "@/common/components/NextHead";
+import { getCheckbotPageStaticProps } from "@/modules/checkbot/lib/getCheckbotPageStaticProps";
 
-interface IGrammarCheckProps {
-  datoCmsData: IMetaHead;
+interface CheckbotProps {
+  datoCmsData: NextHeadProps;
 }
+export const getStaticProps: GetStaticProps = getCheckbotPageStaticProps;
 
-const Checkbot = (props: IGrammarCheckProps) => {
+const Checkbot = (props: CheckbotProps) => {
   const { datoCmsData } = props;
   return (
-    <GrammarCheckProvider>
-      <MetaHead pagesSchema={datoCmsData.pagesSchema} />
-      <GrammarCheckContainer />
-    </GrammarCheckProvider>
+    <>
+      <NextHead pagesSchema={datoCmsData.pagesSchema} />
+    </>
   );
 };
 
 export default Checkbot;
-export const getStaticProps: GetStaticProps = getGrammarCheckStaticProps;
