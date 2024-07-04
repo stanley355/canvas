@@ -17,6 +17,6 @@ export const FIREBASE_EVENT_NAMES = {
   },
   show: {
     modal_login: "show_modal_login",
-    modal_monthly_limit: "show_modal_monthly_limit"
-  }
+    modal_monthly_limit: "show_modal_monthly_limit",
+  },
 };

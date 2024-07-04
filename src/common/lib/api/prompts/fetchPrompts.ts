@@ -20,12 +20,12 @@ interface IRequest {
 }
 
 export const fetchPrompts = async (
-  req: IRequest 
+  req: IRequest
 ): Promise<IPrompt[] & IAuthorError> => {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}api/prompts/`;
 
   try {
-    const { data } = await axios.post(url,req);
+    const { data } = await axios.post(url, req);
     return data;
   } catch (error: any) {
     return error?.response?.data;
