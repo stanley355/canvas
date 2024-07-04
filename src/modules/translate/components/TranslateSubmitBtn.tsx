@@ -24,6 +24,7 @@ const TranslateSubmitBtn = () => {
     const token = Cookies.get('token');
 
     if (!token) {
+      sendFirebaseEvent(FIREBASE_EVENT_NAMES.show.modal_login);
       appDispatch({ key: "showLoginModal", value: true });
       return;
     }
@@ -50,6 +51,7 @@ const TranslateSubmitBtn = () => {
     setIsLoading(false);
 
     if (prompts?.status === 402) {
+      sendFirebaseEvent(FIREBASE_EVENT_NAMES.show.modal_monthly_limit);
       appDispatch({ key: "showMonthlyLimitModal", value: true });
       return;
     }

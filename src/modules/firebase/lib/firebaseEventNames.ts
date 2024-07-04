@@ -15,4 +15,8 @@ export const FIREBASE_EVENT_NAMES = {
     change_translate_n: "change_translate_n",
     change_translate_temperature: "change_translate_temperature",
   },
+  show: {
+    modal_login: "show_modal_login",
+    modal_monthly_limit: "show_modal_monthly_limit"
+  }
 };
