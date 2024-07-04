@@ -5,6 +5,7 @@ import { cn } from "../lib/cn";
 import { IOption } from "./interfaces";
 
 interface NextSelectProps {
+  id?: string;
   containerClassname?: string;
   selectClassname?: string;
   optionContainerClassname?: string;
@@ -16,6 +17,7 @@ interface NextSelectProps {
 
 const NextSelect = (props: NextSelectProps) => {
   const {
+    id,
     containerClassname,
     selectClassname,
     optionContainerClassname,
@@ -26,25 +28,26 @@ const NextSelect = (props: NextSelectProps) => {
   } = props;
   const [showOptions, setShowOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState<IOption>({
-    label: placeholder ? placeholder : "Select",
+    label: "",
     value: null,
   });
 
   return (
     <div className={cn("relative w-full", containerClassname)}>
       <NextButton
+        id={id}
         type="button"
         variant="outline"
         className={cn("gap-1 w-full justify-between", selectClassname)}
         onClick={() => setShowOptions(!showOptions)}
       >
-        {selectedOption.label}
+        {selectedOption.label ? selectedOption.label : placeholder}
         {showOptions ? <TbChevronUp /> : <TbChevronDown />}
       </NextButton>
 
       <div
         className={cn(
-          "absolute top-12 left-0 flex flex-col rounded-lg border border-brand-primary w-full bg-white",
+          "absolute top-12 left-0 flex flex-col rounded-lg border border-brand-primary w-full bg-white z-20",
           showOptions ? "visible h-auto" : "invisible h-0",
           optionContainerClassname
         )}

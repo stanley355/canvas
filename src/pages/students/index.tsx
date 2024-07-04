@@ -18,9 +18,9 @@ const Students = (props: IStudents) => {
     <div className="mt-14 lg:mt-0">
       <NextHead pagesSchema={datoCmsData.pagesSchema} />
       <StudentsHero />
-      <div className="container p-4 lg:px-0">
+      <div className="lg:w-1/2 lg:mx-auto p-4 lg:px-0">
         <h3 className="text-center text-2xl font-bold mb-4">
-          Comparing Student Plan compared to other plans
+          Comparing Student Plan to other plans
         </h3>
         <AccountFreePlanTable />
       </div>

@@ -114,7 +114,7 @@ const StudentApplicationForm = () => {
           type="file"
           id="studentidcard_input"
           name="student_id_card"
-          className="border-brand-primary"
+          className="border-brand-primary file:bg-gradient-to-b file:from-white file:to-blue-100 file:rounded-lg file:border file:cursor-pointer file:px-2 file:py-1"
         />
       </div>
       <NextButton className="w-full justify-center text-lg mb-4" type="submit">

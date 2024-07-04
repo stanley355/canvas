@@ -2,13 +2,9 @@ import GoogleLoginBtn from "./GoogleLoginBtn";
 
 const LoginCard = () => {
   return (
-    <div className="p-4 py-6 lg:w-[400px] mt-[5%] mx-auto lg:mt-0 border border-brand-primary rounded-lg bg-white">
-      <div className="p-2 text-white text-center mb-4 text-sm bg-brand-primary rounded-md">
-        We are experiencing issues with Password login, but you can login with
-        your Gmail Account
-      </div>
+    <div className="p-4 py-6 lg:w-[400px] mt-[10%] mx-auto lg:mt-0 border border-brand-primary rounded-lg bg-white">
       <h1 className="mb-6 text-2xl font-semibold text-center ">
-        Click to continue
+        Login to continue
       </h1>
       <div className="flex items-center justify-center mb-4">
         <GoogleLoginBtn />

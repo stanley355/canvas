@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { getAnalytics } from "firebase/analytics";
 import { FirebaseContext } from "./FirebaseContext";
 import initFirebaseApp from "../lib/initFirebaseApp";

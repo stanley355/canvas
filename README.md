@@ -1,5 +1,9 @@
 # CANVAS
 
+### 1.4.2
+
+- Update translate ui
+
 ### 1.4.1
 
 - Update firebase analytic path
