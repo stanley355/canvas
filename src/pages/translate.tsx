@@ -1,10 +1,12 @@
 import { GetStaticProps } from "next";
 import NextHead, { NextHeadProps } from "@/common/components/NextHead";
-import { getTranslatePageStaticProps } from "@/modules/translateV2/lib/getTranslatePageStaticProps";
+import NextLink from "@/common/components/NextLink";
+
+import { getTranslatePageStaticProps } from "@/modules/translate/lib/getTranslatePageStaticProps";
+
 import TranslateProvider from "@/modules/translate/components/TranslateProvider";
 import TranslateHeader from "@/modules/translate/components/TranslateHeader";
 import TranslateBody from "@/modules/translate/components/TranslateBody";
-import NextLink from "@/common/components/NextLink";
 
 interface ITranslateProps {
   datoCmsData: NextHeadProps;
