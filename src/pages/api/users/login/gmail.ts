@@ -14,7 +14,7 @@ const authorV2UsersLoginGmailApi = async (
     res.json(data);
   } catch (err: any) {
     const status = err?.response?.status ? err.response.status : 500;
-    const data = err?.response?.data ? err.response.data : {};
+    const data = err?.response?.data ? err.response.data : null;
     res.status(status).json(data);
   }
 };

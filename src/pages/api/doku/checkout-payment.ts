@@ -1,7 +1,6 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 import { generateDokuSignature } from "@/modules/plans/lib/generateDokuSignature";
-import { axiosErrorHandler } from "@/common/lib/api/axiosErrorHandler";
 
 const dokuCheckoutPaymentAPI = async (
   req: NextApiRequest,
@@ -24,9 +23,10 @@ const dokuCheckoutPaymentAPI = async (
 
     const { data } = await axios(axiosConfig);
     res.json(data);
-  } catch (error: any) {
-    const errorRes = axiosErrorHandler("/checkout/v1/payment", error);
-    res.status(error.response.status).send(errorRes);
+  } catch (err: any) {
+    const status = err?.response?.status ? err.response.status : 500;
+    const data = err?.response?.data ? err.response.data : null;
+    res.status(status).json(data);
   }
 };
 
