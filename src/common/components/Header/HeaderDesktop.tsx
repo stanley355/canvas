@@ -32,7 +32,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
       </Link>
 
       <div className="flex rounded-full pt-1">
-      <NextLink
+        <NextLink
           href="/translate/"
           variant="outline"
           className={cn(

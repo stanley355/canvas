@@ -17,7 +17,7 @@ const TranslateHeader = () => {
     <div className="p-4 lg:flex lg:w-1/2 lg:px-0">
       <div className="flex border border-brand-primary items-center gap-1 rounded-lg p-2 bg-blue-100 mb-4 mx-auto lg:mx-0 w-fit lg:mb-0 lg:mr-2">
         <TbLanguage />
-          Translate
+        Translate
       </div>
       <div className="flex justify-evenly gap-2 lg:w-full">
         <NextSelect
@@ -42,11 +42,11 @@ const TranslateHeader = () => {
             translateDispatch({ key: "temperature", value: option.value });
           }}
         />
-        <Tooltip anchorSelect="#translate_variant"  className="z-40">
+        <Tooltip anchorSelect="#translate_variant" className="z-40">
           <div>How many chat completion choices to</div>
           <div>generate for each input message</div>
         </Tooltip>
-        <Tooltip anchorSelect="#translate_diff"  className="z-40">
+        <Tooltip anchorSelect="#translate_diff" className="z-40">
           <div>Higher diff will make the output more random,</div>
           <div>Lower diff will make it more focused and deterministic</div>
         </Tooltip>

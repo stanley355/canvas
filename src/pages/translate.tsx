@@ -20,7 +20,16 @@ const Translate = (props: ITranslateProps) => {
         <TranslateHeader />
         <TranslateBody />
       </TranslateProvider>
-      <div className="flex w-fit items-center gap-1 mx-auto">Found an error? <NextLink href="/support" variant="none" className="text-blue-500 underline">Report</NextLink> </div>
+      <div className="flex w-fit items-center gap-1 mx-auto">
+        Found an error?{" "}
+        <NextLink
+          href="/support"
+          variant="none"
+          className="text-blue-500 underline"
+        >
+          Report
+        </NextLink>{" "}
+      </div>
     </div>
   );
 };
