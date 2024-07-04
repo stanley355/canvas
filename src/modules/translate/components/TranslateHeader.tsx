@@ -5,7 +5,7 @@ import NextSelect from "@/common/components/NextSelect";
 import { TranslateContext } from "./TranslateContext";
 
 import { TRANSLATE_VARIANT_OPTIONS } from "../lib/translateVariantOptions";
-import { TRANSLATE_RANDOMNESS_OPTIONS } from "../lib/translateRandomnessOptions";
+import { TRANSLATE_VOLUMES_OPTIONS } from "../lib/translateVolumeOptions";
 import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 
@@ -32,9 +32,9 @@ const TranslateHeader = () => {
           }}
         />
         <NextSelect
-          placeholder="Random: Mid"
+          placeholder="Volume: Unset"
           selectClassname="border-gray-200"
-          options={TRANSLATE_RANDOMNESS_OPTIONS}
+          options={TRANSLATE_VOLUMES_OPTIONS}
           onChange={(option) => {
             sendFirebaseEvent(
               FIREBASE_EVENT_NAMES.change.change_translate_temperature

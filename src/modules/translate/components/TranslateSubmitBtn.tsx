@@ -48,6 +48,18 @@ const TranslateSubmitBtn = () => {
 
     const prompts = await fetchPrompts(req);
     setIsLoading(false);
+
+    if (prompts?.status === 402) {
+      appDispatch({ key: "showMonthlyLimitModal", value: true });
+      return;
+    }
+
+    if (prompts?.length > 0) {
+      translateDispatch({ key: "secondLanguageTexts", value: prompts.map((prompt) => prompt.completion_text) });
+      return;
+    }
+
+    toast.error("Server busy, please try again");
     return;
   }
 
