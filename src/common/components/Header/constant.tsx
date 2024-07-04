@@ -10,14 +10,14 @@ import { PiStudentDuotone } from "react-icons/pi";
 
 export const MOBILE_HEADER_MENU = [
   {
-    title: "AI CHECKBOT",
-    url: "/checkbot/",
-    icon: <FaRobot />,
-  },
-  {
     title: "AI TRANSLATE",
     url: "/translate/",
     icon: <TbLanguage />,
+  },
+  {
+    title: "AI CHECKBOT",
+    url: "/checkbot/",
+    icon: <FaRobot />,
   },
   {
     title: "AI IMAGE TO TEXT",

@@ -32,24 +32,11 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
       </Link>
 
       <div className="flex rounded-full pt-1">
-        <NextLink
-          href="/checkbot/"
-          variant="none"
-          className={cn(
-            "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-brand-primary",
-            pathname === "/checkbot"
-              ? "border-brand-primary "
-              : "border-transparent"
-          )}
-        >
-          <FaRobot />
-          <span>AI Checkbot</span>
-        </NextLink>
-        <NextLink
+      <NextLink
           href="/translate/"
-          variant="none"
+          variant="outline"
           className={cn(
-            "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-brand-primary",
+            "gap-2 border rounded-full",
             pathname === "/translate"
               ? "border-brand-primary"
               : "border-transparent"
@@ -59,10 +46,23 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           <span>AI Translate</span>
         </NextLink>
         <NextLink
-          href="/image-to-text"
-          variant="none"
+          href="/checkbot/"
+          variant="outline"
           className={cn(
-            "flex items-center gap-2 p-2 px-4 border rounded-full hover:border-brand-primary",
+            "gap-2 border rounded-full",
+            pathname === "/checkbot"
+              ? "border-brand-primary "
+              : "border-transparent"
+          )}
+        >
+          <FaRobot />
+          <span>AI Checkbot</span>
+        </NextLink>
+        <NextLink
+          href="/image-to-text"
+          variant="outline"
+          className={cn(
+            "gap-2 border rounded-full",
             pathname === "/image-to-text"
               ? "border-brand-primary"
               : "border-transparent"
@@ -73,9 +73,9 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
         </NextLink>
         <NextLink
           href="/text-to-speech/"
-          variant="none"
+          variant="outline"
           className={cn(
-            "flex items-center gap-2 p-2 px-4 border border-transparent rounded-full hover:border-brand-primary",
+            "gap-2 border rounded-full",
             pathname === "/text-to-speech"
               ? "border-brand-primary"
               : "border-transparent"
