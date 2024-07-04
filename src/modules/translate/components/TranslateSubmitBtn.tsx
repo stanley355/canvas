@@ -11,11 +11,12 @@ import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent"
 import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames"
 import { createTranslateSystemContent } from "../lib/createTranslateSystemContent"
 import { JwtPayload, decode } from "jsonwebtoken"
+import { PromptsType, fetchPrompts } from "@/common/lib/api/prompts/fetchPrompts"
 
 const TranslateSubmitBtn = () => {
   const { appDispatch } = useContext(AppContext);
   const { translateStates, translateDispatch } = useContext(TranslateContext);
-  const { firstLanguageText, firstLanguage, secondLanguage } = translateStates;
+  const { firstLanguageText, firstLanguage, secondLanguage, n, temperature } = translateStates;
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -34,8 +35,20 @@ const TranslateSubmitBtn = () => {
 
     setIsLoading(true);
     sendFirebaseEvent(FIREBASE_EVENT_NAMES.translate);
-    const systemContent = createTranslateSystemContent(firstLanguage, secondLanguage);
     const user = decode(token) as JwtPayload;
+
+    const req = {
+      user_id: user.id,
+      prompt_type: PromptsType.Translate,
+      system_content: createTranslateSystemContent(firstLanguage, secondLanguage),
+      user_content: firstLanguageText,
+      ...n !== 1 && { n },
+      ...temperature !== 1.0 && { temperature }
+    }
+
+    const prompts = await fetchPrompts(req);
+    setIsLoading(false);
+    return;
   }
 
   return (
