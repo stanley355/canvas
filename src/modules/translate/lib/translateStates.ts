@@ -11,7 +11,7 @@ export const TRANSLATE_STATES: ITranslateStates = {
   firstLanguage: "",
   secondLanguage: "Indonesian",
   n: 1,
-  temperature: 0.0,
+  temperature: 1.0,
   firstLanguageText: "",
   secondLanguageTexts: [],
 };
