@@ -1,14 +1,14 @@
 import { useContext, memo } from "react";
 import { TbLanguage } from "react-icons/tb";
+import { Tooltip } from "react-tooltip";
 
 import NextSelect from "@/common/components/NextSelect";
 import { TranslateContext } from "./TranslateContext";
 
-import { TRANSLATE_VARIANT_OPTIONS } from "../lib/translateVariantOptions";
-import { TRANSLATE_DIFF_OPTIONS } from "../lib/translateDiffOptions";
 import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
-import { Tooltip } from "react-tooltip";
+import { PROMPT_VARIANT_OPTIONS } from "@/common/lib/api/prompts/promptVariantOptions";
+import { PROMPT_DIFF_OPTIONS } from "@/common/lib/api/prompts/promptDiffOptions";
 
 const TranslateHeader = () => {
   const { translateDispatch } = useContext(TranslateContext);
@@ -24,7 +24,7 @@ const TranslateHeader = () => {
           id="translate_variant"
           placeholder="Variant: 1"
           selectClassname="border-gray-200"
-          options={TRANSLATE_VARIANT_OPTIONS}
+          options={PROMPT_VARIANT_OPTIONS}
           onChange={(option) => {
             sendFirebaseEvent(FIREBASE_EVENT_NAMES.change.change_translate_n);
             translateDispatch({ key: "n", value: option.value });
@@ -34,7 +34,7 @@ const TranslateHeader = () => {
           id="translate_diff"
           placeholder="Diff: Mid"
           selectClassname="border-gray-200"
-          options={TRANSLATE_DIFF_OPTIONS}
+          options={PROMPT_DIFF_OPTIONS}
           onChange={(option) => {
             sendFirebaseEvent(
               FIREBASE_EVENT_NAMES.change.change_translate_temperature
@@ -43,7 +43,7 @@ const TranslateHeader = () => {
           }}
         />
         <Tooltip anchorSelect="#translate_variant" className="z-40">
-          <div>How many chat completion choices to</div>
+          <div>How many text completion choices to</div>
           <div>generate for each input message</div>
         </Tooltip>
         <Tooltip anchorSelect="#translate_diff" className="z-40">
