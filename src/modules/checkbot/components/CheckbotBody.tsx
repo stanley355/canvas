@@ -2,12 +2,13 @@ import { useContext } from 'react'
 import { CheckbotContext } from './CheckbotContext'
 import CheckbotInstructionSelect from './CheckbotInstructionSelect'
 import CheckbotUserTextarea from './CheckbotUserTextarea';
+import CheckbotResultTextarea from './CheckbotResultTextarea';
 
 const CheckbotBody = () => {
   const { checkbotStates, checkbotDispatch } = useContext(CheckbotContext);
 
   return (
-    <div className='lg:grid grid-cols-2 h-screen'>
+    <div className='lg:grid grid-cols-2 gap-2 mb-4'>
       <div>
         <CheckbotInstructionSelect checkbotDispatch={checkbotDispatch} />
         <CheckbotUserTextarea
@@ -15,6 +16,10 @@ const CheckbotBody = () => {
           checkbotDispatch={checkbotDispatch}
         />
       </div>
+      {checkbotStates.checkbotResults.length > 0 ?
+        checkbotStates.checkbotResults.map((result) => <CheckbotResultTextarea checkbotResult={result} />) :
+        <CheckbotResultTextarea checkbotResult={{ base: '', added: [], removed: [] }} />
+      }
     </div>
   )
 }
