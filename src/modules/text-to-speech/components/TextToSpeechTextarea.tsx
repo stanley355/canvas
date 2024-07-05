@@ -1,81 +1,15 @@
-import { ChangeEvent, useContext, useState, memo } from "react";
-import { toast } from "react-toastify";
-import { JwtPayload, decode } from "jsonwebtoken";
-import { TbProgress, TbSpeakerphone, TbX } from "react-icons/tb";
-import Cookies from "js-cookie";
+import { useContext, memo } from "react";
+import { TbX } from "react-icons/tb";
 
-import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
-import {
-  PromptsV2Type,
-  fetchPromptsV2,
-} from "@/common/lib/apiV2/prompts/fetchPromptsV2";
-import { fetchDeleteTtsFileV2 } from "@/common/lib/apiV2/prompts/fetchDeleteTtsFileV2";
 import NextButton from "@/common/components/NextButton";
 import NextTextarea from "@/common/components/NextTextarea";
+
 import { TextToSpeechContext } from "./TextToSpeechContext";
 import TextToSpeechSubmitBtn from "./TextToSpeechSubmitBtn";
 
-
 const TextToSpeechTextarea = () => {
-
   const { textToSpeechDispatch, textToSpeechStates } = useContext(TextToSpeechContext);
   const { userText } = textToSpeechStates;
-
-  const [previousFileID, setPreviousFileID] = useState("");
-  const [sourceText, setSourceText] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
-  const [showLoginModal, setShowLoginModal] = useState(false);
-  const [showLimitModal, setShowLimitModal] = useState(false);
-
-  const handleClick = async () => {
-    const token = Cookies.get("token");
-    if (!token) {
-      setShowLoginModal(true);
-      return;
-    }
-
-    if (!sourceText) {
-      toast.info("Text can not be empty");
-      return;
-    }
-
-    if (sourceText.split(" ").length > 5000) {
-      toast.info("Maximum 5,000 words");
-      return;
-    }
-
-    setIsLoading(true);
-    sendFirebaseEvent("text_to_speech");
-
-    const user = decode(String(token)) as JwtPayload;
-    const payload = {
-      user_id: user.id,
-      prompt_type: PromptsV2Type.TextToSpeech,
-      system_content: "",
-      user_content: sourceText,
-    };
-    const promptResponse = await fetchPromptsV2(payload);
-
-    // Payment Required
-    if (promptResponse?.status === 402) {
-      setShowLimitModal(true);
-      return;
-    }
-
-    if (promptResponse.id) {
-      setIsLoading(false);
-      // onConvertSuccess(String(promptResponse.id));
-
-      if (previousFileID) await fetchDeleteTtsFileV2(Number(previousFileID));
-      setPreviousFileID(String(promptResponse.id));
-      return;
-    }
-
-    setIsLoading(false);
-    toast.error("Server busy, please try again");
-    return;
-  };
 
   return (
     <div className="relative mb-4">
