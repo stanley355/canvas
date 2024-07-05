@@ -1,6 +1,7 @@
 // event names - page - desc
 export const FIREBASE_EVENT_NAMES = {
   translate: "translate",
+  checkbot: "checkbot",
   login: {
     login: "login",
     loginGoogle: "login_google",

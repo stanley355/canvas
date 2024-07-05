@@ -40,6 +40,7 @@ const CheckbotSubmitBtn = () => {
     }
 
     setIsLoading(true);
+    sendFirebaseEvent(FIREBASE_EVENT_NAMES.checkbot);
     const user = decode(token) as JwtPayload;
     const req = {
       user_id: user.id,
