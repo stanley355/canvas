@@ -16,7 +16,7 @@ const Translate = (props: ITranslateProps) => {
   const { datoCmsData } = props;
 
   return (
-    <div className="mt-16 container lg:mx-auto lg:mt-0 lg:text-sm pb-4 lg:h-[90vh]">
+    <div className="mt-16 container lg:mx-auto lg:mt-0 lg:text-sm pb-4 min-h-[90vh]">
       <NextHead pagesSchema={datoCmsData.pagesSchema} />
       <TranslateProvider>
         <TranslateHeader />
