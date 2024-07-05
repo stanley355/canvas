@@ -1,22 +1,38 @@
-import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
-import GrammarCheckContainer from "@/modules/grammar-check/components/GrammarCheckContainer";
-import GrammarCheckProvider from "@/modules/grammar-check/components/GrammarCheckProvider";
-import { getGrammarCheckStaticProps } from "@/modules/grammar-check/lib/getGrammarCheckStaticProps";
 import { GetStaticProps } from "next";
+import NextHead, { NextHeadProps } from "@/common/components/NextHead";
+import { getCheckbotPageStaticProps } from "@/modules/checkbot/lib/getCheckbotPageStaticProps";
+import CheckbotProvider from "@/modules/checkbot/components/CheckbotProvider";
+import CheckbotHeader from "@/modules/checkbot/components/CheckbotHeader";
+import CheckbotBody from "@/modules/checkbot/components/CheckbotBody";
+import NextLink from "@/common/components/NextLink";
 
-interface IGrammarCheckProps {
-  datoCmsData: IMetaHead;
+interface CheckbotProps {
+  datoCmsData: NextHeadProps;
 }
 
-const Checkbot = (props: IGrammarCheckProps) => {
+export const getStaticProps: GetStaticProps = getCheckbotPageStaticProps;
+
+const Checkbot = (props: CheckbotProps) => {
   const { datoCmsData } = props;
   return (
-    <GrammarCheckProvider>
-      <MetaHead pagesSchema={datoCmsData.pagesSchema} />
-      <GrammarCheckContainer />
-    </GrammarCheckProvider>
+    <div className="container mx-auto mt-14 lg:mt-0 text-sm pb-8">
+      <NextHead pagesSchema={datoCmsData.pagesSchema} />
+      <CheckbotProvider>
+        <CheckbotHeader />
+        <CheckbotBody />
+      </CheckbotProvider>
+      <div className="flex w-fit items-center gap-1 mx-auto">
+        Found an error?{" "}
+        <NextLink
+          href="/support"
+          variant="none"
+          className="text-blue-500 underline"
+        >
+          Report
+        </NextLink>{" "}
+      </div>
+    </div>
   );
 };
 
 export default Checkbot;
-export const getStaticProps: GetStaticProps = getGrammarCheckStaticProps;

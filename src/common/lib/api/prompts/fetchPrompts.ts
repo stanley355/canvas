@@ -4,9 +4,9 @@ import { IAuthorError } from "../interfaces";
 
 export enum PromptsType {
   Translate = "Translate",
-  GrammarCheck = "GrammarCheck",
   ImageToText = "ImageToText",
   TextToSpeech = "TextToSpeech",
+  Checkbot = "Checkbot",
   // Add Checkbot later
 }
 

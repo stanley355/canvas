@@ -1,10 +1,10 @@
-import { GetStaticProps } from "next";
 import { fetchDatoCms } from "@/common/lib/api/dato/fetchDatoCms";
 import { getPagesSchema } from "@/common/lib/api/gql";
+import { GetStaticProps } from "next";
 
-export const getGrammarCheckStaticProps: GetStaticProps = async () => {
+export const getCheckbotPageStaticProps: GetStaticProps = async () => {
   const datoCmsData = await fetchDatoCms(getPagesSchema, {
-    slug: "grammar-check",
+    slug: "checkbot",
   });
 
   return {

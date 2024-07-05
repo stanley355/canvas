@@ -32,6 +32,7 @@ const StudentInstitutionLevelField = (
         School/University Level
       </NextLabel>
       <NextSelect
+        placeholder="School/University level"
         options={INSTITUTION_LEVEL_OPTIONS}
         selectClassname="border-brand-primary"
         onChange={(option) => setInstitutionLevel(option.value)}

@@ -1,6 +1,7 @@
 // event names - page - desc
 export const FIREBASE_EVENT_NAMES = {
   translate: "translate",
+  checkbot: "checkbot",
   login: {
     login: "login",
     loginGoogle: "login_google",
@@ -14,6 +15,8 @@ export const FIREBASE_EVENT_NAMES = {
   change: {
     change_translate_n: "change_translate_n",
     change_translate_temperature: "change_translate_temperature",
+    change_checkbot_n: "change_checkbot_n",
+    change_checkbot_temperature: "change_checkbot_temperature",
   },
   show: {
     modal_login: "show_modal_login",

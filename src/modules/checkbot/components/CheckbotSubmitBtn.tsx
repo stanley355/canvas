@@ -1,27 +1,27 @@
 import { useContext, useState } from "react";
-import { TbLanguage, TbProgress } from "react-icons/tb";
+import { TbProgress } from "react-icons/tb";
+import { FaRobot } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
-
-import NextButton from "@/common/components/NextButton";
-import { TranslateContext } from "./TranslateContext";
+import { JwtPayload, decode } from "jsonwebtoken";
 
 import { AppContext } from "@/modules/app/components/AppContext";
+import { CheckbotContext } from "./CheckbotContext";
+import NextButton from "@/common/components/NextButton";
+
 import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
-import { createTranslateSystemContent } from "../lib/createTranslateSystemContent";
-import { JwtPayload, decode } from "jsonwebtoken";
 import {
   PromptsType,
   fetchPrompts,
 } from "@/common/lib/api/prompts/fetchPrompts";
+import { convertPromptToCheckbotResult } from "../lib/convertPromptToCheckbotResult";
 
-const TranslateSubmitBtn = () => {
+const CheckbotSubmitBtn = () => {
   const { appDispatch } = useContext(AppContext);
-  const { translateStates, translateDispatch } = useContext(TranslateContext);
-  const { firstLanguageText, firstLanguage, secondLanguage, n, temperature } =
-    translateStates;
-
+  const { checkbotStates, checkbotDispatch } = useContext(CheckbotContext);
+  const { instruction, customInstruction, n, temperature, userText } =
+    checkbotStates;
   const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = async () => {
@@ -33,23 +33,25 @@ const TranslateSubmitBtn = () => {
       return;
     }
 
-    if (firstLanguageText === "") {
-      toast.info("Text can't be empty");
+    if (!instruction || (instruction === "custom" && !customInstruction)) {
+      toast.error("Instruction can't be empty");
+      return;
+    }
+
+    if (!userText) {
+      toast.error("Text can't be empty");
       return;
     }
 
     setIsLoading(true);
-    sendFirebaseEvent(FIREBASE_EVENT_NAMES.translate);
+    sendFirebaseEvent(FIREBASE_EVENT_NAMES.checkbot);
     const user = decode(token) as JwtPayload;
-
     const req = {
       user_id: user.id,
-      prompt_type: PromptsType.Translate,
-      system_content: createTranslateSystemContent(
-        firstLanguage,
-        secondLanguage
-      ),
-      user_content: firstLanguageText,
+      prompt_type: PromptsType.Checkbot,
+      system_content:
+        instruction === "custom" ? customInstruction : instruction,
+      user_content: userText,
       ...(n !== 1 && { n }),
       ...(temperature !== 1.0 && { temperature }),
     };
@@ -64,10 +66,10 @@ const TranslateSubmitBtn = () => {
     }
 
     if (prompts?.length > 0) {
-      translateDispatch({
-        key: "secondLanguageTexts",
-        value: prompts.map((prompt) => prompt.completion_text),
-      });
+      const checkbotResults = prompts.map((prompt) =>
+        convertPromptToCheckbotResult(userText, prompt.completion_text)
+      );
+      checkbotDispatch({ key: "checkbotResults", value: checkbotResults });
       return;
     }
 
@@ -85,11 +87,11 @@ const TranslateSubmitBtn = () => {
       {isLoading ? (
         <TbProgress className="animate-spin text-brand-primary" />
       ) : (
-        <TbLanguage />
+        <FaRobot />
       )}
-      <span>Translate</span>
+      <span>Check</span>
     </NextButton>
   );
 };
 
-export default TranslateSubmitBtn;
+export default CheckbotSubmitBtn;
