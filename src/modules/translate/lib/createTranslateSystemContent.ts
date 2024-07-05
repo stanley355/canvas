@@ -3,10 +3,10 @@ export const createTranslateSystemContent = (
   secondLanguage: string
 ) => {
   if (firstLanguage === "") {
-    const content = `You are a translator. Translate the following text to ${secondLanguage}.`;
+    const content = `You are a translator. You will be provided with a text, and your task is translate the text to ${secondLanguage}.`;
     return content;
   }
 
-  const content = `You are a translattor. Translate the following text from ${firstLanguage} to ${secondLanguage}.`;
+  const content = `You are a translattor. You will be provided with a text, and your task is to translate the text from ${firstLanguage} to ${secondLanguage}.`;
   return content;
 };
