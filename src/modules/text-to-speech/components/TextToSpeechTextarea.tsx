@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext, useState } from "react";
+import { ChangeEvent, useContext, useState, memo } from "react";
 import { toast } from "react-toastify";
 import { JwtPayload, decode } from "jsonwebtoken";
 import { TbProgress, TbSpeakerphone, TbX } from "react-icons/tb";
@@ -13,6 +13,7 @@ import { fetchDeleteTtsFileV2 } from "@/common/lib/apiV2/prompts/fetchDeleteTtsF
 import NextButton from "@/common/components/NextButton";
 import NextTextarea from "@/common/components/NextTextarea";
 import { TextToSpeechContext } from "./TextToSpeechContext";
+import TextToSpeechSubmitBtn from "./TextToSpeechSubmitBtn";
 
 
 const TextToSpeechTextarea = () => {
@@ -95,38 +96,10 @@ const TextToSpeechTextarea = () => {
           textToSpeechDispatch({ key: "userText", value: e.target.value })
         }
       />
-      {/* <Button
-        variant={"ghost"}
-        className="absolute top-0 right-0"
-        onClick={() => setSourceText("")}
-      >
-        <TbX className="text-2xl" />
-      </Button>
-      <Textarea
-        placeholder="Enter Text"
-        onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
-          setSourceText(e.target.value)
-        }
-        value={sourceText}
-        className="h-[25vh] border-none resize-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
-      />
-      <div className="flex items-center justify-between px-2">
-        <div className="text-sm">
-          {sourceText.length > 0 ? sourceText.split(" ").length : "0"} / 5000
-        </div>
-
-        <Button className="gap-1" disabled={isLoading} onClick={handleClick}>
-          {isLoading ? (
-            <TbProgress className="animate-spin" />
-          ) : (
-            <TbSpeakerphone />
-          )}
-          <span>Convert</span>
-        </Button>
-      </div> */}
-
+      <div className="absolute left-2 bottom-4">{userText.split("").length} / 4000</div>
+      <TextToSpeechSubmitBtn />
     </div>
   );
 };
 
-export default TextToSpeechTextarea;
+export default memo(TextToSpeechTextarea);

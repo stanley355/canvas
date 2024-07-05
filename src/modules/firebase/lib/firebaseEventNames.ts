@@ -2,6 +2,7 @@
 export const FIREBASE_EVENT_NAMES = {
   translate: "translate",
   checkbot: "checkbot",
+  textToSpeech: "text_to_speech",
   login: {
     login: "login",
     loginGoogle: "login_google",
