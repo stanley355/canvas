@@ -5,6 +5,7 @@ import NextHead, { NextHeadProps } from "@/common/components/NextHead";
 import { getTextToSpeechStaticProps } from "@/modules/text-to-speech/lib/getTextToSpeechPageStaticProps";
 import { TbSpeakerphone } from "react-icons/tb";
 import TextToSpeechProvider from "@/modules/text-to-speech/components/TextToSpeechProvider";
+import TextToSpeechTextarea from "@/modules/text-to-speech/components/TextToSpeechTextarea";
 
 interface TTSProps {
   datoCmsData: NextHeadProps;
@@ -24,7 +25,7 @@ const TextToSpeech = (props: TTSProps) => {
         Text to Speech
       </div>
       <TextToSpeechProvider>
-        woi
+        <TextToSpeechTextarea />
       </TextToSpeechProvider>
       {/* <div className="flex items-center gap-1 px-3 py-1 ml-4 text-blue-800 bg-blue-100 border border-gray-300 rounded-md w-fit">
         <TbSpeakerphone className="text-xl" />

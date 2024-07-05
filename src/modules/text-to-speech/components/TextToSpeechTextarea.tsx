@@ -1,33 +1,24 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
+import { toast } from "react-toastify";
+import { JwtPayload, decode } from "jsonwebtoken";
 import { TbProgress, TbSpeakerphone, TbX } from "react-icons/tb";
 import Cookies from "js-cookie";
 
-import { Button } from "@/common/components/ui/button";
-import { Textarea } from "@/common/components/ui/textarea";
-import dynamic from "next/dynamic";
-import { JwtPayload, decode } from "jsonwebtoken";
-import { toast } from "react-toastify";
 import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import {
   PromptsV2Type,
   fetchPromptsV2,
 } from "@/common/lib/apiV2/prompts/fetchPromptsV2";
 import { fetchDeleteTtsFileV2 } from "@/common/lib/apiV2/prompts/fetchDeleteTtsFileV2";
+import NextButton from "@/common/components/NextButton";
+import NextTextarea from "@/common/components/NextTextarea";
+import { TextToSpeechContext } from "./TextToSpeechContext";
 
-const LoginModal = dynamic(() => import("../../login/components/LoginModal"), {
-  ssr: false,
-});
-const ExceedLimitModal = dynamic(
-  () => import("../../../common/components/ExceedLimitModal"),
-  { ssr: false }
-);
 
-interface ITextToSpeechTextarea {
-  onConvertSuccess: (filename: string) => void;
-}
+const TextToSpeechTextarea = () => {
 
-const TextToSpeechTextarea = (props: ITextToSpeechTextarea) => {
-  const { onConvertSuccess } = props;
+  const { textToSpeechDispatch, textToSpeechStates } = useContext(TextToSpeechContext);
+  const { userText } = textToSpeechStates;
 
   const [previousFileID, setPreviousFileID] = useState("");
   const [sourceText, setSourceText] = useState("");
@@ -73,7 +64,7 @@ const TextToSpeechTextarea = (props: ITextToSpeechTextarea) => {
 
     if (promptResponse.id) {
       setIsLoading(false);
-      onConvertSuccess(String(promptResponse.id));
+      // onConvertSuccess(String(promptResponse.id));
 
       if (previousFileID) await fetchDeleteTtsFileV2(Number(previousFileID));
       setPreviousFileID(String(promptResponse.id));
@@ -86,8 +77,25 @@ const TextToSpeechTextarea = (props: ITextToSpeechTextarea) => {
   };
 
   return (
-    <div className="relative pb-2 border">
-      <Button
+    <div className="relative mb-4">
+      <NextButton
+        variant="none"
+        className="absolute top-0 right-0 p-2 border border-l-transparent border-b-transparent rounded-lg  hover:border hover:bg-blue-100"
+        onClick={() =>
+          textToSpeechDispatch({ key: "userText", value: "" })
+        }
+      >
+        <TbX className="font-bold text-3xl" />
+      </NextButton>
+      <NextTextarea
+        placeholder="Type or Paste"
+        value={userText}
+        className="border-base resize-none h-60 pr-12 focus:border-base hover:border-base"
+        onChange={(e) =>
+          textToSpeechDispatch({ key: "userText", value: e.target.value })
+        }
+      />
+      {/* <Button
         variant={"ghost"}
         className="absolute top-0 right-0"
         onClick={() => setSourceText("")}
@@ -115,12 +123,8 @@ const TextToSpeechTextarea = (props: ITextToSpeechTextarea) => {
           )}
           <span>Convert</span>
         </Button>
-      </div>
+      </div> */}
 
-      {showLimitModal && (
-        <ExceedLimitModal onCloseClick={() => setShowLimitModal(false)} />
-      )}
-      {showLoginModal && <LoginModal />}
     </div>
   );
 };

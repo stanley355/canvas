@@ -22,7 +22,7 @@ const CheckbotUserTextarea = (props: CheckbotUserTextareaProps) => {
         <TbX className="font-bold text-3xl" />
       </NextButton>
       <NextTextarea
-        autoFocus
+        placeholder="Type or Paste"
         value={userText}
         className="border-base resize-none h-60 pr-12 focus:border-base hover:border-base"
         onChange={(e) =>
