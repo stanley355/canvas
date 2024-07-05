@@ -12,6 +12,7 @@ import NextButton from "@/common/components/NextButton"
 import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent"
 import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames"
 import { PromptsType, fetchPrompts } from "@/common/lib/api/prompts/fetchPrompts"
+import { convertPromptToCheckbotResult } from "../lib/convertPromptToCheckbotResult"
 
 const CheckbotSubmitBtn = () => {
   const { appDispatch } = useContext(AppContext);
@@ -50,8 +51,6 @@ const CheckbotSubmitBtn = () => {
     };
 
     const prompts = await fetchPrompts(req);
-    console.log(prompts);
-    
     setIsLoading(false);
 
     if (prompts?.status === 402) {
@@ -60,6 +59,14 @@ const CheckbotSubmitBtn = () => {
       return;
     }
 
+    if (prompts?.length > 0) {
+      const checkbotResults = prompts.map((prompt) => convertPromptToCheckbotResult(userText, prompt.completion_text));
+      checkbotDispatch({ key: "checkbotResults", value: checkbotResults });
+      return;
+    }
+
+    toast.error("Server busy, please try again");
+    return;
   }
 
   return (
