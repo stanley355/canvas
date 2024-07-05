@@ -28,8 +28,9 @@ const TranslateFirstLanguageTextarea = (
         <TbX className="font-bold text-3xl" />
       </NextButton>
       <NextTextarea
+        autoFocus
         value={firstLanguageText}
-        className="border-gray-200 resize-none h-60 pr-12 focus:border-gray-200 hover:border-gray-200"
+        className="border-base resize-none h-60 pr-12 focus:border-base hover:border-base"
         onChange={(e) =>
           translateDispatch({ key: "firstLanguageText", value: e.target.value })
         }

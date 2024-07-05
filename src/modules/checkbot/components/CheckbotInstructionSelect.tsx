@@ -1,9 +1,9 @@
 import { memo, useState } from 'react'
 import NextSelect from '@/common/components/NextSelect'
 import NextInput from '@/common/components/NextInput'
+import { cn } from '@/common/lib/cn'
 import { CHECKBOT_INSTRUCTIONS } from '../lib/checkbotInstructions'
 import { ICheckbotReducerAction } from '../lib/checkbotReducer'
-import { cn } from '@/common/lib/cn'
 
 interface CheckbotInstructionSelectProps {
   checkbotDispatch: (action: ICheckbotReducerAction) => void;
@@ -18,7 +18,7 @@ const CheckbotInstructionSelect = (props: CheckbotInstructionSelectProps) => {
       <NextSelect
         placeholder='Select Instruction'
         options={CHECKBOT_INSTRUCTIONS}
-        selectClassname='border-base'
+        selectClassname='rounded-none lg:rounded-lg border-transparent'
         onChange={(option) => {
           setShowCustom(option.value === "custom");
           checkbotDispatch({ key: "instruction", value: option.value });
@@ -27,7 +27,7 @@ const CheckbotInstructionSelect = (props: CheckbotInstructionSelectProps) => {
       />
       <NextInput
         placeholder='As you wish, master'
-        className={cn('my-2 border-base', showCustom ? "block" : "hidden")}
+        className={cn('my-2 border-base rounded-none lg:rounded-lg', showCustom ? "block" : "hidden")}
         onChange={(e) => checkbotDispatch({ key: "customInstruction", value: e.target.value })}
       />
     </>

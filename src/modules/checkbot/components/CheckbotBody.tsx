@@ -1,14 +1,19 @@
 import { useContext } from 'react'
-import CheckbotInstructionSelect from './CheckbotInstructionSelect'
 import { CheckbotContext } from './CheckbotContext'
+import CheckbotInstructionSelect from './CheckbotInstructionSelect'
+import CheckbotUserTextarea from './CheckbotUserTextarea';
 
 const CheckbotBody = () => {
   const { checkbotStates, checkbotDispatch } = useContext(CheckbotContext);
 
   return (
-    <div className='h-screen grid grid-cols-2'>
+    <div className='lg:grid grid-cols-2 h-screen'>
       <div>
         <CheckbotInstructionSelect checkbotDispatch={checkbotDispatch} />
+        <CheckbotUserTextarea
+          userText={checkbotStates.userText}
+          checkbotDispatch={checkbotDispatch}
+        />
       </div>
     </div>
   )
