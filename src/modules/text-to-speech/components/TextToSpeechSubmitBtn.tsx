@@ -9,6 +9,7 @@ import { TextToSpeechContext } from "./TextToSpeechContext";
 import { toast } from "react-toastify";
 import { JwtPayload, decode } from "jsonwebtoken";
 import { PromptsType, fetchPrompts } from "@/common/lib/api/prompts/fetchPrompts";
+import { fetchPromptsDeleteTtsFile } from "@/common/lib/api/prompts/fetchPromptsTtsDeleteFile";
 
 const TextToSpeechSubmitBtn = () => {
   const { appDispatch } = useContext(AppContext);
@@ -48,7 +49,7 @@ const TextToSpeechSubmitBtn = () => {
     };
     const prompt = await fetchPrompts(req);
     setIsLoading(false);
-
+    
     // Payment Required
     if (prompt?.status === 402) {
       appDispatch({ key: "showMonthlyLimitModal", value: true })
@@ -56,7 +57,7 @@ const TextToSpeechSubmitBtn = () => {
     }
 
     if (prompt.id) {
-      if (oldFileID) //delete
+      if (oldFileID) await fetchPromptsDeleteTtsFile(oldFileID);
       textToSpeechDispatch({key: "oldFileID", value: currentFileID });
       textToSpeechDispatch({key: "currentFileID", value: prompt.id});
       return;
