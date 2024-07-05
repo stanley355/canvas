@@ -1,5 +1,9 @@
 # CANVAS
 
+### 1.4.3
+
+- Update Checkbot ui and remove grammar check
+
 ### 1.4.2
 
 - Update translate ui
