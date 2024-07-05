@@ -3,7 +3,7 @@ import { Change } from "diff";
 export interface ICheckbotResult {
   base: string;
   removed: Change[];
-  added: Change[]
+  added: Change[];
 }
 
 export interface ICheckbotStates {
@@ -12,7 +12,7 @@ export interface ICheckbotStates {
   instruction: string;
   customInstruction: string;
   userText: string;
-  checkbotResults: ICheckbotResult[]
+  checkbotResults: ICheckbotResult[];
 }
 
 export const CHECKBOT_STATES: ICheckbotStates = {
@@ -21,5 +21,5 @@ export const CHECKBOT_STATES: ICheckbotStates = {
   instruction: "",
   customInstruction: "",
   userText: "",
-  checkbotResults: []
-}
+  checkbotResults: [],
+};

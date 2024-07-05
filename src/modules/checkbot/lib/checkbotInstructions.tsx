@@ -3,11 +3,13 @@ import { IOption } from "@/common/components/interfaces";
 
 export const CHECKBOT_INSTRUCTIONS: IOption[] = [
   {
-    label: <div className="flex items-center gap-1">
-      <MdAutoAwesome />
-      Custom Instruction
-    </div>,
-    value: "custom"
+    label: (
+      <div className="flex items-center gap-1">
+        <MdAutoAwesome />
+        Custom Instruction
+      </div>
+    ),
+    value: "custom",
   },
   {
     label: "Correct grammar and spelling",

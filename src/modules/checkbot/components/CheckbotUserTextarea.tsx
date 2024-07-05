@@ -1,13 +1,13 @@
-import { memo } from "react"
-import { TbX } from "react-icons/tb"
-import NextButton from "@/common/components/NextButton"
-import NextTextarea from "@/common/components/NextTextarea"
-import { ICheckbotReducerAction } from "../lib/checkbotReducer"
-import CheckbotSubmitBtn from "./CheckbotSubmitBtn"
+import { memo } from "react";
+import { TbX } from "react-icons/tb";
+import NextButton from "@/common/components/NextButton";
+import NextTextarea from "@/common/components/NextTextarea";
+import { ICheckbotReducerAction } from "../lib/checkbotReducer";
+import CheckbotSubmitBtn from "./CheckbotSubmitBtn";
 
 interface CheckbotUserTextareaProps {
   userText: string;
-  checkbotDispatch: (action: ICheckbotReducerAction) => void
+  checkbotDispatch: (action: ICheckbotReducerAction) => void;
 }
 
 const CheckbotUserTextarea = (props: CheckbotUserTextareaProps) => {
@@ -17,9 +17,7 @@ const CheckbotUserTextarea = (props: CheckbotUserTextareaProps) => {
       <NextButton
         variant="none"
         className="absolute top-0 right-0 p-2 border border-l-transparent border-b-transparent rounded-lg  hover:border hover:bg-blue-100"
-        onClick={() =>
-          checkbotDispatch({ key: "userText", value: "" })
-        }
+        onClick={() => checkbotDispatch({ key: "userText", value: "" })}
       >
         <TbX className="font-bold text-3xl" />
       </NextButton>
@@ -27,11 +25,13 @@ const CheckbotUserTextarea = (props: CheckbotUserTextareaProps) => {
         autoFocus
         value={userText}
         className="border-base resize-none h-60 pr-12 focus:border-base hover:border-base"
-        onChange={(e) => checkbotDispatch({ key: "userText", value: e.target.value })}
+        onChange={(e) =>
+          checkbotDispatch({ key: "userText", value: e.target.value })
+        }
       />
       <CheckbotSubmitBtn />
     </div>
-  )
-}
+  );
+};
 
-export default memo(CheckbotUserTextarea)
+export default memo(CheckbotUserTextarea);

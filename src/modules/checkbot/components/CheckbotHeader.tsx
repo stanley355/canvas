@@ -1,14 +1,14 @@
-import { FaRobot } from 'react-icons/fa6'
-import { Tooltip } from 'react-tooltip';
+import { FaRobot } from "react-icons/fa6";
+import { Tooltip } from "react-tooltip";
 
-import NextSelect from '@/common/components/NextSelect';
+import NextSelect from "@/common/components/NextSelect";
 
-import { sendFirebaseEvent } from '@/modules/firebase/lib/sendFirebaseEvent';
-import { PROMPT_VARIANT_OPTIONS } from '@/common/lib/api/prompts/promptVariantOptions';
-import { PROMPT_DIFF_OPTIONS } from '@/common/lib/api/prompts/promptDiffOptions';
-import { FIREBASE_EVENT_NAMES } from '@/modules/firebase/lib/firebaseEventNames';
-import { useContext } from 'react';
-import { CheckbotContext } from './CheckbotContext';
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
+import { PROMPT_VARIANT_OPTIONS } from "@/common/lib/api/prompts/promptVariantOptions";
+import { PROMPT_DIFF_OPTIONS } from "@/common/lib/api/prompts/promptDiffOptions";
+import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
+import { useContext } from "react";
+import { CheckbotContext } from "./CheckbotContext";
 
 const CheckbotHeader = () => {
   const { checkbotDispatch } = useContext(CheckbotContext);
@@ -52,7 +52,7 @@ const CheckbotHeader = () => {
         </Tooltip>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CheckbotHeader
+export default CheckbotHeader;
