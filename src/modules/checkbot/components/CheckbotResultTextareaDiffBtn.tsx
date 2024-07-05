@@ -4,6 +4,8 @@ import NextButton from "@/common/components/NextButton";
 import { CheckbotDiff } from "./CheckbotResultTextarea";
 import { MdAutoAwesome } from "react-icons/md";
 import { cn } from "@/common/lib/cn";
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
+import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 
 interface CheckbotResulTextareaDiffBtnProps {
   activeDiff: CheckbotDiff;
@@ -19,7 +21,10 @@ const CheckbotResulTextareaDiffBtn = (
     <div className="rounded-lg flex">
       <NextButton
         variant="outline"
-        onClick={() => setActiveDiff(CheckbotDiff.Added)}
+        onClick={() => {
+          sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.checkbot_added);
+          setActiveDiff(CheckbotDiff.Added)
+        }}
         className={cn(
           "w-full rounded-none justify-center border-none hover:text-brand-primary",
           activeDiff === CheckbotDiff.Added && "bg-green-900 text-white"
@@ -38,7 +43,10 @@ const CheckbotResulTextareaDiffBtn = (
       </NextButton>
       <NextButton
         variant="outline"
-        onClick={() => setActiveDiff(CheckbotDiff.Removed)}
+        onClick={() => {
+          sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.checkbot_removed);
+          setActiveDiff(CheckbotDiff.Removed)
+        }}
         className={cn(
           "w-full rounded-none justify-center border-none hover:text-brand-primary",
           activeDiff === CheckbotDiff.Removed && "bg-red-900 text-white "
