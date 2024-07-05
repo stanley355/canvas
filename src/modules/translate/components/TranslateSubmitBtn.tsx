@@ -80,7 +80,7 @@ const TranslateSubmitBtn = () => {
       disabled={isLoading}
       onClick={handleClick}
       variant={isLoading ? "disabled" : "default"}
-      className="absolute bottom-4 right-2 lg:right-3 p-2"
+      className="absolute bottom-4 right-2 p-2"
     >
       {isLoading ? (
         <TbProgress className="animate-spin text-brand-primary" />

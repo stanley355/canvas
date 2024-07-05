@@ -19,8 +19,8 @@ const TranslateFirstLanguageTextarea = (
   return (
     <div className="relative mb-4">
       <NextButton
-        variant="outline"
-        className="absolute top-1 right-2 lg:right-3 p-2 border-transparent"
+        variant="none"
+        className="absolute top-0 right-0 p-2 border border-l-transparent border-b-transparent rounded-lg  hover:border hover:bg-blue-100"
         onClick={() =>
           translateDispatch({ key: "firstLanguageText", value: "" })
         }
