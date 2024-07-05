@@ -26,7 +26,8 @@ const CheckbotInstructionSelect = (props: CheckbotInstructionSelectProps) => {
         }}
       />
       <NextInput
-        placeholder='As you wish, master'
+        autoFocus
+        placeholder='Write your instruction here'
         className={cn('my-2 border-base rounded-none lg:rounded-lg', showCustom ? "block" : "hidden")}
         onChange={(e) => checkbotDispatch({ key: "customInstruction", value: e.target.value })}
       />

@@ -3,6 +3,7 @@ import { TbX } from "react-icons/tb"
 import NextButton from "@/common/components/NextButton"
 import NextTextarea from "@/common/components/NextTextarea"
 import { ICheckbotReducerAction } from "../lib/checkbotReducer"
+import CheckbotSubmitBtn from "./CheckbotSubmitBtn"
 
 interface CheckbotUserTextareaProps {
   userText: string;
@@ -28,6 +29,7 @@ const CheckbotUserTextarea = (props: CheckbotUserTextareaProps) => {
         className="border-base resize-none h-60 pr-12 focus:border-base hover:border-base"
         onChange={(e) => checkbotDispatch({ key: "userText", value: e.target.value })}
       />
+      <CheckbotSubmitBtn />
     </div>
   )
 }
