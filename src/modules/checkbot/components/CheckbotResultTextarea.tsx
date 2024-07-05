@@ -14,6 +14,7 @@ export enum CheckbotDiff {
 }
 
 interface CheckbotResultTextareaProps {
+  key: string;
   checkbotResult: ICheckbotResult
 }
 

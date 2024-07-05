@@ -17,8 +17,8 @@ const CheckbotBody = () => {
         />
       </div>
       {checkbotStates.checkbotResults.length > 0 ?
-        checkbotStates.checkbotResults.map((result) => <CheckbotResultTextarea checkbotResult={result} />) :
-        <CheckbotResultTextarea checkbotResult={{ base: '', added: [], removed: [] }} />
+        checkbotStates.checkbotResults.map((result, index) => <CheckbotResultTextarea key={`checkbot_result_${index}`} checkbotResult={result} />) :
+        <CheckbotResultTextarea key='checkbot_result' checkbotResult={{ base: '', added: [], removed: [] }} />
       }
     </div>
   )
