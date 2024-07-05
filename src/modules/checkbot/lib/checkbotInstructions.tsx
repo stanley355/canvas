@@ -11,7 +11,7 @@ export const CHECKBOT_INSTRUCTIONS: IOption[] = [
   },
   {
     label: "Correct grammar and spelling",
-    value: `You are an app named 'Checkbot'. You will be provided with a text, detect the language, and your task is to correct the grammar and spelling of the text in the detected language.`,
+    value: `You are an app named 'Checkbot'. You will be provided with a text, and your task is to correct the grammar and spelling of the text.`,
   },
   {
     label: "Find keywords",
@@ -19,7 +19,7 @@ export const CHECKBOT_INSTRUCTIONS: IOption[] = [
   },
   {
     label: "Paraphrase",
-    value: `You are an app named 'Checkbot'. You will be provided with a text, detect the language, and your task is to paraphrase the text in the detected language.`,
+    value: `You are an app named 'Checkbot'. You will be provided with a text, and your task is to paraphrase the text.`,
   },
   {
     label: "Summarize",
