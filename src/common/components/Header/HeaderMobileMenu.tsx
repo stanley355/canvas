@@ -2,13 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { TbChevronRight, TbX } from "react-icons/tb";
 
-import CanvasButton from "../ui/CanvasButton";
-
-import { MOBILE_HEADER_MENU } from "./constant";
 import { IHeaderMenu } from ".";
-import styles from "./header.module.scss";
-import { cn } from "@/common/lib/cn";
 import NextButton from "../NextButton";
+import { MOBILE_HEADER_MENU } from "./constant";
+import { cn } from "@/common/lib/cn";
+import styles from "./header.module.scss";
 
 interface IHeaderMobileMenu {
   isLogin: boolean;
