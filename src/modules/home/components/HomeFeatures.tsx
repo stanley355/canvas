@@ -56,7 +56,7 @@ const HomeFeatures = () => {
             />
           </div>
           <div>
-            <NextLink href="/translate" className='text-xl gap-1 flex items-center mb-4 border-b w-fit' variant='none'>
+            <NextLink href="/checkbot" className='text-xl gap-1 flex items-center mb-4 border-b w-fit' variant='none'>
               <FaRobot />
               AI Checkbot
             </NextLink>
@@ -84,7 +84,7 @@ const HomeFeatures = () => {
             />
           </div>
           <div>
-            <NextLink href="/translate" className='text-xl gap-1 flex items-center mb-4 border-b w-fit' variant='none'>
+            <NextLink href="/text-to-speech" className='text-xl gap-1 flex items-center mb-4 border-b w-fit' variant='none'>
               <TbSpeakerphone />
               AI Text to Speech
             </NextLink>
