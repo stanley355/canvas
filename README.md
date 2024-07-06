@@ -1,5 +1,10 @@
 # CANVAS
 
+### 1.4.5
+
+- Update homepage
+- Update student homepage
+
 ### 1.4.4
 
 - Remove image to text
