@@ -25,12 +25,7 @@ export const MOBILE_HEADER_MENU = [
     icon: <TbSpeakerphone />,
   },
   {
-    title: "SUPPORT AND HELP",
-    url: "/support/",
-    icon: <TbHelp />,
-  },
-  {
-    title: "FOR STUDENTS",
+    title: "AI STUDENTS",
     url: "/students/",
     icon: <PiStudentDuotone />,
   },
