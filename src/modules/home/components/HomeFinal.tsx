@@ -34,7 +34,7 @@ const HomeFinal = () => {
 
       <NextLink variant="outline" href="/login"
         onClick={() => sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.home_getstarted)}
-        className="text-brand-primary mx-auto text-xl font-bold justify-center w-fit p-4 my-8">Let's Get Started</NextLink>
+        className="text-brand-primary mx-auto text-xl font-bold justify-center w-fit p-4 my-8">Let&apos;s Get Started</NextLink>
     </div>
   )
 }
