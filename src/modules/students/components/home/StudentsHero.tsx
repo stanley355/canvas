@@ -1,4 +1,6 @@
 import NextLink from "@/common/components/NextLink";
+import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import Image from "next/image";
 
 const StudentsHero = () => {
@@ -18,6 +20,7 @@ const StudentsHero = () => {
           <NextLink
             href="/students/application"
             variant="outline"
+            onClick={()=> sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.student_home_hero_cta)}
             className="text-brand-primary py-4 w-fit bg-gradient-to-b from-white to-blue-100 hover:to-blue-200 text-lg font-semibold"
           >
             Apply Student Plan

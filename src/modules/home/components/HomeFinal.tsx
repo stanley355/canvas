@@ -1,4 +1,6 @@
 import NextLink from "@/common/components/NextLink"
+import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames"
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent"
 import Image from "next/image"
 
 const HomeFinal = () => {
@@ -30,7 +32,9 @@ const HomeFinal = () => {
         />
       </div>
 
-      <NextLink variant="outline" href="/login" className="text-brand-primary mx-auto text-xl font-bold justify-center w-fit p-4 my-8">Let's Get Started</NextLink>
+      <NextLink variant="outline" href="/login"
+        onClick={() => sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.home_getstarted)}
+        className="text-brand-primary mx-auto text-xl font-bold justify-center w-fit p-4 my-8">Let's Get Started</NextLink>
     </div>
   )
 }

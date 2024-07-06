@@ -42,7 +42,7 @@ const TextToSpeechSubmitBtn = () => {
     }
 
     setIsLoading(true);
-    sendFirebaseEvent("text_to_speech");
+    sendFirebaseEvent(FIREBASE_EVENT_NAMES.text_to_speech);
 
     const user = decode(String(token)) as JwtPayload;
     const req = {

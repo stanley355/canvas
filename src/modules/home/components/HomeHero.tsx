@@ -1,5 +1,7 @@
 import Image from "next/image"
 import NextLink from "@/common/components/NextLink"
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent"
+import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames"
 
 const HomeHero = () => {
   return (
@@ -13,10 +15,11 @@ const HomeHero = () => {
           className=" hidden lg:block mb-4"
         />
         <h1 className="text-4xl lg:text-5xl text-center font-bold mb-8 lg:text-left">
-          Kalau ada yang <i>lain </i>,
-        kenapa pakai yang <i>ini </i> ?
+          Kalau ada yang <i>lain </i>, kenapa pakai yang <i>ini </i> ?
         </h1>
-        <NextLink href="#home_features" className="mx-auto w-fit text-xl lg:mx-0">Tell me why</NextLink>
+        <NextLink href="#home_features" 
+        onClick={()=> sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.home_tellmewhy)}
+        className="mx-auto w-fit text-xl lg:mx-0">Tell me why</NextLink>
       </div>
       <Image
         src="/images/home/hero.webp"

@@ -2,7 +2,7 @@
 export const FIREBASE_EVENT_NAMES = {
   translate: "translate",
   checkbot: "checkbot",
-  textToSpeech: "text_to_speech",
+  text_to_speech: "text_to_speech",
   login: {
     login: "login",
     loginGoogle: "login_google",
@@ -14,6 +14,9 @@ export const FIREBASE_EVENT_NAMES = {
     limit_modal_premium: "click_limit_modal_premium",
     checkbot_added: "click_checkbot_added",
     checkbot_removed: "click_checkbot_added",
+    student_home_hero_cta: "click_student_home_hero_cta",
+    home_tellmewhy: "click_home_tellmewhy",
+    home_getstarted: "click_home_getstarted"
   },
   change: {
     change_translate_n: "change_translate_n",
