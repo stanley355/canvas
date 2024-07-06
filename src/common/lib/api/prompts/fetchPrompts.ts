@@ -21,7 +21,7 @@ interface IRequest {
 
 export const fetchPrompts = async (
   req: IRequest
-): Promise<IPrompt[] & IAuthorError> => {
+): Promise<IPrompt[] & IPrompt & IAuthorError> => {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}api/prompts/`;
 
   try {

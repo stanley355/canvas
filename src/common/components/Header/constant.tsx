@@ -20,30 +20,21 @@ export const MOBILE_HEADER_MENU = [
     icon: <FaRobot />,
   },
   {
-    title: "AI IMAGE TO TEXT",
-    url: "/image-to-text/",
-    icon: <TbPhotoAi />,
-  },
-  {
     title: "AI TEXT TO SPEECH",
     url: "/text-to-speech/",
     icon: <TbSpeakerphone />,
+  },
+  {
+    title: "AI STUDENTS",
+    url: "/students/",
+    icon: <PiStudentDuotone />,
   },
   {
     title: "PRICING",
     url: "/plans/",
     icon: <FaRupiahSign />,
   },
-  {
-    title: "STUDENTS",
-    url: "/students/",
-    icon: <PiStudentDuotone />,
-  },
-  {
-    title: "SUPPORT AND HELP",
-    url: "/support/",
-    icon: <TbHelp />,
-  },
+
   {
     title: "ACCOUNT",
     url: "/account/",

@@ -28,7 +28,7 @@ const TranslateFirstLanguageTextarea = (
         <TbX className="font-bold text-3xl" />
       </NextButton>
       <NextTextarea
-        autoFocus
+        placeholder="Type or Paste"
         value={firstLanguageText}
         className="border-base resize-none h-60 pr-12 focus:border-base hover:border-base"
         onChange={(e) =>
