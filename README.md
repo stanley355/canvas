@@ -1,5 +1,11 @@
 # CANVAS
 
+### 1.4.4
+
+- Remove image to text
+- Update text to speech ui 
+- Remove shadcn package
+
 ### 1.4.3
 
 - Update Checkbot ui and remove grammar check
