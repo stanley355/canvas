@@ -23,7 +23,7 @@ const CheckbotResulTextareaDiffBtn = (
         variant="outline"
         onClick={() => {
           sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.checkbot_added);
-          setActiveDiff(CheckbotDiff.Added)
+          setActiveDiff(CheckbotDiff.Added);
         }}
         className={cn(
           "w-full rounded-none justify-center border-none hover:text-brand-primary",
@@ -45,7 +45,7 @@ const CheckbotResulTextareaDiffBtn = (
         variant="outline"
         onClick={() => {
           sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.checkbot_removed);
-          setActiveDiff(CheckbotDiff.Removed)
+          setActiveDiff(CheckbotDiff.Removed);
         }}
         className={cn(
           "w-full rounded-none justify-center border-none hover:text-brand-primary",

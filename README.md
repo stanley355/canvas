@@ -3,7 +3,7 @@
 ### 1.4.4
 
 - Remove image to text
-- Update text to speech ui 
+- Update text to speech ui
 - Remove shadcn package
 
 ### 1.4.3

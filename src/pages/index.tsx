@@ -16,7 +16,7 @@ const Home = (props: IHomeProps) => {
   const { datoCmsData } = props;
   return (
     <>
-    <NextHead pagesSchema={datoCmsData.pagesSchema} />
+      <NextHead pagesSchema={datoCmsData.pagesSchema} />
       <div className="">
         <HomeHero />
         <HomeFourHorsemen />

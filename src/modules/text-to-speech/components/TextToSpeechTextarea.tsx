@@ -8,7 +8,8 @@ import { TextToSpeechContext } from "./TextToSpeechContext";
 import TextToSpeechSubmitBtn from "./TextToSpeechSubmitBtn";
 
 const TextToSpeechTextarea = () => {
-  const { textToSpeechDispatch, textToSpeechStates } = useContext(TextToSpeechContext);
+  const { textToSpeechDispatch, textToSpeechStates } =
+    useContext(TextToSpeechContext);
   const { userText } = textToSpeechStates;
 
   return (
@@ -16,9 +17,7 @@ const TextToSpeechTextarea = () => {
       <NextButton
         variant="none"
         className="absolute top-0 right-0 p-2 border border-l-transparent border-b-transparent rounded-lg  hover:border hover:bg-blue-100"
-        onClick={() =>
-          textToSpeechDispatch({ key: "userText", value: "" })
-        }
+        onClick={() => textToSpeechDispatch({ key: "userText", value: "" })}
       >
         <TbX className="font-bold text-3xl" />
       </NextButton>
@@ -30,7 +29,9 @@ const TextToSpeechTextarea = () => {
           textToSpeechDispatch({ key: "userText", value: e.target.value })
         }
       />
-      <div className="absolute left-2 bottom-4">{userText.split("").length} / 4000</div>
+      <div className="absolute left-2 bottom-4">
+        {userText.split("").length} / 4000
+      </div>
       <TextToSpeechSubmitBtn />
     </div>
   );

@@ -35,7 +35,6 @@ export const MOBILE_HEADER_MENU = [
     icon: <FaRupiahSign />,
   },
 
-
   {
     title: "ACCOUNT",
     url: "/account/",

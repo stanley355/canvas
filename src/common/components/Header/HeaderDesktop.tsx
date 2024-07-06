@@ -73,9 +73,8 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
         </NextLink>
       </div>
 
-
       <div className="flex items-center gap-2">
-      <NextLink
+        <NextLink
           href="/students/"
           variant="outline"
           className={cn(
@@ -88,7 +87,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           <PiStudentDuotone />
           <span>AI Students</span>
         </NextLink>
-      <NextLink
+        <NextLink
           href="/plans/"
           variant="outline"
           className={cn(
@@ -101,7 +100,6 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           <FaRupiahSign />
           <span>Pricing</span>
         </NextLink>
-
 
         <NextLink
           href={isLogin ? "/account" : "/login"}

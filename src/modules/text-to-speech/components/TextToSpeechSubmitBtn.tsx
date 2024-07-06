@@ -1,6 +1,6 @@
-import { useContext, useState } from "react"
+import { useContext, useState } from "react";
 import { TbProgress, TbSpeakerphone } from "react-icons/tb";
-import NextButton from "@/common/components/NextButton"
+import NextButton from "@/common/components/NextButton";
 import Cookies from "js-cookie";
 import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
@@ -8,12 +8,16 @@ import { AppContext } from "@/modules/app/components/AppContext";
 import { TextToSpeechContext } from "./TextToSpeechContext";
 import { toast } from "react-toastify";
 import { JwtPayload, decode } from "jsonwebtoken";
-import { PromptsType, fetchPrompts } from "@/common/lib/api/prompts/fetchPrompts";
+import {
+  PromptsType,
+  fetchPrompts,
+} from "@/common/lib/api/prompts/fetchPrompts";
 import { fetchPromptsDeleteTtsFile } from "@/common/lib/api/prompts/fetchPromptsTtsDeleteFile";
 
 const TextToSpeechSubmitBtn = () => {
   const { appDispatch } = useContext(AppContext);
-  const { textToSpeechStates, textToSpeechDispatch } = useContext(TextToSpeechContext);
+  const { textToSpeechStates, textToSpeechDispatch } =
+    useContext(TextToSpeechContext);
   const { userText, oldFileID, currentFileID } = textToSpeechStates;
 
   const [isLoading, setIsLoading] = useState(false);
@@ -49,24 +53,24 @@ const TextToSpeechSubmitBtn = () => {
     };
     const prompt = await fetchPrompts(req);
     setIsLoading(false);
-    
+
     // Payment Required
     if (prompt?.status === 402) {
-      appDispatch({ key: "showMonthlyLimitModal", value: true })
+      appDispatch({ key: "showMonthlyLimitModal", value: true });
       return;
     }
 
     if (prompt.id) {
       if (oldFileID) await fetchPromptsDeleteTtsFile(oldFileID);
-      textToSpeechDispatch({key: "oldFileID", value: currentFileID });
-      textToSpeechDispatch({key: "currentFileID", value: prompt.id});
+      textToSpeechDispatch({ key: "oldFileID", value: currentFileID });
+      textToSpeechDispatch({ key: "currentFileID", value: prompt.id });
       toast.success("Audio updated");
       return;
     }
-    
+
     toast.error("Server busy, please try again");
     return;
-  }
+  };
 
   return (
     <NextButton
@@ -82,7 +86,7 @@ const TextToSpeechSubmitBtn = () => {
       )}
       <span>Convert</span>
     </NextButton>
-  )
-}
+  );
+};
 
-export default TextToSpeechSubmitBtn
+export default TextToSpeechSubmitBtn;

@@ -10,7 +10,6 @@ import TextToSpeechProvider from "@/modules/text-to-speech/components/TextToSpee
 import TextToSpeechTextarea from "@/modules/text-to-speech/components/TextToSpeechTextarea";
 import TextToSpeechResult from "@/modules/text-to-speech/components/TextToSpeechResult";
 
-
 interface TTSProps {
   datoCmsData: NextHeadProps;
 }

@@ -4,8 +4,8 @@ export interface ITextToSpeechStates {
   oldFileID: string;
 }
 
-export const TEXT_TO_SPEECH_STATES :ITextToSpeechStates  ={
+export const TEXT_TO_SPEECH_STATES: ITextToSpeechStates = {
   userText: "",
   currentFileID: "",
-  oldFileID: ""
-}
+  oldFileID: "",
+};
