@@ -1,5 +1,3 @@
-import { Card } from "@/common/components/ui/card";
-import React from "react";
 import LoginCard from "./LoginCard";
 import Modal from "@/common/components/Modal";
 

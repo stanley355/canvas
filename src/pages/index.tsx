@@ -1,22 +1,22 @@
 import { GetStaticProps } from "next";
 import { getHomePageStaticProps } from "@/modules/home/lib/getHomePageStaticProps";
-import MetaHead, { IMetaHead } from "@/common/components/MetaHead";
 import HomeHero from "@/modules/home/components/HomeHero";
 import HomeFourHorsemen from "@/modules/home/components/HomeFourHorsemen";
 import HomeStudent from "@/modules/home/components/HomeStudent";
 import HomeStatistic from "@/modules/home/components/HomeStatistic";
 import HomeUserOrigin from "@/modules/home/components/HomeUserOrigin";
 import HomeFaq from "@/modules/home/components/HomeFaq";
+import NextHead, { NextHeadProps } from "@/common/components/NextHead";
 
 interface IHomeProps {
-  datoCmsData: IMetaHead;
+  datoCmsData: NextHeadProps;
 }
 
 const Home = (props: IHomeProps) => {
   const { datoCmsData } = props;
   return (
     <>
-      <MetaHead pagesSchema={datoCmsData.pagesSchema} />
+    <NextHead pagesSchema={datoCmsData.pagesSchema} />
       <div className="">
         <HomeHero />
         <HomeFourHorsemen />
