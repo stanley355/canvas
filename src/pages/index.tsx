@@ -1,33 +1,29 @@
 import { GetStaticProps } from "next";
 import { getHomePageStaticProps } from "@/modules/home/lib/getHomePageStaticProps";
-import HomeHero from "@/modules/home/components/HomeHero";
-import HomeFourHorsemen from "@/modules/home/components/HomeFourHorsemen";
-import HomeStudent from "@/modules/home/components/HomeStudent";
-import HomeStatistic from "@/modules/home/components/HomeStatistic";
-import HomeUserOrigin from "@/modules/home/components/HomeUserOrigin";
-import HomeFaq from "@/modules/home/components/HomeFaq";
-import NextHead, { NextHeadProps } from "@/common/components/NextHead";
 
-interface IHomeProps {
+import NextHead, { NextHeadProps } from "@/common/components/NextHead";
+import HomeHero from "@/modules/home/components/HomeHero";
+import HomeFeatures from "@/modules/home/components/HomeFeatures";
+import HomeStudent from "@/modules/home/components/HomeStudent";
+import HomeFinal from "@/modules/home/components/HomeFinal";
+
+interface HomeProps {
   datoCmsData: NextHeadProps;
 }
 
-const Home = (props: IHomeProps) => {
+export const getStaticProps: GetStaticProps = getHomePageStaticProps;
+
+const Home = (props: HomeProps) => {
   const { datoCmsData } = props;
   return (
-    <>
+    <div className=" mt-20 lg:mt-0">
       <NextHead pagesSchema={datoCmsData.pagesSchema} />
-      <div className="">
-        <HomeHero />
-        <HomeFourHorsemen />
-        <HomeStudent />
-        <HomeStatistic />
-        <HomeUserOrigin />
-        <HomeFaq faq={datoCmsData?.pagesSchema?.faq} />
-      </div>
-    </>
+      <HomeHero />
+      <HomeFeatures />
+      <HomeStudent />
+      <HomeFinal />
+    </div>
   );
 };
 
 export default Home;
-export const getStaticProps: GetStaticProps = getHomePageStaticProps;
