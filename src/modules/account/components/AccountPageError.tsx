@@ -1,5 +1,4 @@
 import { TbReload } from "react-icons/tb";
-import CanvasButton from "@/common/components/ui/CanvasButton";
 import NextButton from "@/common/components/NextButton";
 
 const AccountPageError = () => {
