@@ -12,8 +12,11 @@ const HomeHero = () => {
           height={65}
           className=" hidden lg:block mb-4"
         />
-        <h1 className="text-5xl text-center font-bold mb-8 lg:text-left">Kalau ada yang lain, kenapa pakai yang ini?</h1>
-        <NextLink href="#home_features" className="mx-auto w-fit text-xl lg:mx-0">Kenapa ya?</NextLink>
+        <h1 className="text-4xl lg:text-5xl text-center font-bold mb-8 lg:text-left">
+          Kalau ada yang <i>lain </i>,
+        kenapa pakai yang <i>ini </i> ?
+        </h1>
+        <NextLink href="#home_features" className="mx-auto w-fit text-xl lg:mx-0">Tell me why</NextLink>
       </div>
       <Image
         src="/images/home/hero.webp"

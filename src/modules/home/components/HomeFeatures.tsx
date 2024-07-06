@@ -6,9 +6,10 @@ import { TbLanguage, TbSpeakerphone } from 'react-icons/tb'
 
 const HomeFeatures = () => {
   return (
-    <div className='bg-brand-primary text-white p-8 px-4 lg:px-0' id='home_features'>
+    <div className='bg-brand-primary text-white pb-8 pt-16 lg:pt-8 px-4 lg:px-0' id='home_features'>
       <div className='container mx-auto'>
-        <h2 className='text-3xl text-center font-bold mb-8'>One AI for your writing</h2>
+        <h2 className='text-3xl text-center font-bold mb-4 px-4 lg:px-0'>One AI for language and writing</h2>
+        <h3 className='text-xl text-center mb-16'>Applicable for &gt; 50 languages</h3>
 
         <div id='home_translate' className='lg:grid grid-cols-2 gap-8 place-items-center mb-16'>
           <div className='h-[40vh] relative mb-8'>

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { TbCopyright } from "react-icons/tb";
 
 const Footer = () => (
-  <div className="container p-4 mx-auto flex items-center justify-between">
+  <div className="p-4 flex items-center justify-between">
     <Link href="/">
       <Image
         src="/images/languageai/logo.png"
@@ -14,10 +14,8 @@ const Footer = () => (
       />
     </Link>
 
-    <div className="flex items-center">
-      <span>{new Date().getFullYear()}</span>
-      <TbCopyright className="hidden lg:flex" />
-      <span className="hidden lg:flex">languageai.id</span>
+    <div>
+      {new Date().getFullYear()}
     </div>
   </div>
 );
