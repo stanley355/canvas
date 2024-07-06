@@ -60,6 +60,7 @@ const TextToSpeechSubmitBtn = () => {
       if (oldFileID) await fetchPromptsDeleteTtsFile(oldFileID);
       textToSpeechDispatch({key: "oldFileID", value: currentFileID });
       textToSpeechDispatch({key: "currentFileID", value: prompt.id});
+      toast.success("Audio updated");
       return;
     }
     

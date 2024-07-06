@@ -1,11 +1,15 @@
 import { GetStaticProps } from "next";
 import { TbSpeakerphone } from "react-icons/tb";
 
+import { getTextToSpeechStaticProps } from "@/modules/text-to-speech/lib/getTextToSpeechPageStaticProps";
+
 import NextHead, { NextHeadProps } from "@/common/components/NextHead";
+import NextLink from "@/common/components/NextLink";
+
 import TextToSpeechProvider from "@/modules/text-to-speech/components/TextToSpeechProvider";
 import TextToSpeechTextarea from "@/modules/text-to-speech/components/TextToSpeechTextarea";
+import TextToSpeechResult from "@/modules/text-to-speech/components/TextToSpeechResult";
 
-import { getTextToSpeechStaticProps } from "@/modules/text-to-speech/lib/getTextToSpeechPageStaticProps";
 
 interface TTSProps {
   datoCmsData: NextHeadProps;
@@ -25,7 +29,18 @@ const TextToSpeech = (props: TTSProps) => {
       </div>
       <TextToSpeechProvider>
         <TextToSpeechTextarea />
+        <TextToSpeechResult />
       </TextToSpeechProvider>
+      <div className="flex w-fit items-center gap-1 mx-auto">
+        Found an error?{" "}
+        <NextLink
+          href="/support"
+          variant="none"
+          className="text-blue-500 underline"
+        >
+          Report
+        </NextLink>{" "}
+      </div>
     </div>
   );
 };
