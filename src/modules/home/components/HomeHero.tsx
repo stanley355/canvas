@@ -7,13 +7,7 @@ const HomeHero = () => {
   return (
     <div className="p-4 lg:grid grid-cols-2 place-items-center container mx-auto lg:px-0 h-[87.5vh] lg:h-[90vh] ">
       <div className="mb-8">
-        <Image
-          src="/images/languageai/logo.png"
-          alt="Languageai"
-          width={150}
-          height={65}
-          className=" hidden lg:block mb-4"
-        />
+      <div className="text-xl text-center mb-2 lg:text-left lg:text-lg">Translate, Grammar Check, Paraphrase in 50 LANGUAGES</div>
         <h1 className="text-4xl lg:text-5xl text-center font-bold mb-8 lg:text-left">
           Kalau ada yang <i>lain </i>, kenapa pakai yang <i>ini </i> ?
         </h1>
