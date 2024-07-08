@@ -1,5 +1,8 @@
 # CANVAS
 
+### 1.4.6
+- Add Microsoft Clarity
+
 ### 1.4.5
 
 - Update homepage
