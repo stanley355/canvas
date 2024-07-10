@@ -1,5 +1,12 @@
 # CANVAS
 
+### 1.4.7
+
+- Update text to speech endpoint
+- Update text to speech header
+- Update Checkbot prompts list
+
+
 ### 1.4.6
 - Add Microsoft Clarity
 
@@ -31,42 +38,17 @@
 
 - Update Plans Premium page
 
-### 1.3.9
+### < 1.4.0
 
-- Update Student Homepage
-
-### 1.3.8
-
-- Move `/plans/premium/students` to `/plans/students/`
-
-### 1.3.7
-
-- Remove payasyougo topup
+- Update Student Homepage (1.3.9)
+- Move `/plans/premium/students` to `/plans/students/` (1.3.8)
+- Remove payasyougo topup (1.3.7)
 - Remove `/plans/students` to `/plans`
-
-### 1.3.6
-
-- Move `/account/students` to `/students/application`
+- Move `/account/students` to `/students/application` (1.3.6)
 - Change brand color to `#172554`
-
-### 1.3.5 (enchancement)
-
-- Update header and footer ui
+- Update header and footer ui (1.3.5)
 - Update account page seo
-
-### 1.3.4 (refactor)
-
-- Update login page and api
-
-### 1.3.3 (enhancement)
-
-- Update Header navbar design
-
-### 1.3.2 (hotfix)
-
-- Fix users can login when backend gives no token
+- Update login page and api (1.3.4)
+- Update Header navbar design (1.3.3)
+- Fix users can login when backend gives no token (1.3.2)
 - Fix `See Pricing` button on homepage is too wide on desktop
-
-### 1.3.1 (feature)
-
-Q: Does landing page help conversion?
