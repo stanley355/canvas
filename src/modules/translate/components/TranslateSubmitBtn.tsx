@@ -50,8 +50,8 @@ const TranslateSubmitBtn = () => {
         secondLanguage
       ),
       user_content: firstLanguageText,
-      ...(n !== 1 && { n }),
-      ...(temperature !== 1.0 && { temperature }),
+      n,
+      temperature
     };
 
     const prompts = await fetchPrompts(req);
