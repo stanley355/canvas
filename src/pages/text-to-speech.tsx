@@ -35,7 +35,7 @@ const TextToSpeech = (props: TTSProps) => {
         <NextLink
           href="/support"
           variant="none"
-          className="text-blue-500 underline"
+          className="text-blue-800 underline"
         >
           Report
         </NextLink>{" "}
