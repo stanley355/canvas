@@ -19,6 +19,7 @@ const CheckbotInstructionSelect = (props: CheckbotInstructionSelectProps) => {
         placeholder="Select Instruction"
         options={CHECKBOT_INSTRUCTIONS}
         selectClassname="rounded-none lg:rounded-lg border-transparent"
+        optionContainerClassname="lg:max-h-60 overflow-y-scroll lg:top-10"
         onChange={(option) => {
           setShowCustom(option.value === "custom");
           checkbotDispatch({ key: "instruction", value: option.value });
