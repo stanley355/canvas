@@ -1,13 +1,17 @@
-import NextLink from "@/common/components/NextLink"
-import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames"
-import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent"
-import Image from "next/image"
+import NextLink from "@/common/components/NextLink";
+import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
+import Image from "next/image";
 
 const HomeFinal = () => {
   return (
     <div className="bg-brand-primary text-white py-8 px-4 lg:px-0">
-      <h3 className="text-3xl font-bold mb-4 text-center">Kenapa pakai yang ini ? </h3>
-      <div className="text-center text-xl mb-8">We are a trusted Language app with users coming from</div>
+      <h3 className="text-3xl font-bold mb-4 text-center">
+        Kenapa pakai yang ini ?{" "}
+      </h3>
+      <div className="text-center text-xl mb-8">
+        We are a trusted Language app with users coming from
+      </div>
       <div className="grid grid-cols-3 place-items-center h-[20vh] lg:w-1/2 lg:mx-auto mb-16">
         <Image
           src="/images/schools/binus.png"
@@ -32,11 +36,18 @@ const HomeFinal = () => {
         />
       </div>
 
-      <NextLink variant="outline" href="/login"
-        onClick={() => sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.home_getstarted)}
-        className="text-brand-primary mx-auto text-xl font-bold justify-center w-fit p-4 my-8">Let&apos;s Get Started</NextLink>
+      <NextLink
+        variant="outline"
+        href="/login"
+        onClick={() =>
+          sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.home_getstarted)
+        }
+        className="text-brand-primary mx-auto text-xl font-bold justify-center w-fit p-4 my-8"
+      >
+        Let&apos;s Get Started
+      </NextLink>
     </div>
-  )
-}
+  );
+};
 
-export default HomeFinal
+export default HomeFinal;

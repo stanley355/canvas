@@ -34,7 +34,6 @@ const Account = (props: IAccountProps) => {
     _updatedAt: "",
     slug: "/account/",
     keywords: "",
-    faq: [],
     seo: {
       title: `Languageai.id - ${account.user.email}`,
       description: "Account and Subscription",

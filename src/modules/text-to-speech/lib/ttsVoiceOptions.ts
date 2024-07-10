@@ -1,7 +1,7 @@
 import { IOption } from "@/common/components/interfaces";
 import { TextToSpeechVoice } from "@/common/lib/api/prompts/fetchPromptsTts";
 
-export const TTS_VOICE_OPTIONS : IOption[] = [
+export const TTS_VOICE_OPTIONS: IOption[] = [
   {
     label: "Voice: Alpha",
     value: TextToSpeechVoice.Alloy,
@@ -26,4 +26,4 @@ export const TTS_VOICE_OPTIONS : IOption[] = [
     label: "Voice: Zeta",
     value: TextToSpeechVoice.Shimmer,
   },
-]
+];

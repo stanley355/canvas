@@ -20,7 +20,6 @@ const PremiumPlans = () => {
     _updatedAt: "",
     slug: "/plans",
     keywords: "",
-    faq: [],
     seo: {
       title: `Premium Plans`,
       description: "Enjoy Languageai.id Premium Plans for unlimited access",

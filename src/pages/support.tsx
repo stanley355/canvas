@@ -7,7 +7,6 @@ const Support = () => {
     _updatedAt: "",
     slug: "/404",
     keywords: "",
-    faq: [],
     seo: {
       title: `Suppport and Help`,
       description:

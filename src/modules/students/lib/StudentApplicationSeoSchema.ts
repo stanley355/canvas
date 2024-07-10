@@ -4,7 +4,6 @@ export const STUDENT_APPLICATION_SEO_SCHEMA: IDatoPagesSchema = {
   _updatedAt: "",
   slug: "/students/application",
   keywords: "",
-  faq: [],
   seo: {
     title: `Student Plan Application`,
     description:
