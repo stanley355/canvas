@@ -6,7 +6,6 @@ export const getPagesSchema = gql`
       _updatedAt
       slug
       keywords
-      faq
       seo {
         title
         description

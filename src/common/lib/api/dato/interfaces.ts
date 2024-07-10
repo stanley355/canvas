@@ -12,5 +12,4 @@ export interface IDatoPagesSchema {
   slug: string;
   keywords: string;
   seo: IDatoPagesSchemaSeo;
-  faq: Record<string, string>[];
 }
