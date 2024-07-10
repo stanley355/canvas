@@ -13,12 +13,13 @@ import {
   fetchPrompts,
 } from "@/common/lib/api/prompts/fetchPrompts";
 import { fetchPromptsDeleteTtsFile } from "@/common/lib/api/prompts/fetchPromptsTtsDeleteFile";
+import { fetchPromptsTts, TextToSpeechVoice } from "@/common/lib/api/prompts/fetchPromptsTts";
 
 const TextToSpeechSubmitBtn = () => {
   const { appDispatch } = useContext(AppContext);
   const { textToSpeechStates, textToSpeechDispatch } =
     useContext(TextToSpeechContext);
-  const { userText, oldFileID, currentFileID } = textToSpeechStates;
+  const { userText, oldFileID, currentFileID, speed, voice } = textToSpeechStates;
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -47,11 +48,11 @@ const TextToSpeechSubmitBtn = () => {
     const user = decode(String(token)) as JwtPayload;
     const req = {
       user_id: user.id,
-      prompt_type: PromptsType.TextToSpeech,
-      system_content: "",
-      user_content: userText,
+      input: userText,
+      voice,
+      ...speed !== 1.0 && {speed}
     };
-    const prompt = await fetchPrompts(req);
+    const prompt = await fetchPromptsTts(req);
     setIsLoading(false);
 
     // Payment Required

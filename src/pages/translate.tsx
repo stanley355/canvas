@@ -27,7 +27,7 @@ const Translate = (props: ITranslateProps) => {
         <NextLink
           href="/support"
           variant="none"
-          className="text-blue-500 underline"
+          className="text-blue-800 underline"
         >
           Report
         </NextLink>{" "}

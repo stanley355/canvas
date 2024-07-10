@@ -1,5 +1,4 @@
 import { GetStaticProps } from "next";
-import { TbSpeakerphone } from "react-icons/tb";
 
 import { getTextToSpeechStaticProps } from "@/modules/text-to-speech/lib/getTextToSpeechPageStaticProps";
 
@@ -9,6 +8,7 @@ import NextLink from "@/common/components/NextLink";
 import TextToSpeechProvider from "@/modules/text-to-speech/components/TextToSpeechProvider";
 import TextToSpeechTextarea from "@/modules/text-to-speech/components/TextToSpeechTextarea";
 import TextToSpeechResult from "@/modules/text-to-speech/components/TextToSpeechResult";
+import TextToSpeechHeader from "@/modules/text-to-speech/components/TextToSpeechHeader";
 
 interface TTSProps {
   datoCmsData: NextHeadProps;
@@ -22,11 +22,8 @@ const TextToSpeech = (props: TTSProps) => {
   return (
     <div className="container mx-auto mt-20 lg:mt-4 text-sm pb-8">
       <NextHead pagesSchema={datoCmsData.pagesSchema} />
-      <div className="flex border border-brand-primary items-center gap-1 rounded-lg p-2 bg-blue-100 mb-4 w-fit ml-2">
-        <TbSpeakerphone />
-        Text to Speech
-      </div>
       <TextToSpeechProvider>
+        <TextToSpeechHeader />
         <TextToSpeechTextarea />
         <TextToSpeechResult />
       </TextToSpeechProvider>
@@ -35,7 +32,7 @@ const TextToSpeech = (props: TTSProps) => {
         <NextLink
           href="/support"
           variant="none"
-          className="text-blue-500 underline"
+          className="text-blue-800 underline"
         >
           Report
         </NextLink>{" "}
