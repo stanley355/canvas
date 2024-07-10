@@ -26,7 +26,6 @@ const StudentsPlans = (props: StudentsPlansProps) => {
     _updatedAt: "",
     slug: "/plans/students/",
     keywords: "",
-    faq: [],
     seo: {
       title: `Student Plans`,
       description: "Enjoy 1 year unlimited access and 50% off on the 2nd year",

@@ -20,7 +20,11 @@ const StudentsHero = () => {
           <NextLink
             href="/students/application"
             variant="outline"
-            onClick={()=> sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.student_home_hero_cta)}
+            onClick={() =>
+              sendFirebaseEvent(
+                FIREBASE_EVENT_NAMES.click.student_home_hero_cta
+              )
+            }
             className="text-brand-primary py-4 w-fit bg-gradient-to-b from-white to-blue-100 hover:to-blue-200 text-lg font-semibold"
           >
             Apply Student Plan

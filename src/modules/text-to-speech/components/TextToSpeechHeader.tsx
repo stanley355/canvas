@@ -27,7 +27,7 @@ const TextToSpeechHeader = () => {
           options={TTS_VOICE_OPTIONS}
           onChange={(option) => {
             sendFirebaseEvent(FIREBASE_EVENT_NAMES.change.change_tts_voice);
-            textToSpeechDispatch({ key: "voice", value: option.value })
+            textToSpeechDispatch({ key: "voice", value: option.value });
           }}
         />
         <NextSelect
@@ -36,10 +36,8 @@ const TextToSpeechHeader = () => {
           selectClassname="border-base"
           options={TTS_SPEED_OPTIONS}
           onChange={(option) => {
-            sendFirebaseEvent(
-              FIREBASE_EVENT_NAMES.change.change_tts_speed
-            );
-            textToSpeechDispatch({ key: "speed", value: option.value })
+            sendFirebaseEvent(FIREBASE_EVENT_NAMES.change.change_tts_speed);
+            textToSpeechDispatch({ key: "speed", value: option.value });
           }}
         />
         <Tooltip anchorSelect="#translate_variant" className="z-40">

@@ -16,7 +16,7 @@ export const FIREBASE_EVENT_NAMES = {
     checkbot_removed: "click_checkbot_added",
     student_home_hero_cta: "click_student_home_hero_cta",
     home_tellmewhy: "click_home_tellmewhy",
-    home_getstarted: "click_home_getstarted"
+    home_getstarted: "click_home_getstarted",
   },
   change: {
     change_translate_n: "change_translate_n",
@@ -24,7 +24,7 @@ export const FIREBASE_EVENT_NAMES = {
     change_checkbot_n: "change_checkbot_n",
     change_checkbot_temperature: "change_checkbot_temperature",
     change_tts_voice: "change_tts_voice",
-    change_tts_speed: "change_tts_speed"
+    change_tts_speed: "change_tts_speed",
   },
   show: {
     modal_login: "show_modal_login",

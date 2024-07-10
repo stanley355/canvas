@@ -14,9 +14,7 @@ const Footer = () => (
       />
     </Link>
 
-    <div>
-      {new Date().getFullYear()}
-    </div>
+    <div>{new Date().getFullYear()}</div>
   </div>
 );
 

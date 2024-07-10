@@ -17,7 +17,6 @@ const NotFound = () => {
     _updatedAt: "",
     slug: "/404",
     keywords: "",
-    faq: [],
     seo: {
       title: `Page Not Found`,
       description: "Languageai Page Not Found",

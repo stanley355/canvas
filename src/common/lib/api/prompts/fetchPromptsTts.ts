@@ -15,7 +15,7 @@ interface IRequest {
   user_id: string;
   input: string;
   voice: TextToSpeechVoice;
-  speed?: number // 0.25 - 4.0
+  speed?: number; // 0.25 - 4.0
 }
 
 export const fetchPromptsTts = async (

@@ -13,13 +13,17 @@ import {
   fetchPrompts,
 } from "@/common/lib/api/prompts/fetchPrompts";
 import { fetchPromptsDeleteTtsFile } from "@/common/lib/api/prompts/fetchPromptsTtsDeleteFile";
-import { fetchPromptsTts, TextToSpeechVoice } from "@/common/lib/api/prompts/fetchPromptsTts";
+import {
+  fetchPromptsTts,
+  TextToSpeechVoice,
+} from "@/common/lib/api/prompts/fetchPromptsTts";
 
 const TextToSpeechSubmitBtn = () => {
   const { appDispatch } = useContext(AppContext);
   const { textToSpeechStates, textToSpeechDispatch } =
     useContext(TextToSpeechContext);
-  const { userText, oldFileID, currentFileID, speed, voice } = textToSpeechStates;
+  const { userText, oldFileID, currentFileID, speed, voice } =
+    textToSpeechStates;
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -50,7 +54,7 @@ const TextToSpeechSubmitBtn = () => {
       user_id: user.id,
       input: userText,
       voice,
-      ...speed !== 1.0 && {speed}
+      ...(speed !== 1.0 && { speed }),
     };
     const prompt = await fetchPromptsTts(req);
     setIsLoading(false);

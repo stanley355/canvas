@@ -1,13 +1,18 @@
 # CANVAS
 
+### 1.4.8
+
+- Fix homepage image can't be clicked
+- Remove faq from dato schema
+
 ### 1.4.7
 
 - Update text to speech endpoint
 - Update text to speech header
 - Update Checkbot prompts list
 
-
 ### 1.4.6
+
 - Add Microsoft Clarity
 
 ### 1.4.5
