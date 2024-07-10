@@ -4,7 +4,7 @@ import NextHead, { NextHeadProps } from "@/common/components/NextHead";
 import StudentsHero from "@/modules/students/components/home/StudentsHero";
 
 import { fetchDatoCms } from "@/common/lib/api/dato/fetchDatoCms";
-import { getPagesSchema } from "@/common/lib/api/gql";
+import { getDatoPagesSchema } from "@/common/lib/api/dato/datoQueries";
 
 interface IStudents {
   datoCmsData: NextHeadProps;
@@ -24,7 +24,7 @@ const Students = (props: IStudents) => {
 export default Students;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const datoCmsData = await fetchDatoCms(getPagesSchema, {
+  const datoCmsData = await fetchDatoCms(getDatoPagesSchema, {
     slug: "students",
   });
 

@@ -7,7 +7,7 @@ import NextButton from "@/common/components/NextButton";
 
 import { fetchDatoCms } from "@/common/lib/api/dato/fetchDatoCms";
 
-import { getPagesSchema } from "@/common/lib/api/gql";
+import { getDatoPagesSchema } from "@/common/lib/api/dato/datoQueries";
 import { IDatoPagesSchema } from "@/common/lib/api/dato/interfaces";
 
 const NotFound = () => {
@@ -45,7 +45,7 @@ const NotFound = () => {
 export default NotFound;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const datoCmsData = await fetchDatoCms(getPagesSchema, {
+  const datoCmsData = await fetchDatoCms(getDatoPagesSchema, {
     slug: "not-found",
   });
 

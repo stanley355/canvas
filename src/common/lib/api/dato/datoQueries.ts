@@ -6,7 +6,6 @@ export const getDatoPagesSchema = gql`
       _updatedAt
       slug
       keywords
-      faq
       seo {
         title
         description

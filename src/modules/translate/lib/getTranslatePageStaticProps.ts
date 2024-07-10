@@ -1,9 +1,9 @@
-import { fetchDatoCms } from "@/common/lib/api/dato/fetchDatoCms";
-import { getPagesSchema } from "@/common/lib/api/gql";
 import { GetStaticProps } from "next";
+import { getDatoPagesSchema } from "@/common/lib/api/dato/datoQueries";
+import { fetchDatoCms } from "@/common/lib/api/dato/fetchDatoCms";
 
 export const getTranslatePageStaticProps: GetStaticProps = async () => {
-  const datoCmsData = await fetchDatoCms(getPagesSchema, {
+  const datoCmsData = await fetchDatoCms(getDatoPagesSchema, {
     slug: "translate",
   });
 
