@@ -12,7 +12,7 @@ const HomeFeatures = () => {
         <h3 className='text-xl text-center mb-16'>Applicable for &gt; 50 languages</h3>
 
         <div id='home_translate' className='lg:grid grid-cols-2 gap-8 place-items-center mb-16'>
-          <div className='h-[40vh] relative mb-8'>
+          <NextLink className='h-[40vh] relative mb-8' href="/translate" variant='none'>
             <Image
               src="/images/home/translate1.png"
               alt='Languageai AI Translate 1'
@@ -27,7 +27,7 @@ const HomeFeatures = () => {
               height={400}
               className='w-4/5 h-2/3 absolute right-0 bottom-0 rounded-lg'
             />
-          </div>
+          </NextLink>
           <div>
             <NextLink href="/translate" className='text-xl gap-1 flex items-center mb-4 border-b w-fit' variant='none'>
               <TbLanguage />
@@ -40,7 +40,7 @@ const HomeFeatures = () => {
         </div>
 
         <div className='lg:grid grid-cols-2 gap-8 place-items-center mb-16'>
-          <div className='h-[40vh] relative mb-8'>
+          <NextLink href="/checkbot" variant='none' className='h-[40vh] relative mb-8'>
             <Image
               src="/images/home/checkbot1.png"
               alt='Languageai AI Checkbot 1'
@@ -55,7 +55,7 @@ const HomeFeatures = () => {
               height={400}
               className='w-4/5 h-2/3 absolute right-0 bottom-0 rounded-lg'
             />
-          </div>
+          </NextLink>
           <div>
             <NextLink href="/checkbot" className='text-xl gap-1 flex items-center mb-4 border-b w-fit' variant='none'>
               <FaRobot />
@@ -68,7 +68,7 @@ const HomeFeatures = () => {
         </div>
 
         <div className='lg:grid grid-cols-2 gap-8 place-items-center'>
-          <div className='h-[40vh] relative mb-8 lg:grid grid-cols-2 gap-8'>
+          <NextLink href="/text-to-speech" variant='none' className='h-[40vh] relative mb-8 lg:grid grid-cols-2 gap-8'>
             <Image
               src="/images/home/tts1.png"
               alt='Languageai AI Text to speech 1'
@@ -83,7 +83,7 @@ const HomeFeatures = () => {
               height={400}
               className='lg:h-full rounded-lg w-4/5 h-2/3 lg:w-full absolute right-0 bottom-0 lg:relative'
             />
-          </div>
+          </NextLink>
           <div>
             <NextLink href="/text-to-speech" className='text-xl gap-1 flex items-center mb-4 border-b w-fit' variant='none'>
               <TbSpeakerphone />
