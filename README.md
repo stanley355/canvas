@@ -1,5 +1,9 @@
 # CANVAS
 
+### 1.4.8
+- Fix homepage image can't be clicked
+- Remove faq from dato schema
+
 ### 1.4.7
 
 - Update text to speech endpoint
