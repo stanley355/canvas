@@ -19,7 +19,7 @@ const TextToSpeechSubmitBtn = () => {
   const { appDispatch } = useContext(AppContext);
   const { textToSpeechStates, textToSpeechDispatch } =
     useContext(TextToSpeechContext);
-  const { userText, oldFileID, currentFileID } = textToSpeechStates;
+  const { userText, oldFileID, currentFileID, speed, voice } = textToSpeechStates;
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -49,8 +49,8 @@ const TextToSpeechSubmitBtn = () => {
     const req = {
       user_id: user.id,
       input: userText,
-      voice: TextToSpeechVoice.Alloy,
-      speed: 1.0
+      voice,
+      ...speed !== 1.0 && {speed}
     };
     const prompt = await fetchPromptsTts(req);
     setIsLoading(false);

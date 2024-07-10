@@ -14,8 +14,8 @@ const TextToSpeechHeader = () => {
   const { textToSpeechDispatch } = useContext(TextToSpeechContext);
 
   return (
-    <div className="p-4 lg:flex lg:w-1/2 lg:px-0">
-      <div className="flex border border-brand-primary items-center gap-1 rounded-lg p-2 bg-blue-100 mb-4 mx-auto lg:mx-0 w-fit lg:mb-0 lg:mr-2">
+    <div className="p-4 lg:grid grid-cols-[25%_75%] lg:gap-2 lg:w-1/2 lg:px-0">
+      <div className="flex border border-brand-primary items-center gap-1 lg:justify-center rounded-lg p-2 bg-blue-100 mb-4 mx-auto lg:mx-0 w-full lg:mb-0 lg:mr-2">
         <TbSpeakerphone />
         Text to Speech
       </div>
