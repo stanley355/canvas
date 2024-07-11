@@ -1,3 +1,5 @@
+import { IOption } from "@/common/components/interfaces";
+
 export enum TimestampGranularities {
   None = "",
   Word = "Word",
@@ -34,7 +36,7 @@ interface ITranscription {
 
 export interface ISpeechToTextStates {
   file_url: string;
-  language: string;
+  language: IOption;
   temperature: 0.0; // max 1.0
   timestamp_granularities: TimestampGranularities;
   transcription: ITranscription | null;
@@ -42,7 +44,10 @@ export interface ISpeechToTextStates {
 
 export const SPEECH_TO_TEXT_STATES: ISpeechToTextStates = {
   file_url: "",
-  language: "",
+  language: {
+    label : "",
+    value: ""
+  },
   temperature: 0.0,
   timestamp_granularities: TimestampGranularities.None,
   transcription: null
