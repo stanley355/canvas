@@ -2,6 +2,7 @@ import { GetStaticProps } from "next";
 
 import { getSpeechToTextStaticProps } from "@/modules/speech-to-text/lib/getSpeechToTextStaticProps";
 import NextHead, { NextHeadProps } from "@/common/components/NextHead";
+import SpeechToTextProvider from "@/modules/speech-to-text/components/SpeechToTextProvider";
 
 // export const getStaticProps: GetStaticProps = getSpeechToTextStaticProps;
 
@@ -14,7 +15,9 @@ const SpeechToText= (props: STTProps) => {
   return (
     <div className="container mx-auto mt-20 lg:mt-4 text-sm pb-8">
       {/* <NextHead pagesSchema={datoCmsData.pagesSchema} /> */}
-      woi
+      <SpeechToTextProvider>
+        woi
+      </SpeechToTextProvider>
     </div>
   )
 }
