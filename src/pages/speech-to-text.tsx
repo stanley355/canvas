@@ -5,17 +5,18 @@ import NextHead, { NextHeadProps } from "@/common/components/NextHead";
 import SpeechToTextProvider from "@/modules/speech-to-text/components/SpeechToTextProvider";
 import SpeechToTextHeader from "@/modules/speech-to-text/components/SpeechToTextHeader";
 
-// export const getStaticProps: GetStaticProps = getSpeechToTextStaticProps;
+export const getStaticProps: GetStaticProps = getSpeechToTextStaticProps;
 
 interface STTProps {
   datoCmsData: NextHeadProps;
 }
 
 const SpeechToText= (props: STTProps) => {
-  // const {datoCmsData} = props;
+  const {datoCmsData} = props;
+
   return (
     <div className="container mx-auto mt-16 lg:mt-0 text-sm pb-8">
-      {/* <NextHead pagesSchema={datoCmsData.pagesSchema} /> */}
+      <NextHead pagesSchema={datoCmsData.pagesSchema} />
       <SpeechToTextProvider>
         <SpeechToTextHeader />
       </SpeechToTextProvider>
