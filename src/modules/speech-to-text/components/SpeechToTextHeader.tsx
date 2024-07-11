@@ -11,10 +11,9 @@ import { SpeechToTextContext } from "./SpeechToTextContext";
 
 const TextToSpeechHeader = () => {
   const {speechToTextDispatch} = useContext(SpeechToTextContext);
-  // const { textToSpeechDispatch } = useContext(TextToSpeechContext);
 
   return (
-    <div className="p-4 flex items-center justify-between lg:justify-start gap-4 w-full">
+    <div className="p-4 flex items-center justify-between lg:justify-start gap-4 w-full mb-4">
       <div className="flex border border-brand-primary items-center gap-1 lg:justify-center rounded-lg p-2 bg-blue-100">
         <TbSpeakerphone />
         Speech to Text
