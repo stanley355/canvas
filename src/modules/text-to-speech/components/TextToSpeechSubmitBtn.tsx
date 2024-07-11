@@ -54,7 +54,7 @@ const TextToSpeechSubmitBtn = () => {
       user_id: user.id,
       input: userText,
       voice,
-      speed
+      speed,
     };
     const prompt = await fetchPromptsTts(req);
     setIsLoading(false);

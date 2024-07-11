@@ -1,7 +1,9 @@
 import { createContext } from "react";
-import { ISpeechToTextStates, SPEECH_TO_TEXT_STATES } from "../lib/speechToTextStates";
+import {
+  ISpeechToTextStates,
+  SPEECH_TO_TEXT_STATES,
+} from "../lib/speechToTextStates";
 import { ISpeechToTextReducerAction } from "../lib/speechToTextReducer";
-
 
 interface ISpeechToTextContext {
   speechToTextStates: ISpeechToTextStates;

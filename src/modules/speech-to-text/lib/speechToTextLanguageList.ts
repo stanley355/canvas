@@ -3,241 +3,241 @@ import { IOption } from "@/common/components/interfaces";
 export const SPEECH_TO_TEXT_COMMON_LANGUAGE_LIST: IOption[] = [
   {
     label: "Indonesian",
-    value: "id" 
-  }, 
+    value: "id",
+  },
   {
     label: "English",
-    value: "en" 
+    value: "en",
   },
   {
     label: "Chinese (简笔/繁体)",
-    value: "zh" 
+    value: "zh",
   },
-]
+];
 
 export const SPEECH_TO_TEXT_LANGUAGE_LIST: IOption[] = [
   {
     label: "Afrikaans",
-    value: "af" 
+    value: "af",
   },
   {
     label: "Arabic",
-    value: "ar" 
+    value: "ar",
   },
   {
     label: "Armenian",
-    value: "hy" 
+    value: "hy",
   },
   {
     label: "Azerbaijani",
-    value: "az" 
+    value: "az",
   },
   {
     label: "Belarusian",
-    value: "be" 
+    value: "be",
   },
   {
     label: "Bosnian",
-    value: "bs" 
+    value: "bs",
   },
   {
     label: "Bulgarian",
-    value: "bg" 
+    value: "bg",
   },
   {
     label: "Catalan",
-    value: "ca" 
+    value: "ca",
   },
   {
     label: "Chinese (简笔/繁体)",
-    value: "zh" 
+    value: "zh",
   },
   {
     label: "Croatian",
-    value: "hr" 
+    value: "hr",
   },
   {
     label: "Czech",
-    value: "cs" 
+    value: "cs",
   },
   {
     label: "Danish",
-    value: "da" 
+    value: "da",
   },
   {
     label: "Dutch",
-    value: "nl" 
+    value: "nl",
   },
   {
     label: "English",
-    value: "en" 
+    value: "en",
   },
   {
     label: "Estonian",
-    value: "et" 
+    value: "et",
   },
   {
     label: "Finnish",
-    value: "fi" 
+    value: "fi",
   },
   {
     label: "French",
-    value: "fr" 
+    value: "fr",
   },
   {
     label: "Galician",
-    value: "gl" 
+    value: "gl",
   },
   {
     label: "German",
-    value: "de" 
+    value: "de",
   },
   {
     label: "Greek",
-    value: "el" 
+    value: "el",
   },
   {
     label: "Hebrew",
-    value: "he" 
+    value: "he",
   },
   {
     label: "Hindi",
-    value: "hi" 
+    value: "hi",
   },
   {
     label: "Hungarian",
-    value: "hu" 
+    value: "hu",
   },
   {
     label: "Icelandic",
-    value: "is" 
+    value: "is",
   },
   {
     label: "Indonesian",
-    value: "id" 
+    value: "id",
   },
   {
     label: "Italian",
-    value: "it" 
+    value: "it",
   },
   {
     label: "Japanese (日文)",
-    value: "ja" 
+    value: "ja",
   },
   {
     label: "Kannada",
-    value: "kn" 
+    value: "kn",
   },
   {
     label: "Kazakh",
-    value: "kk" 
+    value: "kk",
   },
   {
     label: "Korean",
-    value: "ko" 
+    value: "ko",
   },
   {
     label: "Latvian",
-    value: "lv" 
+    value: "lv",
   },
   {
     label: "Lithuanian",
-    value: "lt" 
+    value: "lt",
   },
   {
     label: "Macedonian",
-    value: "mk" 
+    value: "mk",
   },
   {
     label: "Malay",
-    value: "ms" 
+    value: "ms",
   },
   {
     label: "Marathi",
-    value: "mr" 
+    value: "mr",
   },
   {
     label: "Maori",
-    value: "mi" 
+    value: "mi",
   },
   {
     label: "Nepali",
-    value: "ne" 
+    value: "ne",
   },
   {
     label: "Norwegian",
-    value: "no" 
+    value: "no",
   },
   {
     label: "Persian",
-    value: "fa" 
+    value: "fa",
   },
   {
     label: "Polish",
-    value: "pl" 
+    value: "pl",
   },
   {
     label: "Portuguese",
-    value: "pt" 
+    value: "pt",
   },
   {
     label: "Romanian",
-    value: "ro" 
+    value: "ro",
   },
   {
     label: "Russian",
-    value: "ru" 
+    value: "ru",
   },
   {
     label: "Serbian",
-    value: "sr" 
+    value: "sr",
   },
   {
     label: "Slovak",
-    value: "sk" 
+    value: "sk",
   },
   {
     label: "Slovenian",
-    value: "sl" 
+    value: "sl",
   },
   {
     label: "Spanish",
-    value: "es" 
+    value: "es",
   },
   {
     label: "Swahili",
-    value: "sw" 
+    value: "sw",
   },
   {
     label: "Tagalog",
-    value: "tl" 
+    value: "tl",
   },
   {
     label: "Tamil",
-    value: "ta" 
+    value: "ta",
   },
   {
     label: "Thai",
-    value: "th" 
+    value: "th",
   },
   {
     label: "Turkish",
-    value: "tr" 
+    value: "tr",
   },
   {
     label: "Ukrainian",
-    value: "uk" 
+    value: "uk",
   },
   {
     label: "Urdu",
-    value: "ur" 
+    value: "ur",
   },
   {
     label: "Vietnames",
-    value: "vi" 
+    value: "vi",
   },
   {
     label: "Welsh",
-    value: "cy" 
+    value: "cy",
   },
-]
+];

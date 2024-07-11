@@ -53,7 +53,7 @@ const CheckbotSubmitBtn = () => {
         instruction === "custom" ? customInstruction : instruction,
       user_content: userText,
       n,
-      temperature
+      temperature,
     };
 
     const prompts = await fetchPrompts(req);

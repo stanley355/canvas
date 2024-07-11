@@ -45,10 +45,10 @@ export interface ISpeechToTextStates {
 export const SPEECH_TO_TEXT_STATES: ISpeechToTextStates = {
   file_url: "",
   language: {
-    label : "",
-    value: ""
+    label: "",
+    value: "",
   },
   temperature: 0.0,
   timestamp_granularities: TimestampGranularities.None,
-  transcription: null
-}
+  transcription: null,
+};

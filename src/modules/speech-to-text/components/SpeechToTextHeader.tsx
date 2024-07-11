@@ -10,7 +10,7 @@ import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames"
 import { SPEECH_TO_TEXT_DIFF_OPTIONS } from "../lib/speechToTextDiffOptions";
 
 const TextToSpeechHeader = () => {
-  const {speechToTextDispatch} = useContext(SpeechToTextContext);
+  const { speechToTextDispatch } = useContext(SpeechToTextContext);
 
   return (
     <div className="p-4 flex items-center justify-between lg:justify-start gap-4 w-full mb-4">

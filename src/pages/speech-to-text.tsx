@@ -12,8 +12,8 @@ interface STTProps {
   datoCmsData: NextHeadProps;
 }
 
-const SpeechToText= (props: STTProps) => {
-  const {datoCmsData} = props;
+const SpeechToText = (props: STTProps) => {
+  const { datoCmsData } = props;
 
   return (
     <div className="container mx-auto mt-16 lg:mt-0 text-sm pb-8 h-screen">
@@ -23,7 +23,7 @@ const SpeechToText= (props: STTProps) => {
         <SpeechToTextBody />
       </SpeechToTextProvider>
     </div>
-  )
-}
+  );
+};
 
-export default SpeechToText; 
+export default SpeechToText;
