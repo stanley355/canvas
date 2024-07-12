@@ -34,7 +34,7 @@ const CheckbotSubmitBtn = () => {
     }
 
     if (!instruction || (instruction === "custom" && !customInstruction)) {
-      toast.error("Instruction can't be empty");
+      toast.error("Please select instruction");
       return;
     }
 
@@ -53,7 +53,7 @@ const CheckbotSubmitBtn = () => {
         instruction === "custom" ? customInstruction : instruction,
       user_content: userText,
       n,
-      temperature
+      temperature,
     };
 
     const prompts = await fetchPrompts(req);

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   TbLanguage,
+  TbMicrophone,
   TbPhotoAi,
   TbSpeakerphone,
   TbUserCircle,
@@ -70,6 +71,19 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
         >
           <TbSpeakerphone />
           <span>AI Text to Speech</span>
+        </NextLink>
+        <NextLink
+          href="/speech-to-text/"
+          variant="outline"
+          className={cn(
+            "rounded-full",
+            pathname === "/speech-to-text"
+              ? "border-brand-primary"
+              : "border-transparent"
+          )}
+        >
+          <TbMicrophone />
+          <span>AI Speech to Text</span>
         </NextLink>
       </div>
 

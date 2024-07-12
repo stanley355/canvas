@@ -1,5 +1,9 @@
 # CANVAS
 
+### 1.4.9
+
+- Add Speech to Text
+
 ### 1.4.8
 
 - Fix homepage image can't be clicked

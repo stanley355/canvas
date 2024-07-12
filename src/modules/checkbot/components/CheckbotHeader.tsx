@@ -21,7 +21,7 @@ const CheckbotHeader = () => {
       </div>
       <div className="flex justify-evenly gap-2 lg:w-full">
         <NextSelect
-          id="translate_variant"
+          id="checkbot_variant"
           placeholder="Variant: 1"
           selectClassname="border-gray-200"
           options={PROMPT_VARIANT_OPTIONS}
@@ -31,7 +31,7 @@ const CheckbotHeader = () => {
           }}
         />
         <NextSelect
-          id="translate_diff"
+          id="checkbot_diff"
           placeholder="Diff: Mid"
           selectClassname="border-gray-200"
           options={PROMPT_DIFF_OPTIONS}
@@ -42,11 +42,11 @@ const CheckbotHeader = () => {
             checkbotDispatch({ key: "temperature", value: option.value });
           }}
         />
-        <Tooltip anchorSelect="#translate_variant" className="z-40">
+        <Tooltip anchorSelect="#checkbot_variant" className="z-40">
           <div>How many text completion choices to</div>
           <div>generate for each input message</div>
         </Tooltip>
-        <Tooltip anchorSelect="#translate_diff" className="z-40">
+        <Tooltip anchorSelect="#checkbot_diff" className="z-40">
           <div>Higher diff will make the output more random,</div>
           <div>Lower diff will make it more focused and deterministic</div>
         </Tooltip>

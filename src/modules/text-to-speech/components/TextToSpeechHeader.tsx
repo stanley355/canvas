@@ -40,7 +40,7 @@ const TextToSpeechHeader = () => {
             textToSpeechDispatch({ key: "speed", value: option.value });
           }}
         />
-        <Tooltip anchorSelect="#translate_variant" className="z-40">
+        <Tooltip anchorSelect="#tts_voice" className="z-40">
           The voice to use when generating the audio.
         </Tooltip>
         <Tooltip anchorSelect="#tts_speed" className="z-40">
