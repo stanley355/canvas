@@ -5,6 +5,8 @@ import NextButton from '@/common/components/NextButton';
 import { exportToCSV } from '@/common/lib/exportToCsv';
 import { ITranscriptionSegment } from '../lib/speechToTextStates'
 import { convertJsonToCsvData } from '@/common/lib/convertJsonToCsvData';
+import { sendFirebaseEvent } from '@/modules/firebase/lib/sendFirebaseEvent';
+import { FIREBASE_EVENT_NAMES } from '@/modules/firebase/lib/firebaseEventNames';
 
 interface SpeechToTextTranscriptionSegmentTable {
   transcriptionSegment: ITranscriptionSegment[]
@@ -18,6 +20,7 @@ const SpeechToTextTranscriptionSegmentTable = (props: SpeechToTextTranscriptionS
       <div className='mb-2 flex justify-between items-center'>
         <div className='text-lg font-semibold'>Segment Granularity</div>
         <NextButton onClick={()=> {
+          sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.stt_csv_export);
           const csvData = convertJsonToCsvData(['Segment', 'Start', 'End'], transcriptionSegment);
           exportToCSV('words.csv',csvData);
         }}>

@@ -58,8 +58,8 @@ const SpeechToTextAudioInput = (props: SpeechToTextAudioInputProps) => {
       return;
     }
 
-    setIsLoading(true);
     sendFirebaseEvent(FIREBASE_EVENT_NAMES.speech_to_text);
+    setIsLoading(true);
     try {
       const user = decode(token) as JwtPayload;
       const firebasePath = `audio/transcriptions/${user.id}:${new Date().getTime()}`;
