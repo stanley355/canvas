@@ -12,7 +12,7 @@ export interface ITranscriptionWord {
   end: number;
 }
 
-interface Segment {
+export interface ITranscriptionSegment {
   id: number;
   seek: number;
   start: number;
@@ -31,7 +31,7 @@ export interface ITranscription {
   duration: number;
   text: string;
   words: ITranscriptionWord[];
-  segments: Segment[];
+  segments: ITranscriptionSegment[];
 }
 
 export interface ISpeechToTextStates {

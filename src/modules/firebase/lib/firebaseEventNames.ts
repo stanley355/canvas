@@ -27,7 +27,8 @@ export const FIREBASE_EVENT_NAMES = {
     change_tts_voice: "change_tts_voice",
     change_tts_speed: "change_tts_speed",
     change_stt_diff: "change_stt_diff",
-    change_stt_granularity: "change_stt_granularity"
+    change_stt_granularity: "change_stt_granularity",
+    change_stt_language: "change_stt_language"
   },
   show: {
     modal_login: "show_modal_login",
