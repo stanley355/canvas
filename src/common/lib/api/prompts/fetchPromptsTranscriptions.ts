@@ -1,7 +1,6 @@
 import axios from "axios";
-import { IPrompt } from "./interfaces";
 import { IAuthorError } from "../interfaces";
-import { SpeechToTextTimestampGranularities } from "@/modules/speech-to-text/lib/speechToTextStates";
+import { ITranscription, SpeechToTextTimestampGranularities } from "@/modules/speech-to-text/lib/speechToTextStates";
 
 interface IRequest {
   user_id: string;
@@ -13,7 +12,7 @@ interface IRequest {
 
 export const fetchPromptsTranscriptions = async (
   req: IRequest
-): Promise<IPrompt[] & IPrompt & IAuthorError> => {
+): Promise<ITranscription & IAuthorError> => {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}api/prompts/transcriptions/`;
 
   try {

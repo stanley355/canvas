@@ -25,7 +25,7 @@ interface Segment {
   no_speech_prob: number;
 }
 
-interface ITranscription {
+export interface ITranscription {
   task: string;
   language: string;
   duration: number;
