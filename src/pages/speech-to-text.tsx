@@ -5,6 +5,7 @@ import NextHead, { NextHeadProps } from "@/common/components/NextHead";
 import SpeechToTextProvider from "@/modules/speech-to-text/components/SpeechToTextProvider";
 import SpeechToTextHeader from "@/modules/speech-to-text/components/SpeechToTextHeader";
 import SpeechToTextBody from "@/modules/speech-to-text/components/SpeechToTextBody";
+import NextLink from "@/common/components/NextLink";
 
 export const getStaticProps: GetStaticProps = getSpeechToTextStaticProps;
 
@@ -22,6 +23,16 @@ const SpeechToText = (props: STTProps) => {
         <SpeechToTextHeader />
         <SpeechToTextBody />
       </SpeechToTextProvider>
+      <div className="flex w-fit items-center gap-1 mx-auto">
+        Found an error?{" "}
+        <NextLink
+          href="/support"
+          variant="none"
+          className="text-blue-800 underline"
+        >
+          Report
+        </NextLink>{" "}
+      </div>
     </div>
   );
 };

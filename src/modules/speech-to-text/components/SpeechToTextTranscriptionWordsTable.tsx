@@ -14,7 +14,7 @@ const SpeechToTextTranscriptionWordsTable = (props: SpeechToTextTranscriptionWor
   const {transcriptionWords} = props;
   
   return (
-    <div className='px-2 lg:px-0'>
+    <div className='px-2 lg:px-0 mb-4'>
       <div className='mb-2 flex justify-between items-center'>
         <div className='text-lg font-semibold'>Word Granularity</div>
         <NextButton onClick={()=> {
