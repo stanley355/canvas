@@ -1,23 +1,53 @@
-import NextButton from '@/common/components/NextButton';
-import NextInput from '@/common/components/NextInput'
-import React, { FormEvent, useRef, useState } from 'react'
+import { FormEvent, useContext, useId, useRef, useState } from 'react'
 import { TbMicrophone, TbUpload } from 'react-icons/tb';
 import { toast } from 'react-toastify';
 
+import NextButton from '@/common/components/NextButton';
+import { SpeechToTextContext } from './SpeechToTextContext';
+import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
+
 const SpeechToTextAudioInput = () => {
+  const audioID = useId();
+  const { speechToTextDispatch, speechToTextStates } = useContext(SpeechToTextContext);
+  const { temperature, language, timestamp_granularities } = speechToTextStates;
+
   const inputRef = useRef<any>(null);
   const [file, setFile] = useState<File | null>(null);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as any;
     const audioFile = target.audio.files[0];
+
+    if (!file) {
+      toast.error("Please upload audio file");
+      return;
+    }
 
     const maxFileSize = 24 * 1024 * 1024 // 24MB
     if (audioFile.size > maxFileSize) {
       toast.error('Max file size is 24MB');
       return;
     }
+
+    if (!language) {
+      toast.error("Please select language");
+      return;
+    }
+
+
+    try {
+      const firebasePath = `audio/transcriptions/${audioID}-${new Date().getTime()}`;
+      const storage = getStorage();
+      const storageRef = ref(storage, firebasePath);
+      const result = await uploadBytes(storageRef, audioFile);
+      const downloadURL = await getDownloadURL(result.ref);
+
+      
+    } catch (error) {
+      
+    }
+    
   }
 
   return (
