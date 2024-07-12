@@ -53,7 +53,7 @@ const SpeechToTextLanguageSelect = (props: SpeechToTextLanguageSelectProps) => {
 
       <div
         className={cn(
-          "absolute top-12 left-[1%] border border-brand-primary rounded-lg w-[98%] lg:left-0 lg:w-full",
+          "absolute top-12 left-[1%] border border-brand-primary rounded-lg w-[98%] lg:left-0 lg:w-full max-h-[50vh] overflow-y-scroll",
           openDropdown ? "block" : "hidden"
         )}
       >
@@ -81,6 +81,7 @@ const SpeechToTextLanguageSelect = (props: SpeechToTextLanguageSelectProps) => {
           </div>
           {SPEECH_TO_TEXT_COMMON_LANGUAGE_LIST.map((language) => (
             <NextButton
+              key={`common_${language.value}`}
               variant="none"
               onClick={() => {
                 speechToTextDispatch({ key: "language", value: language });
@@ -97,6 +98,7 @@ const SpeechToTextLanguageSelect = (props: SpeechToTextLanguageSelectProps) => {
           <div className="p-2 text-gray-500 font-semibold">All Languages</div>
           {languageList.map((language) => (
             <NextButton
+              key={`all_${language.value}`}
               variant="none"
               onClick={() => {
                 speechToTextDispatch({ key: "language", value: language });

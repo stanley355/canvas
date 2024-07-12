@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import SpeechToTextLanguageSelect from "./SpeechToTextLanguageSelect";
 import { SpeechToTextContext } from "./SpeechToTextContext";
+import SpeechToTextAudioInput from "./SpeechToTextAudioInput";
 
 const SpeechToTextBody = () => {
   const { speechToTextDispatch, speechToTextStates } =
@@ -8,11 +9,12 @@ const SpeechToTextBody = () => {
   const { language } = speechToTextStates;
   return (
     <div className="lg:grid lg:grid-cols-2 lg:gap-8">
-      <div >
+      <div>
         <SpeechToTextLanguageSelect
           language={language}
           speechToTextDispatch={speechToTextDispatch}
         />
+        <SpeechToTextAudioInput />
       </div>
     </div>
   );

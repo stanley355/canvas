@@ -14,7 +14,7 @@ const TextToSpeechHeader = () => {
   const { speechToTextDispatch } = useContext(SpeechToTextContext);
 
   return (
-    <div className="p-4 lg:grid grid-cols-[22.5%_75%] lg:w-1/2 lg:px-0">
+    <div className="p-4 px-2 lg:grid grid-cols-[22.5%_75%] lg:w-1/2 lg:px-0">
       <div className="flex border border-brand-primary items-center gap-1 lg:justify-center rounded-lg p-2 bg-blue-100 mb-4 mx-auto lg:mx-0 w-fit lg:mb-0">
         <TbMicrophone />
         Speech to Text
