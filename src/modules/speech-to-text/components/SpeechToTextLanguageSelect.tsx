@@ -11,6 +11,8 @@ import {
   SPEECH_TO_TEXT_LANGUAGE_LIST,
 } from "../lib/speechToTextLanguageList";
 import { IOption } from "@/common/components/interfaces";
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
+import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 
 interface SpeechToTextLanguageSelectProps {
   language: IOption;
@@ -84,6 +86,7 @@ const SpeechToTextLanguageSelect = (props: SpeechToTextLanguageSelectProps) => {
               key={`common_${language.value}`}
               variant="none"
               onClick={() => {
+                sendFirebaseEvent(FIREBASE_EVENT_NAMES.change.change_stt_language);
                 speechToTextDispatch({ key: "language", value: language });
                 setOpenDropdown(false);
               }}
@@ -101,6 +104,7 @@ const SpeechToTextLanguageSelect = (props: SpeechToTextLanguageSelectProps) => {
               key={`all_${language.value}`}
               variant="none"
               onClick={() => {
+                sendFirebaseEvent(FIREBASE_EVENT_NAMES.change.change_stt_language);
                 speechToTextDispatch({ key: "language", value: language });
                 setOpenDropdown(false);
               }}
