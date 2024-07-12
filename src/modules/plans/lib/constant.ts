@@ -21,6 +21,10 @@ export const PLAN_LIST = {
         value: "Unlimited",
       },
       {
+        label: "AI Speech to Text",
+        value: "Unlimited",
+      },
+      {
         label: "Subscription Time",
         value: "Monthly, Quarterly, or Half yearly",
       },
@@ -50,6 +54,10 @@ export const PLAN_LIST = {
         value: "Unlimited",
       },
       {
+        label: "AI Speech to Text",
+        value: "Unlimited",
+      },
+      {
         label: "Subscription Time",
         value: "Renewable on Graduation",
       },
@@ -72,7 +80,11 @@ export const PLAN_LIST = {
       },
       {
         label: "AI Text to Speech",
-        value: "10x/Month",
+        value: "5x/Month",
+      },
+      {
+        label: "AI Speech to Text",
+        value: "5x/Month",
       },
     ],
   },
