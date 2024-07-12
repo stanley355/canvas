@@ -1,4 +1,4 @@
-import { FormEvent, useContext, useRef, useState } from 'react'
+import { FormEvent, useContext, useRef, useState, memo } from 'react'
 import { TbMicrophone, TbProgress, TbUpload } from 'react-icons/tb';
 import { toast } from 'react-toastify';
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
@@ -83,7 +83,6 @@ const SpeechToTextAudioInput = (props: SpeechToTextAudioInputProps) => {
       }
 
       setIsLoading(false);
-      toast.success('Audio converted');
       speechToTextDispatch({ key: "transcription", value: transcription });
       return;
     } catch (error: any) {
@@ -91,7 +90,6 @@ const SpeechToTextAudioInput = (props: SpeechToTextAudioInputProps) => {
       toast.error('Server busy, please try again');
       return;
     }
-
   }
 
   return (
@@ -135,4 +133,4 @@ const SpeechToTextAudioInput = (props: SpeechToTextAudioInputProps) => {
   )
 }
 
-export default SpeechToTextAudioInput
+export default memo(SpeechToTextAudioInput)
