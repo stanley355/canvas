@@ -13,10 +13,17 @@ import { cn } from '@/common/lib/cn';
 import { fetchPromptsTranscriptions } from '@/common/lib/api/prompts/fetchPromptsTranscriptions';
 import { sendFirebaseEvent } from '@/modules/firebase/lib/sendFirebaseEvent';
 import { FIREBASE_EVENT_NAMES } from '@/modules/firebase/lib/firebaseEventNames';
+import { ISpeechToTextStates } from '../lib/speechToTextStates';
+import { ISpeechToTextReducerAction } from '../lib/speechToTextReducer';
 
-const SpeechToTextAudioInput = () => {
+interface SpeechToTextAudioInputProps {
+  speechToTextStates: ISpeechToTextStates;
+  speechToTextDispatch: (action: ISpeechToTextReducerAction) => void 
+}
+
+const SpeechToTextAudioInput = (props: SpeechToTextAudioInputProps) => {
   const { appDispatch } = useContext(AppContext);
-  const { speechToTextDispatch, speechToTextStates } = useContext(SpeechToTextContext);
+  const { speechToTextDispatch, speechToTextStates } = props;
   const { temperature, language, timestamp_granularities } = speechToTextStates;
 
   const inputRef = useRef<any>(null);
