@@ -51,7 +51,9 @@ const TextToSpeechHeader = () => {
         <div>Lower diff will make it more focused and deterministic</div>
       </Tooltip>
       <Tooltip anchorSelect="#stt_granularity" className="z-40">
-        The timestamp granularities to populate for this transcription. Try it.
+        <div>The timestamp granularities to populate</div>
+        <div>for this transcription. Try it.</div>
+
       </Tooltip>
     </div>
   );

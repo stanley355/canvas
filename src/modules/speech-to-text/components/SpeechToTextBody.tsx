@@ -7,11 +7,13 @@ const SpeechToTextBody = () => {
     useContext(SpeechToTextContext);
   const { language } = speechToTextStates;
   return (
-    <div>
-      <SpeechToTextLanguageSelect
-        language={language}
-        speechToTextDispatch={speechToTextDispatch}
-      />
+    <div className="lg:grid lg:grid-cols-2 lg:gap-8">
+      <div >
+        <SpeechToTextLanguageSelect
+          language={language}
+          speechToTextDispatch={speechToTextDispatch}
+        />
+      </div>
     </div>
   );
 };

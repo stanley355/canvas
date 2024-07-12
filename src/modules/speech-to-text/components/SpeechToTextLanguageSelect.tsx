@@ -1,5 +1,6 @@
 import { ChangeEvent, memo, useState } from "react";
 import { TbChevronDown, TbChevronUp, TbSearch } from "react-icons/tb";
+import { Tooltip } from "react-tooltip";
 
 import NextButton from "@/common/components/NextButton";
 import NextInput from "@/common/components/NextInput";
@@ -36,13 +37,19 @@ const SpeechToTextLanguageSelect = (props: SpeechToTextLanguageSelectProps) => {
   return (
     <div className="relative px-2 lg:px-0">
       <NextButton
+        id="language_select"
         variant="outline"
-        className="w-full justify-between"
+        className="w-full justify-between mb-2"
         onClick={() => setOpenDropdown(!openDropdown)}
       >
         <span>{language.label ? language.label : "Select language"}</span>
         {openDropdown ? <TbChevronUp /> : <TbChevronDown />}
       </NextButton>
+
+      <Tooltip anchorSelect="#language_select" className="z-40">
+        <div>*Required: The language of the input audio</div>
+        <div>Supplying the input language will improve accuracy</div>
+      </Tooltip>
 
       <div
         className={cn(
