@@ -6,7 +6,7 @@ export enum SpeechToTextTimestampGranularities {
   Segment = "Segment",
 }
 
-interface Word {
+export interface ITranscriptionWord {
   word: string;
   start: number;
   end: number;
@@ -30,7 +30,7 @@ export interface ITranscription {
   language: string;
   duration: number;
   text: string;
-  words: Word[];
+  words: ITranscriptionWord[];
   segments: Segment[];
 }
 
