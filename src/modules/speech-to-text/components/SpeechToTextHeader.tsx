@@ -24,6 +24,7 @@ const TextToSpeechHeader = () => {
           id="stt_diff"
           placeholder="Diff: None"
           selectClassname="border-base"
+          optionContainerClassname="z-40"
           options={SPEECH_TO_TEXT_DIFF_OPTIONS}
           onChange={(option) => {
             sendFirebaseEvent(
@@ -36,6 +37,7 @@ const TextToSpeechHeader = () => {
           id="stt_granularity"
           placeholder="Granularity: None"
           selectClassname="border-base"
+          optionContainerClassname="z-40"
           options={SPEECH_TO_TEXT_GRANULARITY_OPTIONS}
           onChange={(option) => {
             sendFirebaseEvent(

@@ -53,7 +53,7 @@ const SpeechToTextLanguageSelect = (props: SpeechToTextLanguageSelectProps) => {
 
       <div
         className={cn(
-          "absolute top-12 left-[1%] border border-brand-primary rounded-lg w-[98%] lg:left-0 lg:w-full max-h-[50vh] overflow-y-scroll",
+          "absolute top-12 left-[1%] z-30 bg-white border border-brand-primary rounded-lg w-[98%] lg:left-0 lg:w-full max-h-[50vh] overflow-y-scroll",
           openDropdown ? "block" : "hidden"
         )}
       >

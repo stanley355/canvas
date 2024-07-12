@@ -36,7 +36,7 @@ const SpeechToTextAudioInput = () => {
             `${Math.floor(file.size / 1024)}KB`}` : '*Max file size 24 MB'}
         </div>
       </NextButton>
-      <NextButton className='absolute z-20 right-3 bottom-6 lg:right-1' type='submit'>
+      <NextButton className='absolute right-3 bottom-6 lg:right-1 ' type='submit'>
         <TbMicrophone />
         <div>Convert</div>
       </NextButton>
