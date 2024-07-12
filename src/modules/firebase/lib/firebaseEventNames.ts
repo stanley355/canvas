@@ -26,6 +26,8 @@ export const FIREBASE_EVENT_NAMES = {
     change_checkbot_temperature: "change_checkbot_temperature",
     change_tts_voice: "change_tts_voice",
     change_tts_speed: "change_tts_speed",
+    change_stt_diff: "change_stt_diff",
+    change_stt_granularity: "change_stt_granularity"
   },
   show: {
     modal_login: "show_modal_login",

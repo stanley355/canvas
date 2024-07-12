@@ -46,7 +46,7 @@ const SpeechToTextLanguageSelect = (props: SpeechToTextLanguageSelectProps) => {
 
       <div
         className={cn(
-          "absolute top-12 left-[1%] border border-brand-primary rounded-lg w-[98%] lg:w-full",
+          "absolute top-12 left-[1%] border border-brand-primary rounded-lg w-[98%] lg:left-0 lg:w-full",
           openDropdown ? "block" : "hidden"
         )}
       >
@@ -79,7 +79,7 @@ const SpeechToTextLanguageSelect = (props: SpeechToTextLanguageSelectProps) => {
                 speechToTextDispatch({ key: "language", value: language });
                 setOpenDropdown(false);
               }}
-              className="rounded-none w-full border border-b p-4 text-left"
+              className="rounded-none w-full border border-b p-4 text-left hover:bg-blue-100"
             >
               {language.label}
             </NextButton>
@@ -95,7 +95,7 @@ const SpeechToTextLanguageSelect = (props: SpeechToTextLanguageSelectProps) => {
                 speechToTextDispatch({ key: "language", value: language });
                 setOpenDropdown(false);
               }}
-              className="rounded-none w-full border border-b p-4 text-left"
+              className="rounded-none w-full border border-b p-4 text-left hover:bg-blue-100"
             >
               {language.label}
             </NextButton>
