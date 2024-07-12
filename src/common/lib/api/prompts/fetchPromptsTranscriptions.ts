@@ -1,6 +1,9 @@
 import axios from "axios";
 import { IAuthorError } from "../interfaces";
-import { ITranscription, SpeechToTextTimestampGranularities } from "@/modules/speech-to-text/lib/speechToTextStates";
+import {
+  ITranscription,
+  SpeechToTextTimestampGranularities,
+} from "@/modules/speech-to-text/lib/speechToTextStates";
 
 interface IRequest {
   user_id: string;

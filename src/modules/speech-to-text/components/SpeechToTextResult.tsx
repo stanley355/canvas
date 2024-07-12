@@ -1,14 +1,14 @@
-import NextTextarea from "@/common/components/NextTextarea"
-import NextButton from "@/common/components/NextButton"
-import { copyToClipboard } from "@/common/lib/copyToClipboard"
-import { TbCopy } from "react-icons/tb"
+import NextTextarea from "@/common/components/NextTextarea";
+import NextButton from "@/common/components/NextButton";
+import { copyToClipboard } from "@/common/lib/copyToClipboard";
+import { TbCopy } from "react-icons/tb";
 
 interface SpeechToTextResultProps {
-  text:string | undefined; 
+  text: string | undefined;
 }
 
 const SpeechToTextResult = (props: SpeechToTextResultProps) => {
-  const {text} = props;
+  const { text } = props;
   return (
     <div className="relative mb-4 px-2">
       <NextTextarea
@@ -21,11 +21,11 @@ const SpeechToTextResult = (props: SpeechToTextResultProps) => {
         className="absolute bottom-4 right-2 lg:right-3 p-2"
         onClick={() => copyToClipboard(text ? text : "")}
       >
-        <TbCopy/>
+        <TbCopy />
         <span>Copy</span>
       </NextButton>
     </div>
-  )
-}
+  );
+};
 
-export default SpeechToTextResult
+export default SpeechToTextResult;

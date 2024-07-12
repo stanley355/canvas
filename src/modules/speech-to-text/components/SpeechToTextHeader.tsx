@@ -27,9 +27,7 @@ const TextToSpeechHeader = () => {
           optionContainerClassname="z-40"
           options={SPEECH_TO_TEXT_DIFF_OPTIONS}
           onChange={(option) => {
-            sendFirebaseEvent(
-              FIREBASE_EVENT_NAMES.change.change_stt_diff
-            );
+            sendFirebaseEvent(FIREBASE_EVENT_NAMES.change.change_stt_diff);
             speechToTextDispatch({ key: "temperature", value: option.value });
           }}
         />
@@ -43,7 +41,10 @@ const TextToSpeechHeader = () => {
             sendFirebaseEvent(
               FIREBASE_EVENT_NAMES.change.change_stt_granularity
             );
-            speechToTextDispatch({ key: "timestamp_granularities", value: option.value });
+            speechToTextDispatch({
+              key: "timestamp_granularities",
+              value: option.value,
+            });
           }}
         />
       </div>
@@ -55,7 +56,6 @@ const TextToSpeechHeader = () => {
       <Tooltip anchorSelect="#stt_granularity" className="z-40">
         <div>The timestamp granularities to populate</div>
         <div>for this transcription. Try it.</div>
-
       </Tooltip>
     </div>
   );

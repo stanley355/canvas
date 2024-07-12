@@ -18,7 +18,7 @@ export const FIREBASE_EVENT_NAMES = {
     student_home_hero_cta: "click_student_home_hero_cta",
     home_tellmewhy: "click_home_tellmewhy",
     home_getstarted: "click_home_getstarted",
-    stt_csv_export: "click_sst_csv_export"
+    stt_csv_export: "click_sst_csv_export",
   },
   change: {
     change_translate_n: "change_translate_n",
@@ -29,7 +29,7 @@ export const FIREBASE_EVENT_NAMES = {
     change_tts_speed: "change_tts_speed",
     change_stt_diff: "change_stt_diff",
     change_stt_granularity: "change_stt_granularity",
-    change_stt_language: "change_stt_language"
+    change_stt_language: "change_stt_language",
   },
   show: {
     modal_login: "show_modal_login",

@@ -86,7 +86,9 @@ const SpeechToTextLanguageSelect = (props: SpeechToTextLanguageSelectProps) => {
               key={`common_${language.value}`}
               variant="none"
               onClick={() => {
-                sendFirebaseEvent(FIREBASE_EVENT_NAMES.change.change_stt_language);
+                sendFirebaseEvent(
+                  FIREBASE_EVENT_NAMES.change.change_stt_language
+                );
                 speechToTextDispatch({ key: "language", value: language });
                 setOpenDropdown(false);
               }}
@@ -104,7 +106,9 @@ const SpeechToTextLanguageSelect = (props: SpeechToTextLanguageSelectProps) => {
               key={`all_${language.value}`}
               variant="none"
               onClick={() => {
-                sendFirebaseEvent(FIREBASE_EVENT_NAMES.change.change_stt_language);
+                sendFirebaseEvent(
+                  FIREBASE_EVENT_NAMES.change.change_stt_language
+                );
                 speechToTextDispatch({ key: "language", value: language });
                 setOpenDropdown(false);
               }}

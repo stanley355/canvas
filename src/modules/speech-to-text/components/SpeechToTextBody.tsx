@@ -26,8 +26,16 @@ const SpeechToTextBody = () => {
         </div>
         <SpeechToTextResult text={transcription?.text} />
       </div>
-      {transcription?.words && transcription?.words?.length > 0 && <SpeechToTextTranscriptionWordsTable transcriptionWords={transcription?.words} /> }
-      {transcription?.segments&& transcription?.segments?.length > 0 && <SpeechToTextTranscriptionSegmentTable transcriptionSegment={transcription.segments} />}
+      {transcription?.words && transcription?.words?.length > 0 && (
+        <SpeechToTextTranscriptionWordsTable
+          transcriptionWords={transcription?.words}
+        />
+      )}
+      {transcription?.segments && transcription?.segments?.length > 0 && (
+        <SpeechToTextTranscriptionSegmentTable
+          transcriptionSegment={transcription.segments}
+        />
+      )}
     </div>
   );
 };

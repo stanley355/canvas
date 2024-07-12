@@ -64,7 +64,7 @@ const HomeFeatures = () => {
 
         <div className="lg:grid grid-cols-2 gap-8 place-items-center mb-16">
           <NextButton
-            onClick={() => router.push('/checkbot')}
+            onClick={() => router.push("/checkbot")}
             variant="none"
             className="h-[40vh] relative mb-8"
           >
@@ -102,7 +102,7 @@ const HomeFeatures = () => {
 
         <div className="lg:grid grid-cols-2 gap-8 place-items-center mb-16">
           <NextButton
-            onClick={() => router.push('/text-to-speech/')}
+            onClick={() => router.push("/text-to-speech/")}
             variant="none"
             className="h-[40vh] relative mb-8 lg:grid grid-cols-2 gap-8 w-full"
           >
@@ -140,7 +140,7 @@ const HomeFeatures = () => {
 
         <section className="lg:grid grid-cols-2 gap-8 place-items-center">
           <NextButton
-            onClick={() => router.push('/speech-to-text/')}
+            onClick={() => router.push("/speech-to-text/")}
             variant="none"
             className="h-[40vh] relative mb-8 w-full lg:grid grid-cols-2 gap-8 "
           >
@@ -169,10 +169,11 @@ const HomeFeatures = () => {
               AI Speech to Text
             </NextLink>
             <div>
-              Convert voice to text in over 50 languages and variants using languageai. Get your detailed analysis of converted transcription! </div>
+              Convert voice to text in over 50 languages and variants using
+              languageai. Get your detailed analysis of converted transcription!{" "}
+            </div>
           </div>
         </section>
-
       </div>
     </div>
   );
