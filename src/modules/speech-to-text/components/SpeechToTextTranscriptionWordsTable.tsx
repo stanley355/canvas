@@ -43,7 +43,7 @@ const SpeechToTextTranscriptionWordsTable = (
         </thead>
         <tbody>
           {transcriptionWords.map((transcript, index) => (
-            <tr className="[&>*]:border [&>*]:border-brand-primary [&>*]:p-2">
+            <tr className="[&>*]:border [&>*]:border-brand-primary [&>*]:p-2" key={transcript.start}>
               <td>{index + 1}</td>
               <td>{transcript.word}</td>
               <td>{transcript.start}</td>
