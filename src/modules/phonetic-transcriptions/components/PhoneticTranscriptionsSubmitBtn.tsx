@@ -16,7 +16,7 @@ import { FIREBASE_EVENT_NAMES } from '@/modules/firebase/lib/firebaseEventNames'
 const PhoneticTranscriptionsSubmitBtn = () => {
   const { appDispatch } = useContext(AppContext);
   const { phoneticTranscriptionsStates, phoneticTranscriptionsDispatch } = useContext(PhoneticTranscriptionsContext);
-  const { language, userText } =phoneticTranscriptionsStates;
+  const { language, userText } = phoneticTranscriptionsStates;
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -49,7 +49,7 @@ const PhoneticTranscriptionsSubmitBtn = () => {
 
     const prompts = await fetchPrompts(req);
     console.log(prompts);
-    
+
     setIsLoading(false);
 
     if (prompts?.status === 402) {
@@ -82,7 +82,9 @@ const PhoneticTranscriptionsSubmitBtn = () => {
       ) : (
         <CgTranscript />
       )}
-      <span>Convert</span>
+      <span>
+        {isLoading ? "This may take a while" : "Convert"}
+      </span>
     </NextButton>
   )
 }
