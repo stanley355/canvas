@@ -3,6 +3,7 @@ import { CgTranscript } from "react-icons/cg";
 import NextHead, { NextHeadProps } from "@/common/components/NextHead";
 import { getPhoneticTranscriptionsStaticProps } from "@/modules/phonetic-transcriptions/lib/getPhoneticTranscriptionsStaticProps"
 import PhoneticTranscriptionsProvider from "@/modules/phonetic-transcriptions/components/PhoneticTranscriptionsProvider";
+import PhoneticTranscriptionsMain from "@/modules/phonetic-transcriptions/components/PhoneticTranscriptionsMain";
 
 export const getStaticProps: GetStaticProps = getPhoneticTranscriptionsStaticProps;
 
@@ -19,7 +20,7 @@ const PhoneticTranscriptions = ({ datoCmsData }: PhoneticTranscriptionsProps) =>
         Phonetic Transcriptor
       </div>
       <PhoneticTranscriptionsProvider>
-        woi
+        <PhoneticTranscriptionsMain />
       </PhoneticTranscriptionsProvider>
     </div>
   )
