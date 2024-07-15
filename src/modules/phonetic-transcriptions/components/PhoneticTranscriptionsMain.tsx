@@ -7,7 +7,7 @@ const PhoneticTranscriptionsMain = () => {
   const {phoneticTranscriptionsDispatch, phoneticTranscriptionsStates} = useContext(PhoneticTranscriptionsContext);
   const {language, userText} = phoneticTranscriptionsStates;
   return (
-    <div>
+    <div className='lg:grid lg:grid-cols-2 lg:gap-4'>
       <div>
         <PhoneticTranscriptionsLanguageSelect language={language} phoneticTranscriptionsDispatch={phoneticTranscriptionsDispatch} />
         <PhoneticTranscriptionsUserTextarea userText={userText} phoneticTranscriptionsDispatch={phoneticTranscriptionsDispatch} />
