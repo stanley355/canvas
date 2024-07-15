@@ -37,7 +37,7 @@ const SpeechToTextLanguageSelect = (props: PhoneticTranscriptionsLanguageSelectP
       <NextButton
         id="language_select"
         variant="outline"
-        className="w-full justify-between mb-2"
+        className="w-full justify-between border-none"
         onClick={() => setOpenDropdown(!openDropdown)}
       >
         <span>{language ? language : "Select language"}</span>
