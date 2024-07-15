@@ -4,6 +4,7 @@ import { TbX } from "react-icons/tb";
 import NextButton from "@/common/components/NextButton";
 import NextTextarea from "@/common/components/NextTextarea";
 import { IPhoneticTranscriptionsReducerAction } from "../lib/PhoneticTranscriptionsReducer";
+import PhoneticTranscriptionsSubmitBtn from "./PhoneticTranscriptionsSubmitBtn";
 
 interface PhoneticTranscriptionsUserTextareaProps {
   userText: string;
@@ -11,7 +12,7 @@ interface PhoneticTranscriptionsUserTextareaProps {
 }
 
 
-const PhoneticTranscriptionsUserTextarea = ({userText, phoneticTranscriptionsDispatch}: PhoneticTranscriptionsUserTextareaProps) => {
+const PhoneticTranscriptionsUserTextarea = ({ userText, phoneticTranscriptionsDispatch }: PhoneticTranscriptionsUserTextareaProps) => {
 
   return (
     <div className="relative mb-4">
@@ -31,7 +32,7 @@ const PhoneticTranscriptionsUserTextarea = ({userText, phoneticTranscriptionsDis
         }
       />
 
-      {/* <TextToSpeechSubmitBtn /> */}
+      <PhoneticTranscriptionsSubmitBtn />
     </div>
   );
 };
