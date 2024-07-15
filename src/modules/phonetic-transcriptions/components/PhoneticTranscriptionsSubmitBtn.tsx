@@ -52,8 +52,6 @@ const PhoneticTranscriptionsSubmitBtn = () => {
     };
 
     const prompts = await fetchPrompts(req);
-    console.log(prompts);
-
     setIsLoading(false);
 
     if (prompts?.status === 402) {

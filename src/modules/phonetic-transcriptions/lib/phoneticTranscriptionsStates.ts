@@ -1,4 +1,3 @@
-import { IOption } from "@/common/components/interfaces";
 
 export interface IPhoneticTranscriptionsStates {
   language: string;
