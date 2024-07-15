@@ -8,18 +8,23 @@ import PhoneticTranscriptionsSubmitBtn from "./PhoneticTranscriptionsSubmitBtn";
 
 interface PhoneticTranscriptionsUserTextareaProps {
   userText: string;
-  phoneticTranscriptionsDispatch: (action: IPhoneticTranscriptionsReducerAction) => void;
+  phoneticTranscriptionsDispatch: (
+    action: IPhoneticTranscriptionsReducerAction
+  ) => void;
 }
 
-
-const PhoneticTranscriptionsUserTextarea = ({ userText, phoneticTranscriptionsDispatch }: PhoneticTranscriptionsUserTextareaProps) => {
-
+const PhoneticTranscriptionsUserTextarea = ({
+  userText,
+  phoneticTranscriptionsDispatch,
+}: PhoneticTranscriptionsUserTextareaProps) => {
   return (
     <div className="relative mb-4">
       <NextButton
         variant="none"
         className="absolute top-0 right-0 p-2 border border-l-transparent border-b-transparent rounded-lg  hover:border hover:bg-blue-100"
-        onClick={() => phoneticTranscriptionsDispatch({ key: "userText", value: "" })}
+        onClick={() =>
+          phoneticTranscriptionsDispatch({ key: "userText", value: "" })
+        }
       >
         <TbX className="font-bold text-3xl" />
       </NextButton>
@@ -28,7 +33,10 @@ const PhoneticTranscriptionsUserTextarea = ({ userText, phoneticTranscriptionsDi
         value={userText}
         className="border-base resize-none h-60 pr-12 focus:border-base hover:border-base"
         onChange={(e) =>
-          phoneticTranscriptionsDispatch({ key: "userText", value: e.target.value })
+          phoneticTranscriptionsDispatch({
+            key: "userText",
+            value: e.target.value,
+          })
         }
       />
 

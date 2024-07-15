@@ -7,11 +7,11 @@ interface PhoneticTranscriptionsProviderProps {
   children: React.ReactNode;
 }
 
-const PhoneticTranscriptionsProvider = ({ children }: PhoneticTranscriptionsProviderProps) => {
-  const [phoneticTranscriptionsStates, phoneticTranscriptionsDispatch] = useReducer(
-    phoneticTranscriptionsReducer,
-    PHONETIC_TRANSCRIPTIONS_STATES
-  );
+const PhoneticTranscriptionsProvider = ({
+  children,
+}: PhoneticTranscriptionsProviderProps) => {
+  const [phoneticTranscriptionsStates, phoneticTranscriptionsDispatch] =
+    useReducer(phoneticTranscriptionsReducer, PHONETIC_TRANSCRIPTIONS_STATES);
 
   return (
     <PhoneticTranscriptionsContext.Provider

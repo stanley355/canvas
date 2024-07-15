@@ -7,7 +7,7 @@ export enum PromptsType {
   ImageToText = "ImageToText",
   TextToSpeech = "TextToSpeech",
   Checkbot = "Checkbot",
-  PhoneticTranscriptions = 'PhoneticTranscriptions'
+  PhoneticTranscriptions = "PhoneticTranscriptions",
 }
 
 interface IRequest {

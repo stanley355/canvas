@@ -1,6 +1,7 @@
 # CANVAS
 
 ### < 1.5.0
+
 - Fix plan explanation and broken ui (1.5.0)
 - Add Speech to Text (1.4.9)
 - Fix homepage image can't be clicked (1.4.8)
@@ -21,6 +22,7 @@
 - Update Plans Premium page (1.4.0)
 
 ### < 1.4.0
+
 - Update Student Homepage (1.3.9)
 - Move `/plans/premium/students` to `/plans/students/` (1.3.8)
 - Remove payasyougo topup (1.3.7)

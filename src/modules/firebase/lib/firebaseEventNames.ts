@@ -4,7 +4,7 @@ export const FIREBASE_EVENT_NAMES = {
   checkbot: "checkbot",
   text_to_speech: "text_to_speech",
   speech_to_text: "speech_to_text",
-  phonetic_transcriptions: 'phonetic_transcription',
+  phonetic_transcriptions: "phonetic_transcription",
   login: {
     login: "login",
     loginGoogle: "login_google",
@@ -31,7 +31,8 @@ export const FIREBASE_EVENT_NAMES = {
     change_stt_diff: "change_stt_diff",
     change_stt_granularity: "change_stt_granularity",
     change_stt_language: "change_stt_language",
-    change_phonetic_transcription_language: "change_phonetic_transcription_language"
+    change_phonetic_transcription_language:
+      "change_phonetic_transcription_language",
   },
   show: {
     modal_login: "show_modal_login",

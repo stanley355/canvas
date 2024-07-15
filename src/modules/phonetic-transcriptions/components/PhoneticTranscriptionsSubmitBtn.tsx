@@ -1,21 +1,25 @@
-import { useContext, useState } from 'react';
-import { CgTranscript } from 'react-icons/cg'
-import { TbProgress } from 'react-icons/tb';
-import { toast } from 'react-toastify';
-import Cookies from 'js-cookie';
-import { decode, JwtPayload } from 'jsonwebtoken';
+import { useContext, useState } from "react";
+import { CgTranscript } from "react-icons/cg";
+import { TbProgress } from "react-icons/tb";
+import { toast } from "react-toastify";
+import Cookies from "js-cookie";
+import { decode, JwtPayload } from "jsonwebtoken";
 
-import NextButton from '@/common/components/NextButton'
-import { AppContext } from '@/modules/app/components/AppContext';
-import { PhoneticTranscriptionsContext } from './PhoneticTranscriptionsContext';
+import NextButton from "@/common/components/NextButton";
+import { AppContext } from "@/modules/app/components/AppContext";
+import { PhoneticTranscriptionsContext } from "./PhoneticTranscriptionsContext";
 
-import { fetchPrompts, PromptsType } from '@/common/lib/api/prompts/fetchPrompts';
-import { sendFirebaseEvent } from '@/modules/firebase/lib/sendFirebaseEvent';
-import { FIREBASE_EVENT_NAMES } from '@/modules/firebase/lib/firebaseEventNames';
+import {
+  fetchPrompts,
+  PromptsType,
+} from "@/common/lib/api/prompts/fetchPrompts";
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
+import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 
 const PhoneticTranscriptionsSubmitBtn = () => {
   const { appDispatch } = useContext(AppContext);
-  const { phoneticTranscriptionsStates, phoneticTranscriptionsDispatch } = useContext(PhoneticTranscriptionsContext);
+  const { phoneticTranscriptionsStates, phoneticTranscriptionsDispatch } =
+    useContext(PhoneticTranscriptionsContext);
   const { language, userText } = phoneticTranscriptionsStates;
 
   const [isLoading, setIsLoading] = useState(false);
@@ -82,11 +86,9 @@ const PhoneticTranscriptionsSubmitBtn = () => {
       ) : (
         <CgTranscript />
       )}
-      <span>
-        {isLoading ? "This may take a while" : "Convert"}
-      </span>
+      <span>{isLoading ? "This may take a while" : "Convert"}</span>
     </NextButton>
-  )
-}
+  );
+};
 
 export default PhoneticTranscriptionsSubmitBtn;

@@ -87,7 +87,7 @@ const TranslateSubmitBtn = () => {
       ) : (
         <TbLanguage />
       )}
-      <span>Translate</span>
+      <span>{isLoading ? "This may take a while" : "Translate"}</span>
     </NextButton>
   );
 };

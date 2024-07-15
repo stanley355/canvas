@@ -6,27 +6,30 @@ import NextButton from "@/common/components/NextButton";
 import NextInput from "@/common/components/NextInput";
 import { cn } from "@/common/lib/cn";
 import { IPhoneticTranscriptionsReducerAction } from "../lib/PhoneticTranscriptionsReducer";
-import { TRANSLATE_COMMON_LANGUAGE_LIST, TRANSLATE_LANGUAGE_LIST } from "@/modules/translate/lib/translateLanguageList";
+import {
+  TRANSLATE_COMMON_LANGUAGE_LIST,
+  TRANSLATE_LANGUAGE_LIST,
+} from "@/modules/translate/lib/translateLanguageList";
 import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 
 interface PhoneticTranscriptionsLanguageSelectProps {
   language: string;
-  phoneticTranscriptionsDispatch: (action: IPhoneticTranscriptionsReducerAction) => void;
+  phoneticTranscriptionsDispatch: (
+    action: IPhoneticTranscriptionsReducerAction
+  ) => void;
 }
 
-const SpeechToTextLanguageSelect = (props: PhoneticTranscriptionsLanguageSelectProps) => {
-  const { language, phoneticTranscriptionsDispatch} = props;
-  const [languageList, setLanguageList] = useState(
-   TRANSLATE_LANGUAGE_LIST 
-  );
+const SpeechToTextLanguageSelect = (
+  props: PhoneticTranscriptionsLanguageSelectProps
+) => {
+  const { language, phoneticTranscriptionsDispatch } = props;
+  const [languageList, setLanguageList] = useState(TRANSLATE_LANGUAGE_LIST);
   const [openDropdown, setOpenDropdown] = useState(false);
 
   const onSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const newList = TRANSLATE_LANGUAGE_LIST.filter((language) =>
-      String(language)
-        .toLowerCase()
-        .includes(e.target.value.toLowerCase())
+      String(language).toLowerCase().includes(e.target.value.toLowerCase())
     );
     setLanguageList(newList);
     return;
@@ -83,9 +86,13 @@ const SpeechToTextLanguageSelect = (props: PhoneticTranscriptionsLanguageSelectP
               variant="none"
               onClick={() => {
                 sendFirebaseEvent(
-                  FIREBASE_EVENT_NAMES.change.change_phonetic_transcription_language
+                  FIREBASE_EVENT_NAMES.change
+                    .change_phonetic_transcription_language
                 );
-                phoneticTranscriptionsDispatch({ key: "language", value: language });
+                phoneticTranscriptionsDispatch({
+                  key: "language",
+                  value: language,
+                });
                 setOpenDropdown(false);
               }}
               className="rounded-none w-full border border-b p-4 text-left hover:bg-blue-100"
@@ -103,9 +110,13 @@ const SpeechToTextLanguageSelect = (props: PhoneticTranscriptionsLanguageSelectP
               variant="none"
               onClick={() => {
                 sendFirebaseEvent(
-                  FIREBASE_EVENT_NAMES.change.change_phonetic_transcription_language
+                  FIREBASE_EVENT_NAMES.change
+                    .change_phonetic_transcription_language
                 );
-                phoneticTranscriptionsDispatch({ key: "language", value: language });
+                phoneticTranscriptionsDispatch({
+                  key: "language",
+                  value: language,
+                });
                 setOpenDropdown(false);
               }}
               className="rounded-none w-full border border-b p-4 text-left hover:bg-blue-100"

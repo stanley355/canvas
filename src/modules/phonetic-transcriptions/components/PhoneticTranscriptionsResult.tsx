@@ -4,10 +4,12 @@ import { copyToClipboard } from "@/common/lib/copyToClipboard";
 import { TbCopy } from "react-icons/tb";
 
 interface PhoneticTranscriptionsResultProps {
-  resultText: string
+  resultText: string;
 }
 
-const PhoneticTranscriptionsResult = ({ resultText }: PhoneticTranscriptionsResultProps) => {
+const PhoneticTranscriptionsResult = ({
+  resultText,
+}: PhoneticTranscriptionsResultProps) => {
   return (
     <div className="relative mb-4">
       <NextTextarea
