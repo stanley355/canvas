@@ -28,7 +28,7 @@ const HomeHero = () => {
         alt="Languageai why?"
         width={400}
         height={400}
-        className="w-full h-auto rounded-lg"
+        className="w-full h-auto max-h-60 lg:max-h-none rounded-lg"
       />
     </div>
   );

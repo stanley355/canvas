@@ -2,8 +2,11 @@ import NextLink from "@/common/components/NextLink";
 import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const HomeFinal = () => {
+  const router = useRouter();
+
   return (
     <div className="bg-brand-primary text-white py-8 px-4 lg:px-0">
       <h3 className="text-3xl font-bold mb-4 text-center">
@@ -18,21 +21,24 @@ const HomeFinal = () => {
           width={100}
           height={100}
           alt="Binus - Universitas Bina Nusantara"
-          className="bg-white rounded-lg p-1"
+          className="bg-white rounded-lg p-1 cursor-pointer"
+          onClick={()=> router.push("/students/")}
         />
         <Image
           src="/images/schools/UGM.png"
           width={100}
           height={100}
-          alt="UGM - Universitas Gajah Mada Jogjakarta"
+          alt="UGM - Universitas Gajah Mada Jogjakarta cursor-pointer"
           className="bg-white rounded-lg p-1"
+          onClick={()=> router.push("/students/")}
         />
         <Image
           src="/images/schools/atma_jaya.png"
           width={100}
           height={100}
           alt="Universitas Katolik Atma Jaya Jakarta"
-          className="h-full bg-white rounded-lg p-1"
+          className="h-full bg-white rounded-lg p-1 cursor-pointer"
+          onClick={()=> router.push("/students/")}
         />
       </div>
 
