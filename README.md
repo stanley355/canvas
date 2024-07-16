@@ -1,6 +1,7 @@
 # CANVAS
 
 ### 1.5.0
+
 - Fix plan explanation and broken ui
 
 ### 1.4.9

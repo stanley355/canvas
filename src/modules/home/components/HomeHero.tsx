@@ -31,7 +31,7 @@ const HomeHero = () => {
         width={400}
         height={400}
         className="w-full h-auto max-h-60 lg:max-h-none rounded-lg cursor-pointer"
-        onClick={()=> router.push("/students/")}
+        onClick={() => router.push("/students/")}
       />
     </div>
   );

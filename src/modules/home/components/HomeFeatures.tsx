@@ -5,7 +5,6 @@ import { TbLanguage, TbMicrophone, TbSpeakerphone } from "react-icons/tb";
 import NextLink from "@/common/components/NextLink";
 
 const HomeFeatures = () => {
-
   return (
     <div
       className="bg-brand-primary text-white pb-8 pt-16 lg:pt-8 px-4 lg:px-0"
@@ -18,7 +17,7 @@ const HomeFeatures = () => {
         <h3 className="text-xl text-center mb-16">
           Applicable for &gt; 50 languages
         </h3>
-      
+
         <NextLink
           href="/translate"
           variant="none"
@@ -52,7 +51,11 @@ const HomeFeatures = () => {
           </div>
         </NextLink>
 
-        <NextLink href="/checkbot" variant="none" className="lg:grid grid-cols-2 gap-8 place-items-center mt-16">
+        <NextLink
+          href="/checkbot"
+          variant="none"
+          className="lg:grid grid-cols-2 gap-8 place-items-center mt-16"
+        >
           <div className="h-[40vh] relative mb-8">
             <Image
               src="/images/home/checkbot1.png"
@@ -82,7 +85,11 @@ const HomeFeatures = () => {
           </div>
         </NextLink>
 
-        <NextLink href="/text-to-speech" variant="none" className="lg:grid grid-cols-2 gap-8 place-items-center mt-16">
+        <NextLink
+          href="/text-to-speech"
+          variant="none"
+          className="lg:grid grid-cols-2 gap-8 place-items-center mt-16"
+        >
           <div className="h-[40vh] relative mb-8 lg:grid grid-cols-2 gap-8 w-full">
             <Image
               src="/images/home/tts1.png"
@@ -112,7 +119,11 @@ const HomeFeatures = () => {
           </div>
         </NextLink>
 
-        <NextLink href="/speech-to-text/" className="lg:grid grid-cols-2 gap-8 place-items-center mt-16" variant="none">
+        <NextLink
+          href="/speech-to-text/"
+          className="lg:grid grid-cols-2 gap-8 place-items-center mt-16"
+          variant="none"
+        >
           <div className="h-[40vh] relative mb-8 w-full lg:grid grid-cols-2 gap-8 ">
             <Image
               src="/images/home/stt1.png"

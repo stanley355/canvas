@@ -44,7 +44,7 @@ const StudentsHero = () => {
           width={400}
           height={400}
           className="my-4 rounded-lg w-full cursor-pointer"
-          onClick={()=> router.push("/students/application/")}
+          onClick={() => router.push("/students/application/")}
         />
       </div>
     </div>
