@@ -2,8 +2,10 @@ import Image from "next/image";
 import NextLink from "@/common/components/NextLink";
 import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
+import { useRouter } from "next/router";
 
 const HomeHero = () => {
+  const router = useRouter();
   return (
     <div className="p-4 lg:grid grid-cols-2 place-items-center container mx-auto lg:px-0 h-[87.5vh] lg:h-[90vh] ">
       <div className="mb-8">
@@ -28,7 +30,8 @@ const HomeHero = () => {
         alt="Languageai why?"
         width={400}
         height={400}
-        className="w-full h-auto max-h-60 lg:max-h-none rounded-lg"
+        className="w-full h-auto max-h-60 lg:max-h-none rounded-lg cursor-pointer"
+        onClick={()=> router.push("/students/")}
       />
     </div>
   );
