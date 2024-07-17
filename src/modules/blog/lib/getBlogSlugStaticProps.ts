@@ -1,10 +1,27 @@
-import { GetStaticProps } from "next";
+import { getDatoBlogSchema } from "@/common/lib/api/dato/datoQueries";
+import { fetchDatoCms } from "@/common/lib/api/dato/fetchDatoCms";
+import { IDatoBlogSchema } from "@/common/lib/api/dato/interfaces";
+import {
+  GetStaticProps,
+  GetStaticPropsContext,
+} from "next";
 
-export const getBlogSlugStaticProps: GetStaticProps = async ({params}) => {
-
-  console.log(params);
+export const getBlogSlugStaticProps: GetStaticProps = async ({
+  params,
+}: GetStaticPropsContext) => {
+  const slug = params?.slug;
   
-  return {
-    props: {}
+  const blogSchema = await fetchDatoCms(getDatoBlogSchema, { slug }) as IDatoBlogSchema;
+
+  if (!blogSchema.blog) {
+    return {
+      notFound: true
+    }
   }
-}
+
+  return {
+    props: {
+      blogSchema
+    },
+  };
+};

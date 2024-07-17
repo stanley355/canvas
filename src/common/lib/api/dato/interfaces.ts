@@ -13,3 +13,20 @@ export interface IDatoPagesSchema {
   keywords: string;
   seo: IDatoPagesSchemaSeo;
 }
+
+export interface IDatoBlogSchema {
+  blog: IDatoBlog
+}
+
+interface IDatoBlog extends IDatoPagesSchema {
+  content: string
+  heroImage: IDatoBlogHeroImage
+}
+
+interface IDatoBlogHeroImage {
+  title: any
+  url: string
+  width: number
+  height: number
+}
+
