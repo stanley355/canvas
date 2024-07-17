@@ -8,7 +8,7 @@ const HomeFinal = () => {
   const router = useRouter();
 
   return (
-    <div className="bg-brand-primary text-white py-8 px-4 lg:px-0">
+    <section className="bg-brand-primary text-white py-8 px-4 lg:px-0">
       <h3 className="text-3xl font-bold mb-4 text-center">
         Kenapa pakai yang ini ?{" "}
       </h3>
@@ -52,7 +52,7 @@ const HomeFinal = () => {
       >
         Let&apos;s Get Started
       </NextLink>
-    </div>
+    </section>
   );
 };
 

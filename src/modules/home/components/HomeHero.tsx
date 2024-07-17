@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 const HomeHero = () => {
   const router = useRouter();
   return (
-    <div className="p-4 lg:grid grid-cols-2 place-items-center container mx-auto lg:px-0 h-[87.5vh] lg:h-[90vh] ">
+    <section className="p-4 lg:grid grid-cols-2 place-items-center container mx-auto lg:px-0 lg:h-[90vh] ">
       <div className="mb-8">
         <div className="text-xl text-center mb-2 lg:text-left lg:text-lg">
           Translate, Grammar Check, Paraphrase in 50 LANGUAGES
@@ -30,10 +30,10 @@ const HomeHero = () => {
         alt="Languageai why?"
         width={400}
         height={400}
-        className="w-full h-auto max-h-60 lg:max-h-none rounded-lg cursor-pointer"
+        className="w-full h-auto lg:max-h-none rounded-lg cursor-pointer"
         onClick={() => router.push("/students/")}
       />
-    </div>
+    </section>
   );
 };
 
