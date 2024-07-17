@@ -1,5 +1,9 @@
 # CANVAS
 
+### 1.5.2
+
+- Fix some frontend checklist
+
 ### 1.5.1
 - Add phonetic transcriptor
 
