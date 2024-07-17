@@ -30,9 +30,8 @@ const HomeHero = () => {
         alt="Languageai why?"
         width={400}
         height={400}
-        loading="eager"
-        className="w-full h-auto lg:max-h-none rounded-lg cursor-pointer"
-        onClick={() => router.push("/students/")}
+        className="w-full h-auto rounded-lg cursor-pointer"
+        onClick={() => router.push("/#home_features")}
       />
     </section>
   );
