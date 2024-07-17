@@ -22,6 +22,7 @@ const HomeFinal = () => {
           height={100}
           alt="Binus - Universitas Bina Nusantara"
           className="bg-white rounded-lg p-1 cursor-pointer"
+          loading="lazy"
           onClick={() => router.push("/students/")}
         />
         <Image
@@ -30,6 +31,7 @@ const HomeFinal = () => {
           height={100}
           alt="UGM - Universitas Gajah Mada Jogjakarta cursor-pointer"
           className="bg-white rounded-lg p-1"
+          loading="lazy"
           onClick={() => router.push("/students/")}
         />
         <Image
@@ -38,6 +40,7 @@ const HomeFinal = () => {
           height={100}
           alt="Universitas Katolik Atma Jaya Jakarta"
           className="h-full bg-white rounded-lg p-1 cursor-pointer"
+          loading="lazy"
           onClick={() => router.push("/students/")}
         />
       </div>

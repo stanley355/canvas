@@ -43,6 +43,7 @@ const StudentsHero = () => {
           alt="Languageai for Students"
           width={400}
           height={400}
+          loading="eager"
           className="my-4 rounded-lg w-full cursor-pointer"
           onClick={() => router.push("/students/application/")}
         />
