@@ -3,7 +3,7 @@ import { TbX } from "react-icons/tb";
 
 import NextButton from "@/common/components/NextButton";
 import NextTextarea from "@/common/components/NextTextarea";
-import { IPhoneticTranscriptionsReducerAction } from "../lib/PhoneticTranscriptionsReducer";
+import { IPhoneticTranscriptionsReducerAction } from "../lib/phoneticTranscriptionsReducer";
 import PhoneticTranscriptionsSubmitBtn from "./PhoneticTranscriptionsSubmitBtn";
 
 interface PhoneticTranscriptionsUserTextareaProps {

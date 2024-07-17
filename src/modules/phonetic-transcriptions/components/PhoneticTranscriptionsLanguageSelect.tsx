@@ -5,7 +5,7 @@ import { Tooltip } from "react-tooltip";
 import NextButton from "@/common/components/NextButton";
 import NextInput from "@/common/components/NextInput";
 import { cn } from "@/common/lib/cn";
-import { IPhoneticTranscriptionsReducerAction } from "../lib/PhoneticTranscriptionsReducer";
+import { IPhoneticTranscriptionsReducerAction } from "../lib/phoneticTranscriptionsReducer";
 import {
   TRANSLATE_COMMON_LANGUAGE_LIST,
   TRANSLATE_LANGUAGE_LIST,
