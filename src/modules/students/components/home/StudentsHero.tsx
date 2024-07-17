@@ -8,7 +8,7 @@ const StudentsHero = () => {
   const router = useRouter();
 
   return (
-    <div className=" bg-brand-primary w-full p-4 text-white  lg:px-0">
+    <section className=" bg-brand-primary w-full p-4 text-white  lg:px-0">
       <div className="lg:grid lg:grid-cols-2 container lg:gap-24">
         <div className="lg:pt-24">
           <h1 className="text-lg my-8">Languageai for Students</h1>
@@ -47,7 +47,7 @@ const StudentsHero = () => {
           onClick={() => router.push("/students/application/")}
         />
       </div>
-    </div>
+    </section>
   );
 };
 

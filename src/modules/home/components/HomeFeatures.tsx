@@ -44,10 +44,10 @@ const HomeFeatures = () => {
               <TbLanguage />
               AI Translate
             </h3>
-            <span>
+            <p>
               Tired of word by word translation? Our AI Translate understands
               your text and translates contextually
-            </span>
+            </p>
           </div>
         </NextLink>
 
@@ -77,11 +77,11 @@ const HomeFeatures = () => {
               <FaRobot />
               AI Checkbot
             </h3>
-            <span>
+            <p>
               Fix your writing easily. Check grammar and spelling, analyse
               strength and weakness, provide suggestions, and paraphrase in one
               click.
-            </span>
+            </p>
           </div>
         </NextLink>
 
@@ -111,11 +111,11 @@ const HomeFeatures = () => {
               <TbSpeakerphone />
               AI Text to Speech
             </h3>
-            <span>
+            <p>
               A free text-to-speech tool and an online text reader that supports
               50+ languages. You can listen online, or download audio files in
               mp3 format
-            </span>
+            </p>
           </div>
         </NextLink>
 
