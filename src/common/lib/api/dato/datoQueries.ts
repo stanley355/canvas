@@ -38,6 +38,12 @@ query getBlog($slug: String!) {
   blog(filter: {slug: {eq: $slug}}) {
     ...blogSeoFragment
     content(markdown: true)
+    relatedArticles {
+      id
+      title
+      slug
+      _updatedAt
+    }
     heroImage {
       title
       url

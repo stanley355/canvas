@@ -6,8 +6,8 @@ import NextHead from '@/common/components/NextHead';
 import { getBlogSlugStaticPaths } from '@/modules/blog/lib/getBlogSlugStaticPath'
 import { getBlogSlugStaticProps } from '@/modules/blog/lib/getBlogSlugStaticProps';
 import { IDatoBlogSchema } from '@/common/lib/api/dato/interfaces';
-import Image from 'next/image';
 import BlogSlugMain from '@/modules/blog/components/slug/BlogSlugMain';
+import BlogSlugRelatedArticles from '@/modules/blog/components/slug/BlogSlugRelatedArticles';
 
 export const getStaticPaths: GetStaticPaths = getBlogSlugStaticPaths;
 export const getStaticProps: GetStaticProps = getBlogSlugStaticProps;
@@ -27,11 +27,11 @@ const BlogSlug = ({ blogSchema }: BlogSlugProps) => {
   }
 
   return (
-    <div className='mt-16 lg:mt-0'>
+    <div className='mt-16 lg:mt-4 text-sm pb-8'>
       <NextHead pagesSchema={blogSchema.blog} />
       <div className='lg:container lg:mx-auto lg:grid lg:grid-cols-[66%_33%] gap-[1%]'>
         <BlogSlugMain blogSchema={blogSchema} />
-        <div>woi</div>
+        <BlogSlugRelatedArticles blogSchema={blogSchema} />
       </div>
     </div>
   )

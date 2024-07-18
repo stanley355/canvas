@@ -1,5 +1,4 @@
 import { IDatoBlogSchema } from '@/common/lib/api/dato/interfaces'
-import React from 'react'
 
 interface BlogSlugMainProps {
   blogSchema: IDatoBlogSchema
@@ -7,7 +6,7 @@ interface BlogSlugMainProps {
 
 const BlogSlugMain = ({ blogSchema }: BlogSlugMainProps) => {
   return (
-    <div className='lg:shadow-inner lg:rounded-lg'>
+    <div className='lg:shadow-inner lg:rounded-lg lg:border lg:border-brand-primary h-fit mb-4'>
       <div className='p-4'>
         <div className='mb-2'>{new Date(blogSchema.blog._updatedAt).toLocaleDateString('id-ID')}</div>
         <h1 className='text-3xl font-bold'>{blogSchema.blog.seo.title}</h1>
