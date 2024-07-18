@@ -10,7 +10,6 @@ export const getBlogSlugStaticProps: GetStaticProps = async ({
   params,
 }: GetStaticPropsContext) => {
   const slug = params?.slug;
-  
   const blogSchema = await fetchDatoCms(getDatoBlogSchema, { slug }) as IDatoBlogSchema;
 
   if (!blogSchema.blog) {
@@ -23,5 +22,6 @@ export const getBlogSlugStaticProps: GetStaticProps = async ({
     props: {
       blogSchema
     },
+    revalidate: 60 * 60 * 24 // 1 day
   };
 };
