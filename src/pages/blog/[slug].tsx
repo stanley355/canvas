@@ -7,6 +7,7 @@ import { getBlogSlugStaticPaths } from '@/modules/blog/lib/getBlogSlugStaticPath
 import { getBlogSlugStaticProps } from '@/modules/blog/lib/getBlogSlugStaticProps';
 import { IDatoBlogSchema } from '@/common/lib/api/dato/interfaces';
 import Image from 'next/image';
+import BlogSlugMain from '@/modules/blog/components/slug/BlogSlugMain';
 
 export const getStaticPaths: GetStaticPaths = getBlogSlugStaticPaths;
 export const getStaticProps: GetStaticProps = getBlogSlugStaticProps;
@@ -28,21 +29,9 @@ const BlogSlug = ({ blogSchema }: BlogSlugProps) => {
   return (
     <div className='mt-16 lg:mt-0'>
       <NextHead pagesSchema={blogSchema.blog} />
-      <div className='lg:w-[400px] lg:mx-auto lg:shadow-lg lg:rounded-lg'>
-        <div className='p-4'>
-          <div className='mb-2'>{new Date(blogSchema.blog._updatedAt).toLocaleDateString('id-ID')}</div>
-          <h1 className='text-3xl font-bold'>{blogSchema.blog.seo.title}</h1>
-        </div>
-        <img
-          src={blogSchema.blog.heroImage.url}
-          alt={blogSchema.blog.heroImage.title}
-          width={blogSchema.blog.heroImage.width}
-          height={blogSchema.blog.heroImage.height}
-          className='w-full h-auto'
-          loading='eager'
-        />
-
-        <div className='p-4 [&_a]:underline [&_p]:mb-4' dangerouslySetInnerHTML={{ __html: blogSchema.blog.content }} />
+      <div className='lg:container lg:mx-auto lg:grid lg:grid-cols-[66%_33%] gap-[1%]'>
+        <BlogSlugMain blogSchema={blogSchema} />
+        <div>woi</div>
       </div>
     </div>
   )
