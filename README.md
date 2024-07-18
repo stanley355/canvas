@@ -5,6 +5,7 @@
 - Fix some frontend checklist
 
 ### 1.5.1
+
 - Add phonetic transcriptor
 
 ### < 1.5.0

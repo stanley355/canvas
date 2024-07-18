@@ -1,5 +1,8 @@
 import { createContext } from "react";
-import { IPhoneticTranscriptionsStates, PHONETIC_TRANSCRIPTIONS_STATES } from "../lib/phoneticTranscriptionsStates";
+import {
+  IPhoneticTranscriptionsStates,
+  PHONETIC_TRANSCRIPTIONS_STATES,
+} from "../lib/phoneticTranscriptionsStates";
 import { IPhoneticTranscriptionsReducerAction } from "../lib/phoneticTranscriptionsReducer";
 
 interface IPhoneticTranscriptionsContext {

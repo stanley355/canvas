@@ -19,37 +19,39 @@ export const getDatoPagesSchema = gql`
 `;
 
 const BLOG_SEO_FRAGMENT = gql`
-fragment blogSeoFragment on BlogRecord {
-  _updatedAt
-  slug
-  keywords
-  seo {
-    title
-    description
-    image {
-      alt
-      url
+  fragment blogSeoFragment on BlogRecord {
+    _updatedAt
+    slug
+    keywords
+    seo {
+      title
+      description
+      image {
+        alt
+        url
+      }
     }
   }
-}`;
+`;
 
 export const getDatoBlogSchema = gql`
-query getBlog($slug: String!) {
-  blog(filter: {slug: {eq: $slug}}) {
-    ...blogSeoFragment
-    content(markdown: true)
-    relatedArticles {
-      id
-      title
-      slug
-      _updatedAt
-    }
-    heroImage {
-      title
-      url
-      width
-      height
+  query getBlog($slug: String!) {
+    blog(filter: { slug: { eq: $slug } }) {
+      ...blogSeoFragment
+      content(markdown: true)
+      relatedArticles {
+        id
+        title
+        slug
+        _updatedAt
+      }
+      heroImage {
+        title
+        url
+        width
+        height
+      }
     }
   }
-}
-  ${BLOG_SEO_FRAGMENT}`;
+  ${BLOG_SEO_FRAGMENT}
+`;

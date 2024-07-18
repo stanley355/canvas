@@ -14,26 +14,24 @@ export interface IDatoPagesSchema {
   seo: IDatoPagesSchemaSeo;
 }
 
-
 interface IDatoBlogHeroImage {
-  title: any
-  url: string
-  width: number
-  height: number
+  title: any;
+  url: string;
+  width: number;
+  height: number;
 }
 
 interface IDatoBlog extends IDatoPagesSchema {
-  content: string
-  heroImage: IDatoBlogHeroImage
+  content: string;
+  heroImage: IDatoBlogHeroImage;
   relatedArticles: {
-    id: string
-    title: string
-    slug: string
-    _updatedAt: string
-  }[]
+    id: string;
+    title: string;
+    slug: string;
+    _updatedAt: string;
+  }[];
 }
 
 export interface IDatoBlogSchema {
-  blog: IDatoBlog
+  blog: IDatoBlog;
 }
-

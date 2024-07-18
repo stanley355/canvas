@@ -1,4 +1,3 @@
-
 export interface IPhoneticTranscriptionsStates {
   language: string;
   userText: string;
