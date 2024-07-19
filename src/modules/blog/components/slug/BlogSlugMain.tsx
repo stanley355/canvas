@@ -23,7 +23,7 @@ const BlogSlugMain = ({ blogSchema }: BlogSlugMainProps) => {
       />
 
       <div
-        className="p-4 [&_a]:underline [&_p]:mb-4 [&_ul]:mb-4 [&_ul]:list-disc [&_ul]:list-inside"
+        className="p-4 [&_a]:underline [&_p]:mb-4 [&_ul]:mb-4 [&_ul]:list-inside"
         dangerouslySetInnerHTML={{ __html: blogSchema.blog.content }}
       />
     </div>
