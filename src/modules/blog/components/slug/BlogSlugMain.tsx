@@ -18,7 +18,7 @@ const BlogSlugMain = ({ blogSchema }: BlogSlugMainProps) => {
         alt={blogSchema.blog.heroImage.title}
         width={blogSchema.blog.heroImage.width}
         height={blogSchema.blog.heroImage.height}
-        className="w-full h-auto lg:w-1/2 lg:h-1/2"
+        className="w-full h-auto lg:w-1/2 lg:h-1/2 lg:rounded-lg lg:mx-4"
         loading="eager"
       />
 
