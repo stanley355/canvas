@@ -10,6 +10,8 @@ export const getDatoPagesSchema = gql`
         title
         description
         image {
+          width
+          height
           alt
           url
         }
@@ -27,6 +29,8 @@ const BLOG_SEO_FRAGMENT = gql`
       title
       description
       image {
+        width
+        height
         alt
         url
       }
@@ -39,19 +43,25 @@ export const getDatoBlogSchema = gql`
     blog(filter: { slug: { eq: $slug } }) {
       ...blogSeoFragment
       content(markdown: true)
-      relatedArticles {
-        id
-        title
-        slug
-        _updatedAt
-      }
-      heroImage {
-        title
+    }
+  }
+  ${BLOG_SEO_FRAGMENT}
+`;
+
+export const getDatoBlogHomeSchema = gql`
+query getAllBlog {
+  allBlogs(orderBy: [_createdAt_DESC]) {
+    slug
+    seo {
+      title
+      description
+      image {
+        alt
         url
         width
         height
       }
     }
   }
-  ${BLOG_SEO_FRAGMENT}
-`;
+}
+`

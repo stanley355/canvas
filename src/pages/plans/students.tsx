@@ -32,6 +32,8 @@ const StudentsPlans = (props: StudentsPlansProps) => {
       image: {
         alt: "Languageai.id",
         url: "/images/languageai/logo.png",
+        width: 400,
+        height: 400
       },
     },
   };

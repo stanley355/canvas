@@ -1,12 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
-import { TbArrowLeft, TbProgress } from "react-icons/tb";
+import { TbArrowLeft, TbHome, TbProgress } from "react-icons/tb";
 
 import NextHead from "@/common/components/NextHead";
+import NextButton from "@/common/components/NextButton";
 import { getBlogSlugStaticPaths } from "@/modules/blog/lib/getBlogSlugStaticPath";
 import { getBlogSlugStaticProps } from "@/modules/blog/lib/getBlogSlugStaticProps";
 import { IDatoBlogSchema } from "@/common/lib/api/dato/interfaces";
-import NextButton from "@/common/components/NextButton";
 
 export const getStaticPaths: GetStaticPaths = getBlogSlugStaticPaths;
 export const getStaticProps: GetStaticProps = getBlogSlugStaticProps;
@@ -38,10 +38,10 @@ const BlogSlug = ({ blogSchema }: BlogSlugProps) => {
           <h1 className="text-lg font-bold">{blogSchema.blog.seo.title}</h1>
         </div>
         <img
-          src={blogSchema.blog.heroImage.url}
-          alt={blogSchema.blog.heroImage.title}
-          width={blogSchema.blog.heroImage.width}
-          height={blogSchema.blog.heroImage.height}
+          src={blogSchema.blog.seo.image.url}
+          alt={blogSchema.blog.seo.image.alt}
+          width={blogSchema.blog.seo.image.width}
+          height={blogSchema.blog.seo.image.height}
           className="w-full h-auto lg:w-1/2 lg:h-1/2 lg:rounded-lg lg:mx-4"
           loading="eager"
         />
@@ -51,10 +51,16 @@ const BlogSlug = ({ blogSchema }: BlogSlugProps) => {
           dangerouslySetInnerHTML={{ __html: blogSchema.blog.content }}
         />
 
-        <NextButton className="ml-4 rounded-3xl" variant="outline" onClick={()=> router.back()}>
-          <TbArrowLeft />
-          Back
-        </NextButton>
+        <div className="flex justify-between items-center">
+          <NextButton className="ml-4 rounded-3xl" variant="outline" onClick={() => router.back()}>
+            <TbArrowLeft />
+            Back
+          </NextButton>
+          <NextButton className="ml-4 rounded-3xl" variant="outline" onClick={() => router.push("/blog")}>
+            <TbHome />
+            Blog Home
+          </NextButton>
+        </div>
       </div>
     </div>
   );

@@ -1,9 +1,11 @@
-interface IDatoPagesSchemaSeo {
+export interface IDatoPagesSchemaSeo {
   title: string;
   description: string;
   image: {
     alt: string;
     url: string;
+    width: number;
+    height: number
   };
 }
 
@@ -14,22 +16,8 @@ export interface IDatoPagesSchema {
   seo: IDatoPagesSchemaSeo;
 }
 
-interface IDatoBlogHeroImage {
-  title: any;
-  url: string;
-  width: number;
-  height: number;
-}
-
 interface IDatoBlog extends IDatoPagesSchema {
   content: string;
-  heroImage: IDatoBlogHeroImage;
-  relatedArticles: {
-    id: string;
-    title: string;
-    slug: string;
-    _updatedAt: string;
-  }[];
 }
 
 export interface IDatoBlogSchema {
