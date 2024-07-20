@@ -1,24 +1,28 @@
-import { GetServerSideProps } from "next";
-import { getLoginPageServerSideProps } from "@/modules/login/lib/getLoginPageServerSideProps";
-
-import NextHead, { NextHeadProps } from "@/common/components/NextHead";
+import NextHead from "@/common/components/NextHead";
 import LoginCard from "@/modules/login/components/LoginCard";
+import { IDatoPagesSchema } from "@/common/lib/api/dato/interfaces";
 
-interface ILoginProps {
-  datoCmsData: NextHeadProps;
-}
+const Login = () => {
 
-export const getServerSideProps: GetServerSideProps =
-  getLoginPageServerSideProps;
-
-const Login = (props: ILoginProps) => {
-  const { datoCmsData } = props;
+  const pageSchema: IDatoPagesSchema = {
+    _updatedAt: "",
+    slug: "/login",
+    keywords: "languageai, language ai, translate, translation, grammar and spelling check, paraphrase text",
+    seo: {
+      title: `Languageai.id Login`,
+      description: "Login to Languageai.id to continue",
+      image: {
+        alt: "Languageai.id",
+        url: "/images/languageai/logo.png",
+        width: 400,
+        height: 400
+      },
+    },
+  };
 
   return (
     <div className="px-4 lg:px-0 lg:mt-16">
-      {datoCmsData?.pagesSchema && (
-        <NextHead pagesSchema={datoCmsData.pagesSchema} />
-      )}
+      <NextHead pagesSchema={pageSchema} />
       <LoginCard />
     </div>
   );
