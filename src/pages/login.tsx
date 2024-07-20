@@ -3,11 +3,11 @@ import LoginCard from "@/modules/login/components/LoginCard";
 import { IDatoPagesSchema } from "@/common/lib/api/dato/interfaces";
 
 const Login = () => {
-
   const pageSchema: IDatoPagesSchema = {
     _updatedAt: "",
     slug: "/login",
-    keywords: "languageai, language ai, translate, translation, grammar and spelling check, paraphrase text",
+    keywords:
+      "languageai, language ai, translate, translation, grammar and spelling check, paraphrase text",
     seo: {
       title: `Languageai.id Login`,
       description: "Login to Languageai.id to continue",
@@ -15,7 +15,7 @@ const Login = () => {
         alt: "Languageai.id",
         url: "/images/languageai/logo.png",
         width: 400,
-        height: 400
+        height: 400,
       },
     },
   };

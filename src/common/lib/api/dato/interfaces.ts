@@ -5,7 +5,7 @@ export interface IDatoPagesSchemaSeo {
     alt: string;
     url: string;
     width: number;
-    height: number
+    height: number;
   };
 }
 

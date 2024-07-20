@@ -4,11 +4,14 @@ import { fetchDatoCms } from "@/common/lib/api/dato/fetchDatoCms";
 import { IDatoPagesSchemaSeo } from "@/common/lib/api/dato/interfaces";
 
 export interface IDatoBlogHome {
-  allBlogs: {slug: string; seo: IDatoPagesSchemaSeo}[]
+  allBlogs: { slug: string; seo: IDatoPagesSchemaSeo }[];
 }
 
 export const getBlogServerSideProps: GetServerSideProps = async () => {
-  const blogSchema  = await fetchDatoCms(getDatoBlogHomeSchema, {}) as IDatoBlogHome;
+  const blogSchema = (await fetchDatoCms(
+    getDatoBlogHomeSchema,
+    {}
+  )) as IDatoBlogHome;
 
   if (!blogSchema?.allBlogs?.length) {
     return {
@@ -18,7 +21,7 @@ export const getBlogServerSideProps: GetServerSideProps = async () => {
 
   return {
     props: {
-      allBlogs: blogSchema.allBlogs
+      allBlogs: blogSchema.allBlogs,
     },
   };
 };

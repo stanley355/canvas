@@ -49,19 +49,19 @@ export const getDatoBlogSchema = gql`
 `;
 
 export const getDatoBlogHomeSchema = gql`
-query getAllBlog {
-  allBlogs(orderBy: [_createdAt_DESC]) {
-    slug
-    seo {
-      title
-      description
-      image {
-        alt
-        url
-        width
-        height
+  query getAllBlog {
+    allBlogs(orderBy: [_createdAt_DESC]) {
+      slug
+      seo {
+        title
+        description
+        image {
+          alt
+          url
+          width
+          height
+        }
       }
     }
   }
-}
-`
+`;

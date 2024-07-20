@@ -52,11 +52,19 @@ const BlogSlug = ({ blogSchema }: BlogSlugProps) => {
         />
 
         <div className="flex justify-between items-center">
-          <NextButton className="ml-4 rounded-3xl" variant="outline" onClick={() => router.back()}>
+          <NextButton
+            className="ml-4 rounded-3xl"
+            variant="outline"
+            onClick={() => router.back()}
+          >
             <TbArrowLeft />
             Back
           </NextButton>
-          <NextButton className="ml-4 rounded-3xl" variant="outline" onClick={() => router.push("/blog")}>
+          <NextButton
+            className="ml-4 rounded-3xl"
+            variant="outline"
+            onClick={() => router.push("/blog")}
+          >
             <TbHome />
             Blog Home
           </NextButton>

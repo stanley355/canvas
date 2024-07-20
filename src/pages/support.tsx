@@ -15,7 +15,7 @@ const Support = () => {
         alt: "Languageai.id",
         url: "/images/languageai/logo.png",
         width: 400,
-        height: 400
+        height: 400,
       },
     },
   };

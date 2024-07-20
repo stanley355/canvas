@@ -43,7 +43,9 @@ const HeaderMobileMenu = (props: IHeaderMobileMenu) => {
         </NextButton>
       </div>
 
-      <div className={cn("px-4 text-sm", styles.header_mobile_menu_link_container)}>
+      <div
+        className={cn("px-4 text-sm", styles.header_mobile_menu_link_container)}
+      >
         {MOBILE_HEADER_MENU.filter((menu: IHeaderMenu) =>
           isLogin ? menu.url !== "/login/" : menu.url !== "/account/"
         ).map((menu: IHeaderMenu) => (
