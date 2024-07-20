@@ -1,26 +1,26 @@
 import { useContext, useState } from "react";
-import { TbLanguage, TbProgress } from "react-icons/tb";
+import { CgTranscript } from "react-icons/cg";
+import { TbProgress } from "react-icons/tb";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
+import { decode, JwtPayload } from "jsonwebtoken";
 
 import NextButton from "@/common/components/NextButton";
-import { TranslateContext } from "./TranslateContext";
-
 import { AppContext } from "@/modules/app/components/AppContext";
+import { PhoneticTranscriptionsContext } from "./PhoneticTranscriptionsContext";
+
+import {
+  fetchPrompts,
+  PromptsType,
+} from "@/common/lib/api/prompts/fetchPrompts";
 import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
-import { createTranslateSystemContent } from "../lib/createTranslateSystemContent";
-import { JwtPayload, decode } from "jsonwebtoken";
-import {
-  PromptsType,
-  fetchPrompts,
-} from "@/common/lib/api/prompts/fetchPrompts";
 
-const TranslateSubmitBtn = () => {
+const PhoneticTranscriptionsSubmitBtn = () => {
   const { appDispatch } = useContext(AppContext);
-  const { translateStates, translateDispatch } = useContext(TranslateContext);
-  const { firstLanguageText, firstLanguage, secondLanguage, n, temperature } =
-    translateStates;
+  const { phoneticTranscriptionsStates, phoneticTranscriptionsDispatch } =
+    useContext(PhoneticTranscriptionsContext);
+  const { language, userText } = phoneticTranscriptionsStates;
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -33,25 +33,22 @@ const TranslateSubmitBtn = () => {
       return;
     }
 
-    if (firstLanguageText === "") {
-      toast.info("Text can't be empty");
+    if (language === "") {
+      toast.info("Please select language");
       return;
     }
 
     setIsLoading(true);
-    sendFirebaseEvent(FIREBASE_EVENT_NAMES.translate);
+    sendFirebaseEvent(FIREBASE_EVENT_NAMES.phonetic_transcriptions);
     const user = decode(token) as JwtPayload;
 
     const req = {
       user_id: user.id,
-      prompt_type: PromptsType.Translate,
-      system_content: createTranslateSystemContent(
-        firstLanguage,
-        secondLanguage
-      ),
-      user_content: firstLanguageText,
-      n,
-      temperature,
+      prompt_type: PromptsType.PhoneticTranscriptions,
+      system_content: `You are a phonetic transcriptor. You will be provided with a text in ${language} and your task is to transcribe them to phonetic transcription`,
+      user_content: userText,
+      n: 1,
+      temperature: 0.0,
     };
 
     const prompts = await fetchPrompts(req);
@@ -64,9 +61,9 @@ const TranslateSubmitBtn = () => {
     }
 
     if (prompts?.length > 0) {
-      translateDispatch({
-        key: "secondLanguageTexts",
-        value: prompts.map((prompt) => prompt.completion_text),
+      phoneticTranscriptionsDispatch({
+        key: "resultText",
+        value: prompts[0].completion_text,
       });
       return;
     }
@@ -85,11 +82,11 @@ const TranslateSubmitBtn = () => {
       {isLoading ? (
         <TbProgress className="animate-spin text-brand-primary" />
       ) : (
-        <TbLanguage />
+        <CgTranscript />
       )}
-      <span>{isLoading ? "This may take a while" : "Translate"}</span>
+      <span>{isLoading ? "This may take a while" : "Convert"}</span>
     </NextButton>
   );
 };
 
-export default TranslateSubmitBtn;
+export default PhoneticTranscriptionsSubmitBtn;

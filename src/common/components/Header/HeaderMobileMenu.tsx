@@ -43,7 +43,9 @@ const HeaderMobileMenu = (props: IHeaderMobileMenu) => {
         </NextButton>
       </div>
 
-      <div className={cn("px-4", styles.header_mobile_menu_link_container)}>
+      <div
+        className={cn("px-4 text-sm", styles.header_mobile_menu_link_container)}
+      >
         {MOBILE_HEADER_MENU.filter((menu: IHeaderMenu) =>
           isLogin ? menu.url !== "/login/" : menu.url !== "/account/"
         ).map((menu: IHeaderMenu) => (
@@ -53,7 +55,7 @@ const HeaderMobileMenu = (props: IHeaderMobileMenu) => {
             className="flex items-center justify-between py-4 border-b"
             onClick={onCloseClick}
           >
-            <div className="flex items-center gap-2 text-lg ">
+            <div className="flex items-center gap-2">
               {menu.icon}
               {menu.title}
             </div>

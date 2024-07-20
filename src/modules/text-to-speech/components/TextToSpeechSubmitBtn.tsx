@@ -89,7 +89,7 @@ const TextToSpeechSubmitBtn = () => {
       ) : (
         <TbSpeakerphone />
       )}
-      <span>Convert</span>
+      {isLoading ? "This may take a while" : "Convert"}
     </NextButton>
   );
 };

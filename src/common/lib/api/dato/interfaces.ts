@@ -4,6 +4,8 @@ export interface IDatoPagesSchemaSeo {
   image: {
     alt: string;
     url: string;
+    width: number;
+    height: number;
   };
 }
 
@@ -12,4 +14,12 @@ export interface IDatoPagesSchema {
   slug: string;
   keywords: string;
   seo: IDatoPagesSchemaSeo;
+}
+
+interface IDatoBlog extends IDatoPagesSchema {
+  content: string;
+}
+
+export interface IDatoBlogSchema {
+  blog: IDatoBlog;
 }

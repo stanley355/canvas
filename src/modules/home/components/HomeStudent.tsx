@@ -2,7 +2,7 @@ import AccountFreePlanTable from "@/modules/account/components/AccountFreePlanTa
 
 const HomeStudent = () => {
   return (
-    <div className="container mx-auto p-8 px-4 lg:px-0">
+    <section className="container mx-auto p-8 px-4 lg:px-0">
       <h3 className="text-3xl text-center font-bold mb-4">
         Are you a student?
       </h3>
@@ -13,7 +13,7 @@ const HomeStudent = () => {
       <div className="lg:w-1/2 mx-auto">
         <AccountFreePlanTable />
       </div>
-    </div>
+    </section>
   );
 };
 

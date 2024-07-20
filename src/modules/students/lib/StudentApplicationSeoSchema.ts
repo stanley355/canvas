@@ -11,6 +11,8 @@ export const STUDENT_APPLICATION_SEO_SCHEMA: IDatoPagesSchema = {
     image: {
       alt: "Languageai.id",
       url: "/images/languageai/logo.png",
+      width: 400,
+      height: 400,
     },
   },
 };

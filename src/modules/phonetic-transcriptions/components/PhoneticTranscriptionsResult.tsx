@@ -3,23 +3,24 @@ import NextButton from "@/common/components/NextButton";
 import { copyToClipboard } from "@/common/lib/copyToClipboard";
 import { TbCopy } from "react-icons/tb";
 
-interface SpeechToTextResultProps {
-  text: string | undefined;
+interface PhoneticTranscriptionsResultProps {
+  resultText: string;
 }
 
-const SpeechToTextResult = (props: SpeechToTextResultProps) => {
-  const { text } = props;
+const PhoneticTranscriptionsResult = ({
+  resultText,
+}: PhoneticTranscriptionsResultProps) => {
   return (
-    <div className="relative mb-4 px-2">
+    <div className="relative mb-4">
       <NextTextarea
         readOnly
         placeholder="Transcription"
-        value={text}
-        className="border-gray-100 bg-gray-100 resize-none h-52 pr-12 focus:border-gray-100 hover:border-gray-100"
+        value={resultText}
+        className="border-gray-100 bg-gray-100 resize-none h-72 pr-12 focus:border-gray-100 hover:border-gray-100"
       />
       <NextButton
         className="absolute bottom-4 right-2 lg:right-3 lg:bottom-2 p-2"
-        onClick={() => copyToClipboard(text ? text : "")}
+        onClick={() => copyToClipboard(resultText)}
       >
         <TbCopy />
         <span>Copy</span>
@@ -28,4 +29,4 @@ const SpeechToTextResult = (props: SpeechToTextResultProps) => {
   );
 };
 
-export default SpeechToTextResult;
+export default PhoneticTranscriptionsResult;

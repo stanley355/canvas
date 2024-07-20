@@ -31,6 +31,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
             alt="languageai.id"
             width={150}
             height={65}
+            loading="eager"
           />
         </Link>
         <NextLink

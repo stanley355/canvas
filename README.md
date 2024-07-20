@@ -1,55 +1,37 @@
 # CANVAS
 
-### 1.5.0
+### 1.5.3
 
-- Fix plan explanation and broken ui
+- Add blog
 
-### 1.4.9
+### 1.5.2
 
-- Add Speech to Text
+- Fix some frontend checklist
 
-### 1.4.8
+### 1.5.1
 
-- Fix homepage image can't be clicked
-- Remove faq from dato schema
+- Add phonetic transcriptor
 
-### 1.4.7
+### < 1.5.0
 
-- Update text to speech endpoint
-- Update text to speech header
-- Update Checkbot prompts list
-
-### 1.4.6
-
-- Add Microsoft Clarity
-
-### 1.4.5
-
-- Update homepage
-- Update student homepage
-
-### 1.4.4
-
-- Remove image to text
-- Update text to speech ui
-- Remove shadcn package
-
-### 1.4.3
-
-- Update Checkbot ui and remove grammar check
-
-### 1.4.2
-
-- Update translate ui
-
-### 1.4.1
-
-- Update firebase analytic path
-- Update 404 and support page
-
-### 1.4.0
-
-- Update Plans Premium page
+- Fix plan explanation and broken ui (1.5.0)
+- Add Speech to Text (1.4.9)
+- Fix homepage image can't be clicked (1.4.8)
+- Remove faq from dato schema (1.4.8)
+- Update text to speech endpoint (1.4.7)
+- Update text to speech header (1.4.7)
+- Update Checkbot prompts list (1.4.7)
+- Add Microsoft Clarity (1.4.6)
+- Update homepage (1.4.5)
+- Update student homepage (1.4.5)
+- Remove image to text (1.4.4)
+- Update text to speech ui (1.4.4)
+- Remove shadcn package (1.4.4)
+- Update Checkbot ui and remove grammar check (1.4.3)
+- Update translate ui (1.4.2)
+- Update firebase analytic path (1.4.1)
+- Update 404 and support page (1.4.1)
+- Update Plans Premium page (1.4.0)
 
 ### < 1.4.0
 

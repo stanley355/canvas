@@ -8,7 +8,7 @@ const HomeFinal = () => {
   const router = useRouter();
 
   return (
-    <div className="bg-brand-primary text-white py-8 px-4 lg:px-0">
+    <section className="bg-brand-primary text-white py-8 px-4 lg:px-0">
       <h3 className="text-3xl font-bold mb-4 text-center">
         Kenapa pakai yang ini ?{" "}
       </h3>
@@ -22,6 +22,7 @@ const HomeFinal = () => {
           height={100}
           alt="Binus - Universitas Bina Nusantara"
           className="bg-white rounded-lg p-1 cursor-pointer"
+          loading="lazy"
           onClick={() => router.push("/students/")}
         />
         <Image
@@ -30,6 +31,7 @@ const HomeFinal = () => {
           height={100}
           alt="UGM - Universitas Gajah Mada Jogjakarta cursor-pointer"
           className="bg-white rounded-lg p-1"
+          loading="lazy"
           onClick={() => router.push("/students/")}
         />
         <Image
@@ -38,6 +40,7 @@ const HomeFinal = () => {
           height={100}
           alt="Universitas Katolik Atma Jaya Jakarta"
           className="h-full bg-white rounded-lg p-1 cursor-pointer"
+          loading="lazy"
           onClick={() => router.push("/students/")}
         />
       </div>
@@ -52,7 +55,7 @@ const HomeFinal = () => {
       >
         Let&apos;s Get Started
       </NextLink>
-    </div>
+    </section>
   );
 };
 

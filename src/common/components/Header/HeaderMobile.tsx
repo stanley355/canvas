@@ -21,6 +21,7 @@ const HeaderMobile = (props: IHeaderMobile) => {
           width={100}
           height={50}
           className="w-2/3 h-full"
+          loading="eager"
         />
       </Link>
       <NextButton

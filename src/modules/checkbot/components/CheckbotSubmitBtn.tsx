@@ -89,7 +89,7 @@ const CheckbotSubmitBtn = () => {
       ) : (
         <FaRobot />
       )}
-      <span>Check</span>
+      <span>{isLoading ? "This may take a while" : "Convert"}</span>
     </NextButton>
   );
 };

@@ -13,6 +13,8 @@ import { EMAIL_REGEX } from "@/common/lib/regex";
 import { fetchStudentsApplication } from "@/common/lib/api/students/fetchStudentsApplication";
 import { useRouter } from "next/router";
 import { TbProgress } from "react-icons/tb";
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
+import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 
 const StudentApplicationForm = () => {
   const router = useRouter();
@@ -35,6 +37,7 @@ const StudentApplicationForm = () => {
       return;
     }
 
+    sendFirebaseEvent(FIREBASE_EVENT_NAMES.student_application);
     const file = student_id_card.files[0];
     const studentIdCardPath = `student_card/${institutionLevel}/${student_id.value}`;
     if (file) {
