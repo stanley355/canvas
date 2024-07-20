@@ -113,7 +113,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
           )}
         >
           <FaRupiahSign />
-          <span>Price</span>
+          <span>Pricing</span>
         </NextLink>
 
         <NextLink

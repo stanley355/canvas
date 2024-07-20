@@ -36,7 +36,7 @@ export const MOBILE_HEADER_MENU = [
     icon: <PiStudentDuotone />,
   },
   {
-    title: "PRICE",
+    title: "PRICING",
     url: "/plans/",
     icon: <FaRupiahSign />,
   },
