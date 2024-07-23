@@ -75,7 +75,7 @@ const BlogSlug = ({ blogSchema }: BlogSlugProps) => {
         <div className="p-4 border-b">Related Articles</div>
         <div>
           {blogSchema.blog.relatedArticles.map((article)=> 
-          <NextLink href={`/blog/${article.slug}`} variant="outline" className="flex-col items-start border-none">
+          <NextLink href={`/blog/${article.slug}`} key={article.slug} variant="outline" className="flex-col items-start border-none">
             <div>{article.title}</div>
             <div>{new Date(article._createdAt).toLocaleDateString('id-ID')}</div>
           </NextLink> )}
