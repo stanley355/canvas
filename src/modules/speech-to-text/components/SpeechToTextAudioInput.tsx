@@ -1,4 +1,11 @@
-import { FormEvent, useContext, useRef, useState, memo, ChangeEvent } from "react";
+import {
+  FormEvent,
+  useContext,
+  useRef,
+  useState,
+  memo,
+  ChangeEvent,
+} from "react";
 import { TbMicrophone, TbProgress, TbUpload } from "react-icons/tb";
 import { toast } from "react-toastify";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
@@ -97,23 +104,24 @@ const SpeechToTextAudioInput = (props: SpeechToTextAudioInputProps) => {
     setIsUploading(true);
     try {
       const user = decode(token) as JwtPayload;
-      const firebasePath = `audio/transcriptions/${user.id
-        }:${new Date().getTime()}`;
+      const firebasePath = `audio/transcriptions/${
+        user.id
+      }:${new Date().getTime()}`;
       const storage = getStorage();
       const storef = ref(storage, firebasePath);
       const result = await uploadBytes(storef, file);
       const downloadURL = await getDownloadURL(result.ref);
-      
+
       setFileName(file.name);
       setDownloadURL(downloadURL);
       setIsUploading(false);
       return;
     } catch (error: any) {
-      setIsUploading(false)
+      setIsUploading(false);
       toast.error("Server busy, please try again");
       return;
     }
-  }
+  };
 
   return (
     <form className="px-2 lg:px-0 relative" onSubmit={handleSubmit}>
@@ -136,14 +144,19 @@ const SpeechToTextAudioInput = (props: SpeechToTextAudioInputProps) => {
       </NextButton>
       <NextButton
         disabled={isLoading || isUploading}
-        className={cn("absolute right-3 bottom-6 lg:right-1 ",
-          {
-            "border-brand-primary": isLoading || isUploading,
-          })}
+        className={cn("absolute right-3 bottom-6 lg:right-1 ", {
+          "border-brand-primary": isLoading || isUploading,
+        })}
         type="submit"
       >
         <TbMicrophone />
-        <div>{isLoading ? "This may take a while" : isUploading ? "Uploading..." : "Convert"}</div>
+        <div>
+          {isLoading
+            ? "This may take a while"
+            : isUploading
+            ? "Uploading..."
+            : "Convert"}
+        </div>
       </NextButton>
       <input
         type="file"

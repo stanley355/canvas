@@ -21,7 +21,7 @@ export const FIREBASE_EVENT_NAMES = {
     home_tellmewhy: "click_home_tellmewhy",
     home_getstarted: "click_home_getstarted",
     stt_csv_export: "click_stt_csv_export",
-    stt_upload: "click_stt_upload"
+    stt_upload: "click_stt_upload",
   },
   change: {
     change_translate_n: "change_translate_n",

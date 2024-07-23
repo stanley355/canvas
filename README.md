@@ -4,6 +4,7 @@
 
 - Fix blog ui
 - Update to Next.js 14
+- Fix speech to text reupload every click
 
 ### 1.5.3
 
