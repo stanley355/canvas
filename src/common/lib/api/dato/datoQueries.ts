@@ -43,6 +43,11 @@ export const getDatoBlogSchema = gql`
     blog(filter: { slug: { eq: $slug } }) {
       ...blogSeoFragment
       content(markdown: true)
+      relatedArticles {
+        title
+        slug
+        _createdAt
+      }
     }
   }
   ${BLOG_SEO_FRAGMENT}

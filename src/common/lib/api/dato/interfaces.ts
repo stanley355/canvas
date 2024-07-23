@@ -18,6 +18,7 @@ export interface IDatoPagesSchema {
 
 interface IDatoBlog extends IDatoPagesSchema {
   content: string;
+  relatedArticles: { title: string; slug: string, _createdAt: string }[];
 }
 
 export interface IDatoBlogSchema {
