@@ -35,9 +35,7 @@ const Blog = ({ allBlogs }: IDatoBlogHome) => {
             />
             <div className="overflow-hidden text-ellipsis">
               <div className="font-semibold text-base">{seo.title}</div>
-              <div className="text-gray-700 text-xs ">
-                {seo.description}
-              </div>
+              <div className="text-gray-700 text-xs ">{seo.description}</div>
             </div>
           </NextLink>
         ))}

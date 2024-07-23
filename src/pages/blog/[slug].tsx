@@ -42,8 +42,12 @@ const BlogSlug = ({ blogSchema }: BlogSlugProps) => {
         />
 
         <div className="p-4">
-          <>{new Date(blogSchema.blog._updatedAt).toLocaleDateString("id-ID")}</>
-          <h1 className="text-lg font-bold mb-4">{blogSchema.blog.seo.title}</h1>
+          <>
+            {new Date(blogSchema.blog._updatedAt).toLocaleDateString("id-ID")}
+          </>
+          <h1 className="text-lg font-bold mb-4">
+            {blogSchema.blog.seo.title}
+          </h1>
 
           <div
             className="[&_a]:underline [&_p]:mb-4 [&_ul]:mb-4 [&_ol]:mb-4 [&_ul]:list-inside [&_ol]:list-inside [&_ul]:list-disc [&_ol]:list-decimal"
@@ -74,11 +78,19 @@ const BlogSlug = ({ blogSchema }: BlogSlugProps) => {
       <div className="hidden lg:block">
         <div className="p-4 border-b">Related Articles</div>
         <div>
-          {blogSchema.blog.relatedArticles.map((article)=> 
-          <NextLink href={`/blog/${article.slug}`} key={article.slug} variant="outline" className="flex-col items-start border-none">
-            <div>{article.title}</div>
-            <div>{new Date(article._createdAt).toLocaleDateString('id-ID')}</div>
-          </NextLink> )}
+          {blogSchema.blog.relatedArticles.map((article) => (
+            <NextLink
+              href={`/blog/${article.slug}`}
+              key={article.slug}
+              variant="outline"
+              className="flex-col items-start border-none"
+            >
+              <div>{article.title}</div>
+              <div>
+                {new Date(article._createdAt).toLocaleDateString("id-ID")}
+              </div>
+            </NextLink>
+          ))}
         </div>
       </div>
     </div>
