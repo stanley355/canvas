@@ -20,7 +20,8 @@ export const FIREBASE_EVENT_NAMES = {
     student_home_hero_cta: "click_student_home_hero_cta",
     home_tellmewhy: "click_home_tellmewhy",
     home_getstarted: "click_home_getstarted",
-    stt_csv_export: "click_sst_csv_export",
+    stt_csv_export: "click_stt_csv_export",
+    stt_upload: "click_stt_upload",
   },
   change: {
     change_translate_n: "change_translate_n",

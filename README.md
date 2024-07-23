@@ -1,5 +1,11 @@
 # CANVAS
 
+### 1.5.4
+
+- Fix blog ui
+- Update to Next.js 14
+- Fix speech to text reupload every click
+
 ### 1.5.3
 
 - Add blog
