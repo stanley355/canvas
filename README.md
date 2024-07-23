@@ -1,5 +1,10 @@
 # CANVAS
 
+### 1.5.4
+
+- Fix blog ui
+- Update to Next.js 14
+
 ### 1.5.3
 
 - Add blog
