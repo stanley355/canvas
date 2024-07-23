@@ -18,11 +18,11 @@ const Blog = ({ allBlogs }: IDatoBlogHome) => {
         <FaBlog />
         Blog
       </div>
-      <div className="grid grid-cols-2 gap-2 lg:flex lg:flex-wrap">
+      <div className="gap-2 lg:grid-cols-3 lg:grid">
         {allBlogs?.map(({ seo, slug }, index: number) => (
           <NextLink
             href={`/blog/${slug}`}
-            className={cn("w-full gap-4 hover:underline h-fit mb-4", index % 2 ? 'lg:flex-[1_1_15%] lg:max-w-[15%]': 'lg:flex-[1_1_20%] lg:max-w-[20%]' )}
+            className="w-full gap-4 hover:underline h-fit mb-4 flex items-center"
             key={seo.title}
             variant="none"
           >
@@ -31,7 +31,7 @@ const Blog = ({ allBlogs }: IDatoBlogHome) => {
               alt={seo.image.alt}
               width={seo.image.width}
               height={seo.image.height}
-              className="w-full h-auto rounded-lg mb-2 object-cover"
+              className="w-1/4 h-1/2 rounded-lg mb-2 shadow"
             />
             <div className="overflow-hidden text-ellipsis">
               <div className="font-semibold text-base">{seo.title}</div>
