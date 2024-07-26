@@ -1,15 +1,15 @@
-import { ISubscription } from "@/common/lib/api/subscriptions/interfaces";
-import { IUser } from "@/common/lib/api/users/interfaces";
+import { useMemo } from "react";
+
 import AccountFreePlanDetail from "./AccountFreePlanDetail";
 import AccountPremiumPlanDetail from "./AccountPremiumPlanDetail";
-import { IStudent } from "@/common/lib/api/students/interfaces";
 import AccountStudentPlanDetail from "./AccountStudentPlanDetail";
-import { useMemo } from "react";
 import AccountFreePlanTable from "./AccountFreePlanTable";
+
+import { IStudent } from "@/common/lib/api/students/interfaces";
+import { ISubscription } from "@/common/lib/api/subscriptions/interfaces";
 
 interface IAccountPlanDetail {
   account: {
-    user: IUser;
     student: IStudent | null;
     subscription: ISubscription | null;
     subscriptions: ISubscription[];
@@ -18,7 +18,7 @@ interface IAccountPlanDetail {
 
 const AccountPlanDetail = (props: IAccountPlanDetail) => {
   const { account } = props;
-  const { user, student, subscription, subscriptions } =
+  const { student, subscription, subscriptions } =
     account;
 
   const isFreeStudent = useMemo(() => {
@@ -43,14 +43,14 @@ const AccountPlanDetail = (props: IAccountPlanDetail) => {
     );
   }
 
-  // if (subscription?.id) {
-  //   return (
-  //     <AccountPremiumPlanDetail
-  //       subscription={subscription}
-  //       topups={topups}
-  //     />
-  //   );
-  // }
+  if (subscription?.id) {
+    return (
+      <AccountPremiumPlanDetail
+        subscription={subscription}
+        subscriptions={subscriptions}
+      />
+    );
+  }
 
   return (
     <div>

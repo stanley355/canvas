@@ -1,15 +1,14 @@
 import Link from "next/link";
-import { ITopup } from "@/common/lib/api/topups/interfaces";
-import AccountTopupTable from "./AccountTopupTable";
 import { ISubscription } from "@/common/lib/api/subscriptions/interfaces";
+import AccountSubscriptionsTable from "./AccountSubscriptionsTable";
 
 interface IAccountPayasyougoPlanDetail {
   subscription: ISubscription;
-  topups: ITopup[];
+  subscriptions: ISubscription[];
 }
 
 const AccountPremiumPlanDetail = (props: IAccountPayasyougoPlanDetail) => {
-  const { subscription, topups } = props;
+  const { subscription, subscriptions} = props;
 
   return (
     <div className="pb-4">
@@ -40,7 +39,7 @@ const AccountPremiumPlanDetail = (props: IAccountPayasyougoPlanDetail) => {
         Your usage is unlimited until the end of your plan
       </div>
 
-      {topups && topups?.length > 0 && <AccountTopupTable topups={topups} />}
+      {subscriptions?.length > 0 && <AccountSubscriptionsTable subscriptions={subscriptions} />}
     </div>
   );
 };
