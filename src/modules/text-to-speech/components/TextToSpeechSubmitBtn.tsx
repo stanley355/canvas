@@ -8,8 +8,8 @@ import { AppContext } from "@/modules/app/components/AppContext";
 import { TextToSpeechContext } from "./TextToSpeechContext";
 import NextButton from "@/common/components/NextButton";
 
-import { fetchPromptsDeleteTtsFile } from "@/common/lib/api/prompts/fetchPromptsTtsDeleteFile";
-import { fetchPromptsAudioSpeech, PromptAudioSpeechVoice } from "@/common/lib/api/prompts/fetchPromptsAudioSpeech";
+import { fetchPromptsAudioSpeech } from "@/common/lib/api/prompts/fetchPromptsAudioSpeech";
+import { fetchPromptsAudioSpeechDelete } from "@/common/lib/api/prompts/fetchPromptsAudioSpeechDelete";
 
 import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
@@ -63,7 +63,7 @@ const TextToSpeechSubmitBtn = () => {
     }
 
     if (prompt.id) {
-      if (oldFileID) await fetchPromptsDeleteTtsFile(oldFileID);
+      if (oldFileID) await fetchPromptsAudioSpeechDelete(oldFileID);
       textToSpeechDispatch({ key: "oldFileID", value: currentFileID });
       textToSpeechDispatch({ key: "currentFileID", value: prompt.id });
       toast.success("Audio updated");
