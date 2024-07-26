@@ -1,8 +1,6 @@
 import { ISubscription } from "@/common/lib/api/subscriptions/interfaces";
-import { ITopup } from "@/common/lib/api/topups/interfaces";
 import { IUser } from "@/common/lib/api/users/interfaces";
 import AccountFreePlanDetail from "./AccountFreePlanDetail";
-import AccountPayasyougoPlanDetail from "./AccountPayasyougoPlanDetail";
 import AccountPremiumPlanDetail from "./AccountPremiumPlanDetail";
 import { IStudent } from "@/common/lib/api/students/interfaces";
 import AccountStudentPlanDetail from "./AccountStudentPlanDetail";
@@ -12,52 +10,47 @@ import AccountFreePlanTable from "./AccountFreePlanTable";
 interface IAccountPlanDetail {
   account: {
     user: IUser;
-    active_student_discount: IStudent;
-    active_subscription: ISubscription;
-    topups: ITopup[];
+    student: IStudent | null;
+    subscription: ISubscription | null;
+    subscriptions: ISubscription[];
   };
 }
 
 const AccountPlanDetail = (props: IAccountPlanDetail) => {
   const { account } = props;
-  const { user, active_subscription, topups, active_student_discount } =
+  const { user, student, subscription, subscriptions } =
     account;
 
   const isFreeStudent = useMemo(() => {
     if (
-      active_student_discount &&
-      active_student_discount.student_application_valid
+      student
     ) {
       const isFreeDiscount =
-        new Date(active_student_discount.free_discount_end_at).getTime() >
+        new Date(student.free_discount_end_at).getTime() >
         new Date().getTime();
       return isFreeDiscount;
     }
 
     return false;
-  }, [active_student_discount]);
+  }, [student]);
 
-  if (isFreeStudent) {
+  if (isFreeStudent && student) {
     return (
       <AccountStudentPlanDetail
-        student={active_student_discount}
-        topups={topups}
+        student={student}
+        subscriptions={subscriptions}
       />
     );
   }
 
-  if (active_subscription && active_subscription?.id) {
-    return (
-      <AccountPremiumPlanDetail
-        subscription={active_subscription}
-        topups={topups}
-      />
-    );
-  }
-
-  if (user.balance > 0) {
-    return <AccountPayasyougoPlanDetail user={user} topups={topups} />;
-  }
+  // if (subscription?.id) {
+  //   return (
+  //     <AccountPremiumPlanDetail
+  //       subscription={subscription}
+  //       topups={topups}
+  //     />
+  //   );
+  // }
 
   return (
     <div>

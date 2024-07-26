@@ -15,9 +15,9 @@ import { IDatoPagesSchema } from "@/common/lib/api/dato/interfaces";
 interface IAccountProps {
   account: {
     user: IUser;
-    active_student_discount: IStudent;
-    active_subscription: ISubscription;
-    topups: ITopup[];
+    student: IStudent | null;
+    subscription: ISubscription | null;
+    subscriptions: ISubscription[];
   };
 }
 
