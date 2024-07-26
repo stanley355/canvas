@@ -4,8 +4,6 @@ import { IAuthorError } from "../interfaces";
 
 export enum PromptsType {
   Translate = "Translate",
-  ImageToText = "ImageToText",
-  TextToSpeech = "TextToSpeech",
   Checkbot = "Checkbot",
   PhoneticTranscriptions = "PhoneticTranscriptions",
 }

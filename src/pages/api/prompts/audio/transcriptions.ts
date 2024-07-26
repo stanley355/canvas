@@ -1,11 +1,11 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const authorV2PromptsTranscriptionsApi = async (
+const authorPromptsAudioTranscriptionsApi = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
-  const url = `${process.env.AUTHOR_URL}v2/prompts/transcriptions/`;
+  const url = `${process.env.AUTHOR_URL}v1/prompts/audio/transcriptions/`;
 
   try {
     const { data } = await axios.post(url, req.body, {
@@ -19,4 +19,4 @@ const authorV2PromptsTranscriptionsApi = async (
   }
 };
 
-export default authorV2PromptsTranscriptionsApi;
+export default authorPromptsAudioTranscriptionsApi;

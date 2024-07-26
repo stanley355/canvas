@@ -16,7 +16,7 @@ import NextButton from "@/common/components/NextButton";
 import { AppContext } from "@/modules/app/components/AppContext";
 
 import { cn } from "@/common/lib/cn";
-import { fetchPromptsTranscriptions } from "@/common/lib/api/prompts/fetchPromptsTranscriptions";
+import { fetchPromptsAudioTranscriptions } from "@/common/lib/api/prompts/fetchPromptsAudioTranscriptions";
 import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 import { ISpeechToTextStates } from "../lib/speechToTextStates";
@@ -68,7 +68,7 @@ const SpeechToTextAudioInput = (props: SpeechToTextAudioInputProps) => {
       ...(timestamp_granularities && { timestamp_granularities }),
     };
 
-    const transcription = await fetchPromptsTranscriptions(req);
+    const transcription = await fetchPromptsAudioTranscriptions(req);
     setIsLoading(false);
 
     if (transcription?.status === 402) {

@@ -13,10 +13,10 @@ interface IRequest {
   timestamp_granularities?: SpeechToTextTimestampGranularities;
 }
 
-export const fetchPromptsTranscriptions = async (
+export const fetchPromptsAudioTranscriptions = async (
   req: IRequest
 ): Promise<ITranscription & IAuthorError> => {
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}api/prompts/transcriptions/`;
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}api/prompts/audio/transcriptions/`;
 
   try {
     const { data } = await axios.post(url, req);
