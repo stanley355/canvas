@@ -1,22 +1,19 @@
 import { useContext, useState } from "react";
 import { TbProgress, TbSpeakerphone } from "react-icons/tb";
-import NextButton from "@/common/components/NextButton";
-import Cookies from "js-cookie";
-import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
-import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
-import { AppContext } from "@/modules/app/components/AppContext";
-import { TextToSpeechContext } from "./TextToSpeechContext";
 import { toast } from "react-toastify";
 import { JwtPayload, decode } from "jsonwebtoken";
-import {
-  PromptsType,
-  fetchPrompts,
-} from "@/common/lib/api/prompts/fetchPrompts";
+import Cookies from "js-cookie";
+
+import { AppContext } from "@/modules/app/components/AppContext";
+import { TextToSpeechContext } from "./TextToSpeechContext";
+import NextButton from "@/common/components/NextButton";
+
 import { fetchPromptsDeleteTtsFile } from "@/common/lib/api/prompts/fetchPromptsTtsDeleteFile";
-import {
-  fetchPromptsTts,
-  TextToSpeechVoice,
-} from "@/common/lib/api/prompts/fetchPromptsTts";
+import { fetchPromptsAudioSpeech, PromptAudioSpeechVoice } from "@/common/lib/api/prompts/fetchPromptsAudioSpeech";
+
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
+import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
+
 
 const TextToSpeechSubmitBtn = () => {
   const { appDispatch } = useContext(AppContext);
@@ -56,7 +53,7 @@ const TextToSpeechSubmitBtn = () => {
       voice,
       speed,
     };
-    const prompt = await fetchPromptsTts(req);
+    const prompt = await fetchPromptsAudioSpeech(req);
     setIsLoading(false);
 
     // Payment Required
