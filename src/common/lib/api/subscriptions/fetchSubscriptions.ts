@@ -1,7 +1,7 @@
 import axios from "axios";
 import { SubscriptionsDuration } from "./SubscriptionsDuration";
 
-export const fetchTopupPremium = async (
+export const fetchSubscriptions = async (
   user_id: string,
   duration: SubscriptionsDuration
 ) => {

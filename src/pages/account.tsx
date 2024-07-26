@@ -8,7 +8,6 @@ import NextHead from "@/common/components/NextHead";
 
 import { IUser } from "@/common/lib/api/users/interfaces";
 import { ISubscription } from "@/common/lib/api/subscriptions/interfaces";
-import { ITopup } from "@/common/lib/api/topups/interfaces";
 import { IStudent } from "@/common/lib/api/students/interfaces";
 import { IDatoPagesSchema } from "@/common/lib/api/dato/interfaces";
 

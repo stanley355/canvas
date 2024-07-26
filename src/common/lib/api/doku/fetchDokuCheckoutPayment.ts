@@ -1,17 +1,17 @@
 import axios from "axios";
 import { apiErrorHandler } from "../apiErrorHandler";
-import { ITopup } from "../topups/interfaces";
+import { ISubscription } from "../subscriptions/interfaces";
 import { IUser } from "../users/interfaces";
 
-export const fetchDokuCheckoutPayment = async (topup: ITopup, user: IUser) => {
+export const fetchDokuCheckoutPayment = async (subscription: ISubscription, user: IUser) => {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/doku/checkout-payment/`;
 
   const callbackUrl = `${process.env.NEXT_PUBLIC_BASE_URL}account/`;
 
   const dokuPayload = {
     order: {
-      amount: topup.topup_amount,
-      invoice_number: topup.id,
+      amount: subscription.price,
+      invoice_number: subscription.id,
       callback_url: callbackUrl,
     },
     payment: {
