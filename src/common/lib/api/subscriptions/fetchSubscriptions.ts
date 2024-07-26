@@ -1,11 +1,11 @@
 import axios from "axios";
-import { PremiumTopupDuration } from "./interfaces";
+import { SubscriptionsDuration } from "./SubscriptionsDuration";
 
 export const fetchTopupPremium = async (
   user_id: string,
-  duration: PremiumTopupDuration
+  duration: SubscriptionsDuration
 ) => {
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}api/topups/premium/`;
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}api/subscriptions/`;
 
   try {
     const { data } = await axios.post(url, { user_id, duration });
