@@ -8,6 +8,7 @@ import {
 interface IRequest {
   user_id: string;
   file_url: string;
+  file_name: string;
   language: string;
   temperature: number;
   timestamp_granularities?: SpeechToTextTimestampGranularities;

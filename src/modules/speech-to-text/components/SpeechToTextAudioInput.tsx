@@ -63,6 +63,7 @@ const SpeechToTextAudioInput = (props: SpeechToTextAudioInputProps) => {
     const req = {
       user_id: user.id,
       file_url: downloadURL,
+      file_name: fileName,
       temperature,
       language: language.value,
       ...(timestamp_granularities && { timestamp_granularities }),
