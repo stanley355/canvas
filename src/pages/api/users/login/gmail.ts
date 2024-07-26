@@ -1,11 +1,11 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const authorV2UsersLoginGmailApi = async (
+const authorUsersLoginGmailApi = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
-  const url = `${process.env.AUTHOR_URL}v2/users/login/gmail/`;
+  const url = `${process.env.AUTHOR_URL}v1/users/login/gmail/`;
 
   try {
     const { data } = await axios.post(url, req.body, {
@@ -19,4 +19,4 @@ const authorV2UsersLoginGmailApi = async (
   }
 };
 
-export default authorV2UsersLoginGmailApi;
+export default authorUsersLoginGmailApi;

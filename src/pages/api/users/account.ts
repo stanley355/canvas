@@ -1,11 +1,11 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const authorV2UsersAccount = async (
+const authorUsersAccount = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
-  const url = `${process.env.AUTHOR_URL}v2/users/account?id=${req.query.id}`;
+  const url = `${process.env.AUTHOR_URL}v1/users/account?id=${req.query.id}`;
 
   try {
     const { data } = await axios.get(url, {
@@ -19,4 +19,4 @@ const authorV2UsersAccount = async (
   }
 };
 
-export default authorV2UsersAccount;
+export default authorUsersAccount;
