@@ -1,14 +1,14 @@
-import AccountTopupTable from "./AccountTopupTable";
-import { ITopup } from "@/common/lib/api/topups/interfaces";
 import { IStudent } from "@/common/lib/api/students/interfaces";
+import { ISubscription } from "@/common/lib/api/subscriptions/interfaces";
+import AccountSubscriptionsTable from "./AccountSubscriptionsTable";
 
 interface IAccountStudentPlanDetail {
   student: IStudent;
-  topups: ITopup[];
+  subscriptions: ISubscription[];
 }
 
 const AccountStudentPlanDetail = (props: IAccountStudentPlanDetail) => {
-  const { student, topups } = props;
+  const { student, subscriptions } = props;
 
   return (
     <div className="pb-4">
@@ -33,7 +33,7 @@ const AccountStudentPlanDetail = (props: IAccountStudentPlanDetail) => {
         Your usage is unlimited until the end of your plan
       </div>
 
-      {topups && topups?.length > 0 && <AccountTopupTable topups={topups} />}
+      {subscriptions?.length > 0 && <AccountSubscriptionsTable subscriptions={subscriptions} />}
     </div>
   );
 };

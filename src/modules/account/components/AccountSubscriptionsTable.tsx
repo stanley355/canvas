@@ -1,12 +1,11 @@
-import { ITopup } from "@/common/lib/api/topups/interfaces";
+import { ISubscription } from "@/common/lib/api/subscriptions/interfaces";
 import { TbCheck } from "react-icons/tb";
 
-interface IAccountTopupTable {
-  topups: ITopup[];
+interface IAccountSubscriptionsTable {
+  subscriptions: ISubscription[];
 }
 
-const AccountTopupTable = (props: IAccountTopupTable) => {
-  const { topups } = props;
+const AccountSubscriptionsTable = ({subscriptions}: IAccountSubscriptionsTable) => {
 
   return (
     <div>
@@ -22,21 +21,20 @@ const AccountTopupTable = (props: IAccountTopupTable) => {
           </tr>
         </thead>
         <tbody>
-          {topups.map((topup: ITopup, index: number) => (
-            <tr key={topup.id} className="text-sm">
+          {subscriptions.map((subscription: ISubscription, index: number) => (
+            <tr key={subscription.id} className="text-sm">
               <td className="p-1 text-center border">{index + 1}</td>
               <td className="p-1 text-center border">
-                {new Date(topup.created_at).toLocaleString("id-ID")}
+                {new Date(subscription.created_at).toLocaleString("id-ID")}
               </td>
               <td className="p-1 text-center border">
-                {topup.topup_type === "topup" ? "Pay as You Go" : "Premium"}
+              Premium
               </td>
               <td className="p-1 text-center border">
-                Rp {topup.topup_amount}
+                Rp {subscription.price}
               </td>
               <td className="p-1 border">
-                {/* Only show paid topup from the backend */}
-                <TbCheck className="mx-auto" />
+                <TbCheck className="mx-auto" /> {/* Only show paid topup from the backend */}
               </td>
             </tr>
           ))}
@@ -46,4 +44,4 @@ const AccountTopupTable = (props: IAccountTopupTable) => {
   );
 };
 
-export default AccountTopupTable;
+export default AccountSubscriptionsTable;

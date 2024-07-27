@@ -1,11 +1,13 @@
 import axios from "axios";
 import { IUser } from "./interfaces";
+import { IStudent } from "../students/interfaces";
+import { ISubscription } from "../subscriptions/interfaces";
 
 interface IResponse {
   user: IUser;
-  active_student_discount: Record<string, string | number>;
-  active_subscription: Record<string, string | number>;
-  topups: Record<string, string | number>[];
+  student: IStudent | null;
+  subscription: ISubscription | null;
+  subscriptions: ISubscription[];
 }
 
 export const fetchUsersAccount = async (id: string): Promise<IResponse> => {

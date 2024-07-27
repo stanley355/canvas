@@ -1,29 +1,29 @@
 import { IOption } from "@/common/components/interfaces";
-import { TextToSpeechVoice } from "@/common/lib/api/prompts/fetchPromptsTts";
+import { PromptAudioSpeechVoice } from "@/common/lib/api/prompts/fetchPromptsAudioSpeech";
 
 export const TTS_VOICE_OPTIONS: IOption[] = [
   {
     label: "Voice: Alpha",
-    value: TextToSpeechVoice.Alloy,
+    value: PromptAudioSpeechVoice.Alloy,
   },
   {
     label: "Voice: Beta",
-    value: TextToSpeechVoice.Echo,
+    value: PromptAudioSpeechVoice.Echo,
   },
   {
     label: "Voice: Gamma",
-    value: TextToSpeechVoice.Fable,
+    value: PromptAudioSpeechVoice.Fable,
   },
   {
     label: "Voice: Delta",
-    value: TextToSpeechVoice.Nova,
+    value: PromptAudioSpeechVoice.Nova,
   },
   {
     label: "Voice: Epsilon",
-    value: TextToSpeechVoice.Onyx,
+    value: PromptAudioSpeechVoice.Onyx,
   },
   {
     label: "Voice: Zeta",
-    value: TextToSpeechVoice.Shimmer,
+    value: PromptAudioSpeechVoice.Shimmer,
   },
 ];

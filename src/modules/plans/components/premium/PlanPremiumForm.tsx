@@ -7,30 +7,30 @@ import { JwtPayload, decode } from "jsonwebtoken";
 import NextButton from "@/common/components/NextButton";
 
 import { cn } from "@/common/lib/cn";
-import { fetchTopupPremium } from "@/common/lib/api/topups/fetchTopupPremium";
+import { fetchSubscriptions } from "@/common/lib/api/subscriptions/fetchSubscriptions";
 import { fetchDokuCheckoutPayment } from "@/common/lib/api/doku/fetchDokuCheckoutPayment";
 import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 
 import { IUser } from "@/common/lib/api/users/interfaces";
 
-import { PremiumTopupDuration } from "@/common/lib/api/topups/interfaces";
+import { SubscriptionsDuration } from "@/common/lib/api/subscriptions/SubscriptionsDuration";
 import { PREMIUM_PLAN_LIST } from "../../lib/constant";
 import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 
 const PlanPremiumForm = () => {
   const [selectedDuration, setSelectedDuration] =
-    useState<PremiumTopupDuration | null>(null);
+    useState<SubscriptionsDuration | null>(null);
 
-  const handleClick = async (duration: PremiumTopupDuration) => {
+  const handleClick = async (duration: SubscriptionsDuration) => {
     sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.premium);
     setSelectedDuration(duration);
 
     const token = Cookies.get("token");
     const user = decode(String(token)) as JwtPayload;
-    const topup = await fetchTopupPremium(user.id, duration);
+    const subscription= await fetchSubscriptions(user.id, duration);
 
-    if (topup.id) {
-      const doku = await fetchDokuCheckoutPayment(topup, user as IUser);
+    if (subscription.id) {
+      const doku = await fetchDokuCheckoutPayment(subscription, user as IUser);
       if (doku?.response?.payment.url) {
         window.location.href = doku.response.payment.url;
         return;

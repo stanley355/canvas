@@ -5,7 +5,7 @@ const authorV2StudentsApplication = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
-  const url = `${process.env.AUTHOR_URL}v2/students/`;
+  const url = `${process.env.AUTHOR_URL}v1/students/`;
 
   try {
     const { data } = await axios.post(url, req.body, {

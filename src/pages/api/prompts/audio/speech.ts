@@ -1,14 +1,14 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const authorV2TtsDeleteFileApi = async (
+const authorPromptsAudioSpeechApi = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
-  const url = `${process.env.AUTHOR_URL}v2/tts/file?prompt_id=${req.query.prompt_id}`;
+  const url = `${process.env.AUTHOR_URL}v1/prompts/audio/speech/`;
 
   try {
-    const { data } = await axios.delete(url, {
+    const { data } = await axios.post(url, req.body, {
       headers: { Authorization: process.env.AUTHOR_TOKEN },
     });
     res.json(data);
@@ -19,4 +19,4 @@ const authorV2TtsDeleteFileApi = async (
   }
 };
 
-export default authorV2TtsDeleteFileApi;
+export default authorPromptsAudioSpeechApi;

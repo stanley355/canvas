@@ -1,8 +1,8 @@
 import axios from "axios";
-import { IPrompt } from "../../api/prompts/interfaces";
+import { IPrompt } from "./interfaces";
 import { IAuthorError } from "../interfaces";
 
-export enum TextToSpeechVoice {
+export enum PromptAudioSpeechVoice {
   Alloy = "Alloy",
   Echo = "Echo",
   Fable = "Fable",
@@ -14,14 +14,14 @@ export enum TextToSpeechVoice {
 interface IRequest {
   user_id: string;
   input: string;
-  voice: TextToSpeechVoice;
+  voice: PromptAudioSpeechVoice;
   speed?: number; // 0.25 - 4.0
 }
 
-export const fetchPromptsTts = async (
+export const fetchPromptsAudioSpeech = async (
   req: IRequest
 ): Promise<IPrompt & IAuthorError> => {
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}api/prompts/tts/`;
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}api/prompts/audio/speech/`;
 
   try {
     const { data } = await axios.post(url, req);

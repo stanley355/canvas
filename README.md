@@ -1,5 +1,9 @@
 # CANVAS
 
+### 1.5.5
+
+- Update endpoints
+
 ### 1.5.4
 
 - Fix blog ui

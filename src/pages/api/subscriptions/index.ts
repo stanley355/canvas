@@ -1,8 +1,11 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const authorV2TtsApi = async (req: NextApiRequest, res: NextApiResponse) => {
-  const url = `${process.env.AUTHOR_URL}v2/prompts/tts/`;
+const authorSubscriptionsApi = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+) => {
+  const url = `${process.env.AUTHOR_URL}v1/subscriptions/`;
 
   try {
     const { data } = await axios.post(url, req.body, {
@@ -16,4 +19,4 @@ const authorV2TtsApi = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default authorV2TtsApi;
+export default authorSubscriptionsApi;

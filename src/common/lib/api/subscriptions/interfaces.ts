@@ -8,4 +8,5 @@ export interface ISubscription {
   duration_type: string;
   paid: boolean;
   is_paylater: boolean;
+  price: number
 }
