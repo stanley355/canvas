@@ -3,6 +3,7 @@ import { getTranslateAudioPageStaticProps } from '@/modules/translate-audio/lib/
 import NextHead, { NextHeadProps } from '@/common/components/NextHead';
 import TranslateAudioHeader from '@/modules/translate-audio/components/TranslateAudioHeader';
 import TranslateAudioProvider from '@/modules/translate-audio/components/TranslateAudioProvider';
+import TranslateAudioBody from '@/modules/translate-audio/components/TranslateAudioBody';
 
 export const getStaticProps: GetStaticProps = getTranslateAudioPageStaticProps;
 
@@ -17,6 +18,7 @@ const TranslateAudio = ({ datoCmsData }: ITranslateAudioProps) => {
       <NextHead pagesSchema={datoCmsData.pagesSchema} />
       <TranslateAudioProvider>
         <TranslateAudioHeader />
+        <TranslateAudioBody />
       </TranslateAudioProvider>
     </div>
   )
