@@ -35,6 +35,7 @@ export const FIREBASE_EVENT_NAMES = {
     change_stt_language: "change_stt_language",
     change_phonetic_transcription_language:
       "change_phonetic_transcription_language",
+    change_translate_audio_diff: "change_translate_audio_diff"
   },
   show: {
     modal_login: "show_modal_login",
