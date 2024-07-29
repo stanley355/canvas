@@ -21,6 +21,7 @@ import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 import { ITranslateAudioStates } from "../lib/TranslateAudioStates";
 import { ITranslateAudioReducerAction } from "../lib/TranslateAudioReducer";
+import { fetchPromptsAudioTranslations } from "@/common/lib/api/prompts/fetchPromptsAudioTranslations";
 
 interface TranslateAudioInputProps {
   translateAudioStates: ITranslateAudioStates;
@@ -50,7 +51,7 @@ const TranslateAudioInput = ({translateAudioStates, translateAudioDispatch}: Tra
     }
 
     setIsLoading(true);
-    sendFirebaseEvent(FIREBASE_EVENT_NAMES.speech_to_text);
+    sendFirebaseEvent(FIREBASE_EVENT_NAMES.translate_audio);
     const user = decode(token) as JwtPayload;
     const req = {
       user_id: user.id,
@@ -59,18 +60,18 @@ const TranslateAudioInput = ({translateAudioStates, translateAudioDispatch}: Tra
       temperature,
     };
 
-    // const transcription = await fetchPromptsAudioTranscriptions(req);
-    // setIsLoading(false);
+    const translations = await fetchPromptsAudioTranslations(req);
+    setIsLoading(false);
 
-    // if (transcription?.status === 402) {
-    //   appDispatch({ key: "showMonthlyLimitModal", value: true });
-    //   return;
-    // }
+    if (translations?.status === 402) {
+      appDispatch({ key: "showMonthlyLimitModal", value: true });
+      return;
+    }
 
-    // if (transcription) {
-    //   speechToTextDispatch({ key: "transcription", value: transcription });
-    //   return;
-    // }
+    if (translations?.completion_text) {
+      translateAudioDispatch({ key: "text", value: translations.completion_text });
+      return;
+    }
 
     toast.error("Server busy, please try again");
     return;

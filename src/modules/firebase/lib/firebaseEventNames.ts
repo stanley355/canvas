@@ -6,6 +6,7 @@ export const FIREBASE_EVENT_NAMES = {
   speech_to_text: "speech_to_text",
   phonetic_transcriptions: "phonetic_transcription",
   student_application: "student_application",
+  translate_audio: "translate_audio",
   login: {
     login: "login",
     loginGoogle: "login_google",
