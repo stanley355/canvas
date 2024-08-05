@@ -11,11 +11,18 @@ export enum PromptAudioSpeechVoice {
   Shimmer = "Shimmer",
 }
 
+export enum PromptAudioSpeechResponseFormat {
+  Mp3 = "Mp3",
+  Wav = "wav",
+  Opus = "Opus"
+}
+
 interface IRequest {
   user_id: string;
   input: string;
-  voice: PromptAudioSpeechVoice;
   speed?: number; // 0.25 - 4.0
+  voice: PromptAudioSpeechVoice;
+  response_format: PromptAudioSpeechResponseFormat
 }
 
 export const fetchPromptsAudioSpeech = async (
