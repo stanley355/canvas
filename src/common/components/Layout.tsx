@@ -11,13 +11,9 @@ const inter = Inter({ subsets: ["latin"] });
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
 
-  const isSimpleHeader = useMemo(() => {
-    return ["/login", "/students/application"].includes(router.pathname);
-  }, [router.pathname]);
-
   return (
     <div className={inter.className}>
-      <Header isSimpleHeader={isSimpleHeader} pathname={router.pathname} />
+      <Header pathname={router.pathname} />
       <main>{children}</main>
       <ToastContainer
         position="top-center"

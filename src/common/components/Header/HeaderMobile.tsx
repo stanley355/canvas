@@ -13,18 +13,18 @@ const HeaderMobile = (props: IHeaderMobile) => {
   const { isLogin } = props;
   const [showMenu, setShowMenu] = useState(false);
   return (
-    <div className="fixed top-0 left-0 z-40 flex items-center justify-between w-full bg-white border-b lg:hidden">
-      <Link href="/" className="pl-4">
+    <div className="flex items-center justify-between w-full h-full lg:hidden">
+      <Link href="/" className="h-full p-2">
         <Image
-          src="/images/languageai/logo.png"
+          src="/images/languageai/icon.png"
           alt="languageai.id"
-          width={100}
+          width={50}
           height={50}
-          className="w-2/3 h-full"
+          className="w-auto h-full rounded-full"
           loading="eager"
         />
       </Link>
-      <NextButton
+      {/* <NextButton
         type="button"
         variant="none"
         className="p-4"
@@ -37,7 +37,7 @@ const HeaderMobile = (props: IHeaderMobile) => {
           isLogin={isLogin}
           onCloseClick={() => setShowMenu(false)}
         />
-      )}
+      )} */}
     </div>
   );
 };
