@@ -16,7 +16,7 @@ const HeaderMobile = (props: IHeaderMobile) => {
 
   return (
     <div className="flex items-center justify-between w-full h-full lg:hidden">
-      <Link href="/" className="h-full p-2">
+      <Link href="/" className="h-full p-2" onClick={()=> setShowMenu(false)}>
         <Image
           src="/images/languageai/icon.png"
           alt="languageai.id"

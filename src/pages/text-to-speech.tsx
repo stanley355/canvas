@@ -20,7 +20,7 @@ const TextToSpeech = (props: TTSProps) => {
   const { datoCmsData } = props;
 
   return (
-    <div className="container mx-auto mt-20 lg:mt-4 text-sm pb-8">
+    <div className="container mx-auto text-sm pb-8">
       <NextHead pagesSchema={datoCmsData.pagesSchema} />
       <TextToSpeechProvider>
         <TextToSpeechHeader />

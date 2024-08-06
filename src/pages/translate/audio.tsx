@@ -14,7 +14,7 @@ interface ITranslateAudioProps {
 const TranslateAudio = ({ datoCmsData }: ITranslateAudioProps) => {
 
   return (
-    <div className="mt-16 container lg:mx-auto lg:mt-0 lg:text-sm pb-4">
+    <div className="container lg:mx-auto lg:text-sm pb-4">
       <NextHead pagesSchema={datoCmsData.pagesSchema} />
       <TranslateAudioProvider>
         <TranslateAudioHeader />

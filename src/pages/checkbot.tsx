@@ -15,7 +15,7 @@ export const getStaticProps: GetStaticProps = getCheckbotPageStaticProps;
 const Checkbot = (props: CheckbotProps) => {
   const { datoCmsData } = props;
   return (
-    <div className="container mx-auto mt-14 lg:mt-0 text-sm pb-8">
+    <div className="container mx-auto text-sm pb-8">
       <NextHead pagesSchema={datoCmsData.pagesSchema} />
       <CheckbotProvider>
         <CheckbotHeader />

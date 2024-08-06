@@ -16,7 +16,7 @@ export const getStaticProps: GetStaticProps = getHomePageStaticProps;
 const Home = (props: HomeProps) => {
   const { datoCmsData } = props;
   return (
-    <div className=" mt-20 lg:mt-0">
+    <div>
       <NextHead pagesSchema={datoCmsData.pagesSchema} />
       <HomeHero />
       <HomeFeatures />

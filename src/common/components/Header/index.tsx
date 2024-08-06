@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import cookie from "js-cookie";
 import HeaderMobile from "./HeaderMobile";
 import HeaderDesktop from "./HeaderDesktop";
@@ -26,7 +24,7 @@ const Header = ({ pathname }: IHeader) => {
   return (
     <nav className="w-full h-[7.5vh]">
       <HeaderMobile isLogin={isLogin} pathname={pathname} />
-      {/* <HeaderDesktop isLogin={isLogin} pathname={pathname} /> */}
+      <HeaderDesktop isLogin={isLogin} pathname={pathname} />
     </nav>
   );
 };

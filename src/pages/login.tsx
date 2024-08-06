@@ -21,7 +21,7 @@ const Login = () => {
   };
 
   return (
-    <div className="px-4 lg:px-0 lg:mt-16">
+    <div className="px-4">
       <NextHead pagesSchema={pageSchema} />
       <LoginCard />
     </div>

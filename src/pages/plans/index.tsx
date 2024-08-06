@@ -15,7 +15,7 @@ const Plans = (props: IPlansProps) => {
   const { datoCmsData } = props;
 
   return (
-    <div className="container mt-20 px-4 lg:mt-4">
+    <div className="container px-4">
       <NextHead pagesSchema={datoCmsData.pagesSchema} />
       <h1 className="text-center font-bold text-3xl mb-4">
         A Plan for your Need

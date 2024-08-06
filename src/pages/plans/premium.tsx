@@ -33,7 +33,7 @@ const PremiumPlans = () => {
   };
 
   return (
-    <div className="container mt-20 lg:mt-0 lg:w-1/3 pb-8">
+    <div className="container lg:w-1/3 pb-8">
       <NextHead pagesSchema={schema} />
       <PlanPremiumFeatures />
       <PlanPremiumForm />
