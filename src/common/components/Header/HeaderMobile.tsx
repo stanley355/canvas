@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import HeaderMobileMenu from "./HeaderMobileMenu";
 import NextButton from "../NextButton";
+import { TbMenu, TbX } from "react-icons/tb";
 
 interface IHeaderMobile {
   isLogin: boolean;
@@ -12,6 +13,7 @@ interface IHeaderMobile {
 const HeaderMobile = (props: IHeaderMobile) => {
   const { isLogin } = props;
   const [showMenu, setShowMenu] = useState(false);
+
   return (
     <div className="flex items-center justify-between w-full h-full lg:hidden">
       <Link href="/" className="h-full p-2">
@@ -24,20 +26,14 @@ const HeaderMobile = (props: IHeaderMobile) => {
           loading="eager"
         />
       </Link>
-      {/* <NextButton
-        type="button"
-        variant="none"
-        className="p-4"
-        onClick={() => setShowMenu(true)}
-      >
-        Menu
-      </NextButton>
-      {showMenu && (
-        <HeaderMobileMenu
-          isLogin={isLogin}
-          onCloseClick={() => setShowMenu(false)}
-        />
-      )} */}
+      <button className="h-full p-2 text-2xl" onClick={() => setShowMenu(!showMenu)}>
+        {showMenu ? <TbX /> : <TbMenu />}
+      </button>
+      <HeaderMobileMenu
+        isLogin={isLogin}
+        isOpen={showMenu}
+        onLinkClick={() => setShowMenu(false)}
+      />
     </div>
   );
 };

@@ -1,51 +1,27 @@
 import Link from "next/link";
-import Image from "next/image";
-import { TbChevronRight, TbX } from "react-icons/tb";
+import { TbChevronRight } from "react-icons/tb";
 
-import { IHeaderMenu } from ".";
-import NextButton from "../NextButton";
-import { MOBILE_HEADER_MENU } from "./constant";
 import { cn } from "@/common/lib/cn";
-import styles from "./header.module.scss";
 
-interface IHeaderMobileMenu {
+import { MOBILE_HEADER_MENU } from "./constant";
+import { IHeaderMenu } from ".";
+
+type THeaderMobileMenuProps = {
   isLogin: boolean;
-  onCloseClick: () => void;
+  isOpen: boolean;
+  onLinkClick: () => void;
 }
 
-const HeaderMobileMenu = (props: IHeaderMobileMenu) => {
-  const { onCloseClick, isLogin } = props;
+const HeaderMobileMenu = ({ onLinkClick, isLogin, isOpen}: THeaderMobileMenuProps) => {
 
   return (
     <div
       className={cn(
-        "fixed top-0 left-0 z-20 w-full h-full bg-white",
-        styles.header_mobile_menu
+        "fixed top-[7.5vh] left-[2vw] z-20 w-[96vw] h-[91vh] bg-white drop-shadow rounded-md transition-transform duration-300 ease-in-out",
+        isOpen ? 'translate-y-0' : '-translate-y-[100vh]'
       )}
     >
-      <div className="flex items-center justify-between w-full border-b">
-        <Link href="/" className="pl-4">
-          <Image
-            src="/images/languageai/logo.png"
-            alt="languageai.id"
-            width={100}
-            height={50}
-            className="h-full w-auto"
-          />
-        </Link>
-        <NextButton
-          type="button"
-          variant="none"
-          className="p-4 py-5"
-          onClick={onCloseClick}
-        >
-          <TbX className="text-brand-primary" />
-        </NextButton>
-      </div>
-
-      <div
-        className={cn("px-4 text-sm", styles.header_mobile_menu_link_container)}
-      >
+      <div className="px-4 text-sm">
         {MOBILE_HEADER_MENU.filter((menu: IHeaderMenu) =>
           isLogin ? menu.url !== "/login/" : menu.url !== "/account/"
         ).map((menu: IHeaderMenu) => (
@@ -53,7 +29,7 @@ const HeaderMobileMenu = (props: IHeaderMobileMenu) => {
             key={menu.title}
             href={menu.url}
             className="flex items-center justify-between py-4 border-b"
-            onClick={onCloseClick}
+            onClick={onLinkClick}
           >
             <div className="flex items-center gap-2">
               {menu.icon}
