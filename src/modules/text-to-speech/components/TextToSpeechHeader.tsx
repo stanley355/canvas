@@ -14,12 +14,13 @@ const TextToSpeechHeader = () => {
   const { textToSpeechDispatch } = useContext(TextToSpeechContext);
 
   return (
-    <div className="p-4 lg:grid grid-cols-[25%_75%] lg:gap-2 lg:w-1/2 lg:px-0">
-      <div className="flex border border-brand-primary items-center gap-1 lg:justify-center rounded-lg p-2 bg-blue-100 mb-4 mx-auto lg:mx-0 w-full lg:mb-0 lg:mr-2">
+    <div >
+      <h1 className="p-4 font-semibold border-b">Text to Speech</h1>
+      {/* <div className="flex items-center w-full gap-1 p-2 mx-auto mb-4 bg-blue-100 border rounded-lg border-brand-primary lg:justify-center lg:mx-0 lg:mb-0 lg:mr-2">
         <TbSpeakerphone />
         Text to Speech
       </div>
-      <div className="flex justify-evenly gap-2 lg:w-full">
+      <div className="flex gap-2 justify-evenly lg:w-full">
         <NextSelect
           id="tts_voice"
           placeholder="Voice: Alpha"
@@ -46,7 +47,7 @@ const TextToSpeechHeader = () => {
         <Tooltip anchorSelect="#tts_speed" className="z-40">
           The speed of the generated audio.
         </Tooltip>
-      </div>
+      </div> */}
     </div>
   );
 };
