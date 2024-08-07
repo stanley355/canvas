@@ -1,25 +1,24 @@
+import { forwardRef, memo } from "react";
+import { VariantProps } from "class-variance-authority";
 import { cn } from "@/common/lib/cn";
-import { BUTTON_VARIANTS, TButtonVariants } from "./variants";
+import { buttonVariants } from "./variants";
 
 interface TButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
   key?: string;
-  variant?: keyof TButtonVariants;
 }
 
-const Button = ({ variant, className, children, ...rest }: TButtonProps) => {
+const Button = forwardRef<HTMLButtonElement, TButtonProps>( ({ variant, className, children, ...rest }: TButtonProps, ref) => {
 
   return (
     <button
       {...rest}
-      className={cn(
-        BUTTON_VARIANTS[variant ? variant : "default"],
-        className
-      )}
+      ref={ref}
+      className={cn(buttonVariants({ variant, className }))}
     >
       {children}
     </button>
   );
-};
+});
 
-export default Button;
+export default memo(Button);
