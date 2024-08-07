@@ -20,24 +20,12 @@ const TextToSpeech = (props: TTSProps) => {
   const { datoCmsData } = props;
 
   return (
-    <div className="container mx-auto text-sm pb-8">
+    <TextToSpeechProvider>
       <NextHead pagesSchema={datoCmsData.pagesSchema} />
-      <TextToSpeechProvider>
-        <TextToSpeechHeader />
-        <TextToSpeechTextarea />
-        <TextToSpeechResult />
-      </TextToSpeechProvider>
-      <div className="flex w-fit items-center gap-1 mx-auto">
-        Found an error?{" "}
-        <NextLink
-          href="/support"
-          variant="none"
-          className="text-blue-800 underline"
-        >
-          Report
-        </NextLink>{" "}
+      <div className="container mx-auto text-sm">
+
       </div>
-    </div>
+    </TextToSpeechProvider>
   );
 };
 
