@@ -29,11 +29,10 @@ const HeaderMobile = (props: IHeaderMobile) => {
       <button className="h-full p-2 text-2xl" onClick={() => setShowMenu(!showMenu)}>
         {showMenu ? <TbX /> : <TbMenu />}
       </button>
-      <HeaderMobileMenu
+      {showMenu && <HeaderMobileMenu
         isLogin={isLogin}
-        isOpen={showMenu}
         onLinkClick={() => setShowMenu(false)}
-      />
+      />}
     </div>
   );
 };
