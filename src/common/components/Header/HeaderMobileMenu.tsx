@@ -1,11 +1,8 @@
 import Link from "next/link";
 import { TbChevronRight } from "react-icons/tb";
 
-import { cn } from "@/common/lib/cn";
-
 import { MOBILE_HEADER_MENU } from "./constant";
 import { IHeaderMenu } from ".";
-import styles from './header.module.scss';
 
 type THeaderMobileMenuProps = {
   isLogin: boolean;
@@ -15,12 +12,7 @@ type THeaderMobileMenuProps = {
 const HeaderMobileMenu = ({ onLinkClick, isLogin }: THeaderMobileMenuProps) => {
 
   return (
-    <div
-      className={cn(
-        "fixed top-[7.5vh] left-[2vw] z-20 w-[96vw] h-[91vh] bg-white drop-shadow rounded-md ",
-        styles.header_mobile_menu
-      )}
-    >
+    <div className="fixed top-[7.5vh] left-[2vw] z-20 w-[96vw] h-[91vh] bg-white drop-shadow rounded-md animate-visible-forward">
       <div className="px-4 text-sm">
         {MOBILE_HEADER_MENU.filter((menu: IHeaderMenu) =>
           isLogin ? menu.url !== "/login/" : menu.url !== "/account/"
