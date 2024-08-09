@@ -12,7 +12,7 @@ type THeaderMobileMenuProps = {
 const HeaderMobileMenu = ({ onLinkClick, isLogin }: THeaderMobileMenuProps) => {
 
   return (
-    <div className="fixed top-[7.5vh] left-[2vw] z-20 w-[96vw] h-[91vh] bg-white drop-shadow rounded-md animate-visible-forward">
+    <div className="fixed top-[7.5vh] left-[2vw] z-20 w-[96vw] h-[91vh] bg-white shadow border rounded-md animate-visible-forward">
       <div className="px-4 text-sm">
         {MOBILE_HEADER_MENU.filter((menu: IHeaderMenu) =>
           isLogin ? menu.url !== "/login/" : menu.url !== "/account/"
