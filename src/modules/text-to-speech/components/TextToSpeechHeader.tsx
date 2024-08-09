@@ -10,6 +10,7 @@ import { TbSpeakerphone } from "react-icons/tb";
 import { TTS_SPEED_OPTIONS } from "../lib/ttsSpeedOptions";
 import { TTS_VOICE_OPTIONS } from "../lib/ttsVoiceOptions";
 import Button from "@/common/components/Button";
+import Input from "@/common/components/Input";
 // import Select from "@/common/components/Select";
 
 const TextToSpeechHeader = () => {
