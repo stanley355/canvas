@@ -22,9 +22,9 @@ const TextToSpeech = (props: TTSProps) => {
   return (
     <TextToSpeechProvider>
       <NextHead pagesSchema={datoCmsData.pagesSchema} />
-      <div className="p-2 pt-0 lg:px-0">
+      <div className="p-2 lg:px-0">
         <div className="container mx-auto border rounded-lg">
-      <h1 className="p-4 font-semibold border-b">Text to Speech</h1>
+          <h1 className="p-4 font-semibold border-b">Text to Speech</h1>
         </div>
       </div>
     </TextToSpeechProvider>

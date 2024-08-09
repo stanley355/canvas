@@ -2,8 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import HeaderMobileMenu from "./HeaderMobileMenu";
-import NextButton from "../NextButton";
-import { TbMenu, TbX } from "react-icons/tb";
+import { TbMenu } from "react-icons/tb";
 
 interface IHeaderMobile {
   isLogin: boolean;
@@ -20,14 +19,14 @@ const HeaderMobile = (props: IHeaderMobile) => {
         <Image
           src="/images/languageai/icon.png"
           alt="languageai.id"
-          width={50}
-          height={50}
+          width={25}
+          height={25}
           className="w-auto h-full rounded-full"
           loading="eager"
         />
       </Link>
       <button className="h-full p-2 text-2xl" onClick={() => setShowMenu(!showMenu)}>
-        {showMenu ? <TbX /> : <TbMenu />}
+        <TbMenu />
       </button>
       {showMenu && <HeaderMobileMenu
         isLogin={isLogin}

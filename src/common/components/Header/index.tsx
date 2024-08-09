@@ -22,7 +22,7 @@ const Header = ({ pathname }: IHeader) => {
   }, [cookieToken]);
 
   return (
-    <nav className="w-full h-[7.5vh]">
+    <nav className="w-full">
       <HeaderMobile isLogin={isLogin} pathname={pathname} />
       <HeaderDesktop isLogin={isLogin} pathname={pathname} />
     </nav>
