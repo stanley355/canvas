@@ -9,6 +9,8 @@ import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames"
 import { TbSpeakerphone } from "react-icons/tb";
 import { TTS_SPEED_OPTIONS } from "../lib/ttsSpeedOptions";
 import { TTS_VOICE_OPTIONS } from "../lib/ttsVoiceOptions";
+import Button from "@/common/components/Button";
+// import Select from "@/common/components/Select";
 
 const TextToSpeechHeader = () => {
   const { textToSpeechDispatch } = useContext(TextToSpeechContext);
@@ -16,6 +18,7 @@ const TextToSpeechHeader = () => {
   return (
     <div >
       <h1 className="p-4 font-semibold border-b">Text to Speech</h1>
+        {/* <S:tab */}
       {/* <div className="flex items-center w-full gap-1 p-2 mx-auto mb-4 bg-blue-100 border rounded-lg border-brand-primary lg:justify-center lg:mx-0 lg:mb-0 lg:mr-2">
         <TbSpeakerphone />
         Text to Speech

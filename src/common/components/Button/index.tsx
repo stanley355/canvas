@@ -3,16 +3,16 @@ import { VariantProps } from "class-variance-authority";
 import { cn } from "@/common/lib/cn";
 import { buttonVariants } from "./variants";
 
-interface TButtonProps
+interface IButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
   key?: string;
 }
 
-const Button = forwardRef<HTMLButtonElement, TButtonProps>( ({ variant, className, children, ...rest }: TButtonProps, ref) => {
+const Button = forwardRef<HTMLButtonElement, IButtonProps>( ({ variant, className, children, ...props }: IButtonProps, ref) => {
 
   return (
     <button
-      {...rest}
+      {...props}
       ref={ref}
       className={cn(buttonVariants({ variant, className }))}
     >
