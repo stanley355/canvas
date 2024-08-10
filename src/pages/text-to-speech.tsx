@@ -9,6 +9,8 @@ import TextToSpeechProvider from "@/modules/text-to-speech/components/TextToSpee
 import TextToSpeechTextarea from "@/modules/text-to-speech/components/TextToSpeechTextarea";
 import TextToSpeechResult from "@/modules/text-to-speech/components/TextToSpeechResult";
 import TextToSpeechHeader from "@/modules/text-to-speech/components/TextToSpeechHeader";
+import Input from "@/common/components/Input";
+import Select from "@/common/components/Select";
 
 interface TTSProps {
   datoCmsData: NextHeadProps;
