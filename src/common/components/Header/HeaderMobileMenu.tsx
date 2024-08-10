@@ -8,10 +8,9 @@ import { IHeaderMenu } from ".";
 type THeaderMobileMenuProps = {
   isLogin: boolean;
   onLinkClick: () => void;
-}
+};
 
 const HeaderMobileMenu = ({ onLinkClick, isLogin }: THeaderMobileMenuProps) => {
-
   return (
     <div className="fixed top-0 left-0 z-50 w-full h-screen bg-white rounded-md animate-visible-forward">
       <div className="flex items-center justify-between w-full">
@@ -20,7 +19,7 @@ const HeaderMobileMenu = ({ onLinkClick, isLogin }: THeaderMobileMenuProps) => {
             src="/images/languageai/icon.png"
             alt="languageai.id"
             width={25}
-            height={25} 
+            height={25}
             className="w-auto h-full rounded-full"
             loading="eager"
           />

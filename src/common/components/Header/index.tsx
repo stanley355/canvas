@@ -14,7 +14,6 @@ export interface IHeaderMenu {
 }
 
 const Header = ({ pathname }: IHeader) => {
-
   const cookieToken = cookie.get("token");
   const [isLogin, setIsLogin] = useState(false);
   useEffect(() => {

@@ -7,7 +7,7 @@ export interface ITranslateAudioReducerAction {
 
 export const translateAudioReducer = (
   state: Record<keyof ITranslateAudioStates, any>,
-  action: ITranslateAudioReducerAction 
+  action: ITranslateAudioReducerAction
 ) => {
   state[action.key] = action.value;
   return structuredClone(state);

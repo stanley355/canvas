@@ -18,7 +18,7 @@ import { SubscriptionsDuration } from "@/common/lib/api/subscriptions/Subscripti
 
 const PlanStudentsForm = () => {
   const [selectedDuration, setSelectedDuration] =
-    useState<SubscriptionsDuration| null>(null);
+    useState<SubscriptionsDuration | null>(null);
 
   const handleClick = async (duration: SubscriptionsDuration) => {
     sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.premium_student);

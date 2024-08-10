@@ -28,7 +28,10 @@ interface TranslateAudioInputProps {
   translateAudioDispatch: (action: ITranslateAudioReducerAction) => void;
 }
 
-const TranslateAudioInput = ({translateAudioStates, translateAudioDispatch}: TranslateAudioInputProps) => {
+const TranslateAudioInput = ({
+  translateAudioStates,
+  translateAudioDispatch,
+}: TranslateAudioInputProps) => {
   const { appDispatch } = useContext(AppContext);
   const { temperature, fileName, fileUrl } = translateAudioStates;
 
@@ -69,7 +72,10 @@ const TranslateAudioInput = ({translateAudioStates, translateAudioDispatch}: Tra
     }
 
     if (translations?.completion_text) {
-      translateAudioDispatch({ key: "text", value: translations.completion_text });
+      translateAudioDispatch({
+        key: "text",
+        value: translations.completion_text,
+      });
       return;
     }
 
@@ -104,8 +110,8 @@ const TranslateAudioInput = ({translateAudioStates, translateAudioDispatch}: Tra
       const result = await uploadBytes(storef, file);
       const downloadURL = await getDownloadURL(result.ref);
 
-      translateAudioDispatch({key: "fileName", value: file.name});
-      translateAudioDispatch({key: "fileUrl", value: downloadURL})
+      translateAudioDispatch({ key: "fileName", value: file.name });
+      translateAudioDispatch({ key: "fileUrl", value: downloadURL });
       setIsUploading(false);
       return;
     } catch (error: any) {

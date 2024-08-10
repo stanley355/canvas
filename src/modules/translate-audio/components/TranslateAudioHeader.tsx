@@ -1,12 +1,12 @@
-import { useContext } from 'react';
-import { TbLanguage } from 'react-icons/tb'
+import { useContext } from "react";
+import { TbLanguage } from "react-icons/tb";
 
-import NextSelect from '@/common/components/NextSelect';
-import { TranslateAudioContext } from './TranslateAudioContext';
+import NextSelect from "@/common/components/NextSelect";
+import { TranslateAudioContext } from "./TranslateAudioContext";
 
-import { sendFirebaseEvent } from '@/modules/firebase/lib/sendFirebaseEvent';
-import { FIREBASE_EVENT_NAMES } from '@/modules/firebase/lib/firebaseEventNames';
-import { SPEECH_TO_TEXT_DIFF_OPTIONS } from '@/modules/speech-to-text/lib/speechToTextDiffOptions';
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
+import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
+import { SPEECH_TO_TEXT_DIFF_OPTIONS } from "@/modules/speech-to-text/lib/speechToTextDiffOptions";
 
 const TranslateAudioHeader = () => {
   const { translateAudioDispatch } = useContext(TranslateAudioContext);
@@ -21,16 +21,18 @@ const TranslateAudioHeader = () => {
       <NextSelect
         id="translate_diff"
         placeholder="Diff: Mid"
-        containerClassname='w-1/2 lg:w-1/6'
+        containerClassname="w-1/2 lg:w-1/6"
         selectClassname="border-gray-200"
         options={SPEECH_TO_TEXT_DIFF_OPTIONS}
         onChange={(option) => {
           translateAudioDispatch({ key: "temperature", value: option.value });
-          sendFirebaseEvent(FIREBASE_EVENT_NAMES.change.change_translate_audio_diff);
+          sendFirebaseEvent(
+            FIREBASE_EVENT_NAMES.change.change_translate_audio_diff
+          );
         }}
       />
     </div>
-  )
-}
+  );
+};
 
-export default TranslateAudioHeader
+export default TranslateAudioHeader;

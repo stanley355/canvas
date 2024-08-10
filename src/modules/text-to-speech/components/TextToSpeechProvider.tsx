@@ -5,9 +5,9 @@ import { TEXT_TO_SPEECH_STATES } from "../lib/textToSpeechStates";
 
 type TTextToSpeechProviderProps = {
   children: React.ReactNode;
-}
+};
 
-const TextToSpeechProvider = ({children}: TTextToSpeechProviderProps) => {
+const TextToSpeechProvider = ({ children }: TTextToSpeechProviderProps) => {
   const [textToSpeechStates, textToSpeechDispatch] = useReducer(
     textToSpeechReducer,
     TEXT_TO_SPEECH_STATES

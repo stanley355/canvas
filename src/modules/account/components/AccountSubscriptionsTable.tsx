@@ -5,8 +5,9 @@ interface IAccountSubscriptionsTable {
   subscriptions: ISubscription[];
 }
 
-const AccountSubscriptionsTable = ({subscriptions}: IAccountSubscriptionsTable) => {
-
+const AccountSubscriptionsTable = ({
+  subscriptions,
+}: IAccountSubscriptionsTable) => {
   return (
     <div>
       <div className="mb-2 text-lg font-semibold">Payment History</div>
@@ -27,14 +28,13 @@ const AccountSubscriptionsTable = ({subscriptions}: IAccountSubscriptionsTable) 
               <td className="p-1 text-center border">
                 {new Date(subscription.created_at).toLocaleString("id-ID")}
               </td>
-              <td className="p-1 text-center border">
-              Premium
-              </td>
+              <td className="p-1 text-center border">Premium</td>
               <td className="p-1 text-center border">
                 Rp {subscription.price}
               </td>
               <td className="p-1 border">
-                <TbCheck className="mx-auto" /> {/* Only show paid topup from the backend */}
+                <TbCheck className="mx-auto" />{" "}
+                {/* Only show paid topup from the backend */}
               </td>
             </tr>
           ))}

@@ -14,7 +14,7 @@ export enum PromptAudioSpeechVoice {
 export enum PromptAudioSpeechResponseFormat {
   Mp3 = "Mp3",
   Wav = "Wav",
-  Opus = "Opus"
+  Opus = "Opus",
 }
 
 interface IRequest {
@@ -22,7 +22,7 @@ interface IRequest {
   input: string;
   speed?: number; // 0.25 - 4.0
   voice: PromptAudioSpeechVoice;
-  response_format: PromptAudioSpeechResponseFormat
+  response_format: PromptAudioSpeechResponseFormat;
 }
 
 export const fetchPromptsAudioSpeech = async (

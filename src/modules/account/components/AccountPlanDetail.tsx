@@ -18,16 +18,12 @@ interface IAccountPlanDetail {
 
 const AccountPlanDetail = (props: IAccountPlanDetail) => {
   const { account } = props;
-  const { student, subscription, subscriptions } =
-    account;
+  const { student, subscription, subscriptions } = account;
 
   const isFreeStudent = useMemo(() => {
-    if (
-      student
-    ) {
+    if (student) {
       const isFreeDiscount =
-        new Date(student.free_discount_end_at).getTime() >
-        new Date().getTime();
+        new Date(student.free_discount_end_at).getTime() > new Date().getTime();
       return isFreeDiscount;
     }
 

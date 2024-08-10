@@ -33,7 +33,9 @@ const AccountStudentPlanDetail = (props: IAccountStudentPlanDetail) => {
         Your usage is unlimited until the end of your plan
       </div>
 
-      {subscriptions?.length > 0 && <AccountSubscriptionsTable subscriptions={subscriptions} />}
+      {subscriptions?.length > 0 && (
+        <AccountSubscriptionsTable subscriptions={subscriptions} />
+      )}
     </div>
   );
 };

@@ -1,10 +1,7 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const authorPromptsApi = async (
-  req: NextApiRequest,
-  res: NextApiResponse
-) => {
+const authorPromptsApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const url = `${process.env.AUTHOR_URL}v1/prompts/`;
 
   try {

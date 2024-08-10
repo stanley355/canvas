@@ -1,5 +1,8 @@
 import { createContext } from "react";
-import { ITranslateAudioStates, TRANSLATE_AUDIO_STATES } from "../lib/TranslateAudioStates";
+import {
+  ITranslateAudioStates,
+  TRANSLATE_AUDIO_STATES,
+} from "../lib/TranslateAudioStates";
 import { ITranslateAudioReducerAction } from "../lib/TranslateAudioReducer";
 
 interface ITranslateAudioContext {

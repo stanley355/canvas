@@ -10,12 +10,12 @@ interface TranslateAudioProviderProps {
 const TranslateAudioProvider = ({ children }: TranslateAudioProviderProps) => {
   const [translateAudioStates, translateAudioDispatch] = useReducer(
     translateAudioReducer,
-   TRANSLATE_AUDIO_STATES 
+    TRANSLATE_AUDIO_STATES
   );
 
   return (
     <TranslateAudioContext.Provider
-      value={{ translateAudioStates, translateAudioDispatch}}
+      value={{ translateAudioStates, translateAudioDispatch }}
     >
       {children}
     </TranslateAudioContext.Provider>

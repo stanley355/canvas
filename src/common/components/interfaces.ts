@@ -1,4 +1,4 @@
 export interface IOption {
-  label: string;
+  label: React.ReactNode;
   value: any;
 }

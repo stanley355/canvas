@@ -23,7 +23,7 @@ export const FIREBASE_EVENT_NAMES = {
     home_getstarted: "click_home_getstarted",
     stt_csv_export: "click_stt_csv_export",
     stt_upload: "click_stt_upload",
-    translate_audio_upload: 'click_translate_audio_upload'
+    translate_audio_upload: "click_translate_audio_upload",
   },
   change: {
     change_translate_n: "change_translate_n",
@@ -38,7 +38,7 @@ export const FIREBASE_EVENT_NAMES = {
     change_stt_language: "change_stt_language",
     change_phonetic_transcription_language:
       "change_phonetic_transcription_language",
-    change_translate_audio_diff: "change_translate_audio_diff"
+    change_translate_audio_diff: "change_translate_audio_diff",
   },
   show: {
     modal_login: "show_modal_login",

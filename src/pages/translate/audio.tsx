@@ -1,9 +1,9 @@
-import { GetStaticProps } from 'next';
-import { getTranslateAudioPageStaticProps } from '@/modules/translate-audio/lib/getTranslateAudioStaticProps';
-import NextHead, { NextHeadProps } from '@/common/components/NextHead';
-import TranslateAudioHeader from '@/modules/translate-audio/components/TranslateAudioHeader';
-import TranslateAudioProvider from '@/modules/translate-audio/components/TranslateAudioProvider';
-import TranslateAudioBody from '@/modules/translate-audio/components/TranslateAudioBody';
+import { GetStaticProps } from "next";
+import { getTranslateAudioPageStaticProps } from "@/modules/translate-audio/lib/getTranslateAudioStaticProps";
+import NextHead, { NextHeadProps } from "@/common/components/NextHead";
+import TranslateAudioHeader from "@/modules/translate-audio/components/TranslateAudioHeader";
+import TranslateAudioProvider from "@/modules/translate-audio/components/TranslateAudioProvider";
+import TranslateAudioBody from "@/modules/translate-audio/components/TranslateAudioBody";
 
 export const getStaticProps: GetStaticProps = getTranslateAudioPageStaticProps;
 
@@ -12,7 +12,6 @@ interface ITranslateAudioProps {
 }
 
 const TranslateAudio = ({ datoCmsData }: ITranslateAudioProps) => {
-
   return (
     <div className="container lg:mx-auto lg:text-sm pb-4">
       <NextHead pagesSchema={datoCmsData.pagesSchema} />
@@ -21,7 +20,7 @@ const TranslateAudio = ({ datoCmsData }: ITranslateAudioProps) => {
         <TranslateAudioBody />
       </TranslateAudioProvider>
     </div>
-  )
-}
+  );
+};
 
-export default TranslateAudio; 
+export default TranslateAudio;

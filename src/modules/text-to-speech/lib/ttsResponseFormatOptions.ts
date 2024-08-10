@@ -4,14 +4,14 @@ import { PromptAudioSpeechResponseFormat } from "@/common/lib/api/prompts/fetchP
 export const TTS_RESPONSE_FORMAT_OPTIONS: IOption[] = [
   {
     label: "Format: Mp3",
-    value: PromptAudioSpeechResponseFormat.Mp3
+    value: PromptAudioSpeechResponseFormat.Mp3,
   },
   {
     label: "Format: Wav",
-    value: PromptAudioSpeechResponseFormat.Wav
+    value: PromptAudioSpeechResponseFormat.Wav,
   },
   {
     label: "Format: Opus",
-    value: PromptAudioSpeechResponseFormat.Opus
-  }
-]
+    value: PromptAudioSpeechResponseFormat.Opus,
+  },
+];
