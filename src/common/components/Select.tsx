@@ -5,6 +5,7 @@ import Button from "./Button";
 import { TbChevronDown, TbChevronUp } from "react-icons/tb";
 
 type TSelectProps = React.InputHTMLAttributes<HTMLInputElement> & {
+  containerId?:string;
   containerClassname?: string;
   selectClassname?: string;
   optionContainerClassname?: string;
@@ -13,6 +14,7 @@ type TSelectProps = React.InputHTMLAttributes<HTMLInputElement> & {
 };
 
 const Select = ({
+  containerId,
   containerClassname,
   selectClassname,
   optionContainerClassname,
@@ -26,7 +28,7 @@ const Select = ({
   const [showOptions, setShowOptions] = useState(false);
 
   return (
-    <div className={cn("relative w-full", containerClassname)}>
+    <div className={cn("relative w-full", containerClassname)} id={containerId}>
       <input
         type="text"
         className="invisible w-0 h-0"
