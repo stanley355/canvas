@@ -4,9 +4,10 @@ import NextLink from "@/common/components/NextLink";
 
 const TextToSpeechResult = () => {
   const { textToSpeechStates } = useContext(TextToSpeechContext);
+  const { currentFileID, audioFormat } = textToSpeechStates;
 
   const fileUrl = useMemo(() => {
-    return `${process.env.NEXT_PUBLIC_FILE_URL}v1/files/${textToSpeechStates.currentFileID}.mp3`;
+    return `${process.env.NEXT_PUBLIC_FILE_URL}v1/files/${textToSpeechStates.currentFileID}.${audioFormat.toLowerCase()}`;
   }, [textToSpeechStates.currentFileID]);
 
   return (
