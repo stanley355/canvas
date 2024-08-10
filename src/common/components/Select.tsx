@@ -1,4 +1,4 @@
-import { forwardRef, useState } from "react"
+import { memo, useState } from "react"
 import { IOption } from "./interfaces"
 import { cn } from "../lib/cn";
 import Button from "./Button";
@@ -38,6 +38,7 @@ const Select = ({
         {...props}
       />
       <Button
+        type="button"
         variant="outline"
         className={cn('w-full justify-between hover:bg-gradient-to-b hover:from-white hover:to-blue-100', selectClassname)}
         onClick={() => setShowOptions(!showOptions)}>
@@ -47,20 +48,24 @@ const Select = ({
 
       <div
         className={cn(
-          "border rounded-md top-10 left-0 h-0 animate-visible-forward",
+          "border rounded-md absolute top-10 left-0 overflow-y-auto animate-visible-forward z-10",
           optionContainerClassname,
           showOptions ? 'block max-h-40' : 'hidden'
         )}
       >
-        {options.map((opt) => <Button
-          variant="ghost"
-          className={cn('w-full justify-start hover:bg-blue-100', optionClassname)}
+        {options.map((opt) =>
+          <Button
+            type="button"
+            variant="ghost"
+            className={cn('w-full justify-start hover:bg-blue-100', optionClassname)}
 
-          onChange={() => { setOption(opt); setShowOptions(false) }}
-        >{opt.label}</Button>)}
+            onClick={() => { setOption(opt); setShowOptions(false) }}
+          >{opt.label}
+          </Button>
+        )}
       </div>
     </div>
   )
 }
 
-export default Select
+export default memo(Select)
