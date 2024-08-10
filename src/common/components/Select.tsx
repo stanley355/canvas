@@ -22,7 +22,7 @@ const Select = ({
   placeholder,
   onChange,
   ...props }: TSelectProps) => {
-  const [option, SetOption] = useState<IOption>({ label: "", value: "" });
+  const [option, setOption] = useState<IOption>({ label: "", value: "" });
   const [showOptions, setShowOptions] = useState(false);
 
   return (
@@ -52,7 +52,12 @@ const Select = ({
           showOptions ? 'block max-h-40' : 'hidden'
         )}
       >
-        {options.map((opt) => <Button variant="ghost" className={cn('w-full justify-start hover:bg-blue-100', optionClassname)}>{opt.label}</Button>)}
+        {options.map((opt) => <Button
+          variant="ghost"
+          className={cn('w-full justify-start hover:bg-blue-100', optionClassname)}
+
+          onChange={() => { setOption(opt); setShowOptions(false) }}
+        >{opt.label}</Button>)}
       </div>
     </div>
   )
