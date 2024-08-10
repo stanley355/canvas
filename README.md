@@ -1,6 +1,7 @@
 # CANVAS
 
 ### 1.5.6
+
 - Translate audio page
 - Refac tts UI
 - TTS audio format

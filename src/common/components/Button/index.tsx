@@ -23,5 +23,5 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
   }
 );
 
-Button.displayName = 'Button';
+Button.displayName = "Button";
 export default memo(Button);
