@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
+import { Tooltip } from "react-tooltip";
 import { TbProgress, TbX } from "react-icons/tb";
 import Cookies from "js-cookie";
 import { decode, JwtPayload } from "jsonwebtoken";
@@ -123,7 +124,7 @@ const TextToSpeechForm = () => {
           <span>/ 1000 characters</span>
         </div>
         <Select
-          id="tts_voice_select"
+          containerId="tts_voice_select"
           name="tts_voice"
           containerClassname="flex-1"
           options={TTS_VOICE_OPTIONS}
@@ -133,7 +134,7 @@ const TextToSpeechForm = () => {
           }
         />
         <Select
-          id="tts_speed_select"
+          containerId="tts_speed_select"
           name="tts_speed"
           containerClassname="flex-1"
           options={TTS_SPEED_OPTIONS}
@@ -143,7 +144,7 @@ const TextToSpeechForm = () => {
           }
         />
         <Select
-          id="tts_format_select"
+          containerId="tts_format_select"
           name="tts_format"
           containerClassname="flex-2 lg:flex-1"
           options={TTS_RESPONSE_FORMAT_OPTIONS}
@@ -174,6 +175,15 @@ const TextToSpeechForm = () => {
             "Generate"
           )}
         </Button>
+        <Tooltip anchorSelect="#tts_voice_select">
+          The voice to use when generating the audio.
+        </Tooltip>
+        <Tooltip anchorSelect="#tts_speed_select">
+          The speed of the generated audio.
+        </Tooltip>
+        <Tooltip anchorSelect="#tts_format_select">
+          The output of the generated audio.
+        </Tooltip>
       </div>
     </form>
   );

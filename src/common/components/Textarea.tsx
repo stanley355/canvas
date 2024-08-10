@@ -18,5 +18,5 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TTextareaProps>(
   }
 );
 
-Textarea.displayName = 'Textarea';
+Textarea.displayName = "Textarea";
 export default memo(Textarea);
