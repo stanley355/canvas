@@ -56,7 +56,7 @@ const TextToSpeechForm = () => {
       user_id: user.id,
       input: userText,
       voice: target.tts_voice.value ? target.tts_voice.value : TTS_VOICE_OPTIONS[0].value,
-      speed: target.tts_speed.value ? target.tts_speed.value : TTS_SPEED_OPTIONS[0].value,
+      speed: target.tts_speed.value ? target.tts_speed.value : TTS_SPEED_OPTIONS[1].value,
       response_format: responseFormat
     };
 
@@ -114,7 +114,7 @@ const TextToSpeechForm = () => {
           name="tts_speed"
           containerClassname="flex-1"
           options={TTS_SPEED_OPTIONS}
-          placeholder={TTS_SPEED_OPTIONS[0].label}
+          placeholder={TTS_SPEED_OPTIONS[1].label}
           onChange={() => sendFirebaseEvent(FIREBASE_EVENT_NAMES.change.change_tts_speed)}
         />
         <Select

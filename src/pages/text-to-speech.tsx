@@ -1,14 +1,8 @@
 import { GetStaticProps } from "next";
-
 import { getTextToSpeechStaticProps } from "@/modules/text-to-speech/lib/getTextToSpeechPageStaticProps";
-
 import NextHead, { NextHeadProps } from "@/common/components/NextHead";
-import NextLink from "@/common/components/NextLink";
-
 import TextToSpeechProvider from "@/modules/text-to-speech/components/TextToSpeechProvider";
 import TextToSpeechResult from "@/modules/text-to-speech/components/TextToSpeechResult";
-import Input from "@/common/components/Input";
-import Select from "@/common/components/Select";
 import TextToSpeechForm from "@/modules/text-to-speech/components/TextToSpeechForm";
 
 interface TTSProps {
