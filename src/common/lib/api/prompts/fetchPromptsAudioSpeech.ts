@@ -13,7 +13,7 @@ export enum PromptAudioSpeechVoice {
 
 export enum PromptAudioSpeechResponseFormat {
   Mp3 = "Mp3",
-  Wav = "wav",
+  Wav = "Wav",
   Opus = "Opus"
 }
 

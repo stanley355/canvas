@@ -6,7 +6,6 @@ import NextHead, { NextHeadProps } from "@/common/components/NextHead";
 import NextLink from "@/common/components/NextLink";
 
 import TextToSpeechProvider from "@/modules/text-to-speech/components/TextToSpeechProvider";
-import TextToSpeechTextarea from "@/modules/text-to-speech/components/TextToSpeechTextarea";
 import TextToSpeechResult from "@/modules/text-to-speech/components/TextToSpeechResult";
 import Input from "@/common/components/Input";
 import Select from "@/common/components/Select";
@@ -26,7 +25,7 @@ const TextToSpeech = (props: TTSProps) => {
       <NextHead pagesSchema={datoCmsData.pagesSchema} />
       <div className="min-h-screen p-2 lg:px-0">
         <div className="container mx-auto border rounded-lg">
-          <h1 className="p-4 font-semibold border-b">Text to Speech</h1>
+          <h1 className="p-4 font-semibold">Text to Speech</h1>
           <TextToSpeechForm />
         </div>
       </div>

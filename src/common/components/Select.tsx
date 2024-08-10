@@ -57,7 +57,7 @@ const Select = ({
           <Button
             type="button"
             variant="ghost"
-            className={cn('w-full justify-start hover:bg-blue-100', optionClassname)}
+            className={cn('w-full justify-start hover:bg-blue-100 rounded-none', optionClassname)}
 
             onClick={() => { setOption(opt); setShowOptions(false) }}
           >{opt.label}
