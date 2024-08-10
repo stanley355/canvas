@@ -1,5 +1,12 @@
 # CANVAS
 
+### 1.5.6
+- Translate audio page
+- Refac tts UI
+- TTS audio format
+- Add new ui component
+- Refact mobile navbar UI
+
 ### 1.5.5
 
 - Update endpoints
