@@ -5,7 +5,7 @@ import Button from "./Button";
 import { TbChevronDown, TbChevronUp } from "react-icons/tb";
 
 type TSelectProps = React.InputHTMLAttributes<HTMLInputElement> & {
-  containerId?:string;
+  containerId?: string;
   containerClassname?: string;
   selectClassname?: string;
   optionContainerClassname?: string;

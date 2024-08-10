@@ -29,10 +29,7 @@ const TextToSpeech = (props: TTSProps) => {
           <TextToSpeechResult />
           <div className="flex items-center gap-1 mx-auto w-fit">
             Found an error?
-            <Link
-              href="/support"
-              className="underline text-brand-primary"
-            >
+            <Link href="/support" className="underline text-brand-primary">
               Report
             </Link>{" "}
           </div>

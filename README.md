@@ -1,5 +1,10 @@
 # CANVAS
 
+### 1.5.7
+
+- Husky setup
+- Add tooltip to TTS
+
 ### 1.5.6
 
 - Translate audio page
