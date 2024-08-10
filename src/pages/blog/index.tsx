@@ -13,7 +13,7 @@ export const getServerSideProps: GetServerSideProps = getBlogServerSideProps;
 
 const Blog = ({ allBlogs }: IDatoBlogHome) => {
   return (
-    <div className="mt-16 text-sm px-4 lg:mt-0 pb-8">
+    <div className="text-sm px-4 pb-8">
       <div className="flex border border-brand-primary items-center gap-1 lg:justify-center rounded-lg p-2 bg-blue-100 mb-4 w-fit">
         <FaBlog />
         Blog

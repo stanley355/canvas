@@ -24,7 +24,7 @@ const Support = () => {
     "mailto:winatastanley355@gmail.com?subject=I%20found%20a%20bug%20on%20LanguageAi";
 
   return (
-    <div className="container h-screen px-4 mt-20 lg:mt-0 lg:px-0">
+    <div className="container h-screen px-4 lg:px-0">
       <NextHead pagesSchema={pageSchema} />
       <Image
         src={"/images/support.png"}

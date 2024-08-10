@@ -6,6 +6,7 @@ export const FIREBASE_EVENT_NAMES = {
   speech_to_text: "speech_to_text",
   phonetic_transcriptions: "phonetic_transcription",
   student_application: "student_application",
+  translate_audio: "translate_audio",
   login: {
     login: "login",
     loginGoogle: "login_google",
@@ -22,6 +23,7 @@ export const FIREBASE_EVENT_NAMES = {
     home_getstarted: "click_home_getstarted",
     stt_csv_export: "click_stt_csv_export",
     stt_upload: "click_stt_upload",
+    translate_audio_upload: "click_translate_audio_upload",
   },
   change: {
     change_translate_n: "change_translate_n",
@@ -30,11 +32,13 @@ export const FIREBASE_EVENT_NAMES = {
     change_checkbot_temperature: "change_checkbot_temperature",
     change_tts_voice: "change_tts_voice",
     change_tts_speed: "change_tts_speed",
+    change_tts_format: "change_tts_format",
     change_stt_diff: "change_stt_diff",
     change_stt_granularity: "change_stt_granularity",
     change_stt_language: "change_stt_language",
     change_phonetic_transcription_language:
       "change_phonetic_transcription_language",
+    change_translate_audio_diff: "change_translate_audio_diff",
   },
   show: {
     modal_login: "show_modal_login",

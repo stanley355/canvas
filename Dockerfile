@@ -1,4 +1,4 @@
-FROM node:18-alpine as builder
+FROM node:20-alpine as builder
 
 # Pass the environment variables to the build command
 ARG NEXT_PUBLIC_BASE_URL
@@ -45,7 +45,7 @@ COPY . .
 RUN yarn build
 
 
-FROM node:18-alpine as runner
+FROM node:20-alpine as runner
 
 WORKDIR /app
 

@@ -8,7 +8,7 @@ interface IAccountPayasyougoPlanDetail {
 }
 
 const AccountPremiumPlanDetail = (props: IAccountPayasyougoPlanDetail) => {
-  const { subscription, subscriptions} = props;
+  const { subscription, subscriptions } = props;
 
   return (
     <div className="pb-4">
@@ -39,7 +39,9 @@ const AccountPremiumPlanDetail = (props: IAccountPayasyougoPlanDetail) => {
         Your usage is unlimited until the end of your plan
       </div>
 
-      {subscriptions?.length > 0 && <AccountSubscriptionsTable subscriptions={subscriptions} />}
+      {subscriptions?.length > 0 && (
+        <AccountSubscriptionsTable subscriptions={subscriptions} />
+      )}
     </div>
   );
 };

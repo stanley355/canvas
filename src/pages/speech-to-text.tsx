@@ -17,7 +17,7 @@ const SpeechToText = (props: STTProps) => {
   const { datoCmsData } = props;
 
   return (
-    <div className="container mx-auto mt-16 lg:mt-0 text-sm pb-8 min-h-screen">
+    <div className="container mx-auto text-sm pb-8 min-h-screen">
       <NextHead pagesSchema={datoCmsData.pagesSchema} />
       <SpeechToTextProvider>
         <SpeechToTextHeader />

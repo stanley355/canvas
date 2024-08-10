@@ -2,7 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import HeaderMobileMenu from "./HeaderMobileMenu";
-import NextButton from "../NextButton";
+import { TbMenu } from "react-icons/tb";
 
 interface IHeaderMobile {
   isLogin: boolean;
@@ -12,30 +12,29 @@ interface IHeaderMobile {
 const HeaderMobile = (props: IHeaderMobile) => {
   const { isLogin } = props;
   const [showMenu, setShowMenu] = useState(false);
+
   return (
-    <div className="fixed top-0 left-0 z-40 flex items-center justify-between w-full bg-white border-b lg:hidden">
-      <Link href="/" className="pl-4">
+    <div className="flex items-center justify-between w-full h-full lg:hidden">
+      <Link href="/" className="h-full p-2" onClick={() => setShowMenu(false)}>
         <Image
-          src="/images/languageai/logo.png"
+          src="/images/languageai/icon.png"
           alt="languageai.id"
-          width={100}
-          height={50}
-          className="w-2/3 h-full"
+          width={25}
+          height={25}
+          className="w-auto h-full rounded-full"
           loading="eager"
         />
       </Link>
-      <NextButton
-        type="button"
-        variant="none"
-        className="p-4"
-        onClick={() => setShowMenu(true)}
+      <button
+        className="h-full p-2 text-2xl"
+        onClick={() => setShowMenu(!showMenu)}
       >
-        Menu
-      </NextButton>
+        <TbMenu />
+      </button>
       {showMenu && (
         <HeaderMobileMenu
           isLogin={isLogin}
-          onCloseClick={() => setShowMenu(false)}
+          onLinkClick={() => setShowMenu(false)}
         />
       )}
     </div>

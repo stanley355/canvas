@@ -14,7 +14,7 @@ const Students = (props: IStudents) => {
   const { datoCmsData } = props;
 
   return (
-    <div className="mt-14 lg:mt-0">
+    <div>
       <NextHead pagesSchema={datoCmsData.pagesSchema} />
       <StudentsHero />
     </div>

@@ -39,7 +39,7 @@ const StudentsPlans = (props: StudentsPlansProps) => {
   };
 
   return (
-    <div className="container mt-14 lg:mt-0 lg:w-1/3 pb-8">
+    <div className="container lg:w-1/3 pb-8">
       <NextHead pagesSchema={schema} />
       <div className="bg-yellow-500 p-4 mb-4">
         Your free student plan has ended on{" "}

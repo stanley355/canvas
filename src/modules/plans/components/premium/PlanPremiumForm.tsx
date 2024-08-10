@@ -27,7 +27,7 @@ const PlanPremiumForm = () => {
 
     const token = Cookies.get("token");
     const user = decode(String(token)) as JwtPayload;
-    const subscription= await fetchSubscriptions(user.id, duration);
+    const subscription = await fetchSubscriptions(user.id, duration);
 
     if (subscription.id) {
       const doku = await fetchDokuCheckoutPayment(subscription, user as IUser);

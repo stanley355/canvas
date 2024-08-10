@@ -3,11 +3,11 @@ import { TextToSpeechContext } from "./TextToSpeechContext";
 import { textToSpeechReducer } from "../lib/textToSpeechReducer";
 import { TEXT_TO_SPEECH_STATES } from "../lib/textToSpeechStates";
 
-interface TextToSpeechProviderProps {
+type TTextToSpeechProviderProps = {
   children: React.ReactNode;
-}
+};
 
-const TextToSpeechProvider = (props: TextToSpeechProviderProps) => {
+const TextToSpeechProvider = ({ children }: TTextToSpeechProviderProps) => {
   const [textToSpeechStates, textToSpeechDispatch] = useReducer(
     textToSpeechReducer,
     TEXT_TO_SPEECH_STATES
@@ -17,7 +17,7 @@ const TextToSpeechProvider = (props: TextToSpeechProviderProps) => {
     <TextToSpeechContext.Provider
       value={{ textToSpeechStates, textToSpeechDispatch }}
     >
-      {props.children}
+      {children}
     </TextToSpeechContext.Provider>
   );
 };

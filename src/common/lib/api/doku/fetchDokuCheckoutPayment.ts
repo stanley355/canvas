@@ -3,7 +3,10 @@ import { apiErrorHandler } from "../apiErrorHandler";
 import { ISubscription } from "../subscriptions/interfaces";
 import { IUser } from "../users/interfaces";
 
-export const fetchDokuCheckoutPayment = async (subscription: ISubscription, user: IUser) => {
+export const fetchDokuCheckoutPayment = async (
+  subscription: ISubscription,
+  user: IUser
+) => {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}api/doku/checkout-payment/`;
 
   const callbackUrl = `${process.env.NEXT_PUBLIC_BASE_URL}account/`;
