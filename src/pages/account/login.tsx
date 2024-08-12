@@ -5,7 +5,7 @@ import { IDatoPagesSchema } from "@/common/lib/api/dato/interfaces";
 const Login = () => {
   const pageSchema: IDatoPagesSchema = {
     _updatedAt: "",
-    slug: "/login",
+    slug: "/account/login",
     keywords:
       "languageai, language ai, translate, translation, grammar and spelling check, paraphrase text",
     seo: {

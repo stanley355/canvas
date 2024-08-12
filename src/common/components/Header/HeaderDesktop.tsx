@@ -23,8 +23,8 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
   const { isLogin, pathname } = props;
 
   return (
-    <div className="items-center justify-between hidden p-2 bg-white lg:flex text-sm">
-      <div className="flex gap-2 items-center">
+    <div className="items-center justify-between hidden p-2 text-sm bg-white lg:flex">
+      <div className="flex items-center gap-2">
         <Link href="/" className="mr-2">
           <Image
             src="/images/languageai/logo.png"
@@ -117,7 +117,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
         </NextLink>
 
         <NextLink
-          href={isLogin ? "/account" : "/login"}
+          href={isLogin ? "/account" : "/account/login"}
           variant="default"
           className="ml-2"
         >

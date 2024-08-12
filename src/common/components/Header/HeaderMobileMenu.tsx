@@ -30,7 +30,7 @@ const HeaderMobileMenu = ({ onLinkClick, isLogin }: THeaderMobileMenuProps) => {
       </div>
       <div className="h-full px-4 text-sm">
         {MOBILE_HEADER_MENU.filter((menu: IHeaderMenu) =>
-          isLogin ? menu.url !== "/login/" : menu.url !== "/account/"
+          isLogin ? menu.url !== "/account/login/" : menu.url !== "/account/"
         ).map((menu: IHeaderMenu) => (
           <Link
             key={menu.title}
