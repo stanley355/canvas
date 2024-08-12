@@ -17,7 +17,8 @@ export const handleGoogleLogin = async (token: any) => {
   if (loginRes?.token) {
     Cookies.set("token", loginRes.token);
     const redirectPath =
-      window.location.pathname === "/" || window.location.pathname === "/account/login"
+      window.location.pathname === "/" ||
+      window.location.pathname === "/account/login"
         ? "/account"
         : window.location.pathname;
     window.location.href = redirectPath;
