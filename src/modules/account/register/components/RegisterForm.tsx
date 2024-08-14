@@ -124,12 +124,14 @@ const RegisterForm = () => {
           onChange={() => setErrorMsg("")}
         />
         <Button type="submit" className="w-full">
-          {isLoading ?
+          {isLoading ? (
             <div className="flex items-center gap-2">
               <TbProgress className="animate-spin" />
               <span>Submitting</span>
-            </div> : "Submit"
-          }
+            </div>
+          ) : (
+            "Submit"
+          )}
         </Button>
       </form>
       <span className="text-red-600">{errorMsg}</span>
