@@ -18,7 +18,7 @@ export const fetchDatoCms = async (
     );
 
     return datoCmsRes;
-  } catch (error:any) {
+  } catch (error: any) {
     return {
       status: error?.response?.status ? error.response.status : 500,
       statusText: error?.response?.statusText ? error.response.statusText : "",

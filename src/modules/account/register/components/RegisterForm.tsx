@@ -3,8 +3,10 @@ import Button from "@/common/components/Button";
 import Input from "@/common/components/Input";
 import { fetchUsersRegister } from "@/common/lib/api/users/fetchUsersRegister";
 import Cookies from "js-cookie";
+import { TbProgress } from "react-icons/tb";
 
 const RegisterForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -29,7 +31,6 @@ const RegisterForm = () => {
       setErrorMsg("Re-type Password can't be empty");
       return;
     }
-
 
     if (fullname.value.length < 4) {
       setErrorMsg("Invalid fullname: 4 characters minimum");
@@ -60,14 +61,17 @@ const RegisterForm = () => {
       return;
     }
 
+    setIsLoading(true);
     const registerRequest = {
       fullname: fullname.value,
       email: email.value,
       password: password.value,
-      password_again: repassword.value
-    }
+      password_again: repassword.value,
+    };
 
     const register = await fetchUsersRegister(registerRequest);
+
+    setIsLoading(false);
 
     if (register.status === 400) {
       setErrorMsg(register.status_text);
@@ -120,7 +124,12 @@ const RegisterForm = () => {
           onChange={() => setErrorMsg("")}
         />
         <Button type="submit" className="w-full">
-          Submit
+          {isLoading ?
+            <div className="flex items-center gap-2">
+              <TbProgress className="animate-spin" />
+              <span>Submitting</span>
+            </div> : "Submit"
+          }
         </Button>
       </form>
       <span className="text-red-600">{errorMsg}</span>
