@@ -8,7 +8,12 @@ const RegisterForm = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as any;
-    const {email, password, repassword} = target;
+    const {fullname, email, password, repassword} = target;
+
+    if (!fullname.value) {
+      setErrorMsg("Fullname can't be empty");
+      return;
+    }
 
     if (!email.value) {
       setErrorMsg("Email can't be empty");
@@ -22,9 +27,15 @@ const RegisterForm = () => {
       setErrorMsg("Re-type Password can't be empty");
       return;
     }
-  
-    const valid_email_regex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/g;
-    if (!valid_email_regex.test(email.value)) {
+
+    const hasSymbolRegex = /[^A-Za-z0-9\s]/g;
+    if (hasSymbolRegex.test(fullname.value)) {
+      setErrorMsg("Invalid fullname: Fullname can't contain symbol");
+      return;
+    }
+
+    const validEmailRegex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/g;
+    if (!validEmailRegex.test(email.value)) {
       setErrorMsg("Invalid email: format");
       return;
     }
@@ -46,6 +57,8 @@ const RegisterForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
+        <label htmlFor="fullname_input">Fullname</label>
+        <Input type="text" name="fullname" id="fullname_input" className="mb-4" onChange={()=> setErrorMsg("")} />
         <label htmlFor="email_input">Email</label>
         <Input type="email" name="email" id="email_input" className="mb-4" onChange={()=> setErrorMsg("")} />
         <label htmlFor="password_input">Password</label>
