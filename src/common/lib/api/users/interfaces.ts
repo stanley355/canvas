@@ -3,5 +3,4 @@ export interface IUser {
   fullname: string;
   email: string;
   phone_number: string | null;
-  balance: number;
 }
