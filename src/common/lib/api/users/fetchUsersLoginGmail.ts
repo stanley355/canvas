@@ -21,6 +21,6 @@ export const fetchUsersLoginGmail = async (
   } catch (error: any) {
     return error?.response?.data
       ? error?.response.data
-      : { status: 400, statusText: "Login fail, please try again" };
+      : { status: 400, status_text: "Login fail, please try again" };
   }
 };

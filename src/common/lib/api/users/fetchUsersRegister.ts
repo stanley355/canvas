@@ -23,6 +23,6 @@ export const fetchUsersRegister = async (
   } catch (error: any) {
     return error?.response?.data
       ? error?.response.data
-      : { status: 500, statusText: "Register fail, please try again" };
+      : { status: 500, status_text: "Register fail, please try again" };
   }
 };

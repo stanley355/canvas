@@ -25,8 +25,8 @@ export const handleGoogleLogin = async (token: any) => {
     return loginRes;
   }
 
-  if (loginRes?.statusText) {
-    toast.error(loginRes.statusText);
+  if (loginRes?.status_text) {
+    toast.error(loginRes.status_text);
     return loginRes;
   }
 

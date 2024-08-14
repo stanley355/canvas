@@ -1,5 +1,4 @@
 import axios from "axios";
-import { apiErrorHandler } from "../apiErrorHandler";
 import { ISubscription } from "../subscriptions/interfaces";
 import { IUser } from "../users/interfaces";
 
@@ -48,7 +47,12 @@ export const fetchDokuCheckoutPayment = async (
   try {
     const { data } = await axios(axiosConfig);
     return data;
-  } catch (error) {
-    return apiErrorHandler(error);
+  } catch (error: any) {
+    return {
+      status: error?.response?.status ? error.response.status : 500,
+      statusText: error?.response?.statusText ? error.response.statusText : "",
+      headers: error?.response?.headers ? error.response.headers : {},
+      data: error?.response?.data ? error.response.data : null,
+    };
   }
 };

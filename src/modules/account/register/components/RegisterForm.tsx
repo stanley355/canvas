@@ -1,14 +1,16 @@
-import { FormEvent, useState } from "react"
-import Button from "@/common/components/Button"
-import Input from "@/common/components/Input"
+import { FormEvent, useState } from "react";
+import Button from "@/common/components/Button";
+import Input from "@/common/components/Input";
+import { fetchUsersRegister } from "@/common/lib/api/users/fetchUsersRegister";
+import Cookies from "js-cookie";
 
 const RegisterForm = () => {
   const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as any;
-    const {fullname, email, password, repassword} = target;
+    const { fullname, email, password, repassword } = target;
 
     if (!fullname.value) {
       setErrorMsg("Fullname can't be empty");
@@ -25,6 +27,12 @@ const RegisterForm = () => {
     }
     if (!repassword.value) {
       setErrorMsg("Re-type Password can't be empty");
+      return;
+    }
+
+
+    if (fullname.value.length < 4) {
+      setErrorMsg("Invalid fullname: 4 characters minimum");
       return;
     }
 
@@ -46,30 +54,78 @@ const RegisterForm = () => {
     }
 
     if (password.value !== repassword.value) {
-      setErrorMsg("Invalid password: Password is not similar to re-typed password");
+      setErrorMsg(
+        "Invalid password: Password is not similar to re-typed password"
+      );
       return;
     }
-  
-    setErrorMsg("Good");
+
+    const registerRequest = {
+      fullname: fullname.value,
+      email: email.value,
+      password: password.value,
+      password_again: repassword.value
+    }
+
+    const register = await fetchUsersRegister(registerRequest);
+
+    if (register.status === 400) {
+      setErrorMsg(register.status_text);
+      return;
+    }
+
+    if (register?.token) {
+      Cookies.set("token", register.token);
+      window.location.href = "/account/";
+      return register;
+    }
+
+    setErrorMsg("Server error, please try again");
     return;
-  }
+  };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="fullname_input">Fullname</label>
-        <Input type="text" name="fullname" id="fullname_input" className="mb-4" onChange={()=> setErrorMsg("")} />
+        <Input
+          type="text"
+          name="fullname"
+          id="fullname_input"
+          className="mb-4"
+          onChange={() => setErrorMsg("")}
+        />
         <label htmlFor="email_input">Email</label>
-        <Input type="email" name="email" id="email_input" className="mb-4" onChange={()=> setErrorMsg("")} />
+        <Input
+          type="email"
+          name="email"
+          id="email_input"
+          className="mb-4"
+          onChange={() => setErrorMsg("")}
+        />
         <label htmlFor="password_input">Password</label>
-        <Input type="password" name="password" id="password_input" className="mb-4" onChange={()=> setErrorMsg("")} />
+        <Input
+          type="password"
+          name="password"
+          id="password_input"
+          className="mb-4"
+          onChange={() => setErrorMsg("")}
+        />
         <label htmlFor="repassword_input">Re-type Password</label>
-        <Input type="password" name="repassword" id="repassword_input" className="mb-4" onChange={()=> setErrorMsg("")} />
-        <Button type="submit" className="w-full">Submit</Button>
+        <Input
+          type="password"
+          name="repassword"
+          id="repassword_input"
+          className="mb-4"
+          onChange={() => setErrorMsg("")}
+        />
+        <Button type="submit" className="w-full">
+          Submit
+        </Button>
       </form>
       <span className="text-red-600">{errorMsg}</span>
     </div>
-  )
-}
+  );
+};
 
-export default RegisterForm
+export default RegisterForm;
