@@ -1,6 +1,6 @@
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 
-export const getLoginServerSideProps : GetServerSideProps = async (
+export const getLoginServerSideProps: GetServerSideProps = async (
   ctx: GetServerSidePropsContext
 ) => {
   const token = ctx.req.cookies.token;
