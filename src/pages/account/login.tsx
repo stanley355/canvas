@@ -1,8 +1,9 @@
 import Image from "next/image";
 import NextHead from "@/common/components/NextHead";
-import LoginCard from "@/modules/login/components/LoginCard";
-import { IDatoPagesSchema } from "@/common/lib/api/dato/interfaces";
+
 import LoginMain from "@/modules/account/login/components/LoginMain";
+import { IDatoPagesSchema } from "@/common/lib/api/dato/interfaces";
+
 
 const Login = () => {
   const pageSchema: IDatoPagesSchema = {

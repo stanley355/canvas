@@ -1,7 +1,12 @@
 import Image from "next/image";
+
 import NextHead from "@/common/components/NextHead";
-import { IDatoPagesSchema } from "@/common/lib/api/dato/interfaces";
 import RegisterMain from "@/modules/account/register/components/RegisterMain";
+
+import { getRegisterServerSideprops } from "@/modules/account/register/lib/getRegisterServerSideProps";
+import { IDatoPagesSchema } from "@/common/lib/api/dato/interfaces";
+
+export const getServerSideProps = getRegisterServerSideprops;
 
 const Register = () => {
   const pageSchema: IDatoPagesSchema = {

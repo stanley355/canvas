@@ -1,10 +1,7 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const authorUsersLogin = async (
-  req: NextApiRequest,
-  res: NextApiResponse
-) => {
+const authorUsersLogin = async (req: NextApiRequest, res: NextApiResponse) => {
   const url = `${process.env.AUTHOR_URL}v1/users/login/`;
 
   try {
