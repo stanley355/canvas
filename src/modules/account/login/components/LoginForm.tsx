@@ -4,6 +4,7 @@ import Button from "@/common/components/Button";
 import Input from "@/common/components/Input";
 import Cookies from "js-cookie";
 import { TbProgress } from "react-icons/tb";
+import { fetchUsersLogin } from "@/common/lib/api/users/fetchUsersLogin";
 
 const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -12,10 +13,10 @@ const LoginForm = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as any;
-    const { fullname, email, password, repassword } = target;
+    const { email, password } = target;
 
-    if (!fullname.value) {
-      setErrorMsg("Fullname can't be empty");
+    if (!email.value) {
+      setErrorMsg("Email can't be empty");
       return;
     }
 
@@ -25,34 +26,32 @@ const LoginForm = () => {
     }
 
     setIsLoading(true);
-    // const registerRequest = {
-    //   fullname: fullname.value,
-    //   email: email.value,
-    //   password: password.value,
-    //   password_again: repassword.value,
-    // };
+    const registerRequest = {
+      email: email.value,
+      password: password.value,
+    };
 
-    // const register = await fetchUsersRegister(registerRequest);
+    const login = await fetchUsersLogin(registerRequest);
 
-    // setIsLoading(false);
+    setIsLoading(false);
 
-    // if (register.status === 400) {
-    //   setErrorMsg(register.status_text);
-    //   return;
-    // }
+    if (login?.status === 400) {
+      setErrorMsg(login.status_text);
+      return;
+    }
 
-    // if (register?.token) {
-    //   Cookies.set("token", register.token);
-    //   window.location.href = "/account/";
-    //   return register;
-    // }
+    if (login?.token) {
+      Cookies.set("token", login.token);
+      window.location.href = "/account/";
+      return login;
+    }
 
     setErrorMsg("Server error, please try again");
     return;
   };
 
   return (
-    <div>
+    <>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email_input">Email</label>
         <Input
@@ -90,7 +89,7 @@ const LoginForm = () => {
         </Button>
       </form>
       <span className="text-red-600">{errorMsg}</span>
-    </div>
+    </>
   );
 };
 
