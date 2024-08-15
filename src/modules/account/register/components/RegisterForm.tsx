@@ -127,10 +127,10 @@ const RegisterForm = () => {
           {isLoading ? (
             <div className="flex items-center gap-2">
               <TbProgress className="animate-spin" />
-              <span>Submitting</span>
+              <span>Signing up</span>
             </div>
           ) : (
-            "Submit"
+            "Signing up"
           )}
         </Button>
       </form>
