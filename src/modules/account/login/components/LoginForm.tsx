@@ -24,10 +24,6 @@ const LoginForm = () => {
       return;
     }
 
-
-
-
-
     setIsLoading(true);
     // const registerRequest = {
     //   fullname: fullname.value,
@@ -68,8 +64,11 @@ const LoginForm = () => {
         />
         <div className="flex items-center justify-between">
           <label htmlFor="password_input">Password</label>
-          <Link href="/account/forgot-password/" className="underline hover:text-blue-800">
-          forgot password?
+          <Link
+            href="/account/forgot-password/"
+            className="underline hover:text-blue-800"
+          >
+            forgot password?
           </Link>
         </div>
         <Input

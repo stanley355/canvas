@@ -28,7 +28,10 @@ const LoginMain = () => {
 
         <div className="flex flex-col items-center justify-center gap-8">
           <GoogleLoginBtn />
-          <Link href="/account/register/" className="underline hover:text-blue-800">
+          <Link
+            href="/account/register/"
+            className="underline hover:text-blue-800"
+          >
             Don&apos;t have an account? Register
           </Link>
         </div>
