@@ -1,9 +1,12 @@
 import Image from "next/image";
-import NextHead from "@/common/components/NextHead";
 
+import NextHead from "@/common/components/NextHead";
 import LoginMain from "@/modules/account/login/components/LoginMain";
+
+import { getLoginServerSideProps } from "@/modules/account/login/lib/getLoginServerSideProps";
 import { IDatoPagesSchema } from "@/common/lib/api/dato/interfaces";
 
+export const getServerSideProps = getLoginServerSideProps;
 
 const Login = () => {
   const pageSchema: IDatoPagesSchema = {
