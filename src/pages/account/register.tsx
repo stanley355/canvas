@@ -1,10 +1,10 @@
-import Image from "next/image"
+import Image from "next/image";
 import NextHead from "@/common/components/NextHead";
 import { IDatoPagesSchema } from "@/common/lib/api/dato/interfaces";
-import RegisterMain from "@/modules/account/register/components/RegisterMain"
+import RegisterMain from "@/modules/account/register/components/RegisterMain";
 
 const Register = () => {
-  const pageSchema: IDatoPagesSchema= {
+  const pageSchema: IDatoPagesSchema = {
     _updatedAt: "",
     slug: "/account/register",
     keywords:
@@ -33,7 +33,7 @@ const Register = () => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

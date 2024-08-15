@@ -1,3 +1,4 @@
+import Image from "next/image";
 import NextHead from "@/common/components/NextHead";
 import LoginCard from "@/modules/login/components/LoginCard";
 import { IDatoPagesSchema } from "@/common/lib/api/dato/interfaces";
@@ -21,9 +22,17 @@ const Login = () => {
   };
 
   return (
-    <div className="px-4">
+    <div className="w-full h-screen lg:flex">
       <NextHead pagesSchema={pageSchema} />
       <LoginCard />
+      <div className="items-center justify-center flex-1 hidden lg:flex bg-brand-primary">
+        <Image
+          src="/images/account/login.png"
+          alt="Languageai login"
+          width={500}
+          height={500}
+        />
+      </div>
     </div>
   );
 };
