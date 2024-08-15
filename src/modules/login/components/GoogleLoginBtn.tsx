@@ -10,6 +10,7 @@ const GoogleLoginBtn = () => {
       clientId={String(process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID)}
     >
       <GoogleLogin
+        locale="en-US"
         onSuccess={handleGoogleLogin}
         onError={() => toast.error(LOGIN_FAIL_MESSAGE)}
         text="continue_with"

@@ -2,6 +2,7 @@ import Image from "next/image";
 import NextHead from "@/common/components/NextHead";
 import LoginCard from "@/modules/login/components/LoginCard";
 import { IDatoPagesSchema } from "@/common/lib/api/dato/interfaces";
+import LoginMain from "@/modules/account/login/components/LoginMain";
 
 const Login = () => {
   const pageSchema: IDatoPagesSchema = {
@@ -24,7 +25,7 @@ const Login = () => {
   return (
     <div className="w-full h-screen lg:flex">
       <NextHead pagesSchema={pageSchema} />
-      <LoginCard />
+      <LoginMain />
       <div className="items-center justify-center flex-1 hidden lg:flex bg-brand-primary">
         <Image
           src="/images/account/login.png"
