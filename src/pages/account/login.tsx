@@ -7,10 +7,10 @@ const Login = () => {
     _updatedAt: "",
     slug: "/account/login",
     keywords:
-      "languageai, language ai, translate, translation, grammar and spelling check, paraphrase text",
+      "languageai, translate, checkbot, text to speech, speech to text, login ",
     seo: {
-      title: `Languageai.id Login`,
-      description: "Login to Languageai.id to continue",
+      title: `Languageai Login`,
+      description: "Login to Languageai to continue",
       image: {
         alt: "Languageai.id",
         url: "/images/languageai/logo.png",
