@@ -13,7 +13,7 @@ const LoginMain = () => {
       <Button
         variant="link"
         className="p-2 ml-2 text-xl border border-transparent rounded-full hover:border-black"
-        onClick={() => router.back()}
+        onClick={() => router.push("/")}
       >
         <TbArrowLeft />
       </Button>
