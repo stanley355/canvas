@@ -5,7 +5,6 @@ import { JwtPayload, decode } from "jsonwebtoken";
 import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import { fetchUsersLoginGmail } from "@/common/lib/api/users/fetchUsersLoginGmail";
 
-import { LOGIN_FAIL_MESSAGE } from "./constant";
 import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 
 export const handleGoogleLogin = async (token: any) => {
@@ -30,6 +29,6 @@ export const handleGoogleLogin = async (token: any) => {
     return loginRes;
   }
 
-  toast.error(LOGIN_FAIL_MESSAGE);
+  toast.error("Login fail, please try again");
   return loginRes;
 };
