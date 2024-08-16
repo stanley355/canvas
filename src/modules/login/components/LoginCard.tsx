@@ -1,4 +1,4 @@
-import GoogleLoginBtn from "./GoogleLoginBtn";
+import GoogleLoginBtn from "../../account/login/components/GoogleLoginBtn";
 
 const LoginCard = () => {
   return (

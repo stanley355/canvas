@@ -2,7 +2,7 @@ import React from "react";
 import { toast } from "react-toastify";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { handleGoogleLogin } from "../lib/handleGoogleLogin";
-import { LOGIN_FAIL_MESSAGE } from "../lib/constant";
+import { LOGIN_FAIL_MESSAGE } from "../../../login/lib/constant";
 
 const GoogleLoginBtn = () => {
   return (
