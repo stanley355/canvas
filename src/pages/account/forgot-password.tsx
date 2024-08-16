@@ -43,13 +43,29 @@ const ForgotPassword = () => {
           <h1 className="mb-2 text-2xl font-bold">Forgot password</h1>
 
           <div>Email the system admin at:</div>
-          <Button className="my-4" onClick={() => copyToClipboard('winatastanley355@gmail.com')}>winatastanley355@gmail.com</Button>
+          <Button
+            className="my-4"
+            onClick={() => copyToClipboard("winatastanley355@gmail.com")}
+          >
+            winatastanley355@gmail.com
+          </Button>
 
           <ol className="leading-8 list-decimal list-inside">
-            <li>Please use your <b>registered email account</b> </li>
-            <li>Put the subject <b>&quot;Reset password&quot; </b> </li>
-            <li>System admin will reply with a new password, and please <b>change your password after login </b> </li>
-            <li>We don&apos;t to use automatic password reset because of <b>(1) security reasons</b>, and by sending us an email, <b> (2) we can know that it&apos;s you</b>!  </li>
+            <li>
+              Please use your <b>registered email account</b>{" "}
+            </li>
+            <li>
+              Put the subject <b>&quot;Reset password&quot; </b>{" "}
+            </li>
+            <li>
+              System admin will reply with a new password, and please{" "}
+              <b>change your password after login </b>{" "}
+            </li>
+            <li>
+              We don&apos;t to use automatic password reset because of{" "}
+              <b>(1) security reasons</b>, and by sending us an email,{" "}
+              <b> (2) we can know that it&apos;s you</b>!{" "}
+            </li>
           </ol>
         </div>
       </div>
@@ -63,6 +79,6 @@ const ForgotPassword = () => {
       </div>
     </div>
   );
-}
+};
 
 export default ForgotPassword;
