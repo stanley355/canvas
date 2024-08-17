@@ -50,22 +50,22 @@ const ChangePasswordForm = () => {
     sendFirebaseEvent(FIREBASE_EVENT_NAMES.change_password);
     const token = Cookies.get("token");
     const user = decode(String(token)) as JwtPayload;
-    
+
     const request = {
       id: user.id,
       old_password: old_password.value,
       new_password: new_password.value,
       new_password_again: new_repassword.value,
     };
-    
+
     const changePass = await fetchUsersChangePassword(request);
     setIsLoading(false);
-    
+
     if (changePass.status === 400) {
       setErrorMsg(changePass.status_text);
       return;
     }
-    
+
     if (changePass.token) {
       setShowSuccessModal(true);
       return;

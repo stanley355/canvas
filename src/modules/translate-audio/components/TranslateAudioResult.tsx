@@ -1,28 +1,18 @@
-import NextTextarea from "@/common/components/NextTextarea";
-import NextButton from "@/common/components/NextButton";
-import { copyToClipboard } from "@/common/lib/copyToClipboard";
 import { TbCopy } from "react-icons/tb";
+import Textarea from "@/common/components/Textarea";
+import Button from "@/common/components/Button";
 
-interface TranslateAudioResultProps {
-  text: string;
-}
-
-const TranslateAudioResult = ({ text }: TranslateAudioResultProps) => {
+const TranslateAudioResult = () => {
   return (
-    <div className="relative mb-4 px-2">
-      <NextTextarea
-        readOnly
-        placeholder="Transcription"
-        value={text}
-        className="border-gray-100 bg-gray-100 resize-none h-52 pr-12 focus:border-gray-100 hover:border-gray-100"
-      />
-      <NextButton
-        className="absolute bottom-4 right-2 lg:right-3 lg:bottom-2 p-2"
-        onClick={() => copyToClipboard(text ? text : "")}
-      >
+    <div className="border rounded-b-lg">
+      <Textarea disabled placeholder="Translation" className="border-none resize-none disabled:opacity-100" />
+      <div className="flex justify-end w-full p-2">
+
+      <Button className="gap-2">
         <TbCopy />
-        <span>Copy</span>
-      </NextButton>
+        Copy
+      </Button>
+      </div>
     </div>
   );
 };
