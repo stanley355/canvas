@@ -1,8 +1,9 @@
-import Image from "next/image";
+import Link from "next/link";
 import Cookies from "js-cookie";
 
 import NextButton from "@/common/components/NextButton";
 import { IUser } from "@/common/lib/api/users/interfaces";
+import Button from "@/common/components/Button";
 
 interface IAccountDetail {
   user: IUser;
@@ -31,27 +32,18 @@ const AccountDetail = (props: IAccountDetail) => {
       </div>
 
       <div className="mb-8">
-        <div className="mb-2 text-lg font-bold">Linked Account</div>
-        <div className="flex items-center gap-2">
-          <Image
-            width={16}
-            height={16}
-            src={"/images/icon/google.svg"}
-            alt="Google"
-          />
-          <span className="text-gray-500">Google</span>
-        </div>
+        <div className="mb-2 text-lg font-bold">Change Password</div>
+
+        <Link href="/account/change-password" className="underline hover:text-brand-primary">
+          Click to change password
+        </Link>
       </div>
 
       <div className="mb-8">
         <div className="mb-2 text-lg font-bold">Session</div>
-        <NextButton
-          onClick={handleLogout}
-          variant="outline"
-          className="px-2 py-1"
-        >
+        <Button variant="outline">
           Logout
-        </NextButton>
+        </Button>
       </div>
     </div>
   );
