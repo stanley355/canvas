@@ -38,6 +38,7 @@ const HeaderDesktopMenu = () => {
       >
         {DESKTOP_MENU.map((menu) => (
           <Link
+            key={menu.url}
             href={menu.url}
             className="flex items-center gap-2 p-2 rounded-md hover:bg-slate-100"
             onClick={() => setOpenMenu(false)}
