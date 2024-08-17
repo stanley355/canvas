@@ -130,7 +130,7 @@ const RegisterForm = () => {
               <span>Signing up</span>
             </div>
           ) : (
-            "Signing up"
+            "Sign up"
           )}
         </Button>
       </form>
