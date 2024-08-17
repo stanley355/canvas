@@ -1,13 +1,17 @@
-import React from 'react'
-import { cn } from '../lib/cn';
+import React from "react";
+import { cn } from "../lib/cn";
 
 type TCharacterCountProps = {
   text: string;
   maxCount: number;
   className?: string;
-}
+};
 
-const CharacterCount = ({ text, maxCount, className }: TCharacterCountProps) => {
+const CharacterCount = ({
+  text,
+  maxCount,
+  className,
+}: TCharacterCountProps) => {
   return (
     <div className={cn("w-full gap-1 text-sm", className)}>
       <span
@@ -21,7 +25,7 @@ const CharacterCount = ({ text, maxCount, className }: TCharacterCountProps) => 
       </span>
       <span>/ {maxCount} characters</span>
     </div>
-  )
-}
+  );
+};
 
-export default CharacterCount
+export default CharacterCount;

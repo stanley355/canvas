@@ -1,10 +1,14 @@
 import Link from "next/link";
 import { FormEvent, useState } from "react";
-import Button from "@/common/components/Button";
-import Input from "@/common/components/Input";
 import Cookies from "js-cookie";
 import { TbProgress } from "react-icons/tb";
+
+import Button from "@/common/components/Button";
+import Input from "@/common/components/Input";
+
 import { fetchUsersLogin } from "@/common/lib/api/users/fetchUsersLogin";
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
+import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 
 const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -26,13 +30,13 @@ const LoginForm = () => {
     }
 
     setIsLoading(true);
+    sendFirebaseEvent(FIREBASE_EVENT_NAMES.login.login);
     const registerRequest = {
       email: email.value,
       password: password.value,
     };
 
     const login = await fetchUsersLogin(registerRequest);
-
     setIsLoading(false);
 
     if (login?.status === 400) {

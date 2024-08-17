@@ -112,7 +112,11 @@ const TextToSpeechForm = () => {
         </Button>
       </div>
       <div className="flex flex-wrap items-center gap-2 p-2 lg:flex-nowrap lg:ml-auto">
-        <CharacterCount text={userText} maxCount={1000} className="hidden pt-4 lg:flex flex-2" />
+        <CharacterCount
+          text={userText}
+          maxCount={1000}
+          className="hidden pt-4 lg:flex flex-2"
+        />
         <Select
           containerId="tts_voice_select"
           name="tts_voice"
@@ -143,7 +147,11 @@ const TextToSpeechForm = () => {
             sendFirebaseEvent(FIREBASE_EVENT_NAMES.change.change_tts_format)
           }
         />
-        <CharacterCount text={userText} maxCount={1000} className="flex-1 lg:hidden" />
+        <CharacterCount
+          text={userText}
+          maxCount={1000}
+          className="flex-1 lg:hidden"
+        />
         <Button type="submit" className="ml-auto" disabled={isLoading}>
           {isLoading ? (
             <div className="flex items-center gap-2">

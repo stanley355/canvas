@@ -8,6 +8,8 @@ import Input from "@/common/components/Input";
 import ChangePasswordSuccessModal from "./ChangePasswordSuccessModal";
 
 import { fetchUsersChangePassword } from "@/common/lib/api/users/fetchUsersChangePassword";
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
+import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 
 const ChangePasswordForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -45,24 +47,25 @@ const ChangePasswordForm = () => {
     }
 
     setIsLoading(true);
+    sendFirebaseEvent(FIREBASE_EVENT_NAMES.change_password);
     const token = Cookies.get("token");
     const user = decode(String(token)) as JwtPayload;
-
+    
     const request = {
       id: user.id,
       old_password: old_password.value,
       new_password: new_password.value,
       new_password_again: new_repassword.value,
     };
-
+    
     const changePass = await fetchUsersChangePassword(request);
     setIsLoading(false);
-
+    
     if (changePass.status === 400) {
       setErrorMsg(changePass.status_text);
       return;
     }
-
+    
     if (changePass.token) {
       setShowSuccessModal(true);
       return;
