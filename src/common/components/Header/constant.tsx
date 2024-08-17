@@ -9,45 +9,45 @@ import {
 import { FaRobot, FaRupiahSign } from "react-icons/fa6";
 import { PiStudentDuotone } from "react-icons/pi";
 
-export const MOBILE_HEADER_MENU = [
+export const HEADER_MENU = [
   {
-    title: "AI TRANSLATE",
+    title: "Translate",
     url: "/translate/",
     icon: <TbLanguage />,
   },
   {
-    title: "AI CHECKBOT",
+    title: "Checkbot",
     url: "/checkbot/",
     icon: <FaRobot />,
   },
   {
-    title: "AI TEXT TO SPEECH",
+    title: "Text to Speech",
     url: "/text-to-speech/",
     icon: <TbSpeakerphone />,
   },
   {
-    title: "AI SPEECH TO TEXT",
+    title: "Speech to text",
     url: "/speech-to-text/",
     icon: <TbMicrophone />,
   },
   {
-    title: "AI STUDENTS",
+    title: "Free for student",
     url: "/students/",
     icon: <PiStudentDuotone />,
   },
   {
-    title: "PRICING",
+    title: "Pricing",
     url: "/plans/",
     icon: <FaRupiahSign />,
   },
 
   {
-    title: "ACCOUNT",
+    title: "Account",
     url: "/account/",
     icon: <TbUserCircle />,
   },
   {
-    title: "LOGIN",
+    title: "Login",
     url: "/account/login/",
     icon: <TbUserCircle />,
   },
