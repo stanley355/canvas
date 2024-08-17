@@ -16,6 +16,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         "/account/login",
         "/account/register",
         "/account/forgot-password",
+        "/account/change-password"
       ].includes(router.pathname) && <Header pathname={router.pathname} />}
       <main>{children}</main>
       <ToastContainer

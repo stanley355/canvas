@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { TbArrowLeft } from "react-icons/tb";
 import Button from "@/common/components/Button";
-import GoogleLoginBtn from "@/modules/login/components/GoogleLoginBtn";
+import GoogleLoginBtn from "../../login/components/GoogleLoginBtn";
 import RegisterForm from "./RegisterForm";
 
 const RegisterMain = () => {

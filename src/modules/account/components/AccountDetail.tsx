@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Cookies from "js-cookie";
 
-import NextButton from "@/common/components/NextButton";
 import { IUser } from "@/common/lib/api/users/interfaces";
 import Button from "@/common/components/Button";
 
@@ -44,7 +43,9 @@ const AccountDetail = (props: IAccountDetail) => {
 
       <div className="mb-8">
         <div className="mb-2 text-lg font-bold">Session</div>
-        <Button variant="outline" onClick={handleLogout}>Logout</Button>
+        <Button variant="outline" onClick={handleLogout}>
+          Logout
+        </Button>
       </div>
     </div>
   );
