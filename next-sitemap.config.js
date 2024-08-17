@@ -5,6 +5,7 @@ module.exports = {
     "/plans/premium",
     "/plans/students",
     "/account",
+    "/account/change-password",
     "/students/application",
   ],
   generateRobotsTxt: true,
