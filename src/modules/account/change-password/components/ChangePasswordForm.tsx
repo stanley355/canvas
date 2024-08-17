@@ -111,7 +111,7 @@ const ChangePasswordForm = () => {
         </Button>
       </form>
       <span className="text-red-600">{errorMsg}</span>
-        {showSuccessModal &&  <ChangePasswordSuccessModal />}
+      {showSuccessModal && <ChangePasswordSuccessModal />}
     </div>
   );
 };

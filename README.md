@@ -1,5 +1,12 @@
 # CANVAS
 
+### 1.5.8
+
+- Login
+- Register
+- Change password
+- Forgot password
+
 ### 1.5.7
 
 - Husky setup
