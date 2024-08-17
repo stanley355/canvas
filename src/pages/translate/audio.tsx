@@ -22,7 +22,7 @@ const TranslateAudio = ({ datoCmsData }: ITranslateAudioProps) => {
           <h1 className="p-4 font-semibold border rounded-t-md">
             Translate Audio
           </h1>
-          <TranslateAudioForm />          
+          <TranslateAudioForm />
           <TranslateAudioResult />
 
           <div className="flex items-center gap-1 mx-auto mt-4 w-fit">
