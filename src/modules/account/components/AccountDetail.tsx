@@ -34,16 +34,17 @@ const AccountDetail = (props: IAccountDetail) => {
       <div className="mb-8">
         <div className="mb-2 text-lg font-bold">Change Password</div>
 
-        <Link href="/account/change-password" className="underline hover:text-brand-primary">
+        <Link
+          href="/account/change-password"
+          className="underline hover:text-brand-primary"
+        >
           Click to change password
         </Link>
       </div>
 
       <div className="mb-8">
         <div className="mb-2 text-lg font-bold">Session</div>
-        <Button variant="outline">
-          Logout
-        </Button>
+        <Button variant="outline" onClick={handleLogout}>Logout</Button>
       </div>
     </div>
   );
