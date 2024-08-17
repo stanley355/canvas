@@ -31,7 +31,7 @@ const Login = () => {
   return (
     <div className="w-full h-screen lg:flex">
       <NextHead pagesSchema={pageSchema} />
-      <LoginMain onBackClick={()=> router.push("/")} />
+      <LoginMain onBackClick={() => router.push("/")} />
       <div className="items-center justify-center flex-1 hidden lg:flex bg-brand-primary">
         <Image
           src="/images/account/login.png"

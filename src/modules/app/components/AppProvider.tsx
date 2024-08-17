@@ -5,9 +5,12 @@ import { AppContext } from "./AppContext";
 import { appReducer } from "../lib/appReducer";
 import { APP_STATES } from "../lib/appStates";
 
-const LoginModal = dynamic(() => import("../../account/login/components/LoginModal"), {
-  ssr: false,
-});
+const LoginModal = dynamic(
+  () => import("../../account/login/components/LoginModal"),
+  {
+    ssr: false,
+  }
+);
 const MonthlyLimitModal = dynamic(
   () => import("../../../common/components/MonthlyLimitModal"),
   { ssr: false }

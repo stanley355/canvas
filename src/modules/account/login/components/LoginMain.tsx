@@ -10,12 +10,13 @@ import { cn } from "@/common/lib/cn";
 type TLoginMainProps = {
   className?: string;
   onBackClick: () => void;
-}
+};
 
-const LoginMain = ({onBackClick, className}: TLoginMainProps) => {
-
+const LoginMain = ({ onBackClick, className }: TLoginMainProps) => {
   return (
-    <div className={cn("lg:min-w-[33%] my-auto py-4 lg:px-4 bg-white", className)}>
+    <div
+      className={cn("lg:min-w-[33%] my-auto py-4 lg:px-4 bg-white", className)}
+    >
       <Button
         variant="link"
         className="p-2 ml-2 text-xl border border-transparent rounded-full hover:border-black"
