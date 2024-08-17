@@ -4,8 +4,6 @@ import { TbUserCircle } from "react-icons/tb";
 import { FaRupiahSign } from "react-icons/fa6";
 import HeaderDesktopMenu from "./HeaderDesktopMenu";
 
-
-
 interface IHeaderDesktop {
   isLogin: boolean;
   pathname: string;
