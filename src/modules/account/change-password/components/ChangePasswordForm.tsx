@@ -5,11 +5,14 @@ import { decode, JwtPayload } from "jsonwebtoken";
 
 import Button from "@/common/components/Button";
 import Input from "@/common/components/Input";
+import ChangePasswordSuccessModal from "./ChangePasswordSuccessModal";
+
 import { fetchUsersChangePassword } from "@/common/lib/api/users/fetchUsersChangePassword";
 
 const ChangePasswordForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,16 +45,16 @@ const ChangePasswordForm = () => {
     }
 
     setIsLoading(true);
-    const token= Cookies.get('token')
+    const token = Cookies.get("token");
     const user = decode(String(token)) as JwtPayload;
-    
+
     const request = {
       id: user.id,
       old_password: old_password.value,
       new_password: new_password.value,
-      new_password_again: new_repassword.value
+      new_password_again: new_repassword.value,
     };
-    
+
     const changePass = await fetchUsersChangePassword(request);
     setIsLoading(false);
 
@@ -60,8 +63,11 @@ const ChangePasswordForm = () => {
       return;
     }
 
+    if (changePass.token) {
+      setShowSuccessModal(true);
+      return;
+    }
 
-    
     setErrorMsg("Server error, please try again");
     return;
   };
@@ -105,6 +111,7 @@ const ChangePasswordForm = () => {
         </Button>
       </form>
       <span className="text-red-600">{errorMsg}</span>
+        {showSuccessModal &&  <ChangePasswordSuccessModal />}
     </div>
   );
 };

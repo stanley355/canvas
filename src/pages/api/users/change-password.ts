@@ -6,7 +6,7 @@ const authorUsersChangePassword = async (
   res: NextApiResponse
 ) => {
   console.log(111, req.body);
-  
+
   const url = `${process.env.AUTHOR_URL}v1/users/change-password/`;
 
   try {

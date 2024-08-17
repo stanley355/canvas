@@ -21,7 +21,7 @@ export const fetchUsersChangePassword = async (
     const { data } = await axios.put(url, request);
     return data;
   } catch (error: any) {
-    console.error(error)
+    console.error(error);
     return error?.response?.data
       ? error?.response.data
       : { status: 500, status_text: "Change password fail, please try again" };
