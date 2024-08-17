@@ -1,19 +1,25 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { TbArrowLeft } from "react-icons/tb";
+
 import Button from "@/common/components/Button";
 import GoogleLoginBtn from "@/modules/account/login/components/GoogleLoginBtn";
 import LoginForm from "./LoginForm";
+import { cn } from "@/common/lib/cn";
 
-const LoginMain = () => {
-  const router = useRouter();
+type TLoginMainProps = {
+  className?: string;
+  onBackClick: () => void;
+}
+
+const LoginMain = ({onBackClick, className}: TLoginMainProps) => {
 
   return (
-    <div className="lg:min-w-[33%] my-auto py-4 lg:px-4">
+    <div className={cn("lg:min-w-[33%] my-auto py-4 lg:px-4 bg-white", className)}>
       <Button
         variant="link"
         className="p-2 ml-2 text-xl border border-transparent rounded-full hover:border-black"
-        onClick={() => router.push("/")}
+        onClick={onBackClick}
       >
         <TbArrowLeft />
       </Button>

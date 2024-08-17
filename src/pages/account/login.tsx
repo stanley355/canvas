@@ -5,10 +5,12 @@ import LoginMain from "@/modules/account/login/components/LoginMain";
 
 import { getLoginServerSideProps } from "@/modules/account/login/lib/getLoginServerSideProps";
 import { IDatoPagesSchema } from "@/common/lib/api/dato/interfaces";
+import { useRouter } from "next/router";
 
 export const getServerSideProps = getLoginServerSideProps;
 
 const Login = () => {
+  const router = useRouter();
   const pageSchema: IDatoPagesSchema = {
     _updatedAt: "",
     slug: "/account/login",
@@ -29,7 +31,7 @@ const Login = () => {
   return (
     <div className="w-full h-screen lg:flex">
       <NextHead pagesSchema={pageSchema} />
-      <LoginMain />
+      <LoginMain onBackClick={()=> router.push("/")} />
       <div className="items-center justify-center flex-1 hidden lg:flex bg-brand-primary">
         <Image
           src="/images/account/login.png"
