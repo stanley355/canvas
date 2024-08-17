@@ -48,7 +48,7 @@ export const MOBILE_HEADER_MENU = [
   },
   {
     title: "LOGIN",
-    url: "/login/",
+    url: "/account/login/",
     icon: <TbUserCircle />,
   },
 ];

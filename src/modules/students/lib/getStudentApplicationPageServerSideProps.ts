@@ -11,7 +11,7 @@ export const getStudentApplicationPageServerProps: GetServerSideProps = async (
     return {
       redirect: {
         permanent: false,
-        destination: "/login/",
+        destination: "/account/login/",
       },
     };
   }

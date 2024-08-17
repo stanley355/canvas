@@ -12,7 +12,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div className={inter.className}>
-      <Header pathname={router.pathname} />
+      {![
+        "/account/login",
+        "/account/register",
+        "/account/forgot-password",
+        "/account/change-password",
+      ].includes(router.pathname) && <Header pathname={router.pathname} />}
       <main>{children}</main>
       <ToastContainer
         position="top-center"

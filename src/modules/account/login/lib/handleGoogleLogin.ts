@@ -5,7 +5,6 @@ import { JwtPayload, decode } from "jsonwebtoken";
 import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import { fetchUsersLoginGmail } from "@/common/lib/api/users/fetchUsersLoginGmail";
 
-import { LOGIN_FAIL_MESSAGE } from "./constant";
 import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 
 export const handleGoogleLogin = async (token: any) => {
@@ -17,18 +16,19 @@ export const handleGoogleLogin = async (token: any) => {
   if (loginRes?.token) {
     Cookies.set("token", loginRes.token);
     const redirectPath =
-      window.location.pathname === "/" || window.location.pathname === "/login"
+      window.location.pathname === "/" ||
+      window.location.pathname === "/account/login"
         ? "/account"
         : window.location.pathname;
     window.location.href = redirectPath;
     return loginRes;
   }
 
-  if (loginRes?.statusText) {
-    toast.error(loginRes.statusText);
+  if (loginRes?.status_text) {
+    toast.error(loginRes.status_text);
     return loginRes;
   }
 
-  toast.error(LOGIN_FAIL_MESSAGE);
+  toast.error("Login fail, please try again");
   return loginRes;
 };

@@ -66,7 +66,7 @@ const StudentApplicationForm = () => {
     }
 
     if (studentApplication?.status) {
-      toast.error(studentApplication?.statusText);
+      toast.error(studentApplication?.status_text);
       return;
     }
 
@@ -120,7 +120,7 @@ const StudentApplicationForm = () => {
           className="border-brand-primary file:bg-gradient-to-b file:from-white file:to-blue-100 file:rounded-lg file:border file:cursor-pointer file:px-2 file:py-1"
         />
       </div>
-      <NextButton className="w-full justify-center text-lg mb-4" type="submit">
+      <NextButton className="justify-center w-full mb-4 text-lg" type="submit">
         {isLoading ? <TbProgress className="animate-spin" /> : "Submit"}
       </NextButton>
       <div className="text-center">

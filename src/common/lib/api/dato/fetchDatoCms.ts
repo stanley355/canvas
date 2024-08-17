@@ -1,5 +1,4 @@
 import { request } from "graphql-request";
-import { axiosErrorHandler } from "../axiosErrorHandler";
 
 export const fetchDatoCms = async (
   gqlQuery: string,
@@ -19,8 +18,12 @@ export const fetchDatoCms = async (
     );
 
     return datoCmsRes;
-  } catch (error) {
-    const errorRes = axiosErrorHandler(url, error);
-    return errorRes;
+  } catch (error: any) {
+    return {
+      status: error?.response?.status ? error.response.status : 500,
+      statusText: error?.response?.statusText ? error.response.statusText : "",
+      headers: error?.response?.headers ? error.response.headers : {},
+      data: error?.response?.data ? error.response.data : null,
+    };
   }
 };
