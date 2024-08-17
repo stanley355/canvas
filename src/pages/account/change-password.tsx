@@ -1,15 +1,16 @@
-import { GetServerSideProps } from 'next'
-import Image from 'next/image';
+import { GetServerSideProps } from "next";
+import Image from "next/image";
 
-import NextHead from '@/common/components/NextHead';
-import { IDatoPagesSchema } from '@/common/lib/api/dato/interfaces';
-import { getChangePasswordServerSideProps } from '@/modules/account/change-password/lib/getChangePasswordServerSideProps'
-import ChangePasswordMain from '@/modules/account/change-password/components/ChangePasswordMain';
+import NextHead from "@/common/components/NextHead";
+import { IDatoPagesSchema } from "@/common/lib/api/dato/interfaces";
+import { getChangePasswordServerSideProps } from "@/modules/account/change-password/lib/getChangePasswordServerSideProps";
+import ChangePasswordMain from "@/modules/account/change-password/components/ChangePasswordMain";
 
-export const getServerSideProps: GetServerSideProps = getChangePasswordServerSideProps;
+export const getServerSideProps: GetServerSideProps =
+  getChangePasswordServerSideProps;
 
 const ChangePassword = () => {
-  const pageSchema: IDatoPagesSchema= {
+  const pageSchema: IDatoPagesSchema = {
     _updatedAt: "",
     slug: "/account/change-password",
     keywords:
@@ -39,8 +40,7 @@ const ChangePassword = () => {
         />
       </div>
     </div>
+  );
+};
 
-  )
-}
-
-export default ChangePassword
+export default ChangePassword;

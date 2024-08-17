@@ -1,10 +1,11 @@
 import { FormEvent, useState } from "react";
 import { TbProgress } from "react-icons/tb";
 import Cookies from "js-cookie";
+import { decode, JwtPayload } from "jsonwebtoken";
 
 import Button from "@/common/components/Button";
 import Input from "@/common/components/Input";
-import { fetchUsersRegister } from "@/common/lib/api/users/fetchUsersRegister";
+import { fetchUsersChangePassword } from "@/common/lib/api/users/fetchUsersChangePassword";
 
 const ChangePasswordForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -13,78 +14,54 @@ const ChangePasswordForm = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as any;
-    const { fullname, email, password, repassword } = target;
+    const { old_password, new_password, new_repassword } = target;
 
-    if (!fullname.value) {
-      setErrorMsg("Fullname can't be empty");
+    if (!old_password.value) {
+      setErrorMsg("Old password can't be empty");
       return;
     }
-
-    if (!email.value) {
-      setErrorMsg("Email can't be empty");
+    if (!new_password.value) {
+      setErrorMsg("New Password can't be empty");
       return;
     }
-    if (!password.value) {
-      setErrorMsg("Password can't be empty");
-      return;
-    }
-    if (!repassword.value) {
-      setErrorMsg("Re-type Password can't be empty");
+    if (!new_repassword.value) {
+      setErrorMsg("Re-type New Password can't be empty");
       return;
     }
 
-    if (fullname.value.length < 4) {
-      setErrorMsg("Invalid fullname: 4 characters minimum");
+    if (String(new_password.value).length < 4) {
+      setErrorMsg("Invalid new password: 4 characters minimum");
       return;
     }
 
-    const hasSymbolRegex = /[^A-Za-z0-9\s]/g;
-    if (hasSymbolRegex.test(fullname.value)) {
-      setErrorMsg("Invalid fullname: Fullname can't contain symbol");
-      return;
-    }
-
-    const validEmailRegex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/g;
-    if (!validEmailRegex.test(email.value)) {
-      setErrorMsg("Invalid email: format");
-      return;
-    }
-
-    if (String(password.value).length < 4) {
-      setErrorMsg("Invalid password: 4 characters minimum");
-      return;
-    }
-
-    if (password.value !== repassword.value) {
+    if (new_password.value !== new_repassword.value) {
       setErrorMsg(
-        "Invalid password: Password is not similar to re-typed password"
+        "Invalid new password: New Password is not similar to re-typed new password"
       );
       return;
     }
 
-    // setIsLoading(true);
-    // const registerRequest = {
-    //   fullname: fullname.value,
-    //   email: email.value,
-    //   password: password.value,
-    //   password_again: repassword.value,
-    // };
+    setIsLoading(true);
+    const token= Cookies.get('token')
+    const user = decode(String(token)) as JwtPayload;
+    
+    const request = {
+      id: user.id,
+      old_password: old_password.value,
+      new_password: new_password.value,
+      new_password_again: new_repassword.value
+    };
+    
+    const changePass = await fetchUsersChangePassword(request);
+    setIsLoading(false);
 
-    // const register = await fetchUsersRegister(registerRequest);
+    if (changePass.status === 400) {
+      setErrorMsg(changePass.status_text);
+      return;
+    }
 
-    // setIsLoading(false);
 
-    // if (register.status === 400) {
-    //   setErrorMsg(register.status_text);
-    //   return;
-    // }
-
-    // if (register?.token) {
-    //   Cookies.set("token", register.token);
-    //   window.location.href = "/account/";
-    //   return register;
-    // }
-
+    
     setErrorMsg("Server error, please try again");
     return;
   };
@@ -128,7 +105,6 @@ const ChangePasswordForm = () => {
         </Button>
       </form>
       <span className="text-red-600">{errorMsg}</span>
-      {/* <span className="font-bold">{errorMsg}</span> */}
     </div>
   );
 };
