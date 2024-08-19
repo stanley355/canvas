@@ -1,13 +1,20 @@
-import { ChangeEvent, LegacyRef, memo, useContext, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  LegacyRef,
+  memo,
+  useContext,
+  useRef,
+  useState,
+} from "react";
 import { TbMicrophone } from "react-icons/tb";
 import Cookies from "js-cookie";
-import {toast} from 'react-toastify';
+import { toast } from "react-toastify";
 
 import Button from "@/common/components/Button";
 import { AppContext } from "@/modules/app/components/AppContext";
 
 const TranslateAudioInput = () => {
-  const {appDispatch} = useContext(AppContext);
+  const { appDispatch } = useContext(AppContext);
   const inputRef = useRef<HTMLInputElement>();
   const [isUploading, setIsUploading] = useState(false);
 
@@ -58,7 +65,7 @@ const TranslateAudioInput = () => {
         ref={inputRef as LegacyRef<HTMLInputElement>}
         accept=".mp3, .mp4, .wav"
         className="invisible h-0"
-      // onChange={handleUpload} 
+        // onChange={handleUpload}
       />
       <Button
         type="button"
@@ -68,7 +75,6 @@ const TranslateAudioInput = () => {
         <TbMicrophone />
         Click here to upload
       </Button>
-
     </>
   );
 };
