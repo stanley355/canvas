@@ -22,11 +22,11 @@ import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames"
 
 const TranslateAudioInput = () => {
   const { appDispatch } = useContext(AppContext);
-  const { translateAudioDispatch } = useContext(TranslateAudioContext)
+  const { translateAudioDispatch, translateAudioStates } = useContext(TranslateAudioContext);
+  const { fileName } = translateAudioStates;
 
   const inputRef = useRef<HTMLInputElement>();
   const [isUploading, setIsUploading] = useState(false);
-  const [fileState, setFileState] = useState<File | null>(null);
 
   const handleUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     const token = Cookies.get("token");
@@ -48,12 +48,13 @@ const TranslateAudioInput = () => {
 
     try {
       const user = decode(token) as JwtPayload;
-      const storagePath = `audio/transcriptions/${user.id}:${new Date().getTime()}`;
+      const storagePath = `audio/translations/${user.id
+        }:${new Date().getTime()}`;
       const fileURL = await uploadFileToFirebase(storagePath, file);
 
       translateAudioDispatch({ key: "fileUrl", value: fileURL });
+      translateAudioDispatch({ key: "fileName", value: file.name });
       setIsUploading(false);
-      setFileState(file);
       return;
     } catch (error: any) {
       setIsUploading(false);
@@ -79,15 +80,17 @@ const TranslateAudioInput = () => {
         className="w-full h-40 gap-2 text-base rounded-none"
         onClick={() => inputRef.current?.click()}
       >
-        {isUploading ?
+        {isUploading ? (
           <div className="flex items-center gap-2">
             <TbProgress className="animate-spin" />
             Uploading
-          </div> :
+          </div>
+        ) : (
           <div className="flex items-center gap-2">
             <TbMicrophone />
-            {fileState && fileState.name ? fileState.name : 'Click here to upload'}
-          </div>}
+            {fileName ? fileName : "Click here to upload"}
+          </div>
+        )}
       </Button>
     </>
   );

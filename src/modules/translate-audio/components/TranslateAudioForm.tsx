@@ -1,6 +1,6 @@
-import { FormEvent, useContext } from "react";
-import { TbMicrophone } from "react-icons/tb";
+import { FormEvent, useContext, useState } from "react";
 import { Tooltip } from "react-tooltip";
+import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 
 import Button from "@/common/components/Button";
@@ -11,23 +11,30 @@ import { AppContext } from "@/modules/app/components/AppContext";
 import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import { SPEECH_TO_TEXT_DIFF_OPTIONS } from "@/modules/speech-to-text/lib/speechToTextDiffOptions";
+import { TranslateAudioContext } from "./TranslateAudioContext";
+import { decode, JwtPayload } from "jsonwebtoken";
 
 const TranslateAudioForm = () => {
   const { appDispatch } = useContext(AppContext);
+  const { translateAudioStates, translateAudioDispatch } = useContext(TranslateAudioContext);
+  const { fileUrl } = translateAudioStates;
+
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as any;
-    
+
     const token = Cookies.get("token");
     if (!token) {
       appDispatch({ key: "showLoginModal", value: true });
       return;
     }
 
-    // if (!fileUrl) {
-    //   toast.error("Please upload a file");
-    //   return;
-    // }
+    if (!fileUrl) {
+      toast.error("Please upload a file");
+      return;
+    }
 
     // setIsLoading(true);
     // sendFirebaseEvent(FIREBASE_EVENT_NAMES.translate_audio);
@@ -55,8 +62,8 @@ const TranslateAudioForm = () => {
     //   return;
     // }
 
-    // toast.error("Server busy, please try again");
-    // return;
+    toast.error("Server busy, please try again");
+    return;
   };
   return (
     <>
