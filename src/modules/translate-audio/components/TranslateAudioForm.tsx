@@ -1,61 +1,66 @@
+import { FormEvent, useContext } from "react";
 import { TbMicrophone } from "react-icons/tb";
 import { Tooltip } from "react-tooltip";
+import Cookies from "js-cookie";
 
 import Button from "@/common/components/Button";
 import Select from "@/common/components/Select";
+import TranslateAudioInput from "./TranslateAudioInput";
 
+import { AppContext } from "@/modules/app/components/AppContext";
 import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import { SPEECH_TO_TEXT_DIFF_OPTIONS } from "@/modules/speech-to-text/lib/speechToTextDiffOptions";
-import TranslateAudioInput from "./TranslateAudioInput";
 
 const TranslateAudioForm = () => {
-  // const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
+  const { appDispatch } = useContext(AppContext);
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const target = e.target as any;
+    
+    const token = Cookies.get("token");
+    if (!token) {
+      appDispatch({ key: "showLoginModal", value: true });
+      return;
+    }
 
-  //   const token = Cookies.get("token");
-  //   if (!token) {
-  //     appDispatch({ key: "showLoginModal", value: true });
-  //     return;
-  //   }
+    // if (!fileUrl) {
+    //   toast.error("Please upload a file");
+    //   return;
+    // }
 
-  //   if (!fileUrl) {
-  //     toast.error("Please upload a file");
-  //     return;
-  //   }
+    // setIsLoading(true);
+    // sendFirebaseEvent(FIREBASE_EVENT_NAMES.translate_audio);
+    // const user = decode(token) as JwtPayload;
+    // const req = {
+    //   user_id: user.id,
+    //   file_url: fileUrl,
+    //   file_name: fileName,
+    //   temperature,
+    // };
 
-  //   setIsLoading(true);
-  //   sendFirebaseEvent(FIREBASE_EVENT_NAMES.translate_audio);
-  //   const user = decode(token) as JwtPayload;
-  //   const req = {
-  //     user_id: user.id,
-  //     file_url: fileUrl,
-  //     file_name: fileName,
-  //     temperature,
-  //   };
+    // const translations = await fetchPromptsAudioTranslations(req);
+    // setIsLoading(false);
 
-  //   const translations = await fetchPromptsAudioTranslations(req);
-  //   setIsLoading(false);
+    // if (translations?.status === 402) {
+    //   appDispatch({ key: "showMonthlyLimitModal", value: true });
+    //   return;
+    // }
 
-  //   if (translations?.status === 402) {
-  //     appDispatch({ key: "showMonthlyLimitModal", value: true });
-  //     return;
-  //   }
+    // if (translations?.completion_text) {
+    //   translateAudioDispatch({
+    //     key: "text",
+    //     value: translations.completion_text,
+    //   });
+    //   return;
+    // }
 
-  //   if (translations?.completion_text) {
-  //     translateAudioDispatch({
-  //       key: "text",
-  //       value: translations.completion_text,
-  //     });
-  //     return;
-  //   }
-
-  //   toast.error("Server busy, please try again");
-  //   return;
-  // };
+    // toast.error("Server busy, please try again");
+    // return;
+  };
   return (
     <>
-      <form action="" className="border-x">
+      <form onSubmit={handleSubmit} className="border-x">
         <TranslateAudioInput />
         <div className="flex items-center gap-2 p-2 lg:w-1/4 lg:ml-auto">
           <Select

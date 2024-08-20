@@ -6,17 +6,27 @@ import {
   useRef,
   useState,
 } from "react";
-import { TbMicrophone } from "react-icons/tb";
-import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+import { TbMicrophone, TbProgress } from "react-icons/tb";
+import Cookies from "js-cookie";
+import { decode, JwtPayload } from "jsonwebtoken";
 
 import Button from "@/common/components/Button";
+
 import { AppContext } from "@/modules/app/components/AppContext";
+import { TranslateAudioContext } from "./TranslateAudioContext";
+
+import { uploadFileToFirebase } from "@/modules/firebase/lib/uploadFileToFirebase";
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
+import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 
 const TranslateAudioInput = () => {
   const { appDispatch } = useContext(AppContext);
+  const { translateAudioDispatch } = useContext(TranslateAudioContext)
+
   const inputRef = useRef<HTMLInputElement>();
   const [isUploading, setIsUploading] = useState(false);
+  const [fileState, setFileState] = useState<File | null>(null);
 
   const handleUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     const token = Cookies.get("token");
@@ -33,27 +43,23 @@ const TranslateAudioInput = () => {
       return;
     }
 
-    // sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.translate_audio_upload);
-    // setIsUploading(true);
-    // try {
-    //   const user = decode(token) as JwtPayload;
-    //   const firebasePath = `audio/transcriptions/${
-    //     user.id
-    //   }:${new Date().getTime()}`;
-    //   const storage = getStorage();
-    //   const storef = ref(storage, firebasePath);
-    //   const result = await uploadBytes(storef, file);
-    //   const downloadURL = await getDownloadURL(result.ref);
+    setIsUploading(true);
+    sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.translate_audio_upload); // setIsUploading(true);
 
-    //   translateAudioDispatch({ key: "fileName", value: file.name });
-    //   translateAudioDispatch({ key: "fileUrl", value: downloadURL });
-    //   setIsUploading(false);
-    //   return;
-    // } catch (error: any) {
-    //   setIsUploading(false);
-    //   toast.error("Server busy, please try again");
-    //   return;
-    // }
+    try {
+      const user = decode(token) as JwtPayload;
+      const storagePath = `audio/transcriptions/${user.id}:${new Date().getTime()}`;
+      const fileURL = await uploadFileToFirebase(storagePath, file);
+
+      translateAudioDispatch({ key: "fileUrl", value: fileURL });
+      setIsUploading(false);
+      setFileState(file);
+      return;
+    } catch (error: any) {
+      setIsUploading(false);
+      toast.error("Server busy, please try again");
+      return;
+    }
   };
 
   return (
@@ -61,19 +67,27 @@ const TranslateAudioInput = () => {
       <input
         type="file"
         id="audio_input"
-        name="audio"
-        ref={inputRef as LegacyRef<HTMLInputElement>}
+        name="file"
         accept=".mp3, .mp4, .wav"
         className="invisible h-0"
-        // onChange={handleUpload}
+        onChange={handleUpload}
+        ref={inputRef as LegacyRef<HTMLInputElement>}
       />
       <Button
         type="button"
-        className="w-full h-40 gap-2 text-base rounded-none"
         variant="ghost"
+        className="w-full h-40 gap-2 text-base rounded-none"
+        onClick={() => inputRef.current?.click()}
       >
-        <TbMicrophone />
-        Click here to upload
+        {isUploading ?
+          <div className="flex items-center gap-2">
+            <TbProgress className="animate-spin" />
+            Uploading
+          </div> :
+          <div className="flex items-center gap-2">
+            <TbMicrophone />
+            {fileState && fileState.name ? fileState.name : 'Click here to upload'}
+          </div>}
       </Button>
     </>
   );

@@ -51,7 +51,7 @@ const Select = ({
 
       <div
         className={cn(
-          "border rounded-md absolute top-10 left-0 overflow-y-auto animate-visible-forward z-10",
+          "border rounded-md absolute top-12 left-0 overflow-y-auto animate-visible-forward z-10",
           optionContainerClassname,
           showOptions ? "block max-h-40" : "hidden"
         )}
