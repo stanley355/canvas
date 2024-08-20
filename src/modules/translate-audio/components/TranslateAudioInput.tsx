@@ -22,7 +22,9 @@ import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames"
 
 const TranslateAudioInput = () => {
   const { appDispatch } = useContext(AppContext);
-  const { translateAudioDispatch, translateAudioStates } = useContext(TranslateAudioContext);
+  const { translateAudioDispatch, translateAudioStates } = useContext(
+    TranslateAudioContext
+  );
   const { fileName } = translateAudioStates;
 
   const inputRef = useRef<HTMLInputElement>();
@@ -48,8 +50,9 @@ const TranslateAudioInput = () => {
 
     try {
       const user = decode(token) as JwtPayload;
-      const storagePath = `audio/translations/${user.id
-        }:${new Date().getTime()}`;
+      const storagePath = `audio/translations/${
+        user.id
+      }:${new Date().getTime()}`;
       const fileURL = await uploadFileToFirebase(storagePath, file);
 
       translateAudioDispatch({ key: "fileUrl", value: fileURL });

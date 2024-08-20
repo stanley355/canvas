@@ -16,7 +16,9 @@ import { decode, JwtPayload } from "jsonwebtoken";
 
 const TranslateAudioForm = () => {
   const { appDispatch } = useContext(AppContext);
-  const { translateAudioStates, translateAudioDispatch } = useContext(TranslateAudioContext);
+  const { translateAudioStates, translateAudioDispatch } = useContext(
+    TranslateAudioContext
+  );
   const { fileUrl } = translateAudioStates;
 
   const [isLoading, setIsLoading] = useState(false);
