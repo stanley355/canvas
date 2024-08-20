@@ -13,13 +13,15 @@ import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
 import { SPEECH_TO_TEXT_DIFF_OPTIONS } from "@/modules/speech-to-text/lib/speechToTextDiffOptions";
 import { TranslateAudioContext } from "./TranslateAudioContext";
 import { decode, JwtPayload } from "jsonwebtoken";
+import { fetchPromptsAudioTranslations } from "@/common/lib/api/prompts/fetchPromptsAudioTranslations";
+import { TbProgress } from "react-icons/tb";
 
 const TranslateAudioForm = () => {
   const { appDispatch } = useContext(AppContext);
   const { translateAudioStates, translateAudioDispatch } = useContext(
     TranslateAudioContext
   );
-  const { fileUrl } = translateAudioStates;
+  const { fileUrl, fileName } = translateAudioStates;
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -38,35 +40,36 @@ const TranslateAudioForm = () => {
       return;
     }
 
-    // setIsLoading(true);
-    // sendFirebaseEvent(FIREBASE_EVENT_NAMES.translate_audio);
-    // const user = decode(token) as JwtPayload;
-    // const req = {
-    //   user_id: user.id,
-    //   file_url: fileUrl,
-    //   file_name: fileName,
-    //   temperature,
-    // };
+    setIsLoading(true);
+    sendFirebaseEvent(FIREBASE_EVENT_NAMES.translate_audio);
+    const user = decode(token) as JwtPayload;
+    const req = {
+      user_id: user.id,
+      file_url: fileUrl,
+      file_name: fileName,
+      temperature: target.translate_audio_diff.value ? Number(target.translate_audio_diff.value) : SPEECH_TO_TEXT_DIFF_OPTIONS[2].value,
+    };
 
-    // const translations = await fetchPromptsAudioTranslations(req);
-    // setIsLoading(false);
+    const translations = await fetchPromptsAudioTranslations(req);
+    setIsLoading(false);
 
-    // if (translations?.status === 402) {
-    //   appDispatch({ key: "showMonthlyLimitModal", value: true });
-    //   return;
-    // }
+    if (translations?.status === 402) {
+      appDispatch({ key: "showMonthlyLimitModal", value: true });
+      return;
+    }
 
-    // if (translations?.completion_text) {
-    //   translateAudioDispatch({
-    //     key: "text",
-    //     value: translations.completion_text,
-    //   });
-    //   return;
-    // }
+    if (translations?.completion_text) {
+      translateAudioDispatch({
+        key: "text",
+        value: translations.completion_text,
+      });
+      return;
+    }
 
     toast.error("Server busy, please try again");
     return;
   };
+
   return (
     <>
       <form onSubmit={handleSubmit} className="border-x">
@@ -84,8 +87,14 @@ const TranslateAudioForm = () => {
             }
           />
 
-          <Button type="submit" className="flex-1">
-            Translate
+          <Button type="submit" className="flex-1" disabled={isLoading}>
+            {isLoading ?
+              <div className="flex items-center gap-2">
+                <TbProgress />
+                Translating
+              </div> :
+              "Translate"
+            }
           </Button>
         </div>
       </form>
