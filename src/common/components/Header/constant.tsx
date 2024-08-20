@@ -11,14 +11,19 @@ import { PiStudentDuotone } from "react-icons/pi";
 
 export const HEADER_MENU = [
   {
+    title: "Checkbot",
+    url: "/checkbot/",
+    icon: <FaRobot />,
+  },
+  {
     title: "Translate",
     url: "/translate/",
     icon: <TbLanguage />,
   },
   {
-    title: "Checkbot",
-    url: "/checkbot/",
-    icon: <FaRobot />,
+    title: "Translate Audio",
+    url: "/translate/audio/",
+    icon: <TbLanguage />,
   },
   {
     title: "Text to Speech",
@@ -40,7 +45,6 @@ export const HEADER_MENU = [
     url: "/plans/",
     icon: <FaRupiahSign />,
   },
-
   {
     title: "Account",
     url: "/account/",

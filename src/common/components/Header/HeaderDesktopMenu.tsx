@@ -21,7 +21,7 @@ const HeaderDesktopMenu = () => {
     <div className="flex-1 max-w-[33%] relative">
       <Button
         variant="ghost"
-        className="flex items-center justify-between w-full gap-2 text-gray-500 border rounded-full shadow "
+        className="flex items-center justify-between w-full gap-2 text-gray-500 truncate border rounded-full shadow"
         onClick={() => setOpenMenu(!openMenu)}
       >
         <TbSearch className="text-lg" />

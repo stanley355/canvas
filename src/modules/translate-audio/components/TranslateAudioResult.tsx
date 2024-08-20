@@ -5,8 +5,8 @@ import { useContext } from "react";
 import { TranslateAudioContext } from "./TranslateAudioContext";
 
 const TranslateAudioResult = () => {
-  const {translateAudioStates} = useContext(TranslateAudioContext);
-  const {text} = translateAudioStates;
+  const { translateAudioStates } = useContext(TranslateAudioContext);
+  const { text } = translateAudioStates;
 
   return (
     <div className="border rounded-b-lg">

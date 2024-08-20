@@ -47,7 +47,9 @@ const TranslateAudioForm = () => {
       user_id: user.id,
       file_url: fileUrl,
       file_name: fileName,
-      temperature: target.translate_audio_diff.value ? Number(target.translate_audio_diff.value) : SPEECH_TO_TEXT_DIFF_OPTIONS[2].value,
+      temperature: target.translate_audio_diff.value
+        ? Number(target.translate_audio_diff.value)
+        : SPEECH_TO_TEXT_DIFF_OPTIONS[2].value,
     };
 
     const translations = await fetchPromptsAudioTranslations(req);
@@ -88,13 +90,14 @@ const TranslateAudioForm = () => {
           />
 
           <Button type="submit" className="flex-1" disabled={isLoading}>
-            {isLoading ?
+            {isLoading ? (
               <div className="flex items-center gap-2">
                 <TbProgress />
                 Translating
-              </div> :
+              </div>
+            ) : (
               "Translate"
-            }
+            )}
           </Button>
         </div>
       </form>
