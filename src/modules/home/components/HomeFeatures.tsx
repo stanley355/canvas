@@ -1,156 +1,26 @@
-import Image from "next/image";
-import { FaRobot } from "react-icons/fa6";
-import { TbLanguage, TbMicrophone, TbSpeakerphone } from "react-icons/tb";
-
-import NextLink from "@/common/components/NextLink";
+import Link from "next/link";
+import { TbWriting, TbWritingSign } from "react-icons/tb";
 
 const HomeFeatures = () => {
   return (
     <section
-      className="bg-brand-primary text-white pb-8 pt-16 lg:pt-8 px-4 lg:px-0"
+      className="h-screen px-4 py-8 "
       id="home_features"
     >
-      <div className="container mx-auto">
-        <h2 className="text-3xl text-center font-bold mb-4 px-4 lg:px-0">
-          One AI for language and writing
-        </h2>
-        <h3 className="text-xl text-center mb-16">
-          Applicable for &gt; 50 languages
+      <div className="container">
+        <h3 className="mb-8 text-xl">
+          Before jumping in, let&apos;s explore why you&apos;re here
         </h3>
 
-        <NextLink
-          href="/translate"
-          variant="none"
-          className="lg:grid grid-cols-2 gap-8 place-items-center"
-        >
-          <div className="h-[40vh] relative mb-8">
-            <Image
-              src="/images/home/translate1.png"
-              alt="Languageai AI Translate 1"
-              width={400}
-              height={400}
-              className="w-4/5 h-2/3 rounded-lg"
-            />
-            <Image
-              src="/images/home/translate2.png"
-              alt="Languageai AI Translate 2"
-              width={400}
-              height={400}
-              className="w-4/5 h-2/3 absolute right-0 bottom-0 rounded-lg"
-            />
-          </div>
-          <div className="mb-16">
-            <h3 className="text-xl gap-1 flex items-center mb-4 border-b w-fit">
-              <TbLanguage />
-              AI Translate
-            </h3>
-            <p>
-              Tired of word by word translation? Our AI Translate understands
-              your text and translates contextually
-            </p>
-          </div>
-        </NextLink>
-
-        <NextLink
-          href="/checkbot"
-          variant="none"
-          className="lg:grid grid-cols-2 gap-8 place-items-center mt-16"
-        >
-          <div className="h-[40vh] relative mb-8">
-            <Image
-              src="/images/home/checkbot1.png"
-              alt="Languageai AI Checkbot 1"
-              width={400}
-              height={400}
-              className="w-4/5 h-2/3 rounded-lg"
-            />
-            <Image
-              src="/images/home/checkbot2.png"
-              alt="Languageai AI Checkbot 2"
-              width={400}
-              height={400}
-              className="w-4/5 h-2/3 absolute right-0 bottom-0 rounded-lg"
-            />
-          </div>
-          <div className="mb-16">
-            <h3 className="text-xl gap-1 flex items-center mb-4 border-b w-fit">
-              <FaRobot />
-              AI Checkbot
-            </h3>
-            <p>
-              Fix your writing easily. Check grammar and spelling, analyse
-              strength and weakness, provide suggestions, and paraphrase in one
-              click.
-            </p>
-          </div>
-        </NextLink>
-
-        <NextLink
-          href="/text-to-speech"
-          variant="none"
-          className="lg:grid grid-cols-2 gap-8 place-items-center mt-16"
-        >
-          <div className="h-[40vh] relative mb-8 lg:grid grid-cols-2 gap-8 w-full">
-            <Image
-              src="/images/home/tts1.png"
-              alt="Languageai AI Text to speech 1"
-              width={400}
-              height={400}
-              className="lg:h-full rounded-lg w-4/5 h-2/3 lg:w-full"
-            />
-            <Image
-              src="/images/home/tts2.png"
-              alt="Languageai AI Text to Speech 2"
-              width={400}
-              height={400}
-              className="lg:h-full rounded-lg w-4/5 h-2/3 lg:w-full absolute right-0 bottom-0 lg:relative"
-            />
-          </div>
-          <div className="mb-16">
-            <h3 className="text-xl gap-1 flex items-center mb-4 border-b w-fit">
-              <TbSpeakerphone />
-              AI Text to Speech
-            </h3>
-            <p>
-              A free text-to-speech tool and an online text reader that supports
-              50+ languages. You can listen online, or download audio files in
-              mp3 format
-            </p>
-          </div>
-        </NextLink>
-
-        <NextLink
-          href="/speech-to-text/"
-          className="lg:grid grid-cols-2 gap-8 place-items-center mt-16"
-          variant="none"
-        >
-          <div className="h-[40vh] relative mb-8 w-full lg:grid grid-cols-2 gap-8 ">
-            <Image
-              src="/images/home/stt1.png"
-              alt="Languageai AI Speech to Text 1"
-              width={400}
-              height={400}
-              className="lg:h-full rounded-lg w-4/5 h-2/3 lg:w-full border border-brand-primary"
-            />
-            <Image
-              src="/images/home/stt2.png"
-              alt="Languageai AI Speech to Text 2"
-              width={400}
-              height={400}
-              className="lg:h-full rounded-lg w-4/5 h-2/3 lg:w-full absolute right-0 bottom-0 lg:relative border border-brand-primary"
-            />
-          </div>
-          <div className="mb-16">
-            <h3 className="text-xl gap-1 flex items-center mb-4 border-b w-fit">
-              <TbMicrophone />
-              AI Speech to Text
-            </h3>
+        <Link href="/checkbot">
+          <div className="flex items-center justify-between gap-4 py-4 border-y border-y-white">
+            <div className="w-6 h-6 px-3 border rounded-full"/>
             <span>
-              Convert voice to text in over 50 languages and variants using
-              languageai. Get your detailed analysis of converted transcription!{" "}
+              I want to check my writing for grammar and spelling
             </span>
+            <TbWritingSign className="text-5xl" />
           </div>
-        </NextLink>
+        </Link>
       </div>
     </section>
   );
