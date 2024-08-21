@@ -3,26 +3,19 @@ import { getHomePageStaticProps } from "@/modules/home/lib/getHomePageStaticProp
 
 import NextHead, { NextHeadProps } from "@/common/components/NextHead";
 import HomeHero from "@/modules/home/components/HomeHero";
-import HomeFeatures from "@/modules/home/components/HomeFeatures";
-import HomeStudent from "@/modules/home/components/HomeStudent";
-import HomeFinal from "@/modules/home/components/HomeFinal";
 
-interface HomeProps {
+type THomeProps = {
   datoCmsData: NextHeadProps;
-}
+};
 
 export const getStaticProps: GetStaticProps = getHomePageStaticProps;
 
-const Home = (props: HomeProps) => {
-  const { datoCmsData } = props;
+const Home = ({ datoCmsData }: THomeProps) => {
   return (
-    <div>
+    <>
       <NextHead pagesSchema={datoCmsData.pagesSchema} />
       <HomeHero />
-      <HomeFeatures />
-      <HomeStudent />
-      <HomeFinal />
-    </div>
+    </>
   );
 };
 
