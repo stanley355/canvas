@@ -1,8 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import {
-  TbArrowDown,
-  TbArrowUp,
   TbChevronDown,
   TbChevronUp,
   TbSearch,
@@ -18,17 +16,15 @@ const HeaderDesktopMenu = () => {
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
-    <div className="flex-1 max-w-[33%] relative">
+    <div className="relative">
       <Button
         variant="ghost"
-        className="flex items-center justify-between w-full gap-2 text-gray-500 truncate border rounded-full shadow"
+        className="justify-between w-full gap-2 text-gray-500 truncate border rounded-full shadow"
         onClick={() => setOpenMenu(!openMenu)}
       >
         <TbSearch className="text-lg" />
-        <span>
-          Search languageai: translate, checkbot, text to speech, speech to text
-        </span>
-        {openMenu ? <TbChevronUp /> : <TbChevronDown />}
+        <span> Search languageai: translate, checkbot, text to speech, speech to text</span>
+        {openMenu ? <TbChevronUp /> : <TbChevronDown className="flex-1" />}
       </Button>
       <div
         className={cn(
