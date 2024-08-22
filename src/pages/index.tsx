@@ -12,11 +12,12 @@ type THomeProps = {
 export const getStaticProps: GetStaticProps = getHomePageStaticProps;
 
 const Home = ({ datoCmsData }: THomeProps) => {
+ 
   return (
-    <div className="snap-y">
+    <div className="snap-y snap-mandatory">
       <NextHead pagesSchema={datoCmsData.pagesSchema} />
       <HomeHero />
-      <HomeFeatures />
+      {/* <HomeFeatures /> */}
     </div>
   );
 };
