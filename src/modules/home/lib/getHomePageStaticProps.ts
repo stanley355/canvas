@@ -7,7 +7,6 @@ export const getHomePageStaticProps: GetStaticProps = async () => {
     slug: "home",
   });
 
- 
   return {
     props: {
       datoCmsData,
