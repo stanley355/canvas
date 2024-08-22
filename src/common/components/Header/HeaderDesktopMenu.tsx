@@ -1,10 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
-import {
-  TbChevronDown,
-  TbChevronUp,
-  TbSearch,
-} from "react-icons/tb";
+import { TbChevronDown, TbChevronUp, TbSearch } from "react-icons/tb";
 import { HEADER_MENU } from "./constant";
 import Button from "../Button";
 import { cn } from "@/common/lib/cn";
@@ -23,7 +19,10 @@ const HeaderDesktopMenu = () => {
         onClick={() => setOpenMenu(!openMenu)}
       >
         <TbSearch className="text-lg" />
-        <span> Search languageai: translate, checkbot, text to speech, speech to text</span>
+        <span>
+          {" "}
+          Search languageai: translate, checkbot, text to speech, speech to text
+        </span>
         {openMenu ? <TbChevronUp /> : <TbChevronDown className="flex-1" />}
       </Button>
       <div
