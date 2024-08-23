@@ -9,9 +9,9 @@ const HomeHero = () => {
   const [showOptions, setShowOptions] = useState(false);
 
   return (
-    <section className="h-screen snap-center bg-[url('/images/home/hero_bg.jpg')] bg-cover bg-right-bottom lg:bg-[right_bottom_-20rem]">
+    <section className="h-screen snap-always snap-center bg-[url('/images/home/hero_bg.jpg')] bg-cover bg-right-bottom lg:bg-[right_bottom_-20rem] bg-fixed">
       <Header />
-      <div className="container p-4">
+      <div className="container p-4 lg:px-0">
         <h1 className="text-xl font-bold text-center lg:text-3xl">
           #1 Language Processing AI
         </h1>

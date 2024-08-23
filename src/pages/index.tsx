@@ -16,7 +16,7 @@ const Home = ({ datoCmsData }: THomeProps) => {
     <div className="snap-y snap-mandatory">
       <NextHead pagesSchema={datoCmsData.pagesSchema} />
       <HomeHero />
-      {/* <HomeFeatures /> */}
+      <HomeFeatures />
     </div>
   );
 };
