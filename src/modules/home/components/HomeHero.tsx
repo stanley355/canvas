@@ -12,15 +12,15 @@ const HomeHero = () => {
     <section className="h-screen snap-always snap-center bg-[url('/images/home/hero_bg.jpg')] bg-cover bg-right-bottom lg:bg-[right_bottom_-20rem] bg-fixed">
       <Header />
       <div className="container p-4 lg:px-0">
-        <h1 className="text-xl font-bold text-center lg:text-3xl">
+        <h1 className="mb-2 text-3xl font-bold text-center lg:text-5xl">
           #1 Language Processing AI
         </h1>
-        <h2 className="mb-4 text-center">
+        <h2 className="mb-4 text-center lg:text-xl">
           Simplify your text and audio conversion
         </h2>
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="flex flex-col mb-4 bg-white bg-opacity-50 border rounded-md animate-visible-forward focus-within:bg-opacity-100"
+          className="flex flex-col mb-4 bg-white border rounded-md animate-visible-forward focus-within:bg-opacity-100"
         >
           <Textarea
             className="w-full mx-auto border-none resize-none focus-visible:outline-none lg:h-60"
@@ -40,18 +40,15 @@ const HomeHero = () => {
         >
           <div className="font-semibold">How should we proceed?</div>
           <Link href="/checkbot" className="py-1 hover:underline">
-            I want to check grammar and spelling
+            I want to check my writing
           </Link>
           <Link href="/translate" className="py-1 hover:underline">
             I want to translate
           </Link>
-          <Link href="/translate" className="py-1 hover:underline">
-            I want to translate audio file
-          </Link>
           <Link href="/text-to-speech" className="py-1 hover:underline">
             I want to convert text to speech
           </Link>
-          <Link href="/text-to-speech" className="py-1 hover:underline">
+          <Link href="/speech-to-text" className="py-1 hover:underline">
             I want to convert audio to text
           </Link>
         </div>
