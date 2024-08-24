@@ -8,6 +8,8 @@ import Input from "@/common/components/Input";
 import ChangePasswordSuccessModal from "./ChangePasswordSuccessModal";
 
 import { fetchUsersChangePassword } from "@/common/lib/api/users/fetchUsersChangePassword";
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
+import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 
 const ChangePasswordForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -45,6 +47,7 @@ const ChangePasswordForm = () => {
     }
 
     setIsLoading(true);
+    sendFirebaseEvent(FIREBASE_EVENT_NAMES.change_password);
     const token = Cookies.get("token");
     const user = decode(String(token)) as JwtPayload;
 

@@ -6,7 +6,6 @@ import { TbMenu } from "react-icons/tb";
 
 interface IHeaderMobile {
   isLogin: boolean;
-  pathname: string;
 }
 
 const HeaderMobile = (props: IHeaderMobile) => {

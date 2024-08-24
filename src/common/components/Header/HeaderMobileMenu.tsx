@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { TbChevronRight, TbX } from "react-icons/tb";
 
-import { MOBILE_HEADER_MENU } from "./constant";
+import { HEADER_MENU } from "./constant";
 import { IHeaderMenu } from ".";
 
 type THeaderMobileMenuProps = {
@@ -29,7 +29,7 @@ const HeaderMobileMenu = ({ onLinkClick, isLogin }: THeaderMobileMenuProps) => {
         </button>
       </div>
       <div className="h-full px-4 text-sm">
-        {MOBILE_HEADER_MENU.filter((menu: IHeaderMenu) =>
+        {HEADER_MENU.filter((menu: IHeaderMenu) =>
           isLogin ? menu.url !== "/account/login/" : menu.url !== "/account/"
         ).map((menu: IHeaderMenu) => (
           <Link

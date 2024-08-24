@@ -8,7 +8,6 @@ import { fetchUsersLoginGmail } from "@/common/lib/api/users/fetchUsersLoginGmai
 import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 
 export const handleGoogleLogin = async (token: any) => {
-  sendFirebaseEvent(FIREBASE_EVENT_NAMES.login.login);
   sendFirebaseEvent(FIREBASE_EVENT_NAMES.login.loginGoogle);
   const decodedToken = decode(String(token.credential)) as JwtPayload;
   const loginRes = await fetchUsersLoginGmail(decodedToken);

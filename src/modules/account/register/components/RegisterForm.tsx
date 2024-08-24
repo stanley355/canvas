@@ -4,6 +4,8 @@ import Input from "@/common/components/Input";
 import { fetchUsersRegister } from "@/common/lib/api/users/fetchUsersRegister";
 import Cookies from "js-cookie";
 import { TbProgress } from "react-icons/tb";
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
+import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
 
 const RegisterForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -62,6 +64,7 @@ const RegisterForm = () => {
     }
 
     setIsLoading(true);
+    sendFirebaseEvent(FIREBASE_EVENT_NAMES.register);
     const registerRequest = {
       fullname: fullname.value,
       email: email.value,
@@ -70,7 +73,6 @@ const RegisterForm = () => {
     };
 
     const register = await fetchUsersRegister(registerRequest);
-
     setIsLoading(false);
 
     if (register.status === 400) {

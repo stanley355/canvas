@@ -22,8 +22,8 @@ const Header = ({ pathname }: IHeader) => {
 
   return (
     <nav className="w-full">
-      <HeaderMobile isLogin={isLogin} pathname={pathname} />
-      <HeaderDesktop isLogin={isLogin} pathname={pathname} />
+      <HeaderMobile isLogin={isLogin} />
+      <HeaderDesktop isLogin={isLogin} />
     </nav>
   );
 };

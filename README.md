@@ -1,5 +1,9 @@
 # CANVAS
 
+### 1.5.9
+
+- Translate audio release
+
 ### 1.5.8
 
 - Login
