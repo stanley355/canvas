@@ -9,7 +9,7 @@ const HomeHero = () => {
   const [showOptions, setShowOptions] = useState(false);
 
   return (
-    <section className="h-screen snap-always snap-center bg-[url('/images/home/hero_bg.jpg')] bg-cover bg-right-bottom lg:bg-[right_bottom_-20rem] bg-fixed">
+    <section className="h-screen bg-[url('/images/home/hero_bg.jpg')] bg-cover bg-right-bottom lg:bg-[right_bottom_-20rem] bg-fixed">
       <Header />
       <div className="container p-4 lg:px-0">
         <h1 className="mb-2 text-3xl font-bold text-center lg:text-5xl">

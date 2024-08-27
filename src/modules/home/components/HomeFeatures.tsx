@@ -12,7 +12,7 @@ import { TfiWrite } from "react-icons/tfi";
 
 const HomeFeatures = () => {
   return (
-    <section className="h-screen px-4 py-8 lg:px-0 snap-always snap-center bg-[url('/images/home/features_bg.jpg')] bg-cover bg-fixed bg-center ">
+    <section className="h-screen px-4 py-8 lg:px-0 bg-[url('/images/home/features_bg.jpg')] bg-cover bg-fixed bg-center ">
       <div className="container">
         <h3 className="mb-8 text-3xl font-semibold text-transparent lg:mb-12 bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 bg-clip-text">
           Explore what you can do with our AI
