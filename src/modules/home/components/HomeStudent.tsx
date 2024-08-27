@@ -8,7 +8,7 @@ const HomeStudent = () => {
           One AI for Students
         </h3>
         <h4 className="mb-4 text-center">
-          Languageai is trusted as a partner for students' assignments
+          Languageai is trusted as a partner for students&apos; assignments
         </h4>
         <Image
           src="/images/home/univ.png"
