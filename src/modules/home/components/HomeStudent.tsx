@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const HomeStudent = () => {
   return (
-    <section className="h-screen px-4 py-8 mx-auto lg:px-0 bg-[url('/images/home/student_bg.jpg')] bg-cover bg-opacity-80 text-white bg-bottom bg-fixed">
+    <section className="lg:h-screen px-4 py-8 mx-auto lg:px-0 bg-[url('/images/home/student_bg.jpg')] bg-cover bg-opacity-80 text-white bg-bottom bg-fixed">
       <div className="container">
         <h3 className="mb-4 text-3xl font-semibold text-center">
           One AI for Students
@@ -20,7 +20,7 @@ const HomeStudent = () => {
         <Image
           src="/images/home/univ_desktop.png"
           alt="Languageai for Student"
-          className="hidden w-full h-auto mx-auto lg:block"
+          className="hidden w-3/4 h-auto mx-auto lg:block"
           width={800}
           height={400}
         />

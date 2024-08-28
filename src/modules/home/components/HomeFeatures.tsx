@@ -10,6 +10,9 @@ import {
 } from "react-icons/tb";
 import { TfiWrite } from "react-icons/tfi";
 
+import { FIREBASE_EVENT_NAMES } from "@/modules/firebase/lib/firebaseEventNames";
+import { sendFirebaseEvent } from "@/modules/firebase/lib/sendFirebaseEvent";
+
 const HomeFeatures = () => {
   return (
     <section className="h-screen px-4 py-8 lg:px-0 bg-[url('/images/home/features_bg.jpg')] bg-cover bg-fixed bg-center ">
@@ -20,6 +23,9 @@ const HomeFeatures = () => {
         <div className="grid gap-8 text-xl lg:gap-12 lg:grid-cols-2 lg:text-2xl">
           <Link
             href="/checkbot"
+            onClick={() =>
+              sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.home_suggestion)
+            }
             className="flex items-center gap-4 text-transparent bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 bg-clip-text hover:from-blue-700 hover:via-blue-500 hover:to-blue-400"
           >
             <TbTextGrammar className="text-blue-700 " />
@@ -27,6 +33,9 @@ const HomeFeatures = () => {
           </Link>
           <Link
             href="/checkbot"
+            onClick={() =>
+              sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.home_suggestion)
+            }
             className="flex items-center gap-4 text-transparent bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 bg-clip-text hover:from-blue-700 hover:via-blue-500 hover:to-blue-400"
           >
             <TfiWrite className="text-blue-700 " />
@@ -34,6 +43,9 @@ const HomeFeatures = () => {
           </Link>
           <Link
             href="/checkbot"
+            onClick={() =>
+              sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.home_suggestion)
+            }
             className="items-center hidden gap-4 text-transparent lg:flex bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 bg-clip-text hover:from-blue-700 hover:via-blue-500 hover:to-blue-400"
           >
             <TbBrain className="text-blue-700 " />
@@ -41,6 +53,9 @@ const HomeFeatures = () => {
           </Link>
           <Link
             href="/checkbot"
+            onClick={() =>
+              sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.home_suggestion)
+            }
             className="items-center hidden gap-4 text-transparent lg:flex bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 bg-clip-text hover:from-blue-700 hover:via-blue-500 hover:to-blue-400"
           >
             <TbTextCaption className="text-blue-700 " />
@@ -48,6 +63,9 @@ const HomeFeatures = () => {
           </Link>
           <Link
             href="/translate"
+            onClick={() =>
+              sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.home_suggestion)
+            }
             className="flex items-center gap-4 text-transparent bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 bg-clip-text hover:from-blue-700 hover:via-blue-500 hover:to-blue-400"
           >
             <TbLanguage className="text-blue-700 " />
@@ -55,6 +73,9 @@ const HomeFeatures = () => {
           </Link>
           <Link
             href="/translate/audio"
+            onClick={() =>
+              sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.home_suggestion)
+            }
             className="flex items-center gap-4 text-transparent bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 bg-clip-text hover:from-blue-700 hover:via-blue-500 hover:to-blue-400"
           >
             <TbLanguageHiragana className="text-blue-700 " />
@@ -62,6 +83,9 @@ const HomeFeatures = () => {
           </Link>
           <Link
             href="/text-to-speech"
+            onClick={() =>
+              sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.home_suggestion)
+            }
             className="flex items-center gap-4 text-transparent bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 bg-clip-text hover:from-blue-700 hover:via-blue-500 hover:to-blue-400"
           >
             <TbSpeakerphone className="text-blue-700 " />
@@ -69,6 +93,9 @@ const HomeFeatures = () => {
           </Link>
           <Link
             href="/speech-to-text"
+            onClick={() =>
+              sendFirebaseEvent(FIREBASE_EVENT_NAMES.click.home_suggestion)
+            }
             className="flex items-center gap-4 text-transparent bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 bg-clip-text hover:from-blue-700 hover:via-blue-500 hover:to-blue-400"
           >
             <TbMicrophone className="text-blue-700 " />

@@ -5,6 +5,7 @@ import NextHead, { NextHeadProps } from "@/common/components/NextHead";
 import HomeHero from "@/modules/home/components/HomeHero";
 import HomeFeatures from "@/modules/home/components/HomeFeatures";
 import HomeStudent from "@/modules/home/components/HomeStudent";
+import HomeFinal from "@/modules/home/components/HomeFinal";
 
 type THomeProps = {
   datoCmsData: NextHeadProps;
@@ -19,6 +20,7 @@ const Home = ({ datoCmsData }: THomeProps) => {
       <HomeHero />
       <HomeFeatures />
       <HomeStudent />
+      <HomeFinal />
     </div>
   );
 };
