@@ -1,5 +1,9 @@
 # CANVAS
 
+### 1.6.0
+
+- New Home design
+
 ### 1.5.9
 
 - Translate audio release
