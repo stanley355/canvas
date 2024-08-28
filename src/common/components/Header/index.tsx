@@ -3,17 +3,13 @@ import cookie from "js-cookie";
 import HeaderMobile from "./HeaderMobile";
 import HeaderDesktop from "./HeaderDesktop";
 
-interface IHeader {
-  pathname: string;
-}
-
 export interface IHeaderMenu {
   title: string;
   url: string;
   icon: React.ReactNode;
 }
 
-const Header = ({ pathname }: IHeader) => {
+const Header = () => {
   const cookieToken = cookie.get("token");
   const [isLogin, setIsLogin] = useState(false);
   useEffect(() => {

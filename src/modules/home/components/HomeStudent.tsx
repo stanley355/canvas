@@ -1,17 +1,29 @@
-import AccountFreePlanTable from "@/modules/account/components/AccountFreePlanTable";
+import Image from "next/image";
 
 const HomeStudent = () => {
   return (
-    <section className="container mx-auto p-8 px-4 lg:px-0">
-      <h3 className="text-3xl text-center font-bold mb-4">
-        Are you a student?
-      </h3>
-      <div className="text-xl text-center mb-8">
-        Enjoy our Application for free!
-      </div>
-
-      <div className="lg:w-1/2 mx-auto">
-        <AccountFreePlanTable />
+    <section className="lg:h-screen px-4 py-8 mx-auto lg:px-0 bg-[url('/images/home/student_bg.jpg')] bg-cover bg-opacity-80 text-white bg-bottom bg-fixed">
+      <div className="container">
+        <h3 className="mb-4 text-3xl font-semibold text-center">
+          One AI for Students
+        </h3>
+        <h4 className="mb-4 text-center">
+          Languageai is trusted as a partner for students&apos; assignments
+        </h4>
+        <Image
+          src="/images/home/univ.png"
+          alt="Languageai for Student"
+          className="w-full h-auto lg:hidden"
+          width={400}
+          height={800}
+        />
+        <Image
+          src="/images/home/univ_desktop.png"
+          alt="Languageai for Student"
+          className="hidden w-3/4 h-auto mx-auto lg:block"
+          width={800}
+          height={400}
+        />
       </div>
     </section>
   );

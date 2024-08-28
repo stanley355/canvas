@@ -11,7 +11,7 @@ const HeaderDesktop = (props: IHeaderDesktop) => {
   const { isLogin } = props;
 
   return (
-    <div className="items-center justify-between hidden p-2 bg-white lg:flex">
+    <div className="items-center justify-between hidden p-2 lg:flex">
       <Link href="/" className="mr-2">
         <Image
           src="/images/languageai/logo.png"
